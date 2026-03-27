@@ -820,6 +820,7 @@ strong { font-weight: 700; }
         <a class="nav-item" onclick="goTo('tools-ecosystem')"><span class="nav-icon">&#128295;</span> כלים ואקוסיסטם</a>
         <a class="nav-item" onclick="goTo('office-integrations')"><span class="nav-icon">&#128268;</span> Office ו-Slack</a>
         <a class="nav-item" onclick="goTo('ai-integrations')"><span class="nav-icon">&#128279;</span> NotebookLM + Nano Banana<span class="nav-badge">חדש</span></a>
+        <a class="nav-item" onclick="goTo('claude-interface')"><span class="nav-icon">&#128421;</span> ממשק והגדרות Claude<span class="nav-badge">חדש</span></a>
         <a class="nav-item" onclick="goTo('ai-agents')"><span class="nav-icon">&#129302;</span> סוכני AI מותאמים<span class="nav-badge">חדש</span></a>
       </div>
     </div>
@@ -918,7 +919,7 @@ strong { font-weight: 700; }
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.1 | מעודכן 27 מרץ 2026 | 15:55</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.2 | מעודכן 27 מרץ 2026 | 23:59</p>
   </div>
 
   <div class="stats-grid">
@@ -974,7 +975,7 @@ strong { font-weight: 700; }
 
   <!-- What's New in v14.1 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 14.1 — 27 מרץ 2026</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 14.2 — 27 מרץ 2026</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
       <div style="background:linear-gradient(135deg,#d63031,#ff7675); color:white; border-radius:10px; padding:14px;">
         <strong>&#128421;&#65039; Computer Use</strong> — <span style="font-size:12px;">פרקים 37, 41, 60</span>
@@ -3254,7 +3255,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.1 מורחבת | מרץ 2026 | 61 פרקים | מועשר ממקורות רשמיים</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.2 מורחבת | מרץ 2026 | 62 פרקים | מועשר ממקורות רשמיים</p>
   </div>
 
   <div class="chapter-nav">
@@ -8513,6 +8514,289 @@ cd Nano-Banana-MCP && npm install</pre>
 
   <div class="chapter-nav">
     <button class="chapter-nav-btn" onclick="goTo('ai-agents')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('claude-interface')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ==================== CHAPTER 62: CLAUDE INTERFACE ==================== -->
+<div class="chapter" id="chapter-claude-interface">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 62 — חדש</div>
+    <h1 class="chapter-title">&#128421; ממשק Claude — כל הפקודות, ההגדרות והטריקים</h1>
+    <p class="chapter-subtitle">מדריך מלא לתפריטים, הגדרות, Connectors, Capabilities ו-Cowork — עם דוגמאות ושימוש יעיל</p>
+  </div>
+
+  <!-- ===== SECTION 1: Navigation Menu ===== -->
+  <div class="card">
+    <div class="card-title">&#128204; תפריט הניווט הראשי — 7 הפקודות שחובה להכיר</div>
+    <p>כשלוחצים על תפריט ההמבורגר (☰) בפינה העליונה, מופיע תפריט עם 7 אפשרויות. כל אחת מהן היא כלי חשוב:</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0;">
+
+      <div style="background:linear-gradient(135deg,#f8fafc,#e2e8f0); border-radius:12px; padding:14px; border-right:4px solid #2563eb;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:20px;">&#10133;</span>
+          <strong style="font-size:14px;">New Chat — שיחה חדשה</strong>
+        </div>
+        <p style="font-size:12px; color:#475569;">פותח שיחה חדשה ונקייה. Claude "שוכח" את ההקשר הקודם.</p>
+        <div class="tip-box" style="margin-top:8px; padding:8px; font-size:11px;">
+          <strong>&#128161; טיפ:</strong> אל תמשיך שיחה ארוכה מדי! כל ~50 הודעות — פתח שיחה חדשה. Claude עובד טוב יותר עם הקשר רענן.
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#f8fafc,#e2e8f0); border-radius:12px; padding:14px; border-right:4px solid #7c3aed;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:20px;">&#128269;</span>
+          <strong style="font-size:14px;">Search — חיפוש</strong>
+        </div>
+        <p style="font-size:12px; color:#475569;">מחפש בכל השיחות הקודמות שלך. Claude יכול למצוא קטעי קוד, פרומפטים, או תשובות מהעבר.</p>
+        <div class="tip-box" style="margin-top:8px; padding:8px; font-size:11px;">
+          <strong>&#128161; טיפ:</strong> חפש ביטויים ספציפיים כמו "דשבורד CRM" או "קוד JavaScript" במקום מילים כלליות.
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#f8fafc,#e2e8f0); border-radius:12px; padding:14px; border-right:4px solid #f59e0b;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:20px;">&#128736;</span>
+          <strong style="font-size:14px;">Customize — התאמה אישית</strong>
+        </div>
+        <p style="font-size:12px; color:#475569;">ניהול Skills ו-Connectors. כאן מתקינים כישורים חדשים ומחברים שירותים חיצוניים.</p>
+        <div class="tip-box" style="margin-top:8px; padding:8px; font-size:11px;">
+          <strong>&#128161; טיפ:</strong> תמיד בדוק את Customize אחרי עדכון — Anthropic מוסיפים יכולות חדשות כל הזמן!
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#f8fafc,#e2e8f0); border-radius:12px; padding:14px; border-right:4px solid #10b981;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:20px;">&#128172;</span>
+          <strong style="font-size:14px;">Chats — שיחות</strong>
+        </div>
+        <p style="font-size:12px; color:#475569;">כל השיחות הקודמות שלך מסודרות לפי תאריך. אפשר לשנות שם, למחוק, או לשתף.</p>
+        <div class="tip-box" style="margin-top:8px; padding:8px; font-size:11px;">
+          <strong>&#128161; טיפ:</strong> שנה שמות לשיחות חשובות! לדוגמה: "דשבורד PAIS — גרסה סופית" במקום "New Chat".
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#f8fafc,#e2e8f0); border-radius:12px; padding:14px; border-right:4px solid #06b6d4;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:20px;">&#128193;</span>
+          <strong style="font-size:14px;">Projects — פרויקטים</strong>
+        </div>
+        <p style="font-size:12px; color:#475569;">קבץ שיחות לפרויקט אחד! הגדר הנחיות קבועות שחלות על כל שיחה בתוך הפרויקט.</p>
+        <div class="example-box" style="margin-top:8px; padding:8px; font-size:11px;">
+          <strong>&#128196; דוגמה:</strong> צור פרויקט "מערכת CRM תיאטרון" — כל שיחה בתוכו תדע אוטומטית את המבנה, הסגנון, והקבצים.
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#f8fafc,#e2e8f0); border-radius:12px; padding:14px; border-right:4px solid #ec4899;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:20px;">&#127912;</span>
+          <strong style="font-size:14px;">Artifacts — יצירות</strong>
+        </div>
+        <p style="font-size:12px; color:#475569;">כל היצירות שClaude יצר בשבילך: קוד, מסמכים, גרפים, HTML. מוצגות בפאנל צדדי אינטראקטיבי.</p>
+        <div class="tip-box" style="margin-top:8px; padding:8px; font-size:11px;">
+          <strong>&#128161; טיפ:</strong> לחץ "Copy" על artifact כדי להעתיק את הקוד, או "Remix" כדי לבקש מClaude לשנות אותו.
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-radius:12px; padding:14px; border-right:4px solid #059669; grid-column: span 2;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:20px;">&lt;/&gt;</span>
+          <strong style="font-size:14px;">Claude Code — מצב מפתחים</strong>
+        </div>
+        <p style="font-size:12px; color:#475569;">כלי שורת פקודה (Terminal) שמאפשר לClaude לכתוב קוד, להריץ פקודות, ולעבוד ישירות על קבצים בפרויקט שלך.</p>
+        <div class="example-box" style="margin-top:8px; padding:8px; font-size:11px;">
+          <strong>&#128196; דוגמה:</strong> "תתקן את כל הבאגים ב-dashboard.html, תריץ בדיקות, ותעשה git commit" — Claude Code עושה הכל מהטרמינל.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SECTION 2: Cowork Settings ===== -->
+  <div class="card">
+    <div class="card-title">&#129302; Cowork — הגדרות עבודה אוטונומית</div>
+    <p>מצב Cowork מאפשר לClaude לעבוד על קבצים בלי ממשק צ'אט — ישירות על הקבצים שלך במחשב.</p>
+
+    <div style="background:#ede7f6; border-radius:12px; padding:16px; margin:14px 0;">
+      <h4 style="color:#5b21b6; margin-bottom:10px;">&#9881; Dispatch — שליחת משימות מהטלפון</h4>
+      <p style="font-size:13px;">כשההגדרה פעילה (ON), אתה יכול לשלוח משימות מאפליקציית Claude בטלפון — והמחשב שלך יבצע אותן אוטומטית!</p>
+      <div class="example-box" style="margin-top:10px; padding:10px; font-size:12px;">
+        <strong>&#128196; דוגמה:</strong> אתה בפגישה ונזכר שצריך לעדכן דשבורד. שולח מהטלפון: "עדכן את מספר הלקוחות ב-CRM" — המחשב בבית עובד על זה!
+      </div>
+    </div>
+
+    <div style="background:#fef3c7; border-radius:12px; padding:16px; margin:14px 0;">
+      <h4 style="color:#92400e; margin-bottom:10px;">&#128221; Global Instructions — הנחיות גלובליות</h4>
+      <p style="font-size:13px;">הנחיות שחלות על <strong>כל</strong> שיחות Cowork. כאן מגדירים העדפות, כללים, והקשר שClaude צריך תמיד לדעת.</p>
+      <div class="prompt-box" style="margin-top:10px; font-size:12px;">דוגמה להנחיה גלובלית:<br>"אני מנהל מתנ"ס בעיר אום אל פחם. כל הפלטים צריכים להיות בעברית עם תמיכה ב-RTL. שמור קבצים בתיקיית הפרויקט שלי. תמיד עדכן תאריך וגרסה."</div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 3: Connectors ===== -->
+  <div class="card">
+    <div class="card-title">&#128268; Connectors — חיבור לשירותים חיצוניים</div>
+    <p>Connectors מאפשרים לClaude לגשת ולעבוד עם שירותים שלך — Google Drive, Gmail, GitHub ועוד.</p>
+
+    <table style="width:100%; border-collapse:collapse; margin:14px 0; font-size:13px;">
+      <thead>
+        <tr style="background:linear-gradient(135deg,#2563eb,#7c3aed); color:white;">
+          <th style="padding:10px; border-radius:8px 0 0 0; text-align:right;">&#128268; Connector</th>
+          <th style="padding:10px; text-align:right;">מה הוא עושה</th>
+          <th style="padding:10px; border-radius:0 8px 0 0; text-align:right;">&#128161; דוגמת שימוש</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:10px;"><strong>&#128194; Google Drive</strong></td>
+          <td style="padding:10px;">קורא ושומר קבצים מהDrive שלך</td>
+          <td style="padding:10px; font-size:12px;">"תקרא את הדוח מGoogle Drive ותכין ממנו מצגת"</td>
+        </tr>
+        <tr style="border-bottom:1px solid #e2e8f0; background:#f8fafc;">
+          <td style="padding:10px;"><strong>&#128025; GitHub</strong></td>
+          <td style="padding:10px;">ניהול repos, Pull Requests, Issues</td>
+          <td style="padding:10px; font-size:12px;">"תדחוף את הקוד לGitHub ותפתח Pull Request"</td>
+        </tr>
+        <tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:10px;"><strong>&#127912; Canva</strong></td>
+          <td style="padding:10px;">יצירת עיצובים ופוסטרים</td>
+          <td style="padding:10px; font-size:12px;">"תעצב פוסטר להצגה החדשה בCanva"</td>
+        </tr>
+        <tr style="border-bottom:1px solid #e2e8f0; background:#f8fafc;">
+          <td style="padding:10px;"><strong>&#128231; Gmail</strong></td>
+          <td style="padding:10px;">קריאה ושליחת מיילים</td>
+          <td style="padding:10px; font-size:12px;">"תכתוב מייל מעקב ללקוחות שקיבלו הצעת מחיר"</td>
+        </tr>
+        <tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:10px;"><strong>&#128197; Google Calendar</strong></td>
+          <td style="padding:10px;">ניהול יומן ופגישות</td>
+          <td style="padding:10px; font-size:12px;">"תזמן פגישה מחר ב-10 עם צוות השיווק"</td>
+        </tr>
+        <tr style="border-bottom:1px solid #e2e8f0; background:#f8fafc;">
+          <td style="padding:10px;"><strong>&#128197; monday.com</strong></td>
+          <td style="padding:10px;">ניהול משימות ופרויקטים</td>
+          <td style="padding:10px; font-size:12px;">"מה הסטטוס של הפרויקטים הפתוחים שלי?"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box" style="margin-top:10px;">
+      <strong>&#9888; חשוב:</strong> חיבור Connector דורש אישור חד-פעמי. לחץ "Connect" ליד כל שירות ואשר גישה. Claude יכול רק לקרוא ולפעול — לא לשנות הרשאות.
+    </div>
+  </div>
+
+  <!-- ===== SECTION 4: Capabilities ===== -->
+  <div class="card">
+    <div class="card-title">&#9881; Capabilities — יכולות ואפשרויות</div>
+    <p>הגדרות Capabilities שולטות על מה Claude יכול ומה לא. הנה הסבר לכל הגדרה:</p>
+
+    <div style="display:flex; flex-direction:column; gap:12px; margin:14px 0;">
+
+      <div style="background:linear-gradient(135deg,#dbeafe,#ede9fe); border-radius:12px; padding:14px;">
+        <h4 style="color:#1d4ed8; margin-bottom:6px;">&#129504; Memory — זיכרון</h4>
+        <div style="font-size:13px;">
+          <p><strong>Search and reference chats:</strong> Claude מחפש בשיחות קודמות כדי לתת תשובות מדויקות יותר.</p>
+          <p><strong>Generate memory from chat history:</strong> Claude זוכר העדפות, כללים, ופרטים שלמד עליך משיחות קודמות.</p>
+          <div class="tip-box" style="margin-top:8px; padding:8px; font-size:11px;">
+            <strong>&#128161; טיפ:</strong> השאר את שתי האפשרויות ON! ככה Claude "ילמד" את הסגנון שלך ולא תצטרך לחזור על עצמך.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#f0fdf4,#ecfdf5); border-radius:12px; padding:14px;">
+        <h4 style="color:#059669; margin-bottom:6px;">&#127912; Visuals — יצירות ויזואליות</h4>
+        <div style="font-size:13px;">
+          <p><strong>Artifacts:</strong> Claude יוצר קוד, מסמכים, HTML ואתרים בחלון נפרד שאפשר לערוך.</p>
+          <p><strong>AI-powered artifacts:</strong> Artifacts חכמים שClaude עצמו פועל בתוכם — אפליקציות אינטראקטיביות!</p>
+          <p><strong>Inline visualizations:</strong> גרפים, דיאגרמות ותרשימים ישירות בתוך השיחה.</p>
+          <div class="example-box" style="margin-top:8px; padding:8px; font-size:11px;">
+            <strong>&#128196; דוגמה:</strong> "צור דשבורד אינטראקטיבי עם React" — Claude בונה artifact חי שאפשר לראות ולתפעל בזמן אמת.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#fef3c7,#fef9c3); border-radius:12px; padding:14px;">
+        <h4 style="color:#92400e; margin-bottom:6px;">&#128187; Code execution — הרצת קוד</h4>
+        <div style="font-size:13px;">
+          <p><strong>Cloud code execution:</strong> Claude מריץ קוד על שרת ויוצר קבצים (Excel, PDF, PPTX) בזמן אמת.</p>
+          <p><strong>Allow network egress:</strong> Claude יכול להתקין חבילות (npm, pip) ולגשת לאינטרנט בזמן הרצת קוד.</p>
+          <div class="warning-box" style="margin-top:8px; padding:8px; font-size:11px;">
+            <strong>&#9888; אבטחה:</strong> Domain allowlist שולטת לאילו אתרים Claude יכול לגשת. "Package managers only" = בטוח. הוסף דומיינים רק אם אתה צריך.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#fce4ec,#fde2e4); border-radius:12px; padding:14px;">
+        <h4 style="color:#be185d; margin-bottom:6px;">&#128295; Tool access — גישת כלים</h4>
+        <div style="font-size:13px;">
+          <p><strong>Load tools when needed:</strong> (מומלץ) Claude טוען כלים רק כשצריך — שיחות קלות ומהירות יותר.</p>
+          <p><strong>Tools already loaded:</strong> כל הכלים מוכנים מראש — אבל השיחה תהיה כבדה יותר.</p>
+          <div class="tip-box" style="margin-top:8px; padding:8px; font-size:11px;">
+            <strong>&#128161; טיפ:</strong> השאר על "Load when needed" — זה חוסך tokens ומאפשר שיחות ארוכות יותר.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SECTION 5: Pro Tips ===== -->
+  <div class="card">
+    <div class="card-title">&#127775; טיפים וטריקים מתקדמים</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0;">
+
+      <div style="background:#f0f9ff; border-radius:10px; padding:12px; border:1px solid #bae6fd;">
+        <strong style="color:#0369a1; font-size:13px;">&#128640; טריק #1: Projects = סופר-כוח</strong>
+        <p style="font-size:12px; margin-top:6px;">צור Project עם הנחיות מפורטות. כל שיחה חדשה בפרויקט תקבל את כל ההקשר אוטומטית — בלי לחזור על עצמך.</p>
+      </div>
+
+      <div style="background:#fdf4ff; border-radius:10px; padding:12px; border:1px solid #e9d5ff;">
+        <strong style="color:#7e22ce; font-size:13px;">&#128268; טריק #2: חבר Gmail + Calendar</strong>
+        <p style="font-size:12px; margin-top:6px;">עם שני הConnectors האלה, Claude יכול: "תקרא את המייל האחרון מיוסי, תזמן פגישה מחר, ותשלח לו אישור."</p>
+      </div>
+
+      <div style="background:#f0fdf4; border-radius:10px; padding:12px; border:1px solid #bbf7d0;">
+        <strong style="color:#15803d; font-size:13px;">&#129504; טריק #3: Memory = לימוד מתמשך</strong>
+        <p style="font-size:12px; margin-top:6px;">תגיד לClaude "תזכור שאני מעדיף טבלאות על פני רשימות" — הוא ישמור את זה ויפעל ככה תמיד!</p>
+      </div>
+
+      <div style="background:#fef3c7; border-radius:10px; padding:12px; border:1px solid #fde68a;">
+        <strong style="color:#92400e; font-size:13px;">&#128161; טריק #4: חיפוש = מאגר ידע</strong>
+        <p style="font-size:12px; margin-top:6px;">השתמש בSearch כדי למצוא קוד שClaude כתב בעבר. במקום לבקש מחדש — מצא, העתק, ושפר!</p>
+      </div>
+
+      <div style="background:#fff1f2; border-radius:10px; padding:12px; border:1px solid #fecdd3;">
+        <strong style="color:#be123c; font-size:13px;">&#127919; טריק #5: Artifacts = תצוגה מקדימה</strong>
+        <p style="font-size:12px; margin-top:6px;">כשClaude בונה HTML — הוא מציג Artifact חי. אפשר לראות את התוצאה בזמן אמת בלי לפתוח קובץ!</p>
+      </div>
+
+      <div style="background:#ecfdf5; border-radius:10px; padding:12px; border:1px solid #a7f3d0;">
+        <strong style="color:#047857; font-size:13px;">&#128241; טריק #6: Dispatch = שלט רחוק</strong>
+        <p style="font-size:12px; margin-top:6px;">הפעל Dispatch, ותוכל לשלוח משימות מהטלפון לClaude במחשב. מושלם לעדכונים בדרך!</p>
+      </div>
+
+    </div>
+
+    <div class="info-box" style="border-right:4px solid #2563eb; margin-top:14px;">
+      <h4 style="color:#1d4ed8;">&#128218; סיכום הגדרות מומלצות</h4>
+      <div style="display:grid; grid-template-columns:1fr auto; gap:4px; margin:10px 0; font-size:13px;">
+        <span>Memory — Search and reference</span><span style="color:#10b981; font-weight:700;">&#10004; ON</span>
+        <span>Memory — Generate from history</span><span style="color:#10b981; font-weight:700;">&#10004; ON</span>
+        <span>Artifacts</span><span style="color:#10b981; font-weight:700;">&#10004; ON</span>
+        <span>AI-powered artifacts</span><span style="color:#10b981; font-weight:700;">&#10004; ON</span>
+        <span>Inline visualizations</span><span style="color:#10b981; font-weight:700;">&#10004; ON</span>
+        <span>Cloud code execution</span><span style="color:#10b981; font-weight:700;">&#10004; ON</span>
+        <span>Allow network egress</span><span style="color:#10b981; font-weight:700;">&#10004; ON</span>
+        <span>Domain allowlist</span><span style="color:#f59e0b; font-weight:700;">&#9888; Package managers only</span>
+        <span>Tool access mode</span><span style="color:#2563eb; font-weight:700;">&#128260; Load when needed</span>
+        <span>Dispatch (Cowork)</span><span style="color:#10b981; font-weight:700;">&#10004; ON</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('ai-integrations')">&#8594; הקודם</button>
     <button class="chapter-nav-btn" disabled>הבא &#8592;</button>
   </div>
 </div>
@@ -8521,7 +8805,7 @@ cd Nano-Banana-MCP && npm install</pre>
 
 <script>
 // ===== NAVIGATION =====
-const chapters = ['intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations'];
+const chapters = ['intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','claude-interface'];
 
 function goTo(id) {
   chapters.forEach(c => {
