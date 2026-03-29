@@ -771,7 +771,7 @@ strong { font-weight: 700; }
     <div class="nav-group open">
       <div class="nav-group-title" onclick="toggleNavGroup(this)">&#127968; א. מבוא — התחל כאן</div>
       <div class="nav-items-wrap">
-        <a class="nav-item active" onclick="goTo('intro')"><span class="nav-icon">&#127968;</span> דף הבית<span class="nav-badge">התחל כאן</span></a>
+        <a class="nav-item active" onclick="goTo('intro')"><span class="nav-icon">&#127968;</span> דף הבית + מפת דרכים למתחיל<span class="nav-badge">התחל כאן</span></a>
         <a class="nav-item" onclick="goTo('philosophy')"><span class="nav-icon">&#128161;</span> פרק 1 — פילוסופיה ניהולית</a>
         <a class="nav-item" onclick="goTo('daily-user-guide')"><span class="nav-icon">&#128214;</span> פרק 52 — ספר משתמש יום-יום</a>
       </div>
@@ -960,7 +960,7 @@ strong { font-weight: 700; }
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 15.4 | מעודכן 29 מרץ 2026 | 19:49</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 15.5 | מעודכן 29 מרץ 2026 | 20:05</p>
   </div>
 
   <div class="stats-grid">
@@ -1032,7 +1032,7 @@ strong { font-weight: 700; }
 
   <!-- What's New in v14.1 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 15.4 — 29 מרץ 2026</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 15.5 — 29 מרץ 2026</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
       <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; border-radius:10px; padding:14px; border:2px solid #ffeaa7;">
         <strong>&#128293; Claude Mythos</strong> — <span style="font-size:12px;">פרקים 36, 41, 44</span>
@@ -1086,6 +1086,10 @@ strong { font-weight: 700; }
         <strong>&#128187; סימולטור Terminal אינטראקטיבי</strong> — <span style="font-size:12px;">פרק 37</span>
         <p style="font-size:12px; margin-top:4px;">טרמינל עובד בתוך המדריך! 23+ פקודות (ls, cd, git, claude), אתגר למידה של 5 שלבים, מערכת קבצים וירטואלית, וסימולציית Claude Code</p>
       </div>
+      <div style="background:linear-gradient(135deg,#0984e3,#74b9ff); color:white; border-radius:10px; padding:14px; border:2px solid #0984e3;">
+        <strong>&#128506; מפת דרכים למתחיל</strong> — <span style="font-size:12px;">דף הבית</span>
+        <p style="font-size:12px; margin-top:4px;">6 שלבים מאפס לשליטה מלאה: הכרת Claude &#8594; פרומפטים &#8594; כלים &#8594; חיבורים &#8594; התמחות &#8594; מתקדם. עם לוח זמנים, תרגילים, ומסלולי התמחות</p>
+      </div>
     </div>
     <p style="font-size:12px; color:#636e72; margin-top:12px; text-align:center;">&#128197; עדכון אוטומטי יומי | 12 פרקים עודכנו | מועשר מ-80+ מסמכי מקור + מפת דרכים Enterprise + מדריך Terminal מפורט</p>
   </div>
@@ -1116,33 +1120,222 @@ strong { font-weight: 700; }
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-title">&#128214; מפת המדריך — 6 אזורים</div>
-    <div class="flow-steps">
-      <div class="flow-step" onclick="goTo('philosophy')">
-        <div class="flow-step-num">1</div>
-        <div class="flow-step-title">פילוסופיה ניהולית</div>
+  <!-- ====== LEARNING ROADMAP FOR BEGINNERS ====== -->
+  <div class="card" style="border:3px solid #0984e3; background:linear-gradient(135deg, rgba(9,132,227,0.03), rgba(116,185,255,0.03));">
+    <div class="card-title">&#128506; מפת דרכים למשתמש מתחיל — איך לקרוא את המדריך?</div>
+    <p style="font-size:14px; color:#2d3436; margin-bottom:16px;">המדריך מכיל <strong>62 פרקים</strong> ב-12 חלקים. <strong>אל תקרא הכל ברצף!</strong> הנה הסדר החכם — 6 שלבים שייקחו אותך מאפס לשליטה מלאה:</p>
+
+    <!-- PHASE 1 -->
+    <div style="margin-bottom:16px; border-radius:12px; overflow:hidden; border:2px solid #00b894;">
+      <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'; this.querySelector('.roadmap-arrow').textContent=this.nextElementSibling.style.display==='none'?'&#9660;':'&#9650;'" style="background:linear-gradient(135deg,#00b894,#55efc4); padding:14px 16px; cursor:pointer; display:flex; align-items:center; gap:10px;">
+        <div style="background:white; color:#00b894; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; flex-shrink:0;">1</div>
+        <div style="flex:1;">
+          <strong style="font-size:15px; color:#2d3436;">&#127968; שבוע 1 — הכר את Claude (3 פרקים)</strong>
+          <p style="font-size:12px; margin:2px 0 0; color:#2d3436; opacity:0.8;">זמן משוער: 30-45 דקות | מטרה: להבין מה זה Claude ולמה הוא שונה</p>
+        </div>
+        <span class="roadmap-arrow" style="font-size:14px; color:#2d3436;">&#9660;</span>
       </div>
-      <div class="flow-step" onclick="goTo('programs')">
-        <div class="flow-step-num">2</div>
-        <div class="flow-step-title">תוכניות קהילתיות</div>
+      <div style="display:none; padding:14px 16px; background:rgba(0,184,148,0.05);">
+        <div style="display:grid; gap:8px;">
+          <div onclick="goTo('intro')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #00b894; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#127968;</span>
+            <div><strong>דף הבית</strong><p style="font-size:12px; margin:0; color:#636e72;">סקירה כללית, מפת המדריך, למי מיועד</p></div>
+          </div>
+          <div onclick="goTo('philosophy')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #00b894; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128161;</span>
+            <div><strong>פרק 1 — פילוסופיה ניהולית</strong><p style="font-size:12px; margin:0; color:#636e72;">למה Claude הוא לא עוד צ'אטבוט — אלא מטה ניהולי שלם</p></div>
+          </div>
+          <div onclick="goTo('claude-system')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #00b894; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#129302;</span>
+            <div><strong>פרק 11 — מערכת Claude</strong><p style="font-size:12px; margin:0; color:#636e72;">ממשקים, מנויים, Opus/Sonnet/Haiku, יכולות בסיסיות</p></div>
+          </div>
+        </div>
+        <p style="margin:10px 0 0; font-size:12px; background:#e8f8f5; padding:8px; border-radius:6px;">&#127919; <strong>מבחן עצמי:</strong> אם אתה מסוגל להסביר למישהו אחר מה Claude עושה ולמה הוא שונה מ-ChatGPT — אתה מוכן לשלב 2!</p>
       </div>
-      <div class="flow-step" onclick="goTo('crm')">
-        <div class="flow-step-num">3</div>
-        <div class="flow-step-title">CRM ומכירות</div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div style="margin-bottom:16px; border-radius:12px; overflow:hidden; border:2px solid #0984e3;">
+      <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'; this.querySelector('.roadmap-arrow').textContent=this.nextElementSibling.style.display==='none'?'&#9660;':'&#9650;'" style="background:linear-gradient(135deg,#0984e3,#74b9ff); padding:14px 16px; cursor:pointer; display:flex; align-items:center; gap:10px;">
+        <div style="background:white; color:#0984e3; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; flex-shrink:0;">2</div>
+        <div style="flex:1;">
+          <strong style="font-size:15px; color:white;">&#128172; שבוע 2 — למד לדבר עם Claude (3 פרקים)</strong>
+          <p style="font-size:12px; margin:2px 0 0; color:rgba(255,255,255,0.8);">זמן משוער: 45-60 דקות | מטרה: לשלוט בפרומפטים — מבסיסי למתקדם</p>
+        </div>
+        <span class="roadmap-arrow" style="font-size:14px; color:white;">&#9660;</span>
       </div>
-      <div class="flow-step" onclick="goTo('dashboard')">
-        <div class="flow-step-num">4</div>
-        <div class="flow-step-title">דשבורד ודוחות</div>
+      <div style="display:none; padding:14px 16px; background:rgba(9,132,227,0.05);">
+        <div style="display:grid; gap:8px;">
+          <div onclick="goTo('prompts')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #0984e3; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128172;</span>
+            <div><strong>פרק 12 — פרומפטים מוכנים</strong><p style="font-size:12px; margin:0; color:#636e72;">&#11088; <strong>התחל כאן!</strong> תבניות מוכנות שאפשר להעתיק ולהשתמש מיד</p></div>
+          </div>
+          <div onclick="goTo('daily-user-guide')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #0984e3; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128214;</span>
+            <div><strong>פרק 52 — ספר משתמש יום-יום</strong><p style="font-size:12px; margin:0; color:#636e72;">מדריך פרקטי — מה עושים ביום ראשון? ביום שני? מתי משתמשים במה?</p></div>
+          </div>
+          <div onclick="goTo('prompt-eng')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #0984e3; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128218;</span>
+            <div><strong>פרק 19 — הנדסת פרומפטים</strong><p style="font-size:12px; margin:0; color:#636e72;">טכניקות מקצועיות: Chain-of-Thought, Role-Playing, Few-Shot</p></div>
+          </div>
+        </div>
+        <p style="margin:10px 0 0; font-size:12px; background:#e3f2fd; padding:8px; border-radius:6px;">&#127919; <strong>תרגול:</strong> קח 3 פרומפטים מפרק 12 ונסה אותם ב-Claude. שנה אותם. שפר. חזור על זה עד שתרגיש נוח.</p>
       </div>
-      <div class="flow-step" onclick="goTo('claude-system')">
-        <div class="flow-step-num">5</div>
-        <div class="flow-step-title">עבודה עם Claude</div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div style="margin-bottom:16px; border-radius:12px; overflow:hidden; border:2px solid #6c5ce7;">
+      <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'; this.querySelector('.roadmap-arrow').textContent=this.nextElementSibling.style.display==='none'?'&#9660;':'&#9650;'" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); padding:14px 16px; cursor:pointer; display:flex; align-items:center; gap:10px;">
+        <div style="background:white; color:#6c5ce7; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; flex-shrink:0;">3</div>
+        <div style="flex:1;">
+          <strong style="font-size:15px; color:white;">&#128295; שבוע 3-4 — כלים ויכולות (4 פרקים)</strong>
+          <p style="font-size:12px; margin:2px 0 0; color:rgba(255,255,255,0.8);">זמן משוער: 60-90 דקות | מטרה: להכיר את כלי העבודה המתקדמים</p>
+        </div>
+        <span class="roadmap-arrow" style="font-size:14px; color:white;">&#9660;</span>
       </div>
-      <div class="flow-step" onclick="goTo('implementation')">
-        <div class="flow-step-num">6</div>
-        <div class="flow-step-title">הטמעה ו-Production</div>
+      <div style="display:none; padding:14px 16px; background:rgba(108,92,231,0.05);">
+        <div style="display:grid; gap:8px;">
+          <div onclick="goTo('skills')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #6c5ce7; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128295;</span>
+            <div><strong>פרק 13 — Skills ו-Projects</strong><p style="font-size:12px; margin:0; color:#636e72;">יצירת הוראות אישיות ל-Claude — הוא יזכור מה אתה רוצה</p></div>
+          </div>
+          <div onclick="goTo('artifacts-deep')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #6c5ce7; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#127912;</span>
+            <div><strong>פרק 20 — Artifacts מתקדם</strong><p style="font-size:12px; margin:0; color:#636e72;">יצירת מסמכים, קוד, תרשימים ודוחות ויזואליים בתוך Claude</p></div>
+          </div>
+          <div onclick="goTo('claude-interface')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #6c5ce7; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128421;</span>
+            <div><strong>פרק 62 — ממשק והגדרות Claude</strong><p style="font-size:12px; margin:0; color:#636e72;">כפתורים, הגדרות, מנויים — הכר את הממשק כמו מקצוען</p></div>
+          </div>
+          <div onclick="goTo('cowork-deep')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #6c5ce7; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128187;</span>
+            <div><strong>פרק 22 — Cowork מתקדם</strong><p style="font-size:12px; margin:0; color:#636e72;">עבודה שולחנית עם Claude — קבצים, אקסל, מצגות</p></div>
+          </div>
+        </div>
+        <p style="margin:10px 0 0; font-size:12px; background:#ede7f6; padding:8px; border-radius:6px;">&#127919; <strong>תרגול:</strong> צור Skill אישי + Project עם הוראות מערכת + נסה ליצור Artifact אחד (טבלה או דוח).</p>
       </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div style="margin-bottom:16px; border-radius:12px; overflow:hidden; border:2px solid #e17055;">
+      <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'; this.querySelector('.roadmap-arrow').textContent=this.nextElementSibling.style.display==='none'?'&#9660;':'&#9650;'" style="background:linear-gradient(135deg,#e17055,#fab1a0); padding:14px 16px; cursor:pointer; display:flex; align-items:center; gap:10px;">
+        <div style="background:white; color:#e17055; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; flex-shrink:0;">4</div>
+        <div style="flex:1;">
+          <strong style="font-size:15px; color:white;">&#128279; שבוע 5-6 — חיבורים ואינטגרציות (4 פרקים)</strong>
+          <p style="font-size:12px; margin:2px 0 0; color:rgba(255,255,255,0.8);">זמן משוער: 60-90 דקות | מטרה: לחבר את Claude לכלים שלך</p>
+        </div>
+        <span class="roadmap-arrow" style="font-size:14px; color:white;">&#9660;</span>
+      </div>
+      <div style="display:none; padding:14px 16px; background:rgba(225,112,85,0.05);">
+        <div style="display:grid; gap:8px;">
+          <div onclick="goTo('connectors')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #e17055; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128279;</span>
+            <div><strong>פרק 23 — MCP וחיבורים חיצוניים</strong><p style="font-size:12px; margin:0; color:#636e72;">חיבור Claude ל-Google Drive, Slack, Gmail ועוד</p></div>
+          </div>
+          <div onclick="goTo('chrome')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #e17055; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#127760;</span>
+            <div><strong>פרק 32 — Claude in Chrome</strong><p style="font-size:12px; margin:0; color:#636e72;">Claude בתוך הדפדפן — סיכום עמודים, מילוי טפסים, מחקר</p></div>
+          </div>
+          <div onclick="goTo('excel')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #e17055; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128202;</span>
+            <div><strong>פרק 33 — Claude in Excel</strong><p style="font-size:12px; margin:0; color:#636e72;">עבודה ישירה עם גיליונות אלקטרוניים — ניתוח נתונים, נוסחאות</p></div>
+          </div>
+          <div onclick="goTo('plugins')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #e17055; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:20px;">&#128268;</span>
+            <div><strong>פרק 31 — Plugins</strong><p style="font-size:12px; margin:0; color:#636e72;">תוספים שמרחיבים את היכולות של Claude</p></div>
+          </div>
+        </div>
+        <p style="margin:10px 0 0; font-size:12px; background:#fef3e2; padding:8px; border-radius:6px;">&#127919; <strong>תרגול:</strong> חבר את Claude ל-Google Drive + נסה Claude in Chrome על אתר חדשות.</p>
+      </div>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div style="margin-bottom:16px; border-radius:12px; overflow:hidden; border:2px solid #fdcb6e;">
+      <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'; this.querySelector('.roadmap-arrow').textContent=this.nextElementSibling.style.display==='none'?'&#9660;':'&#9650;'" style="background:linear-gradient(135deg,#fdcb6e,#f39c12); padding:14px 16px; cursor:pointer; display:flex; align-items:center; gap:10px;">
+        <div style="background:white; color:#f39c12; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; flex-shrink:0;">5</div>
+        <div style="flex:1;">
+          <strong style="font-size:15px; color:#2d3436;">&#128202; שבוע 7-8 — התמחות בתחום שלך (בחר מסלול)</strong>
+          <p style="font-size:12px; margin:2px 0 0; color:#2d3436; opacity:0.8;">זמן משוער: לפי הצורך | מטרה: ליישם Claude על העבודה האמיתית שלך</p>
+        </div>
+        <span class="roadmap-arrow" style="font-size:14px; color:#2d3436;">&#9660;</span>
+      </div>
+      <div style="display:none; padding:14px 16px; background:rgba(253,203,110,0.08);">
+        <p style="font-size:13px; margin-bottom:10px;">&#128204; <strong>בחר את המסלול שמתאים לתפקיד שלך:</strong></p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+          <div style="background:linear-gradient(135deg,#e3f2fd,#bbdefb); padding:12px; border-radius:10px; cursor:pointer;" onclick="goTo('programs')">
+            <strong style="color:#0984e3;">&#127891; מנהל תוכניות</strong>
+            <p style="font-size:11px; margin:4px 0 0;">פרקים 2-4 + פרק 10<br>ניהול תוכניות, KPI, שגרות</p>
+          </div>
+          <div style="background:linear-gradient(135deg,#fce4ec,#f8bbd0); padding:12px; border-radius:10px; cursor:pointer;" onclick="goTo('crm')">
+            <strong style="color:#c62828;">&#128101; שיווק ומכירות</strong>
+            <p style="font-size:11px; margin:4px 0 0;">פרקים 6-7, 24-25, 38<br>CRM, Forecast, פרומפטים שיווקיים</p>
+          </div>
+          <div style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9); padding:12px; border-radius:10px; cursor:pointer;" onclick="goTo('dashboard')">
+            <strong style="color:#27ae60;">&#128202; דשבורדים ודוחות</strong>
+            <p style="font-size:11px; margin:4px 0 0;">פרקים 8-9, 35, 39<br>בניית דשבורד, Enterprise, Master</p>
+          </div>
+          <div style="background:linear-gradient(135deg,#f3e5f5,#e1bee7); padding:12px; border-radius:10px; cursor:pointer;" onclick="goTo('implementation')">
+            <strong style="color:#6c5ce7;">&#128640; הטמעה וניהול</strong>
+            <p style="font-size:11px; margin:4px 0 0;">פרקים 14-18, 51, 53<br>תוכנית הטמעה, Production, RACI</p>
+          </div>
+        </div>
+        <p style="margin:10px 0 0; font-size:12px; background:#fff8e1; padding:8px; border-radius:6px;">&#127919; <strong>עצה:</strong> אל תנסה ללמוד את כל המסלולים! התמקד ב-1-2 שרלוונטיים לתפקיד שלך.</p>
+      </div>
+    </div>
+
+    <!-- PHASE 6 -->
+    <div style="margin-bottom:8px; border-radius:12px; overflow:hidden; border:2px solid #2d3436;">
+      <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'; this.querySelector('.roadmap-arrow').textContent=this.nextElementSibling.style.display==='none'?'&#9660;':'&#9650;'" style="background:linear-gradient(135deg,#2d3436,#636e72); padding:14px 16px; cursor:pointer; display:flex; align-items:center; gap:10px;">
+        <div style="background:#fdcb6e; color:#2d3436; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; flex-shrink:0;">6</div>
+        <div style="flex:1;">
+          <strong style="font-size:15px; color:white;">&#128187; שבוע 9-10 — שלב מתקדם (בוחר לפי עניין)</strong>
+          <p style="font-size:12px; margin:2px 0 0; color:rgba(255,255,255,0.7);">מטרה: להפוך למשתמש-על — Terminal, Claude Code, AI Agents, פרילנסר</p>
+        </div>
+        <span class="roadmap-arrow" style="font-size:14px; color:white;">&#9660;</span>
+      </div>
+      <div style="display:none; padding:14px 16px; background:rgba(45,52,54,0.05);">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px;">
+          <div onclick="goTo('tools-ecosystem')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #2d3436;">
+            <strong>&#128187; פרק 37</strong><p style="font-size:11px; margin:4px 0 0; color:#636e72;">Terminal, Git, Claude Code + סימולטור אינטראקטיבי</p>
+          </div>
+          <div onclick="goTo('advanced-prompts')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #2d3436;">
+            <strong>&#129504; פרק 34</strong><p style="font-size:11px; margin:4px 0 0; color:#636e72;">טכניקות פרומפטים מתקדמות, Anti-Patterns</p>
+          </div>
+          <div onclick="goTo('ai-agents')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #2d3436;">
+            <strong>&#129302; פרק 60</strong><p style="font-size:11px; margin:4px 0 0; color:#636e72;">בניית סוכני AI מותאמים אישית</p>
+          </div>
+          <div onclick="goTo('freelancer-methodology')" style="background:white; padding:10px; border-radius:8px; cursor:pointer; border-right:4px solid #2d3436;">
+            <strong>&#128188; פרקים 54-58</strong><p style="font-size:11px; margin:4px 0 0; color:#636e72;">חבילת פרילנסר — מתודולוגיה, תמחור, פורטפוליו</p>
+          </div>
+        </div>
+        <p style="margin:10px 0 0; font-size:12px; background:#ecf0f1; padding:8px; border-radius:6px;">&#127919; <strong>מבחן סופי:</strong> נסה לבנות דשבורד שלם מאפס (פרק 35) או צור Skill מותאם אישית (פרק 21). אם הצלחת — אתה משתמש-על!</p>
+      </div>
+    </div>
+
+    <!-- VISUAL FLOW -->
+    <div style="margin-top:16px; text-align:center; padding:16px; background:linear-gradient(135deg,#dfe6e9,#b2bec3); border-radius:12px;">
+      <div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:6px; font-size:13px;">
+        <span style="background:#00b894; color:white; padding:4px 12px; border-radius:16px;">&#127968; הכרת Claude</span>
+        <span style="font-size:18px;">&#10132;</span>
+        <span style="background:#0984e3; color:white; padding:4px 12px; border-radius:16px;">&#128172; פרומפטים</span>
+        <span style="font-size:18px;">&#10132;</span>
+        <span style="background:#6c5ce7; color:white; padding:4px 12px; border-radius:16px;">&#128295; כלים</span>
+        <span style="font-size:18px;">&#10132;</span>
+        <span style="background:#e17055; color:white; padding:4px 12px; border-radius:16px;">&#128279; חיבורים</span>
+        <span style="font-size:18px;">&#10132;</span>
+        <span style="background:#f39c12; color:white; padding:4px 12px; border-radius:16px;">&#128202; התמחות</span>
+        <span style="font-size:18px;">&#10132;</span>
+        <span style="background:#2d3436; color:#fdcb6e; padding:4px 12px; border-radius:16px;">&#128187; מתקדם</span>
+      </div>
+      <p style="margin:8px 0 0; font-size:11px; color:#636e72;">&#9200; ~10 שבועות מאפס לשליטה מלאה | ~30-60 דקות בשבוע</p>
+    </div>
+
+    <!-- QUICK TIP -->
+    <div style="margin-top:12px; background:#c8e6c9; padding:12px; border-radius:8px;">
+      <strong>&#128161; 3 טיפים לקריאה חכמה:</strong>
+      <p style="font-size:12px; margin:6px 0 0;">1. <strong>השתמש בחיפוש</strong> (&#128269; למעלה) — חפש מילה כמו "דשבורד" ותגיע ישר לנושא</p>
+      <p style="font-size:12px; margin:4px 0 0;">2. <strong>לחץ על הכותרת בסרגל הצד</strong> — כל חלק נפתח ונסגר, כך שתוכל להתמקד</p>
+      <p style="font-size:12px; margin:4px 0 0;">3. <strong>אל תקרא הכל!</strong> — קרא רק את מה שרלוונטי לך עכשיו, חזור לשאר כשתצטרך</p>
     </div>
   </div>
 
@@ -2675,7 +2868,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 15.4 | מעודכן 29 מרץ 2026 | 19:49</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 15.5 | מעודכן 29 מרץ 2026 | 20:05</p>
   </div>
 
   <div class="chapter-nav">
@@ -3526,7 +3719,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 15.4 מורחבת | מרץ 2026 | 62 פרקים | מועשר + מפת דרכים Enterprise + אשף שאלות מנחות + Terminal + Git &#38; GitHub + סימולטור Terminal אינטראקטיבי</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 15.5 מורחבת | מרץ 2026 | 62 פרקים | מועשר + מפת דרכים Enterprise + אשף שאלות מנחות + Terminal + Git &#38; GitHub + סימולטור Terminal אינטראקטיבי</p>
   </div>
 
   <div class="chapter-nav">
@@ -12630,7 +12823,7 @@ function expertMode(type) {
   document.querySelectorAll('.chapter').forEach(function(ch) {
     var credit = document.createElement('div');
     credit.className = 'chapter-credit';
-    credit.innerHTML = '<div class="credit-name">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</div><div class="credit-role">רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. &copy; 2026 | עדכון אחרון: 29.03.2026 19:49 | גרסה 15.4</div>';
+    credit.innerHTML = '<div class="credit-name">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</div><div class="credit-role">רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. &copy; 2026 | עדכון אחרון: 29.03.2026 20:05 | גרסה 15.5</div>';
     ch.appendChild(credit);
   });
 })();
