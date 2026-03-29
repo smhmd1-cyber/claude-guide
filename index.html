@@ -919,12 +919,12 @@ strong { font-weight: 700; }
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.5 | מעודכן 29 מרץ 2026 | 18:04</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.6 | מעודכן 29 מרץ 2026 | 18:17</p>
   </div>
 
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-number" style="color:var(--primary)">61</div>
+      <div class="stat-number" style="color:var(--primary)">62</div>
       <div class="stat-label">פרקים</div>
     </div>
     <div class="stat-card">
@@ -991,7 +991,7 @@ strong { font-weight: 700; }
 
   <!-- What's New in v14.1 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 14.5 — 29 מרץ 2026</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 14.6 — 29 מרץ 2026</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
       <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; border-radius:10px; padding:14px; border:2px solid #ffeaa7;">
         <strong>&#128293; Claude Mythos</strong> — <span style="font-size:12px;">פרקים 36, 41, 44</span>
@@ -1025,8 +1025,12 @@ strong { font-weight: 700; }
         <strong>&#128247; תמונות המחשה</strong> — <span style="font-size:12px;">מבוא, פרקים 34, 37</span>
         <p style="font-size:12px; margin-top:4px;">מפת חשיבה, דף עזר מרוכז, תרשים טיפים מתקדמים, מדריך Skills ויזואלי (4 שלבים), סקירת Claude Code</p>
       </div>
+      <div style="background:linear-gradient(135deg,#e17055,#fdcb6e); color:white; border-radius:10px; padding:14px;">
+        <strong>&#9889; בדיקה סופית מעמיקה</strong> — <span style="font-size:12px;">פרקים 34, 37</span>
+        <p style="font-size:12px; margin-top:4px;">16 פקודות Claude Code, פרויקט everything-claude-code (91K&#11088;), 35 Anti-Patterns לפרומפטים, תיקון מונה פרקים</p>
+      </div>
     </div>
-    <p style="font-size:12px; color:#636e72; margin-top:12px; text-align:center;">&#128197; עדכון אוטומטי יומי | 8 פרקים עודכנו | מועשר מ-80+ מסמכי מקור + 8 תמונות המחשה</p>
+    <p style="font-size:12px; color:#636e72; margin-top:12px; text-align:center;">&#128197; עדכון אוטומטי יומי | 10 פרקים עודכנו | מועשר מ-80+ מסמכי מקור + 8 תמונות + בדיקה מעמיקה סופית</p>
   </div>
 
   <div class="card">
@@ -3279,7 +3283,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.5 מורחבת | מרץ 2026 | 62 פרקים | מועשר ממקורות רשמיים + תמונות המחשה</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.6 מורחבת | מרץ 2026 | 62 פרקים | מועשר ממקורות רשמיים + תמונות המחשה + חומרים מעמיקים</p>
   </div>
 
   <div class="chapter-nav">
@@ -4424,6 +4428,33 @@ Hebrew reports for municipal HR departments.
     <p style="margin-top:8px; background:var(--gray-100); padding:10px; border-radius:6px; font-size:13px;">&#128172; <em>"קח את הפרומפט הזה [הדבק], נתח אותו לפי מסגרת 4-D, ותן לי גרסה משופרת עם הסבר מה שינית ולמה."</em></p>
   </div>
 
+  <!-- NEW v14.5: 35 Prompt Anti-Patterns -->
+  <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.03), rgba(255,118,117,0.03));">
+    <div class="card-title">&#9888;&#65039; 35 טעויות נפוצות בפרומפטים — ואיך לתקן</div>
+    <p style="font-size:13px;">רשימת Anti-Patterns שהורסות תוצאות. מקור: <strong>prompt-master</strong> (Skill קהילתי). הנה 12 הקריטיות:</p>
+    <div style="overflow-x:auto; margin-top:10px;">
+      <table style="width:100%; border-collapse:collapse; font-size:12px;">
+        <tr style="background:#d63031; color:white;">
+          <th style="padding:6px; border:1px solid #ddd;">&#10060; הטעות</th>
+          <th style="padding:6px; border:1px solid #ddd;">&#10004; התיקון</th>
+        </tr>
+        <tr><td style="padding:6px; border:1px solid #eee;">"עזור לי עם הקוד שלי"</td><td style="padding:6px; border:1px solid #eee;">"שפר את הפונקציה getUserData לשימוש ב-async/await עם טיפול ב-null"</td></tr>
+        <tr style="background:#fff5f5;"><td style="padding:6px; border:1px solid #eee;">2 משימות בפרומפט אחד</td><td style="padding:6px; border:1px solid #eee;">פצל: שיחה 1 = הסבר, שיחה 2 = שכתוב</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;">"תעשה את זה יותר טוב"</td><td style="padding:6px; border:1px solid #eee;">הגדר קריטריון הצלחה: "עד שהפונקציה עוברת Unit Test ומטפלת ב-null"</td></tr>
+        <tr style="background:#fff5f5;"><td style="padding:6px; border:1px solid #eee;">בלי פורמט פלט</td><td style="padding:6px; border:1px solid #eee;">"3 נקודות, כל אחת עד 20 מילים, עם שורת סיכום בראש"</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;">בלי הגדרת תפקיד</td><td style="padding:6px; border:1px solid #eee;">"אתה מהנדס Backend בכיר המתמחה ב-Node.js ו-PostgreSQL"</td></tr>
+        <tr style="background:#fff5f5;"><td style="padding:6px; border:1px solid #eee;">"תמשיך מאיפה שהפסקנו"</td><td style="padding:6px; border:1px solid #eee;">תמיד ספק הקשר מלא — Claude לא זוכר שיחות קודמות (אלא אם Projects)</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;">"מה מומחים אומרים על X?"</td><td style="padding:6px; border:1px solid #eee;">"ציין רק מקורות שאתה בטוח בהם. אם לא בטוח — אמור במפורש."</td></tr>
+        <tr style="background:#fff5f5;"><td style="padding:6px; border:1px solid #eee;">הדבקת כל ה-Codebase</td><td style="padding:6px; border:1px solid #eee;">צמצם לפונקציה וקובץ רלוונטיים בלבד — חוסך tokens ומשפר דיוק</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;">הוספת "חשוב שלב אחר שלב" ל-o3/o4</td><td style="padding:6px; border:1px solid #eee;">מודלי Reasoning חושבים פנימית — הוספת CoT דווקא מורידה איכות!</td></tr>
+        <tr style="background:#fff5f5;"><td style="padding:6px; border:1px solid #eee;">"תבנה את כל האפליקציה"</td><td style="padding:6px; border:1px solid #eee;">פצל: פרומפט 1 = שלד, פרומפט 2 = ליבה, פרומפט 3 = ליטוש</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;">סוכן ללא גבולות קבצים</td><td style="padding:6px; border:1px solid #eee;">"ערוך רק קבצים ב-src/. אסור לגעת ב-package.json או .env"</td></tr>
+        <tr style="background:#fff5f5;"><td style="padding:6px; border:1px solid #eee;">סוכן ללא נקודות עצירה</td><td style="padding:6px; border:1px solid #eee;">"עצור ושאל לפני: מחיקת קובץ, הוספת תלות, שינוי DB"</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:8px; font-size:12px; background:#ffebee; padding:8px; border-radius:6px;">&#128161; <strong>כלל זהב:</strong> ספציפיות = איכות. ככל שהפרומפט מדויק יותר — התוצאה טובה פי 10. הימנע מפעלים מעורפלים, משימות כפולות, ופלט ללא פורמט.</p>
+  </div>
+
   <div class="card" style="border:2px solid #6c5ce7;">
     <div class="card-title">&#128293; 85+ שימושים מעשיים ב-Claude — לפי קטגוריה</div>
     <p>רשימה מקיפה של שימושים שתוכל להתחיל מיד:</p>
@@ -4861,6 +4892,56 @@ Hebrew reports for municipal HR departments.
       </div>
     </div>
     <p style="margin-top:8px; font-size:12px; background:#bbdefb; padding:8px; border-radius:6px;">&#128161; <strong>מבנה פרויקט:</strong> CLAUDE.md (מוח) + /skills (רובוטים חוזרים) + /hooks (בלמי אבטחה) + /docs (החלטות ארכיטקטורה) + /src (קוד)</p>
+  </div>
+
+  <!-- NEW v14.5: 16 Essential Claude Code Commands -->
+  <div class="card" style="border:2px solid #6c5ce7;">
+    <div class="card-title">&#9889; 16 פקודות חיוניות ב-Claude Code (80% מהתפוקה)</div>
+    <p style="font-size:13px;">במקום ללמוד 93 פקודות, התמקד ב-16 שנותנות את רוב הערך:</p>
+    <div style="overflow-x:auto; margin-top:10px;">
+      <table style="width:100%; border-collapse:collapse; font-size:12px;">
+        <tr style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white;">
+          <th style="padding:6px; border:1px solid #ddd;">פקודה</th>
+          <th style="padding:6px; border:1px solid #ddd;">מה עושה</th>
+          <th style="padding:6px; border:1px solid #ddd;">מתי להשתמש</th>
+        </tr>
+        <tr><td style="padding:6px; border:1px solid #eee;"><code>/init</code></td><td style="padding:6px; border:1px solid #eee;">יוצר CLAUDE.md — זיכרון הפרויקט</td><td style="padding:6px; border:1px solid #eee;">בתחילת כל פרויקט חדש</td></tr>
+        <tr style="background:#f8f9fa;"><td style="padding:6px; border:1px solid #eee;"><code>/plan</code></td><td style="padding:6px; border:1px solid #eee;">תכנון ארכיטקטורה לפני קוד</td><td style="padding:6px; border:1px solid #eee;">לפני כל משימה מורכבת</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;"><code>/context</code></td><td style="padding:6px; border:1px solid #eee;">בודק כמה tokens נותרו</td><td style="padding:6px; border:1px solid #eee;">כשהשיחה מתארכת</td></tr>
+        <tr style="background:#f8f9fa;"><td style="padding:6px; border:1px solid #eee;"><code>/compact</code></td><td style="padding:6px; border:1px solid #eee;">דוחס הקשר — משחרר tokens</td><td style="padding:6px; border:1px solid #eee;">כשנגמר מקום בשיחה</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;"><code>/clear</code></td><td style="padding:6px; border:1px solid #eee;">איפוס מלא — התחלה מחדש</td><td style="padding:6px; border:1px solid #eee;">בין משימות שונות</td></tr>
+        <tr style="background:#f8f9fa;"><td style="padding:6px; border:1px solid #eee;"><code>/model</code></td><td style="padding:6px; border:1px solid #eee;">החלפה בין Opus / Sonnet / Haiku</td><td style="padding:6px; border:1px solid #eee;">בהתאם למורכבות המשימה</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;"><code>/btw</code></td><td style="padding:6px; border:1px solid #eee;">שאלה מהירה בלי לשבור את הזרם</td><td style="padding:6px; border:1px solid #eee;">כשצריך מידע תוך כדי עבודה</td></tr>
+        <tr style="background:#f8f9fa;"><td style="padding:6px; border:1px solid #eee;"><code>/rewind</code></td><td style="padding:6px; border:1px solid #eee;">ביטול — חזרה לנקודה קודמת</td><td style="padding:6px; border:1px solid #eee;">כש-Claude סטה מהמסלול</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;"><code>/agents</code></td><td style="padding:6px; border:1px solid #eee;">הרצת סוכני-משנה במקביל</td><td style="padding:6px; border:1px solid #eee;">למשימות מרובות בו-זמנית</td></tr>
+        <tr style="background:#f8f9fa;"><td style="padding:6px; border:1px solid #eee;"><code>/chrome</code></td><td style="padding:6px; border:1px solid #eee;">שליטה בדפדפן</td><td style="padding:6px; border:1px solid #eee;">גלישה, מילוי טפסים, מחקר</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;"><code>/loop</code></td><td style="padding:6px; border:1px solid #eee;">חזרה אוטומטית על פקודה</td><td style="padding:6px; border:1px solid #eee;">ניטור, בדיקות חוזרות</td></tr>
+        <tr style="background:#f8f9fa;"><td style="padding:6px; border:1px solid #eee;"><code>/simplify</code></td><td style="padding:6px; border:1px solid #eee;">סקירת קוד עם 3 סוכנים</td><td style="padding:6px; border:1px solid #eee;">Refactoring ושיפור ביצועים</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;"><code>/permissions</code></td><td style="padding:6px; border:1px solid #eee;">הרשאות מראש לפעולות בטוחות</td><td style="padding:6px; border:1px solid #eee;">עבודה אוטונומית בלי הפרעות</td></tr>
+        <tr style="background:#f8f9fa;"><td style="padding:6px; border:1px solid #eee;"><code>/tdd</code></td><td style="padding:6px; border:1px solid #eee;">Test-Driven Development</td><td style="padding:6px; border:1px solid #eee;">בדיקות קודם, קוד אחר כך</td></tr>
+        <tr><td style="padding:6px; border:1px solid #eee;"><code>/build</code></td><td style="padding:6px; border:1px solid #eee;">יצירת קוד + תלויות</td><td style="padding:6px; border:1px solid #eee;">בנייה אוטומטית של פרויקט</td></tr>
+        <tr style="background:#f8f9fa;"><td style="padding:6px; border:1px solid #eee;"><code>/voice</code></td><td style="padding:6px; border:1px solid #eee;">מצב קולי — דבר במקום להקליד</td><td style="padding:6px; border:1px solid #eee;">Hands-free coding</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:8px; font-size:12px; background:#ede7f6; padding:8px; border-radius:6px;">&#128161; <strong>טיפ מקצוען:</strong> רוב המשתמשים מתייחסים ל-Claude Code כצ'אטבוט = נתקעים. משתמשי-על מתייחסים אליו כמערכת = מצליחים. ההבדל: חשיבה ברמת מערכת לעומת פרומפטים חד-פעמיים.</p>
+  </div>
+
+  <!-- NEW v14.5: everything-claude-code Resource -->
+  <div class="info-box" style="border-right:4px solid #fdcb6e;">
+    <h3>&#11088; משאב מומלץ: everything-claude-code (91K+ כוכבים ב-GitHub)</h3>
+    <p style="font-size:13px;">פרויקט קוד-פתוח ענק שמכיל <strong>28 סוכנים מתמחים</strong> (TypeScript Reviewer, Python Reviewer, Database Reviewer ועוד) + <strong>116 Skills מוכנים</strong> לקידוד, בדיקות, אבטחה, ו-TDD.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:8px;">
+      <div style="background:#fff8e1; padding:8px; border-radius:6px; text-align:center; font-size:12px;">
+        <strong style="font-size:20px;">28</strong><br>סוכנים מתמחים
+      </div>
+      <div style="background:#fff8e1; padding:8px; border-radius:6px; text-align:center; font-size:12px;">
+        <strong style="font-size:20px;">116+</strong><br>Skills מוכנים
+      </div>
+      <div style="background:#fff8e1; padding:8px; border-radius:6px; text-align:center; font-size:12px;">
+        <strong style="font-size:20px;">91K+</strong><br>&#11088; GitHub Stars
+      </div>
+    </div>
+    <p style="font-size:12px; margin-top:8px;">&#128279; חפש ב-GitHub: <code>everything-claude-code</code> — התקנה בפקודה אחת, מתאים לכל רמת מומחיות.</p>
   </div>
 
   <div class="card">
