@@ -765,119 +765,155 @@ strong { font-weight: 700; }
     <input class="sidebar-search" placeholder="חיפוש בתוכן העניינים..." oninput="filterNav(this.value)" />
   </div>
   <nav id="sidebarNav">
-    <!-- ═══ 1: התחלה ═══ -->
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב א: מבוא ויסודות                    -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group open">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#127968; התחלה</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#127968; א. מבוא — התחל כאן</div>
       <div class="nav-items-wrap">
         <a class="nav-item active" onclick="goTo('intro')"><span class="nav-icon">&#127968;</span> דף הבית<span class="nav-badge">התחל כאן</span></a>
         <a class="nav-item" onclick="goTo('philosophy')"><span class="nav-icon">&#128161;</span> פרק 1 — פילוסופיה ניהולית</a>
         <a class="nav-item" onclick="goTo('daily-user-guide')"><span class="nav-icon">&#128214;</span> פרק 52 — ספר משתמש יום-יום</a>
       </div>
     </div>
-    <!-- ═══ 2: הכר את Claude ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב ב: הכר את Claude — בסיס           -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#129302; הכר את Claude</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#129302; ב. הכרת Claude — בסיס</div>
       <div class="nav-items-wrap">
         <a class="nav-item" onclick="goTo('claude-system')"><span class="nav-icon">&#129302;</span> פרק 11 — מערכת Claude</a>
-        <a class="nav-item" onclick="goTo('ai-models')"><span class="nav-icon">&#128142;</span> פרק 36 — מודלי Claude</a>
-        <a class="nav-item" onclick="goTo('claude-2026')"><span class="nav-icon">&#127775;</span> פרק 41 — Claude 2026</a>
-        <a class="nav-item" onclick="goTo('anthropic-news')"><span class="nav-icon">&#128240;</span> פרק 44 — חדשות Anthropic</a>
+        <a class="nav-item" onclick="goTo('ai-models')"><span class="nav-icon">&#128142;</span> פרק 36 — מודלי Claude — השוואה</a>
+        <a class="nav-item" onclick="goTo('claude-interface')"><span class="nav-icon">&#128421;</span> פרק 62 — ממשק והגדרות Claude</a>
       </div>
     </div>
-    <!-- ═══ 3: פרומפטים ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב ג: פרומפטים — מבסיסי למתקדם       -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128172; פרומפטים</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128172; ג. פרומפטים — בסיסי &#8594; מתקדם</div>
       <div class="nav-items-wrap">
-        <a class="nav-item" onclick="goTo('prompts')"><span class="nav-icon">&#128172;</span> פרק 12 — פרומפטים מוכנים</a>
-        <a class="nav-item" onclick="goTo('prompt-eng')"><span class="nav-icon">&#128218;</span> פרק 19 — הנדסת פרומפטים</a>
-        <a class="nav-item" onclick="goTo('advanced-prompts')"><span class="nav-icon">&#129504;</span> פרק 34 — טכניקות מתקדמות</a>
-        <a class="nav-item" onclick="goTo('marketing-prompts')"><span class="nav-icon">&#128227;</span> פרק 38 — שיווק ומכירות</a>
-        <a class="nav-item" onclick="goTo('vertical-prompts')"><span class="nav-icon">&#128218;</span> פרק 59 — ספריית Verticals</a>
+        <a class="nav-item" onclick="goTo('prompts')"><span class="nav-icon">&#128172;</span> פרק 12 — פרומפטים מוכנים<span class="nav-badge">בסיסי</span></a>
+        <a class="nav-item" onclick="goTo('prompt-eng')"><span class="nav-icon">&#128218;</span> פרק 19 — הנדסת פרומפטים<span class="nav-badge">בינוני</span></a>
+        <a class="nav-item" onclick="goTo('advanced-prompts')"><span class="nav-icon">&#129504;</span> פרק 34 — טכניקות מתקדמות<span class="nav-badge">מתקדם</span></a>
+        <a class="nav-item" onclick="goTo('marketing-prompts')"><span class="nav-icon">&#128227;</span> פרק 38 — פרומפטים לשיווק ומכירות</a>
+        <a class="nav-item" onclick="goTo('vertical-prompts')"><span class="nav-icon">&#128218;</span> פרק 59 — ספריית Verticals<span class="nav-badge">מאגר</span></a>
       </div>
     </div>
-    <!-- ═══ 4: כלים ופלטפורמות ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב ד: כלים ויכולות הפלטפורמה          -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128295; כלים ופלטפורמות</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128295; ד. כלים ויכולות — Skills, Artifacts, Cowork</div>
       <div class="nav-items-wrap">
-        <a class="nav-item" onclick="goTo('skills')"><span class="nav-icon">&#128295;</span> פרק 13 — Skills ו-Projects</a>
-        <a class="nav-item" onclick="goTo('skills-deep')"><span class="nav-icon">&#128295;</span> פרק 21 — Skills מתקדם</a>
-        <a class="nav-item" onclick="goTo('skills-mastery')"><span class="nav-icon">&#127919;</span> פרק 42 — מיומנויות מותאמות</a>
+        <a class="nav-item" onclick="goTo('skills')"><span class="nav-icon">&#128295;</span> פרק 13 — Skills ו-Projects<span class="nav-badge">בסיסי</span></a>
         <a class="nav-item" onclick="goTo('artifacts-deep')"><span class="nav-icon">&#127912;</span> פרק 20 — Artifacts מתקדם</a>
+        <a class="nav-item" onclick="goTo('skills-deep')"><span class="nav-icon">&#128295;</span> פרק 21 — Skills מתקדם</a>
         <a class="nav-item" onclick="goTo('cowork-deep')"><span class="nav-icon">&#128187;</span> פרק 22 — Cowork מתקדם</a>
-        <a class="nav-item" onclick="goTo('research-mode')"><span class="nav-icon">&#128269;</span> פרק 48 — Research Mode<span class="nav-badge">חדש</span></a>
-        <a class="nav-item" onclick="goTo('persistent-memory')"><span class="nav-icon">&#129504;</span> פרק 49 — Memory<span class="nav-badge">חדש</span></a>
+        <a class="nav-item" onclick="goTo('skills-mastery')"><span class="nav-icon">&#127919;</span> פרק 42 — מיומנויות מותאמות</a>
+        <a class="nav-item" onclick="goTo('persistent-memory')"><span class="nav-icon">&#129504;</span> פרק 49 — Memory — זיכרון מתמשך<span class="nav-badge">חדש</span></a>
+        <a class="nav-item" onclick="goTo('research-mode')"><span class="nav-icon">&#128269;</span> פרק 48 — Research Mode — מחקר<span class="nav-badge">חדש</span></a>
         <a class="nav-item" onclick="goTo('projects-deep')"><span class="nav-icon">&#128218;</span> פרק 50 — Projects מתקדם<span class="nav-badge">חדש</span></a>
       </div>
     </div>
-    <!-- ═══ 5: חיבורים, אינטגרציות וסוכנים ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב ה: חיבורים ואינטגרציות             -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128279; חיבורים וסוכנים</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128279; ה. חיבורים — Plugins, Chrome, Excel</div>
       <div class="nav-items-wrap">
-        <a class="nav-item" onclick="goTo('connectors')"><span class="nav-icon">&#128279;</span> פרק 23 — MCP וחיבורים</a>
+        <a class="nav-item" onclick="goTo('connectors')"><span class="nav-icon">&#128279;</span> פרק 23 — MCP וחיבורים חיצוניים</a>
         <a class="nav-item" onclick="goTo('plugins')"><span class="nav-icon">&#128268;</span> פרק 31 — Plugins</a>
         <a class="nav-item" onclick="goTo('chrome')"><span class="nav-icon">&#127760;</span> פרק 32 — Claude in Chrome</a>
         <a class="nav-item" onclick="goTo('excel')"><span class="nav-icon">&#128202;</span> פרק 33 — Claude in Excel</a>
-        <a class="nav-item" onclick="goTo('tools-ecosystem')"><span class="nav-icon">&#128295;</span> פרק 37 — כלים, Git ואקוסיסטם</a>
         <a class="nav-item" onclick="goTo('office-integrations')"><span class="nav-icon">&#128268;</span> פרק 43 — Office ו-Slack</a>
-        <a class="nav-item" onclick="goTo('ai-integrations')"><span class="nav-icon">&#128279;</span> פרק 61 — NotebookLM + Nano Banana<span class="nav-badge">חדש</span></a>
-        <a class="nav-item" onclick="goTo('claude-interface')"><span class="nav-icon">&#128421;</span> פרק 62 — ממשק והגדרות Claude<span class="nav-badge">חדש</span></a>
-        <a class="nav-item" onclick="goTo('ai-agents')"><span class="nav-icon">&#129302;</span> פרק 60 — סוכני AI מותאמים<span class="nav-badge">חדש</span></a>
+        <a class="nav-item" onclick="goTo('ai-integrations')"><span class="nav-icon">&#128279;</span> פרק 61 — NotebookLM + Nano Banana</a>
       </div>
     </div>
-    <!-- ═══ 6: עולמות תוכן ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב ו: טרמינל, Git ו-Claude Code        -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#127891; עולמות תוכן</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128187; ו. Terminal, Git &#38; Claude Code</div>
+      <div class="nav-items-wrap">
+        <a class="nav-item" onclick="goTo('tools-ecosystem')"><span class="nav-icon">&#128187;</span> פרק 37 — Terminal, Git, Claude Code</a>
+        <a class="nav-item" onclick="goTo('ai-agents')"><span class="nav-icon">&#129302;</span> פרק 60 — סוכני AI מותאמים<span class="nav-badge">מתקדם</span></a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב ז: ניהול מוסדי — תוכניות ו-CRM     -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="nav-group">
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#127891; ז. ניהול מוסדי — תוכניות, CRM, מכירות</div>
       <div class="nav-items-wrap">
         <a class="nav-item" onclick="goTo('programs')"><span class="nav-icon">&#127891;</span> פרק 2 — ניהול תוכניות</a>
         <a class="nav-item" onclick="goTo('programs-kpi')"><span class="nav-icon">&#128200;</span> פרק 3 — KPI ומדידה</a>
         <a class="nav-item" onclick="goTo('programs-examples')"><span class="nav-icon">&#128221;</span> פרק 4 — דוגמאות מעשיות</a>
-        <a class="nav-item" onclick="goTo('crm-nonprofit')"><span class="nav-icon">&#128101;</span> פרק 25 — CRM חברתי</a>
         <a class="nav-item" onclick="goTo('theater')"><span class="nav-icon">&#127917;</span> פרק 5 — הפקות וקטלוג</a>
         <a class="nav-item" onclick="goTo('crm')"><span class="nav-icon">&#128101;</span> פרק 6 — CRM לקוחות</a>
         <a class="nav-item" onclick="goTo('sales')"><span class="nav-icon">&#128176;</span> פרק 7 — מכירות ו-Forecast</a>
         <a class="nav-item" onclick="goTo('theater-marketing')"><span class="nav-icon">&#127917;</span> פרק 24 — שיווק תיאטרון</a>
+        <a class="nav-item" onclick="goTo('crm-nonprofit')"><span class="nav-icon">&#128101;</span> פרק 25 — CRM חברתי</a>
       </div>
     </div>
-    <!-- ═══ 7: ניהול ודשבורדים ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב ח: דשבורדים, דוחות וניהול שוטף     -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128202; ניהול ודשבורדים</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128202; ח. דשבורדים, דוחות וניהול שוטף</div>
       <div class="nav-items-wrap">
         <a class="nav-item" onclick="goTo('dashboard')"><span class="nav-icon">&#128202;</span> פרק 8 — דשבורד וניטור</a>
         <a class="nav-item" onclick="goTo('reports')"><span class="nav-icon">&#128203;</span> פרק 9 — דוחות ובקרה</a>
         <a class="nav-item" onclick="goTo('routines')"><span class="nav-icon">&#128197;</span> פרק 10 — שגרות ניהוליות</a>
         <a class="nav-item" onclick="goTo('forms')"><span class="nav-icon">&#128196;</span> פרק 16 — טפסים ותבניות</a>
-        <a class="nav-item" onclick="goTo('dashboard-build')"><span class="nav-icon">&#128736;</span> פרק 35 — בניית דשבורדים</a>
+        <a class="nav-item" onclick="goTo('dashboard-build')"><span class="nav-icon">&#128736;</span> פרק 35 — בניית דשבורדים + מפת דרכים<span class="nav-badge">Enterprise</span></a>
         <a class="nav-item" onclick="goTo('master-dashboard')"><span class="nav-icon">&#127942;</span> פרק 39 — Master Dashboard</a>
         <a class="nav-item" onclick="goTo('php-convert')"><span class="nav-icon">&#128187;</span> פרק 40 — המרה ל-PHP</a>
       </div>
     </div>
-    <!-- ═══ 8: הטמעה ו-Production ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב ט: הטמעה, Production ופרסום         -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128640; הטמעה ו-Production</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128640; ט. הטמעה, Production &#38; פרסום</div>
       <div class="nav-items-wrap">
         <a class="nav-item" onclick="goTo('implementation')"><span class="nav-icon">&#128640;</span> פרק 14 — תוכנית הטמעה</a>
         <a class="nav-item" onclick="goTo('roles')"><span class="nav-icon">&#128101;</span> פרק 15 — תפקידים ו-RACI</a>
-        <a class="nav-item" onclick="goTo('implementer-toolkit')"><span class="nav-icon">&#127919;</span> פרק 53 — ערכת מנהל מטמיע</a>
         <a class="nav-item" onclick="goTo('production')"><span class="nav-icon">&#9881;</span> פרק 17 — מעבר ל-Production</a>
-        <a class="nav-item" onclick="goTo('production-v7')"><span class="nav-icon">&#128640;</span> פרק 51 — Production v7<span class="nav-badge">חדש</span></a>
         <a class="nav-item" onclick="goTo('maturity')"><span class="nav-icon">&#128200;</span> פרק 18 — מודל בגרות</a>
-        <a class="nav-item" onclick="goTo('web-deployment')"><span class="nav-icon">&#127760;</span> פרק 46 — העלאה ל-Web</a>
+        <a class="nav-item" onclick="goTo('web-deployment')"><span class="nav-icon">&#127760;</span> פרק 46 — העלאה ל-Web (Netlify)</a>
+        <a class="nav-item" onclick="goTo('production-v7')"><span class="nav-icon">&#128640;</span> פרק 51 — Production v7<span class="nav-badge">חדש</span></a>
+        <a class="nav-item" onclick="goTo('implementer-toolkit')"><span class="nav-icon">&#127919;</span> פרק 53 — ערכת מנהל מטמיע</a>
       </div>
     </div>
-    <!-- ═══ 9: המערכות שלנו ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב י: המערכות שלנו (מתנ"ס + תיאטרון) -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128736; המערכות שלנו</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128736; י. המערכות שלנו — מתנ"ס &#38; תיאטרון</div>
       <div class="nav-items-wrap">
-        <a class="nav-item" onclick="goTo('sys-community')"><span class="nav-icon">&#127891;</span> פרק 26 — תוכניות קהילתיות<span class="nav-badge">v25</span></a>
-        <a class="nav-item" onclick="goTo('sys-theater')"><span class="nav-icon">&#127917;</span> פרק 27 — CRM תיאטרון<span class="nav-badge">v28</span></a>
+        <a class="nav-item" onclick="goTo('sys-community')"><span class="nav-icon">&#127891;</span> פרק 26 — דשבורד תוכניות קהילתיות<span class="nav-badge">v25</span></a>
+        <a class="nav-item" onclick="goTo('sys-theater')"><span class="nav-icon">&#127917;</span> פרק 27 — דשבורד CRM תיאטרון<span class="nav-badge">v28</span></a>
         <a class="nav-item" onclick="goTo('sys-bugs')"><span class="nav-icon">&#128027;</span> פרק 28 — באגים ותיקונים</a>
         <a class="nav-item" onclick="goTo('sys-upgrade')"><span class="nav-icon">&#128640;</span> פרק 29 — מפת שדרוג</a>
-        <a class="nav-item" onclick="goTo('systems-upgrade-advisor')"><span class="nav-icon">&#128161;</span> פרק 45 — יועץ שדרוג</a>
+        <a class="nav-item" onclick="goTo('systems-upgrade-advisor')"><span class="nav-icon">&#128161;</span> פרק 45 — יועץ שדרוג חכם</a>
       </div>
     </div>
-    <!-- ═══ 10: חבילת פרילנסר ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב יא: חבילת פרילנסר מקצועית          -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128188; חבילת פרילנסר</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128188; יא. חבילת פרילנסר מקצועית</div>
       <div class="nav-items-wrap">
         <a class="nav-item" onclick="goTo('freelancer-methodology')"><span class="nav-icon">&#128188;</span> פרק 54 — מתודולוגיה</a>
         <a class="nav-item" onclick="goTo('system-templates')"><span class="nav-icon">&#128203;</span> פרק 55 — תבניות מערכות</a>
@@ -886,10 +922,15 @@ strong { font-weight: 700; }
         <a class="nav-item" onclick="goTo('portfolio-marketing')"><span class="nav-icon">&#127775;</span> פרק 58 — פורטפוליו ושיווק</a>
       </div>
     </div>
-    <!-- ═══ נספחים ═══ -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- שלב יב: חדשות, עדכונים ונספחים          -->
+    <!-- ═══════════════════════════════════════ -->
     <div class="nav-group">
-      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128279; נספחים</div>
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128240; יב. חדשות, עדכונים ונספחים</div>
       <div class="nav-items-wrap">
+        <a class="nav-item" onclick="goTo('claude-2026')"><span class="nav-icon">&#127775;</span> פרק 41 — Claude 2026 — מוצרים חדשים</a>
+        <a class="nav-item" onclick="goTo('anthropic-news')"><span class="nav-icon">&#128240;</span> פרק 44 — חדשות Anthropic</a>
         <a class="nav-item" onclick="goTo('sources')"><span class="nav-icon">&#128279;</span> נספח — מקורות ולינקים</a>
       </div>
     </div>
@@ -919,7 +960,7 @@ strong { font-weight: 700; }
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 15.2 | מעודכן 29 מרץ 2026 | 19:17</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 15.3 | מעודכן 29 מרץ 2026 | 19:35</p>
   </div>
 
   <div class="stats-grid">
@@ -991,7 +1032,7 @@ strong { font-weight: 700; }
 
   <!-- What's New in v14.1 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 15.2 — 29 מרץ 2026</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 15.3 — 29 מרץ 2026</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
       <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; border-radius:10px; padding:14px; border:2px solid #ffeaa7;">
         <strong>&#128293; Claude Mythos</strong> — <span style="font-size:12px;">פרקים 36, 41, 44</span>
@@ -2630,7 +2671,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 15.2 | מעודכן 29 מרץ 2026 | 19:17</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 15.3 | מעודכן 29 מרץ 2026 | 19:35</p>
   </div>
 
   <div class="chapter-nav">
@@ -3481,7 +3522,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 15.2 מורחבת | מרץ 2026 | 62 פרקים | מועשר + מפת דרכים Enterprise + אשף שאלות מנחות + Terminal + Git &#38; GitHub</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 15.3 מורחבת | מרץ 2026 | 62 פרקים | מועשר + מפת דרכים Enterprise + אשף שאלות מנחות + Terminal + Git &#38; GitHub</p>
   </div>
 
   <div class="chapter-nav">
@@ -12086,7 +12127,7 @@ function expertMode(type) {
   document.querySelectorAll('.chapter').forEach(function(ch) {
     var credit = document.createElement('div');
     credit.className = 'chapter-credit';
-    credit.innerHTML = '<div class="credit-name">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</div><div class="credit-role">רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. &copy; 2026 | עדכון אחרון: 29.03.2026 19:17 | גרסה 15.2</div>';
+    credit.innerHTML = '<div class="credit-name">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</div><div class="credit-role">רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. &copy; 2026 | עדכון אחרון: 29.03.2026 19:35 | גרסה 15.3</div>';
     ch.appendChild(credit);
   });
 })();
