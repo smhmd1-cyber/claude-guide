@@ -754,7 +754,7 @@ strong { font-weight: 700; }
   </div>
   <div class="header-actions">
     <button class="header-btn" onclick="openSearch()">&#128269; חיפוש</button>
-    <button class="header-btn" onclick="window.print()">&#128424; הדפסה</button>
+    <button class="header-btn" onclick="printAll()">&#128424; הדפס הכל</button>
     <button class="header-btn" onclick="toggleDarkMode()">&#127769; מצב כהה</button>
   </div>
 </div>
@@ -919,7 +919,7 @@ strong { font-weight: 700; }
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.2 | מעודכן 27 מרץ 2026 | 23:59</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.3 | מעודכן 29 מרץ 2026 | 17:37</p>
   </div>
 
   <div class="stats-grid">
@@ -975,34 +975,34 @@ strong { font-weight: 700; }
 
   <!-- What's New in v14.1 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 14.2 — 27 מרץ 2026</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 14.3 — 29 מרץ 2026</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
+      <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; border-radius:10px; padding:14px; border:2px solid #ffeaa7;">
+        <strong>&#128293; Claude Mythos</strong> — <span style="font-size:12px;">פרקים 36, 41, 44</span>
+        <p style="font-size:12px; margin-top:4px;">דגם חדש מעל Opus! שכבת Capybara נחשפה בדליפה — ביצועים דרמטיים בקוד וסייבר. בבדיקות early access</p>
+      </div>
+      <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:10px; padding:14px;">
+        <strong>&#128176; IPO + צמיחה</strong> — <span style="font-size:12px;">פרק 44</span>
+        <p style="font-size:12px; margin-top:4px;">Anthropic שוקלת הנפקה באוקטובר 2026. מנויים יותר מהוכפלו השנה</p>
+      </div>
+      <div style="background:linear-gradient(135deg,#27ae60,#2ecc71); color:white; border-radius:10px; padding:14px;">
+        <strong>&#128260; Excel &#8596; PowerPoint</strong> — <span style="font-size:12px;">פרקים 33, 43</span>
+        <p style="font-size:12px; margin-top:4px;">שיתוף הקשר מלא של השיחה בין Excel ל-PowerPoint — ניתוח ומצגת ללא העלאה מחדש</p>
+      </div>
       <div style="background:linear-gradient(135deg,#d63031,#ff7675); color:white; border-radius:10px; padding:14px;">
         <strong>&#128421;&#65039; Computer Use</strong> — <span style="font-size:12px;">פרקים 37, 41, 60</span>
         <p style="font-size:12px; margin-top:4px;">Claude Code ו-Cowork שולטים במחשב: פתיחת קבצים, ניווט, לחיצה ופעולות אוטונומיות (macOS Pro/Max)</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:10px; padding:14px;">
-        <strong>&#128172; Claude Code Channels</strong> — <span style="font-size:12px;">פרקים 37, 41, 44</span>
-        <p style="font-size:12px; margin-top:4px;">גישה ל-Claude Code דרך Discord ו-Telegram מכל מקום</p>
       </div>
       <div style="background:linear-gradient(135deg,#00b894,#55efc4); color:#2d3436; border-radius:10px; padding:14px;">
         <strong>&#127908; Voice Mode + /loop</strong> — <span style="font-size:12px;">פרקים 37, 41</span>
         <p style="font-size:12px; margin-top:4px;">מצב קולי Push-to-talk ומשימות חוזרות ב-Claude Code</p>
       </div>
-      <div style="background:linear-gradient(135deg,#fdcb6e,#f39c12); color:#2d3436; border-radius:10px; padding:14px;">
-        <strong>&#128722; Anthropic Marketplace</strong> — <span style="font-size:12px;">פרקים 31, 41</span>
-        <p style="font-size:12px; margin-top:4px;">חנות תוכנות AI ארגונית: Snowflake, Harvey, Replit ועוד</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#0984e3,#74b9ff); color:white; border-radius:10px; padding:14px;">
-        <strong>&#128269; Code Review + API</strong> — <span style="font-size:12px;">פרקים 36, 37</span>
-        <p style="font-size:12px; margin-top:4px;">כלי סקירת קוד AI + עדכוני API: Compaction, Data Residency, Web Fetch, 1M GA</p>
-      </div>
       <div style="background:linear-gradient(135deg,#2d3436,#636e72); color:white; border-radius:10px; padding:14px;">
         <strong>&#128240; ציר זמן מעודכן</strong> — <span style="font-size:12px;">פרק 44</span>
-        <p style="font-size:12px; margin-top:4px;">ניצחון משפטי נגד הפנטגון, מגבלות שימוש דינמיות, ו-4 אירועים חדשים</p>
+        <p style="font-size:12px; margin-top:4px;">Mythos, IPO, ניצחון משפטי נגד הפנטגון, ו-6 אירועים חדשים</p>
       </div>
     </div>
-    <p style="font-size:12px; color:#636e72; margin-top:12px; text-align:center;">&#128197; עדכון אוטומטי יומי | 6 פרקים עודכנו | שינויים מבוססי חיפוש חדשות Anthropic</p>
+    <p style="font-size:12px; color:#636e72; margin-top:12px; text-align:center;">&#128197; עדכון אוטומטי יומי | 5 פרקים עודכנו | שינויים מבוססי חיפוש חדשות Anthropic</p>
   </div>
 
   <div class="card">
@@ -3255,7 +3255,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.2 מורחבת | מרץ 2026 | 62 פרקים | מועשר ממקורות רשמיים</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.3 מורחבת | מרץ 2026 | 62 פרקים | מועשר ממקורות רשמיים</p>
   </div>
 
   <div class="chapter-nav">
@@ -4277,6 +4277,15 @@ Hebrew reports for municipal HR departments.
     <p><strong>&#128270; ניקוי נתונים</strong> — זיהוי ותיקון שגיאות, כפילויות, ערכים חסרים</p>
     <p><strong>&#128176; תקציבים</strong> — מעקב הוצאות, תחזיות, דוחות כספיים</p>
     <p><strong>&#127891; KPI</strong> — בניית מדדי ביצוע ודשבורדים</p>
+    <p><strong>&#128260; שיתוף הקשר חוצה-אפליקציות</strong> — Excel ו-PowerPoint משתפים הקשר מלא של השיחה, כך שניתוח ב-Excel מועבר אוטומטית למצגת ב-PowerPoint</p>
+  </div>
+
+  <div class="card" style="border:2px solid #27ae60;">
+    <div class="card-title">&#128293; חדש! שיתוף הקשר Excel &#8596; PowerPoint</div>
+    <p>מרץ 2026: Claude for Excel ו-Claude for PowerPoint משתפים עכשיו את <strong>מלוא הקשר השיחה</strong> ביניהם. כל פעולה שClaude מבצע באפליקציה אחת מיודעת במה שקרה באחרת.</p>
+    <p style="margin-top:8px; background:#e8f5e9; padding:10px; border-radius:6px; font-size:13px;">
+      <strong>&#128161; דוגמה:</strong> נתח נתונים ב-Excel &#8594; בקש "צור מצגת מהניתוח" &#8594; Claude ב-PowerPoint כבר יודע מה הנתונים, המסקנות והגרפים — בלי להעלות שום דבר מחדש!
+    </p>
   </div>
 
   <div class="card">
@@ -4464,12 +4473,18 @@ Hebrew reports for municipal HR departments.
   </div>
 
   <div class="card">
-    <div class="card-title">&#127919; שלושת המודלים</div>
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+    <div class="card-title">&#127919; משפחת המודלים</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px;">
+      <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; padding:16px; border-radius:12px; text-align:center; border:2px dashed #ffeaa7;">
+        <div style="font-size:28px;">&#128293;</div>
+        <h3 style="margin:8px 0 4px;">Mythos</h3>
+        <p style="font-size:12px; opacity:0.9;">בקרוב — מעל Opus</p>
+        <p style="font-size:11px; margin-top:8px;">השכבה החזקה ביותר. בבדיקות early access</p>
+      </div>
       <div style="background:linear-gradient(135deg,#667eea,#764ba2); color:white; padding:16px; border-radius:12px; text-align:center;">
         <div style="font-size:28px;">&#128142;</div>
         <h3 style="margin:8px 0 4px;">Opus 4.6</h3>
-        <p style="font-size:12px; opacity:0.9;">המודל החזק ביותר</p>
+        <p style="font-size:12px; opacity:0.9;">המודל החזק ביותר (כרגע)</p>
         <p style="font-size:11px; margin-top:8px;">חשיבה עמוקה, ניתוח מורכב, משימות סוכן, בנייה מאפס</p>
       </div>
       <div style="background:linear-gradient(135deg,#f093fb,#f5576c); color:white; padding:16px; border-radius:12px; text-align:center;">
@@ -5439,7 +5454,21 @@ dashboard-php/
   <!-- Section 2: Model Family -->
   <div class="info-box" style="border-right:4px solid #00b894; margin-bottom:24px;">
     <h3>&#129504; משפחת המודלים — 2026</h3>
-    <p style="margin-bottom:16px;">Anthropic מציעה שלוש שכבות מודלים, כל אחת עם יתרונות ייחודיים:</p>
+    <p style="margin-bottom:16px;">Anthropic מציעה ארבע שכבות מודלים (כולל Mythos שטרם הושק), כל אחת עם יתרונות ייחודיים:</p>
+
+    <!-- Mythos / Capybara - Coming Soon -->
+    <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; border-radius:12px; padding:20px; margin-bottom:16px; border:3px dashed #ffeaa7;">
+      <h4 style="color:#ffeaa7; margin:0 0 8px;">&#128293; בקרוב: Mythos (Capybara) — מעל Opus</h4>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+        <div><strong style="color:#ffeaa7;">סטטוס:</strong> בבדיקות Early Access</div>
+        <div><strong style="color:#ffeaa7;">שכבה:</strong> חדשה — רביעית, מעל Opus</div>
+        <div><strong style="color:#ffeaa7;">ביצועים:</strong> גבוהים משמעותית מ-Opus 4.6</div>
+        <div><strong style="color:#ffeaa7;">תמחור:</strong> צפוי להיות יקר מ-Opus</div>
+      </div>
+      <div style="margin-top:12px; padding:10px; background:rgba(255,255,255,0.15); border-radius:8px;">
+        <strong>יכולות מפתח:</strong> ציונים גבוהים דרמטית בקוד, חשיבה אקדמית וסייבר. Anthropic מתארת אותו כ"קפיצת מדרגה" ביכולות. צפוי להיות זמין תחילה דרך API.
+      </div>
+    </div>
 
     <!-- Opus -->
     <div style="background:linear-gradient(135deg,#2d3436,#636e72); color:white; border-radius:12px; padding:20px; margin-bottom:16px;">
@@ -5480,6 +5509,21 @@ dashboard-php/
       </div>
       <div style="margin-top:12px; padding:10px; background:rgba(255,255,255,0.2); border-radius:8px;">
         <strong>יכולות מפתח:</strong> 90% מביצועי Sonnet 4.5 בקידוד סוכני, שווה ל-Sonnet 4 ב-Computer Use, סיווג ASL-2, אידיאלי לצ'אטבוטים, סינון תוכן, ומשימות בנפח גבוה
+      </div>
+    </div>
+
+    <!-- Mythos / Capybara - Coming Soon -->
+    <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; border-radius:12px; padding:20px; margin-bottom:16px; border:3px dashed #ffeaa7;">
+      <h4 style="color:#ffeaa7; margin:0 0 8px;">&#128293; בקרוב: Claude Mythos (Capybara) — שכבה חדשה מעל Opus</h4>
+      <p style="font-size:13px; margin-bottom:12px;">ב-26-28 מרץ 2026 נחשפו פרטים על דגם חדש בשם <strong>Claude Mythos</strong> (שם פנימי: Capybara) — שכבה רביעית חדשה שגדולה ויקרה יותר מ-Opus.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+        <div><strong style="color:#ffeaa7;">סטטוס:</strong> בבדיקות עם לקוחות Early Access</div>
+        <div><strong style="color:#ffeaa7;">ביצועים:</strong> גבוהים משמעותית מ-Opus 4.6</div>
+        <div><strong style="color:#ffeaa7;">שכבה:</strong> חדשה — מעל Opus (יקרה יותר)</div>
+        <div><strong style="color:#ffeaa7;">תחומים:</strong> קוד, חשיבה אקדמית, סייבר</div>
+      </div>
+      <div style="margin-top:12px; padding:10px; background:rgba(255,255,255,0.15); border-radius:8px;">
+        <strong>&#9888;&#65039; שים לב:</strong> הפרטים נחשפו בדליפת מסמכים פנימיים. Anthropic אישרה שהדגם קיים ונמצא בבדיקות, אך טרם הוכרז רשמית. צפוי להיות זמין דרך API תחילה.
       </div>
     </div>
   </div>
@@ -5875,7 +5919,10 @@ dashboard-php/
 
   <!-- Cross-tool workflow -->
   <div style="background:linear-gradient(135deg,#2d3436,#636e72); color:white; border-radius:14px; padding:24px; margin-bottom:24px;">
-    <h3 style="color:#ffeaa7; margin-top:0;">&#128260; Workflow חוצה-כלים</h3>
+    <h3 style="color:#ffeaa7; margin-top:0;">&#128260; Workflow חוצה-כלים — שיתוף הקשר מלא</h3>
+    <div style="background:rgba(255,234,167,0.15); border:2px solid #ffeaa7; border-radius:10px; padding:14px; margin-bottom:16px;">
+      <strong style="color:#ffeaa7;">&#128293; חדש מרץ 2026:</strong> <span style="font-size:13px;">Excel ו-PowerPoint משתפים עכשיו את <strong>מלוא הקשר של השיחה</strong> ביניהם. כל פעולה ב-Excel מיודעת ב-PowerPoint ולהיפך — בלי להעתיק או להעלות מחדש!</span>
+    </div>
     <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:16px;">
       <div style="background:#611f69; padding:12px 20px; border-radius:25px;">&#128172; Slack: בקשה</div>
       <div style="padding:12px; font-size:24px;">&#8592;</div>
@@ -5885,7 +5932,7 @@ dashboard-php/
       <div style="padding:12px; font-size:24px;">&#8592;</div>
       <div style="background:#6c5ce7; padding:12px 20px; border-radius:25px;">&#128172; Slack: שיתוף</div>
     </div>
-    <p style="margin-top:16px; text-align:center; opacity:0.8;">Claude שומר הקשר לאורך כל השרשרת</p>
+    <p style="margin-top:16px; text-align:center; opacity:0.8;">Claude שומר הקשר לאורך כל השרשרת — אוטומטית</p>
   </div>
 
   <div class="chapter-nav">
@@ -5907,6 +5954,12 @@ dashboard-php/
     <h3>&#128197; ציר זמן — 2026</h3>
     <div style="position:relative; padding-right:30px; margin-top:16px;">
       <div style="position:absolute; right:10px; top:0; bottom:0; width:3px; background:linear-gradient(#d63031,#fdcb6e,#00b894);"></div>
+      <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#d63031,#ff7675); color:white; border-radius:10px; margin-right:20px; border:3px solid #ffeaa7;">
+        <strong>&#128293; 27-28 מרץ</strong> — &#128293; דליפת Claude Mythos: דגם חדש מעל Opus (שכבת Capybara) נחשף בדליפת מסמכים. ביצועים גבוהים דרמטית בקוד וסייבר. Anthropic אישרה — בבדיקות early access
+      </div>
+      <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:10px; margin-right:20px; border:2px solid #d63031;">
+        <strong>&#128293; 27 מרץ</strong> — &#128176; Anthropic שוקלת IPO כבר באוקטובר 2026. מנויי Pro יותר מהוכפלו השנה. הכנסות שנתיות צומחות במהירות
+      </div>
       <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#2d3436,#636e72); color:white; border-radius:10px; margin-right:20px; border:2px solid #d63031;">
         <strong>&#128293; 26 מרץ</strong> — ניצחון משפטי: שופטת פדרלית חסמה את הפנטגון מלסמן את Anthropic כ"סיכון שרשרת אספקה". השופטת כינתה את הצעדים "אורוואליאניים"
       </div>
@@ -6016,7 +6069,7 @@ dashboard-php/
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:14px;">
         <div style="background:rgba(255,255,255,0.15); border-radius:10px; padding:14px;">
           <strong>&#9997;&#65039; שולח:</strong><br>
-          <code style="background:rgba(0,0,0,0.25); padding:4px 8px; border-radius:6px; font-size:13px; direction:ltr; display:inline-block; margin-top:4px;">no-reply@email.claude.com</code>
+          <code style="background:rgba(0,0,0,0.25); padding:4px 8px; border-radius:6px; font-size:13px; direction:ltr; display:inline-block; margin-top:4px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1678793b6473667a6f56737b777f7a38757a776372733875797b">[email&#160;protected]</a></code>
           <p style="font-size:12px; margin-top:6px; opacity:0.9;">&#128161; סמן כ"לא ספאם" כדי שהעדכונים לא ילכו לאשפה!</p>
         </div>
         <div style="background:rgba(255,255,255,0.15); border-radius:10px; padding:14px;">
@@ -6072,7 +6125,7 @@ dashboard-php/
     <div class="tip-box" style="margin-top:14px;">
       <strong>&#128161; טיפים:</strong>
       <ul style="margin:6px 0 0; padding-right:18px;">
-        <li>&#128233; הוסף את <code style="font-size:12px;">no-reply@email.claude.com</code> לאנשי הקשר שלך כדי למנוע סינון ספאם</li>
+        <li>&#128233; הוסף את <code style="font-size:12px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d0302401f081d01142d08000c0401430e010c180908430e0200">[email&#160;protected]</a></code> לאנשי הקשר שלך כדי למנוע סינון ספאם</li>
         <li>&#128197; בדוק מייל פעם בשבוע — Anthropic מעדכנת בתדירות גבוהה ב-2026!</li>
         <li>&#127760; עקוב גם בבלוג: <strong style="direction:ltr; display:inline-block;">anthropic.com/news</strong></li>
         <li>&#128994; בדוק סטטוס שירות: <strong style="direction:ltr; display:inline-block;">status.claude.com</strong></li>
@@ -8803,7 +8856,7 @@ cd Nano-Banana-MCP && npm install</pre>
 
 </div><!-- end main-content -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ===== NAVIGATION =====
 const chapters = ['intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','claude-interface'];
 
@@ -9727,9 +9780,9 @@ const KB = {
     ]
   },
   models: {
-    keywords: ['מודל','opus','sonnet','haiku','extended thinking','חשיבה','מחיר','עלות','pro','team'],
+    keywords: ['מודל','opus','sonnet','haiku','mythos','capybara','מיתוס','extended thinking','חשיבה','מחיר','עלות','pro','team'],
     answers: [
-      '<strong>&#129302; מודלי Claude — מתי להשתמש:</strong><br><br><strong>&#128142; Opus 4.6</strong> — הכי חזק. לניתוח מורכב, בניית מערכות, Cowork אוטונומי.<br><strong>&#9889; Sonnet 4.6</strong> — האיזון. לרוב המשימות: דוחות, מיילים, ניתוח נתונים.<br><strong>&#128039; Haiku 4.5</strong> — הכי מהיר. לתרגום, סיווג, משימות קלות.<br><br><strong>Extended Thinking:</strong> הפעל כש-Claude צריך לחשוב לעומק — החלטות גדולות, ניתוח פיננסי, תכנון אסטרטגי.<br><br><strong>תמחור:</strong><br>&#8226; חינם — Sonnet מוגבל<br>&#8226; Pro ($20/חודש) — הכל כולל Opus + Cowork<br>&#8226; Team ($30/משתמש) — שיתוף צוותי + admin<br><br>&#128161; <em>המלצה:</em> תמיד Opus + Extended Thinking למשימות קריטיות!'
+      '<strong>&#129302; מודלי Claude — מתי להשתמש:</strong><br><br><strong>&#128293; Mythos (Capybara)</strong> — בקרוב! שכבה חדשה מעל Opus. ביצועים דרמטיים בקוד, חשיבה וסייבר. בבדיקות early access.<br><strong>&#128142; Opus 4.6</strong> — הכי חזק (כרגע). לניתוח מורכב, בניית מערכות, Cowork אוטונומי.<br><strong>&#9889; Sonnet 4.6</strong> — האיזון. לרוב המשימות: דוחות, מיילים, ניתוח נתונים.<br><strong>&#128039; Haiku 4.5</strong> — הכי מהיר. לתרגום, סיווג, משימות קלות.<br><br><strong>Extended Thinking:</strong> הפעל כש-Claude צריך לחשוב לעומק — החלטות גדולות, ניתוח פיננסי, תכנון אסטרטגי.<br><br><strong>תמחור:</strong><br>&#8226; חינם — Sonnet מוגבל<br>&#8226; Pro ($20/חודש) — הכל כולל Opus + Cowork<br>&#8226; Team ($30/משתמש) — שיתוף צוותי + admin<br><br>&#128161; <em>המלצה:</em> תמיד Opus + Extended Thinking למשימות קריטיות!'
     ]
   },
   prompting: {
@@ -9751,9 +9804,9 @@ const KB = {
     ]
   },
   anthropic_news: {
-    keywords: ['חדשות','news','מאדים','mars','nasa','גיוס','funding','מיליארד','partner','mozilla','vercept','סקר','blog','בלוג'],
+    keywords: ['חדשות','news','מאדים','mars','nasa','גיוס','funding','מיליארד','partner','mozilla','vercept','סקר','blog','בלוג','mythos','מיתוס','ipo','הנפקה','דליפה'],
     answers: [
-      '<strong>&#128240; חדשות Anthropic 2026:</strong><br><br>&#128640; <strong>Claude על מאדים!</strong> — סיוע ל-NASA Perseverance, 400m נהיגה<br>&#128176; <strong>גיוס $30B</strong> — שווי $380B, הכנסות $14B/שנה<br>&#127775; <strong>Opus 4.6 + Sonnet 4.6</strong> — 1M tokens, Agent Teams<br>&#128274; <strong>אבטחת סייבר</strong> — Claude Code Security, Mozilla<br>&#127760; <strong>סקר 81,000 משתמשים</strong> — מחקר AI הגדול ביותר<br>&#128161; <strong>ללא פרסומות</strong> — Anthropic מתחייבת<br>&#127970; <strong>$100M Partner Network</strong><br>&#128300; <strong>Anti-Distillation</strong> — הגנה מפני חילוץ ידע<br><br>&#128161; <em>ראה פרק 44 לציר זמן מלא</em>'
+      '<strong>&#128240; חדשות Anthropic 2026:</strong><br><br>&#128293; <strong>Claude Mythos נחשף!</strong> — דגם חדש מעל Opus, שכבת Capybara, ביצועים דרמטיים (מרץ 2026)<br>&#128176; <strong>IPO באוקטובר?</strong> — Anthropic שוקלת הנפקה, מנויים הוכפלו<br>&#128640; <strong>Claude על מאדים!</strong> — סיוע ל-NASA Perseverance, 400m נהיגה<br>&#128176; <strong>גיוס $30B</strong> — שווי $380B, הכנסות $14B/שנה<br>&#127775; <strong>Opus 4.6 + Sonnet 4.6</strong> — 1M tokens, Agent Teams<br>&#128274; <strong>אבטחת סייבר</strong> — Claude Code Security, Mozilla<br>&#127760; <strong>סקר 81,000 משתמשים</strong> — מחקר AI הגדול ביותר<br>&#128161; <strong>ללא פרסומות</strong> — Anthropic מתחייבת<br><br>&#128161; <em>ראה פרק 44 לציר זמן מלא</em>'
     ]
   },
   systems_upgrade: {
@@ -10029,13 +10082,110 @@ function expertMode(type) {
   document.querySelectorAll('.chapter').forEach(function(ch) {
     var credit = document.createElement('div');
     credit.className = 'chapter-credit';
-    credit.innerHTML = '<div class="credit-name">\u05DB\u05DC \u05D4\u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05E9\u05DE\u05D5\u05E8\u05D5\u05EA \u05DC: \u05D0\u05D2\u05D1\u05D0\u05E8\u05D9\u05D4 \u05DE\u05D5\u05D7\u05DE\u05D3 \u05E1\u05D0\u05DC\u05D7</div>' +
-      '<div class="credit-role">\u05E8\u05E2\u05D9\u05D5\u05DF, \u05D1\u05E0\u05D9\u05D9\u05D4, \u05E2\u05D9\u05E6\u05D5\u05D1 \u05D5\u05E9\u05D3\u05E8\u05D5\u05D2</div>' +
-      '<div>\u00A9 2026</div>';
+    credit.innerHTML = '<div class="credit-name">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</div><div class="credit-role">רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. &copy; 2026 | עדכון אחרון: 28.03.2026 18:30</div>';
     ch.appendChild(credit);
   });
 })();
-</script>
 
-</body>
-</html>
+// ===== GLOSSARY DATA =====
+var GLOSSARY = [
+  {term:'Lead',he:'ליד',desc:'פנייה ראשונית או לקוח פוטנציאלי שטרם הפך ללקוח. בדשבורד — השלב הראשון בתהליך המכירה.'},
+  {term:'KPI',he:'מדד ביצוע מפתח',desc:'Key Performance Indicator — מדד מספרי שמודד הצלחה. דוגמאות: שיעור המרה, ניצול תקציב, שביעות רצון.'},
+  {term:'Kanban',he:'לוח קנבאן',desc:'שיטה ויזואלית לניהול זרימת עבודה — כרטיסים שנעים בין עמודות (לביצוע → בתהליך → הושלם). נגרר בעכבר/מגע.'},
+  {term:'Canvas',he:'קנבס',desc:'1) שדה ציור HTML5 לחתימה דיגיטלית. 2) מודל עסקי (Business Model Canvas). בדשבורד — משמש לחתימות על חוזים.'},
+  {term:'Aging',he:'גיול חייבים',desc:'דוח המציג חובות לפי גיל: שוטף, 30 יום, 60 יום, 90+ יום. צבע משתנה מירוק לאדום ככל שהחוב ישן יותר.'},
+  {term:'NPS',he:'ציון נאמנות',desc:'Net Promoter Score — ציון 0-10 שמודד נאמנות לקוח/משתתף. מקדמים (9-10), ניטרליים (7-8), מלעיזים (0-6). NPS = %מקדמים - %מלעיזים.'},
+  {term:'ROI',he:'החזר השקעה',desc:'Return on Investment — כמה רווח/ערך הפיק כל שקל שהושקע. נוסחה: (הכנסות - עלות) / עלות × 100%.'},
+  {term:'Upsell',he:'מכירה משודרגת',desc:'הצעת מוצר/שירות יקר יותר או נוסף ללקוח קיים. דוגמה: לקוח שקנה הפקה אחת — הצע לו חבילה של 3.'},
+  {term:'CTR',he:'שיעור הקלקה',desc:'Click-Through Rate — אחוז האנשים שלחצו על קישור/מודעה מתוך כל מי שראו. CTR = הקלקות / חשיפות × 100%.'},
+  {term:'ICS',he:'קובץ יומן',desc:'iCalendar Standard — פורמט תקני לשיתוף אירועי יומן. נתמך ב-Google Calendar, Outlook, Apple Calendar. סיומת .ics.'},
+  {term:'RTL',he:'ימין לשמאל',desc:'Right-To-Left — כיוון כתיבה לעברית/ערבית. הדשבורד תומך ב-RTL מלא: טקסט, טבלאות, גרפים, ניווט.'},
+  {term:'Rules Engine',he:'מנוע כללים',desc:'מערכת אוטומטית שסורקת נתונים ומפעילה כללים (R1-R7). דוגמה: R1 — עסקה תקועה 14+ ימים → התראה אוטומטית.'},
+  {term:'R1-R7',he:'כללים אוטומטיים',desc:'7 כללים במנוע: R1=עסקה תקועה, R2=חשבונית באיחור, R3=ליד ללא פעולה, R4=Escalation 60+, R5=מחיר גבוה, R6=VIP ללא פעילות, R7=הרצה ללא אישור.'},
+  {term:'Escalation',he:'הסלמה',desc:'העברת טיפול לרמה גבוהה יותר כשבעיה לא נפתרה בזמן. דוגמה: חשבונית 60+ ימים → הסלמה למנהל.'},
+  {term:'RBAC',he:'הרשאות מבוססות תפקיד',desc:'Role-Based Access Control — כל משתמש רואה/עורך רק מה שמותר לתפקידו: מנהל, מנהל ביניים, צוות, צופה.'},
+  {term:'SHA-256',he:'גיבוב מאובטח',desc:'אלגוריתם הצפנה חד-כיוונית. הופך סיסמה ל-hash בן 64 תווים. לא ניתן לשחזר את הסיסמה מה-hash.'},
+  {term:'AES-256-GCM',he:'הצפנה סימטרית',desc:'תקן הצפנה מתקדם — 256 ביט עם אימות (GCM). משמש להצפנת כל הנתונים ב-localStorage.'},
+  {term:'localStorage',he:'אחסון מקומי',desc:'מאגר נתונים בדפדפן (5-10MB). שומר מידע גם אחרי סגירת הדפדפן. בדשבורד — כל הנתונים, הגדרות, שאלונים.'},
+  {term:'API',he:'ממשק תכנות',desc:'Application Programming Interface — דרך לתוכנות לדבר ביניהן. הדשבורד משתמש ב-Anthropic API לצ\'אט AI.'},
+  {term:'Gantt',he:'תרשים גאנט',desc:'תרשים עמודות אופקי שמציג לוח זמנים של פרויקט — כל משימה כרצועה על ציר הזמן.'},
+  {term:'Pipeline',he:'משפך מכירות',desc:'זרימת עסקאות דרך שלבי המכירה — מ-Lead עד Closed. כל שלב מצמצם את מספר העסקאות (כמו משפך).'},
+  {term:'LTV',he:'ערך חיי לקוח',desc:'Lifetime Value — כמה הכנסה צפוי לקוח לייצר לאורך כל תקופת הקשר. LTV גבוה = לקוח חשוב.'},
+  {term:'SWOT',he:'ניתוח אסטרטגי',desc:'Strengths (חוזקות), Weaknesses (חולשות), Opportunities (הזדמנויות), Threats (איומים) — כלי לתכנון אסטרטגי.'},
+  {term:'SafeGuard',he:'מגן נתונים',desc:'מנגנון הגנה אוטומטי בדשבורד: מתקן NaN, מגן מחלוקה באפס, משלים שדות חסרים, מאמת תקציבים.'}
+];
+
+// ===== PRINT ALL FUNCTION =====
+function printAll(){
+  var savedChapter = null;
+  chapters.forEach(function(c){
+    var el = document.getElementById('chapter-'+c);
+    if(el && el.classList.contains('active')) savedChapter = c;
+  });
+
+  // Show ALL chapters
+  chapters.forEach(function(c){
+    var el = document.getElementById('chapter-'+c);
+    if(el) el.classList.add('active');
+  });
+  // Also show glossary if exists
+  var glossEl = document.getElementById('chapter-glossary');
+  if(glossEl) glossEl.classList.add('active');
+
+  // Print
+  setTimeout(function(){
+    window.print();
+    // Restore single chapter
+    setTimeout(function(){
+      chapters.forEach(function(c){
+        var el = document.getElementById('chapter-'+c);
+        if(el) el.classList.remove('active');
+      });
+      if(glossEl) glossEl.classList.remove('active');
+      if(savedChapter) goTo(savedChapter);
+      else goTo('intro');
+    }, 500);
+  }, 300);
+}
+
+// ===== INJECT GLOSSARY CHAPTER =====
+(function(){
+  var mainContent = document.querySelector('.main-content');
+  if(!mainContent) return;
+
+  var glossDiv = document.createElement('div');
+  glossDiv.id = 'chapter-glossary';
+  glossDiv.className = 'chapter';
+  glossDiv.style.display = 'none';
+
+  var h = '<div class="chapter-header"><h1>📖 מילון מונחים — Glossary</h1><p class="chapter-subtitle">הגדרות לכל המונחים המקצועיים בדשבורד</p></div>';
+  h += '<div style="overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--gray-200,#e5e7eb)">';
+  h += '<table style="width:100%;border-collapse:collapse;font-size:13px;direction:rtl">';
+  h += '<thead><tr style="background:var(--primary,#4f46e5);color:#fff"><th style="padding:10px 14px;text-align:right;font-weight:700">מונח</th><th style="padding:10px 14px;text-align:right">עברית</th><th style="padding:10px 14px;text-align:right">הגדרה</th></tr></thead><tbody>';
+
+  GLOSSARY.forEach(function(g,i){
+    var bg = i%2===0 ? 'var(--gray-50,#f9fafb)' : 'transparent';
+    h += '<tr style="background:'+bg+'"><td style="padding:8px 14px;font-weight:700;color:var(--primary,#4f46e5);border-bottom:1px solid var(--gray-200,#e5e7eb);white-space:nowrap;font-family:monospace,Rubik,sans-serif;font-size:14px">'+g.term+'</td>';
+    h += '<td style="padding:8px 14px;font-weight:600;border-bottom:1px solid var(--gray-200,#e5e7eb);white-space:nowrap">'+g.he+'</td>';
+    h += '<td style="padding:8px 14px;color:var(--gray-600,#4b5563);border-bottom:1px solid var(--gray-200,#e5e7eb);line-height:1.6">'+g.desc+'</td></tr>';
+  });
+  h += '</tbody></table></div>';
+  glossDiv.innerHTML = h;
+  mainContent.appendChild(glossDiv);
+
+  // Add nav item for glossary
+  var nav = document.getElementById('sidebarNav');
+  if(nav){
+    var lastGroup = nav.querySelector('.nav-group:last-child .nav-items-wrap');
+    if(lastGroup){
+      var a = document.createElement('a');
+      a.className = 'nav-item';
+      a.setAttribute('onclick',"document.querySelectorAll('.chapter').forEach(function(c){c.classList.remove('active');});document.getElementById('chapter-glossary').style.display='block';document.getElementById('chapter-glossary').classList.add('active');document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});this.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});");
+      a.innerHTML = '<span class="nav-icon">📖</span> מילון מונחים';
+      lastGroup.appendChild(a);
+    }
+  }
+})();
+
+</script>
+</body></html>
