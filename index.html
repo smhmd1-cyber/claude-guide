@@ -919,7 +919,7 @@ strong { font-weight: 700; }
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.8 | מעודכן 29 מרץ 2026 | 18:32</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.9 | מעודכן 29 מרץ 2026 | 18:44</p>
   </div>
 
   <div class="stats-grid">
@@ -991,7 +991,7 @@ strong { font-weight: 700; }
 
   <!-- What's New in v14.1 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 14.8 — 29 מרץ 2026</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 14.9 — 29 מרץ 2026</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
       <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; border-radius:10px; padding:14px; border:2px solid #ffeaa7;">
         <strong>&#128293; Claude Mythos</strong> — <span style="font-size:12px;">פרקים 36, 41, 44</span>
@@ -3476,7 +3476,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.8 מורחבת | מרץ 2026 | 62 פרקים | מועשר + מפת דרכים Enterprise לדשבורד מתנ"ס + תיאטרון</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.9 מורחבת | מרץ 2026 | 62 פרקים | מועשר + מפת דרכים Enterprise + אשף 25 שאלות מנחות</p>
   </div>
 
   <div class="chapter-nav">
@@ -4783,10 +4783,223 @@ Hebrew reports for municipal HR departments.
     <p>שיטה מוכחת לבניית דשבורדים מקצועיים — בנויה ב-9 שלבים:</p>
   </div>
 
-  <div class="card">
-    <div class="card-title">&#128203; שלב 0 — גילוי הקשר עסקי</div>
-    <p>לפני כל בנייה — <strong>הגדר את ההקשר</strong>. השתמש בטופס גילוי:</p>
-    <p style="font-size:13px;">1. סוג החברה ותעשייה | 2. מטרת הדשבורד | 3. 3-5 שאלות עסקיות שחייב לענות עליהן | 4. קהל יעד (CEO / מנהלים / שטח) | 5. דד-ליין להחלטות | 6. השערות לבדיקה | 7. KPI קיימים | 8. שפת ממשק | 9. צבעי מותג + לוגו | 10. מספר משתמשים + הרשאות</p>
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- VISUAL DISCOVERY WIZARD — Dashboard Guiding Questions -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+  <div style="background:linear-gradient(135deg,#0984e3,#74b9ff); color:white; padding:20px; border-radius:16px; margin-bottom:16px; text-align:center;">
+    <h2 style="margin:0; font-size:20px;">&#129517; אשף בניית דשבורד — 25 שאלות מנחות</h2>
+    <p style="font-size:13px; opacity:0.9; margin-top:6px;">ענה על השאלות האלה <strong>לפני</strong> שאתה מתחיל לבנות. ככל שהתשובות מדויקות יותר — הדשבורד מדויק יותר.</p>
+    <p style="font-size:11px; opacity:0.6;">&#128161; טיפ: העתק את הטופס הזה, מלא אותו, והדבק ל-Claude בתור ההודעה הראשונה</p>
+  </div>
+
+  <!-- BLOCK A: WHO -->
+  <div class="card" style="border-right:6px solid #6c5ce7;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+      <div style="background:#6c5ce7; color:white; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;">A</div>
+      <h3 style="margin:0; color:#6c5ce7;">&#128101; למי הדשבורד? (בעלי עניין)</h3>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+      <div style="background:#f0e6f6; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">1. מי הצופה הראשי?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; מנכ"ל / מנהל כללי — רוצה תמונת מצב ב-30 שניות<br>&#9744; מנהל כספים — רוצה מספרים מדויקים + חריגות<br>&#9744; מנהל תפעול — רוצה סטטוס משימות + התראות<br>&#9744; דירקטוריון / רשות — רוצה תקציר רבעוני להחלטות<br>&#9744; מנהלי תוכניות / צוות שטח — רוצים מעקב יומשבועי</p>
+      </div>
+      <div style="background:#f0e6f6; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">2. כמה אנשים ישתמשו?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; 1-3 (צפייה אישית)<br>&#9744; 4-10 (צוות ניהולי)<br>&#9744; 11-30 (ארגוני)<br>&#9744; 30+ (כלל העובדים)</p>
+        <strong style="font-size:13px; margin-top:8px; display:block;">3. צריך הרשאות שונות?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; לא — כולם רואים הכל<br>&#9744; כן — מנהל רואה הכל, עובד רואה רק את שלו<br>&#9744; כן + עריכה — חלק יכולים לעדכן נתונים</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK B: WHY -->
+  <div class="card" style="border-right:6px solid #00b894;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+      <div style="background:#00b894; color:white; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;">B</div>
+      <h3 style="margin:0; color:#00b894;">&#127919; למה בונים דשבורד? (מטרה ובעיות)</h3>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+      <div style="background:#e8f5e9; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">4. מה הבעיה שהדשבורד פותר?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; אין לי תמונת מצב כוללת — נתונים מפוזרים ב-10 קבצים<br>&#9744; לא יודע אם עומדים ביעדים — בלי מדידה שוטפת<br>&#9744; חריגות תקציב מתגלות מאוחר מדי<br>&#9744; קשה להכין דוחות להנהלה — לוקח שעות כל חודש<br>&#9744; אחר: _________________</p>
+      </div>
+      <div style="background:#e8f5e9; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">5. אילו 5 שאלות הדשבורד חייב לענות עליהן?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">דוגמאות:<br>&#9744; האם התוכניות עומדות ביעדי נוכחות?<br>&#9744; אילו הפקות רווחיות ואילו מפסידות?<br>&#9744; איפה חורגים מהתקציב ובכמה?<br>&#9744; מה מצב כוח האדם — עומסים/פערים?<br>&#9744; מה מגמת שביעות הרצון?<br><br>כתוב את 5 שלך:<br>1. __________________<br>2. __________________<br>3. __________________<br>4. __________________<br>5. __________________</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK C: WHAT DATA -->
+  <div class="card" style="border-right:6px solid #0984e3;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+      <div style="background:#0984e3; color:white; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;">C</div>
+      <h3 style="margin:0; color:#0984e3;">&#128451; איזה מידע יש לך? (נתונים)</h3>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+      <div style="background:#e3f2fd; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">6. באיזה פורמט הנתונים שלך?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; Excel (.xlsx) — קובץ אחד<br>&#9744; Excel — מספר קבצים נפרדים<br>&#9744; Google Sheets<br>&#9744; מערכת קיימת (ERP/CRM/חשבשבת)<br>&#9744; עדיין אין — צריך לבנות מאפס<br>&#9744; שילוב של כמה מקורות</p>
+        <strong style="font-size:13px; margin-top:10px; display:block;">7. כמה שורות נתונים (בערך)?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; עד 100 (קטן)<br>&#9744; 100-1,000 (בינוני)<br>&#9744; 1,000-10,000 (גדול)<br>&#9744; 10,000+ (ענק — צריך חשיבה על ביצועים)</p>
+      </div>
+      <div style="background:#e3f2fd; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">8. אילו תחומים צריך לכסות?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">סמן את כל הרלוונטיים:<br>&#9744; תוכניות / פעילויות קהילתיות<br>&#9744; הפקות תיאטרון / מופעים<br>&#9744; תקציב והכנסות/הוצאות<br>&#9744; כוח אדם ושעות עבודה<br>&#9744; CRM — לקוחות ומכירות<br>&#9744; בקרת איכות / ליקויים / תלונות<br>&#9744; שביעות רצון / סקרים<br>&#9744; פרויקטים ומשימות<br>&#9744; מלאי / ציוד / מתקנים<br>&#9744; אחר: _________________</p>
+      </div>
+    </div>
+    <div style="background:#bbdefb; padding:12px; border-radius:8px; margin-top:10px;">
+      <strong style="font-size:13px;">9. תן דוגמה לשורת נתונים טיפוסית:</strong>
+      <p style="font-size:12px; margin-top:4px; color:#555;">דוגמה: "שם תוכנית | סוג | מדריך | קהל יעד | תקציב | ביצוע | משתתפים | נוכחות | סטטוס"<br><br>שלך: ________________________________________________</p>
+    </div>
+  </div>
+
+  <!-- BLOCK D: HOW IT LOOKS -->
+  <div class="card" style="border-right:6px solid #fdcb6e;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+      <div style="background:#fdcb6e; color:#1a1a2e; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;">D</div>
+      <h3 style="margin:0; color:#e17055;">&#127912; איך זה צריך להיראות? (עיצוב ו-UX)</h3>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+      <div style="background:#fff3e0; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">10. סגנון ויזואלי?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; מודרני מינימליסטי<br>&#9744; קורפורייט רשמי<br>&#9744; צבעוני ועשיר<br>&#9744; Dark Mode<br>&#9744; כמו דשבורד שראיתי: _____</p>
+      </div>
+      <div style="background:#fff3e0; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">11. צבעי מותג?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; יש — צבע ראשי: #______<br>&#9744; יש לוגו — אעלה אותו<br>&#9744; אין — בחר בשבילי<br>&#9744; מותג כפול (מתנ"ס + תיאטרון)</p>
+      </div>
+      <div style="background:#fff3e0; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">12. שפת ממשק?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; עברית בלבד (RTL)<br>&#9744; ערבית בלבד (RTL)<br>&#9744; עברית + ערבית (כפתור מתג)<br>&#9744; עברית + אנגלית<br>&#9744; תלת-שפתי</p>
+      </div>
+      <div style="background:#fff3e0; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">13. מכשירים?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; מחשב בלבד<br>&#9744; מחשב + טאבלט<br>&#9744; מחשב + מובייל (רספונסיבי)<br>&#9744; הכל + הדפסה ל-PDF</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK E: KPIs -->
+  <div class="card" style="border-right:6px solid #d63031;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+      <div style="background:#d63031; color:white; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;">E</div>
+      <h3 style="margin:0; color:#d63031;">&#128200; מה למדוד? (KPIs והתראות)</h3>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+      <div style="background:#ffebee; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">14. אילו מדדים חייבים להופיע בדף הבית?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">בחר 5-8 KPIs ראשיים:<br>&#9744; סה"כ משתתפים פעילים<br>&#9744; ניצול תקציב (%)<br>&#9744; הכנסות vs. הוצאות<br>&#9744; תפוסת אולם (%)<br>&#9744; שביעות רצון (1-5)<br>&#9744; ליקויים פתוחים<br>&#9744; שיעור נוכחות<br>&#9744; תוכניות/הפקות פעילות<br>&#9744; אחר: _________________</p>
+      </div>
+      <div style="background:#ffebee; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">15. מתי צריך התראה אדומה?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">הגדר את הספים שלך:<br>&#9744; נוכחות מתחת ל-____%<br>&#9744; חריגת תקציב מעל ____%<br>&#9744; תפוסת אולם מתחת ל-____%<br>&#9744; שביעות רצון מתחת ל-____<br>&#9744; ליקוי פתוח מעל ____ ימים<br>&#9744; אחר: _________________</p>
+        <strong style="font-size:13px; margin-top:8px; display:block;">16. יעדים — מספריים?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; כן — יש יעדים מוגדרים (אעלה קובץ)<br>&#9744; חלקי — יש ליעדים מסוימים<br>&#9744; לא — בנה יעדים סבירים בשבילי</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK F: FEATURES -->
+  <div class="card" style="border-right:6px solid #e84393;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+      <div style="background:#e84393; color:white; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;">F</div>
+      <h3 style="margin:0; color:#e84393;">&#9881;&#65039; מה עוד צריך? (פיצ'רים)</h3>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px;">
+      <div style="background:#fce4ec; padding:12px; border-radius:10px;">
+        <strong style="font-size:12px;">17. סינון ופילטרים?</strong>
+        <p style="font-size:11px; margin-top:4px; color:#555;">&#9744; לפי תקופה (חודש/רבעון/שנה)<br>&#9744; לפי מחלקה/תוכנית<br>&#9744; לפי סטטוס (פעיל/סגור)<br>&#9744; לפי אחראי/עובד<br>&#9744; חיפוש חופשי גלובלי</p>
+      </div>
+      <div style="background:#fce4ec; padding:12px; border-radius:10px;">
+        <strong style="font-size:12px;">18. גרפים — אילו?</strong>
+        <p style="font-size:11px; margin-top:4px; color:#555;">&#9744; עמודות (השוואה)<br>&#9744; קו (מגמות לאורך זמן)<br>&#9744; פאי/דונאט (התפלגות)<br>&#9744; מפת חום (ימים × שעות)<br>&#9744; Gauge / מד (אחוזים)<br>&#9744; Gantt (לוח זמנים)</p>
+      </div>
+      <div style="background:#fce4ec; padding:12px; border-radius:10px;">
+        <strong style="font-size:12px;">19. ייצוא?</strong>
+        <p style="font-size:11px; margin-top:4px; color:#555;">&#9744; הדפסה / PDF<br>&#9744; ייצוא ל-Excel<br>&#9744; גיבוי JSON<br>&#9744; שליחת דוח במייל<br>&#9744; שיתוף קישור</p>
+      </div>
+      <div style="background:#fce4ec; padding:12px; border-radius:10px;">
+        <strong style="font-size:12px;">20. פיצ'רים מתקדמים?</strong>
+        <p style="font-size:11px; margin-top:4px; color:#555;">&#9744; Dark/Light Mode<br>&#9744; עדכון נתונים מ-Google Sheets<br>&#9744; Drill-Down (לחיצה=פירוט)<br>&#9744; Audit Log (מי שינה מה)<br>&#9744; הודעות/התראות אוטומטיות</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK G: TECHNICAL -->
+  <div class="card" style="border-right:6px solid #636e72;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+      <div style="background:#636e72; color:white; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;">G</div>
+      <h3 style="margin:0; color:#636e72;">&#128296; איפה ואיך? (טכני)</h3>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+      <div style="background:#f5f5f5; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">21. איפה הדשבורד ירוץ?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; קובץ HTML מקומי — פותח בדפדפן<br>&#9744; אתר אינטרנט (Netlify/Vercel) — כולם ניגשים בלינק<br>&#9744; שרת פנימי של הארגון<br>&#9744; לא יודע — תמליץ לי</p>
+        <strong style="font-size:13px; margin-top:8px; display:block;">22. כלי הבנייה?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; <strong>Cowork</strong> — אני לא טכני, רוצה פשוט<br>&#9744; <strong>Claude Code</strong> — אני טכני, רוצה שליטה מלאה<br>&#9744; <strong>שילוב</strong> — Cowork בונה + Code מפרסם</p>
+      </div>
+      <div style="background:#f5f5f5; padding:14px; border-radius:10px;">
+        <strong style="font-size:13px;">23. תדירות עדכון נתונים?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; חד-פעמי (Snapshot)<br>&#9744; שבועי — מעדכן Excel ידנית<br>&#9744; חודשי — לפני ישיבת הנהלה<br>&#9744; אוטומטי — מסונכרן מ-Google Sheets/API</p>
+        <strong style="font-size:13px; margin-top:8px; display:block;">24. דד-ליין?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; בלי לחץ — אני לומד<br>&#9744; שבוע-שבועיים<br>&#9744; דחוף — עד סוף השבוע<br>&#9744; תאריך ספציפי: ___/___/______</p>
+        <strong style="font-size:13px; margin-top:8px; display:block;">25. תקציב / תוכנית?</strong>
+        <p style="font-size:12px; margin-top:4px; color:#555;">&#9744; Pro ($20/חודש) — מספיק לדשבורד אחד<br>&#9744; Max ($100/חודש) — בלי הגבלה<br>&#9744; חינם בלבד — שימוש מוגבל</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO USE THIS WIZARD -->
+  <div style="background:linear-gradient(135deg,#1a1a2e,#16213e); color:white; padding:20px; border-radius:16px; margin:16px 0;">
+    <h3 style="text-align:center; margin:0 0 12px 0;">&#128640; איך להשתמש באשף הזה?</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; font-size:12px;">
+      <div style="background:rgba(255,255,255,0.1); padding:12px; border-radius:10px; text-align:center;">
+        <div style="font-size:28px;">&#9312;</div>
+        <strong>מלא את הטופס</strong>
+        <p style="opacity:0.8; margin-top:4px;">סמן את כל התשובות הרלוונטיות מ-A עד G</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.1); padding:12px; border-radius:10px; text-align:center;">
+        <div style="font-size:28px;">&#9313;</div>
+        <strong>פתח Cowork / Code</strong>
+        <p style="opacity:0.8; margin-top:4px;">בחר בהתאם לתשובה בשאלה 22</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.1); padding:12px; border-radius:10px; text-align:center;">
+        <div style="font-size:28px;">&#9314;</div>
+        <strong>הדבק ל-Claude</strong>
+        <p style="opacity:0.8; margin-top:4px;">"בנה דשבורד לפי ההגדרות הבאות:" + התשובות שלך + קובץ Excel</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.1); padding:12px; border-radius:10px; text-align:center;">
+        <div style="font-size:28px;">&#9315;</div>
+        <strong>קבל דשבורד מוכן</strong>
+        <p style="opacity:0.8; margin-top:4px;">Claude בונה, אתה בודק, מבקש שינויים ← מושלם!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- READY-TO-COPY PROMPT TEMPLATE -->
+  <div class="card" style="border:3px solid #00b894;">
+    <div class="card-title">&#128203; תבנית פרומפט מוכנה — העתק ומלא</div>
+    <div style="background:#1a1a2e; color:#a8e6cf; padding:16px; border-radius:10px; font-size:12px; direction:rtl; line-height:2;">
+      <span style="color:#ffeaa7;">// העתק את הטקסט הזה ל-Claude, מלא את ה-[___] :</span><br><br>
+      בנה לי דשבורד ניהולי אינטראקטיבי.<br><br>
+      <span style="color:#74b9ff;">הארגון:</span> [שם המוסד, למשל: מתנ"ס עירוני + תיאטרון]<br>
+      <span style="color:#74b9ff;">הצופים:</span> [מנכ"ל, מנהל כספים, מנהלי תוכניות]<br>
+      <span style="color:#74b9ff;">השאלות שחייב לענות:</span><br>
+      1. [___]<br>
+      2. [___]<br>
+      3. [___]<br>
+      4. [___]<br>
+      5. [___]<br><br>
+      <span style="color:#74b9ff;">מודולים:</span> [תוכניות, תיאטרון, כספים, כ"א, QA, CRM]<br>
+      <span style="color:#74b9ff;">KPIs בדף הבית:</span> [נוכחות, ניצול תקציב, תפוסה, שביעות רצון, ליקויים]<br>
+      <span style="color:#74b9ff;">התראות אדומות:</span> [נוכחות&lt;60%, תקציב&gt;110%, תפוסה&lt;60%]<br>
+      <span style="color:#74b9ff;">עיצוב:</span> [עברית RTL, צבע ראשי #___, רספונסיבי, Dark Mode]<br>
+      <span style="color:#74b9ff;">פיצ'רים:</span> [פילטרים, חיפוש, גרפים, ייצוא PDF, Drill-Down]<br>
+      <span style="color:#74b9ff;">הנתונים:</span> מצורף קובץ Excel.<br><br>
+      <span style="color:#ffeaa7;">// הדבק + העלה את קובץ האקסל ← Claude יבנה את הדשבורד</span>
+    </div>
   </div>
 
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
