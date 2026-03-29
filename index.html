@@ -919,7 +919,7 @@ strong { font-weight: 700; }
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.6 | מעודכן 29 מרץ 2026 | 18:17</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 14.7 | מעודכן 29 מרץ 2026 | 18:26</p>
   </div>
 
   <div class="stats-grid">
@@ -991,7 +991,7 @@ strong { font-weight: 700; }
 
   <!-- What's New in v14.1 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 14.6 — 29 מרץ 2026</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 14.7 — 29 מרץ 2026</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
       <div style="background:linear-gradient(135deg,#d63031,#e17055); color:white; border-radius:10px; padding:14px; border:2px solid #ffeaa7;">
         <strong>&#128293; Claude Mythos</strong> — <span style="font-size:12px;">פרקים 36, 41, 44</span>
@@ -1029,8 +1029,12 @@ strong { font-weight: 700; }
         <strong>&#9889; בדיקה סופית מעמיקה</strong> — <span style="font-size:12px;">פרקים 34, 37</span>
         <p style="font-size:12px; margin-top:4px;">16 פקודות Claude Code, פרויקט everything-claude-code (91K&#11088;), 35 Anti-Patterns לפרומפטים, תיקון מונה פרקים</p>
       </div>
+      <div style="background:linear-gradient(135deg,#0984e3,#74b9ff); color:white; border-radius:10px; padding:14px;">
+        <strong>&#128202; Cowork vs Code + דשבורדים</strong> — <span style="font-size:12px;">פרק 22</span>
+        <p style="font-size:12px; margin-top:4px;">טבלת השוואה מפורטת, תרשים החלטה, 4 דוגמאות מעשיות (מתנ"ס, תיאטרון, משולב, שילוב), כרטיס פרומפטים מוכנים</p>
+      </div>
     </div>
-    <p style="font-size:12px; color:#636e72; margin-top:12px; text-align:center;">&#128197; עדכון אוטומטי יומי | 10 פרקים עודכנו | מועשר מ-80+ מסמכי מקור + 8 תמונות + בדיקה מעמיקה סופית</p>
+    <p style="font-size:12px; color:#636e72; margin-top:12px; text-align:center;">&#128197; עדכון אוטומטי יומי | 11 פרקים עודכנו | מועשר מ-80+ מסמכי מקור + 8 תמונות + Cowork vs Code + דשבורדים</p>
   </div>
 
   <div class="card">
@@ -2975,6 +2979,191 @@ strong { font-weight: 700; }
     <p>אפשר להגדיר ל-Claude משימה שרצה <strong>כל יום ראשון בבוקר</strong>: "בדוק את כל קבצי האקסל בתיקיית 'תוכניות', הפק דוח סטטוס מרוכז, ושמור אותו בתיקיית 'דוחות שבועיים'." — Claude יעשה את זה אוטומטית!</p>
   </div>
 
+  <!-- NEW v14.6: Cowork vs Code Deep Comparison -->
+  <div class="card" style="border:3px solid #6c5ce7; background:linear-gradient(135deg, rgba(108,92,231,0.04), rgba(162,155,254,0.04));">
+    <div class="card-title">&#9889; Cowork vs Claude Code — מתי להשתמש בכל אחד?</div>
+    <p style="font-size:13px; margin-bottom:12px;">שני הכלים עובדים ישירות על המחשב שלך, אבל בגישות שונות לחלוטין:</p>
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:12px;">
+        <tr style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white;">
+          <th style="padding:8px; border:1px solid #ddd; width:20%;"></th>
+          <th style="padding:8px; border:1px solid #ddd; width:40%;">&#128187; Cowork (דסקטופ)</th>
+          <th style="padding:8px; border:1px solid #ddd; width:40%;">&#9000; Claude Code (טרמינל)</th>
+        </tr>
+        <tr>
+          <td style="padding:6px; border:1px solid #eee; font-weight:bold;">&#127919; למי מיועד</td>
+          <td style="padding:6px; border:1px solid #eee;">מנהלים, יזמים, אנשי שיווק — <strong>ללא ידע טכני</strong></td>
+          <td style="padding:6px; border:1px solid #eee;">מפתחים, DevOps, טכנאים — <strong>נוחים עם טרמינל</strong></td>
+        </tr>
+        <tr style="background:#f8f9fa;">
+          <td style="padding:6px; border:1px solid #eee; font-weight:bold;">&#128193; גישה לקבצים</td>
+          <td style="padding:6px; border:1px solid #eee;">בוחר תיקייה בממשק גרפי, גורר קבצים</td>
+          <td style="padding:6px; border:1px solid #eee;">גישה לכל מערכת הקבצים + Git + npm</td>
+        </tr>
+        <tr>
+          <td style="padding:6px; border:1px solid #eee; font-weight:bold;">&#128295; יכולות מיוחדות</td>
+          <td style="padding:6px; border:1px solid #eee;">Skills, Plugins, Chrome, Excel, PPTX, PDF, משימות מתוזמנות</td>
+          <td style="padding:6px; border:1px solid #eee;">Git, npm, Docker, APIs, DB, CI/CD, סוכני משנה, Hooks</td>
+        </tr>
+        <tr style="background:#f8f9fa;">
+          <td style="padding:6px; border:1px solid #eee; font-weight:bold;">&#128202; דשבורדים</td>
+          <td style="padding:6px; border:1px solid #eee;">HTML אינטראקטיבי מאקסל — לחץ "בנה דשבורד" והוא מוכן</td>
+          <td style="padding:6px; border:1px solid #eee;">דשבורדים מורכבים עם Backend, DB, Authentication, Deploy</td>
+        </tr>
+        <tr>
+          <td style="padding:6px; border:1px solid #eee; font-weight:bold;">&#128172; סגנון עבודה</td>
+          <td style="padding:6px; border:1px solid #eee;">"בנה לי מצגת מהנתונים האלה" — שיחה טבעית</td>
+          <td style="padding:6px; border:1px solid #eee;">"npx create-next-app && build dashboard" — פקודות טכניות</td>
+        </tr>
+        <tr style="background:#f8f9fa;">
+          <td style="padding:6px; border:1px solid #eee; font-weight:bold;">&#128176; תמחור</td>
+          <td style="padding:6px; border:1px solid #eee;">Pro ($20) או Max ($100)</td>
+          <td style="padding:6px; border:1px solid #eee;">Max ($100) או API ($)</td>
+        </tr>
+        <tr>
+          <td style="padding:6px; border:1px solid #eee; font-weight:bold;">&#128640; חוזק עיקרי</td>
+          <td style="padding:6px; border:1px solid #eee; color:#6c5ce7; font-weight:bold;">מהירות + פשטות + תוצרים מקצועיים</td>
+          <td style="padding:6px; border:1px solid #eee; color:#0984e3; font-weight:bold;">עומק טכני + שליטה מלאה + Production</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Decision Flowchart -->
+  <div class="card" style="border:2px dashed #fdcb6e;">
+    <div class="card-title">&#128260; תרשים החלטה — מה לבחור?</div>
+    <div style="text-align:center; font-size:13px; line-height:2;">
+      <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; display:inline-block; padding:12px 24px; border-radius:25px; font-weight:bold; font-size:15px;">&#10067; מה אני צריך?</div>
+      <br>&#11015;
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px;">
+        <div>
+          <div style="background:#e8f5e9; padding:12px; border-radius:12px; border:2px solid #4caf50;">
+            <strong>&#9989; Cowork — אם:</strong>
+            <p style="font-size:12px; text-align:right; margin-top:6px;">
+              &#8226; צריך דשבורד מאקסל<br>
+              &#8226; צריך מצגת/Word/PDF<br>
+              &#8226; צריך לנתח מסמכים<br>
+              &#8226; אין לי ידע טכני<br>
+              &#8226; צריך משימה מתוזמנת<br>
+              &#8226; רוצה לדבר עם Claude בעברית
+            </p>
+          </div>
+          <div style="background:#c8e6c9; padding:8px; border-radius:8px; margin-top:6px; font-size:12px;">
+            &#128161; <strong>דוגמה:</strong> "קח את קובץ האקסל של התוכניות הקהילתיות ובנה דשבורד אינטראקטיבי עם גרפים, KPI, פילטרים"
+          </div>
+        </div>
+        <div>
+          <div style="background:#e3f2fd; padding:12px; border-radius:12px; border:2px solid #2196f3;">
+            <strong>&#128736; Claude Code — אם:</strong>
+            <p style="font-size:12px; text-align:right; margin-top:6px;">
+              &#8226; צריך אפליקציה עם Login<br>
+              &#8226; צריך חיבור ל-Database<br>
+              &#8226; צריך Deploy לשרת<br>
+              &#8226; עובד עם Git/GitHub<br>
+              &#8226; צריך API או Backend<br>
+              &#8226; צריך עיבוד נתונים מסיבי
+            </p>
+          </div>
+          <div style="background:#bbdefb; padding:8px; border-radius:8px; margin-top:6px; font-size:12px;">
+            &#128161; <strong>דוגמה:</strong> "בנה מערכת CRM מלאה עם React + PostgreSQL, Login, הרשאות, ו-Deploy ל-Netlify"
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px; background:linear-gradient(135deg,#fdcb6e,#e17055); color:white; padding:12px; border-radius:12px; font-size:13px;">
+        <strong>&#127775; שילוב מנצח:</strong> Cowork יוצר דשבורד HTML &#8594; Claude Code דוחף ל-GitHub &#8594; Netlify מפרסם אוטומטית &#8594; כל הצוות רואה אונליין!
+      </div>
+    </div>
+  </div>
+
+  <!-- Practical Dashboard Examples -->
+  <div class="card" style="border:2px solid #00b894;">
+    <div class="card-title">&#128202; דוגמאות מעשיות — בניית דשבורדים עם Cowork ועם Code</div>
+
+    <h4 style="color:var(--primary); margin-top:16px;">&#127919; דוגמה 1: דשבורד מתנ"ס — תוכניות קהילתיות (Cowork)</h4>
+    <div style="background:#f0f9ff; padding:14px; border-radius:10px; margin:8px 0; border-right:4px solid #6c5ce7;">
+      <p style="font-size:13px; font-weight:bold; margin-bottom:8px;">&#128172; הפרומפט:</p>
+      <p style="font-size:12px; background:white; padding:10px; border-radius:6px; font-style:italic;">"קח את קובץ האקסל 'תוכניות-קהילתיות-2026.xlsx' ובנה דשבורד אינטראקטיבי HTML הכולל:<br>
+      1. כרטיסי KPI: משתתפים פעילים, תקציב מנוצל, שיעור נוכחות, תוכניות פעילות<br>
+      2. גרף עמודות: השוואת ביצוע בין תוכניות<br>
+      3. גרף מגמה: נוכחות חודשית לאורך השנה<br>
+      4. טבלה אינטראקטיבית: כל התוכניות עם סינון ומיון<br>
+      5. פילטרים: לפי תקופה, תוכנית, סטטוס<br>
+      הכל בעברית RTL, צבעי מתנ"ס, רספונסיבי למובייל."</p>
+      <p style="font-size:12px; margin-top:8px;"><strong>&#9889; התוצאה:</strong> Cowork מנתח את האקסל, בונה HTML עם גרפים (Chart.js), פילטרים ב-JavaScript, ומוכן תוך 2-3 דקות. אפשר לפתוח בכל דפדפן.</p>
+    </div>
+
+    <h4 style="color:#0984e3; margin-top:16px;">&#127919; דוגמה 2: דשבורד תיאטרון — הפקות ומכירות (Cowork)</h4>
+    <div style="background:#f0f9ff; padding:14px; border-radius:10px; margin:8px 0; border-right:4px solid #0984e3;">
+      <p style="font-size:13px; font-weight:bold; margin-bottom:8px;">&#128172; הפרומפט:</p>
+      <p style="font-size:12px; background:white; padding:10px; border-radius:6px; font-style:italic;">"בנה דשבורד ניהול הפקות תיאטרון מקובץ 'הפקות-תיאטרון.xlsx':<br>
+      1. KPI: כרטיסים שנמכרו, הכנסות, עלות הפקה, רווח נקי, תפוסת אולם<br>
+      2. גרף פאי: התפלגות מכירות לפי הפקה<br>
+      3. גרף קו: מגמת מכירות שבועית<br>
+      4. מפת חום: תפוסת אולם לפי יום ושעה<br>
+      5. טבלת הפקות: שם, תאריכים, תקציב, מכירות, רווח, סטטוס<br>
+      6. התראות: הפקות מתחת ל-60% תפוסה באדום<br>
+      צבעי תיאטרון (זהב + סגול כהה), RTL, Print-friendly."</p>
+      <p style="font-size:12px; margin-top:8px;"><strong>&#9889; התוצאה:</strong> דשבורד מקצועי עם KPIs צבעוניים, גרפים אינטראקטיביים, והתראות אוטומטיות. מוכן לשליחה להנהלה.</p>
+    </div>
+
+    <h4 style="color:#d63031; margin-top:16px;">&#127919; דוגמה 3: דשבורד משולב מתנ"ס+תיאטרון (Claude Code)</h4>
+    <div style="background:#fff5f5; padding:14px; border-radius:10px; margin:8px 0; border-right:4px solid #d63031;">
+      <p style="font-size:13px; font-weight:bold; margin-bottom:8px;">&#128172; הפרומפט:</p>
+      <p style="font-size:12px; background:white; padding:10px; border-radius:6px; font-style:italic;">"בנה מערכת דשבורד מלאה:<br>
+      1. React + Tailwind frontend<br>
+      2. Login עם JWT (מנהל / צופה / עורך)<br>
+      3. חיבור ל-Google Sheets API לסנכרון נתונים<br>
+      4. עמוד תוכניות קהילתיות + עמוד הפקות + עמוד CRM<br>
+      5. ייצוא PDF + שליחת דוח במייל אוטומטי<br>
+      6. Deploy ל-Netlify + CI/CD מ-GitHub<br>
+      הכל בעברית, רספונסיבי, עם Dark Mode."</p>
+      <p style="font-size:12px; margin-top:8px;"><strong>&#9889; למה Code?</strong> כי יש Login, DB, API, Deploy — דברים שדורשים סביבת פיתוח. Cowork לא יכול לבנות Backend.</p>
+    </div>
+
+    <h4 style="color:#00b894; margin-top:16px;">&#127919; דוגמה 4: שילוב Cowork + Code (הגישה האידיאלית)</h4>
+    <div style="background:#f0fff4; padding:14px; border-radius:10px; margin:8px 0; border-right:4px solid #00b894;">
+      <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center; font-size:12px;">
+        <div style="background:white; padding:10px; border-radius:8px; text-align:center;">
+          <strong style="color:#6c5ce7;">שלב 1: Cowork</strong><br>
+          "בנה דשבורד HTML מהאקסל"<br>
+          &#8595;<br>
+          <em>תוצאה: index.html מוכן</em>
+        </div>
+        <div style="font-size:24px;">&#8594;</div>
+        <div style="background:white; padding:10px; border-radius:8px; text-align:center;">
+          <strong style="color:#0984e3;">שלב 2: Claude Code</strong><br>
+          "דחוף ל-GitHub ו-Netlify"<br>
+          &#8595;<br>
+          <em>תוצאה: אתר חי באינטרנט</em>
+        </div>
+      </div>
+      <p style="font-size:12px; margin-top:8px; background:#c8e6c9; padding:8px; border-radius:6px;">&#128161; <strong>זה בדיוק מה שעשינו עם המדריך הזה!</strong> Cowork בנה את ה-HTML ← Claude Code דחף ל-GitHub ← Netlify מפרסם אוטומטית ← כל העולם יכול לגלוש.</p>
+    </div>
+  </div>
+
+  <!-- Quick Reference: Dashboard Prompts -->
+  <div class="card" style="background:linear-gradient(135deg, rgba(0,184,148,0.06), rgba(85,239,196,0.06));">
+    <div class="card-title">&#128203; כרטיס עזר — פרומפטים מוכנים לדשבורדים</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:10px;">
+      <div style="background:white; padding:12px; border-radius:8px; border-right:3px solid #6c5ce7;">
+        <strong style="font-size:12px; color:#6c5ce7;">&#128202; דשבורד מאקסל (Cowork)</strong>
+        <p style="font-size:11px; margin-top:6px;">"קח את [קובץ] ובנה דשבורד HTML עם KPI, גרפים, טבלה אינטראקטיבית, פילטרים. עברית RTL, רספונסיבי."</p>
+      </div>
+      <div style="background:white; padding:12px; border-radius:8px; border-right:3px solid #0984e3;">
+        <strong style="font-size:12px; color:#0984e3;">&#128200; דשבורד ביצועים (Cowork)</strong>
+        <p style="font-size:11px; margin-top:6px;">"בנה דשבורד KPI מנהלים: ביצוע/יעד, אחוז השלמה, מגמות, התראות. צבע ירוק/צהוב/אדום לפי סטטוס."</p>
+      </div>
+      <div style="background:white; padding:12px; border-radius:8px; border-right:3px solid #00b894;">
+        <strong style="font-size:12px; color:#00b894;">&#127915; דשבורד תיאטרון (Cowork)</strong>
+        <p style="font-size:11px; margin-top:6px;">"בנה דשבורד הפקות: כרטיסים, הכנסות, תפוסה, רווחיות. גרף מכירות יומי, מפת אולם, טבלת הפקות."</p>
+      </div>
+      <div style="background:white; padding:12px; border-radius:8px; border-right:3px solid #d63031;">
+        <strong style="font-size:12px; color:#d63031;">&#128640; מערכת מלאה (Code)</strong>
+        <p style="font-size:11px; margin-top:6px;">"בנה אפליקציית React עם Login, Dashboard, CRM, API ל-Google Sheets, Deploy ל-Netlify."</p>
+      </div>
+    </div>
+  </div>
+
   <div class="chapter-nav">
     <button class="chapter-nav-btn" onclick="goTo('skills-deep')">&#8594; הקודם</button>
     <button class="chapter-nav-btn" onclick="goTo('connectors')">הבא &#8592;</button>
@@ -3283,7 +3472,7 @@ strong { font-weight: 700; }
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.6 מורחבת | מרץ 2026 | 62 פרקים | מועשר ממקורות רשמיים + תמונות המחשה + חומרים מעמיקים</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 14.7 מורחבת | מרץ 2026 | 62 פרקים | מועשר ממקורות רשמיים + תמונות + Cowork vs Code + דשבורדים</p>
   </div>
 
   <div class="chapter-nav">
