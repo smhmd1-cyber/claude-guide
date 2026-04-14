@@ -1010,7 +1010,7 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
 <!-- HEADER -->
 <div class="header">
   <div class="header-title">
-    <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+    <button class="hamburger" onclick="if(window.innerWidth>768){toggleSidebarDesktop();}else{toggleSidebar();}">&#9776;</button>
     <span>&#128218;</span>
     <span>מדריך חכם אינטראקטיבי — ניהול עם Claude</span>
   </div>
@@ -1024,7 +1024,7 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <input class="sidebar-search" placeholder="חיפוש בתוכן העניינים..." oninput="filterNav(this.value)" />
+    <input class="sidebar-search" placeholder="חיפוש בתוכן העניינים..." oninput="filterNav(this.value)" autocomplete="off" name="nav-filter" />
   </div>
   <nav id="sidebarNav">
     <!-- ═══════════════════════════════════════ -->
