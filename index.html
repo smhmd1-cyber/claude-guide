@@ -15923,7 +15923,7 @@ Every test should have exactly one logical assertion.</div>
 
 </div><!-- end main-content -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ===== NAVIGATION =====
 const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','glossary'];
 
@@ -16513,6 +16513,19 @@ function termQuick(cmd) {
     container.appendChild(p);
   }
 })();
+
+// ===== PAGE INITIALIZATION =====
+document.addEventListener("DOMContentLoaded", function() {
+  var wc = document.getElementById("chapter-welcome");
+  if (wc && \!document.querySelector(".chapter.active")) {
+    wc.classList.add("active");
+    document.querySelectorAll(".nav-item").forEach(function(n) {
+      if (n.getAttribute("onclick") && n.getAttribute("onclick").indexOf("welcome") \!== -1) {
+        n.classList.add("active");
+      }
+    });
+  }
+});
 </script>
 
 <!-- ===== AI ASSISTANT STYLES ===== -->
@@ -17655,5 +17668,13 @@ function printAll(){
 })();
 
 </script>
+
+<div style="text-align:center;padding:30px 20px;border-top:1px solid rgba(255,255,255,0.1);margin-top:30px;font-size:10px;color:#94a3b8;line-height:1.8;background:linear-gradient(135deg,#0f172a,#1e293b);direction:rtl;">
+  <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);">
+    <div style="font-size:14px;font-weight:800;color:#f59e0b;margin-bottom:6px;">📚 מדריך חכם אינטראקטיבי — ניהול עם Claude AI</div>
+    <div style="font-size:12px;font-weight:700;color:#e2e8f0;margin-bottom:4px;">אגבאריה מוחמד סאלח : מייסד ומנהל המרכז הקהילתי והתיאטרון הערבי.</div>
+    <div style="font-size:11px;font-weight:700;color:#94a3b8;">כל הזכויות שמורות ל-: אגבאריה מוחמד סאלח, רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. © 2026.</div>
+  </div>
+</div>
 </body>
 </html>
