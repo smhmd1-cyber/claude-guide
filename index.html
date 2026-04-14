@@ -17628,4 +17628,32 @@ function printAll(){
   var h = '<div class="chapter-header"><h1>📖 מילון מונחים — Glossary</h1><p class="chapter-subtitle">הגדרות לכל המונחים המקצועיים בדשבורד</p></div>';
   h += '<div style="overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--gray-200,#e5e7eb)">';
   h += '<table style="width:100%;border-collapse:collapse;font-size:13px;direction:rtl">';
-  h += '<thead><tr style="background:var(--primary,#4f46e5);color:#fff"><th style="padding:10px 14px;text-align:right;font-weight:700">מונח</th><th style="padding:10px 14px;text-align:right">עברית</th><th style="p
+  h += '<thead><tr style="background:var(--primary,#4f46e5);color:#fff"><th style="padding:10px 14px;text-align:right;font-weight:700">מונח</th><th style="padding:10px 14px;text-align:right">עברית</th><th style="padding:10px 14px;text-align:right">הגדרה</th></tr></thead><tbody>';
+
+  GLOSSARY.forEach(function(g,i){
+    var bg = i%2===0 ? 'var(--gray-50,#f9fafb)' : 'transparent';
+    h += '<tr style="background:'+bg+'"><td style="padding:8px 14px;font-weight:700;color:var(--primary,#4f46e5);border-bottom:1px solid var(--gray-200,#e5e7eb);white-space:nowrap;font-family:monospace,Rubik,sans-serif;font-size:14px">'+g.term+'</td>';
+    h += '<td style="padding:8px 14px;font-weight:600;border-bottom:1px solid var(--gray-200,#e5e7eb);white-space:nowrap">'+g.he+'</td>';
+    h += '<td style="padding:8px 14px;color:var(--gray-600,#4b5563);border-bottom:1px solid var(--gray-200,#e5e7eb);line-height:1.6">'+g.desc+'</td></tr>';
+  });
+  h += '</tbody></table></div>';
+  glossDiv.innerHTML = h;
+  mainContent.appendChild(glossDiv);
+
+  // Add nav item for glossary
+  var nav = document.getElementById('sidebarNav');
+  if(nav){
+    var lastGroup = nav.querySelector('.nav-group:last-child .nav-items-wrap');
+    if(lastGroup){
+      var a = document.createElement('a');
+      a.className = 'nav-item';
+      a.setAttribute('onclick',"goTo('glossary')");
+      a.innerHTML = '<span class="nav-icon">📖</span> מילון מונחים';
+      lastGroup.appendChild(a);
+    }
+  }
+})();
+
+</script>
+</body>
+</html>
