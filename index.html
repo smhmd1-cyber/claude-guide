@@ -29,7 +29,7 @@
   --gray-100: #f1f5f9;
   --gray-50: #f8fafc;
   --white: #ffffff;
-  --sidebar-width: 260px;
+  --sidebar-width: 310px;
   --header-height: 64px;
   --radius: 12px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
@@ -1317,7 +1317,7 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
       <div class="cover-feat"><span class="cover-feat-icon">&#9878;&#65039;</span> השוואת כלי AI</div>
     </div>
 
-    <button class="cover-cta" onclick="document.getElementById('coverPage').style.display='none'; goTo('welcome');">
+    <button class="cover-cta" onclick="document.getElementById('coverPage').style.display='none'; if(typeof goTo==='function'){goTo('welcome');}else{document.getElementById('chapter-welcome').classList.add('active');}">
       &#128640; התחילו לקרוא
     </button>
 
