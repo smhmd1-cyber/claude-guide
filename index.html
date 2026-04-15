@@ -1024,7 +1024,7 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <input class="sidebar-search" placeholder="חיפוש בתוכן העניינים..." oninput="filterNav(this.value)" autocomplete="new-password" name="nav-filter-x" id="sidebarSearchInput" />
+    <input class="sidebar-search" type="text" placeholder="חיפוש בתוכן העניינים..." oninput="filterNav(this.value)" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" id="sidebarSearchInput" />
   </div>
   <nav id="sidebarNav">
     <!-- ═══════════════════════════════════════ -->
@@ -1346,21 +1346,21 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
 
   <!-- Mini Tab Navigation -->
   <div style="display:flex; gap:6px; flex-wrap:wrap; margin:16px 0 20px; padding:12px; background:#f1f5f9; border-radius:12px;">
-    <button onclick="showMiniTab(0)" class="mini-tab active-mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:var(--primary); color:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">0. מבוא</button>
-    <button onclick="showMiniTab(1)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">1. מודלים</button>
-    <button onclick="showMiniTab(2)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">2. 4 רמות</button>
-    <button onclick="showMiniTab(3)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">3. הגדרה</button>
-    <button onclick="showMiniTab(4)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">4. CLAUDE.md</button>
-    <button onclick="showMiniTab(5)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">5. Skills</button>
-    <button onclick="showMiniTab(6)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">6. Cowork</button>
-    <button onclick="showMiniTab(7)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">7. Code</button>
-    <button onclick="showMiniTab(8)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">8. MCP</button>
-    <button onclick="showMiniTab(9)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">9. פרומפטים</button>
-    <button onclick="showMiniTab(10)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">10. Tokens</button>
-    <button onclick="showMiniTab(11)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">11. Artifacts</button>
-    <button onclick="showMiniTab(12)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">12. 100 פיצ׳רים</button>
-    <button onclick="showMiniTab(13)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">13. השוואות</button>
-    <button onclick="showMiniTab(14)" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">14. משאבים</button>
+    <button onclick="goTo('intro')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:var(--primary); color:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">0. מבוא</button>
+    <button onclick="goTo('ai-models')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">1. מודלים</button>
+    <button onclick="goTo('5levels')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">2. 4 רמות</button>
+    <button onclick="goTo('claude-setup')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">3. הגדרה</button>
+    <button onclick="goTo('claude-8tools')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">4. CLAUDE.md</button>
+    <button onclick="goTo('skills-deep')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">5. Skills</button>
+    <button onclick="goTo('cowork-deep')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">6. Cowork</button>
+    <button onclick="goTo('tools-ecosystem')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">7. Code</button>
+    <button onclick="goTo('connectors')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">8. MCP</button>
+    <button onclick="goTo('prompt-eng')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">9. פרומפטים</button>
+    <button onclick="goTo('token-smart')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">10. Tokens</button>
+    <button onclick="goTo('artifacts-deep')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">11. Artifacts</button>
+    <button onclick="goTo('100features')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">12. 100 פיצ׳רים</button>
+    <button onclick="goTo('ai-compare-ar')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">13. השוואות</button>
+    <button onclick="goTo('sources')" class="mini-tab" style="padding:6px 14px; border:1px solid #cbd5e1; border-radius:8px; background:white; cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;">14. משאבים</button>
   </div>
 
   <!-- Mini Tab Content -->
@@ -4593,6 +4593,13 @@ Start your response with exactly this: {"analysis":</div>
     </ul>
   </div>
 
+  <div class="card" style="border:2px solid var(--primary);background:linear-gradient(135deg,rgba(37,99,235,0.03),rgba(124,58,237,0.03));">
+<div class="card-title">🆕 טכניקות פרומפט מתקדמות — מהחומר החדש</div>
+<div class="tip-box"><div class="box-title">💡 תבנית "שאל לפני שתעבוד"</div><p>השתמש בטמפלט הזה בכל משימה מורכבת:</p><p style="background:#f1f5f9;padding:12px;border-radius:8px;font-weight:600;margin:8px 0;">"אני רוצה [משימה] כדי ש-[הצלחה]. קרא את הקבצים. אל תתחיל עדיין. שאל אותי שאלות מבהירות כדי לדייק את הגישה."</p><p><strong>למה זה עובד:</strong> Claude מקבל הקשר מלא לפני שמתחיל, שואל את השאלות הנכונות, וחוסך עבודה מיותרת.</p></div>
+<div class="info-box"><div class="box-title">📊 מגה-פרומפט לניתוח נתונים</div><p>השתמש בשרשרת הזו לניתוח מקצועי:</p><ol><li><strong>תפקיד:</strong> "אתה אנליסט נתונים בכיר"</li><li><strong>הקשר עסקי:</strong> הגדר מה רוצים לגלות</li><li><strong>ביקורת נתונים:</strong> בדיקת איכות לפני ניתוח</li><li><strong>סגמנטציה:</strong> חלוקה לקטגוריות</li><li><strong>דפוסים:</strong> מגמות וחריגויות</li><li><strong>המלצות:</strong> 3 צעדים בעלי אימפקט גבוה</li><li><strong>ויזואליזציות:</strong> גרפים וטבלאות</li></ol></div>
+<div class="example-box"><div class="box-title">🔗 ספריית 600 פרומפטים</div><p><a href="https://tinyurl.com/prompts-Library" target="_blank" style="color:var(--primary);font-weight:700;">https://tinyurl.com/prompts-Library</a> — אוסף פרומפטים מוכנים לכל תחום</p></div>
+</div>
+
   <div class="chapter-nav">
     <button class="chapter-nav-btn" onclick="goTo('prompt-eng')">&#8594; הקודם</button>
     <button class="chapter-nav-btn" onclick="goTo('skills-deep')">הבא &#8592;</button>
@@ -5747,6 +5754,28 @@ Start your response with exactly this: {"analysis":</div>
     <div class="card-title">&#127775; חזון — "מערכת ניהול משולבת אחת"</div>
     <p style="font-size:15px;">המטרה הסופית: <strong>איחוד שתי המערכות למערכת אחת</strong> שמנהלת גם תוכניות קהילתיות וגם שיווק תיאטרון, עם AI מובנה, אינטגרציות חיצוניות, ומנוע Analytics מתקדם.</p>
     <p style="font-size:13px; color:var(--gray-500); margin-top:8px;">מוחמד סאלח אגבאריה | Claude — מחויבים לשיפור מתמיד &#128640;</p>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg, #667eea, #764ba2); border:none; margin:20px 0;">
+    <div class="card-title" style="color:white; text-shadow:0 2px 4px rgba(0,0,0,0.2);">🆕 פרומפטים לבדיקת קוד וזיהוי באגים</div>
+    <div class="card-grid" style="grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>🔍 בדיקת באגים בסיסית</strong>
+        <p style="font-size:13px; margin-top:6px;">העתק את הקוד ל-Claude: "זהה באגים במהלך, בדוק משתנים שלא מאותחלים, תחביר שגוי, זרימת הגיון שבורה. דרג לפי חומרה."</p>
+      </div>
+      <div class="info-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>⚡ ניתוח ביצועים</strong>
+        <p style="font-size:13px; margin-top:6px;">"בדוק את הקוד הזה לבעיות ביצועים: לולאות אינסופיות? חיפוש לא מייעל? טעינה זיכרון גדולה? הצע תיקונים."</p>
+      </div>
+      <div class="example-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>🛡️ בדיקת אבטחה</strong>
+        <p style="font-size:13px; margin-top:6px;">"סקור את הקוד לטעויות אבטחה: SQL injection, unvalidated input, hardcoded passwords, token exposure. דרג לפי סיכון."</p>
+      </div>
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>📋 Refactoring וקריאות</strong>
+        <p style="font-size:13px; margin-top:6px;">"עזור לי לשפר את הקוד הזה: פשטות, קריאות, שמות משתנים, דוקומנטציה. בנה גרסה טובה יותר."</p>
+      </div>
+    </div>
   </div>
 
   <div class="chapter-nav">
@@ -7473,6 +7502,28 @@ Hebrew reports for municipal HR departments.
     </div>
   </div>
 
+  <div class="card" style="background:linear-gradient(135deg, #667eea, #764ba2); border:none; margin:20px 0;">
+    <div class="card-title" style="color:white; text-shadow:0 2px 4px rgba(0,0,0,0.2);">🆕 דוגמאות מעשיות ליצירת Skills</div>
+    <div class="card-grid" style="grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>✅ דוגמה 1: Skill ניתוח נתונים</strong>
+        <p style="font-size:13px; margin-top:6px;">בנה Skill המקבל קובץ CSV, מחזיר סטטיסטיקות + גרפים (Matplotlib). עם Template + וקטור Context.</p>
+      </div>
+      <div class="info-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>📊 דוגמה 2: Skill תרגום וטקסט</strong>
+        <p style="font-size:13px; margin-top:6px;">Skill תרגום מעברית ללאנגווידג פּרוגרמינג. קלט משוקלל, פלט עם הגדרות ומילון.</p>
+      </div>
+      <div class="example-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>🎯 דוגמה 3: Skill SEO Optimizer</strong>
+        <p style="font-size:13px; margin-top:6px;">Skills שמשלב Claude + כלי חיצוניים (Ahrefs API). בדיקה בו-זמנית של 100 URLים.</p>
+      </div>
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>⚙️ דוגמה 4: Skill Automation</strong>
+        <p style="font-size:13px; margin-top:6px;">הפעל מטלות חוזרות (יומיות) שמשדרגות Prompt, בודקות ביצועים, רושמות לוג בלבול.</p>
+      </div>
+    </div>
+  </div>
+
   <div class="chapter-nav">
     <button class="chapter-nav-btn" onclick="goTo('dashboard-build')">&#8594; הקודם</button>
     <button class="chapter-nav-btn" onclick="goTo('tools-ecosystem')">הבא &#8592;</button>
@@ -8843,6 +8894,43 @@ Hebrew reports for municipal HR departments.
     </span>
   </div>
 
+  <div class="card" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <div style="text-align: right;">
+      <strong style="font-size: 16px;">📁 מבנה פרויקט אופטימלי</strong>
+      <div style="font-size: 13px; margin-top: 10px; line-height: 1.6;">איך לארגן קבצים כדי שClaude יעבוד בחוכמה</div>
+    </div>
+    <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div class="tip-box">
+        <strong>📂 תיקיות ברורות</strong>
+        <div style="font-size: 12px; margin-top: 6px;">src/, components/, utils/, config/, docs/ — Claude מבין את המבנה בחצי שנייה</div>
+      </div>
+      <div class="info-box">
+        <strong>📝 README בשורש</strong>
+        <div style="font-size: 12px; margin-top: 6px;">קובץ README.md עם סקירה מהירה תחסוך שנייות כל פעם</div>
+      </div>
+      <div class="example-box">
+        <strong>🔗 סמלים/קישורים</strong>
+        <div style="font-size: 12px; margin-top: 6px;">Symlinks למצביע על קבצים חשובים באמצע הפרויקט</div>
+      </div>
+      <div class="tip-box">
+        <strong>📌 חלוקה לקטגוריות</strong>
+        <div style="font-size: 12px; margin-top: 6px;">קבצים קשורים ביחד בתיקיה אחת — לא הכל בשורש</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border:2px solid var(--primary);background:linear-gradient(135deg,rgba(37,99,235,0.03),rgba(124,58,237,0.03));">
+<div class="card-title">🆕 מבנה פרויקט אופטימלי</div>
+<div class="example-box"><div class="box-title">📁 מבנה תיקיות מומלץ</div><pre style="direction:ltr;text-align:left;background:#1e293b;color:#e2e8f0;padding:16px;border-radius:8px;font-size:13px;">my-project/
+├── CLAUDE.md          # מוח הפרויקט — הנחיות וכללים
+├── /skills            # תבניות לשימוש חוזר
+├── /hooks             # בדיקות אוטומטיות
+├── /docs              # תיעוד ארכיטקטורה
+└── /src               # קוד האפליקציה</pre></div>
+<div class="table-wrapper"><table><thead><tr><th>רמת בגרות</th><th>תיאור</th><th>כלים</th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>שאלות, ניסויים, brainstorm</td><td>טקסט בלבד</td></tr><tr><td><strong>Building</strong></td><td>כתיבה, הרצה, debug</td><td>Code + Terminal</td></tr><tr><td><strong>Agentic</strong></td><td>אוטומציה, API, Skills</td><td>Code + Cowork + Scheduler</td></tr></tbody></table></div>
+<div class="warning-box"><div class="box-title">⚠️ 5 טעויות נפוצות</div><ol><li>דילוג על CLAUDE.md — תיעוד הפרויקט חיוני מהתחלה</li><li>קבצים מעורבבים — הפרד קוד, hooks, docs, skills</li><li>פרומפטים מעורפלים — תאר מטרה, לא צעדים</li><li>דילוג על Plan Mode — תכנן לפני ביצוע</li><li>בנייה של הכל בבת אחת — התקדם בשלבים</li></ol></div>
+</div>
+
   <div class="chapter-nav">
     <button class="chapter-nav-btn" onclick="goTo('ai-models')">&#8594; הקודם</button>
     <button class="chapter-nav-btn" onclick="goTo('marketing-prompts')">הבא &#8592;</button>
@@ -8983,6 +9071,36 @@ Hebrew reports for municipal HR departments.
       <div class="prompt-box" dir="ltr" style="text-align:left; font-size:12px; margin-top:6px;">"Build a referral system that turns my buyers into active promoters. Include incentives and the exact message to send."</div>
     </div>
   </div>
+
+  <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <div style="text-align: right;">
+      <strong style="font-size: 16px;">🌐 7 פקודות לניהול רשתות חברתיות</strong>
+      <div style="font-size: 13px; margin-top: 10px; line-height: 1.6;">מהחומר החדש של Claude for Social Media</div>
+    </div>
+    <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div class="tip-box">
+        <strong>📌 תכנון קונטנט</strong>
+        <div style="font-size: 12px; margin-top: 6px;">אם לא יודעים מה לפרסם, בקשו מ-Claude תוכנית שבועית לכל קטגוריה</div>
+      </div>
+      <div class="info-box">
+        <strong>💬 טוקני מזהה</strong>
+        <div style="font-size: 12px; margin-top: 6px;">השתמשו ב-[AUDIENCE] כדי להתאים כל פוסט לקהל שלכם</div>
+      </div>
+      <div class="example-box">
+        <strong>🎯 A/B Testing</strong>
+        <div style="font-size: 12px; margin-top: 6px;">בקשו מ-Claude 3 וריאציות של כל כותרת וראו איזה אחוז קליקים גבוה ביותר</div>
+      </div>
+      <div class="tip-box">
+        <strong>📊 ניתוח תוצאות</strong>
+        <div style="font-size: 12px; margin-top: 6px;">הדביקו את הנתונים שלכם ובקשו מ-Claude דוח שלם של מה שעבד</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border:2px solid var(--primary);background:linear-gradient(135deg,rgba(37,99,235,0.03),rgba(124,58,237,0.03));">
+<div class="card-title">🆕 7 פקודות לניהול רשתות חברתיות</div>
+<div class="card-grid"><div class="mini-card"><div class="mini-card-icon">📊</div><div class="mini-card-title">1. מהנדס אסטרטגיה</div><div class="mini-card-desc">"אתה מומחה סושיאל. נתח את [תחום]. מי הקהל? מה עושים המתחרים? בנה אסטרטגיה ל-3 חודשים."</div></div><div class="mini-card"><div class="mini-card-icon">📝</div><div class="mini-card-title">2. עמודי תוכן</div><div class="mini-card-desc">"בנה 5 עמודי תוכן: לכל אחד שם, תיאור, ו-10 רעיונות עם אנגייג'מנט גבוה."</div></div><div class="mini-card"><div class="mini-card-icon">📋</div><div class="mini-card-title">3. ביקורת 30 יום</div><div class="mini-card-desc">"בדוק פוסטים מ-30 יום. מה עבד? מה לא? דרג לפי reach, אנגייג'מנט, conversions."</div></div><div class="mini-card"><div class="mini-card-icon">🛑</div><div class="mini-card-title">4. פוסטים שעוצרים גלילה</div><div class="mini-card-desc">"כתוב 5 פוסטים עם hook שלא ניתן להתעלם ממנו, copy חזק, ו-CTA ברור."</div></div><div class="mini-card"><div class="mini-card-icon">🎬</div><div class="mini-card-title">5. סקריפטים Reels/TikTok</div><div class="mini-card-desc">"כתוב 5 סקריפטים (15-30 שניות): hook, גוף, ופעולה."</div></div><div class="mini-card"><div class="mini-card-icon">👥</div><div class="mini-card-title">6. אסטרטגיית קהילה</div><div class="mini-card-desc">"בנה תוכנית engagement: תגובות, קשרים, הפיכת עוקבים ללקוחות."</div></div><div class="mini-card"><div class="mini-card-icon">📈</div><div class="mini-card-title">7. ניתוח ביצועים</div><div class="mini-card-desc">"בדוק מדדי הצלחה: reach, engagement, conversions. מה לשפר?"</div></div></div>
+</div>
 
   <div class="chapter-nav">
     <button class="chapter-nav-btn" onclick="goTo('tools-ecosystem')">&#8594; הקודם</button>
@@ -12798,6 +12916,40 @@ cd Nano-Banana-MCP && npm install</pre>
     <div class="prompt-box">הכן מצגת מכירות ל-[לקוח]: שאב נתוני הפקות מ-NotebookLM, בנה 10 שקפים ב-PPTX, הוסף אילוסטרציות עם Nano Banana.</div>
   </div>
 
+  <div class="card" style="background:linear-gradient(135deg, #667eea, #764ba2); border:none; margin:20px 0;">
+    <div class="card-title" style="color:white; text-shadow:0 2px 4px rgba(0,0,0,0.2);">🆕 7 שלבים לבניית סוכן AI ראשון</div>
+    <div class="card-grid" style="grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>1️⃣ הגדר את התפקיד</strong>
+        <p style="font-size:13px; margin-top:6px;">כתוב System Instruction ברורה (40-100 מילים). למה הוא קיים? מה תפקידו? איזה טון בדיבור?</p>
+      </div>
+      <div class="info-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>2️⃣ הוסף Context ו-Files</strong>
+        <p style="font-size:13px; margin-top:6px;">צרף מסמכים, טמפלטים, קוד קיים. צור Project עם ממשק ברור. זה ה"זיכרון" של הסוכן.</p>
+      </div>
+      <div class="example-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>3️⃣ בנה את ה-Skills</strong>
+        <p style="font-size:13px; margin-top:6px;">יצור 3-5 Skills (פונקציות) בחזקה. Example: "get_data", "analyze", "generate_report". כל Skill = משימה אחת בדיוק.</p>
+      </div>
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>4️⃣ כתוב Prompts ברורים</strong>
+        <p style="font-size:13px; margin-top:6px;">טמפלט: "כלי כאן, מטרה כאן, צעדים". תן דוגמה input/output. בדוק 10 פעמים עם Claude.</p>
+      </div>
+      <div class="info-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>5️⃣ בנה מנגנון בדיקות</strong>
+        <p style="font-size:13px; margin-top:6px;">צור Checklist: "מה צריך הסוכן לעשות?". בדוק בחוסר משוא פנים. תיקן את ה-Prompt אם דברים מתחרוגים.</p>
+      </div>
+      <div class="example-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>6️⃣ עקוב והתאם</strong>
+        <p style="font-size:13px; margin-top:6px;">רשום כל דוגמה שהסוכן "פיספס". כל שבועיים, תאם את ה-Prompt על בסיס הנתונים האמיתיים.</p>
+      </div>
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>7️⃣ הרחב בהדרגה</strong>
+        <p style="font-size:13px; margin-top:6px;">לא תוסיף Skills חדש/מערכת חדשה כל יום. המתן שבוע, אמוד את הביצועים, רק אז הרחב.</p>
+      </div>
+    </div>
+  </div>
+
   <div class="chapter-nav">
     <button class="chapter-nav-btn" onclick="goTo('ai-agents')">&#8594; הקודם</button>
     <button class="chapter-nav-btn" onclick="goTo('5levels')">הבא &#8592;</button>
@@ -13671,6 +13823,33 @@ From my answer, generate a second AskUserQuestion form to complete the task.</di
     </div>
   </div>
 
+  <div class="card" style="background: linear-gradient(135deg, #ec4899 0%, #f97316 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <div style="text-align: right;">
+      <strong style="font-size: 16px;">🎯 Chat vs Code vs Cowork — מתי להשתמש בכל אחד?</strong>
+      <div style="font-size: 13px; margin-top: 10px; line-height: 1.6;">בחרו את הכלי הנכון לכל משימה</div>
+    </div>
+    <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+      <div class="tip-box">
+        <strong>💬 Chat</strong>
+        <div style="font-size: 12px; margin-top: 6px;">לשאלות מהירות, דיונים, ודיבור חופשי. בלי קבצים. בלי קוד.</div>
+      </div>
+      <div class="info-box">
+        <strong>💻 Code</strong>
+        <div style="font-size: 12px; margin-top: 6px;">כתיבה וביצוע קוד בזמן אמת. Code execution, Python, JavaScript.</div>
+      </div>
+      <div class="example-box">
+        <strong>📂 Cowork</strong>
+        <div style="font-size: 12px; margin-top: 6px;">עבודה עם קבצים שלכם. עריכה, יצירה, automation של פרויקטים שלמים.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border:2px solid var(--primary);background:linear-gradient(135deg,rgba(37,99,235,0.03),rgba(124,58,237,0.03));">
+<div class="card-title">🆕 Chat vs Code vs Cowork — מתי להשתמש בכל אחד?</div>
+<div class="table-wrapper"><table><thead><tr><th>תכונה</th><th>Chat</th><th>Claude Code</th><th>Cowork</th></tr></thead><tbody><tr><td>שיחה וכתיבה</td><td>✅ אופטימלי</td><td>—</td><td>—</td></tr><tr><td>כתיבת קוד</td><td>✅ בסיסי</td><td>✅ מתקדם</td><td>✅ מתקדם</td></tr><tr><td>הרצת קוד</td><td>—</td><td>✅ Terminal</td><td>✅ Terminal</td></tr><tr><td>גישה לקבצים</td><td>—</td><td>✅</td><td>✅</td></tr><tr><td>אוטומציה</td><td>—</td><td>✅ Scripts</td><td>✅ Skills+Agents</td></tr><tr><td>שליטה בדפדפן</td><td>—</td><td>—</td><td>✅ Chrome</td></tr></tbody></table></div>
+<div class="warning-box"><div class="box-title">⚠️ טעויות נפוצות</div><ul><li>שימוש ב-Chat לאוטומציה — זה לא מעוצב לזה</li><li>הדבקת ביוגרפיה בכל צ'אט — השתמש ב-Projects</li><li>פתיחת צ'אט חדש במקום להמשיך ב-Projects</li><li>שליחת קובץ אחד בכל פעם — שלח הכל ביחד</li></ul></div>
+</div>
+
   <div class="chapter-nav">
     <button class="chapter-nav-btn" onclick="goTo('ai-integrations')">&#8594; הקודם</button>
     <button class="chapter-nav-btn" onclick="goTo('claude-setup')">הבא &#8592;</button>
@@ -13849,6 +14028,28 @@ Set once. Runs every session. Forever.</div>
 
   <div class="tip-box" style="margin-top:16px; border-right:4px solid #10b981;">
     <strong>&#127942; סיכום:</strong> אחרי 22 השלבים האלה — Claude מפסיק להיות צ'אטבוט ומתחיל להיות <strong>coworker</strong>. הוא קורא את הקבצים שלך, יודע מי אתה, שואל לפני שהוא עושה, ולא מוחק בלי אישור.
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg, #667eea, #764ba2); border:none; margin:20px 0;">
+    <div class="card-title" style="color:white; text-shadow:0 2px 4px rgba(0,0,0,0.2);">🆕 תוכנית 7 ימים לשליטה מלאה ב-Claude</div>
+    <div class="card-grid" style="grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>📅 יום 1-2: ממשק ו-Skills</strong>
+        <p style="font-size:13px; margin-top:6px;">סריקת כל הכפתורים, ההגדרות, ויצירת הנחיות מערכת (System Instructions). בנה את הפרופיל שלך.</p>
+      </div>
+      <div class="info-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>🚀 יום 3: קוד ו-Artifacts</strong>
+        <p style="font-size:13px; margin-top:6px;">Claude Code עבור פרויקטים קטנים. Artifacts עבור דוחות, טבלאות, HTML. תרגול עם 5 דוגמאות בפועל.</p>
+      </div>
+      <div class="example-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>💼 יום 4-5: Projects ו-Workflows</strong>
+        <p style="font-size:13px; margin-top:6px;">הקמת 2 Projects עם Context, קורא קבצים מהכונן, ופעם שנייה הגדרת Connectors (Slack, Notion).</p>
+      </div>
+      <div class="tip-box" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3);">
+        <strong>⚡ יום 6-7: Cowork + Automation</strong>
+        <p style="font-size:13px; margin-top:6px;">עדכון קבצי Excel, יצירת מצגות, ניהול קבצים דרך Claude. בדיקת הוספה ושינוי בנתונים בהצלחה.</p>
+      </div>
+    </div>
   </div>
 
   <div class="chapter-nav">
@@ -15929,10 +16130,10 @@ const chapters = ['welcome','intro','philosophy','programs','programs-kpi','prog
 
 function goTo(id) {
   // Hide cover page if still visible
-  var cover = document.getElementById("coverPage");
-  if (cover) cover.style.display = "none";
+  var cover = document.getElementById('coverPage');
+  if (cover) cover.style.display = 'none';
 
-  // Switch chapters — safe against missing elements
+  // Switch chapters
   chapters.forEach(function(c) {
     var el = document.getElementById('chapter-' + c);
     if (el) el.classList.remove('active');
@@ -15944,22 +16145,20 @@ function goTo(id) {
   var sb = document.querySelector('.sidebar-search');
   if (sb) { sb.value = ''; filterNav(''); }
 
-  // --- Update sidebar: close all groups, open only the target ---
+  // Update sidebar: close all groups, open only the target
   document.querySelectorAll('.nav-item').forEach(function(n) { n.classList.remove('active'); });
   document.querySelectorAll('.nav-group').forEach(function(g) {
     g.classList.remove('has-active');
     g.classList.remove('open');
   });
   document.querySelectorAll('.nav-item').forEach(function(n) {
-    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'" + id + "'")) {
+    if (n.getAttribute('onclick') && n.getAttribute('onclick').indexOf("'" + id + "'") !== -1) {
       n.classList.add('active');
       var group = n.closest('.nav-group');
       if (group) {
         group.classList.add('open');
         group.classList.add('has-active');
       }
-      // Auto-scroll sidebar so active item is visible
-      setTimeout(function() { n.scrollIntoView({block:'nearest',behavior:'smooth'}); }, 120);
     }
   });
 
@@ -16514,15 +16713,20 @@ function termQuick(cmd) {
 })();
 
 // ===== PAGE INITIALIZATION =====
-document.addEventListener("DOMContentLoaded", function() {
-  var wc = document.getElementById("chapter-welcome");
-  if (wc && \!document.querySelector(".chapter.active")) {
-    wc.classList.add("active");
-    document.querySelectorAll(".nav-item").forEach(function(n) {
-      if (n.getAttribute("onclick") && n.getAttribute("onclick").indexOf("welcome") \!== -1) {
-        n.classList.add("active");
-      }
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  // Clear search box — prevent browser autocomplete filling email
+  var searchBox = document.getElementById('sidebarSearchInput');
+  if (searchBox) { searchBox.value = ''; }
+  // Also clear after short delay (some browsers fill after DOMContentLoaded)
+  setTimeout(function() {
+    var sb = document.getElementById('sidebarSearchInput');
+    if (sb && sb.value) { sb.value = ''; filterNav(''); }
+  }, 500);
+
+  // Default: show welcome chapter on page load
+  var welcomeChapter = document.getElementById('chapter-welcome');
+  if (welcomeChapter && !document.querySelector('.chapter.active')) {
+    welcomeChapter.classList.add('active');
   }
 });
 </script>
@@ -17561,7 +17765,7 @@ function expertMode(type) {
   document.querySelectorAll('.chapter').forEach(function(ch) {
     var credit = document.createElement('div');
     credit.className = 'chapter-credit';
-    credit.innerHTML = '<div class="credit-name">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</div><div class="credit-role">רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. &copy; 2026 | עדכון אחרון: 09.04.2026 04:10 | גרסה 18.2</div>';
+    credit.innerHTML = '<div class="credit-name">אגבאריה מוחמד סאלח : מייסד ומנהל המרכז הקהילתי והתיאטרון הערבי.</div><div class="credit-role">כל הזכויות שמורות ל-: אגבאריה מוחמד סאלח, רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. &copy; 2026.</div><div style="font-size:9px;color:var(--gray-400);margin-top:4px;">גרסה v19.0 · עדכון אחרון: 15.04.2026 12:00</div>';
     ch.appendChild(credit);
   });
 })();
@@ -17667,10 +17871,5 @@ function printAll(){
 })();
 
 </script>
-
-<div style="text-align:center;padding:20px;margin-top:30px;border-top:1px solid rgba(255,255,255,0.1);direction:rtl;line-height:1.8;">
-<div style="font-size:12px;font-weight:700;color:#e2e8f0;">אגבאריה מוחמד סאלח : מייסד ומנהל המרכז הקהילתי והתיאטרון הערבי.</div>
-<div style="font-size:11px;font-weight:700;color:#94a3b8;">כל הזכויות שמורות ל-: אגבאריה מוחמד סאלח, רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. © 2026.</div>
-</div>
 </body>
 </html>
