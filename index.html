@@ -1024,7 +1024,7 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <input class="sidebar-search" placeholder="חיפוש בתוכן העניינים..." oninput="filterNav(this.value)" autocomplete="off" name="nav-filter" />
+    <input class="sidebar-search" placeholder="חיפוש בתוכן העניינים..." oninput="filterNav(this.value)" autocomplete="new-password" name="nav-filter-x" id="sidebarSearchInput" />
   </div>
   <nav id="sidebarNav">
     <!-- ═══════════════════════════════════════ -->
@@ -15928,6 +15928,10 @@ Every test should have exactly one logical assertion.</div>
 const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','glossary'];
 
 function goTo(id) {
+  // Hide cover page if still visible
+  var cover = document.getElementById("coverPage");
+  if (cover) cover.style.display = "none";
+
   // Switch chapters — safe against missing elements
   chapters.forEach(function(c) {
     var el = document.getElementById('chapter-' + c);
@@ -15936,14 +15940,9 @@ function goTo(id) {
   var target = document.getElementById('chapter-' + id);
   if (target) target.classList.add('active');
 
-  // --- Reset sidebar filter so items are never stuck hidden ---
-  var sidebarSearch = document.querySelector('.sidebar-search');
-  if (sidebarSearch && sidebarSearch.value) {
-    sidebarSearch.value = '';
-  }
-  // Force-clear any stale inline display from prior filterNav
-  document.querySelectorAll('.nav-group').forEach(function(g) { g.style.display = ''; });
-  document.querySelectorAll('.nav-item').forEach(function(n) { n.style.display = ''; });
+  // Reset sidebar filter
+  var sb = document.querySelector('.sidebar-search');
+  if (sb) { sb.value = ''; filterNav(''); }
 
   // --- Update sidebar: close all groups, open only the target ---
   document.querySelectorAll('.nav-item').forEach(function(n) { n.classList.remove('active'); });
@@ -17669,12 +17668,9 @@ function printAll(){
 
 </script>
 
-<div style="text-align:center;padding:30px 20px;border-top:1px solid rgba(255,255,255,0.1);margin-top:30px;font-size:10px;color:#94a3b8;line-height:1.8;background:linear-gradient(135deg,#0f172a,#1e293b);direction:rtl;">
-  <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);">
-    <div style="font-size:14px;font-weight:800;color:#f59e0b;margin-bottom:6px;">📚 מדריך חכם אינטראקטיבי — ניהול עם Claude AI</div>
-    <div style="font-size:12px;font-weight:700;color:#e2e8f0;margin-bottom:4px;">אגבאריה מוחמד סאלח : מייסד ומנהל המרכז הקהילתי והתיאטרון הערבי.</div>
-    <div style="font-size:11px;font-weight:700;color:#94a3b8;">כל הזכויות שמורות ל-: אגבאריה מוחמד סאלח, רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. © 2026.</div>
-  </div>
+<div style="text-align:center;padding:20px;margin-top:30px;border-top:1px solid rgba(255,255,255,0.1);direction:rtl;line-height:1.8;">
+<div style="font-size:12px;font-weight:700;color:#e2e8f0;">אגבאריה מוחמד סאלח : מייסד ומנהל המרכז הקהילתי והתיאטרון הערבי.</div>
+<div style="font-size:11px;font-weight:700;color:#94a3b8;">כל הזכויות שמורות ל-: אגבאריה מוחמד סאלח, רעיון, בנייה, עיצוב, שדרוג, ניהול ומעקב. © 2026.</div>
 </div>
 </body>
 </html>
