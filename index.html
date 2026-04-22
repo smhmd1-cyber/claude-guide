@@ -1059,11 +1059,73 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
     <span>מדריך חכם אינטראקטיבי — ניהול עם Claude</span>
   </div>
   <div class="header-actions">
+    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 22.04.2026">
+      <span class="whats-new-pulse"></span>
+      &#128226; מה חדש
+      <span class="whats-new-badge">13</span>
+    </button>
     <button class="header-btn" onclick="openSearch()">&#128269; חיפוש</button>
     <button class="header-btn" onclick="printAll()">&#128424; הדפס הכל</button>
     <button class="header-btn" onclick="toggleDarkMode()">&#127769; מצב כהה</button>
   </div>
 </div>
+
+<style>
+.whats-new-btn {
+  position: relative;
+  background: linear-gradient(135deg, #ef4444 0%, #f97316 100%) !important;
+  color: white !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(239,68,68,0.4);
+  animation: whatsNewGlow 2.5s ease-in-out infinite;
+  padding-right: 34px !important;
+}
+.whats-new-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(239,68,68,0.55);
+  filter: brightness(1.08);
+}
+.whats-new-btn .whats-new-pulse {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 0 rgba(255,255,255,0.9);
+  animation: whatsNewDot 1.6s ease-out infinite;
+}
+.whats-new-btn .whats-new-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #facc15;
+  color: #7f1d1d;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 2px 6px;
+  border: 2px solid white;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1;
+}
+@keyframes whatsNewDot {
+  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.9); }
+  70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+@keyframes whatsNewGlow {
+  0%, 100% { box-shadow: 0 2px 8px rgba(239,68,68,0.4); }
+  50%      { box-shadow: 0 4px 18px rgba(239,68,68,0.7); }
+}
+@media (max-width: 768px) {
+  .whats-new-btn { padding: 6px 10px 6px 24px !important; font-size: 12px !important; }
+  .whats-new-btn .whats-new-badge { font-size: 9px; padding: 1px 5px; }
+}
+</style>
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
