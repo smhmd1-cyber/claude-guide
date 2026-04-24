@@ -1059,10 +1059,10 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
     <span>מדריך חכם אינטראקטיבי — ניהול עם Claude</span>
   </div>
   <div class="header-actions">
-    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 23.04.2026 11:16 — v21.8: תקלת MCP Apps תוקנה + עסקת TPU מורחבת (1GW→3.5GW)">
+    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 24.04.2026 10:00 — v21.9: מחברים צרכניים חדשים (Spotify/Uber Eats/TurboTax/AllTrails/Instacart) + Post-Mortem — 3 באגים של Claude Code/Agent SDK/Cowork תוקנו">
       <span class="whats-new-pulse"></span>
       &#128226; מה חדש
-      <span class="whats-new-badge">24</span>
+      <span class="whats-new-badge">26</span>
     </button>
     <button class="header-btn" onclick="openSearch()">&#128269; חיפוש</button>
     <button class="header-btn" onclick="printAll()">&#128424; הדפס הכל</button>
@@ -2637,12 +2637,12 @@ Start your response with exactly this: {"analysis":</div>
 
   <!-- What's New in v16.0 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 21.8 — 23 אפריל 2026 11:16 — תקלת MCP Apps תוקנה + עסקת TPU מורחבת!</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 21.9 — 24 אפריל 2026 10:00 — מחברים צרכניים חדשים + Post-Mortem באגי איכות!</div>
     <!-- Banner: Daily Scan Summary v21.1 -->
     <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:12px; padding:18px; margin-bottom:16px; border:3px solid #ffeaa7;">
-      <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 22.04.2026 14:00</div>
+      <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 24.04.2026 10:00</div>
       <div style="font-size:13px; line-height:1.7;">
-        המשימה המתוזמנת "Claude Updates Monitor" זיהתה <strong>16 עדכונים משמעותיים</strong> ב-2 השבועות האחרונים (כולל 3 עדכונים חדשים היום: Claude Code v2.1.117, מינוי Vas Narasimhan לדירקטוריון, עסקת Amazon $25B). הפרקים הרלוונטיים עודכנו אוטומטית:
+        המשימה המתוזמנת "Claude Updates Monitor" זיהתה <strong>18 עדכונים משמעותיים</strong> ב-3 השבועות האחרונים (כולל 2 עדכונים חדשים היום: הרחבת Claude Connections למחברים צרכניים (Spotify, Uber Eats, TurboTax, AllTrails, Instacart), ו-Post-Mortem של Anthropic — הודאה ב-3 באגים שפגעו באיכות Claude Code/Agent SDK/Cowork, כולם תוקנו). הפרקים הרלוונטיים עודכנו אוטומטית:
         <br>
         <strong>&#128279; פרק 43 (חדשות Anthropic)</strong> — 13 רשומות חדשות בציר הזמן (14-22 אפריל): <strong>Claude Code v2.1.117 (22/4)</strong>, <strong>מינוי Vas Narasimhan לדירקטוריון (14/4)</strong>, <strong>עסקת Amazon עד $25B (20/4)</strong>, Opus 4.7 GA, Claude Design, Managed Agents, Cowork GA, Memory לכולם, Excel/PowerPoint+Skills, MCP Streamable HTTP + MCP Channels, Google TPU, DoD deal.
         <br>
@@ -10366,6 +10366,12 @@ dashboard-php/
     <h3>&#128197; ציר זמן — 2026</h3>
     <div style="position:relative; padding-right:30px; margin-top:16px;">
       <div style="position:absolute; right:10px; top:0; bottom:0; width:3px; background:linear-gradient(#d63031,#fdcb6e,#00b894);"></div>
+      <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#0891b2,#22d3ee); color:white; border-radius:10px; margin-right:20px; border:3px solid #fde68a;">
+        <strong>&#128241; 24 אפריל (היום, סריקה 10:00)</strong> &mdash; <strong>הרחבת Claude Connections — מחברים צרכניים חדשים:</strong> Anthropic הודיעה על הרחבת הגישה ל-Claude באמצעות הוספת מחברים צרכניים לשירותים פופולריים: <strong>Spotify</strong> (המלצות והשמעת מוזיקה), <strong>Uber Eats</strong> (הזמנת מזון), <strong>Intuit TurboTax</strong> (הגשת מסים), <strong>AllTrails</strong> (מסלולי טיולים), ו-<strong>Instacart</strong> (קניות במכולת). המידע מהאפליקציות המחוברות <em>לא משמש לאימון מודלים</em>, האפליקציות לא רואות שיחות אחרות של Claude, והמשתמשים יכולים לנתק שירותים בכל רגע. זהו שינוי משמעותי באסטרטגיה — Claude הופך מעוזר עבודה לעוזר חיים יומיומי. <a href="https://letsdatascience.com/news/anthropic-expands-claude-connections-to-personal-apps-b90b51e7" target="_blank" style="color:#fde68a;">[מקור: Let's Data Science]</a> <a href="https://www.anthropic.com/news" target="_blank" style="color:#fde68a;">[anthropic.com/news]</a>
+      </div>
+      <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#be185d,#ec4899); color:white; border-radius:10px; margin-right:20px; border:3px solid #fde68a;">
+        <strong>&#128270; 23 אפריל (Post-Mortem רשמי)</strong> &mdash; <strong>Anthropic מודה: 3 באגים פגעו באיכות Claude במרץ-אפריל — כולם תוקנו:</strong> Anthropic פרסמה post-mortem מפורט לאחר שבועות של תלונות משתמשים על ירידה באיכות. שלושה שינויים נפרדים פגעו במשתמשי <strong>Claude Code</strong>, <strong>Claude Agent SDK</strong>, ו-<strong>Claude Cowork</strong>: (1) <em>שינוי ברירת מחדל של reasoning effort</em> — הורד ברמה (שוחזר למצב גבוה); (2) <em>באג caching שפגע בהיסטוריית thinking</em> — הסתיר שרשרת מחשבה מבקשות עוקבות (תוקן); (3) <em>prompt verbosity שפגע באיכות קוד</em> — בוטל. Anthropic התחייבה ל: בדיקות פנימיות נוספות לפני builds ציבוריים, שיפורי Code Review, הערכה קפדנית יותר של שינויי system prompt, וחשבון חדש <code>@ClaudeDevs</code> ב-X לתקשורת ישירה עם מפתחים. <a href="https://www.theregister.com/2026/04/23/anthropic_says_it_has_fixed/" target="_blank" style="color:#fde68a;">[מקור: The Register]</a> <a href="https://dataconomy.com/2026/04/24/anthropic-denies-intentional-slowdown-of-claude-code/" target="_blank" style="color:#fde68a;">[Dataconomy]</a>
+      </div>
       <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#16a34a,#22c55e); color:white; border-radius:10px; margin-right:20px; border:3px solid #fde68a;">
         <strong>&#9989; 23 אפריל (היום, סריקה 11:16)</strong> &mdash; <strong>תקלה ב-MCP Apps ב-Claude.ai תוקנה:</strong> דף הסטטוס של Anthropic רשם הבוקר תקלה שהשפיעה על חיבורי MCP Apps ב-claude.ai — התקלה זוהתה, התחקר והוסגרה במהלך הבוקר. כל המחברים חזרו לפעולה תקינה. זהו תזכורת טובה: כאשר חיבור מחבר מתנהג בצורה מוזרה, בדקו קודם את <a href="https://status.claude.com/" target="_blank" style="color:#fde68a;">status.claude.com</a> לפני debug מיותר. <a href="https://status.claude.com/" target="_blank" style="color:#fde68a;">[מקור: Anthropic Status]</a>
       </div>
