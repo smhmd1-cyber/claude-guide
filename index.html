@@ -1059,11 +1059,12 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
     <span>מדריך חכם אינטראקטיבי — ניהול עם Claude</span>
   </div>
   <div class="header-actions">
-    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 24.04.2026 10:00 — v21.9: מחברים צרכניים חדשים (Spotify/Uber Eats/TurboTax/AllTrails/Instacart) + Post-Mortem — 3 באגים של Claude Code/Agent SDK/Cowork תוקנו">
+    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 24.04.2026 11:30 — v21.9: מחברים צרכניים חדשים (Spotify/Uber Eats/TurboTax/AllTrails/Instacart) + Post-Mortem — 3 באגים של Claude Code/Agent SDK/Cowork תוקנו">
       <span class="whats-new-pulse"></span>
       &#128226; מה חדש
       <span class="whats-new-badge">26</span>
     </button>
+    <button class="header-btn find-updates-btn" onclick="openFindUpdates()" title="חפש עדכוני Anthropic/Claude ברשת — מקורות רשמיים + גוגל/רדיט/X/YouTube + פרומפט ל-Claude">&#128270; חפש עדכונים</button>
     <button class="header-btn" onclick="openSearch()">&#128269; חיפוש</button>
     <button class="header-btn" onclick="printAll()">&#128424; הדפס הכל</button>
     <button class="header-btn" onclick="toggleDarkMode()">&#127769; מצב כהה</button>
@@ -1071,6 +1072,96 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
 </div>
 
 <style>
+/* === Find Updates button (Claude Design) === */
+.find-updates-btn{
+  background:linear-gradient(135deg,#D97757 0%,#C05C3D 100%);
+  color:#FFFEF8; border:1px solid rgba(255,255,255,.22);
+  padding:8px 14px; border-radius:10px; font-weight:700; font-size:13px;
+  cursor:pointer; box-shadow:0 2px 8px rgba(217,119,87,.35);
+  transition:transform .15s ease, box-shadow .15s ease;
+  display:inline-flex; align-items:center; gap:6px;
+  position:relative; overflow:hidden;
+}
+.find-updates-btn::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);
+  transform:translateX(-100%); animation:fuSheen 4s ease-in-out infinite;
+}
+@keyframes fuSheen{0%{transform:translateX(-100%)}40%,100%{transform:translateX(100%)}}
+.find-updates-btn:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(217,119,87,.5)}
+.find-updates-btn:focus-visible{outline:2px solid #FFFEF8; outline-offset:2px}
+
+/* Modal */
+.fu-overlay[hidden]{display:none!important}
+.fu-overlay{
+  position:fixed; inset:0; background:rgba(31,30,29,.62);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  z-index:10000; display:flex; align-items:center; justify-content:center;
+  padding:20px; direction:rtl; animation:fuFadeIn .22s ease-out;
+}
+@keyframes fuFadeIn{from{opacity:0}to{opacity:1}}
+.fu-card{
+  background:#FFFEF8; border:1px solid #E8E0D2; border-radius:20px;
+  max-width:760px; width:100%; max-height:88vh; overflow-y:auto;
+  box-shadow:0 24px 60px rgba(217,119,87,.18), 0 8px 24px rgba(0,0,0,.08);
+  padding:28px;
+  font-family:'Segoe UI','Heebo',system-ui,-apple-system,sans-serif;
+  color:#1F1E1D; animation:fuSlide .26s cubic-bezier(.2,.8,.25,1);
+}
+@keyframes fuSlide{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.fu-header{display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+  margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #EDE5D5}
+.fu-header h2{font-size:22px; font-weight:800; color:#1F1E1D; margin:0 0 6px; letter-spacing:-.01em}
+.fu-sub{font-size:13px; color:#6B6660; margin:0; line-height:1.5}
+.fu-close{background:#F5F1EC; border:none; width:36px; height:36px; border-radius:10px;
+  font-size:22px; color:#6B6660; cursor:pointer; line-height:1; transition:all .15s;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0}
+.fu-close:hover{background:#EDE5D5; color:#1F1E1D}
+.fu-close:focus-visible{outline:2px solid #D97757; outline-offset:2px}
+.fu-section{margin-bottom:22px}
+.fu-section-title{font-size:12px; font-weight:800; color:#D97757; text-transform:uppercase;
+  letter-spacing:.06em; margin-bottom:12px}
+.fu-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px}
+.fu-link{display:flex; flex-direction:column; gap:4px; padding:12px 14px;
+  background:#FBF7F0; border:1px solid #EDE5D5; border-radius:12px;
+  text-decoration:none; color:#1F1E1D; transition:all .15s ease}
+.fu-link:hover{background:#F5EDE0; border-color:#D97757; transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(217,119,87,.12)}
+.fu-link strong{font-size:14px; font-weight:700; color:#1F1E1D}
+.fu-link span{font-size:12px; color:#6B6660; line-height:1.5}
+.fu-link.fu-pri{background:linear-gradient(135deg,#FEF0E6 0%,#FBE3D2 100%); border-color:#F0C3A5}
+.fu-prompt{background:#1F1E1D; border-radius:12px; padding:16px; position:relative}
+.fu-prompt pre{margin:0; color:#FBE3D2; font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:13px; white-space:pre-wrap; line-height:1.65; padding-bottom:44px}
+.fu-copy{position:absolute; bottom:12px; left:12px;
+  background:#D97757; color:#FFFEF8; border:none; padding:8px 14px;
+  border-radius:8px; font-size:12px; font-weight:700; cursor:pointer;
+  transition:all .15s; direction:rtl}
+.fu-copy:hover{background:#C05C3D; transform:translateY(-1px)}
+.fu-footer{padding-top:16px; border-top:1px solid #EDE5D5;
+  font-size:12px; color:#6B6660; text-align:center; line-height:1.7}
+.fu-footer strong{color:#1F1E1D; font-weight:700}
+.fu-footer-note{margin-top:4px; font-size:11px; opacity:.8}
+@media(max-width:600px){
+  .fu-card{padding:20px; border-radius:16px}
+  .fu-grid{grid-template-columns:1fr}
+  .fu-header h2{font-size:18px}
+  .find-updates-btn{padding:6px 10px; font-size:12px}
+}
+@media (prefers-color-scheme: dark) {
+  body.dark-mode .fu-card{background:#2A2824; color:#FBE3D2; border-color:#3D3A34}
+  body.dark-mode .fu-header{border-color:#3D3A34}
+  body.dark-mode .fu-header h2{color:#FBE3D2}
+  body.dark-mode .fu-sub,body.dark-mode .fu-link span,body.dark-mode .fu-footer{color:#B8B0A5}
+  body.dark-mode .fu-link{background:#35322D; border-color:#3D3A34; color:#FBE3D2}
+  body.dark-mode .fu-link strong{color:#FBE3D2}
+  body.dark-mode .fu-link:hover{background:#3D3A34; border-color:#D97757}
+  body.dark-mode .fu-close{background:#35322D; color:#B8B0A5}
+  body.dark-mode .fu-close:hover{background:#3D3A34; color:#FBE3D2}
+  body.dark-mode .fu-footer,body.dark-mode .fu-footer{border-color:#3D3A34}
+}
+/* === /Find Updates === */
+
 .whats-new-btn {
   position: relative;
   background: linear-gradient(135deg, #ef4444 0%, #f97316 100%) !important;
@@ -2637,10 +2728,10 @@ Start your response with exactly this: {"analysis":</div>
 
   <!-- What's New in v16.0 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 21.9 — 24 אפריל 2026 10:00 — מחברים צרכניים חדשים + Post-Mortem באגי איכות!</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 22.0 — 24 אפריל 2026 10:00 — מחברים צרכניים חדשים + Post-Mortem באגי איכות!</div>
     <!-- Banner: Daily Scan Summary v21.1 -->
     <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:12px; padding:18px; margin-bottom:16px; border:3px solid #ffeaa7;">
-      <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 24.04.2026 10:00</div>
+      <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 24.04.2026 11:30</div>
       <div style="font-size:13px; line-height:1.7;">
         המשימה המתוזמנת "Claude Updates Monitor" זיהתה <strong>18 עדכונים משמעותיים</strong> ב-3 השבועות האחרונים (כולל 2 עדכונים חדשים היום: הרחבת Claude Connections למחברים צרכניים (Spotify, Uber Eats, TurboTax, AllTrails, Instacart), ו-Post-Mortem של Anthropic — הודאה ב-3 באגים שפגעו באיכות Claude Code/Agent SDK/Cowork, כולם תוקנו). הפרקים הרלוונטיים עודכנו אוטומטית:
         <br>
@@ -19611,6 +19702,159 @@ body.dark-mode .nav-widget .nav-home {
   setTimeout(wireUp, 3000);
 })();
 </script>
+
+
+<!-- === Find Updates Modal (Claude Design) === -->
+<div id="findUpdatesModal" class="fu-overlay" role="dialog" aria-modal="true" aria-labelledby="fuTitle" hidden>
+  <div class="fu-card" role="document">
+    <div class="fu-header">
+      <div>
+        <h2 id="fuTitle">&#128270; חפש עדכוני Claude &amp; Anthropic</h2>
+        <p class="fu-sub">מקורות רשמיים + כלי חיפוש מוכנים לרשת + פרומפט מוכן להריץ ב-Claude — הכל במקום אחד.</p>
+      </div>
+      <button type="button" class="fu-close" onclick="closeFindUpdates()" aria-label="סגור">&times;</button>
+    </div>
+
+    <div class="fu-section">
+      <div class="fu-section-title">&#127963; מקורות רשמיים &mdash; Anthropic</div>
+      <div class="fu-grid">
+        <a class="fu-link fu-pri" href="https://www.anthropic.com/news" target="_blank" rel="noopener noreferrer">
+          <strong>Anthropic News</strong><span>הכרזות, מחקר, שותפויות</span></a>
+        <a class="fu-link" href="https://claude.com/blog" target="_blank" rel="noopener noreferrer">
+          <strong>Claude Blog</strong><span>פיצ&rsquo;רים חדשים בפלטפורמה</span></a>
+        <a class="fu-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener noreferrer">
+          <strong>Claude Code Changelog</strong><span>שחרורים וגרסאות CLI</span></a>
+        <a class="fu-link" href="https://docs.claude.com/release-notes" target="_blank" rel="noopener noreferrer">
+          <strong>Release Notes</strong><span>שחרורי API + מודלים</span></a>
+        <a class="fu-link" href="https://status.anthropic.com" target="_blank" rel="noopener noreferrer">
+          <strong>Status Page</strong><span>זמינות שירות בזמן אמת</span></a>
+        <a class="fu-link" href="https://www.anthropic.com/research" target="_blank" rel="noopener noreferrer">
+          <strong>Research</strong><span>מאמרים ודוחות בטיחות</span></a>
+      </div>
+    </div>
+
+    <div class="fu-section">
+      <div class="fu-section-title">&#127760; חיפוש ברשת &mdash; פרה-מוגדר לחודש הנוכחי</div>
+      <div class="fu-grid">
+        <a class="fu-link" id="fuGoogle" target="_blank" rel="noopener noreferrer" href="#">
+          <strong>&#128269; Google News</strong><span>חדשות השבוע האחרון</span></a>
+        <a class="fu-link" id="fuReddit" target="_blank" rel="noopener noreferrer" href="#">
+          <strong>r/ClaudeAI</strong><span>דיונים וטיפים מהקהילה</span></a>
+        <a class="fu-link" id="fuHN" target="_blank" rel="noopener noreferrer" href="#">
+          <strong>Hacker News</strong><span>השקות + תגובות הטכנולוגיה</span></a>
+        <a class="fu-link" id="fuX" target="_blank" rel="noopener noreferrer" href="#">
+          <strong>X (Twitter)</strong><span>ציוצי AnthropicAI + האקוסיסטם</span></a>
+        <a class="fu-link" id="fuYT" target="_blank" rel="noopener noreferrer" href="#">
+          <strong>YouTube</strong><span>דמו, ביקורות, סקירות (חודש)</span></a>
+        <a class="fu-link" id="fuGH" target="_blank" rel="noopener noreferrer" href="#">
+          <strong>GitHub — anthropics</strong><span>ריפואים רשמיים ומיון לפי עדכון</span></a>
+      </div>
+    </div>
+
+    <div class="fu-section">
+      <div class="fu-section-title">&#129302; פרומפט מוכן לסריקה ב-Claude</div>
+      <div class="fu-prompt">
+<pre id="fuPromptText">חפש ברשת את כל עדכוני Anthropic ו-Claude מהשבוע האחרון. כלול:
+1. הכרזות רשמיות (anthropic.com/news, claude.com/blog)
+2. Claude Code changelog (code.claude.com/docs/en/changelog)
+3. שחרורי מודלים חדשים או שינויים ב-API
+4. שינויי תמחור, מחברים חדשים, ושיתופי פעולה
+5. עדכונים בתיעוד docs.claude.com
+
+לכל עדכון תן: תאריך, כותרת בעברית, לינק למקור רשמי, ופסקה קצרה (2-3 שורות) שמסבירה למה זה חשוב למשתמש עסקי בארגון. סדר כרונולוגית — החדש ביותר בראש.</pre>
+        <button type="button" class="fu-copy" onclick="copyFindUpdatesPrompt()">&#128203; העתק פרומפט</button>
+      </div>
+    </div>
+
+    <div class="fu-footer">
+      <div>סריקה אוטומטית אחרונה: <strong id="fuLastScan">24.04.2026 11:30</strong></div>
+      <div class="fu-footer-note">הסריקה האוטומטית רצה כל יום ב-10:00 בבוקר שעון ישראל &middot; 7 ימים בשבוע</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if (window.__findUpdatesWired) return; window.__findUpdatesWired = true;
+
+  function buildLinks(){
+    var now = new Date();
+    var monthEn = now.toLocaleString('en', {month:'long'});
+    var y = now.getFullYear();
+    var qNews = encodeURIComponent('Anthropic Claude ' + monthEn + ' ' + y);
+    var qTech = encodeURIComponent('Anthropic Claude');
+    return {
+      fuGoogle: 'https://www.google.com/search?q=' + qNews + '&tbs=qdr:w&tbm=nws',
+      fuReddit: 'https://www.reddit.com/r/ClaudeAI/top/?t=week',
+      fuHN:     'https://hn.algolia.com/?q=' + qTech + '&dateRange=pastWeek&sort=byDate',
+      fuX:      'https://x.com/search?q=' + encodeURIComponent('(from:AnthropicAI OR "Claude AI") -is:retweet') + '&f=live',
+      fuYT:     'https://www.youtube.com/results?search_query=' + qNews + '&sp=EgIIAw%253D%253D',
+      fuGH:     'https://github.com/anthropics?tab=repositories&sort=updated'
+    };
+  }
+
+  window.openFindUpdates = function(){
+    var m = document.getElementById('findUpdatesModal');
+    if (!m) return;
+    var links = buildLinks();
+    Object.keys(links).forEach(function(id){
+      var a = document.getElementById(id);
+      if (a) a.setAttribute('href', links[id]);
+    });
+    m.hidden = false;
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){
+      var c = m.querySelector('.fu-close'); if (c) c.focus();
+    }, 60);
+  };
+
+  window.closeFindUpdates = function(){
+    var m = document.getElementById('findUpdatesModal');
+    if (!m) return;
+    m.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  window.copyFindUpdatesPrompt = function(){
+    var el = document.getElementById('fuPromptText');
+    if (!el) return;
+    var text = el.textContent || el.innerText || '';
+    var done = function(){
+      var b = document.querySelector('#findUpdatesModal .fu-copy');
+      if (!b) return;
+      var orig = b.innerHTML;
+      b.innerHTML = '&#10004; הועתק!';
+      b.style.background = '#16A34A';
+      setTimeout(function(){ b.innerHTML = orig; b.style.background = ''; }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position='fixed'; ta.style.top='-9999px'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        done();
+      } catch(e) { /* silent */ }
+    }
+  };
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') {
+      var m = document.getElementById('findUpdatesModal');
+      if (m && !m.hidden) window.closeFindUpdates();
+    }
+  });
+  document.addEventListener('click', function(e){
+    var m = document.getElementById('findUpdatesModal');
+    if (m && !m.hidden && e.target === m) window.closeFindUpdates();
+  });
+})();
+</script>
+<!-- === /Find Updates Modal === -->
 
 </body>
 </html>
