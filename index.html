@@ -2,6 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="claude-scanner-url" content="REPLACE_WITH_WORKER_URL">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>מדריך חכם אינטראקטיבי Claude | ניהול תוכניות קהילתיות, תיאטרון, שיווק ומכירות</title>
 <style>
@@ -1059,7 +1060,7 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
     <span>מדריך חכם אינטראקטיבי — ניהול עם Claude</span>
   </div>
   <div class="header-actions">
-    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 24.04.2026 11:30 — v21.9: מחברים צרכניים חדשים (Spotify/Uber Eats/TurboTax/AllTrails/Instacart) + Post-Mortem — 3 באגים של Claude Code/Agent SDK/Cowork תוקנו">
+    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 24.04.2026 13:10 — v21.9: מחברים צרכניים חדשים (Spotify/Uber Eats/TurboTax/AllTrails/Instacart) + Post-Mortem — 3 באגים של Claude Code/Agent SDK/Cowork תוקנו">
       <span class="whats-new-pulse"></span>
       &#128226; מה חדש
       <span class="whats-new-badge">26</span>
@@ -1160,6 +1161,85 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
   body.dark-mode .fu-close:hover{background:#3D3A34; color:#FBE3D2}
   body.dark-mode .fu-footer,body.dark-mode .fu-footer{border-color:#3D3A34}
 }
+/* === Live scan UI === */
+.fu-live{display:flex; flex-direction:column; gap:12px}
+.fu-live-desc{font-size:13px; color:#6B6660; line-height:1.6}
+.fu-live-desc strong{color:#D97757; font-weight:700}
+.fu-scan-btn{
+  background:linear-gradient(135deg,#D97757 0%,#C05C3D 100%);
+  color:#FFFEF8; border:none; padding:14px 20px; border-radius:12px;
+  font-size:15px; font-weight:700; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  box-shadow:0 4px 12px rgba(217,119,87,.3);
+  transition:all .2s ease; align-self:flex-start;
+}
+.fu-scan-btn:hover:not(:disabled){transform:translateY(-1px); box-shadow:0 6px 18px rgba(217,119,87,.45)}
+.fu-scan-btn:disabled{opacity:.7; cursor:not-allowed}
+.fu-scan-btn.is-loading .fu-scan-icon{display:inline-block; animation:fuSpin 1s linear infinite}
+@keyframes fuSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.fu-scan-btn .fu-scan-icon{font-size:18px; line-height:1}
+.fu-scan-status{
+  padding:12px 14px; border-radius:10px;
+  background:#FBF7F0; border:1px solid #EDE5D5;
+  font-size:13px; color:#6B6660; line-height:1.6;
+  display:flex; gap:10px; align-items:center;
+}
+.fu-scan-status.is-err{background:#FEE4E2; border-color:#F8B4A6; color:#991B1B}
+.fu-scan-status.is-ok{background:#E6F4EA; border-color:#A8E4BA; color:#166534}
+.fu-scan-status .fu-spinner{
+  width:14px; height:14px; border:2px solid #D97757; border-top-color:transparent;
+  border-radius:50%; animation:fuSpin .8s linear infinite; flex-shrink:0;
+}
+.fu-scan-results{display:flex; flex-direction:column; gap:10px; margin-top:4px}
+.fu-item{
+  padding:14px 16px; background:#FBF7F0; border:1px solid #EDE5D5;
+  border-radius:12px; border-right:3px solid #D97757;
+}
+.fu-item-head{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:6px;
+}
+.fu-item-date{
+  font-family:ui-monospace,Menlo,Consolas,monospace; font-size:11px; font-weight:700;
+  background:#1F1E1D; color:#FBE3D2; padding:3px 8px; border-radius:6px;
+  letter-spacing:.02em;
+}
+.fu-item-tag{
+  font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+  padding:3px 8px; border-radius:6px;
+}
+.fu-item-tag.tag-model{background:#FEF0E6; color:#C05C3D}
+.fu-item-tag.tag-feature{background:#E0F2FE; color:#075985}
+.fu-item-tag.tag-pricing{background:#FEF3C7; color:#92400E}
+.fu-item-tag.tag-partnership{background:#F3E8FF; color:#6B21A8}
+.fu-item-tag.tag-sdk,.fu-item-tag.tag-code,.fu-item-tag.tag-mcp{background:#DBEAFE; color:#1E40AF}
+.fu-item-tag.tag-incident{background:#FEE4E2; color:#991B1B}
+.fu-item-tag.tag-other{background:#F5F1EC; color:#6B6660}
+.fu-item-title{font-size:15px; font-weight:700; color:#1F1E1D; margin:0 0 6px; line-height:1.4}
+.fu-item-summary{font-size:13px; color:#6B6660; line-height:1.65; margin:0 0 10px}
+.fu-item-footer{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+.fu-item-source{font-size:11px; color:#6B6660; font-family:ui-monospace,Menlo,Consolas,monospace}
+.fu-item-link{
+  font-size:12px; font-weight:700; color:#D97757; text-decoration:none;
+  padding:4px 10px; border:1px solid #F0C3A5; border-radius:6px;
+  transition:all .15s;
+}
+.fu-item-link:hover{background:#FEF0E6; border-color:#D97757}
+.fu-scan-meta{
+  font-size:11px; color:#6B6660; text-align:center; padding-top:10px;
+  border-top:1px dashed #EDE5D5; margin-top:8px; line-height:1.6;
+}
+.fu-scan-meta strong{color:#1F1E1D}
+.fu-scan-meta .fu-refresh{
+  color:#D97757; cursor:pointer; font-weight:700; margin-right:8px;
+  background:none; border:none; padding:0; font-size:inherit; text-decoration:underline;
+}
+body.dark-mode .fu-scan-status{background:#35322D; border-color:#3D3A34; color:#B8B0A5}
+body.dark-mode .fu-scan-status.is-err{background:#3A1F1F; border-color:#5A2F2F; color:#F8B4A6}
+body.dark-mode .fu-item{background:#35322D; border-color:#3D3A34}
+body.dark-mode .fu-item-title{color:#FBE3D2}
+body.dark-mode .fu-item-summary{color:#B8B0A5}
+/* === /Live scan UI === */
+
 /* === /Find Updates === */
 
 .whats-new-btn {
@@ -2728,10 +2808,10 @@ Start your response with exactly this: {"analysis":</div>
 
   <!-- What's New in v16.0 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 22.0 — 24 אפריל 2026 10:00 — מחברים צרכניים חדשים + Post-Mortem באגי איכות!</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 22.1 — 24 אפריל 2026 10:00 — מחברים צרכניים חדשים + Post-Mortem באגי איכות!</div>
     <!-- Banner: Daily Scan Summary v21.1 -->
     <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:12px; padding:18px; margin-bottom:16px; border:3px solid #ffeaa7;">
-      <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 24.04.2026 11:30</div>
+      <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 24.04.2026 13:10</div>
       <div style="font-size:13px; line-height:1.7;">
         המשימה המתוזמנת "Claude Updates Monitor" זיהתה <strong>18 עדכונים משמעותיים</strong> ב-3 השבועות האחרונים (כולל 2 עדכונים חדשים היום: הרחבת Claude Connections למחברים צרכניים (Spotify, Uber Eats, TurboTax, AllTrails, Instacart), ו-Post-Mortem של Anthropic — הודאה ב-3 באגים שפגעו באיכות Claude Code/Agent SDK/Cowork, כולם תוקנו). הפרקים הרלוונטיים עודכנו אוטומטית:
         <br>
@@ -19751,8 +19831,22 @@ body.dark-mode .nav-widget .nav-home {
       </div>
     </div>
 
-    <div class="fu-section">
-      <div class="fu-section-title">&#129302; פרומפט מוכן לסריקה ב-Claude</div>
+    <div class="fu-section" id="fuLiveSection">
+      <div class="fu-section-title">&#9889; סריקה חיה &mdash; Claude + Web Search</div>
+      <div class="fu-live">
+        <div class="fu-live-desc">לחצו כדי להריץ סריקה אמיתית <strong>עכשיו</strong>. Claude ירוץ עם web search על המקורות הרשמיים ויחזיר סיכום מובנה בעברית.</div>
+        <button type="button" class="fu-scan-btn" id="fuScanBtn" onclick="runLiveScan()">
+          <span class="fu-scan-icon">&#128270;</span>
+          <span class="fu-scan-label">הרץ סריקה חיה עכשיו</span>
+        </button>
+        <div class="fu-scan-status" id="fuScanStatus" hidden></div>
+        <div class="fu-scan-results" id="fuScanResults" hidden></div>
+        <div class="fu-scan-meta" id="fuScanMeta" hidden></div>
+      </div>
+    </div>
+
+    <div class="fu-section" id="fuFallbackSection" hidden>
+      <div class="fu-section-title">&#129302; פרומפט לסריקה ידנית ב-Claude</div>
       <div class="fu-prompt">
 <pre id="fuPromptText">חפש ברשת את כל עדכוני Anthropic ו-Claude מהשבוע האחרון. כלול:
 1. הכרזות רשמיות (anthropic.com/news, claude.com/blog)
@@ -19767,7 +19861,7 @@ body.dark-mode .nav-widget .nav-home {
     </div>
 
     <div class="fu-footer">
-      <div>סריקה אוטומטית אחרונה: <strong id="fuLastScan">24.04.2026 11:30</strong></div>
+      <div>סריקה אוטומטית אחרונה: <strong id="fuLastScan">24.04.2026 13:10</strong></div>
       <div class="fu-footer-note">הסריקה האוטומטית רצה כל יום ב-10:00 בבוקר שעון ישראל &middot; 7 ימים בשבוע</div>
     </div>
   </div>
@@ -19842,6 +19936,136 @@ body.dark-mode .nav-widget .nav-home {
     }
   };
 
+  // ---- Live scan (Worker-backed) ----
+  function getWorkerUrl(){
+    var m = document.querySelector('meta[name="claude-scanner-url"]');
+    var u = m ? (m.getAttribute('content') || '').trim() : '';
+    if (!u || u === 'REPLACE_WITH_WORKER_URL') return null;
+    return u.replace(/\/+$/, '');
+  }
+  function hebrewDate(iso){
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d)) return iso;
+    return d.toLocaleString('he-IL', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  }
+  function escapeHtml(s){
+    return String(s||'').replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function renderScanResults(data){
+    var r = document.getElementById('fuScanResults');
+    var meta = document.getElementById('fuScanMeta');
+    if (!r || !meta) return;
+    var items = (data && data.items) || [];
+    if (items.length === 0) {
+      r.innerHTML = '<div class="fu-scan-status">&#8505; אין עדכונים חדשים בשבוע האחרון.</div>';
+    } else {
+      r.innerHTML = items.map(function(it){
+        var tags = (it.tags || []).slice(0, 2).map(function(t){
+          return '<span class="fu-item-tag tag-' + escapeHtml(t) + '">' + escapeHtml(t) + '</span>';
+        }).join('');
+        var link = it.url ? '<a class="fu-item-link" href="' + escapeHtml(it.url) + '" target="_blank" rel="noopener noreferrer">פתח מקור &larr;</a>' : '';
+        return '<div class="fu-item">' +
+          '<div class="fu-item-head">' +
+            '<span class="fu-item-date">' + escapeHtml(it.date || '') + '</span>' +
+            tags +
+          '</div>' +
+          '<div class="fu-item-title">' + escapeHtml(it.title || '') + '</div>' +
+          '<div class="fu-item-summary">' + escapeHtml(it.summary || '') + '</div>' +
+          '<div class="fu-item-footer">' +
+            '<span class="fu-item-source">' + escapeHtml(it.source || '') + '</span>' +
+            link +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+    r.hidden = false;
+    var cacheStr = data && data.cache === 'HIT' ? 'מקאש (עד 30 דק׳)' : 'טריה מ-Claude';
+    meta.innerHTML = 'נטען: <strong>' + cacheStr + '</strong> &middot; ' +
+                     (data && data.count !== undefined ? data.count + ' עדכונים &middot; ' : '') +
+                     hebrewDate(data && data.timestamp) +
+                     ' <button class="fu-refresh" onclick="runLiveScan(true)">רענן</button>';
+    meta.hidden = false;
+  }
+  var fuAbortCtrl = null;
+  window.runLiveScan = function(force){
+    var worker = getWorkerUrl();
+    if (!worker){
+      // Show fallback section
+      var fb = document.getElementById('fuFallbackSection');
+      var live = document.getElementById('fuLiveSection');
+      if (fb) fb.hidden = false;
+      if (live) live.hidden = true;
+      return;
+    }
+    if (fuAbortCtrl) { try { fuAbortCtrl.abort(); } catch(e){} }
+    fuAbortCtrl = new AbortController();
+    var btn = document.getElementById('fuScanBtn');
+    var status = document.getElementById('fuScanStatus');
+    var results = document.getElementById('fuScanResults');
+    var meta = document.getElementById('fuScanMeta');
+    if (results) { results.hidden = true; results.innerHTML = ''; }
+    if (meta) meta.hidden = true;
+    if (btn) { btn.disabled = true; btn.classList.add('is-loading'); }
+    if (status){
+      status.hidden = false;
+      status.className = 'fu-scan-status';
+      status.innerHTML = '<span class="fu-spinner"></span>Claude מחפש במקורות הרשמיים וברשת... זה עשוי לקחת 10-30 שניות.';
+    }
+    var url = worker + '/scan' + (force ? '?fresh=1' : '');
+    fetch(url, {
+      method: 'POST',
+      signal: fuAbortCtrl.signal,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fresh: !!force }),
+    })
+    .then(function(r){ return r.json().then(function(j){ return { status: r.status, body: j }; }); })
+    .then(function(res){
+      if (!res.body || !res.body.ok){
+        var msg = (res.body && res.body.message) || ('שגיאה ' + res.status);
+        if (status){
+          status.className = 'fu-scan-status is-err';
+          status.innerHTML = '&#9888; ' + escapeHtml(msg);
+        }
+      } else {
+        if (status){
+          status.className = 'fu-scan-status is-ok';
+          status.innerHTML = '&#10004; נמצאו ' + res.body.count + ' עדכונים.';
+        }
+        renderScanResults(res.body);
+      }
+    })
+    .catch(function(e){
+      if (e && e.name === 'AbortError') return;
+      if (status){
+        status.className = 'fu-scan-status is-err';
+        status.innerHTML = '&#9888; שגיאת רשת: ' + escapeHtml(String(e));
+      }
+    })
+    .finally(function(){
+      if (btn) { btn.disabled = false; btn.classList.remove('is-loading'); }
+      fuAbortCtrl = null;
+    });
+  };
+  // Hide live section and show fallback if Worker URL not configured — on first modal open.
+  var _origOpen = window.openFindUpdates;
+  window.openFindUpdates = function(){
+    if (typeof _origOpen === 'function') _origOpen();
+    if (!getWorkerUrl()){
+      var fb = document.getElementById('fuFallbackSection');
+      var live = document.getElementById('fuLiveSection');
+      if (fb) fb.hidden = false;
+      if (live) live.hidden = true;
+    } else {
+      var fb2 = document.getElementById('fuFallbackSection');
+      var live2 = document.getElementById('fuLiveSection');
+      if (fb2) fb2.hidden = true;
+      if (live2) live2.hidden = false;
+    }
+  };
+  // ---- /Live scan ----
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') {
       var m = document.getElementById('findUpdatesModal');
