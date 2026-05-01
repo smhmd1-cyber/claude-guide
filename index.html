@@ -19624,6 +19624,9 @@ function printAll(){
 (function(){
   var mainContent = document.querySelector('.main-content');
   if(!mainContent) return;
+  // Idempotency guard: a static chapter-glossary already exists in the
+  // HTML (richer version with categories). Don't duplicate the ID.
+  if(document.getElementById('chapter-glossary')) return;
 
   var glossDiv = document.createElement('div');
   glossDiv.id = 'chapter-glossary';
