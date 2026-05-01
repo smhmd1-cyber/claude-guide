@@ -17903,7 +17903,7 @@ Every test should have exactly one logical assertion.</div>
 
 <script>
 // ===== NAVIGATION =====
-const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','glossary'];
+const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','bug-detection','crm-full-guide','infographics-mastery','infographics-toolkit','infographics-wisdom','matnas-full-arch','opus47-prompts','opus47-release','social-media','glossary'];
 
 function goTo(id) {
   // Hide cover page if still visible
@@ -17942,7 +17942,8 @@ function goTo(id) {
   window.scrollTo({top: 0, behavior: 'smooth'});
   // Auto-hide sidebar on every chapter/sub-chapter click (v21.5)
   if (window.innerWidth <= 768) {
-    document.getElementById('sidebar').classList.remove('open');
+    var _sb = document.getElementById('sidebar');
+    if (_sb) _sb.classList.remove('open');
   } else {
     document.body.classList.add('sidebar-hidden');
     var _tbtn = document.getElementById('sidebarToggle');
@@ -17959,6 +17960,7 @@ function toggleSidebar() {
 function toggleSidebarDesktop() {
   document.body.classList.toggle('sidebar-hidden');
   var btn = document.getElementById('sidebarToggle');
+  if (!btn) return;
   if (document.body.classList.contains('sidebar-hidden')) {
     btn.innerHTML = '&#9654;'; // arrow pointing left (open)
   } else {
@@ -18035,21 +18037,33 @@ function closeSearchForce() {
 
 function performSearch(query) {
   const results = document.getElementById('searchResults');
+  if (!results) return;
   if (query.length < 2) { results.innerHTML = ''; return; }
 
-  let html = '';
-  const q = query.toLowerCase();
+  // B6 — escape regex meta chars in user input
+  var qRaw = String(query);
+  var qEscaped = qRaw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  var qLower = qRaw.toLowerCase();
+  var rx;
+  try { rx = new RegExp(qEscaped, 'gi'); } catch(_e) { rx = null; }
 
+  // B7 — HTML-escape every dynamic value before injecting into innerHTML
+  function esc(s){ return String(s||'').replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });}
+
+  let html = '';
   chapters.forEach(c => {
     const data = searchContent[c];
-    if (data && data.text.toLowerCase().includes(q)) {
-      const idx = data.text.toLowerCase().indexOf(q);
+    if (data && data.text.toLowerCase().includes(qLower)) {
+      const idx = data.text.toLowerCase().indexOf(qLower);
       const start = Math.max(0, idx - 40);
       const end = Math.min(data.text.length, idx + 60);
-      const snippet = '...' + data.text.substring(start, end).replace(new RegExp(query, 'gi'), '<mark>$&</mark>') + '...';
-
-      html += '<div class="search-result-item" onclick="goTo(\'' + c + '\'); closeSearchForce();">' +
-        '<div class="search-result-title">' + data.title + '</div>' +
+      // 1) escape the raw substring; 2) wrap matches with <mark> on the escaped text
+      const safeRaw = esc(data.text.substring(start, end));
+      const snippet = '...' + (rx ? safeRaw.replace(rx, '<mark>$&</mark>') : safeRaw) + '...';
+      html += '<div class="search-result-item" onclick="goTo(\'' + esc(c) + '\'); closeSearchForce();">' +
+        '<div class="search-result-title">' + esc(data.title) + '</div>' +
         '<div class="search-result-snippet">' + snippet + '</div>' +
       '</div>';
     }
@@ -18066,18 +18080,42 @@ document.addEventListener('keydown', e => {
   }
   if (e.key === 'Escape') closeSearchForce();
 });
+/* B19-darkMode-restore */
+(function(){
+  try {
+    if (localStorage.getItem('darkMode') === '1' && !window.__darkRestored) {
+      window.__darkRestored = true;
+      document.addEventListener('DOMContentLoaded', function(){
+        if (!document.body.classList.contains('dark-mode')) {
+          if (typeof toggleDarkMode === 'function') toggleDarkMode();
+        }
+      });
+    }
+  } catch(_e) {}
+})();
 
-// ===== BACK TO TOP =====
-window.addEventListener('scroll', () => {
-  const btn = document.getElementById('backToTop');
-  btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
 
-  // Reading progress
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-  document.getElementById('progressBar').style.width = scrolled + '%';
-});
+// ===== BACK TO TOP (B5+B23 — null-safe + rAF-throttled) =====
+(function(){
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var btn = document.getElementById('backToTop');
+      if (btn) btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+      var bar = document.getElementById('progressBar');
+      if (bar) {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        bar.style.width = scrolled + '%';
+      }
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
 
 function scrollToTop() {
   window.scrollTo({top: 0, behavior: 'smooth'});
@@ -18086,6 +18124,10 @@ function scrollToTop() {
 // ===== DARK MODE =====
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
+  // B19 — persist preference
+  try {
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? '1' : '0');
+  } catch(_e) {}
   if (document.body.classList.contains('dark-mode')) {
     document.body.style.background = '#0f172a';
     document.body.style.color = '#e2e8f0';
@@ -18979,8 +19021,10 @@ let AI_CONNECTED = false;
     AI_WEB_SEARCH = localStorage.getItem('ai_web_search') !== 'false';
     if (AI_API_KEY) {
       setTimeout(() => {
-        document.getElementById('aiApiKey').value = AI_API_KEY;
-        document.getElementById('aiWebSearch').checked = AI_WEB_SEARCH;
+        var keyEl = document.getElementById('aiApiKey');
+        var wsEl  = document.getElementById('aiWebSearch');
+        if (keyEl) keyEl.value = AI_API_KEY;
+        if (wsEl)  wsEl.checked = AI_WEB_SEARCH;
         updateOnlineBadge(true);
         AI_CONNECTED = true;
       }, 500);
@@ -18999,10 +19043,11 @@ function saveAISettings() {
 }
 
 function updateOnlineBadge(online) {
+  AI_CONNECTED = online;
   const badge = document.getElementById('aiOnlineBadge');
+  if (!badge) return;
   badge.className = 'ai-online-badge ' + (online ? 'online' : 'offline');
   badge.textContent = online ? 'ONLINE' : 'OFFLINE';
-  AI_CONNECTED = online;
 }
 
 function toggleAISettings() {
@@ -19043,7 +19088,7 @@ async function testAIConnection() {
 
 function toggleAI() {
   const panel = document.getElementById('aiPanel');
-  panel.classList.toggle('open');
+  if (panel) panel.classList.toggle('open');
 }
 
 function switchAITab(tabId, btn) {
@@ -19063,9 +19108,8 @@ function sendAIMsg() {
 
 async function askAI(question) {
   const messages = document.getElementById('aiChatMessages');
-  messages.innerHTML += '<div class="ai-msg user">' + escHtml(question) + '</div>';
-  messages.innerHTML += '<div class="ai-msg bot" id="typingMsg"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>';
-  messages.scrollTop = messages.scrollHeight;
+  _aiAppend('<div class="ai-msg user">' + escHtml(question) + '</div>');
+  _aiAppend('<div class="ai-msg bot" id="typingMsg"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>');
   switchAITab('chat', document.querySelector('.ai-tab'));
 
   // Step 1: Try local KB
@@ -19073,8 +19117,7 @@ async function askAI(question) {
   if (localAnswer) {
     await sleep(400 + Math.random() * 400);
     document.getElementById('typingMsg')?.remove();
-    messages.innerHTML += '<div class="ai-msg bot">' + localAnswer + '<div class="ai-source local">&#128218; מקור: מאגר המדריך המקומי</div></div>';
-    messages.scrollTop = messages.scrollHeight;
+    _aiAppend('<div class="ai-msg bot">' + localAnswer + '<div class="ai-source local">&#128218; מקור: מאגר המדריך המקומי</div></div>');
     return;
   }
 
@@ -19084,8 +19127,7 @@ async function askAI(question) {
       document.getElementById('typingMsg').innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div><div style="font-size:11px;color:#888;margin-top:4px;">&#127760; מחפש תשובה באינטרנט...</div>';
       const onlineAnswer = await askGeminiAPI(question);
       document.getElementById('typingMsg')?.remove();
-      messages.innerHTML += '<div class="ai-msg bot">' + onlineAnswer + '<div class="ai-source online">&#127760; מקור: AI Online (Gemini)</div></div>';
-      messages.scrollTop = messages.scrollHeight;
+      _aiAppend('<div class="ai-msg bot">' + onlineAnswer + '<div class="ai-source online">&#127760; מקור: AI Online (Gemini)</div></div>');
       return;
     } catch(e) {
       console.warn('Gemini API error:', e);
@@ -19108,8 +19150,7 @@ async function askAI(question) {
   if (!AI_API_KEY) {
     fallbackHtml += '<div style="margin-top:10px;padding:8px;background:#1a1a2e;border-radius:8px;font-size:11px;color:#818cf8;">&#128161; <strong>טיפ:</strong> חבר מפתח API (לחץ &#9881;) ואוכל לענות על כל שאלה!</div>';
   }
-  messages.innerHTML += '<div class="ai-msg bot">' + fallbackHtml + '</div>';
-  messages.scrollTop = messages.scrollHeight;
+  _aiAppend('<div class="ai-msg bot">' + fallbackHtml + '</div>');
 }
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
@@ -19160,6 +19201,17 @@ async function askGeminiAPI(question) {
 function escHtml(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
+/* B8-ai-msg-helper — append message without rebuilding the tree */
+function _aiAppend(html){
+  var box = document.getElementById('aiChatMessages');
+  if (!box) return null;
+  var tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  var node = tmp.firstElementChild;
+  if (node) { box.appendChild(node); box.scrollTop = box.scrollHeight; }
+  return node;
+}
+
 
 // ===== KNOWLEDGE BASE =====
 const KB = {
