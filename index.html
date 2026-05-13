@@ -1060,10 +1060,10 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
     <span>מדריך חכם אינטראקטיבי — ניהול עם Claude</span>
   </div>
   <div class="header-actions">
-    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 13.05.2026 10:00 — v23.3 — Claude For Legal + Claude Platform on AWS GA + SAP Business AI + Claude Code v2.1.140+ + Anthropic Evil-Portrayals research — תקציר v23.2: Claude Code v2.1.139 (/goal, agent view, /scroll-speed) + Managed Agents — dreaming + multiagent orchestration + SpaceX 300MW compute deal + Pro/Max/Team rate limits כפול + Agents for Financial Services + Microsoft 365 full + Moody's MCP + $30B annualized revenue (80x growth) + Mythos EU holdout">
+    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 13.05.2026 11:30 — v23.4 מהדורה גאונית — 7 פרקים חדשים מ-14 PDFs: 12 דברים מטורפים של Claude + Skill Top 1% + 9 פרומפטים סניור + Claude Design 5 שימושים + Easy Website 7 שלבים + Opus 4.7 7 פרומפטים + 3 מודולים גאוניים למתנ&quot;ס">
       <span class="whats-new-pulse"></span>
       &#128226; מה חדש
-      <span class="whats-new-badge">63</span>
+      <span class="whats-new-badge">70</span>
     </button>
     <button class="header-btn find-updates-btn" onclick="openFindUpdates()" title="חפש עדכוני Anthropic/Claude ברשת — מקורות רשמיים + גוגל/רדיט/X/YouTube + פרומפט ל-Claude">&#128270; חפש עדכונים</button>
     <button class="header-btn" onclick="openSearch()">&#128269; חיפוש</button>
@@ -1532,6 +1532,19 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
     </div>
 
     <div class="nav-group">
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#10024; טז. עדכון 13 מאי 2026 — v23.4 מהדורה גאונית <span class="group-count">7</span></div>
+      <div class="nav-items-wrap">
+        <div class="nav-item" onclick="goTo('claude-12-crazy')"><span class="nav-icon">🚨</span> 12 דברים מטורפים של Claude <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('skill-top1')"><span class="nav-icon">🔥</span> Skill Top 1% — 6 צעדים <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('senior-engineering')"><span class="nav-icon">🛠</span> 9 פרומפטים סניור <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('claude-design-5')"><span class="nav-icon">🎨</span> Claude Design — 5 שימושים <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('easy-website-workflow')"><span class="nav-icon">🌐</span> Easy Website — 7 שלבים <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('opus47-power-7')"><span class="nav-icon">⚡</span> Opus 4.7 — 7 פרומפטים מסטר <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('matnas-system-reqs')"><span class="nav-icon">🏘️</span> דרישות מערכת — 3 מודולים <span class="nav-badge">חדש</span></div>
+      </div>
+    </div>
+
+    <div class="nav-group">
       <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128202; טו. 12 אינפוגרפיקות חכמה — 20 אפריל 2026 <span class="group-count">3</span></div>
       <div class="nav-items-wrap">
         <div class="nav-item" onclick="goTo('infographics-wisdom')"><span class="nav-icon">📊</span> חכמת האינפוגרפיקות (1-3) <span class="nav-badge">חדש</span></div>
@@ -1562,7 +1575,7 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
   <div class="cover-particles" id="coverParticles"></div>
   <div class="cover-content">
     <div class="cover-logo">&#128218;</div>
-    <div class="cover-badge">&#10024; עדכון 13 מאי 2026 | 10:00 &mdash; גרסה 23.3 — סריקת עדכונים יומית: Claude Code v2.1.139 — /goal, agent view (Research Preview), /scroll-speed; Managed Agents — dreaming + multiagent orchestration; SpaceX 300MW compute deal — Claude Code rate limits כפול ל-Pro/Max/Team/Enterprise; Agents for Financial Services + Microsoft 365 full + Moody's MCP partnership; $30B annualized revenue (פי 80 ברבעון); Mythos EU holdout</div>
+    <div class="cover-badge">&#10024; עדכון 13 מאי 2026 | 11:30 &mdash; גרסה 23.4 — סריקת עדכונים יומית: Claude Code v2.1.139 — /goal, agent view (Research Preview), /scroll-speed; Managed Agents — dreaming + multiagent orchestration; SpaceX 300MW compute deal — Claude Code rate limits כפול ל-Pro/Max/Team/Enterprise; Agents for Financial Services + Microsoft 365 full + Moody's MCP partnership; $30B annualized revenue (פי 80 ברבעון); Mythos EU holdout</div>
     <h1 class="cover-title">מדריך חכם אינטראקטיבי<br>ניהול עם Claude AI</h1>
     <p class="cover-subtitle">מערכת ידע מלאה לניהול תוכניות קהילתיות, תיאטרון, שיווק ומכירות, דשבורדים ו-AI &mdash; מהחזון ועד לייצור. הכל במקום אחד.</p>
 
@@ -1641,7 +1654,7 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
       <div style="font-size:36px; line-height:1;">📢</div>
       <div style="flex:1;">
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
-          <span style="background:rgba(255,255,255,0.25); padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.5px;">גרסה 23.3</span>
+          <span style="background:rgba(255,255,255,0.25); padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.5px;">גרסה 23.4</span>
           <span style="background:rgba(255,255,255,0.15); padding:4px 12px; border-radius:20px; font-size:11px;">סריקת עדכונים יומית</span>
           <span style="font-size:12px; opacity:0.9;">12.05.2026 · 08:43</span>
         </div>
@@ -2707,7 +2720,7 @@ Start your response with exactly this: {"analysis":</div>
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 23.3 | מעודכן 13 מאי 2026 | 10:00 | סריקת עדכונים יומית — Claude Code v2.1.139 + Managed Agents (dreaming + multiagent orchestration) + SpaceX 300MW compute (rate limits כפול) + Agents for Financial Services + Microsoft 365 full + Moody's MCP + $30B annualized revenue + Mythos EU holdout</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 23.4 | מעודכן 13 מאי 2026 | 11:30 | סריקת עדכונים יומית — Claude Code v2.1.139 + Managed Agents (dreaming + multiagent orchestration) + SpaceX 300MW compute (rate limits כפול) + Agents for Financial Services + Microsoft 365 full + Moody's MCP + $30B annualized revenue + Mythos EU holdout</p>
   </div>
 
   <div class="stats-grid">
@@ -2807,7 +2820,7 @@ Start your response with exactly this: {"analysis":</div>
 
   <!-- What's New in v16.0 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 23.3 — 13 מאי 2026 10:00 — Claude For Legal (Westlaw + 12 פלאגינים) + Claude Platform on AWS GA + SAP Business AI Platform + Claude Code v2.1.140+ (--plugin-url + worktree.baseRef + hard deny) + Anthropic Evil-Portrayals research + Claude Code v2.1.139 (/goal + agent view + /scroll-speed) + Managed Agents (dreaming + multiagent orchestration) + SpaceX 300MW compute deal (rate limits כפול) + Agents for Financial Services + Microsoft 365 full + Moody's MCP + $30B annualized revenue (80x) + Mythos EU holdout</div>
+    <div class="card-title">&#128293; מה חדש בגרסה 23.4 — 13 מאי 2026 11:30 — מהדורה גאונית: 7 פרקים חדשים מ-14 PDFs — 12 דברים מטורפים של Claude + Skill Top 1% Framework + 9 פרומפטים סניור + Claude Design 5 שימושים + Easy Website 7 שלבים + Opus 4.7 — 7 פרומפטים שמריצים עסק על Autopilot + דרישות מערכת המתנ&quot;ס (3 מודולים: מדריך לפי תפקיד + שאלונים ערבית עם QR + דוחות רשמיים) </div>
     <!-- Banner: Daily Scan Summary v21.1 -->
     <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:12px; padding:18px; margin-bottom:16px; border:3px solid #ffeaa7;">
       <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 24.04.2026 13:10</div>
@@ -4744,7 +4757,7 @@ Start your response with exactly this: {"analysis":</div>
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.3 | מעודכן 13 מאי 2026 | 10:00 | סריקת עדכונים יומית</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.4 | מעודכן 13 מאי 2026 | 11:30 | סריקת עדכונים יומית</p>
   </div>
 
   <div class="chapter-nav">
@@ -5698,7 +5711,7 @@ Start your response with exactly this: {"analysis":</div>
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.3 מורחבת | 13 מאי 2026 | 10:00 | 93 פרקים ב-15 חלקים | 340+ פרומפטים | 15 אזורי ידע | Opus 4.7 + Sonnet 4.8 (צפוי) + Claude Security (Public Beta) + Claude for Creative Work + Claude Partner Network ($100M) + Claude Certified Architect + Claude Code v2.1.139 (/goal + agent view) + Managed Agents dreaming + SpaceX 300MW + Financial Services agents + MS 365 full + Moody's MCP + סריקת עדכונים יומית</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.4 מורחבת | 13 מאי 2026 | 11:30 | 93 פרקים ב-15 חלקים | 340+ פרומפטים | 15 אזורי ידע | Opus 4.7 + Sonnet 4.8 (צפוי) + Claude Security (Public Beta) + Claude for Creative Work + Claude Partner Network ($100M) + Claude Certified Architect + Claude Code v2.1.139 (/goal + agent view) + Managed Agents dreaming + SpaceX 300MW + Financial Services agents + MS 365 full + Moody's MCP + סריקת עדכונים יומית</p>
   </div>
 
   <div class="chapter-nav">
@@ -10536,6 +10549,10 @@ dashboard-php/
     <h3>&#128197; ציר זמן — 2026</h3>
     <div style="position:relative; padding-right:30px; margin-top:16px;">
       <div style="position:absolute; right:10px; top:0; bottom:0; width:3px; background:linear-gradient(#d63031,#fdcb6e,#00b894);"></div>
+      <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#0c4a6e,#10b981); color:white; border-radius:10px; margin-right:20px; border:3px solid #fef3c7;">
+        <strong>&#127881; 13 מאי (היום, סריקה 11:30) — מהדורה גאונית v23.4 — 7 פרקים חדשים מתוך 14 PDFs:</strong> סיכום ידע מקיף שעולה מ-14 PDFs שהועלו על ידי המשתמש בבוקר 13/5: <strong>(1)</strong> פרק 94 — <em>12 דברים מטורפים ש-Claude עושה</em> שרוב האנשים עוד לא הבינו; <strong>(2)</strong> פרק 95 — <em>Skill Top 1% Framework</em> — 6 צעדים לבניית Skill עצמית-לומדת (trigger מדויק → progressive disclosure → self-learning loop); <strong>(3)</strong> פרק 96 — <em>Production Engineering</em> — 9 פרומפטים סניור (Production Feature Dev, Senior Debug, Refactor, Performance — חוסך 40% מחשבון Server, Clean Architecture, Multi-Agent Workflow, UI Components); <strong>(4)</strong> פרק 97 — <em>Claude Design 5 שימושים</em>: Code-Based Animated Videos, Video-to-Deck Hack, Interactive Landing Pages, Auto-Playtested Mobile Apps, Complete Design Systems; <strong>(5)</strong> פרק 98 — <em>Easy Website Workflow</em> — 7 שלבים מ-0 ל-Live עם Claude Design + Claude Code + Midjourney + Cloudflare; <strong>(6)</strong> פרק 99 — <em>Opus 4.7 — 7 פרומפטים שמריצים עסק על Autopilot</em> (Chief of Staff, Messy Data→Report, Content Calendar, Client Onboarding, Competitor Analysis, SOPs Generator, AI Business Coach); <strong>(7)</strong> פרק 100 — <em>דרישות מערכת המתנ&quot;ס</em> — 3 מודולים גאוניים: מדריך משתמש דיגיטלי לפי תפקיד (מנכ&quot;ל/מחלקות/רכזים/עוגנים), מחולל שאלונים+טפסים בערבית עם QR מותג, ומחולל דוחות רשמי בעברית (משרדי ממשלה + פיס + קרן ברכה + עירייה).
+      </div>
+      
       <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#7c2d12,#dc2626); color:white; border-radius:10px; margin-right:20px; border:3px solid #fef3c7;">
         <strong>&#9876;&#65039; 12 מאי (אתמול, נסרק 13/5 10:00) — Claude For Legal — השקה רשמית: Thomson Reuters Westlaw + Practical Law + 12 פלאגינים משפטיים:</strong> Anthropic השיקה רשמית ב-12/5 את <strong>Claude For Legal</strong> — חבילה ייעודית שעשויה לעצב מחדש את שוק ה-LegalTech ולמקם את Anthropic במרכז ה-vertical המשפטי. <strong>מה כולל:</strong> (1) <strong>גישה ישירה מ-Claude ל-Thomson Reuters Westlaw Primary Law</strong> — מאגר court records ומסמכי מקור; (2) <strong>Practical Law guides</strong> — מדריכי פרקטיקה משפטית בתוך Claude; (3) <strong>12 פלאגינים משפטיים</strong> חדשים: <em>commercial counsel, employment counsel, litigation associate, law student</em> ועוד; (4) חיבורים מאובטחים ל-platforms של צד שלישי — Thomson Reuters לאיתור פסיקה, document management, ו-AI products משפטיים אחרים. <strong>השלכה אסטרטגית:</strong> Anthropic תוקפת ישירות את שוק ה-LegalTech עם partner מספר 1 בענף (Thomson Reuters). הצפי: חדירה לתוך 250 משרדי עורכי הדין הגדולים בארה"ב תוך 6 חודשים. <a href="https://www.artificiallawyer.com/2026/05/12/claude-for-legal-launches-may-reshape-the-legal-tech-world/" target="_blank" style="color:#fde68a;">[Artificial Lawyer]</a> <a href="https://valawyersweekly.com/2026/05/12/anthropic-expands-claude-ai-tools-thomson-reuters-law-firms/" target="_blank" style="color:#fde68a;">[VA Lawyers Weekly]</a> <a href="https://claude.com/solutions/legal" target="_blank" style="color:#fde68a;">[claude.com/legal]</a>
       </div>
@@ -17402,6 +17419,636 @@ Every test should have exactly one logical assertion.</div>
 </div>
 
 <!-- ====== CHAPTER: SOCIAL MEDIA ====== -->
+<!-- ====== CHAPTER 94: 12 CRAZY CLAUDE THINGS ====== -->
+<div class="chapter" id="chapter-claude-12-crazy">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 94 — חדש &#128680;</div>
+    <h1 class="chapter-title">&#128680; 12 דברים מטורפים ש-Claude יודע לעשות — ש-90% מהאנשים עוד לא הבינו</h1>
+    <p class="chapter-subtitle">אם אתה עדיין חושב ש-Claude הוא רק Chatbot — אתה לפחות שנה אחורה. מה שמתחת זה לא פיצ&apos;רים — זה תחליף לצוותי עבודה שלמים.</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #d63031;">
+    <div class="box-title">&#128293; השאלה האמיתית</div>
+    אתה עדיין משתמש ב-Claude כ-<strong>Tool</strong>... או התחלת להשתמש בו כ-<strong>Employee + מערכת מלאה</strong>? ההבדל יקבע אם תקדים את השוק או שתישאר מאחור.
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">1&#65039;&#8419; אתר אינטרנט מלא — ללא שורת קוד</div>
+    <p>כותב לו במילים מה שיש בראש, והוא הופך את זה ל-<strong>Website Live שעובד</strong>. לא mock-up — אתר אמיתי, ניתן לפריסה.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">2&#65039;&#8419; משתמש במחשב שלך במקומך</div>
+    <p>פותח Apps, מבצע פעולות, מעדכן קבצים — <em>בזמן שאתה לא נמצא</em>. סוכן שעובד בלילה בזמן שאתה ישן.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">3&#65039;&#8419; פקודות חכמות (Skills) שמריצות Workflow שלם</div>
+    <p>כותב report? linkedin post? Skill אחד מבצע את כל ה-workflow לבד. אתה מקליד trigger אחד — הוא עושה את השאר.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #e17055;">
+    <div class="card-title">4&#65039;&#8419; Presentation מלאה עם מחקר — בצעד אחד</div>
+    <p>לא רק slides ריקות. <strong>Research + Structure + Design</strong> ב-prompt אחד. נושא → מצגת מקצועית מוכנה.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">5&#65039;&#8419; Tasks אוטומטיים — כל יום, כל שבוע</div>
+    <p>הוא זוכר, מריץ ב-cron יומי או שבועי, מבלי שתצטרך לזכור. תזמון = שילוח עבודה ל-Claude לפי לוח-זמנים.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #d63031;">
+    <div class="card-title">6&#65039;&#8419; Excel Sheets + Dashboards מלאים — מתיאור</div>
+    <p>"תעשה Dashboard מכירות" → ניתוח מלא, גרפים, KPI, נוסחאות מוכנות. בלי לפתוח Excel.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">7&#65039;&#8419; חיבור לכל הכלים שלך — Gmail, Notion, Drive, Slack</div>
+    <p>נכנס ל-data שלך כאילו הוא עובד אצלך. קורא, כותב, שולח, מנהל — בלי copy-paste.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #7c3aed;">
+    <div class="card-title">8&#65039;&#8419; משתמש בו כ-&quot;עובד AI&quot; אמיתי</div>
+    <p>נכנס לקבצים שלך, שואל אותך שאלות, ומחזיר Reports ו-Deliverables — לא רק תשובות.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #14b8a6;">
+    <div class="card-title">9&#65039;&#8419; Memory לפרויקטים</div>
+    <p>"תמשיך מהעבודה של שבוע שעבר" — והוא <em>מבין הכל</em>. הקשר נשמר בין sessions ובין שיחות.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">10&#65039;&#8419; Plugins — מסגרת מוכנה לכל תחום</div>
+    <p>Marketing? Data? Sales? כל תחום עם Workflow מוכן. מתקין plugin → מקבל סוכן מתמחה מיד.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">11&#65039;&#8419; שואל אותך — במקום שתשאל אותו</div>
+    <p>במקום שתבזבז זמן על Prompt — <strong>הוא</strong> מוביל אותך לתוצאה הטובה. שואל את השאלות הנכונות.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">12&#65039;&#8419; מעצב כל דבר — Live בדקות</div>
+    <p>Landing Page? Pitch Deck? Logo? אתר? הכל Live בתוך דקות. לא תיאור — מוצר.</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #991b1b; margin-top:24px;">
+    <div class="box-title">&#9888; האמת שאיש לא אומר</div>
+    האנשים שמתייחסים ל-Claude כ-<em>Chatbot</em> — יתחלפו בקרוב מאוד.<br>
+    האנשים שמשתמשים בו כ-<em>מערכת הפעלה שלמה</em> — יקדימו את השוק לחלוטין.
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('bug-detection')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('skill-top1')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 95: SKILL TOP 1% FRAMEWORK ====== -->
+<div class="chapter" id="chapter-skill-top1">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 95 — חדש &#128293;</div>
+    <h1 class="chapter-title">&#128293; Skill Top 1% — 6 צעדים לבניית Skill עצמית-לומדת</h1>
+    <p class="chapter-subtitle">איך ה-1% העליון בונה Skills שמשתפרות לבד — מהדק את ה-trigger, מאמן progressive disclosure, ומריץ self-learning loop</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">&#128218; Step 1 — הפעל את ה-Skill Creator</div>
+    <p>אל תבנה מאפס. תן ל-Claude לבצע את ה-heavy lifting:</p>
+    <ul>
+      <li>פתח <strong>Claude Cowork</strong> ובחר את תיקיית הפרויקט שלך</li>
+      <li>בחר <strong>Opus 4.7 + Extended Thinking</strong></li>
+      <li>הקלד: <em>&quot;Use the skill-creator to help me build a skill for [המשימה שאתה חוזר עליה הכי הרבה]&quot;</em></li>
+    </ul>
+    <p>זה מפעיל את ה-builder, שיתחיל לשאול אותך שאלות מפורטות על ה-workflow.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">&#128203; Step 2 — הגדר את Core Framework (4 דברים)</div>
+    <p>כשעונים ל-Skill-creator, אתם בעצם בונים את קובץ ה-<code>skill.md</code> המרכזי. כדי להיות ב-1% העליון, ודא שאתה מגדיר את 4 הדברים האלה במדויק:</p>
+    <ol>
+      <li><strong>Trigger</strong> — בדיוק אילו מילים תקליד כדי להפעיל את ה-Skill</li>
+      <li><strong>Objective</strong> — מטרה במשפט אחד של מה ה-Skill משיג</li>
+      <li><strong>Process</strong> — הוראות step-by-step (Step 1: Parse request, Step 2: Web Search, Step 3: Format)</li>
+      <li><strong>Output</strong> — אמור ל-Claude תמיד לתת <em>multiple variations</em> לבחירה (human-in-the-loop), לא רק output יחיד</li>
+    </ol>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">&#128293; Step 3 — Secret Sauce: Reference Files</div>
+    <p>רוב האנשים מסתמכים רק על <code>skill.md</code>. זו טעות. הכוח האמיתי מגיע מ-<strong>context files</strong>:</p>
+    <ul>
+      <li>צור text document עם <em>Brand Voice</em>, <em>Ideal Customer Profile (ICP)</em>, או <em>Formatting Style Guides</em></li>
+      <li>הזן אותם ל-Skill-creator והנחה את ה-skill לקרוא אותם תמיד <em>לפני</em> שהוא מייצר output</li>
+      <li>בזכות <strong>Progressive Disclosure</strong>, Claude טוען קבצים אלה ל-memory רק כשה-skill מופעל — מונע context overload</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">&#9989; Step 4 — הרץ את ה-Eval (אל תדלג!)</div>
+    <p>Claude יוצר אוטומטית מבחן הערכה ל-Skill החדש שלך. לחץ <em>&quot;View the eval results&quot;</em>. זה בודק את ה-setup לפני התקנה. רוב האנשים מדלגים — וזו בדיוק הסיבה שה-Skills שלהם נשברים ב-production.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #d63031;">
+    <div class="card-title">&#128640; Step 5 — Install &amp; Debug</div>
+    <ul>
+      <li>Settings → Capabilities → Skills → Upload</li>
+      <li>פתח chat חדש לגמרי ובדוק את ה-trigger phrase. הופעל? אתה Live.</li>
+      <li>עכשיו הקלד בקשה אקראית לא קשורה — ה-Skill <em>צריך</em> לשתוק. אם הוא מופעל על משימות לא נכונות, ה-trigger description שלך מעורפל מדי. בקש מ-Claude לקרוא לך את ה-description ולעדן אותו</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">&#129504; Step 6 — Self-Learning Hack (כך מנצחים את 99%)</div>
+    <p>Skills לא חייבים להיות סטטיים. הוסף בסעיף ה-rules את ההוראה הזו:</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">"If the user approves a final outcome, automatically save that output as a good example in the reference files, and update the rule section with what worked."</div>
+    <p style="margin-top:10px;">זה יוצר <strong>continuous self-learning loop</strong>. ככל שתשתמש ב-Skill יותר, הוא יאסוף יותר data על איך &quot;טוב&quot; נראה — וייטב עם הזמן. עברת מ-repeating prompts יומיומיים לבניית <em>custom, self-improving AI infrastructure</em> שמסקלת את המומחיות שלך.</p>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('claude-12-crazy')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('senior-engineering')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 96: SENIOR ENGINEERING PROMPTS ====== -->
+<div class="chapter" id="chapter-senior-engineering">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 96 — חדש &#128640;</div>
+    <h1 class="chapter-title">&#128736; Production Engineering — 9 פרומפטים סניור שכל מפתח חייב</h1>
+    <p class="chapter-subtitle">פרומפטים שמהנדסים בכירים משתמשים בהם בכל יום — production features, debugging, refactoring, performance, multi-agent workflows</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #6c5ce7;">
+    <div class="box-title">&#128218; איך להשתמש</div>
+    כל פרומפט הוא תבנית מוכנה לפעולה. הוסף את הקוד או הקונטקסט שלך, ו-Claude מחזיר תוצאות ברמת senior engineer — לא boilerplate.
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">1&#65039;&#8419; Production-Grade Feature Developer</div>
+    <p><strong>מתי:</strong> כשרוצים feature אמיתי שנמסר ל-production, לא רק demo.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Act as a senior software engineer shipping a production feature.
+
+Before writing code:
+- analyze requirements
+- identify edge cases
+- define architecture
+- propose a plan
+
+Return:
+- architecture summary
+- folder structure
+- data flow
+- full implementation
+- edge case handling
+- error management
+- performance review</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #d63031;">
+    <div class="card-title">2&#65039;&#8419; Senior Debugging Engineer</div>
+    <p><strong>מתי:</strong> כשיש באג ב-production וצריך root cause + fix robust.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Act as a senior engineer investigating a bug in production.
+
+- analyze the code carefully
+- think step by step
+- find the root cause
+- provide robust solutions
+
+Consider edge cases and performance.
+
+Explain the root cause, the fix plan, and ship production-ready code.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">3&#65039;&#8419; Codebase Onboarding + Refactor</div>
+    <p><strong>מתי:</strong> כשנכנסים ל-codebase לא מוכר וצריך להבין + לשפר.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Act as a senior engineer joining an unfamiliar large codebase.
+
+First understand the architecture and data flow.
+
+Then identify:
+- structural issues
+- duplicate code
+- performance bottlenecks
+- maintainability risks
+
+Return:
+- architecture summary
+- problem areas
+- refactor strategies
+- improved architecture and code</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #e17055;">
+    <div class="card-title">4&#65039;&#8419; Performance Optimization</div>
+    <p><strong>מתי:</strong> כשהקוד עובד אבל הוא איטי. <em>הפרומפט הזה לבד חסך 40% מחשבון ה-server החודשי</em>.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Optimize this code like a performance engineer.
+
+Goals:
+- speed
+- memory usage
+- scalability
+
+Identify:
+- bottlenecks
+- inefficient logic
+- unnecessary renders
+
+Return the breakdown and the optimized code.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">5&#65039;&#8419; Clean Architecture Rebuild</div>
+    <p><strong>מתי:</strong> כשהקוד עובד אבל הוא ספגטי. שכתוב ארכיטקטוני בלי לשבור התנהגות.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Rewrite this code into a clean architecture like a staff engineer would.
+
+- separate concerns
+- increase modularity
+- reduce coupling
+
+Behavior stays the same, structure gets better.
+
+Return the new folder structure, architecture explanation, and refactored code.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #7c3aed;">
+    <div class="card-title">6&#65039;&#8419; Claude Multi-Agent Workflow</div>
+    <p><strong>מתי:</strong> כשרוצים &quot;צוות&quot; שלם — אדריכל, מהנדס, reviewer ו-optimizer. <em>זה הדבר הקרוב ביותר ל-real team</em>.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">You are 4 collaborating agents:
+- architect (system design)
+- engineer (implementation)
+- reviewer (QA)
+- optimizer (performance)
+
+Return:
+- architecture
+- implementation
+- review feedback
+- final optimized version</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #14b8a6;">
+    <div class="card-title">7&#65039;&#8419; Production-Grade UI Components</div>
+    <p><strong>מתי:</strong> כשבונים UI library — לא MVP, אלא רכיבים שיעמדו ב-production.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Build reusable, accessible, production-ready UI components as a senior frontend engineer.
+
+Cover:
+- loading states
+- edge cases
+- responsive design
+- accessibility
+
+Return the component architecture, props design, and full implementation.</div>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('skill-top1')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('claude-design-5')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 97: CLAUDE DESIGN 5 USE CASES ====== -->
+<div class="chapter" id="chapter-claude-design-5">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 97 — חדש &#127912;</div>
+    <h1 class="chapter-title">&#127912; Claude Design — 5 שימושים שמרגישים &quot;לא הוגן&quot;</h1>
+    <p class="chapter-subtitle">Claude Design הוא tab חדש ב-Claude. רוב האנשים מסתכלים רק על השטח. הנה 5 use cases שמרגישים כמעט unfair</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #d63031;">
+    <div class="card-title">1&#65039;&#8419; וידאו מונפש מבוסס-קוד (Code-Based Animated Videos)</div>
+    <p>Claude יוצר HTML, CSS ו-JavaScript שבונים אנימציות מלאות ישירות מטקסט שלך — כמו creative director אוטומטי. הזן ל-Claude raw text, והוא ישאל אותך שאלות הבהרה על tone ו-visual direction. אחרי שזה מרונדר, השתמש ב-screen recording כדי לתפוס את הפלט (export ישיר עדיין לא נתמך).</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Create a [Length, e.g., 30-second] animated video for [Target Audience/Platform] featuring the following text: [Insert Text]. The tone should be [Tone, e.g., warm and playful], utilizing [Style, e.g., subtle typographic and elegant] transitions.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">2&#65039;&#8419; The &quot;Video-to-Deck&quot; Slide Hack</div>
+    <p>עוקף יצירת slides סטטיות ומשעממות באמצעות video architecture לבניית presentations דינמיות. במקום לבקש slide deck מההתחלה, בקש מ-Claude לייצר אנימציה של ה-outline שלך. אחרי שזה נוצר, שכפל את הפרויקט והוראה לו להמיר את הוידאו ל-interactive slide deck ידני.</p>
+    <p><strong>Step 1:</strong> &quot;Create an animated video based on the following outline: [Insert Outline]&quot;</p>
+    <p><strong>Step 2:</strong> &quot;Convert this video into an animated slide deck that I can manually toggle through&quot;</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">3&#65039;&#8419; Interactive Landing Pages &amp; Graphics</div>
+    <p>אתה יכול לבנות עמודי web שלמים או רכיבים אינטראקטיביים גבוהים — כמו live particle effects — בלי לכתוב שורת קוד. תן description קצר של ה-interactivity הנדרשת או הפנה לעמוד קיים, ו-Claude יבנה את ה-functional prototype.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Design an interactive landing page for [Product/Concept]. Include a large editable text box. When a user types specific trigger words like [Word 1, e.g., fire], [Word 2, e.g., lightning], or [Word 3, e.g., smoke], render corresponding CSS/JS visual particle effects on the screen.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">4&#65039;&#8419; Auto-Playtested Mobile Apps</div>
+    <p>צור functional mobile app UIs עם QA testing מובנה. כשאתה מבקש interface של אפליקציה, Claude Design כותב אוטומטית את הקוד, לוקח screenshots של ה-output שלו, ומתקן UI bugs כמו overlapping text — לפני שהוא מציג את ה-deliverable הסופי המלוטש.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Create a mobile app UI for a [Niche, e.g., fitness] application targeting [Audience, e.g., busy professionals]. The visual style should be [Vibe, e.g., high-energy]. Include a clickable navigation menu and a detailed [Specific View, e.g., active workout session] screen.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">5&#65039;&#8419; Generating Complete Design Systems</div>
+    <p>סטנדרטיזציה מיידית של זהות המותג שלך על כל ה-builds העתידיים. העלה UI kit קיים (למשל Figma export), ו-Claude יחלץ וימפה את ה-foundational design rules — typography, color palette, spacing, shadows — כך שתוכל ליישם אותם seamlessly לפרויקטים חדשים. <em>(Note: התהליך הוא token-intensive)</em>.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Analyze the attached UI kit and generate a complete design system. Document and standardize the typography, color palette, spacing, and shadows so it can be seamlessly applied to future web and mobile application builds.</div>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('senior-engineering')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('easy-website-workflow')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 98: EASY WEBSITE WORKFLOW ====== -->
+<div class="chapter" id="chapter-easy-website-workflow">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 98 — חדש &#127760;</div>
+    <h1 class="chapter-title">&#127760; Claude Design = Easy Website — Workflow מ-0 ל-Live ב-7 שלבים</h1>
+    <p class="chapter-subtitle">איך לבנות אתר מלא עם Claude Design + Claude Code + Midjourney — בלי Figma, בלי מפתח, בלי design agency</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #6c5ce7;">
+    <div class="box-title">&#128218; מה זה Claude Design</div>
+    Anthropic שחררה tab חדש בתוך Claude — <strong>Design</strong>. הוא עובד שונה לחלוטין מכל מה ש-Claude עשה לפני זה: במקום לתת תשובות טקסט, הוא בונה <em>interfaces ויזואליים אמיתיים</em> שאתה יכול לראות, ללחוץ, ולערוך בזמן אמת.<br><br>
+    Sidebar שמאל נותן 4 אפשרויות: <strong>Prototype, Wireframe, High fidelity UI, Slide deck</strong>. הפוקוס הגדול הוא <em>design systems</em> — צבעי המותג, פונטים, gradients, spacing — הכל מה שיוצר זהות ויזואלית קונסיסטנטית. <em>אבל אתה לא צריך design system כדי להתחיל — אתה יכול לבנות אחד תוך כדי, ו-Claude עוזר לך לעשות זאת.</em>
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">&#127989; Step 1 — התחל עם Wireframe</div>
+    <p>אל תקפוץ ישר ל-high fidelity. תבנה את ה-<em>structure</em> קודם. לחץ <strong>Wireframe</strong> ב-sidebar. תן brief ברור — ככל שיותר ספציפי, יותר טוב.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">"Create a wireframe for a cyberpunk game website called City Punks. Large video hero section with H1 and call to action bottom left. Second section: two game features. Third section: news/blog. Fourth section: full-width CTA to play the game. Footer at the bottom."</div>
+    <p style="margin-top:8px;">Claude יחזיר 3 variations: <em>Option A — left-aligned hero</em>, <em>Option B — centered layout</em>, <em>Option C — split screen left and right</em>. בחר את זה שמתאים — ולאחר מכן עדן: &quot;Go with Option A. Change to a full navigation bar instead of minimal.&quot; — Claude מעדכן מיד.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">&#127912; Step 2 — פיתוח ל-High Fidelity UI</div>
+    <p>ברגע שה-structure של ה-wireframe מרגיש נכון — <strong>prompt אחד</strong> לוקח אותו עד הסוף: <em>&quot;Develop this into a high fidelity UI design&quot;</em>. מה ש-Claude בונה: real typography hierarchy, color palette שמתאים ל-brief, accent colors ו-gradients, styled sections בדיוק כמו בבריף, working navigation.</p>
+    <p><strong>Live controls בצד ימין:</strong> שינוי brand colors בקליק, החלפת heading styles, עריכת טקסטים ישירות בקליק, התאמת spacing ו-layout. זו לא תמונה סטטית — זה <em>interactive design</em> שניתן לערוך בלי לגעת בקוד.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #e17055;">
+    <div class="card-title">&#127914; Step 3 — צור Assets עם Midjourney</div>
+    <p>Claude Design מביא אותך ל-80%. ה-20% הנותרים הם ה-<em>assets</em> — תמונות ווידאו שגורמים לאתר להרגיש כמו ה-<strong>brand שלך</strong>.</p>
+    <p>לאתר cyberpunk — prompt: <code>&quot;Cyberpunk female character on a solid red background, 16:9 ratio&quot;</code>. 3-4 variations חוזרות תוך כ-60 שניות. בחר את הטובה ביותר → קליק <em>subtle upscale</em> ל-resolution גבוה יותר. גרור ושחרר ישר ל-Claude Design.</p>
+    <p>אמור ל-Claude: <em>&quot;Use this as the full screen hero image&quot;</em>. הוא יוסיף את התמונה כ-hero background, יוסיף gradient overlay כדי שטקסט יישאר קריא, ויוסיף visual grid effects שמתאימים ל-aesthetic של ה-cyberpunk.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">&#128241; Step 4 — תקן Responsiveness</div>
+    <p>כל אתר חייב לעבוד ב-mobile. Claude Design לא תמיד מצליח את זה אוטומטית. <strong>prompt אחד מתקן:</strong></p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">"Fix the responsiveness of the site. It should be fully responsive. The navigation should become a burger icon that opens a full screen menu on mobile."</div>
+    <p style="margin-top:8px;">תשנה את גודל ה-preview window. Navigation מתכווץ ל-burger menu. כל ה-sections מסתדרים בערימה. Typography מתאימה את עצמה. <em>Fully responsive. One prompt.</em></p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #7c3aed;">
+    <div class="card-title">&#127909; Step 5 — אנימציה של ה-Hero עם Midjourney Video</div>
+    <p>זה השלב שגורם לאנשים לעצור ולבהות. חזור ל-Midjourney. בחר את ה-hero image שלך. קליק <strong>Animate</strong>. שתי אפשרויות: <em>Low motion</em> (subtle, seamless loop) או <em>High motion</em> (dramatic, character movement).</p>
+    <p>הורד את הוידאו שאתה הכי אוהב. אם רוצים 4K — תריץ דרך Topaz Video AI. אז תגיד ל-Claude Code: <em>&quot;Change the hero image to use the background video in my folder. Compress the video so it&apos;s optimised for web performance.&quot;</em> — ה-static hero image שלך עכשיו background video חי. באתר שבנית בפחות משעה.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #d63031;">
+    <div class="card-title">&#128640; Step 6 — Go Live עם Cloudflare</div>
+    <p>יש לך website מלא רץ מקומית. עכשיו תהפוך אותו ל-live. בקש מ-<strong>Claude Code:</strong></p>
+    <ul>
+      <li><em>&quot;How do I add this project to a GitHub repo and push it?&quot;</em> → Claude מוביל אותך step-by-step</li>
+      <li><em>&quot;How do I host this on Cloudflare and connect a domain name?&quot;</em> → Claude מוביל אותך בכל שלב</li>
+    </ul>
+    <p>Free Cloudflare hosting. Custom domain. Live באינטרנט. Claude עוזר לך לאורך כל הדרך — אתה רק צריך לשאול.</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #991b1b; margin-top:24px;">
+    <div class="box-title">&#128172; האמת הכנה על Claude Design</div>
+    זה <em>genuinely impressive</em> למה שהוא עושה. אבל מה שאף אחד לא אומר בבירור: <strong>זה starting point — לא מוצר גמור</strong>.<br><br>
+    ההבדל בין AI-generated website ל-professional website הוא ה-<em>20% שאתה מוסיף בעצמך</em>: ה-color tweaks שמרגישים מכוונים, בחירות ה-typography שיוצרות hierarchy, ה-hover effects שגורמים לזה להרגיש חי, החלטות ה-spacing שיוצרות breathing room, ובחירות התמונה שמספרות את הסיפור שלך.<br><br>
+    Claude Design מביא אותך ל-80% תוך דקות. ה-20% שעושים את זה <em>שלך</em> — עדיין העבודה שלך. וזה 20% שבאמת חשוב. <strong>הכלים לא מחליפים טעם. הם מעצימים אותו.</strong>
+  </div>
+
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">&#128105;&#8205;&#128104; מי צריך להשתמש ב-Claude Design עכשיו?</div>
+    <ul>
+      <li><strong>Beginners ו-non-designers:</strong> משנה חיים. אתה יכול לעבור מ-0 לאתר professional-looking בבוקר אחד — בלי לדעת Figma או CSS.</li>
+      <li><strong>מפתחים ששונאים עיצוב:</strong> התחל כאן. תקבל את ה-visual structure נכון. אז העבר ל-Claude Code ובנה אותו כמו שצריך.</li>
+      <li><strong>מעצבים מנוסים:</strong> השתמש ל-rapid concepting ו-client presentations. הגע ל-wireframe ב-10 דקות במקום שעה. בלה את הזמן האמיתי שלך על העידונים שדורשים טעם אמיתי.</li>
+      <li><strong>Freelancers ו-agency owners:</strong> תגבה $3,000-5,000 לאתרים. תבנה את ה-foundation ב-Claude Design. תבזבז את ה-billable hours שלך על הפרטים שהלקוחות באמת רואים ומרגישים.</li>
+    </ul>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('claude-design-5')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('opus47-power-7')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 99: OPUS 4.7 — 7 POWER PROMPTS ====== -->
+<div class="chapter" id="chapter-opus47-power-7">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 99 — חדש &#9889;</div>
+    <h1 class="chapter-title">&#9889; Opus 4.7 — 7 פרומפטים שמריצים עסק שלם על Autopilot</h1>
+    <p class="chapter-subtitle">תפסיק לבקש מ-Claude Opus 4.7 &quot;summarize this&quot; — זה הכי חזק ש-AI אי פעם נבנה. הנה 7 פרומפטים שה-1% העליון משתמש בהם להריץ עסק שלם</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #d63031;">
+    <div class="box-title">&#9888; הטעות של 90%</div>
+    אתה משתמש ב-AI הכי חזק שאי-פעם נבנה — כאילו הוא Google search מהודר. <em>It doesn&apos;t just answer. It thinks. Plans. Executes.</em>
+  </div>
+
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">1&#65039;&#8419; Chief of Staff &amp; Automation Architect</div>
+    <p><strong>מתי:</strong> כשרוצים מפת דרכים אישית לאוטומציה של כל העסק.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">You are my Chief of Staff and automation architect.
+
+My business: [DESCRIBE IN 2 LINES]
+My role: [FOUNDER / FREELANCER / CREATOR]
+My biggest problem right now: [1 LINE — BE HONEST]
+My top 3 time-wasters: [LIST THEM]
+My tools: [NOTION / GMAIL / ZAPIER / OTHER]
+
+Now do this:
+1. AUDIT — Where am I leaking time and money?
+2. AUTOMATE — Give me a 30-day roadmap. What gets automated. When. Using what.
+3. STOP LIST — 3 things I should never do manually again.
+4. BLIND SPOT — 1 thing I didn't ask but desperately need to fix first.
+
+Tone: Direct. Zero fluff. Every word earns its place.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">2&#65039;&#8419; Turn Any Messy Data Into a Clean Automated Report</div>
+    <p><strong>מתי:</strong> יש לך data גולמי וצריך report מסודר עם insights.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">You are a data analyst and automation expert.
+
+Here is my raw data / messy input:
+[PASTE YOUR DATA, NOTES, OR TABLE HERE]
+
+My data comes from: [SOURCE]
+My audience: [WHO READS IT]
+They care most about: [KEY METRICS]
+
+Now do this:
+1. Clean and structure the data logically
+2. Write a 5-line executive summary
+3. Pull out the top 3 insights with data proof
+4. Flag 1 red flag or anomaly I should act on
+5. Suggest 1 automation that would make this report generate itself next time
+
+Tone: [FORMAL / CONVERSATIONAL / TECHNICAL]
+Output format: Headers + bullet points. No fluff.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">3&#65039;&#8419; Full AI-Powered Content Calendar in Minutes</div>
+    <p><strong>מתי:</strong> כשצריך תוכן עקבי לרשתות חברתיות — בלי לחשוב בכל פעם.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">You are a content strategist who specializes in AI-assisted content automation for [NICHE] creators.
+
+My platform: [TWITTER / LINKEDIN / INSTAGRAM / YOUTUBE]
+My target audience: [DESCRIBE IN 1-2 LINES]
+My content goal: [GROW FOLLOWERS / GENERATE LEADS / BUILD AUTHORITY]
+My posting frequency: [e.g. 5x per week]
+
+Now create:
+1. A 4-week content calendar with daily post topics
+2. For each week, assign 1 content "theme" or "angle"
+3. Give me 3 hook variations for my top 5 posts
+4. Tell me which posts to automate vs write manually
+5. Give me 1 evergreen post I can recycle every month
+
+Format: Week-by-week table. Include post type [Thread / Carousel / Short-form / Long-form].</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #e17055;">
+    <div class="card-title">4&#65039;&#8419; Automate Your Client Onboarding With AI</div>
+    <p><strong>מתי:</strong> כשרוצים onboarding חלק ללקוחות חדשים — 14 ימים אוטומטי.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">You are an operations expert who builds client onboarding systems for [TYPE OF BUSINESS].
+
+My current onboarding process: [DESCRIBE STEP BY STEP]
+Tools I use: [Notion, Calendly, Gmail, Stripe, Loom]
+The biggest friction point my clients face: [e.g. too many emails / unclear next steps / late payments]
+
+Now build me:
+1. A complete automated onboarding sequence (Day 0 to Day 14)
+2. Email templates for each touchpoint [Welcome / Kickoff / Check-in / Delivery]
+3. A checklist Claude can fill out for every new client
+4. 1 Zapier or Make.com workflow I should set up first
+5. A "done for you" welcome message I can send TODAY
+
+Output: Step-by-step. Include exact copy I can use immediately. No placeholders without examples.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">5&#65039;&#8419; AI Competitor Analysis on Autopilot</div>
+    <p><strong>מתי:</strong> כשרוצים ניתוח תחרותי עמוק + ניטור שבועי אוטומטי.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">You are a strategic market intelligence analyst.
+
+My business: [DESCRIBE YOUR PRODUCT OR SERVICE IN 2 LINES]
+My top 3 competitors are:
+1. [COMPETITOR 1 + their website or description]
+2. [COMPETITOR 2]
+3. [COMPETITOR 3]
+My target customer is: [DESCRIBE IDEAL CUSTOMER]
+
+Now do a full competitive analysis:
+1. What are each competitor's top 3 strengths?
+2. Where are their visible weaknesses or gaps?
+3. What do their customers complain about most? (based on typical review patterns)
+4. What is 1 positioning angle I can own that none of them are using?
+5. Give me 3 automated ways to monitor their moves weekly using free tools
+
+Format: Competitor-by-competitor breakdown, then a final "Your Opportunity" section. Be direct.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #7c3aed;">
+    <div class="card-title">6&#65039;&#8419; Build a Personal AI SOPs Generator</div>
+    <p><strong>מתי:</strong> כשרוצים להעביר משימה ל-AI/VA/צוות בלי לאבד איכות.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">You are a systems architect who creates Standard Operating Procedures (SOPs) for [INDUSTRY].
+
+The task I want to systemize is: [DESCRIBE THE TASK IN DETAIL]
+I currently do this task: [HOW OFTEN]
+People involved: [JUST ME / MY TEAM — list roles]
+My goal with this SOP: [delegate it / make it faster / train a VA]
+
+Now create:
+1. A step-by-step SOP with clear numbered actions
+2. Time estimate for each step
+3. Who does each step (me / AI / VA)
+4. Tools used at each step
+5. A "quality check" section so nothing gets missed
+6. A one-paragraph summary I can give to anyone who takes over this task
+
+Format: Clean table format + prose summary at the end.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #d63031;">
+    <div class="card-title">7&#65039;&#8419; Your Personal AI Business Coach (Weekly Review)</div>
+    <p><strong>מתי:</strong> כל יום ראשון בערב — סקירת שבוע ותעדוף ל-3 דברים בלבד.</p>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">You are my personal AI business coach. You are direct, data-driven, and you do not sugarcoat feedback.
+
+My business type: [freelancer / agency / creator / startup founder]
+
+Here is my week in review:
+- What I planned: [LIST YOUR GOALS FROM LAST WEEK]
+- What I actually did: [BE HONEST]
+- Revenue this week: [AMOUNT OR "N/A"]
+- Biggest win: [1 LINE]
+- Biggest failure or missed opportunity: [1 LINE]
+- Current bottleneck: [WHAT'S SLOWING ME DOWN]
+
+Now do this:
+1. Score my week out of 10 — with brutal reasoning
+2. Identify my #1 blind spot based on what I shared
+3. Give me 3 priorities for next week ONLY (not 10 — just 3)
+4. Tell me 1 thing I should STOP doing immediately
+5. Give me 1 automation or AI tool that would have saved me the most time this week
+
+Tone: Like a $500/hour coach who actually cares but doesn't waste words.</div>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('easy-website-workflow')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('matnas-system-reqs')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 100: MATNAS SYSTEM REQUIREMENTS ====== -->
+<div class="chapter" id="chapter-matnas-system-reqs">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 100 — חדש &#127978;</div>
+    <h1 class="chapter-title">&#127978; דרישות מערכת — 3 מודולים גאוניים שצריך לבנות במתנ&quot;ס</h1>
+    <p class="chapter-subtitle">3 דרישות מערכת קונקרטיות שעולות מהשטח: מדריך משתמש דיגיטלי לפי תפקיד, מחולל שאלונים וטפסים בערבית עם QR מותג, ומחולל דוחות רשמי בעברית</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #6c5ce7;">
+    <div class="box-title">&#128218; הקשר</div>
+    בסוף שלב ההמרה — כשהמערכת רצה טוב — אלה 3 המודולים שיהפכו אותה מ-&quot;מערכת טכנית&quot; ל-&quot;פלטפורמת ארגון שלמה&quot;. כל מודול נבנה עם Claude Design + Claude Code + Skills, כדי שיהיה רב-משתמשי, מבוסס תפקידים, ועדכני בזמן אמת.
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">1&#65039;&#8419; &#128218; מדריך משתמש דיגיטלי מפורט — עם דוגמאות מהמערכת השלמה</div>
+    <p>תבנה ב-Claude מדריך משתמש מלא, עם <em>4 גרסאות מותאמות לתפקיד</em>:</p>
+    <ul>
+      <li><strong>גרסת מנכ&quot;ל</strong> — מבט אסטרטגי, KPIs ראשיים, ניתוחים ארגוניים, מצב כל מחלקה</li>
+      <li><strong>גרסה למנהלי המחלקות</strong> — מותאמת לפי מחלקתו ודוגמאות ממחלקתו, צפי ביצועים</li>
+      <li><strong>גרסה לרכזים מחלקתיים</strong> — מצומצמת, מעשית, עם flows יומיים</li>
+      <li><strong>גרסה מצומצמת לרכזי עוגנים</strong> — למילוי נוכחות, הוספת תוצאות, ביקורת משרד החינוך</li>
+    </ul>
+    <p><strong>חוקי-זהב:</strong> המדריך יהיה <em>מותאם לעדכונים עתידיים</em> ומסונכרן עם כל עדכון בזמן אמת. ה-Skill שמוודאת זאת קוראת את כל הקבצים, מזהה איזה section צריך עדכון, ומבצעת push אוטומטי לגרסאות הרלוונטיות.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">2&#65039;&#8419; &#128221; מחולל שאלונים וטפסים בערבית — גאוני וחכם, מותאם לעבודות המחלקות</div>
+    <p>מודול מלא לבנייה אוטומטית של שאלונים וטפסים בערבית — <em>מותאמים מקצועית לכל מחלקה</em>, עם validation, branching logic, ותרגום עברית→ערבית מדויק.</p>
+    <p><strong>QR מותג לכל טופס:</strong> לייצר לכל טופס או שאלון <em>QR מיוחד וייעודי</em> עם עיצוב גאוני <em>שמשלב בתוכו לוגו</em> — מתנ&quot;ס, התיאטרון או הסינמטק — לפי המחלקה המזמינה את השאלון או הטופס.</p>
+    <p><strong>איך זה ייבנה:</strong> Skill חכם בשם <code>form-builder-ar</code> שמופעל ב-trigger &quot;תייצר טופס&quot; → שואל מחלקה → שואל מטרה → בונה טופס ערבי מקצועי + QR מעוצב + מטמיע אותו במערכת המתנ&quot;ס.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">3&#65039;&#8419; &#128194; מחולל דוחות רשמי בעברית — לפי דוחות מוסדיים</div>
+    <p>יועלו תבניות דוחות מותאמות לכל משרד מבקש הדוח, לפי הפורמט שהוא דורש, והמערכת תבנה אותם <em>בדיוק רב למקור</em>, עם הוספת לוגואים בהתאם:</p>
+    <ul>
+      <li><strong>משרדי ממשלה</strong> — חינוך, רווחה, תרבות, פנים</li>
+      <li><strong>מפעל הפיס</strong> — דוחות פעילות פיס פלוס וצהרון</li>
+      <li><strong>קרן ברכה</strong> — דוחות פרויקטים נתמכים</li>
+      <li><strong>עירייה</strong> — דוחות לגזברות, מבקר עירייה, עמותתה עירונית</li>
+      <li><strong>מחזורים</strong> — חודשי, רבעוני, חצי שנתי, שנתי, מחזור חיי פרויקט</li>
+    </ul>
+    <p><strong>עם:</strong> גרפים, ניתוח נתונים, דוח מסכם בעיצוב מרשים, בעזרת <em>Claude Design</em>, מקצועי ומתמצת הכל בחוכמה ואיכות אסתטית רבה.</p>
+    <p><strong>QR מיוחד וייעודי</strong> עם עיצוב גאוני שמשלב בתוכו לוגו של הגוף המקבל את הדוח — לעקיבות, גיבוי דיגיטלי, וניהול גרסאות.</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #d63031; margin-top:24px;">
+    <div class="box-title">&#127919; תוצאה צפויה</div>
+    אחרי שלושת המודולים האלה — המתנ&quot;ס לא יהיה רק ארגון שמשתמש ב-Claude. הוא יהיה <strong>ארגון שכל פעולה רוטינית בו אוטומטית, מתועדת בזמן אמת, ומפורסמת אוטומטית לגוף המתאים</strong>. זה ההבדל בין &quot;מתנ&quot;ס שיש לו AI&quot; ל-&quot;מתנ&quot;ס שהוא AI-Native&quot;.
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('opus47-power-7')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('social-media')">הבא &#8592;</button>
+  </div>
+</div>
+
+
 <div class="chapter" id="chapter-social-media">
   <div class="chapter-header">
     <div class="chapter-number">פרק 86 &mdash; רשתות חברתיות</div>
@@ -17956,7 +18603,7 @@ Every test should have exactly one logical assertion.</div>
 
 <script>
 // ===== NAVIGATION =====
-const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','bug-detection','crm-full-guide','infographics-mastery','infographics-toolkit','infographics-wisdom','matnas-full-arch','opus47-prompts','opus47-release','social-media','glossary'];
+const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','bug-detection','crm-full-guide','infographics-mastery','infographics-toolkit','infographics-wisdom','matnas-full-arch','opus47-prompts','opus47-release','claude-12-crazy','skill-top1','senior-engineering','claude-design-5','easy-website-workflow','opus47-power-7','matnas-system-reqs','social-media','glossary'];
 
 function goTo(id) {
   // Hide cover page if still visible
@@ -19652,7 +20299,7 @@ function expertMode(type) {
     '<div class="credit-title">מדריך חכם אינטראקטיבי Claude</div>' +
     '<div class="credit-copy">כל הזכויות שמורות ל: <strong>אגבאריה מוחמד סאלח</strong> &mdash; רעיון, בנייה, עדכון &mdash; &copy; 2026</div>' +
     '<div class="credit-version">' +
-      '<span class="badge">גרסה 23.3</span>' +
+      '<span class="badge">גרסה 23.4</span>' +
       '<span class="sep">|</span>' +
       '<span>מעודכן 12 מאי 2026</span>' +
       '<span class="sep">|</span>' +
