@@ -1060,10 +1060,10 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
     <span>מדריך חכם אינטראקטיבי — ניהול עם Claude</span>
   </div>
   <div class="header-actions">
-    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 13.05.2026 11:30 — v23.4 מהדורה גאונית — 7 פרקים חדשים מ-14 PDFs: 12 דברים מטורפים של Claude + Skill Top 1% + 9 פרומפטים סניור + Claude Design 5 שימושים + Easy Website 7 שלבים + Opus 4.7 7 פרומפטים + 3 מודולים גאוניים למתנ&quot;ס">
+    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 13.05.2026 12:45 — v23.5 מהדורה גאונית-XL — 8 פרקים חדשים מ-18 תמונות + טאב Claude Projects: Claude Code 26 Shortcuts + Cheat Sheet + Cowork Master + 48 פרומפטים שיווקיים + 10 פרומפטים מאסטר + אנטומיית פרומפט מושלם + Claude Design Mastery + 17 דרכים לחסוך Tokens + 8 Founder Prompts + 9 Nutrition Prompts">
       <span class="whats-new-pulse"></span>
       &#128226; מה חדש
-      <span class="whats-new-badge">70</span>
+      <span class="whats-new-badge">78</span>
     </button>
     <button class="header-btn find-updates-btn" onclick="openFindUpdates()" title="חפש עדכוני Anthropic/Claude ברשת — מקורות רשמיים + גוגל/רדיט/X/YouTube + פרומפט ל-Claude">&#128270; חפש עדכונים</button>
     <button class="header-btn" onclick="openSearch()">&#128269; חיפוש</button>
@@ -1545,6 +1545,20 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
     </div>
 
     <div class="nav-group">
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#127919; יז. עדכון 13 מאי 2026 — v23.5 מהדורה גאונית-XL <span class="group-count">8</span></div>
+      <div class="nav-items-wrap">
+        <div class="nav-item" onclick="goTo('cc-26-shortcuts')"><span class="nav-icon">⚡</span> Claude Code: 26 Shortcuts + Cheat <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('cowork-master')"><span class="nav-icon">🥇</span> Cowork Complete Guide <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('marketing-mega-48')"><span class="nav-icon">📢</span> 48 פרומפטים שיווקיים <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('claude-power-10')"><span class="nav-icon">🔥</span> 10 פרומפטים מאסטר <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('prompt-anatomy-perfect')"><span class="nav-icon">🎯</span> אנטומיית פרומפט מושלם <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('claude-design-mastery')"><span class="nav-icon">🎨</span> Claude Design Mastery <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('token-17-ways')"><span class="nav-icon">📊</span> 17 דרכים לחסוך Tokens <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('founder-nutrition-prompts')"><span class="nav-icon">💰</span> 8 Founder + 9 Nutrition <span class="nav-badge">חדש</span></div>
+      </div>
+    </div>
+
+    <div class="nav-group">
       <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128202; טו. 12 אינפוגרפיקות חכמה — 20 אפריל 2026 <span class="group-count">3</span></div>
       <div class="nav-items-wrap">
         <div class="nav-item" onclick="goTo('infographics-wisdom')"><span class="nav-icon">📊</span> חכמת האינפוגרפיקות (1-3) <span class="nav-badge">חדש</span></div>
@@ -1575,7 +1589,7 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
   <div class="cover-particles" id="coverParticles"></div>
   <div class="cover-content">
     <div class="cover-logo">&#128218;</div>
-    <div class="cover-badge">&#10024; עדכון 13 מאי 2026 | 11:30 &mdash; גרסה 23.4 — סריקת עדכונים יומית: Claude Code v2.1.139 — /goal, agent view (Research Preview), /scroll-speed; Managed Agents — dreaming + multiagent orchestration; SpaceX 300MW compute deal — Claude Code rate limits כפול ל-Pro/Max/Team/Enterprise; Agents for Financial Services + Microsoft 365 full + Moody's MCP partnership; $30B annualized revenue (פי 80 ברבעון); Mythos EU holdout</div>
+    <div class="cover-badge">&#10024; עדכון 13 מאי 2026 | 12:45 &mdash; גרסה 23.5 — סריקת עדכונים יומית: Claude Code v2.1.139 — /goal, agent view (Research Preview), /scroll-speed; Managed Agents — dreaming + multiagent orchestration; SpaceX 300MW compute deal — Claude Code rate limits כפול ל-Pro/Max/Team/Enterprise; Agents for Financial Services + Microsoft 365 full + Moody's MCP partnership; $30B annualized revenue (פי 80 ברבעון); Mythos EU holdout</div>
     <h1 class="cover-title">מדריך חכם אינטראקטיבי<br>ניהול עם Claude AI</h1>
     <p class="cover-subtitle">מערכת ידע מלאה לניהול תוכניות קהילתיות, תיאטרון, שיווק ומכירות, דשבורדים ו-AI &mdash; מהחזון ועד לייצור. הכל במקום אחד.</p>
 
@@ -1654,7 +1668,7 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
       <div style="font-size:36px; line-height:1;">📢</div>
       <div style="flex:1;">
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
-          <span style="background:rgba(255,255,255,0.25); padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.5px;">גרסה 23.4</span>
+          <span style="background:rgba(255,255,255,0.25); padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.5px;">גרסה 23.5</span>
           <span style="background:rgba(255,255,255,0.15); padding:4px 12px; border-radius:20px; font-size:11px;">סריקת עדכונים יומית</span>
           <span style="font-size:12px; opacity:0.9;">12.05.2026 · 08:43</span>
         </div>
@@ -2720,7 +2734,7 @@ Start your response with exactly this: {"analysis":</div>
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 23.4 | מעודכן 13 מאי 2026 | 11:30 | סריקת עדכונים יומית — Claude Code v2.1.139 + Managed Agents (dreaming + multiagent orchestration) + SpaceX 300MW compute (rate limits כפול) + Agents for Financial Services + Microsoft 365 full + Moody's MCP + $30B annualized revenue + Mythos EU holdout</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 23.5 | מעודכן 13 מאי 2026 | 12:45 | סריקת עדכונים יומית — Claude Code v2.1.139 + Managed Agents (dreaming + multiagent orchestration) + SpaceX 300MW compute (rate limits כפול) + Agents for Financial Services + Microsoft 365 full + Moody's MCP + $30B annualized revenue + Mythos EU holdout</p>
   </div>
 
   <div class="stats-grid">
@@ -2820,7 +2834,7 @@ Start your response with exactly this: {"analysis":</div>
 
   <!-- What's New in v16.0 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 23.4 — 13 מאי 2026 11:30 — מהדורה גאונית: 7 פרקים חדשים מ-14 PDFs — 12 דברים מטורפים של Claude + Skill Top 1% Framework + 9 פרומפטים סניור + Claude Design 5 שימושים + Easy Website 7 שלבים + Opus 4.7 — 7 פרומפטים שמריצים עסק על Autopilot + דרישות מערכת המתנ&quot;ס (3 מודולים: מדריך לפי תפקיד + שאלונים ערבית עם QR + דוחות רשמיים) </div>
+    <div class="card-title">&#128293; מה חדש בגרסה 23.5 — 13 מאי 2026 12:45 — מהדורה גאונית-XL: 8 פרקים חדשים מ-18 תמונות + טאב Claude Projects חדש — Claude Code: 26 Shortcuts + Cheat Sheet (CLAUDE.md/skills/MCP/agents/plan/compact/autodream/ralph-loop) + Cowork Master Complete Guide + 48 פרומפטים שיווקיים ב-8 קטגוריות + 10 פרומפטים מאסטר (Strategic/Long-Form/Projects/Files/Artifact/Writing/Research/System Builder/Ideas/Decisions) + אנטומיית פרומפט מושלם (2 מסגרות) + Claude Design Mastery (6 שלבים + דירוג 6 use cases) + 17 דרכים לעצור פגיעה במגבלת Claude (DO THIS + THE MATH) + 8 Founder Prompts ($10k consultant) + 9 Nutrition Prompts </div>
     <!-- Banner: Daily Scan Summary v21.1 -->
     <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:12px; padding:18px; margin-bottom:16px; border:3px solid #ffeaa7;">
       <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 24.04.2026 13:10</div>
@@ -4757,7 +4771,7 @@ Start your response with exactly this: {"analysis":</div>
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.4 | מעודכן 13 מאי 2026 | 11:30 | סריקת עדכונים יומית</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.5 | מעודכן 13 מאי 2026 | 12:45 | סריקת עדכונים יומית</p>
   </div>
 
   <div class="chapter-nav">
@@ -5711,7 +5725,7 @@ Start your response with exactly this: {"analysis":</div>
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.4 מורחבת | 13 מאי 2026 | 11:30 | 93 פרקים ב-15 חלקים | 340+ פרומפטים | 15 אזורי ידע | Opus 4.7 + Sonnet 4.8 (צפוי) + Claude Security (Public Beta) + Claude for Creative Work + Claude Partner Network ($100M) + Claude Certified Architect + Claude Code v2.1.139 (/goal + agent view) + Managed Agents dreaming + SpaceX 300MW + Financial Services agents + MS 365 full + Moody's MCP + סריקת עדכונים יומית</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.5 מורחבת | 13 מאי 2026 | 12:45 | 93 פרקים ב-15 חלקים | 340+ פרומפטים | 15 אזורי ידע | Opus 4.7 + Sonnet 4.8 (צפוי) + Claude Security (Public Beta) + Claude for Creative Work + Claude Partner Network ($100M) + Claude Certified Architect + Claude Code v2.1.139 (/goal + agent view) + Managed Agents dreaming + SpaceX 300MW + Financial Services agents + MS 365 full + Moody's MCP + סריקת עדכונים יומית</p>
   </div>
 
   <div class="chapter-nav">
@@ -10549,6 +10563,10 @@ dashboard-php/
     <h3>&#128197; ציר זמן — 2026</h3>
     <div style="position:relative; padding-right:30px; margin-top:16px;">
       <div style="position:absolute; right:10px; top:0; bottom:0; width:3px; background:linear-gradient(#d63031,#fdcb6e,#00b894);"></div>
+      <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#5b21b6,#dc2626); color:white; border-radius:10px; margin-right:20px; border:3px solid #fef3c7;">
+        <strong>&#127919; 13 מאי (היום, סריקה 12:45) — מהדורה גאונית-XL v23.5 — 8 פרקים חדשים + טאב Claude Projects חדש:</strong> <strong>(1) Claude Projects Tab</strong> — Anthropic הוסיפה טאב רביעי לצד Chat/Cowork/Code: <em>Projects</em> — סביבת עבודה מתמשכת עם memory, file storage, ו-context יציב לפרויקטים ארוכי-טווח. <strong>סריקת 18 תמונות הניבה 8 פרקים חדשים:</strong> פרק 101 — Claude Code: <em>26 Shortcut Slash Commands</em> (/clear, /compact, /branch, /model, /agents, /plan, /mcp, /skills, /plugin, /memory, /init, /diff, /security-review, ועוד 13) + Cheat Sheet עם Pro Tips ל-CLAUDE.md, /skills, /MCP, /agents, /plan, /compact, autodream, /ralph-loop; פרק 102 — <em>Cowork Master Guide</em> (TASK/CONTEXT/OUTPUT framework + 3 Power Workflows: Morning Brief, Email Manager, Daily News); פרק 103 — <em>48 פרומפטים שיווקיים ב-8 קטגוריות</em> (Brand Strategy, Sales Copy, Ad Copy, Lead Magnets, Email Sequences, Webinars, DM Scripts, Testimonials); פרק 104 — <em>10 Claude Power Prompts</em> (Strategic Thinking Partner, Long-Form Content Engine, Projects Workflow, File Intelligence, Artifact Builder, Human-Level Writing, Deep Research, AI System Builder, Idea Expansion, Decision-Making); פרק 105 — <em>אנטומיית הפרומפט המושלם</em> (2 מסגרות: Role/Task/Context/Reasoning/Stop/Output + Who/What/Context/Format/Constraints/Examples/Success/Before); פרק 106 — <em>Claude Design Mastery</em> (6 שלבים רשמיים של Anthropic + דירוג כן של 6 use cases: Wireframes 10/10 → Animated Videos 4/10); פרק 107 — <em>17 דרכים לעצור פגיעה במגבלת Claude</em> (כל טכניקה עם DO THIS + THE MATH — חיסכון מסיבי ב-tokens); פרק 108 — <em>8 Founder Prompts</em> ($10k consultant) + <em>9 Nutrition Prompts</em> (Claude כ-meal planner + macro tracker). <a href="https://www.anthropic.com/news/claude-projects" target="_blank" style="color:#fde68a;">[Claude Projects]</a>
+      </div>
+      
       <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#0c4a6e,#10b981); color:white; border-radius:10px; margin-right:20px; border:3px solid #fef3c7;">
         <strong>&#127881; 13 מאי (היום, סריקה 11:30) — מהדורה גאונית v23.4 — 7 פרקים חדשים מתוך 14 PDFs:</strong> סיכום ידע מקיף שעולה מ-14 PDFs שהועלו על ידי המשתמש בבוקר 13/5: <strong>(1)</strong> פרק 94 — <em>12 דברים מטורפים ש-Claude עושה</em> שרוב האנשים עוד לא הבינו; <strong>(2)</strong> פרק 95 — <em>Skill Top 1% Framework</em> — 6 צעדים לבניית Skill עצמית-לומדת (trigger מדויק → progressive disclosure → self-learning loop); <strong>(3)</strong> פרק 96 — <em>Production Engineering</em> — 9 פרומפטים סניור (Production Feature Dev, Senior Debug, Refactor, Performance — חוסך 40% מחשבון Server, Clean Architecture, Multi-Agent Workflow, UI Components); <strong>(4)</strong> פרק 97 — <em>Claude Design 5 שימושים</em>: Code-Based Animated Videos, Video-to-Deck Hack, Interactive Landing Pages, Auto-Playtested Mobile Apps, Complete Design Systems; <strong>(5)</strong> פרק 98 — <em>Easy Website Workflow</em> — 7 שלבים מ-0 ל-Live עם Claude Design + Claude Code + Midjourney + Cloudflare; <strong>(6)</strong> פרק 99 — <em>Opus 4.7 — 7 פרומפטים שמריצים עסק על Autopilot</em> (Chief of Staff, Messy Data→Report, Content Calendar, Client Onboarding, Competitor Analysis, SOPs Generator, AI Business Coach); <strong>(7)</strong> פרק 100 — <em>דרישות מערכת המתנ&quot;ס</em> — 3 מודולים גאוניים: מדריך משתמש דיגיטלי לפי תפקיד (מנכ&quot;ל/מחלקות/רכזים/עוגנים), מחולל שאלונים+טפסים בערבית עם QR מותג, ומחולל דוחות רשמי בעברית (משרדי ממשלה + פיס + קרן ברכה + עירייה).
       </div>
@@ -18049,6 +18067,861 @@ Tone: Like a $500/hour coach who actually cares but doesn't waste words.</div>
 </div>
 
 
+<!-- ====== CHAPTER 101: CLAUDE CODE 26 SHORTCUTS + CHEAT SHEET ====== -->
+<div class="chapter" id="chapter-cc-26-shortcuts">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 101 — חדש &#9889;</div>
+    <h1 class="chapter-title">&#9889; Claude Code Master: 26 Shortcut Hacks + Cheat Sheet</h1>
+    <p class="chapter-subtitle">כל פקודות ה-slash של Claude Code במקום אחד — להגדיר בתחילת הפרומפט. + Pro Tips שקל לפספס</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #d63031;">
+    <div class="box-title">&#128218; איך משתמשים</div>
+    הוסף את אחת הפקודות בתחילת הפרומפט שלך — לפני התוכן הראשי — והקודק יעבד אותה אוטומטית לפני שיתחיל לעבוד על המשימה.
+  </div>
+
+  <h3 style="margin-top:24px; color:#d63031;">&#128293; 26 פקודות Slash</h3>
+  <table style="width:100%; border-collapse:collapse; margin-top:14px; font-size:13px;">
+    <thead>
+      <tr style="background:#fef3c7;">
+        <th style="padding:8px; border:1px solid #fde68a; text-align:right;">פקודה</th>
+        <th style="padding:8px; border:1px solid #fde68a; text-align:right;">תיאור</th>
+        <th style="padding:8px; border:1px solid #fde68a; text-align:right;">פקודה</th>
+        <th style="padding:8px; border:1px solid #fde68a; text-align:right;">תיאור</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/clear</code></td><td style="padding:6px; border:1px solid #fde68a;">Reset context — מתחיל מאפס</td><td style="padding:6px; border:1px solid #fde68a;"><code>/cost</code></td><td style="padding:6px; border:1px solid #fde68a;">Token usage — מה הצריכה</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/compact</code></td><td style="padding:6px; border:1px solid #fde68a;">Compress convo — מצמצם היסטוריה</td><td style="padding:6px; border:1px solid #fde68a;"><code>/resume</code></td><td style="padding:6px; border:1px solid #fde68a;">Reopen session — חזרה ל-session ישן</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/branch</code></td><td style="padding:6px; border:1px solid #fde68a;">Branch convo — מסעף שיחה</td><td style="padding:6px; border:1px solid #fde68a;"><code>/rewind</code></td><td style="padding:6px; border:1px solid #fde68a;">Roll back — חוזר אחורה</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/rename</code></td><td style="padding:6px; border:1px solid #fde68a;">Rename session</td><td style="padding:6px; border:1px solid #fde68a;"><code>/export</code></td><td style="padding:6px; border:1px solid #fde68a;">Export as text</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/model</code></td><td style="padding:6px; border:1px solid #fde68a;">Switch model — Opus/Sonnet/Haiku</td><td style="padding:6px; border:1px solid #fde68a;"><code>/usage</code></td><td style="padding:6px; border:1px solid #fde68a;">Plan limits</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/extra-usage</code></td><td style="padding:6px; border:1px solid #fde68a;">Extended limits</td><td style="padding:6px; border:1px solid #fde68a;"><code>/init</code></td><td style="padding:6px; border:1px solid #fde68a;">Init project — יוצר CLAUDE.md</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/memory</code></td><td style="padding:6px; border:1px solid #fde68a;">Edit memory</td><td style="padding:6px; border:1px solid #fde68a;"><code>/add-dir</code></td><td style="padding:6px; border:1px solid #fde68a;">Add work directory</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/diff</code></td><td style="padding:6px; border:1px solid #fde68a;">View changes</td><td style="padding:6px; border:1px solid #fde68a;"><code>/security-review</code></td><td style="padding:6px; border:1px solid #fde68a;">Security check</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/plan</code></td><td style="padding:6px; border:1px solid #fde68a;">Enter plan mode</td><td style="padding:6px; border:1px solid #fde68a;"><code>/permissions</code></td><td style="padding:6px; border:1px solid #fde68a;">Tool access</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/agents</code></td><td style="padding:6px; border:1px solid #fde68a;">Manage agents</td><td style="padding:6px; border:1px solid #fde68a;"><code>/skills</code></td><td style="padding:6px; border:1px solid #fde68a;">List skills</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/plugin</code></td><td style="padding:6px; border:1px solid #fde68a;">Manage plugins</td><td style="padding:6px; border:1px solid #fde68a;"><code>/reload-plugins</code></td><td style="padding:6px; border:1px solid #fde68a;">Reload plugins</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/mcp</code></td><td style="padding:6px; border:1px solid #fde68a;">MCP servers</td><td style="padding:6px; border:1px solid #fde68a;"><code>/config</code></td><td style="padding:6px; border:1px solid #fde68a;">Settings</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a;"><code>/theme</code></td><td style="padding:6px; border:1px solid #fde68a;">Color theme</td><td style="padding:6px; border:1px solid #fde68a;"><code>/color</code></td><td style="padding:6px; border:1px solid #fde68a;">Prompt bar color</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top:32px; color:#6c5ce7;">&#128218; Cheat Sheet — Pro Tips שקל לפספס</h3>
+
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">&#128221; CLAUDE.md — Project Rulebook</div>
+    <p>קובץ כללים ספציפי לפרויקט ש-Claude קורא <strong>לפני כל משימה</strong>.</p>
+    <ul>
+      <li>&#9989; <em>/init</em> ראשון כדי לייצר אוטומטית — תתמקד ב-architecture ו-strict formatting</li>
+      <li>&#9888; כותב רומן? Claude יתעלם מקבצי rules ארוכים או מעורפלים מדי</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">&#128203; /skills — Reusable Templates</div>
+    <p>תבניות פרומפט markdown לשימוש חוזר עבור workflows מסטנדרטים.</p>
+    <ul>
+      <li>&#9989; הצפן code review ו-deployment checklists כדי ליישר standards של צוות</li>
+      <li>&#9989; פרומפטינג לא עקבי? השתמש ב-skills כדי להבטיח התנהגות AI אחידה</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">&#128279; /MCP — חיבור לכלים</div>
+    <p>מחבר את Claude לכלים מקומיים, databases, ו-APIs חיצוניים.</p>
+    <ul>
+      <li>&#9989; קשור MCP servers לשאילת databases חיים או logs של terminal בעת debugging</li>
+      <li>&#10060; Manual copy-pasting — תשתמש ב-MCP לגישה ישירה ומאובטחת ל-data</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #e17055;">
+    <div class="card-title">&#129489;&#8205;&#128187; /agents — Background Sub-Agents</div>
+    <p>מפעיל sub-agents ברקע למשימות מקבילות ומבודדות.</p>
+    <ul>
+      <li>&#9989; agents כותבים unit tests בזמן שאתה מתמקד ב-core feature logic</li>
+      <li>&#10060; Sequential working — Sub-agents מטפלים במשימות מתמחות במקביל</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">&#128202; /plan — Architectural Outline</div>
+    <p>מכריח architectural outline לפני שכותבים שורת קוד.</p>
+    <ul>
+      <li>&#9989; ביקורת על ה-plan קודם — אז פקודה ל-Claude &quot;implement it&quot;</li>
+      <li>&#10060; קפיצה ישר לקוד — מסוכן</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #7c3aed;">
+    <div class="card-title">&#128190; /compact — Compress History</div>
+    <p>מצמצם היסטוריה כדי למקסם את חלון ה-context.</p>
+    <ul>
+      <li>&#9989; השתמש כש-Claude מרגיש איטי — שומר על logic ומוריד עלויות</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #14b8a6;">
+    <div class="card-title">&#127769; autodream — AI Sleep Cycle</div>
+    <p>&quot;sleep cycle&quot; שמארגן ומעדן את ה-project memory.</p>
+    <ul>
+      <li>&#9989; &quot;Context pollution&quot;? Mega-sessions מובילים ל-hallucinations — autodream מנקה</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">&#128260; /ralph-loop — Autonomous Iteration Loop</div>
+    <p>לולאת iteration אוטונומית ל-self-correction ו-testing מתמשך.</p>
+    <ul>
+      <li>&#9989; אידיאלי ל-TDD — תמיד הגדר גבולות בטוחים ל-iterations</li>
+    </ul>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('matnas-system-reqs')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('cowork-master')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 102: COWORK COMPLETE GUIDE ====== -->
+<div class="chapter" id="chapter-cowork-master">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 102 — חדש &#129351;</div>
+    <h1 class="chapter-title">&#129351; Mastering Claude Cowork — The Complete Guide</h1>
+    <p class="chapter-subtitle">סוכן AI שמובנה בתוך Claude Desktop ומשלים משימות אמיתיות autonomously — לא רק חושב, גם <em>עושה</em></p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #ea580c;">
+    <div class="box-title">&#128172; מה זה Cowork?</div>
+    סוכן AI שמובנה ב-Claude desktop app ומשלים משימות אמיתיות autonomously. שונה מ-chatbots שבהם אתה עושה את החשיבה והעשייה — Cowork ניגש ל-desktop folders, מתחבר לכלים, מפצל משימות לשלבים, ומבצע אותן מתחילה עד סוף.<br><br>
+    <strong>פשוט יותר</strong> מ-OpenClaw, ללא setup טכני. <strong>זול יותר</strong> מ-Perplexity Computer. <em>נקודת התחלה מומלצת לפני שמשתמשים בכלי AI agentic מורכבים יותר.</em>
+  </div>
+
+  <div class="card" style="border-right:4px solid #f59e0b;">
+    <div class="card-title">&#9202; Getting Started (תחת 5 דקות)</div>
+    <ol>
+      <li>הורד את Claude desktop app מ-<code>support.claude.com</code></li>
+      <li>פתח את ה-Cowork tab בראש ה-desktop</li>
+      <li>כתוב את המשימה שלך באנגלית פשוטה</li>
+      <li>לחץ Go וצפה ב-Cowork עובד עליה צעד אחר צעד</li>
+      <li>ערוך output ועדן הוראות במידת הצורך</li>
+    </ol>
+    <p style="background:#fef3c7; padding:10px; border-radius:6px; font-size:12px;">&#128161; נטר את ה-connectors, פעילות folder, ו-task progress מהפאנל הימני עליון.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">&#128172; Prompting Cowork Correctly</div>
+    <p>תתייחס ל-Cowork כמו <em>שכיר חדש חכם ביום הראשון</em>. מסוגל — אבל צריך context.</p>
+    <ul>
+      <li><strong>TASK</strong> — ציין בבירור מה אתה רוצה שייעשה</li>
+      <li><strong>CONTEXT</strong> — תספק רקע</li>
+      <li><strong>OUTPUT</strong> — הגדר את המבנה המדויק של התוצאה</li>
+    </ul>
+    <p style="background:#ddd6fe; padding:10px; border-radius:6px; font-size:13px;">&#10024; הוסף ל-full autonomy: <em>&quot;Complete this task autonomously. Only stop if you genuinely need my input.&quot;</em></p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">&#129513; 3 דרכים להתאים Cowork אישית</div>
+    <ul>
+      <li><strong>Connectors</strong> — חבר Slack, Notion, Excalidraw, Google Calendar ועוד, כדי ש-Cowork ייגש ל-workflow tools שלך</li>
+      <li><strong>Skills</strong> — שמור הוראות לשימוש חוזר. אם אתה חוזר על פרומפט הרבה, המר אותו ל-Skill</li>
+      <li><strong>Plug-ins</strong> — חבילות של Skills שפועלות כתפקידים מתמחים. Anthropic משחררת כמה ready-made</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">&#128161; Pro Tips</div>
+    <ul>
+      <li>הרץ audit ובקש מ-Cowork לזהות הזדמנויות אוטומציה</li>
+      <li>תזמן משימות חוזרות כך ש-workflows יתחזקו עם הזמן</li>
+      <li>חבר כלים ביום הראשון לפני שאתה מריץ workflows גדולים יותר</li>
+      <li>שמור את הפרומפטים הטובים ביותר והמר אותם ל-Skills</li>
+      <li>אוטומט 1-2 workflows שימושיים בשבוע</li>
+      <li>הדבק emails, docs או URLs ישירות ואמור ל-Cowork מה לעשות</li>
+      <li>קרא את ה-Cowork safety guide לפני שאתה מריץ אוטומציות גדולות</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #d63031;">
+    <div class="card-title">&#9889; 3 Power Workflows מוכנים</div>
+    <ul>
+      <li><strong>&#127770; AI Morning Brief</strong> — מושך אירועי calendar, משימות, ועדיפויות ל-briefing יומי אחד</li>
+      <li><strong>&#128231; Email Manager</strong> — ממיין email לא-קרוא ל-Urgent / Important / FYI / Junk ומנסח תגובות</li>
+      <li><strong>&#128240; Daily News Research Assistant</strong> — סורק את ה-web ל-developments מרכזיים על נושאים שבחרת ומחזיר summaries</li>
+    </ul>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('cc-26-shortcuts')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('marketing-mega-48')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 103: MARKETING 48 PROMPTS LIBRARY ====== -->
+<div class="chapter" id="chapter-marketing-mega-48">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 103 — חדש &#128226;</div>
+    <h1 class="chapter-title">&#128226; ספריית 48 פרומפטים שיווקיים — 8 קטגוריות</h1>
+    <p class="chapter-subtitle">Brand Strategy + Offer &amp; Sales Copy + Ad Copy + Lead Magnets + Email Sequences + Webinars + DM Scripts + Testimonials — כל ה-funnel</p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#0c4a6e;">&#127991;&#65039; 1) Brand Strategy (6 פרומפטים)</h3>
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">B1 — Market Research Profile</div>
+    <p><em>&quot;Act as a market research expert. For my defined audience, create a detailed profile: top 10 problems, exact language they use, current solutions, what&apos;s failing, and their emotional state. Keep it specific to this stage, there should be no generic founder insights.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">B2 — 3-Part Language Library</div>
+    <p><em>&quot;Using the audience analysis, build a 3-part language library for my ICP: (1) Pain vocabulary — how they describe problems. (2) Aspirational language — how they define success. (3) Self-framing — how they describe their expertise. Keep phrasing raw, specific, and true to how they actually speak.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">B3 — Content Pillars</div>
+    <p><em>&quot;Help me develop three to five content pillars. Each pillar must be anchored to a specific belief or observation rather than a broad topic area. Each pillar must be distinct enough that a post from one could not plausibly sit within another. Each pillar must connect to the business outcomes my audience cares about.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">B4 — Voice Profile</div>
+    <p><em>&quot;Analyse my writing samples and build a voice profile: sentence structure, vocabulary, tone, openings/closings, and use of examples or stories. Then turn this into clear second-person guidelines so another writer can replicate my style accurately.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">B5 — Positioning Statement</div>
+    <p><em>&quot;Write a 70–90 word, first-person positioning statement: who you help (specific situation), the outcome you deliver (with metric/timeframe), how you do it (method), and why you (proof). Make it clear, specific, and instantly recognisable to your ideal client.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">B6 — Differentiators Map</div>
+    <p><em>&quot;Define your offer, audience, and competitors. Then map key differentiators: (1) Your unique method. (2) Specific results achieved inc numbers. (3) The niche you serve. For each, write 2-3 clear, specific sentences, no vague claims.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#0891b2;">&#128176; 2) Offer Positioning &amp; Sales Copy (6 פרומפטים)</h3>
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">S1 — 10 Sales Page Headlines</div>
+    <p><em>&quot;Write 10 sales page headlines: each under 15 words, leading with a clear outcome, timeframe, or audience. Avoid vague adjectives and questions. Then pick the top 3 and briefly explain why they&apos;ll perform best.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">S2 — Value Proposition</div>
+    <p><em>&quot;Write a value proposition built on three key outcomes. For each: state a specific result (with metric/timeframe), explain its impact in 2–3 sentences, and include one concrete example or recognisable scenario.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">S3 — Problem Section</div>
+    <p><em>&quot;Write a problem section (under 200 words) describing your audience&apos;s current situation and frustrations in their own words. Make it specific and relatable so they feel deeply understood, not lectured.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">S4 — &quot;This Is For You If&quot;</div>
+    <p><em>&quot;Write a &apos;this is for you if&apos; section with five specific, sentence-length statements describing your ideal client&apos;s situation, beliefs, and past attempts. Make each feel precise enough that the right reader instantly recognises themselves.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">S5 — Positioning Statement (for sales page)</div>
+    <p><em>&quot;Write a 70–90 word, first-person positioning statement: who you help, the outcome you deliver (with metric/timeframe), how you do it, and why you. Make it clear and instantly recognisable.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">S6 — &quot;This Is Not For You If&quot;</div>
+    <p><em>&quot;Write a &apos;this is not for you if&apos; section with four specific, sentence-length statements explaining who won&apos;t benefit and why. Focus on mindsets or situations, and keep the tone direct but respectful.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#7c2d12;">&#128640; 3) Ad Copy (6 פרומפטים)</h3>
+  <div class="card" style="border-right:4px solid #7c2d12;">
+    <div class="card-title">A1 — Lead Magnet Ads (3 variants)</div>
+    <p><em>&quot;Write three ad variants for your lead magnet: each includes a scroll-stopping hook, 2–3 sentences explaining the value, and a clear CTA. Keep body copy under 100 words, specific to your audience and problem, with no questions or exclamation marks.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #7c2d12;">
+    <div class="card-title">A2 — Cold-Audience Ads (3 variants)</div>
+    <p><em>&quot;Write three cold-audience ad variants: open with a situation or result-driven hook, establish credibility with a specific proof point, and close with a clear CTA. Tailor each to your audience and offer outcome. Under 120 words each. Write for Facebook and Instagram feed placement.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #7c2d12;">
+    <div class="card-title">A3 — Retargeting Ads (2 variants)</div>
+    <p><em>&quot;Write two retargeting ads (under 100 words each) for warm prospects: address a key hesitation directly, include one specific proof point, and close with a clear CTA back to the sales page or a call.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #7c2d12;">
+    <div class="card-title">A4 — YouTube Pre-Roll (30s)</div>
+    <p><em>&quot;Write a 30-second YouTube pre-roll script: hook (5s), problem (8s), solution (10s), CTA (7s). Keep it conversational, with a clear instruction, and include brief visual notes for each section.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #7c2d12;">
+    <div class="card-title">A5 — 10 Ad Hooks</div>
+    <p><em>&quot;Write 10 ad hooks (1–2 sentences each) using varied angles, results, observations, problems, and audience-specific statements. Then select the top 3 and briefly explain why they&apos;re most likely to perform.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #7c2d12;">
+    <div class="card-title">A6 — Live Training Ads (3 variants)</div>
+    <p><em>&quot;Write three ad variants (under 110 words each) promoting your free live training: open with the problem or outcome, describe the training in two sentences, and close with a clear CTA including date and time.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#16a34a;">&#129516; 4) Lead Magnet Creation (6 פרומפטים)</h3>
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">L1 — 10 Lead Magnet Ideas</div>
+    <p><em>&quot;Generate 10 lead magnet ideas: include a title, format, and one sentence on why your audience would use it immediately. Focus on quick, tangible results over broad or inspirational content.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">L2 — 10 Lead Magnet Titles</div>
+    <p><em>&quot;Write 10 lead magnet titles using varied formats (numbers, outcomes, problems, with/without format labels). Keep them specific and clear. Then choose the top 3 and explain why they&apos;re strongest.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">L3 — Detailed Outline</div>
+    <p><em>&quot;Create a detailed outline for your resource: include an intro, structured sections with clear headings and key points, and a closing that directs the reader to a next step. Make it specific enough to write from directly.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">L4 — Lead Magnet Introduction</div>
+    <p><em>&quot;Write a lead magnet introduction (under 200 words): speak directly to the reader&apos;s situation, establish your credibility, and clearly explain what they&apos;ll get and how to use it.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">L5 — Lead Magnet Section</div>
+    <p><em>&quot;Write a lead magnet section (under 300 words): cover the key points, include a concrete example, and ensure the reader can take one clear, specific action immediately.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">L6 — Lead Magnet Closing</div>
+    <p><em>&quot;Write a lead magnet closing (under 200 words): acknowledge progress, show what&apos;s now possible, and introduce your paid offer as a natural next step, not a hard pitch.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#be185d;">&#128231; 5) Email Sequences (6 פרומפטים)</h3>
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">E1 — Welcome Email #1</div>
+    <p><em>&quot;Write a first welcome email (under 220 words): include the download link, one line on how to use it, and a brief credibility-based intro. Keep it personal, not generic, and avoid &apos;Welcome&apos; or &apos;Congratulations.&apos; Include three subject lines.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">E2 — Welcome Email #2</div>
+    <p><em>&quot;Write a second welcome email (under 250 words): share a specific result as a short story, highlight one actionable lesson, and tease the next email. No selling. Include three subject lines.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">E3 — Welcome Email #3</div>
+    <p><em>&quot;Write a third welcome email (220–280 words): share one genuinely useful insight with no selling, build trust through value, and close with a line that shows you understand the reader. Include three subject lines.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">E4 — Welcome Email #4 (Offer)</div>
+    <p><em>&quot;Write a fourth welcome email (under 260 words): introduce your paid offer as a natural next step, include 1-2 lines of proof, keep the tone soft, and add a clear CTA. Include three subject lines.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">E5 — Case Study Email</div>
+    <p><em>&quot;Write a 240–300 word client case study email: open with the result, share the before and what you did, and close with a reflective line and soft CTA. Keep it story-driven. Include three subject lines.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">E6 — Objection Email</div>
+    <p><em>&quot;Write a 220–270 word email addressing a key objection: acknowledge it honestly, respond with a specific example or reframe, and close with a soft CTA. Include three subject lines.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#9333ea;">&#127908; 6) Webinar &amp; Event Promotion (6 פרומפטים)</h3>
+  <div class="card" style="border-right:4px solid #9333ea;">
+    <div class="card-title">W1 — Webinar Registration Page</div>
+    <p><em>&quot;Write a webinar registration page (under 450 words). Include headline, subheadline, ideal attendee, outcome-focused content, host intro, and a clear CTA with date and time.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #9333ea;">
+    <div class="card-title">W2 — Confirmation Email</div>
+    <p><em>&quot;Write the registration confirmation email for my webinar: [title] on [date and time]. Confirm their spot. Tell them exactly what to expect on the call in 2-3 sentences. Give them one thing to do or think about before they join. Close with a line that makes them look forward to the session.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #9333ea;">
+    <div class="card-title">W3 — 24-Hour Reminder</div>
+    <p><em>&quot;Write a 24-hour webinar reminder email (under 180 words). Restate key outcomes, include the join link, suggest one way to prepare, and add three subject lines designed to maximise opens.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #9333ea;">
+    <div class="card-title">W4 — 1-Hour Reminder</div>
+    <p><em>&quot;Write a one-hour webinar reminder email (under 100 words): confirm the time, include the join link, and restate one key reason they signed up. Include three subject lines.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #9333ea;">
+    <div class="card-title">W5 — LinkedIn Post Promo</div>
+    <p><em>&quot;Write a 160–210 word LinkedIn post promoting your live training: open with the problem, outline what attendees will gain, include date/time, and close with a clear registration CTA.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #9333ea;">
+    <div class="card-title">W6 — 3-Minute Opening Script</div>
+    <p><em>&quot;Write a three-minute webinar opening script: introduce your credibility through specific results, define who it&apos;s for and what they&apos;ll gain, and give one instruction to get the most from it. Keep it natural and conversational.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#0369a1;">&#128172; 7) DM Scripts &amp; Outreach (6 פרומפטים)</h3>
+  <div class="card" style="border-right:4px solid #0369a1;">
+    <div class="card-title">D1 — Genuine Conversation DMs</div>
+    <p><em>&quot;Write five LinkedIn DMs (under 80 words each) to start a genuine conversation. Reference their engagement, ask one thoughtful question, and keep it natural and non-salesy.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0369a1;">
+    <div class="card-title">D2 — Cold DMs</div>
+    <p><em>&quot;Write five cold LinkedIn DMs (under 100 words each). Personalise each with something specific about the prospect, keep it natural and non-salesy, and aim to start a genuine conversation.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0369a1;">
+    <div class="card-title">D3 — Value-First DMs</div>
+    <p><em>&quot;Write five LinkedIn DMs (under 110 words each) that lead with genuine value. Share a clear observation or useful resource, then leave the door open for a conversation without pitching.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0369a1;">
+    <div class="card-title">D4 — Training Attendee DMs</div>
+    <p><em>&quot;Write five LinkedIn DMs (under 100 words each) for training attendees. Reference something specific from the session, start a natural conversation, and guide toward the next step without pitching immediately.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0369a1;">
+    <div class="card-title">D5 — Warm Prospect to Discovery Call</div>
+    <p><em>&quot;Write five LinkedIn DMs (under 80 words each) to move a warm prospect toward a discovery call. Keep the ask low-pressure, context-based, and framed as a logical next step they&apos;d want.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0369a1;">
+    <div class="card-title">D6 — Objection DM Responses</div>
+    <p><em>&quot;Write five DM responses (under 100 words each) to a common objection: acknowledge it, respond with a specific example or reframe, and keep the conversation open. Avoid defensiveness or dismissal.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#a16207;">&#127942; 8) Testimonial &amp; Case Study (6 פרומפטים)</h3>
+  <div class="card" style="border-right:4px solid #a16207;">
+    <div class="card-title">T1 — 10 Testimonial Questions</div>
+    <p><em>&quot;Write 10 open-ended client testimonial questions that draw out a specific, story-driven response, covering their starting point, challenges, decision to invest, actions taken, results (with numbers), surprises, and advice to others.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #a16207;">
+    <div class="card-title">T2 — Case Study Interview Framework</div>
+    <p><em>&quot;Create a structured case study interview framework that guides the conversation through the client&apos;s starting point, challenges, past attempts, decision to invest, actions taken, results, business impact, and advice to others. Include suggested follow-up questions for each section to draw out more specific detail when needed.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #a16207;">
+    <div class="card-title">T3 — 400-600 Word Case Study</div>
+    <p><em>&quot;Write a 400–600 word case study: open with the result, then tell the story chronologically (before, decision, actions, outcome), and close by showing what&apos;s possible for someone similar. Keep it narrative, not a list.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #a16207;">
+    <div class="card-title">T4 — Case Study Email</div>
+    <p><em>&quot;Write an email (under 280 words) that opens with a client result, tells the story, highlights one key lesson, and ends with a soft CTA. Include three subject lines.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #a16207;">
+    <div class="card-title">T5 — Case Study LinkedIn Post</div>
+    <p><em>&quot;Write a 200–260 word, first-person LinkedIn post: open with a client result, tell the story, share one practical lesson, and close with an invitation for similar people to start a conversation.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #a16207;">
+    <div class="card-title">T6 — Sales Page Social Proof</div>
+    <p><em>&quot;Write a sales page social proof section: include a brief intro and 3-4 short case studies (3-5 sentences each), opening with results and adding context. Avoid using quotes unless they&apos;re exact.&quot;</em></p>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('cowork-master')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('claude-power-10')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 104: 10 CLAUDE POWER PROMPTS CHEAT SHEET ====== -->
+<div class="chapter" id="chapter-claude-power-10">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 104 — חדש &#128293;</div>
+    <h1 class="chapter-title">&#128293; Claude AI Power Cheat Sheet — 10 פרומפטים מתקדמים</h1>
+    <p class="chapter-subtitle">Advanced Prompts &amp; Workflows for Creators, Founders &amp; Professionals — 10 פרומפטים שמכסים את כל סוגי המשימות הרציניות</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">&#129504; 1) Strategic Thinking Partner</div>
+    <p><strong>שימוש:</strong> חשיבה עמוקה, אסטרטגיה, קבלת החלטות.</p>
+    <p><em>&quot;Act as a senior business strategist. Analyze my business model, identify leverage points, and suggest scalable growth systems using AI and automation.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">&#128221; 2) Long-Form Content Engine</div>
+    <p><strong>שימוש:</strong> Blogs, scripts, authority content.</p>
+    <p><em>&quot;Write a high-authority long-form article on [topic] with clear structure, insights, examples, and a strong narrative flow.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #00b894;">
+    <div class="card-title">&#128203; 3) Projects Workflow System</div>
+    <p><strong>שימוש:</strong> ניהול עבודה ארוכת-טווח דרך Claude Projects.</p>
+    <p><em>&quot;Help me organize this project into structured phases, tasks, and systems. Create a repeatable workflow.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #fdcb6e;">
+    <div class="card-title">&#128194; 4) File &amp; Document Intelligence</div>
+    <p><strong>שימוש:</strong> PDFs, דוחות, מחקר, ניתוח.</p>
+    <p><em>&quot;I&apos;ve uploaded a document. Extract key insights, summarize it, and highlight actionable opportunities.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #e17055;">
+    <div class="card-title">&#127912; 5) Artifact Builder (Live Outputs)</div>
+    <p><strong>שימוש:</strong> Landing pages, tools, structured assets.</p>
+    <p><em>&quot;Create a functional output (document/tool/page) based on this idea with structured formatting and usability.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">&#128395;&#65039; 6) Human-Level Writing &amp; Editing</div>
+    <p><strong>שימוש:</strong> Copywriting, storytelling, brand tone.</p>
+    <p><em>&quot;Rewrite this content to sound more natural, persuasive, and aligned with a premium brand voice.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">&#128300; 7) Deep Research Assistant</div>
+    <p><strong>שימוש:</strong> למידה, מחקר, ניתוח.</p>
+    <p><em>&quot;Break down this topic into key insights, frameworks, and trends with clear explanations.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #7c3aed;">
+    <div class="card-title">&#9881;&#65039; 8) AI System Builder</div>
+    <p><strong>שימוש:</strong> אוטומציה, scaling, systems thinking.</p>
+    <p><em>&quot;Help me design a system using AI tools to automate [task/workflow]. Provide step-by-step structure.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #14b8a6;">
+    <div class="card-title">&#127793; 9) Idea Expansion Engine</div>
+    <p><strong>שימוש:</strong> Content repurposing, ideation.</p>
+    <p><em>&quot;Take this idea and expand it into multiple angles, content formats, and monetization paths.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">&#9878;&#65039; 10) Decision-Making Framework</div>
+    <p><strong>שימוש:</strong> חשיבה ברורה, הפחתת bias.</p>
+    <p><em>&quot;Help me evaluate this decision using pros/cons, risks, and long-term impact.&quot;</em></p>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('marketing-mega-48')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('prompt-anatomy-perfect')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 105: PROMPT ANATOMY PERFECT ====== -->
+<div class="chapter" id="chapter-prompt-anatomy-perfect">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 105 — חדש &#127919;</div>
+    <h1 class="chapter-title">&#127919; The Anatomy of a Perfect Claude Prompt — 2 מסגרות</h1>
+    <p class="chapter-subtitle">איך לכתוב פרומפט שעובד בכל פעם — 2 מסגרות בדוקות: Role/Task/Context/Reasoning + Who/What/Context/Format/Constraints/Examples/Success</p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#0984e3;">&#127919; מסגרת A — 6 חלקים בסיסיים</h3>
+  <div class="card" style="border-right:4px solid #0984e3;">
+    <div class="card-title">&#128205; דוגמה חיה — תוכנית launch 90 ימים</div>
+    <table style="width:100%; border-collapse:collapse; margin-top:8px; font-size:13px;">
+      <tr><td style="padding:8px; border:1px solid #cbd5e1; background:#dbeafe; font-weight:700;">Role</td><td style="padding:8px; border:1px solid #cbd5e1;">Act as a senior go-to-market strategist with deep expertise launching early-stage SaaS tools. Prioritize traction speed over brand perfection.</td></tr>
+      <tr><td style="padding:8px; border:1px solid #cbd5e1; background:#fed7aa; font-weight:700;">Task</td><td style="padding:8px; border:1px solid #cbd5e1;">Build a 90-day launch plan for a new AI productivity tool for founders. Validate the core messaging, end with a launch-ready brief.</td></tr>
+      <tr><td style="padding:8px; border:1px solid #cbd5e1; background:#bbf7d0; font-weight:700;">Context</td><td style="padding:8px; border:1px solid #cbd5e1;">Product: AI task manager for founders (25-40). Team: 2-person (Founder + Growth marketer). Resources: Lean budget, 15-20 beta users. Key Risks: Adoption, Retention, Positioning.</td></tr>
+      <tr><td style="padding:8px; border:1px solid #cbd5e1; background:#fde68a; font-weight:700;">Reasoning</td><td style="padding:8px; border:1px solid #cbd5e1;">The goal is a crisp, launch-ready strategy. By locking in ICP clarity upfront and asking you to defend each step, the output will be truly actionable and founder-grade.</td></tr>
+      <tr><td style="padding:8px; border:1px solid #cbd5e1; background:#fecaca; font-weight:700;">Stop conditions</td><td style="padding:8px; border:1px solid #cbd5e1;">A 12-week roadmap with 3-4 actions/week. Every action links to the risk it addresses. Plan ends with a final Launch Decision Gate.</td></tr>
+      <tr><td style="padding:8px; border:1px solid #cbd5e1; background:#e9d5ff; font-weight:700;">Output</td><td style="padding:8px; border:1px solid #cbd5e1;">Present as a weekly sprint plan. For each action: Action (specific task), Owner (Founder/Growth/Designer), Risk (Adoption/Retention/Positioning), Rationale + Output: reasoning, deliverable.</td></tr>
+    </table>
+  </div>
+
+  <h3 style="margin-top:32px; color:#dc2626;">&#10024; מסגרת B — 8 חלקים מורחבים (Who/What/Context/Format/Constraints/Examples/Success/Before)</h3>
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <div class="card-title">תבנית מלאה — להעתקה</div>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:11px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">[Who] "You are a [expertise level] [role] with deep knowledge of [domain/industry]."
+
+[What] "Your task is to [specific deliverable] for [who it's for]."
+
+[Context]
+Who is your audience: [role, seniority, pain points]
+What's the situation: [relevant background, what's already been tried, what matters]
+
+Files to reference:
+[style-guide.md] - your tone, voice rules, words to avoid
+[audience-research.md] - pain points, exact language, objections
+[past-examples.md] - content that has already worked
+
+[Format]
+Length: [word count / number of slides / bullets]
+Structure: [headers / numbered list]
+Tone: [conversational / formal / punchy]
+Delivered as: [plain text / markdown / copy-paste ready / PDFs / Docs]
+
+[Constraints]
+Avoid: [words, phrases, styles to stay away from]
+Don't: [common tendencies you want to cut]
+Never: [hard limits]
+
+[Examples]
+"Here are 3-5 best examples of what the output should look like: [paste the examples]"
+"Here is what I don't want: [paste 2-3 examples]."
+"Here's why it doesn't work: [explain]"
+
+[Success criteria]
+"Emotion: [what should the audience feel "I've been there" / "Why didn't I think of that"]
+Intent: [what should the reader do after]
+Core problem: [what's the real problem you're addressing]
+Detail level: [high-level overview vs. deep tactical breakdown]
+Format check: [does it match what you asked for in section 4?]"
+
+[Before you begin]
+"Ask clarifying questions if anything is unclear, or you don't have sufficient information. Make them pointed and easy to answer.
+Do not infer or assume anything. Only use real numbers and information that can be referenced or cited.
+Verify your understanding before writing. Restate the task in one sentence and confirm it's correct before starting."</div>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #16a34a; margin-top:24px;">
+    <div class="box-title">&#128161; מתי להשתמש באיזו מסגרת</div>
+    <strong>מסגרת A (6 חלקים)</strong> — לפרומפטים יום-יומיים בינוניים. <strong>מסגרת B (8 חלקים)</strong> — לפרומפטים מקצועיים גבוהים, פלטים שצריך לשמור או למסור ללקוח, או כשהתוצאה חייבת להיות מדויקת מההתחלה.
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('claude-power-10')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('claude-design-mastery')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 106: CLAUDE DESIGN MASTERY ====== -->
+<div class="chapter" id="chapter-claude-design-mastery">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 106 — חדש &#127912;</div>
+    <h1 class="chapter-title">&#127912; Claude Design Mastery — 6 שלבים רשמיים + ranking של 6 use cases</h1>
+    <p class="chapter-subtitle">Anthropic שחררה Claude Design — Figma killer ל-Knowledge Workers. הנה ה-workflow הרשמי + דירוג כן של מה עובד ומה לא</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #5b21b6;">
+    <div class="box-title">&#128172; למה זה משמעותי</div>
+    Anthropic בונה גרסה AI-native של כל ה-knowledge work stack: <strong>Code, Cowork, ועכשיו Design</strong>. כש-code זול → כל מה שנבנה ממנו זול. צוות העיצוב פשוט הצטמצם: אתה לא צריך מעצב, slide deck person, ו-web developer. כלי אחד עושה 80% מהעבודה. <em>Speed is the new moat</em>. <strong>כל knowledge worker הוא מעצב עכשיו.</strong>
+  </div>
+
+  <h3 style="margin-top:24px; color:#5b21b6;">&#127919; 6 השלבים הרשמיים של Anthropic</h3>
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">1&#65039;&#8419; Define Your Output</div>
+    <p>בחר מה אתה רוצה ליצור: <em>Landing Page, Social Post, Presentation, או Product UI</em>.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">2&#65039;&#8419; Set Up Your Design System</div>
+    <p>הגדר colors, typography, spacing, ו-components כדי לשמור על קונסיסטנטיות. <em>Design System</em> = Colors + Typography + Components.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">3&#65039;&#8419; Create Your Project</div>
+    <p>תן שם ל-project ובחר את הפורמט/use case המתאים.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">4&#65039;&#8419; Upload Brand Assets</div>
+    <p>הוסף את הלוגו, brand kit, וכל visual references שיכוונו את כיוון העיצוב.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">5&#65039;&#8419; Write a Clear Design Brief</div>
+    <p>תהיה ספציפי לגבי layout, structure, ו-expectations — ככל שיותר פרטים, יותר טוב ה-output.</p>
+    <p style="background:#f3e8ff; padding:8px; border-radius:6px; font-size:12px;">דוגמה: <em>&quot;Create a clean, modern landing page for a SaaS product. Hero section with headline, subheadline, CTA. Include logos section, features grid, and footer. Use plenty of white space and a trustworthy, professional tone.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">6&#65039;&#8419; Refine and Finalize</div>
+    <p>השתמש ב-inline comments ו-adjustment controls כדי לעדן את העיצוב, ואז Export או Hand off ל-Claude Code לפיתוח. Export: PNG / Figma / Web / Hand off to Claude Code.</p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#ca8a04;">&#11088; 6 Use Cases ראנגד by איכות (10/10 → 4/10)</h3>
+  <table style="width:100%; border-collapse:collapse; margin-top:14px; font-size:13px;">
+    <thead>
+      <tr style="background:#fef3c7;">
+        <th style="padding:8px; border:1px solid #fde68a;">דירוג</th>
+        <th style="padding:8px; border:1px solid #fde68a;">Use Case</th>
+        <th style="padding:8px; border:1px solid #fde68a;">למה</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:6px; border:1px solid #fde68a; font-weight:700;">10/10</td><td style="padding:6px; border:1px solid #fde68a;">Wireframes &amp; Prototypes</td><td style="padding:6px; border:1px solid #fde68a;">Best in class. שאלות הבהרה לבדן יעשו אותך product manager טוב יותר. 3 כיוונים בתוך 4 דקות.</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a; font-weight:700;">9/10</td><td style="padding:6px; border:1px solid #fde68a;">Pitch Decks &amp; Slides</td><td style="padding:6px; border:1px solid #fde68a;">Unreal. מסור רעיון גולמי → deck בסגנון Sequoia עם speaker notes, scientific backing, LTV/CAC math, animated transitions. טוב יותר ממה שרוב הסוכנויות מייצרות בשבוע.</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a; font-weight:700;">8/10</td><td style="padding:6px; border:1px solid #fde68a;">Landing Pages &amp; Marketing Sites</td><td style="padding:6px; border:1px solid #fde68a;">Excellent ל-v1 landing pages, hero sections, conversion-focused layouts. Copy צריך pass, design פוגע ב-80-90% בניסיון ראשון. הדבק reference site, אמור לו מה לשנות, סיים.</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a; font-weight:700;">7/10</td><td style="padding:6px; border:1px solid #fde68a;">Mobile App Designs</td><td style="padding:6px; border:1px solid #fde68a;">Genuinely good, מהיר, ו-testing זה לא רק screenshots ועריכות יותר. יש interactions מוזרים, אבל MVP ברור ב-4 דקות. כדאי לפני שמשכירים מעצב.</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a; font-weight:700;">6/10</td><td style="padding:6px; border:1px solid #fde68a;">Design Systems</td><td style="padding:6px; border:1px solid #fde68a;">שימושי אם אתה מעלה Figma kit כדי לבסס אותו. כואב אם מתחיל מאפס. שורף tokens מהר, לוקח 10+ דקות, כדאי לעשות פעם אחת ולחזור עליו לתמיד.</td></tr>
+      <tr><td style="padding:6px; border:1px solid #fde68a; font-weight:700;">4/10</td><td style="padding:6px; border:1px solid #fde68a;">Animated Videos</td><td style="padding:6px; border:1px solid #fde68a;">לא שם עדיין. &quot;Videos&quot; code-rendered מרגישים יותר כמו animated web pages מאשר commercials. אי אפשר לעשות export נקי. השתמש בכלי וידאו AI ייעודי.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card" style="border-right:4px solid #16a34a; margin-top:24px;">
+    <div class="card-title">&#9989; Set It Up With Your Brand Guidelines</div>
+    <ol>
+      <li><strong>Upload your Figma file or UI kit</strong> — גרור ישר. Design ימשוך colors, type, components</li>
+      <li><strong>Drop screenshots of your current site</strong> — אין Figma? הוסף 3-4 screenshots של homepage, product pages, emails</li>
+      <li><strong>Paste a reference site or competitor</strong> — &quot;Make this feel like Stripe.com but warmer&quot; עובד טוב יותר מתיאור aesthetics</li>
+      <li><strong>Build a Design System project once</strong> — feed brand → generate tokens (colour, type, spacing, radius) → reuse everywhere</li>
+      <li><strong>Add your brand voice rules</strong> — Forbidden words, tone guidelines, spelling preferences. Copy = part of design</li>
+    </ol>
+  </div>
+
+  <div class="card" style="border-right:4px solid #d97706;">
+    <div class="card-title">&#127919; The Workflow That Actually Works</div>
+    <p>רוב האנשים עושים one-shot, שורפים tokens, ומקבלים output ממוצע. תאט בהתחלה, תהיה מהיר יותר בסוף:</p>
+    <ol>
+      <li>Start with a wireframe → catch issues early</li>
+      <li>Use clarifying questions as a brief</li>
+      <li>Ask for multiple directions → pick one → refine</li>
+      <li>One task at a time (no parallel prompts)</li>
+      <li>Use the drawing tool to edit visually</li>
+      <li>AI does 90% → you do final 10% (copy, polish, taste)</li>
+    </ol>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">&#9989;&#10060; Do / Don&apos;t</div>
+    <table style="width:100%; border-collapse:collapse; margin-top:8px; font-size:13px;">
+      <tr><th style="padding:8px; background:#bbf7d0; text-align:right;">Do</th><th style="padding:8px; background:#fecaca; text-align:right;">Don&apos;t</th></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Ground it in context (Figma, screenshots, references)</td><td style="padding:6px; border:1px solid #cbd5e1;">Don&apos;t use it for video (use AI video tools)</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Start with wireframes, then build</td><td style="padding:6px; border:1px solid #cbd5e1;">Don&apos;t one-shot complex apps</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Ask for 3 directions</td><td style="padding:6px; border:1px solid #cbd5e1;">Don&apos;t expect pixel perfection</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Duplicate projects to branch ideas</td><td style="padding:6px; border:1px solid #cbd5e1;">Don&apos;t skip final layer (copy + polish)</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Let it finish (don&apos;t interrupt mid-render)</td><td style="padding:6px; border:1px solid #cbd5e1;">Don&apos;t treat as final output (it&apos;s a draft tool)</td></tr>
+    </table>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #991b1b; margin-top:24px;">
+    <div class="box-title">&#9888; מתי <strong>לא</strong> להשתמש ב-Design?</div>
+    Video ads, hyper-realistic imagery, 3D work, pixel-perfect production, או production code שמוכן לפריסה. <strong>Design is for speed and direction, not final-mile perfection.</strong>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('prompt-anatomy-perfect')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('token-17-ways')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 107: 17 WAYS TO STOP HITTING CLAUDE LIMIT ====== -->
+<div class="chapter" id="chapter-token-17-ways">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 107 — חדש &#128202;</div>
+    <h1 class="chapter-title">&#128202; 17 דרכים להפסיק לפגוע במגבלת Claude</h1>
+    <p class="chapter-subtitle">חיסכון מסיבי ב-tokens ובכסף — כל טכניקה עם DO THIS + THE MATH (התחשיב)</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #d63031;">
+    <div class="box-title">&#9888; The Big Picture</div>
+    Cowork קורא את התיקייה לפני <em>כל משימה</em>. Session של 30 הודעות = 232,000 tokens. 98.5% מה-tokens הולכים על קריאה מחדש של הודעות ישנות. רק 1.5% הולכים לתשובה האמיתית. הנה איך לתקן זאת.
+  </div>
+
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">1) Convert Files Before Uploading</div>
+    <p><strong>DO THIS:</strong> אל תעלה PDFs, screenshots. העתק-הדבק את הטקסט ל-Google Doc, הורד כ-<code>.md</code>, העלה את זה.</p>
+    <p><strong>THE MATH:</strong> עמוד אחד של PDF = 1,500-3,000 tokens. אותו טקסט כ-markdown = פחות מ-200 tokens.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">2) Plan in Chat. Build in Cowork.</div>
+    <p><strong>DO THIS:</strong> פתח Chat קודם. תכנן את המבנה. אז עבור ל-Cowork לבנייה.</p>
+    <p><strong>THE MATH:</strong> Anthropic אישרה ש-file creation שורף יותר מ-regular chat.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">3) Say &quot;Ask Me Questions&quot;</div>
+    <p><strong>DO THIS:</strong> &quot;I want to [task] to [success criteria]. Ask me questions using AskUserQuestion.&quot;</p>
+    <p><strong>THE MATH:</strong> לחיצה על אופציות = כמעט אפס tokens. הקלדת פרומפט של 500 מילים = 500 tokens.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">4) Stop Redoing The Whole Thing</div>
+    <p><strong>DO THIS:</strong> כש-section 3 שגוי, אמור &quot;Only redo section 3. Keep everything else.&quot; הוסף &quot;Be precise.&quot; אתה משלם על כל מילה.</p>
+    <p><strong>THE MATH:</strong> דו&quot;ח 2,000-token שמוחדש מאפס = 2,000 output tokens אבוד. תיקון section אחד = ~300.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">5) Batch Tasks Into One Message</div>
+    <p><strong>DO THIS:</strong> במקום 2 prompts נפרדים (&quot;Summarize this&quot;, &quot;List the points&quot;), שלח אחד: &quot;Summarize, list points, suggest a headline.&quot;</p>
+    <p><strong>THE MATH:</strong> 3 הודעות = 3 context reloads מלאים. הודעה אחת = אחת. Claude צריך את כל התמונה.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">6) Reuse The Prompt Structure</div>
+    <p><strong>DO THIS:</strong> שמור prompt library. החלף רק את ה-variable part. אותו מבנה, משימה חדשה.</p>
+    <p><strong>THE MATH:</strong> Stable prompts = cheaper prompts. אתה חוסך tokens בלי לשנות workflow.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">7) Edit Your Message</div>
+    <p><strong>DO THIS:</strong> ב-Chat, לחץ &apos;Edit&apos; על ההודעה המקורית. תקן. Regenerate. (עובד רק ב-Chat).</p>
+    <p><strong>THE MATH:</strong> כל &quot;No, I meant...&quot; מוסיף ל-history. Claude קורא את הכל מחדש.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">8) Pick The Right Model</div>
+    <p><strong>DO THIS:</strong> השתמש ב-Sonnet או Haiku לבדיקות איות. שמור Opus + Extended Thinking לעבודה אמיתית.</p>
+    <p><strong>THE MATH:</strong> Chat הוא הקל ביותר. Cowork הכי כבד. אתה משלם מחירי Cowork על עבודה ברמת Chat.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">9) Keep Your ABOUT ME Files Short</div>
+    <p><strong>DO THIS:</strong> Cowork קורא את התיקייה שלך לפני כל משימה. צמצם את ה-about-me שלך לתחת 2,000 מילים.</p>
+    <p><strong>THE MATH:</strong> כל session ש-file נפוח נקרא במלואו. 22,000 מילים x 10 sessions ביום שורף כסף.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">10) Restart, Don&apos;t Follow Up</div>
+    <p><strong>DO THIS:</strong> כש-Cowork מקבל את זה לא נכון, לחץ &quot;Restart the conversation from here&quot; על הודעה מוקדמת יותר.</p>
+    <p><strong>THE MATH:</strong> Session של 20 הודעות שורף ~105,000 tokens. Session של 30 הודעות? 232,000.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">11) Summarize Every 15-20 Messages</div>
+    <p><strong>DO THIS:</strong> בקש מ-Claude לסכם הכל חשוב. העתק את ה-brief. פתח session חדש.</p>
+    <p><strong>THE MATH:</strong> מפתח אחד עקב — 98.5% מה-tokens הלכו לקריאה מחדש של הודעות ישנות. רק 1.5% הלכו לתשובה האמיתית.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">12) Don&apos;t Dump Your Whole Folder</div>
+    <p><strong>DO THIS:</strong> כלול רק קבצים ש-Claude צריך למשימה הזו.</p>
+    <p><strong>THE MATH:</strong> כל קובץ = tokens שיצאו. אם תפיל יותר מדי, Cowork מתחיל לסכם. אפס תיקיות = tokens שנחסכו.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">13) New Topic = New Chat</div>
+    <p><strong>DO THIS:</strong> שאלת על LinkedIn post. אז על proposal. באותו chat — Claude קורא מחדש את ה-LinkedIn post שלך בכל פעם שהוא חושב על הארוחה שלך. New topic, new chat. Always.</p>
+    <p><strong>THE MATH:</strong> Tokens נשרפים על context שלא רלוונטי.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">14) Turn Off Features You Don&apos;t Need</div>
+    <p><strong>DO THIS:</strong> Web search, connectors — כולם מוסיפים tokens. ברירת מחדל: הכל off. הפעל features per task, לא per account.</p>
+    <p><strong>THE MATH:</strong> Filtered retrieval = פחות תוצאות = פחות tokens.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">15) Use Projects For Recurring Files</div>
+    <p><strong>DO THIS:</strong> תפסיק להעלות את אותו PDF ל-5 chats שונים. השתמש ב-Projects במקום. העלה את הקובץ פעם אחת. כל chat חדש בתוך אותו project רואה אותו.</p>
+    <p><strong>THE MATH:</strong> Anthropic אישרה ש-reused project content לא נחשב באותה דרך.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">16) Set Up Preferences. Kill Memory.</div>
+    <p><strong>DO THIS:</strong> Settings → General → Personal Preferences. הגדר את ה-style שלך (בחר &quot;Concise&quot; או אחד מותאם אישית). כבה Memory. זה מוזר ועולה לך.</p>
+    <p><strong>THE MATH:</strong> בלי preferences, כל chat מתחיל עם 3-5 הודעות מבזבזות על setup. &quot;I&apos;m a marketer, I write casually, I like short paragraphs...&quot; — הגדרה אחת = חיסכון תמידי.</p>
+  </div>
+  <div class="card" style="border-right:4px solid #b45309;">
+    <div class="card-title">17) Stop Using Claude For Things It Can&apos;t Do</div>
+    <p><strong>DO THIS:</strong> Claude לא יכול ליצור תמונות. אם תשלח 5 הודעות שמתארות visual ו-getting text, זה 5 הודעות בזבוז על משימה שלא היתה להיפתר. צריך תמונות? Gemini. צריך real-time search? Grok.</p>
+    <p><strong>THE MATH:</strong> Tokens שמושקעים על משימות בלתי אפשריות הם tokens שלא תקבל בחזרה.</p>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('claude-design-mastery')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('founder-nutrition-prompts')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 108: 8 FOUNDER + 9 NUTRITION PROMPTS ====== -->
+<div class="chapter" id="chapter-founder-nutrition-prompts">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 108 — חדש &#128176;</div>
+    <h1 class="chapter-title">&#128176; 8 Founder Prompts + 9 Nutrition Prompts — Claude כיועץ $10k</h1>
+    <p class="chapter-subtitle">פרומפטים מאסטר לפאונדרים שמחליפים יועצים יקרים, ופרומפטים שמחליפים meal planner + macro tracker + grocery budget app</p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#16a34a;">&#128176; 8 Claude Prompts Every Founder Needs</h3>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">F1 — Pressure-Test My Business Idea</div>
+    <p><em>&quot;I&apos;m considering building [DESCRIBE IDEA] for [TARGET CUSTOMER]. Before I commit time and money, tear this apart. What are the 5 biggest reasons this could fail? Who&apos;s already doing something similar and how are they positioned? What would need to be true about the market for this to work? Where&apos;s the demand signal? I need honest analysis.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #f59e0b;">
+    <div class="card-title">F2 — Build My Go-To-Market From Scratch</div>
+    <p><em>&quot;I&apos;m launching [PRODUCT/SERVICE] for [TARGET AUDIENCE] at [PRICE POINT]. Build me a go-to-market plan for the first 90 days. Break it into 3 phases: pre-launch, launch week, and post-launch. For each phase, give me the specific channels, messaging, and actions. Prioritise whatever will generate revenue fastest. Assume I have a small team and a limited budget.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #a855f7;">
+    <div class="card-title">F3 — Stress-Test My Pricing</div>
+    <p><em>&quot;Here&apos;s what I currently charge: [PRICING DETAILS]. Here&apos;s what I offer: [PRODUCT/SERVICE DETAILS]. Here&apos;s who I&apos;m selling to: [CUSTOMER PROFILE]. Tell me if I&apos;m underpriced, overpriced, or positioned wrong entirely. Compare my pricing model to how the best companies in [INDUSTRY] structure theirs. Give me 3 alternative pricing structures with the logic behind each one. Tell me which you&apos;d recommend and why.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ca8a04;">
+    <div class="card-title">F4 — Prepare Me For a Board Meeting</div>
+    <p><em>&quot;I have a board meeting in [TIMEFRAME]. Here&apos;s what&apos;s happened since the last one: [KEY UPDATES: revenue, hiring, product milestones, challenges]. Draft a board update that covers: progress against last quarter&apos;s goals, key metrics and what they mean, the 3 biggest risks right now, and what I&apos;m asking the board for. Write it how a confident, prepared founder would present it.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #e17055;">
+    <div class="card-title">F5 — Evaluate Whether I Should Build or Buy</div>
+    <p><em>&quot;I need [CAPABILITY/TOOL/FEATURE] for my business. I can either build it in-house or buy an existing solution. Here&apos;s what I need it to do: [REQUIREMENTS]. Here&apos;s my team size and technical capacity: [DETAILS]. Here&apos;s my budget: [RANGE]. Walk me through the build vs buy decision. Compare cost, time-to-value, ongoing maintenance, and strategic risk for both. Give me a clear recommendation with the reasoning behind it.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ec4899;">
+    <div class="card-title">F6 — Write a JD That Attracts A-Players</div>
+    <p><em>&quot;I&apos;m hiring a [ROLE] for my company. Here&apos;s what the company does: [DESCRIPTION]. Here&apos;s what this person will own: [RESPONSIBILITIES]. Here&apos;s the stage we&apos;re at: [COMPANY STAGE/SIZE]. Write a job description that would attract a genuinely high-performing candidate. Make it specific about the challenges they&apos;ll face, the impact they&apos;ll have, and the type of person who&apos;d thrive here.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">F7 — Map My Competitive Landscape</div>
+    <p><em>&quot;I operate in [INDUSTRY/CATEGORY]. My main competitors are [LIST THEM]. For each competitor, analyse their positioning, target customer, pricing model, key strengths, and biggest weaknesses. Then tell me where the gap is. Where is there an underserved segment or an angle nobody is owning? Give me a positioning recommendation based on where I can realistically win.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #db2777;">
+    <div class="card-title">F8 — Plan My Next Hire</div>
+    <p><em>&quot;My company is at [STAGE/SIZE/REVENUE]. Here are the bottlenecks I&apos;m personally hitting: [LIST THEM]. Here are the roles I&apos;m considering hiring for: [LIST THEM]. Tell me which hire I should make first based on where I&apos;ll get the biggest leverage. Explain the order I should hire in over the next 12 months and why. Factor in cost, impact, and what I can realistically delegate at this stage.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#ea580c;">&#127859; 9 Nutrition Prompts — Claude כ-Meal Planner + Macro Tracker</h3>
+
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N1 — Weekly Meal Plan</div>
+    <p><em>&quot;Act as a registered dietitian and budget meal planner. Create a 7-day meal plan for [age/gender/activity level] with a daily target of [calories], [protein g], [carbs g], and [fat g]. Goal: [fat loss / muscle gain / maintenance]. Include breakfast, lunch, dinner, and 1 snack. Use foods I enjoy: [list foods]. Avoid: [allergies/dislikes]. Budget: [$ amount per week]. Keep meals simple, repeat ingredients across meals to reduce waste, and make prep realistic in [time available]. Format as a table with meal name, calories, protein, carbs, fat, and prep notes.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N2 — Macro-Perfect Meal Builder</div>
+    <p><em>&quot;Build 10 meal ideas that each contain around [target calories] and [target protein/carbs/fat]. Use only these ingredients: [ingredient list]. Meals must be easy, high-protein, affordable, and take less than [X minutes]. For each meal, show exact portion sizes in grams, total calories, protein, carbs, fat, and 1 easy swap to adjust macros up or down.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N3 — Grocery List From Meal Plan</div>
+    <p><em>&quot;Using this 7-day meal plan: [paste plan], create a master grocery list grouped by protein, carbs, fats, vegetables, fruits, dairy, spices, and pantry items. Combine repeated ingredients, estimate total quantities for the full week, and give a rough low-cost budget estimate based on average U.S. grocery prices. Then suggest 3 ways to reduce the total cost without hurting protein or nutrition.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N4 — Cheap High-Protein Plan</div>
+    <p><em>&quot;Create a high-protein weekly meal plan for [1/2/4] people with a grocery budget under [$ amount]. Daily target: [calories] and at least [protein g] protein. Prioritize low-cost foods like eggs, Greek yogurt, oats, rice, beans, potatoes, frozen vegetables, chicken thighs, canned tuna, and peanut butter. Keep recipes simple and repeat ingredients smartly. Show the daily macros and a final grocery list with estimated cost.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N5 — Fridge-to-Meals Prompt</div>
+    <p><em>&quot;I have these ingredients at home: [paste ingredients]. Create a meal prep plan for the next [3/5/7] days using mostly what I already have. I want to hit [calories] and [protein g] daily. Minimize food waste, suggest only a few extra low-cost items to buy, and make the meals practical for batch cooking. Show meal ideas, macros per meal, and what ingredients get used first so nothing spoils.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N6 — Meal Prep in 2 Hours</div>
+    <p><em>&quot;Design a 2-hour meal prep system for the week. I want [number] breakfasts, [number] lunches, [number] dinners, and [number] snacks. Nutrition target: [calories + macros]. Use affordable ingredients and recipes that store well for [number] days. Give me: the full menu, a grocery list, a step-by-step cooking timeline, storage instructions. Keep it beginner-friendly.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N7 — Nutrition Label Analyzer</div>
+    <p><em>&quot;I&apos;m deciding between these foods: [paste nutrition labels / product names]. Compare them for calories, protein, carbs, fat, fiber, added sugar, sodium, and cost per serving. My goal is [fat loss / muscle gain / healthy eating]. Rank them from best to worst for my goal and explain the trade-offs in simple English. Then suggest the best budget-friendly choice.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N8 — Custom Plan for Dietary Restrictions</div>
+    <p><em>&quot;Create a 7-day meal plan for someone who is [vegetarian/vegan/gluten-free/dairy-free/diabetic/low-sodium/etc.]. Daily target: [calories] and [protein g]. Budget: [$ amount]. Meals must be easy to prep, use common grocery store ingredients, and avoid: [list ingredients]. Show full macros for each meal, a grocery list, and substitutions for hard-to-find items.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">N9 — Smart Leftovers Prompt</div>
+    <p><em>&quot;Turn this meal prep plan into a leftover strategy: [paste plan]. I want to cook fewer times but still eat well all week. Show how to reuse each cooked ingredient in different meals so food feels less repetitive. Keep daily intake near [calories] and [protein g]. Add a day-by-day schedule for what to eat first, what to freeze, and what to remake fresh.&quot;</em></p>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('token-17-ways')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('social-media')">הבא &#8592;</button>
+  </div>
+</div>
+
+
 <div class="chapter" id="chapter-social-media">
   <div class="chapter-header">
     <div class="chapter-number">פרק 86 &mdash; רשתות חברתיות</div>
@@ -18603,7 +19476,7 @@ Tone: Like a $500/hour coach who actually cares but doesn't waste words.</div>
 
 <script>
 // ===== NAVIGATION =====
-const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','bug-detection','crm-full-guide','infographics-mastery','infographics-toolkit','infographics-wisdom','matnas-full-arch','opus47-prompts','opus47-release','claude-12-crazy','skill-top1','senior-engineering','claude-design-5','easy-website-workflow','opus47-power-7','matnas-system-reqs','social-media','glossary'];
+const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','bug-detection','crm-full-guide','infographics-mastery','infographics-toolkit','infographics-wisdom','matnas-full-arch','opus47-prompts','opus47-release','claude-12-crazy','skill-top1','senior-engineering','claude-design-5','easy-website-workflow','opus47-power-7','matnas-system-reqs','cc-26-shortcuts','cowork-master','marketing-mega-48','claude-power-10','prompt-anatomy-perfect','claude-design-mastery','token-17-ways','founder-nutrition-prompts','social-media','glossary'];
 
 function goTo(id) {
   // Hide cover page if still visible
@@ -20299,7 +21172,7 @@ function expertMode(type) {
     '<div class="credit-title">מדריך חכם אינטראקטיבי Claude</div>' +
     '<div class="credit-copy">כל הזכויות שמורות ל: <strong>אגבאריה מוחמד סאלח</strong> &mdash; רעיון, בנייה, עדכון &mdash; &copy; 2026</div>' +
     '<div class="credit-version">' +
-      '<span class="badge">גרסה 23.4</span>' +
+      '<span class="badge">גרסה 23.5</span>' +
       '<span class="sep">|</span>' +
       '<span>מעודכן 12 מאי 2026</span>' +
       '<span class="sep">|</span>' +
