@@ -1060,10 +1060,10 @@ body.sidebar-hidden .cover-page { margin-right: 0; }
     <span>מדריך חכם אינטראקטיבי — ניהול עם Claude</span>
   </div>
   <div class="header-actions">
-    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 13.05.2026 14:00 — v23.6 מהדורה גאונית-MEGA — 7 פרקים חדשים מ-14 תמונות: Skills 1-hour + Ecosystem 6 cats + 5 Modes matrix + 12 Visual + Design Anything + 9-step Business Startup + 10 Thinking Partner + CLAUDE.md + 20 Connectors + 20 Ways Wheel">
+    <button class="header-btn whats-new-btn" onclick="goTo('anthropic-news')" title="עדכוני Anthropic אחרונים — סריקת 13.05.2026 15:30 — v23.7 מהדורה גאונית-ULTRA — 7 פרקים חדשים מ-19 תמונות: 7 Master Setup + 30 Terms + 89 Claude Code Commands + 30 AI Agents + DASH + 21 Hacks + 10x Slash + Build Skill 9-step + AI Comparison + 3 Files + 24h Life Fix Protocol">
       <span class="whats-new-pulse"></span>
       &#128226; מה חדש
-      <span class="whats-new-badge">85</span>
+      <span class="whats-new-badge">92</span>
     </button>
     <button class="header-btn find-updates-btn" onclick="openFindUpdates()" title="חפש עדכוני Anthropic/Claude ברשת — מקורות רשמיים + גוגל/רדיט/X/YouTube + פרומפט ל-Claude">&#128270; חפש עדכונים</button>
     <button class="header-btn" onclick="openSearch()">&#128269; חיפוש</button>
@@ -1572,6 +1572,19 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
     </div>
 
     <div class="nav-group">
+      <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128302; יט. עדכון 13 מאי 2026 — v23.7 מהדורה גאונית-ULTRA <span class="group-count">7</span></div>
+      <div class="nav-items-wrap">
+        <div class="nav-item" onclick="goTo('master-7-steps-30-terms')"><span class="nav-icon">🎯</span> 7 Master Setup + 30 Terms <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('cc-89-commands')"><span class="nav-icon">⚙️</span> Claude Code — 89 פקודות <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('ai-agents-30-dash')"><span class="nav-icon">🤖</span> 30 AI Agents + DASH <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('hacks-21-10x')"><span class="nav-icon">🔥</span> 21 Hacks + 10x Slash Commands <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('build-skill-9-step')"><span class="nav-icon">📚</span> Build Skill — 9 Steps <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('ai-comparison-3-files')"><span class="nav-icon">📊</span> AI Comparison + 3 Files <span class="nav-badge">חדש</span></div>
+        <div class="nav-item" onclick="goTo('life-fix-24-hours')"><span class="nav-icon">🌙</span> Fix Your Life 24h Protocol <span class="nav-badge">חדש</span></div>
+      </div>
+    </div>
+
+    <div class="nav-group">
       <div class="nav-group-title" onclick="toggleNavGroup(this)">&#128202; טו. 12 אינפוגרפיקות חכמה — 20 אפריל 2026 <span class="group-count">3</span></div>
       <div class="nav-items-wrap">
         <div class="nav-item" onclick="goTo('infographics-wisdom')"><span class="nav-icon">📊</span> חכמת האינפוגרפיקות (1-3) <span class="nav-badge">חדש</span></div>
@@ -1602,7 +1615,7 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
   <div class="cover-particles" id="coverParticles"></div>
   <div class="cover-content">
     <div class="cover-logo">&#128218;</div>
-    <div class="cover-badge">&#10024; עדכון 13 מאי 2026 | 14:00 &mdash; גרסה 23.6 — סריקת עדכונים יומית: Claude Code v2.1.139 — /goal, agent view (Research Preview), /scroll-speed; Managed Agents — dreaming + multiagent orchestration; SpaceX 300MW compute deal — Claude Code rate limits כפול ל-Pro/Max/Team/Enterprise; Agents for Financial Services + Microsoft 365 full + Moody's MCP partnership; $30B annualized revenue (פי 80 ברבעון); Mythos EU holdout</div>
+    <div class="cover-badge">&#10024; עדכון 13 מאי 2026 | 15:30 &mdash; גרסה 23.7 — סריקת עדכונים יומית: Claude Code v2.1.139 — /goal, agent view (Research Preview), /scroll-speed; Managed Agents — dreaming + multiagent orchestration; SpaceX 300MW compute deal — Claude Code rate limits כפול ל-Pro/Max/Team/Enterprise; Agents for Financial Services + Microsoft 365 full + Moody's MCP partnership; $30B annualized revenue (פי 80 ברבעון); Mythos EU holdout</div>
     <h1 class="cover-title">מדריך חכם אינטראקטיבי<br>ניהול עם Claude AI</h1>
     <p class="cover-subtitle">מערכת ידע מלאה לניהול תוכניות קהילתיות, תיאטרון, שיווק ומכירות, דשבורדים ו-AI &mdash; מהחזון ועד לייצור. הכל במקום אחד.</p>
 
@@ -1681,7 +1694,7 @@ body.dark-mode .fu-item-summary{color:#B8B0A5}
       <div style="font-size:36px; line-height:1;">📢</div>
       <div style="flex:1;">
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
-          <span style="background:rgba(255,255,255,0.25); padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.5px;">גרסה 23.6</span>
+          <span style="background:rgba(255,255,255,0.25); padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.5px;">גרסה 23.7</span>
           <span style="background:rgba(255,255,255,0.15); padding:4px 12px; border-radius:20px; font-size:11px;">סריקת עדכונים יומית</span>
           <span style="font-size:12px; opacity:0.9;">12.05.2026 · 08:43</span>
         </div>
@@ -2747,7 +2760,7 @@ Start your response with exactly this: {"analysis":</div>
   <div class="hero-section">
     <h1>&#128218; מדריך חכם אינטראקטיבי Claude</h1>
     <p>מערכת ניהול משולבת לתוכניות קהילתיות, תיאטרון, שיווק ומכירות — מהחזון ועד ליישום</p>
-    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 23.6 | מעודכן 13 מאי 2026 | 14:00 | סריקת עדכונים יומית — Claude Code v2.1.139 + Managed Agents (dreaming + multiagent orchestration) + SpaceX 300MW compute (rate limits כפול) + Agents for Financial Services + Microsoft 365 full + Moody's MCP + $30B annualized revenue + Mythos EU holdout</p>
+    <p style="margin-top:6px; font-size:12px; opacity:0.6;">גרסה 23.7 | מעודכן 13 מאי 2026 | 15:30 | סריקת עדכונים יומית — Claude Code v2.1.139 + Managed Agents (dreaming + multiagent orchestration) + SpaceX 300MW compute (rate limits כפול) + Agents for Financial Services + Microsoft 365 full + Moody's MCP + $30B annualized revenue + Mythos EU holdout</p>
   </div>
 
   <div class="stats-grid">
@@ -2847,7 +2860,7 @@ Start your response with exactly this: {"analysis":</div>
 
   <!-- What's New in v16.0 -->
   <div class="card" style="border:2px solid #d63031; background:linear-gradient(135deg, rgba(214,48,49,0.04), rgba(253,203,110,0.04));">
-    <div class="card-title">&#128293; מה חדש בגרסה 23.6 — 13 מאי 2026 14:00 — מהדורה גאונית-MEGA: 7 פרקים חדשים מ-14 תמונות נוספות — Skills בשעה אחת + makemyskill + Claude Ecosystem 6 קטגוריות + 5 מצבי Claude מטריצה + Claude Playbook 2026 + 12 Visual Work + How to Design Anything 8 שלבים + 9 שלבי Business Startup + 8 Top Use Cases at Work + 10 Thinking Partner Prompts + CLAUDE.md Architecture (3 Scopes + WHAT/WHY/HOW + 5 Rules) + 20 Connectors Catalog + 9 Architect Connectors + 20 Ways Master Wheel + 7-Day Cowork Master Ruben Hassid </div>
+    <div class="card-title">&#128293; מה חדש בגרסה 23.7 — 13 מאי 2026 15:30 — מהדורה גאונית-ULTRA: 7 פרקים חדשים מ-19 תמונות — 7 Master Setup Steps (Opus 4.7+Extended Thinking + voice.md + AskUserQuestion + Taste by Negation + Global Instructions + 3-folder + Connectors) + 30 Must Know Terms Glossary + Claude Code 89 פקודות ב-13 קטגוריות + 30 AI Agents + DASH Framework + 21 Hacks extended + Make 10x Smarter slash commands + Build New Skill 9-step + AI Comparison ChatGPT/Claude/Perplexity/Gemini + 3 Files Replace 500+ Prompts + How To Get Most Out 10 modes + Fix Your Life 24h Protocol Hamza Khalid </div>
     <!-- Banner: Daily Scan Summary v21.1 -->
     <div style="background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white; border-radius:12px; padding:18px; margin-bottom:16px; border:3px solid #ffeaa7;">
       <div style="font-size:16px; font-weight:700; margin-bottom:10px;">&#128226; סריקת עדכונים יומית — 24.04.2026 13:10</div>
@@ -4784,7 +4797,7 @@ Start your response with exactly this: {"analysis":</div>
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.6 | מעודכן 13 מאי 2026 | 14:00 | סריקת עדכונים יומית</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.7 | מעודכן 13 מאי 2026 | 15:30 | סריקת עדכונים יומית</p>
   </div>
 
   <div class="chapter-nav">
@@ -5738,7 +5751,7 @@ Start your response with exactly this: {"analysis":</div>
   <div style="text-align:center; margin-top:40px; padding:24px; background:var(--gray-100); border-radius:12px;">
     <p style="font-size:13px; color:var(--gray-500);">כל הזכויות שמורות ל: אגבאריה מוחמד סאלח</p>
     <p style="font-size:12px; color:var(--gray-400); margin-top:2px;">רעיון, בנייה, עיצוב ושדרוג</p>
-    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.6 מורחבת | 13 מאי 2026 | 14:00 | 93 פרקים ב-15 חלקים | 340+ פרומפטים | 15 אזורי ידע | Opus 4.7 + Sonnet 4.8 (צפוי) + Claude Security (Public Beta) + Claude for Creative Work + Claude Partner Network ($100M) + Claude Certified Architect + Claude Code v2.1.139 (/goal + agent view) + Managed Agents dreaming + SpaceX 300MW + Financial Services agents + MS 365 full + Moody's MCP + סריקת עדכונים יומית</p>
+    <p style="font-size:12px; color:var(--gray-400); margin-top:4px;">גרסה 23.7 מורחבת | 13 מאי 2026 | 15:30 | 93 פרקים ב-15 חלקים | 340+ פרומפטים | 15 אזורי ידע | Opus 4.7 + Sonnet 4.8 (צפוי) + Claude Security (Public Beta) + Claude for Creative Work + Claude Partner Network ($100M) + Claude Certified Architect + Claude Code v2.1.139 (/goal + agent view) + Managed Agents dreaming + SpaceX 300MW + Financial Services agents + MS 365 full + Moody's MCP + סריקת עדכונים יומית</p>
   </div>
 
   <div class="chapter-nav">
@@ -10576,6 +10589,10 @@ dashboard-php/
     <h3>&#128197; ציר זמן — 2026</h3>
     <div style="position:relative; padding-right:30px; margin-top:16px;">
       <div style="position:absolute; right:10px; top:0; bottom:0; width:3px; background:linear-gradient(#d63031,#fdcb6e,#00b894);"></div>
+      <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#1f2937,#0c4a6e); color:white; border-radius:10px; margin-right:20px; border:3px solid #fef3c7;">
+        <strong>&#128302; 13 מאי (היום, סריקה 15:30) — מהדורה גאונית-ULTRA v23.7 — 7 פרקים חדשים מ-19 תמונות:</strong> פרק 116 — <em>7 Master Setup Steps</em> (Ruben Hassid: Opus 4.7+Extended → voice.md → AskUserQuestion → Define taste by what you never say → Global Instructions → 3-folder system → Connectors) + <em>30 Must Know Claude Terms Glossary</em>; פרק 117 — <em>CLAUDE CODE — 89 פקודות מלא ב-13 קטגוריות</em> (Setup/Organize 1-8 + Context/Productivity 9-14 + Models/Speed/Thinking 15-19 + Permissions/Safety 20-24 + Code/Git/Reviews 25-29 + Automation/Background 30-34 + Info/Diagnostics 35-43 + Settings/Customization 44-51 + Integrations 52-59 + Account 60-64 + Remote/Devices 65-69 + Fun 70-75 + CLI 76-81 + Shortcuts 82-89); פרק 118 — <em>30 AI Agents Every Engineer Must Build</em> (Hamza Khalid: Foundation 1-8, Intelligence 9-14, Multimodal 15-20, Specialized 21-24, Domain 25-27, Integration 28-30) + <em>DASH Framework</em> + Build Order; פרק 119 — <em>21 Hacks (extended 18-21)</em> + <em>Make Claude 10x Smarter</em> (brainstorming/skill-creator/writing-plans/executing-plans/ui-ux-pro-max/frontend-design/socialcrawl/firecrawl/feature-dev); פרק 120 — <em>Build New Claude Skill 9-Step</em> (TL;DR + 4 attributes + Golden Rule Description + 9 steps + ZIP correct vs incorrect + Best Practices); פרק 121 — <em>AI Comparison ChatGPT/Claude/Perplexity/Gemini</em> + <em>3 Claude Files (about-me/anti-ai-writing-style/my-company)</em> + <em>How To Get The Most Out of Claude</em> 10 modes; פרק 122 — <em>Fix Your Life with Claude in 24 Hours</em> (Hamza Khalid Sonnet 24H Protocol: 3 phases morning/midday/evening + 8 components Anti-Vision/Vision/Goals as Lenses/Daily Levers + Identity Audit + Self-Sabotage Question + 5 highest impact prompts).
+      </div>
+      
       <div style="margin-bottom:14px; padding:12px; background:linear-gradient(135deg,#7c2d12,#16a34a); color:white; border-radius:10px; margin-right:20px; border:3px solid #fef3c7;">
         <strong>&#128640; 13 מאי (היום, סריקה 14:00) — מהדורה גאונית-MEGA v23.6 — 7 פרקים חדשים מ-14 תמונות נוספות:</strong> פרק 109 — <em>Skills בשעה אחת + makemyskill.com</em> (workflow 60 דק: 5+15+10+10+20); פרק 110 — <em>Claude AI Ecosystem ב-6 קטגוריות</em> (Write&amp;Create, Analyse&amp;Research, Build&amp;Code, Think&amp;Strategise, Communicate&amp;Sell, Remember&amp;Manage); פרק 111 — <em>5 מצבי Claude — מטריצת השוואה מלאה</em> (Chat/Code/Projects/Skills/Cowork — תיאור/הכי מתאים/הגדרה/טעות גדולה) + Claude Playbook 2026 mind-map; פרק 112 — <em>12 Visual Work של Claude Design + How to Design Anything 8 שלבים</em> (claude.ai/design, formats, DESIGN.md, Goal/Layout/Content/Constraints, Video-to-Slides, Iterate Chat+Canvas, WCAG validation, Export); פרק 113 — <em>9 שלבים להתחיל עסק עם Claude</em> (Validate→Core Files→Projects→Artifacts→Sales Scripts→Connectors→Cowork→Code→Daily Brief) + 8 Top Use Cases at Work (Excel/SQL, Charts, Prototyping, Meeting Emails, Editing, Strategy, PRDs); פרק 114 — <em>10 פרומפטים להפיכת Claude ל-Thinking Partner</em> (Challenge thinking, Reframe, Surface deeper question, Translate gut feeling, Second-order effects, Unseen variable, Core principle, Reverse-engineer, Hidden pattern, Think in reverse); פרק 115 — <em>CLAUDE.md Architecture + 20 Connectors Catalog + 9 Architect Connectors + 20 Ways Master Wheel + 7-Day Cowork Master by Ruben Hassid</em> (3 Scopes Global→Project→Folder, WHAT/WHY/HOW, 5 Rules, Connectors מלא: Drive/Gmail/Calendar/Slack/Notion/HubSpot/Canva/Apollo/Clay/Asana/Linear/n8n/Zapier/Make/Stripe/Intercom/Gamma/Granola/MailerLite/MS365, Architect: Fusion/SketchUp/Blender/Adobe CC/Affinity/Figma/Canva/Three.js/Excel, 20 Ways wheel: Ask/Think/Render/Speed/Connect/Reason/Automate/Build/Persist/Ship/Stack/Model/Trigger/Slides/Investigate/Mockup/Search/Remote/Click/Browse).
       </div>
@@ -19597,6 +19614,857 @@ Verify your understanding before writing. Restate the task in one sentence and c
 </div>
 
 
+<!-- ====== CHAPTER 116: 7-STEP MASTER SETUP + 30 TERMS ====== -->
+<div class="chapter" id="chapter-master-7-steps-30-terms">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 116 — חדש &#127919;</div>
+    <h1 class="chapter-title">&#127919; 7 שלבי Master Setup + מילון 30 המונחים שחייבים לדעת</h1>
+    <p class="chapter-subtitle">How to Prompt Claude Better Than 99% of People (Ruben Hassid) + 30 Must Know Terms</p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#d63031;">&#127919; How to Prompt Claude Better Than 99% — 7 Steps</h3>
+
+  <div class="card" style="border-right:4px solid #d63031;">
+    <div class="card-title">01 — Use Opus 4.7 + Extended Thinking</div>
+    <p>רוב האנשים פותחים Claude ו<strong>אף פעם לא נוגעים ב-model selector</strong>. Select <em>Opus 4.7</em>, turn on <em>Extended Thinking</em>. <strong>Forces Claude to think. The difference is night and day.</strong></p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">02 — Stop Prompting. Start Writing Files.</div>
+    <p>ה-prompt library שלך אוסף אבק. <em>One great .md file (voice rules + examples) beats 50 saved prompts.</em> Drop it ב-folder. Point Claude אליו. <strong>Sounds like you. Not like AI.</strong></p>
+    <p style="font-family:monospace; background:#dcfce7; padding:8px; border-radius:6px; font-size:12px;">voice.md — pinned</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fbbf24;">
+    <div class="card-title">03 — Let Claude Prompt You</div>
+    <p>Add <strong>&quot;Use AskUserQuestion tool&quot;</strong> ל-prompt שלך. Claude מייצר טופס clickable ושואל אותך את השאלות לפני שהוא מתחיל. <strong>Clarity before output.</strong></p>
+    <p style="background:#fef3c7; padding:10px; border-radius:6px; font-size:12px;">What tone should this take?<br>○ Formal &amp; analytical<br>● Conversational + direct<br>○ Playful, a little provocative</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">04 — Define Taste by What You NEVER Say</div>
+    <p>אל תאמר ל-Claude איך אתה נשמע. <strong>תאמר לו מה אתה <em>לעולם לא</em> תישמע</strong>. ה-&quot;do nots&quot; הם ה-taste שלך.</p>
+    <ul style="text-decoration:line-through; color:#7f1d1d;">
+      <li>leverage (as a verb)</li>
+      <li>in today&apos;s fast paced world</li>
+      <li>unlock / unlocking potential</li>
+      <li>paragraphs longer than 3 sentences</li>
+    </ul>
+    <p style="font-weight:700; color:#16a34a;">Taste is boundaries.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">05 — Set Global Instructions</div>
+    <p><strong>Settings → Cowork → Edit Global Instructions.</strong> Persistent prompt ש-Claude קורא <em>לפני כל chat</em>. Write rules once. They run forever.</p>
+    <p style="background:#1e293b; color:#e2e8f0; padding:10px; border-radius:6px; font-size:12px; font-family:monospace;">- Read /about-me first.<br>- No em-dashes. No &quot;leverage.&quot;<br>- Max 3 sentences per paragraph.</p>
+    <p><strong>10 word prompts, full voice output.</strong></p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">06 — Build a Folder System</div>
+    <p>שלוש תיקיות. That&apos;s it. <strong>Organize your work AND limit what Claude can see. You want the damage contained.</strong></p>
+    <ul>
+      <li><code>about-me</code></li>
+      <li><code>anti-ai-writing-style</code></li>
+      <li><code>my-company</code></li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">07 — Connect Your Tools. It&apos;s Free.</div>
+    <p><strong>Settings → Connectors.</strong> Slack, Google Drive, Notion, Gamma, 50+ אחרים. Click &quot;Add&quot;. Done. Claude קורא את ה-tools שלך mid-conversation. <em>No copy pasting, no screenshots.</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#7c3aed;">&#128218; 30 Must Know Terms in Claude (Ruben Hassid)</h3>
+
+  <table style="width:100%; border-collapse:collapse; font-size:12px; margin-top:14px;">
+    <tbody>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Prompt</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">הטקסט שאתה שולח ל-Claude</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Connectors</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">קישורים בין Claude ל-apps שלך</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Opus</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">המודל החכם ביותר. למשימות קשות</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Computer Use</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">מצב ש-Claude מקליק ומקליד במחשב שלך</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Sonnet</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">המודל מ-tier בינוני. למשימות מהירות</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Dispatch</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">phone app ששולח tasks ל-desktop Claude</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Haiku</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">המודל הזול ביותר. לתשובות קצרות</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Scheduled Tasks</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Tasks ש-Claude מריץ ב-recurring timer</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Extended Thinking</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">גורם ל-Claude לחשוב לפני שעונה</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>AskUserQuestion</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">כלי ש-Claude משתמש בו לשאול שאלות הבהרה</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Chat</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">ה-Claude chatbot הקלאסי ב-claude.ai</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Global Instructions</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Prompt ש-Claude קורא לפני כל Cowork task</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Cowork</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Desktop mode שקורא את ה-folder ויוצר files</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Custom Instructions</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Persistent prompt מוגדר ל-Project אחד</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Claude Code</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">גרסת Claude למפתחים</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Styles</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Saved tone ו-format presets ב-model selector</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Claude Design</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">גרסת Claude שבונה אתרים, slides</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Memory</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">הגדרה ש-Claude זוכר details בין chats</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Claude in Excel</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Add-in ש-Claude קורא ועורך spreadsheet</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Research</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">מצב שמריץ deep web research וכותב report</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Claude in Chrome</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Browsing agent שרץ בתוך הדפדפן שלך</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Web Search</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Toggle ש-Claude מושך תוצאות live מ-internet</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Projects</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Workspace ששומר memory ו-files בין chats</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Markdown</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">פורמט plain text ש-Claude קורא. .md</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Artifacts</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Documents, code, או apps ש-Claude פותח ב-side pane</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>SKILL.md</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">קובץ בתוך Skill שמחזיק את ה-trigger וההוראות</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Skills</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Saved workflows שמופעלים ב-slash command</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>CLAUDE.md</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Memory file ש-Claude Code קורא בתחילת כל session</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Plugins</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">Bundles של Skills ו-Connectors לעבודה אחת</td><td style="padding:6px; border:1px solid #cbd5e1; background:#fef3c7;"><strong>Vibecoding</strong></td><td style="padding:6px; border:1px solid #cbd5e1;">בניית כל דבר רק על ידי תיאור מה שאתה רוצה</td></tr>
+    </tbody>
+  </table>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('claude-md-connectors')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('cc-89-commands')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 117: CLAUDE CODE 89 COMMANDS ====== -->
+<div class="chapter" id="chapter-cc-89-commands">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 117 — חדש &#9881;</div>
+    <h1 class="chapter-title">&#9881; CLAUDE CODE — כל ה-89 פקודות (המדריך המלא)</h1>
+    <p class="chapter-subtitle">מ-Setup ועד CLI, מ-Permissions ועד Power Hacks — 89 פקודות slash + CLI + Shortcuts ב-13 קטגוריות</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">&#127757; ابدأ ونظّم مشاريعك (1-8) — Setup &amp; Organize</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/init</code></td><td>إنشاء دليل المشروع</td><td><code>/branch</code></td><td>نسخ مسار المحادثة</td></tr>
+      <tr><td><code>/memory</code></td><td>إدارة الذاكرة المحفوظة</td><td><code>/resume</code></td><td>استكمال الجلسة السابقة</td></tr>
+      <tr><td><code>/add-dir</code></td><td>إضافة مجلد آخر</td><td><code>/clear</code></td><td>بدء محادثة جديدة</td></tr>
+      <tr><td><code>/rename</code></td><td>إعادة تسمية الجلسة الحالية</td><td><code>/export</code></td><td>حفظ محادثاتك للحياة</td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">&#129504; السياق والإنتاجية (9-14) — Context &amp; Productivity</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/context</code></td><td>عرض استخدام السياق</td><td><code>/recap</code></td><td>تلخيص الجلسة</td></tr>
+      <tr><td><code>/compact</code></td><td>تقليل (تلخيص) المحادثة</td><td><code>/focus</code></td><td>وضع الشاشة النظيفة</td></tr>
+      <tr><td><code>/copy</code></td><td>نسخ آخر إجابة</td><td><code>/rewind</code></td><td>الرجوع للخلف بأمان</td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fbbf24;">
+    <div class="card-title">&#9889; النماذج، السرعة، التفكير (15-19) — Models, Speed, Thinking</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/model</code></td><td>تغيير نموذج Claude</td><td><code>/plan</code></td><td>وضع التخطيط المسبق</td></tr>
+      <tr><td><code>/fast</code></td><td>تفعيل ردود أسرع</td><td><code>/ultraplan</code></td><td>جلسة تخطيط عميقة</td></tr>
+      <tr><td><code>/effort</code></td><td>تغيير عمق التفكير</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #ef4444;">
+    <div class="card-title">&#128274; الصلاحيات والأمان (20-24) — Permissions &amp; Safety</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/permissions</code></td><td>إدارة صلاحيات الأدوات</td><td><code>/privacy-settings</code></td><td>إدارة خيارات الخصوصية</td></tr>
+      <tr><td><code>/sandbox</code></td><td>استخدام الوضع الآمن</td><td><code>/security-review</code></td><td>فحص مخاطر الأمان</td></tr>
+      <tr><td><code>/hooks</code></td><td>أتمتة الإجراءات</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #f97316;">
+    <div class="card-title">&#128221; الكود، Git والمراجعات (25-29) — Code, Git &amp; Reviews</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/diff</code></td><td>عرض التغييرات في الملفات</td><td><code>/autofix-pr</code></td><td>إصلاح تلقائي لـ PR</td></tr>
+      <tr><td><code>/review</code></td><td>مراجعة طلب السحب (PR)</td><td><code>/install-github-app</code></td><td>ربط تطبيق GitHub</td></tr>
+      <tr><td><code>/ultrareview</code></td><td>مراجعة عميقة متعددة الوكلاء</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #92400e;">
+    <div class="card-title">&#128268; الأتمتة والمهام الخلفية (30-34) — Automation &amp; Background</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/loop</code></td><td>تكرار المهام تلقائيا</td><td><code>/batch</code></td><td>تقسيم المهام</td></tr>
+      <tr><td><code>/schedule</code></td><td>إنشاء تذكيرات</td><td><code>/simplify</code></td><td>تحسين وتنظيف الكود</td></tr>
+      <tr><td><code>/tasks</code></td><td>إدارة المهام الخلفية</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #a16207;">
+    <div class="card-title">&#128221; المعلومات، المساعدة والتشخيص (35-43) — Info &amp; Diagnostics</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/help</code></td><td>عرض جميع الأوامر</td><td><code>/stats</code></td><td>عرض إحصائيات النشاط</td></tr>
+      <tr><td><code>/status</code></td><td>عرض معلومات الحالة</td><td><code>/doctor</code></td><td>فحص صحة التثبيت</td></tr>
+      <tr><td><code>/usage</code></td><td>عرض تفاصيل الاستخدام</td><td><code>/debug</code></td><td>تمكين وضع التصحيح</td></tr>
+      <tr><td><code>/cost</code></td><td>عرض تكاليف الاستخدام</td><td><code>/insights</code></td><td>تحليل عادات الاستخدام</td></tr>
+      <tr><td><code>/release-notes</code></td><td>عرض سجل التحديثات</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0891b2;">
+    <div class="card-title">&#9881; الإعدادات والتخصيص (44-51) — Settings &amp; Customization</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/settings</code></td><td>تغيير التفضيلات بسرعة</td><td><code>/statusline</code></td><td>تخصيص شريط الحالة</td></tr>
+      <tr><td><code>/config</code></td><td>خيار آخر لفتح الإعدادات</td><td><code>/keybindings</code></td><td>تعديل الاختصارات</td></tr>
+      <tr><td><code>/color</code></td><td>تغيير لون الموجه (Prompt)</td><td><code>/ui</code></td><td>تغيير واجهة الطرفية</td></tr>
+      <tr><td><code>/theme</code></td><td>تخصيص سمة التطبيق</td><td><code>/voice</code></td><td>تفعيل أو إيقاف الإدخال الصوتي</td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #1e40af;">
+    <div class="card-title">&#128279; التكاملات والإضافات (52-59) — Integrations &amp; Add-ons</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/mcp</code></td><td>إدارة خوادم الأدوات</td><td><code>/agents</code></td><td>إدارة وكلاء المساعدة</td></tr>
+      <tr><td><code>/plugin</code></td><td>إدارة الإضافات</td><td><code>/ide</code></td><td>الاتصال بمحرر الكود</td></tr>
+      <tr><td><code>/reload-plugins</code></td><td>إعادة تحميل الإضافات</td><td><code>/chrome</code></td><td>إدارة أدوات Chrome</td></tr>
+      <tr><td><code>/skills</code></td><td>عرض المهارات</td><td><code>/install-slack-app</code></td><td>ربط تطبيق Slack</td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">&#128100; الحساب والوصول (60-64) — Account &amp; Access</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/login</code></td><td>تسجيل الدخول للحساب</td><td><code>/extra-usage</code></td><td>إضافة استخدام إضافي</td></tr>
+      <tr><td><code>/logout</code></td><td>تسجيل الخروج</td><td><code>/passes</code></td><td>مشاركة استخدام لمدة أسبوع</td></tr>
+      <tr><td><code>/upgrade</code></td><td>عرض خطط الترقية</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #9333ea;">
+    <div class="card-title">&#128241; العمل عن بُعد والأجهزة (65-69) — Remote Work &amp; Devices</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/desktop</code></td><td>فتح تطبيق سطح المكتب</td><td><code>/remote-env</code></td><td>إعداد بيئة العمل عن بُعد</td></tr>
+      <tr><td><code>/mobile</code></td><td>الحصول على التطبيق الجوال</td><td><code>/teleport</code></td><td>نقل جلسة الويب</td></tr>
+      <tr><td><code>/remote-control</code></td><td>التحكم من الويب</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #65a30d;">
+    <div class="card-title">&#127881; المتعة والإضافات (70-75) — Fun &amp; Add-ons</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>/powerup</code></td><td>تعلم من العروض التوضيحية</td><td><code>/feedback</code></td><td>إرسال ملاحظات</td></tr>
+      <tr><td><code>/team-onboarding</code></td><td>إنشاء دليل فريق</td><td><code>/btw</code></td><td>سؤال جانبي سريع</td></tr>
+      <tr><td><code>/stickers</code></td><td>طلب ملصقات</td><td><code>/exit</code></td><td>exit Claude Code</td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #1f2937;">
+    <div class="card-title">&#128187; أوامر سطر الأوامر (76-81) — CLI Commands</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>claude</code></td><td>بدء جلسة Claude Code</td><td><code>claude -c</code></td><td>استئناف آخر جلسة</td></tr>
+      <tr><td><code>claude &quot;question&quot;</code></td><td>طرح سؤال فوري</td><td><code>claude -r ID</code></td><td>استئناف جلسة بمعرّف</td></tr>
+      <tr><td><code>claude -p</code></td><td>طرح سؤال ثم الخروج</td><td><code>claude update</code></td><td>تحديث Claude Code</td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <div class="card-title">&#9889; اختصارات وحيل قوية (82-89) — Power Shortcuts</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><td><code>Esc</code></td><td>إيقاف الاستجابة</td><td><code>!command</code></td><td>تشغيل أمر في الشيل</td></tr>
+      <tr><td><code>Ctrl+F</code></td><td>البحث في الصفحة</td><td><code>#context</code></td><td>إدخال سياق مخصص</td></tr>
+      <tr><td><code>Ctrl+R</code></td><td>البحث في التاريخ</td><td><code>Think harder</code></td><td>زيادة مجهود التفكير</td></tr>
+      <tr><td><code>@filename</code></td><td>الرجوع لملف محدد</td><td><code>Ultra think</code></td><td>وضع التفكير العميق الأقصى</td></tr>
+    </table>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('master-7-steps-30-terms')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('ai-agents-30-dash')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 118: 30 AI AGENTS + DASH FRAMEWORK ====== -->
+<div class="chapter" id="chapter-ai-agents-30-dash">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 118 — חדש &#129302;</div>
+    <h1 class="chapter-title">&#129302; 30 AI Agents Every Engineer Must Build + DASH Framework</h1>
+    <p class="chapter-subtitle">Complete Engineering Reference by Hamza Khalid — 6 קטגוריות, 30 agents, DASH framework, ו-Build Order</p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#ea580c;">&#128293; 6 קטגוריות, 30 agents</h3>
+
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">&#127959; Foundation (1-8) — בנה ראשון</div>
+    <ol>
+      <li><strong>Autonomous Decision</strong> — מעריך מצבים ופועל ללא אישור step-by-step. הליבה: perceive → reason → act → observe</li>
+      <li><strong>Planning Agent</strong> — ממיר מטרות עמומות ל-sub-tasks סדורים, עם dependency mapping ו-failure protocols</li>
+      <li><strong>Memory-Augmented</strong> — memory מתמשך בין sessions. שלוש שכבות: short-term (conversation), long-term (vector), episodic (user history)</li>
+      <li><strong>Knowledge Retrieval</strong> — מחפש, retrieves, וsynthesizes ממקורות חיצוניים. Grounds LLMs במידע אמיתי וניתן לציטוט</li>
+      <li><strong>Document Intelligence</strong> — קורא documents מורכבים, extracts structured data, flags anomalies. Converts PDFs ל-actionable JSON</li>
+      <li><strong>Scientific Research</strong> — מחפש literature, synthesizes findings, identifies contradictions, surfaces research gaps</li>
+      <li><strong>Tool-Using</strong> — בוחר ומפעיל external tools — APIs, code interpreters, browsers, calculators. הופך LLMs ל-functional systems</li>
+      <li><strong>Agentic Workflow</strong> — coordinator שמנהל specialist sub-agents. Dispatches tasks, passes context, validates outputs, assembles results</li>
+    </ol>
+  </div>
+
+  <div class="card" style="border-right:4px solid #6c5ce7;">
+    <div class="card-title">&#129504; Intelligence (9-14)</div>
+    <ol start="9">
+      <li><strong>Data Analysis</strong> — Ingests raw data, writes ומריץ analysis code. No data scientist required</li>
+      <li><strong>Verification Agent</strong> — Quality gate שבודק עבודה של agents אחרים. Fact-checks, tests code, validates logic. אסור ש-agent יעריך את עצמו</li>
+      <li><strong>Problem Solver</strong> — First-principles reasoning ל-novel problems. Decomposes, generates multiple approaches, tests assumptions</li>
+      <li><strong>Code Generation</strong> — כותב, reviews, debugs, ו-tests code. Self-reviews לפני delivery. תמיד ships עם tests</li>
+      <li><strong>Security-Hardened</strong> — כל input נתפס כ-untrusted. Validates input, rejects injection, requires auth action. לא פועל על unsafe commands</li>
+      <li><strong>Self-Improving</strong> — Monitors own performance, identifies failure patterns, generates improvement rules</li>
+    </ol>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fbbf24;">
+    <div class="card-title">&#128064; Multimodal (15-20)</div>
+    <ol start="15">
+      <li><strong>Conversational</strong> — Natural dialogue עם state tracking, topic management, persona consistency, ו-clear escalation conditions</li>
+      <li><strong>Content Creation</strong> — Calibrated content across formats ו-audiences. Synthesizes consensus. Strong paragraph earns its place</li>
+      <li><strong>Recommendation</strong> — לומד preferences מ-history, scores candidates, aggressively filters. Explains every recommendation במשפט אחד</li>
+      <li><strong>Vision-Language</strong> — Understands images, describes scenes, extracts text, answers visual questions. Flags ambiguity rather than guessing</li>
+      <li><strong>Audio Processing</strong> — Transcribes עם speaker labels, detects tone ו-sentiment, extracts action items ו-decisions</li>
+      <li><strong>Physical Sensing</strong> — Processes IoT ו-sensor data, detects anomalies, triggers alerts. UNKNOWN לא בטוח — זה uninvestigated</li>
+    </ol>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">&#11088; Specialized (21-24)</div>
+    <ol start="21">
+      <li><strong>Ethical Reasoning</strong> — Evaluates decisions across utilitarian, deontological, ו-virtue ethics frameworks. שואל &quot;should we?&quot; לפני &quot;can we?&quot;</li>
+      <li><strong>Explainable Agent</strong> — Makes decisions AND explains them ב-plain language. States counterfactuals תמיד. הסבר שאף אחד לא מבין הוא לא הסבר</li>
+      <li><strong>Healthcare Intelligence</strong> — Clinical decision support עם mandatory citations, uncertainty flagging, diversity filter. תמיד &quot;verify with clinician&quot; notice</li>
+      <li><strong>Scientific Discovery</strong> — Generates novel falsifiable hypotheses, designs minimum viable experiments, ranks by information gain per unit effort</li>
+    </ol>
+  </div>
+
+  <div class="card" style="border-right:4px solid #be185d;">
+    <div class="card-title">&#127970; Domain (25-27)</div>
+    <ol start="25">
+      <li><strong>Financial Advisory</strong> — Analyzes financial data, models scenarios עם explicit assumptions, quantifies downside. תמיד 3 scenarios: base/best/bull</li>
+      <li><strong>Legal Intelligence</strong> — Reviews contracts, surfaces obligations ו-risks, flags non-standard clauses, identifies missing provisions</li>
+      <li><strong>Education Intelligence</strong> — Diagnoses knowledge gaps, personalizes teaching approach, checks comprehension לפני advancing</li>
+    </ol>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">&#127760; Integration (28-30)</div>
+    <ol start="28">
+      <li><strong>Collective Intelligence</strong> — Aggregates multiple agent outputs, weights by expertise, synthesizes consensus. דעת מיעוט יכולה להיות נכונה</li>
+      <li><strong>Embodied Intelligence</strong> — Interfaces עם physical systems. Plans physical action sequences. פעולה אחת בכל פעם, observe before proceeding. No Ctrl+Z</li>
+      <li><strong>Domain-Transforming</strong> — The apex architecture. Orchestrates all agents, maps intervention points, builds feedback loops, drives systematic organizational change</li>
+    </ol>
+  </div>
+
+  <h3 style="margin-top:32px; color:#d97706;">&#128737; DASH Framework — תבנית לכל Agent</h3>
+
+  <div class="card" style="border-right:4px solid #d97706;">
+    <table style="width:100%; font-size:12px;">
+      <tr><th style="padding:8px; background:#fef3c7;">WHAT to Define</th><th style="padding:8px; background:#fef3c7;">WHEN + WHERE</th><th style="padding:8px; background:#fef3c7;">PROMPT MUST-HAVES</th><th style="padding:8px; background:#fef3c7;">DESIGN PRINCIPLES</th></tr>
+      <tr>
+        <td style="padding:6px; border:1px solid #cbd5e1; vertical-align:top;">WHAT — היכולת היחידה והספציפית של ה-agent. תפקיד אחד בלבד. אם צריך 2 משפטים, זה 2 agents.<br><br>WHAT — מצב כשלון שה-agent הזה מונע. &quot;בלי זה, [bad thing] קורה&quot;<br><br>WHAT — ה-builder וה-user. לרוב אנשים שונים עם success criteria שונים.</td>
+        <td style="padding:6px; border:1px solid #cbd5e1; vertical-align:top;">WHEN — trigger condition. איזה state מפעיל את ה-agent הזה? תהיה ספציפי<br><br>WHERE — מיקומו ב-architecture stack. Foundation → Intelligence → Integration. Don&apos;t skip layers<br><br>HOW — מבנה ה-prompt. Include task, protocol, constraints, output format, stopping conditions</td>
+        <td style="padding:6px; border:1px solid #cbd5e1; vertical-align:top;">TASK — מה בדיוק לעשות. ספציפי, לא generic<br><br>PROTOCOL — תהליך step-by-step ש-agent עוקב<br><br>CONSTRAINTS — מה ש<em>אסור</em> לעשות. Negative rules matter<br><br>STOP — מתי לעצור. תמיד הגדר לפני deployment</td>
+        <td style="padding:6px; border:1px solid #cbd5e1; vertical-align:top;">&#9989; Agent אחד, אחריות אחת. Specialization מנצח generalization<br>&#9989; תמיד include verification agent. אסור ש-agent יעריך את עצמו<br>&#9989; ל-Specialists אין shared memory. Pass כל context באופן מפורש<br>&#9989; בנה foundation לפני domain. שכבה 1 לפני שכבה 8</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 style="margin-top:32px; color:#1e40af;">&#127919; Build Order — מאיפה להתחיל</h3>
+  <div class="card" style="border-right:4px solid #1e40af;">
+    <table style="width:100%; font-size:13px;">
+      <tr><th style="padding:8px; background:#dbeafe;">Order</th><th style="padding:8px; background:#dbeafe;">Agents</th><th style="padding:8px; background:#dbeafe;">Logic</th></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">1st</td><td style="padding:6px; border:1px solid #cbd5e1;">Tool-Using (07) + Memory (03)</td><td style="padding:6px; border:1px solid #cbd5e1;">Foundation של הכל</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">2nd</td><td style="padding:6px; border:1px solid #cbd5e1;">Verification (10)</td><td style="padding:6px; border:1px solid #cbd5e1;">Quality gate לפני הכל</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">3rd</td><td style="padding:6px; border:1px solid #cbd5e1;">Planning (02) + Workflow (08)</td><td style="padding:6px; border:1px solid #cbd5e1;">Coordination layer</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">4th</td><td style="padding:6px; border:1px solid #cbd5e1;">Domain agents (25-27)</td><td style="padding:6px; border:1px solid #cbd5e1;">רק אחרי foundation</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Last</td><td style="padding:6px; border:1px solid #cbd5e1;">Agent 30</td><td style="padding:6px; border:1px solid #cbd5e1;">רק כשכל האחרים operational</td></tr>
+    </table>
+  </div>
+
+  <h3 style="margin-top:24px; color:#dc2626;">&#9888; Common Failures</h3>
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <ul>
+      <li>&#10060; No stopping conditions → infinite loops</li>
+      <li>&#10060; No &quot;no result&quot; path → confident hallucination</li>
+      <li>&#10060; Memory writes skipped → agent לעולם לא משתפר</li>
+      <li>&#10060; Assumed context ב-sub-agents → broken outputs</li>
+      <li>&#10060; No failure states ב-planning → can&apos;t recover</li>
+    </ul>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('cc-89-commands')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('hacks-21-10x')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 119: 21 HACKS + 10X SLASH COMMANDS ====== -->
+<div class="chapter" id="chapter-hacks-21-10x">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 119 — חדש &#128293;</div>
+    <h1 class="chapter-title">&#128293; 21 Hacks to NEVER Hit Claude&apos;s Limit + Make Claude 10x Smarter</h1>
+    <p class="chapter-subtitle">הרחבה ל-17 הדרכים — 4 hacks נוספים (18-21) + 10 פקודות slash לעשות Claude 10x חכם יותר</p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#dc2626;">&#9889; 4 Hacks חדשים (18-21)</h3>
+
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <div class="card-title">Hack #18 — Speak Your Prompts for More Context</div>
+    <p>השתמש ב-<strong>wispr.ai</strong> כדי לדבר את ה-prompts שלך — context עשיר יותר ב-one shot. Fewer follow-ups, fewer reloads.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <div class="card-title">Hack #19 — Set Up Preferences</div>
+    <p>Go to <strong>Settings → General → Personal Preferences</strong>. Set your style. <strong>Turn off Memory.</strong></p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <div class="card-title">Hack #20 — Prompt Claude Code Tightly</div>
+    <p>השתמש בפרומפטים <em>ספציפיים מאוד</em>: <em>&quot;Build a bar chart from this CSV. Save as chart.png&quot;</em>. ככל שיותר ספציפי, פחות tokens מתבזבזים.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <div class="card-title">Hack #21 — Spread Across the Day</div>
+    <p>Claude משתמש ב-<strong>rolling 5-hour window</strong>. <em>Split it.</em> בוקר, צהריים. עד שאתה חוזר, ה-usage המוקדם כבר התחלף.</p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#0c4a6e;">&#127919; Make Claude 10x Smarter — Slash Commands Mapping</h3>
+
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <table style="width:100%; font-size:13px;">
+      <thead><tr style="background:#dbeafe;"><th style="padding:8px;">When you need to:</th><th style="padding:8px;">Use this:</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#128161; refine an idea</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/brainstorming</code></td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#9999;&#65039; create new skills</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/skill-creator</code></td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#128221; write plans</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/writing-plans</code></td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#9989; execute tasks</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/executing-plans</code></td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#128187; design UI components</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/ui-ux-pro-max</code></td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#128293; avoid AI slop design</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/frontend-design</code></td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#128270; access live internet</td><td style="padding:8px; border:1px solid #cbd5e1;">Brave search</td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#128235; live social media data</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/socialcrawl</code></td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#128293; live web data</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/firecrawl</code></td></tr>
+        <tr><td style="padding:8px; border:1px solid #cbd5e1;">&#9881; think like engineer</td><td style="padding:8px; border:1px solid #cbd5e1;"><code>/feature-dev</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('ai-agents-30-dash')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('build-skill-9-step')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 120: BUILD A NEW CLAUDE SKILL ====== -->
+<div class="chapter" id="chapter-build-skill-9-step">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 120 — חדש &#128218;</div>
+    <h1 class="chapter-title">&#128218; How to Build a New Claude Skill in Claude.ai — 9-Step Practical Guide</h1>
+    <p class="chapter-subtitle">המדריך המלא והמעשי לבניית Skill ב-Claude.ai — מ-Description ועד ZIP upload</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #0c4a6e;">
+    <div class="box-title">&#128218; TL;DR</div>
+    Claude Skill היא <em>folder</em> עם קובץ נדרש יחיד: <strong>SKILL.md</strong> (uppercase, case sensitive). הקובץ מחזיק YAML frontmatter (name, description) ואחריו markdown instructions. אתה מעלה את ה-folder כ-ZIP ב-<em>Customize &gt; Skills</em> ב-claude.ai.<br><br>
+    זמין ב-Free, Pro, Max, Team, ו-Enterprise plans. <strong>נדרש</strong> Code execution ו-file creation להפעלה.
+  </div>
+
+  <h3 style="margin-top:24px; color:#5b21b6;">&#127919; 4 התכונות העיקריות</h3>
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <ul>
+      <li><strong>&#127919; Focused &amp; Reusable</strong> — Capture repeatable workflows, guidelines, ו-templates כך ש-Claude יוכל ליישם אותם בעקביות</li>
+      <li><strong>&#129504; Smart Activation</strong> — Claude קורא רק את ה-name וה-description בעת startup כדי להחליט מתי להפעיל את ה-skill</li>
+      <li><strong>&#128218; Progressive Disclosure</strong> — SKILL טוען מהר. supporting files נקראים רק כש-skill צריך אותם</li>
+      <li><strong>&#128274; Secure &amp; Private</strong> — ה-skills שלך פרטיים לחשבון שלך אלא אם אתה משתף את ה-team ב-Team או Enterprise org</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:24px; color:#d63031;">&#127942; The Golden Rule — DESCRIPTION</h3>
+  <div class="card" style="border-right:4px solid #d63031;">
+    <p>ה-description היא הדבר היחידי ש-Claude קורא ב-startup כדי להחליט אם לטעון את ה-skill. תכתוב אותה ב-<strong>third person</strong>, <strong>under 200 characters</strong> (claude.ai limit), state מה ה-skill עושה, מתי להשתמש בו, וכלל <strong>specific trigger phrases</strong>. תהיה ספציפי וקצת poetic.</p>
+    <div style="background:#fef3c7; padding:10px; border-radius:6px; font-size:12px; margin-top:8px;">
+      <strong>Good description example:</strong><br>
+      <em>&quot;Converts raw sales call notes into a structured CRM update. Use whenever the user pastes meeting notes, transcripts, or bullet points from a sales call, even if they don&apos;t mention CRM. Trigger on phrases like &apos;log this call&apos;, &apos;update the CRM&apos;, &apos;summarize this meeting&apos;, or &apos;write up these notes&apos;.&quot;</em>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px; color:#16a34a;">&#128218; 9-Step Process</h3>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">1&#65039;&#8419; Define the Skill</div>
+    <p>כתוב את המשימה המדויקת שה-skill מבצע. List 2-3 example prompts, expected output, ו-edge cases.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">2&#65039;&#8419; Use Skill-Creator (Recommended)</div>
+    <p>Use the in-product quick create ב-<em>Customize &gt; Skills</em> או ה-skill-creator skill. זה מראיין אותך ו-drafts complete skill package.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">3&#65039;&#8419; Create the File Structure</div>
+    <p>צור folder עם <code>SKILL.md</code> (uppercase). הוסף optional folders: <code>references/</code>, <code>scripts/</code>, <code>assets/</code> (one level deep).</p>
+    <div style="background:#1e293b; color:#e2e8f0; padding:10px; border-radius:6px; font-size:11px; font-family:monospace; margin-top:8px;">my-skill-name/<br>├── SKILL.md (required)<br>├── references/<br>│   └── style-guide.md<br>├── scripts/<br>│   └── validate.py<br>└── assets/<br>    └── template.docx</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">4&#65039;&#8419; Write SKILL.md</div>
+    <p>הוסף YAML frontmatter (name, description) בין <code>---</code> lines. אז כתוב clear instructions ב-markdown. שמור את ה-body <strong>under ~500 lines</strong>.</p>
+    <div style="background:#1e293b; color:#e2e8f0; padding:10px; border-radius:6px; font-size:11px; font-family:monospace; margin-top:8px;">---<br>name: crm-call-summary<br>description: Converts raw sales call notes into a structured CRM update...<br>---</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">5&#65039;&#8419; Package as ZIP</div>
+    <p>ZIP את ה-skill folder עצמו (לא את ה-contents). ה-folder חייב להיות ב-<strong>root</strong> של ה-ZIP archive.</p>
+    <table style="width:100%; font-size:11px; margin-top:8px;">
+      <tr><td style="background:#dcfce7; padding:6px; border:1px solid #cbd5e1;"><strong>CORRECT &#9989;</strong><br>my-skill.zip<br>└── my-skill/<br>    └── SKILL.md<br>    └── references/</td><td style="background:#fecaca; padding:6px; border:1px solid #cbd5e1;"><strong>INCORRECT &#10060;</strong><br>my-skill.zip<br>└── SKILL.md<br>└── references/</td></tr>
+    </table>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">6&#65039;&#8419; Upload in Claude.ai</div>
+    <p>Go to <em>Customize &gt; Skills &gt; Create skill &gt; Upload a skill</em>. Upload your ZIP, אז toggle את ה-skill on.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">7&#65039;&#8419; Test on Real Prompts</div>
+    <p>נסה 3 prompts שונים — שצריכים להפעיל את ה-skill ו-2 שלא צריכים. בדוק את ה-reasoning של Claude כדי לוודא שזה loaded.</p>
+    <div style="background:#fef3c7; padding:8px; border-radius:6px; font-size:12px; margin-top:8px;"><strong>Test Checklist:</strong><br>&#9989; Fresh chat<br>&#9989; 3 prompts ש<em>צריכים</em> trigger<br>&#9989; 2 prompts ש<em>לא צריכים</em> trigger<br>&#9989; Verify skill was loaded</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">8&#65039;&#8419; Iterate &amp; Improve</div>
+    <p>אם זה undertriggers — חזק את ה-description עם יותר keywords ו-triggers. אם זה overtriggers — תקנו את ה-context. Refine the body ו-add examples.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">9&#65039;&#8419; (Optional) Evaluate with Skill Creator v2</div>
+    <p>Use Eval mvals לייצר test cases, compare versions, ו-optimize את ה-description שלך ל-higher activation rates.</p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#16a34a;">&#128077; Best Practices</h3>
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <ul>
+      <li>&#9989; Keep ה-description תחת 200 characters (Claude.ai limit)</li>
+      <li>&#9989; תהיה ספציפי על ה-what, when, ו-bigger grasses</li>
+      <li>&#9989; Keep SKILL.md under ~500 lines — more details ל-references</li>
+      <li>&#9989; השתמש ב-clear examples עם great input ו-leading outputs</li>
+      <li>&#9989; One focused, reusable skill. Multiple skills compose better</li>
+      <li>&#9989; Test real, repetitive prompts</li>
+      <li>&#9989; Iterate based on real usage, not assumptions</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:24px; color:#dc2626;">&#9888; Common Mistakes to Avoid</h3>
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <ul>
+      <li>&#10060; Vague descriptions like &quot;helps with documents&quot;</li>
+      <li>&#10060; Lowercase skill.md instead of SKILL.md (folder must be at root)</li>
+      <li>&#10060; Zipping the wrong contents (folder must be at root)</li>
+      <li>&#10060; Overly long SKILL.md עם כל account ב-one file</li>
+      <li>&#10060; Mixing process steps עם reference content</li>
+      <li>&#10060; Creating &quot;mega-skills&quot; שעושים יותר מדי דברים</li>
+      <li>&#10060; Including outdated או time-sensitive instructions</li>
+    </ul>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #5b21b6; margin-top:18px;">
+    <div class="box-title">&#128161; Pro Tip</div>
+    Think of a skill כ-onboarding guide ל-new hire. ככל שהמדריך ברור יותר, ככה Claude מבצע את ה-workflow שלך טוב יותר. <em>Start narrow. Improve continuously. Build skills שמסקלים את ה-expertise שלך.</em>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('hacks-21-10x')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('ai-comparison-3-files')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 121: AI COMPARISON + 3 FILES + HOW TO GET MOST ====== -->
+<div class="chapter" id="chapter-ai-comparison-3-files">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 121 — חדש &#128202;</div>
+    <h1 class="chapter-title">&#128202; ChatGPT vs Claude vs Perplexity vs Gemini + 3 קבצים = 500+ פרומפטים + How to Get Most</h1>
+    <p class="chapter-subtitle">מתי כל כלי + 3 קבצי .md שמחליפים 500+ פרומפטים + טבלת השוואה מלאה של 10 מצבי Claude</p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#16a34a;">&#127919; AI Comparison — מתי כל כלי</h3>
+
+  <table style="width:100%; border-collapse:collapse; margin-top:14px; font-size:12px;">
+    <thead>
+      <tr style="background:#dcfce7;">
+        <th style="padding:8px; border:1px solid #cbd5e1;">Tool</th>
+        <th style="padding:8px; border:1px solid #cbd5e1;">תפקיד</th>
+        <th style="padding:8px; border:1px solid #cbd5e1;">חוזקות</th>
+        <th style="padding:8px; border:1px solid #cbd5e1;">Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:6px; border:1px solid #cbd5e1; font-weight:700; background:#dcfce7;">ChatGPT</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;">The Operating System</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;">Image generation, data analysis, custom GPTs, Scheduled tasks, voice mode, plugins</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;"><em>doing things</em></td>
+      </tr>
+      <tr>
+        <td style="padding:6px; border:1px solid #cbd5e1; font-weight:700; background:#fed7aa;">Claude</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;">The Thinking Partner</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;">Complex reasoning, long documents, massive context, Claude Code, computer use, parallel workers</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;"><em>deep work</em></td>
+      </tr>
+      <tr>
+        <td style="padding:6px; border:1px solid #cbd5e1; font-weight:700; background:#dbeafe;">Perplexity</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;">The Research Engine</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;">Sourced answers, multi-step web research, Scheduled searches, shareable Pages</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;"><em>finding things</em></td>
+      </tr>
+      <tr>
+        <td style="padding:6px; border:1px solid #cbd5e1; font-weight:700; background:#e9d5ff;">Gemini</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;">The Workspace AI</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;">Deep Research across web + Gmail + Drive, Notebooks, Gems, video/image generation</td>
+        <td style="padding:6px; border:1px solid #cbd5e1;"><em>working inside Google</em></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box" style="border-right:4px solid #6c5ce7; margin-top:18px;">
+    <div class="box-title">&#127919; The Simple Framework</div>
+    <strong>Need to create or automate?</strong> → ChatGPT<br>
+    <strong>Need to think or build?</strong> → Claude<br>
+    <strong>Need to search or research?</strong> → Perplexity<br>
+    <strong>Need to work across Google?</strong> → Gemini
+  </div>
+
+  <h3 style="margin-top:32px; color:#ea580c;">&#128218; 3 Claude Files = 500+ Prompts</h3>
+
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">01 — <code>about-me.md</code></div>
+    <p><strong>What it is:</strong> Who you are. How you think. How you want Claude to write for you.</p>
+    <p><strong>How to create:</strong></p>
+    <ul>
+      <li>Open Cowork → Opus 4.6 + Extended Thinking</li>
+      <li>Ask Claude to interview you using AskUserQuestion</li>
+      <li>Claude compiles everything into one file</li>
+    </ul>
+    <p><strong>Contains:</strong></p>
+    <ul>
+      <li>Who I am (role, company, audience, numbers)</li>
+      <li>How I work (tools, process, what &quot;done&quot; looks like)</li>
+      <li>What good looks like (standards, examples)</li>
+      <li>What I hate (bad patterns, what &quot;wrong&quot; looks like)</li>
+      <li>My rules (hard lines, non-negotiables)</li>
+      <li>Instructions (10 rules: what to DO &amp; NOT DO)</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">02 — <code>anti-ai-writing-style.md</code></div>
+    <p><strong>What it is:</strong> Your taste, as a set of rules. <em>Every word and pattern Claude must never use.</em></p>
+    <p><strong>How to create:</strong> Write the words you hate. The patterns that make you cringe. The formatting rules you actually care about. Start with what bothers you most.</p>
+    <p><strong>Contains:</strong></p>
+    <ul>
+      <li><strong>Banned words</strong> (delve, harness, tapestry, leverage)</li>
+      <li><strong>Banned sentence patterns</strong> (&quot;this isn&apos;t X, this is Y&quot;)</li>
+      <li><strong>Formatting rules</strong> (paragraphs to 3 sentences max)</li>
+      <li><strong>The phrases that make you cringe</strong></li>
+    </ul>
+    <p style="background:#fef3c7; padding:8px; border-radius:6px; font-size:13px; margin-top:8px;"><strong>Why it matters:</strong> Without it, Claude writes like Claude. With it, Claude writes like you (minus the parts you hate).</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">03 — <code>my-company.md</code></div>
+    <p><strong>What it is:</strong> Your targets. Your strategy. What you&apos;re focused on. What you&apos;re saying no to.</p>
+    <p><strong>How to create:</strong> Same Cowork session as about-me. Ask it to interview you with AskUserQuestion. Claude compiles into one file.</p>
+    <p><strong>Contains:</strong></p>
+    <ul>
+      <li><strong>Goals</strong> (specific targets with numbers: audience, revenue, milestones)</li>
+      <li><strong>Focus right now</strong> (where you&apos;re spending time this quarter, 2-3 bullets max)</li>
+      <li><strong>Saying no to</strong> (opportunities, trends, platforms you&apos;re actively declining)</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:32px; color:#dc2626;">&#128202; How To Get The Most Out of Claude — 10 Modes Table</h3>
+
+  <table style="width:100%; border-collapse:collapse; margin-top:14px; font-size:11px;">
+    <thead>
+      <tr style="background:#fecaca;">
+        <th style="padding:6px; border:1px solid #cbd5e1;">Mode</th>
+        <th style="padding:6px; border:1px solid #cbd5e1;">What It Is</th>
+        <th style="padding:6px; border:1px solid #cbd5e1;">How It&apos;s Used</th>
+        <th style="padding:6px; border:1px solid #cbd5e1;">Prompt Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Chat</td><td style="padding:6px; border:1px solid #cbd5e1;">Chatbot. כמו ChatGPT אבל באמת קורא מה שאתה נותן</td><td style="padding:6px; border:1px solid #cbd5e1;">Draft emails, review contracts, brainstorm. תמיד Opus 4.6 + Extended Thinking</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Read this contract and flag every clause that could cost me money&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Cowork</td><td style="padding:6px; border:1px solid #cbd5e1;">Desktop app שקורא את הקבצים האמיתיים שלך. Word, Excel, PDF</td><td style="padding:6px; border:1px solid #cbd5e1;">Point ל-folder. תן הוראות. יוצר documents בתוך directory. No uploading</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Read the files in this folder, then ask me questions before you start&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Projects</td><td style="padding:6px; border:1px solid #cbd5e1;">Saved workspaces ב-claude.ai. העלאת files פעם אחת. כל chat יודע את ה-rules שלך</td><td style="padding:6px; border:1px solid #cbd5e1;">Create one per client, per workflow, per content type. העלה brief, examples, preferences</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Use the brand guide I uploaded and draft a client proposal&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Skills</td><td style="padding:6px; border:1px solid #cbd5e1;">Text file שמלמד את Claude איך לעשות task בדרך שלך. כמו SOP ל-new hire שלעולם לא שוכח</td><td style="padding:6px; border:1px solid #cbd5e1;">בנה אחד ל-weekly report, post format, review process. Claude follows אוטומטית</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Help me create a Skill for writing weekly status reports in our company format&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Code</td><td style="padding:6px; border:1px solid #cbd5e1;">Command-line tool ל-developers. Claude קורא את ה-codebase, כותב code, מריץ tests</td><td style="padding:6px; border:1px solid #cbd5e1;">Hand it a bug או feature. עובד דרך ה-actual code שלך. אתה reviews, approve</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Fix the auth bug in the team flow and add unit tests&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Plugins</td><td style="padding:6px; border:1px solid #cbd5e1;">Pre-built skill packs. Sales, marketing, legal, finance. Install אחד = Claude specialist</td><td style="padding:6px; border:1px solid #cbd5e1;">Browse claude.com/plugins. Click Install. כל plugin מוסיף slash commands</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;What plugins are available for my job function?&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Connectors</td><td style="padding:6px; border:1px solid #cbd5e1;">Links to your tools. Slack, Google Drive, Notion, Gamma, 50+ אחרים</td><td style="padding:6px; border:1px solid #cbd5e1;">Go to Settings → Connectors. Click Add. Claude יכול לחפש Slack, pull Docs, reference Notion</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Find the Q1 deck in my Google Drive and summarize the revenue slide&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Excel</td><td style="padding:6px; border:1px solid #cbd5e1;">AI לחיים בתוך ה-spreadsheet. קורא כל tab, formula, cell</td><td style="padding:6px; border:1px solid #cbd5e1;">Click cell. Ask Claude. הוא מסביר formulas, fixes errors, cleans data, builds models</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Explain what this formula does in plain English&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Charts</td><td style="padding:6px; border:1px solid #cbd5e1;">Interactive dashboards, calculators, ו-visuals שנבנים ישירות ב-chat. Live outputs</td><td style="padding:6px; border:1px solid #cbd5e1;">Ask למה שאתה בדרך כלל בונה ידנית. Budget trackers. Comparison charts. Project boards</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Build me a project tracker with columns for Task, Owner, Status, and Due Date&quot;</em></td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1; font-weight:700;">Research</td><td style="padding:6px; border:1px solid #cbd5e1;">Deep reasoning mode. Claude מחפש ב-web, cross-references sources, מראה את ה-thinking שלו ב-real time</td><td style="padding:6px; border:1px solid #cbd5e1;">השתמש בו כשתשובה מצוטטת חשובה יותר מ-fast one. Financial models. Market research. Legal analysis</td><td style="padding:6px; border:1px solid #cbd5e1;"><em>&quot;Research the top 5 competitors in [my market]. Compare pricing, funding, and market share&quot;</em></td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box" style="border-right:4px solid #16a34a; margin-top:18px;">
+    <div class="box-title">&#127919; 3 Advanced Hacks</div>
+    <ol>
+      <li><strong>Edit your prompt to save tokens</strong> — כשה-output לא נכון, אל תקליד follow-up. Go back, edit ה-original message, resubmit. (חוסך במיוחד ב-Cowork.)</li>
+      <li><strong>Force Claude to ask YOU questions</strong> — End every prompt עם: &quot;Don&apos;t start yet. Ask me 3 clarifying questions first using AskUserQuestion.&quot; Claude מייצר form. אתה עונה. זה הדרך היחידה.</li>
+      <li><strong>Set up Global Instructions</strong> — Go to Settings → Profile. כתוב איך אתה חושב, איך אתה כותב, מה אתה רוצה. Claude קורא אותם <em>לפני כל conversation</em>. זה permanent brief שיש לך בכל chat.</li>
+    </ol>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('build-skill-9-step')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('life-fix-24-hours')">הבא &#8592;</button>
+  </div>
+</div>
+
+<!-- ====== CHAPTER 122: 24-HOUR LIFE FIX PROTOCOL ====== -->
+<div class="chapter" id="chapter-life-fix-24-hours">
+  <div class="chapter-header">
+    <div class="chapter-number">פרק 122 — חדש &#127769;</div>
+    <h1 class="chapter-title">&#127769; Fix Your Life with Claude in 24 Hours — Complete Protocol</h1>
+    <p class="chapter-subtitle">Claude Sonnet 24H Protocol (Hamza Khalid) — 3 phases, 8 components, exact prompts לעבודה פסיכולוגית עם Claude כ-thinking partner</p>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #ea580c;">
+    <div class="box-title">&#9888; 3 סיבות ש-Claude לא משנה את החיים שלך</div>
+    <ol>
+      <li><strong>אתה משתמש בו ל-tasks, לא ל-thinking</strong> — מבקש מ-Claude לכתוב emails במקום לבדוק את ה-strategy שלך. Output ללא insight.</li>
+      <li><strong>אתה שומר goals vague בכוונה</strong> — Vague prompts מגנים עליך מהרגע שתצטרך באמת לנסות משהו. Claude לא יכול לפתור את זה.</li>
+      <li><strong>אתה מגן על ה-identity שלך במקום</strong> — &quot;I&apos;m not a morning person.&quot; &quot;I&apos;m bad at business.&quot; אם Claude מאיים על התירוץ, אתה נסוג ל-safe tasks.</li>
+    </ol>
+    <p style="background:#fef3c7; padding:8px; border-radius:6px; margin-top:8px;"><strong>The Real Test:</strong> אם השימוש ב-Claude שלך נראה כמו לפני 3 חודשים — אותן משימות, אותם prompts vague, אותן תוצאות — <em>אתה לא משתמש ב-Claude. אתה משתמש ב-spell-checker עם vocabulary.</em></p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#d63031;">&#128197; 3 שלבים — Use All of Them</h3>
+
+  <div class="card" style="border-right:4px solid #ea580c;">
+    <div class="card-title">&#9728;&#65039; MORNING — Psychological Excavation (60-90 דקות)</div>
+    <p>Fresh conversation. No history. השתמש ב-Claude כ-mirror כדי לחשוף מה אתה סובל ולמה. Loads full honesty into the session.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #fbbf24;">
+    <div class="card-title">&#9728; MIDDAY — Interrupt Autopilot (4 check-ins)</div>
+    <p>Interrupt Autopilot עם prompts מדויקים. שבור unconscious patterns במהלך היום הרגיל. Commit ל-schedule, לא ל-mood.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">&#127769; EVENING — Synthesize + Build System (60-90 דקות)</div>
+    <p>Turn raw insights ל-operating framework. Anti-vision, vision, 3 goals. Save ו-revisit monthly. Let it evolve.</p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#0c4a6e;">&#128218; PHASE 1 — Morning Prompts</h3>
+
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">PROMPT 1 — Identity Audit</div>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">I want to use this conversation seriously. Function as a sharp thinking partner, not a cheerleader.
+
+Rules:
+- Don't validate unless it's earned
+- Push back when I'm rationalizing
+- Flag vagueness that protects me from thinking
+- Ask the uncomfortable follow-up
+
+Start: What dull, persistent dissatisfaction have I been living with?</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">PROMPT 2 — Anti-Vision Builder</div>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">Build my anti-vision.
+
+Ask me to describe in precise detail what my life looks like in 5 years if nothing changes. Same trajectory. Same habits. Same avoidances.
+
+After I answer: identify the 3 identity-level beliefs that keep that future on track.</div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <div class="card-title">PROMPT 3 — Behavior Gap</div>
+    <div class="prompt-box" style="background:#1e293b; color:#e2e8f0; padding:14px; border-radius:8px; font-family:monospace; font-size:12px; direction:ltr; text-align:left; white-space:pre-wrap; margin-top:8px;">What would someone who watched my behavior (not my words) conclude I actually want?
+
+Be specific. Don't be kind.</div>
+  </div>
+
+  <h3 style="margin-top:32px; color:#d97706;">&#9728; PHASE 2 — Midday Check-ins</h3>
+
+  <div class="card" style="border-right:4px solid #d97706;">
+    <div class="card-title">11:00AM — Avoidance Check</div>
+    <p><em>&quot;One sentence. What have I been avoiding this morning by doing what I&apos;ve been doing? Don&apos;t let me answer with something flattering.&quot;</em></p>
+  </div>
+  <div class="card" style="border-right:4px solid #d97706;">
+    <div class="card-title">4:00PM — Aliveness Check</div>
+    <p><em>&quot;Where am I trading the feeling of safety for the reality of aliveness? Give me one clear example from today.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:32px; color:#5b21b6;">&#127769; PHASE 3 — Evening Synthesis</h3>
+
+  <div class="card" style="border-right:4px solid #5b21b6;">
+    <div class="card-title">Full Synthesis Prompt</div>
+    <p>Walk me through:</p>
+    <ol>
+      <li>What feels most true about why I&apos;ve been stuck</li>
+      <li>What is the actual internal pattern — not a circumstance, the belief reproducing this outcome</li>
+      <li>Write one sentence: the life I refuse to become</li>
+      <li>Write one sentence: what I&apos;m building toward</li>
+    </ol>
+    <p>Then define:</p>
+    <ul>
+      <li>1 concrete thing true in 1 year (pattern broken)</li>
+      <li>1 concrete thing true in 1 month (year still possible)</li>
+      <li>2-3 actions on tomorrow&apos;s calendar</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:32px; color:#16a34a;">&#129504; 8 Components That Matter — Highest Impact System</h3>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">Component 1 — ANTI-VISION</div>
+    <p><strong>Make the wrong life viscerally real.</strong> Not abstract. Not &quot;I don&apos;t want to be broke.&quot; אתה צריך Tuesday ספציפי. תחושה ספציפית. אדם ספציפי שאתה תעדיף למות מ-יותר מאשר להפוך.</p>
+    <ul>
+      <li>Where do you wake up? What does your body feel?</li>
+      <li>Who&apos;s in the room? What&apos;s around you?</li>
+      <li>Who gave up on you? What did you never try?</li>
+    </ul>
+    <p style="background:#fecaca; padding:8px; border-radius:6px; font-size:12px;"><strong>The Compression Test:</strong> אחרי התרגיל, כתוב אותו ב-one sentence. זה צריך לגרום לך להרגיש משהו כשאתה קורא אותו cold. אם זה לא, זה עדיין abstract.</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">Component 2 — VISION</div>
+    <p>Minimum viable. זה יתפתח. Start עם Tuesday רגיל ב-3 שנים — לא מה ש-realistic, אלא מה שבאמת אתה רוצה. אז כתוב את ה-identity statement.</p>
+    <p style="background:#dcfce7; padding:8px; border-radius:6px; font-size:12px;"><strong>Identity Statement Format:</strong> <em>&quot;I am the type of person who ____.&quot;</em><br>What would you have to believe about yourself for that life to feel natural, not forced?</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">Components 3-4 — Goals as Lenses</div>
+    <p>Goals אינם finish lines. הם <em>Points of View</em>. Goal הוא projection לעתיד שפועל כ-lens של perception. הוא קובע מה אתה מבחין, מה אתה מתעלם, מה מרגיש דחוף. הגדר אותו לא נכון ואתה מ-optimizing לחיים הלא נכונים.</p>
+    <ul>
+      <li><strong>1-Year Lens:</strong> One concrete testable thing. מה היה צריך להיות נכון ב-12 חודשים כדי לאשר ששברת את ה-pattern הישן? Not a feeling. A fact.</li>
+      <li><strong>1-Month Project:</strong> הדבר הספציפי שאתה בונה או לומד החודש הזה שעושה את ה-1-Year Lens אפשרי. One project. Not a list.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-right:4px solid #16a34a;">
+    <div class="card-title">Components 5-6 — Daily Levers &amp; Constraints</div>
+    <p><strong>Daily Levers — Under 3. Emphasis: Specificity Only.</strong></p>
+    <p>Negative constraints חשובים כמו positive goals. &quot;I will not open social media before noon&quot; outperforms &quot;I want to be more focused.&quot;</p>
+    <p style="background:#fef3c7; padding:8px; border-radius:6px; font-size:12px;"><strong>Important:</strong> Claude יתנגד ל-vague levers שאושרו על ידי איך הוא טיפל ב-under-specified prompts. <em>The one rule: if it can&apos;t go on a calendar, it&apos;s not a lever.</em></p>
+    <p style="background:#dcfce7; padding:8px; border-radius:6px; font-size:12px;"><strong>Self-Sabotage Prompt</strong> (END EVERY EVENING SESSION):<br><em>&quot;Based on everything I&apos;ve shared today, what is the most likely way I will undermine this in the next two weeks? Be specific. I need to see it before it happens.&quot;</em></p>
+  </div>
+
+  <h3 style="margin-top:24px; color:#dc2626;">&#127919; 5 Prompts with Highest Single Impact</h3>
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <ol>
+      <li><strong>Push me past my first answer.</strong> The first answer is the socially acceptable one. The second is the honest one.</li>
+      <li><strong>Don&apos;t validate unless it&apos;s earned.</strong> Claude defaults to encouragement. This instruction הופך אותו ל-thinking partner.</li>
+      <li><strong>What would an observer conclude from my behavior?</strong> Separates what you say from what your actions prove you want.</li>
+      <li><strong>Find the internal pattern, not the circumstance.</strong> מונע מ-Claude לעזור לך להאשים גורמים חיצוניים.</li>
+      <li><strong>How will I self-sabotage this in 2 weeks?</strong> השאלה שאף אחד לא שואל. Claude יזהה אותה ספציפית אם היית כנה ב-session.</li>
+    </ol>
+  </div>
+
+  <h3 style="margin-top:24px; color:#0c4a6e;">&#127919; The Compounding Effect — Use Context Across the Whole Day</h3>
+  <div class="card" style="border-right:4px solid #0c4a6e;">
+    <ul>
+      <li>שמור Phase 1 conversation פתוחה כל היום. Reference אותה ב-Phase 2 prompts עם: <em>&quot;based on what we discussed this morning&quot;</em></li>
+      <li>ב-Evening synthesis, paste את ה-morning anti-vision וה-midday observations לתוך ה-conversation. Don&apos;t re-explain — just share them.</li>
+      <li>אל תיתן ל-Claude לסכם את ה-insights שלך מוקדם מדי. Push דרך ה-discomfort לפני שאתה compressing ל-action steps.</li>
+      <li>ה-self-sabotage prompt עובד רק אם השאר של ה-session היה honest. Claude מוצא את ה-real pattern מ-real inputs.</li>
+    </ul>
+  </div>
+
+  <div class="info-box" style="border-right:4px solid #5b21b6; margin-top:18px;">
+    <div class="box-title">&#9202; System at a Glance</div>
+    <table style="width:100%; font-size:12px;">
+      <tr><th style="padding:6px; background:#e9d5ff;">Component</th><th style="padding:6px; background:#e9d5ff;">Format</th><th style="padding:6px; background:#e9d5ff;">Priority</th></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Anti-Vision</td><td style="padding:6px; border:1px solid #cbd5e1;">1 sentence, felt</td><td style="padding:6px; border:1px solid #cbd5e1; color:#dc2626; font-weight:700;">CRITICAL</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Vision</td><td style="padding:6px; border:1px solid #cbd5e1;">1 sentence, direction</td><td style="padding:6px; border:1px solid #cbd5e1; color:#dc2626; font-weight:700;">CRITICAL</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">1-Year Test</td><td style="padding:6px; border:1px solid #cbd5e1;">1 concrete fact</td><td style="padding:6px; border:1px solid #cbd5e1; color:#dc2626; font-weight:700;">CRITICAL</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">1-Month Project</td><td style="padding:6px; border:1px solid #cbd5e1;">1 buildable thing</td><td style="padding:6px; border:1px solid #cbd5e1; color:#d97706; font-weight:700;">HIGH</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Daily Levers</td><td style="padding:6px; border:1px solid #cbd5e1;">Max 3, calendar-ready</td><td style="padding:6px; border:1px solid #cbd5e1; color:#d97706; font-weight:700;">HIGH</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Constraints</td><td style="padding:6px; border:1px solid #cbd5e1;">Non-negotiables</td><td style="padding:6px; border:1px solid #cbd5e1; color:#ca8a04; font-weight:700;">MEDIUM</td></tr>
+      <tr><td style="padding:6px; border:1px solid #cbd5e1;">Self-Sabotage Q</td><td style="padding:6px; border:1px solid #cbd5e1;">End of every session</td><td style="padding:6px; border:1px solid #cbd5e1; color:#dc2626; font-weight:700;">CRITICAL</td></tr>
+    </table>
+    <p style="margin-top:8px;"><em>Total session: Under 4 hours. כל failure ש-Claude עד הופך ל-constraint חדש. כל constraint עושה את ה-session הבא יותר חד. זו system, לא תרגיל one-time journaling.</em></p>
+  </div>
+
+  <div class="chapter-nav">
+    <button class="chapter-nav-btn" onclick="goTo('ai-comparison-3-files')">&#8594; הקודם</button>
+    <button class="chapter-nav-btn" onclick="goTo('social-media')">הבא &#8592;</button>
+  </div>
+</div>
+
+
 <div class="chapter" id="chapter-social-media">
   <div class="chapter-header">
     <div class="chapter-number">פרק 86 &mdash; רשתות חברתיות</div>
@@ -20151,7 +21019,7 @@ Verify your understanding before writing. Restate the task in one sentence and c
 
 <script>
 // ===== NAVIGATION =====
-const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','bug-detection','crm-full-guide','infographics-mastery','infographics-toolkit','infographics-wisdom','matnas-full-arch','opus47-prompts','opus47-release','claude-12-crazy','skill-top1','senior-engineering','claude-design-5','easy-website-workflow','opus47-power-7','matnas-system-reqs','cc-26-shortcuts','cowork-master','marketing-mega-48','claude-power-10','prompt-anatomy-perfect','claude-design-mastery','token-17-ways','founder-nutrition-prompts','skills-1-hour','claude-ecosystem-6','claude-5-modes-matrix','claude-design-12-visual','business-startup-9','thinking-partner-10','claude-md-connectors','social-media','glossary'];
+const chapters = ['welcome','intro','philosophy','programs','programs-kpi','programs-examples','theater','crm','sales','dashboard','reports','routines','claude-system','prompts','skills','implementation','roles','forms','production','maturity','prompt-eng','artifacts-deep','skills-deep','cowork-deep','connectors','theater-marketing','crm-nonprofit','sources','sys-community','sys-theater','sys-bugs','sys-upgrade','plugins','chrome','excel','advanced-prompts','dashboard-build','ai-models','tools-ecosystem','marketing-prompts','master-dashboard','php-convert','claude-2026','skills-mastery','office-integrations','anthropic-news','systems-upgrade-advisor','web-deployment','research-mode','persistent-memory','projects-deep','production-v7','daily-user-guide','implementer-toolkit','freelancer-methodology','system-templates','municipal-systems','pricing-proposals','portfolio-marketing','vertical-prompts','ai-agents','ai-integrations','5levels','ask-first','agent-builder','claude-8tools','claude-interface','claude-setup','use-cases-85','pro-tips','build-website-cc','cc-cheatsheet','cc-12features','three-layers','claude-dictionary','creative-skills','apply-to-my-systems','deploy-winscp','scheduled-auto-updates','freelancer-super-expert','claude-products-2026','second-brain','100features','token-smart','skill-hacks','cowork-10x','prompt-anatomy','ai-compare-ar','bug-detection','crm-full-guide','infographics-mastery','infographics-toolkit','infographics-wisdom','matnas-full-arch','opus47-prompts','opus47-release','claude-12-crazy','skill-top1','senior-engineering','claude-design-5','easy-website-workflow','opus47-power-7','matnas-system-reqs','cc-26-shortcuts','cowork-master','marketing-mega-48','claude-power-10','prompt-anatomy-perfect','claude-design-mastery','token-17-ways','founder-nutrition-prompts','skills-1-hour','claude-ecosystem-6','claude-5-modes-matrix','claude-design-12-visual','business-startup-9','thinking-partner-10','claude-md-connectors','master-7-steps-30-terms','cc-89-commands','ai-agents-30-dash','hacks-21-10x','build-skill-9-step','ai-comparison-3-files','life-fix-24-hours','social-media','glossary'];
 
 function goTo(id) {
   // Hide cover page if still visible
@@ -21847,7 +22715,7 @@ function expertMode(type) {
     '<div class="credit-title">מדריך חכם אינטראקטיבי Claude</div>' +
     '<div class="credit-copy">כל הזכויות שמורות ל: <strong>אגבאריה מוחמד סאלח</strong> &mdash; רעיון, בנייה, עדכון &mdash; &copy; 2026</div>' +
     '<div class="credit-version">' +
-      '<span class="badge">גרסה 23.6</span>' +
+      '<span class="badge">גרסה 23.7</span>' +
       '<span class="sep">|</span>' +
       '<span>מעודכן 12 מאי 2026</span>' +
       '<span class="sep">|</span>' +
