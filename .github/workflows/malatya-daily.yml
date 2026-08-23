@@ -1,0 +1,279 @@
+name: النشرة اليومية — بوابة ملاطيا
+
+# 06:10 UTC = 09:10 بتوقيت القدس (صيفاً) / 08:10 (شتاءً).
+# متأخّرة ساعة عن تحديث دليل Claude كي لا تتزاحم الريّات.
+on:
+  schedule:
+    - cron: "10 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: malatya-daily
+  cancel-in-progress: false
+
+# حساب FTP محبوس (chroot) داخل public_html/malatya — لا يرى الجذر إطلاقاً.
+env:
+  FTP_EXPECTED_USER_PREFIX: "malatya@"
+  PORTAL_URL: "https://jmahery.com/malatya/"
+
+jobs:
+  update:
+    name: رصد · تحرير · نشر
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: تشغيل Claude — الرصد وتحرير النشرة
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            أنت محرّر «غرفة رصد ملاطيا». مهمتك اليوم: تحديث قسم «النشرة اليومية» داخل `malatya/index.html`.
+
+            أنت تعمل داخل GitHub Actions. **مهمتك: البحث وتحرير `malatya/index.html` فقط.** لا تقم بـ commit ولا push ولا رفع عبر FTP — سير العمل (workflow) يتولّى ذلك بعدك. لديك موافقة قائمة؛ لا تطرح أسئلة.
+
+            ═══════════════════════════════
+            **الخطوة ١ — التاريخ**
+            ═══════════════════════════════
+            نفّذ: `TZ=Asia/Jerusalem date '+%A %-d %B %Y — %H:%M'` واحفظ الناتج للترويسة (مثال: «الأحد 23 أغسطس 2026 — 12:05»). استخدم أسماء الأيام والأشهر بالعربية.
+
+            ═══════════════════════════════
+            **الخطوة ٢ — ستة وكلاء بحث بالتوازي**
+            ═══════════════════════════════
+            شغّل **٦ وكلاء** (أداة Agent، subagent_type: general-purpose، في رسالة واحدة). كل وكيل: يبحث بالتركية/الإنجليزية/العربية عبر WebSearch وWebFetch، يركّز على آخر **١٠ أيام**، يترجم للعربية، ويعيد ٨–١٤ عنصراً بصيغة (عنوان عربي · ملخّص سطرين · سعر/رقم إن وُجد · تاريخ · قضاء/قرية · مصدر+رابط). كل وكيل يصرّح صراحةً إن لم يجد جديداً. **ممنوع الاختلاق.**
+
+            ١. **الأسواق والعروض** — BİM · A101 · ŞOK · Migros · CarrefourSA · سوق الجملة (hal) · Esenlik
+            ٢. **العقارات والأراضي** — إيجار/بيع ₺/م² وبساتين المشمش حسب الحي (sahibinden · hepsiemlak · emlakjet) + TOKİ/البلدية
+            ٣. **المطاعم والكافيهات والأفران** — وأسعار الخبز
+            ٤. **المجمّعات والبازارات والمنتزهات** — Malatya Park AVM · سوق الشيرة · الأسواق الأسبوعية
+            ٥. **الاقتصاد والمشمش** — بورصة ملاطيا (malatyatb.org.tr) · الصادرات · OSB · الوظائف
+            ٦. **الأخبار والبلدية والأقضية** — Battalgazi · Yeşilyurt · Darende · Akçadağ · Doğanşehir · Arapgir · Hekimhan · Pütürge · Yazıhan · Kuluncak · Arguvan · Kale · Doğanyol — قرارات، انقطاعات، إعمار، فعاليات، طقس
+
+            انتظر الوكلاء الستة جميعاً قبل المتابعة.
+
+            ═══════════════════════════════
+            **الخطوة ٣ — التحرير**
+            ═══════════════════════════════
+            احذف المكرّر، واختر **«أبرز ٥ اليوم»**. كل عنصر مترجم وله رابط مصدر.
+            قسمٌ بلا جديد ⇐ اكتب `<p class="empty">لا جديد بارز اليوم في هذا القسم</p>`.
+
+            **لا تحذف الأرشيف:** العناصر القديمة تبقى. أضِف الجديد فوقها. سكربت `sortDaily` في الملف يرتّب تلقائياً حسب `data-date`.
+
+            ═══════════════════════════════
+            **الخطوة ٤ — بناء HTML النشرة**
+            ═══════════════════════════════
+            استبدل ما بين `<!--DAILY-CONTENT-START-->` و `<!--DAILY-CONTENT-END-->` فقط. **أبقِ العلامتين في مكانهما.**
+
+            بنفس أصناف CSS الموجودة:
+
+            - لكل قسم: `<h2><span class="sec-ico">أيقونة</span> العنوان <span class="count">عدد</span></h2>`
+            - «أبرز اليوم» داخل `<div class="highlights">…</div>`
+            - كل خبر:
+            ```
+            <div class="item" data-date="YYYY-MM-DD"><h3>العنوان</h3><p>الملخّص</p><div class="meta"><span class="badge b-price">سعر</span><span class="badge b-date">تاريخ</span><span class="badge b-area">منطقة</span><a class="src" href="URL" target="_blank" rel="noopener">المصدر ↗</a></div></div>
+            ```
+
+            ⚠️ **`data-date` إلزامي في كل بطاقة**، بصيغة `YYYY-MM-DD` بالضبط. للأخبار الحيّة استخدم تاريخ اليوم؛ للفعاليات القادمة أو النطاقات استخدم آخر تاريخ. **لا ترتّب يدوياً** — السكربت يتولّى ذلك — لكن لا تُهمل السمة أبداً.
+
+            **الأقسام السبعة بالترتيب:**
+            ⭐ أبرز اليوم · 🛒 الأسعار والعروض · 🏢 العقارات والأراضي · 🍽️ المطاعم والكافيهات والأفران · 🏬 المجمّعات والبازارات والمنتزهات · 🌾 الاقتصاد والمشمش والزراعة · 📰 الأخبار والبلدية والقرى
+
+            ═══════════════════════════════
+            **الخطوة ٥ — الترويسة والأرقام**
+            ═══════════════════════════════
+            - حدّث نص `<span id="daily-date">…</span>` بتاريخ اليوم من الخطوة ١.
+            - حدّث أرقام شريط `<div class="chips">…</div>` لتطابق الواقع.
+            - **لا تلمس** سكربت `sortDaily` ولا بقيّة أقسام الدليل (المعيشة، السكن، العقارات، الاستثمار، النقل، التسوّق، السياحة، الحياة العملية، المعجم).
+
+            ═══════════════════════════════
+            **الخطوة ٦ — فحص ذاتي قبل الإنهاء**
+            ═══════════════════════════════
+            - `DAILY-CONTENT-START` و`DAILY-CONTENT-END` — مرّة واحدة بالضبط لكلٍّ منهما
+            - `id="daily-date"` — مرّة واحدة
+            - **كل** `<div class="item"` لديه `data-date="YYYY-MM-DD"` صالح
+            - توازن `<div>`، لا مُعرِّفات (IDs) مكرّرة
+            - الأقسام السبعة موجودة
+            - الحجم لم ينكمش (الأرشيف محفوظ)
+
+            **يوم هادئ؟** حدّث الترويسة والتاريخ على أي حال، واكتب في الأقسام الفارغة `<p class="empty">…</p>` — هكذا يُرى أن النظام حيّ.
+
+            **تقرير ختامي بالعربية:** ما أُضيف لكل قسم · أبرز ٥ · ما لم يُعثر عليه · المصادر بروابط.
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Agent"
+            --permission-mode acceptEdits
+
+      - name: التحقّق — لا ننشر ملفاً معطوباً
+        run: |
+          set -euo pipefail
+          git show HEAD:malatya/index.html > /tmp/prev.html
+          python3 - <<'PY'
+          import re, sys
+
+          new = open('malatya/index.html', encoding='utf-8').read()
+          old = open('/tmp/prev.html', encoding='utf-8').read()
+          errs, notes = [], []
+
+          # --- العلامات المرجعية ---
+          for a in ['DAILY-CONTENT-START', 'DAILY-CONTENT-END']:
+              if new.count(a) != 1:
+                  errs.append(f"العلامة {a} ظهرت {new.count(a)} مرّة (المطلوب ١)")
+          n_dd = new.count('id="daily-date"')
+          if n_dd != 1:
+              errs.append(f'id="daily-date" ظهر {n_dd} مرّة (المطلوب ١)')
+
+          # --- بنية HTML ---
+          if new.count('<div') != new.count('</div>'):
+              errs.append(f"اختلال <div>: {new.count('<div')} مفتوح مقابل {new.count('</div>')} مغلق")
+          ids = re.findall(r'\sid="([^"]+)"', new)
+          dups = sorted({i for i in ids if ids.count(i) > 1})
+          if dups:
+              errs.append(f"مُعرِّفات مكرّرة: {dups[:5]}")
+
+          # --- الأقسام السبعة ---
+          secs = re.findall(r'<h2[^>]*>\s*<span class="sec-ico">', new)
+          if len(secs) < 7:
+              errs.append(f"عدد الأقسام {len(secs)} (المطلوب ٧ على الأقل)")
+          else:
+              notes.append(f"الأقسام {len(secs)}")
+
+          # --- data-date إلزامي وصالح في كل بطاقة ---
+          cards = re.findall(r'<div class="item"([^>]*)>', new)
+          missing = [c for c in cards if 'data-date=' not in c]
+          dates = re.findall(r'<div class="item"[^>]*data-date="([^"]*)"', new)
+          bad = [d for d in dates if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', d)]
+          if missing:
+              errs.append(f"{len(missing)} بطاقة بلا data-date — سكربت الترتيب سيتعطّل")
+          if bad:
+              errs.append(f"data-date بصيغة خاطئة: {bad[:5]}")
+          if cards and not missing and not bad:
+              notes.append(f"البطاقات {len(cards)} كلّها بتاريخ صالح ({min(dates)}→{max(dates)})")
+          if len(cards) < 10:
+              errs.append(f"عدد البطاقات {len(cards)} — يبدو أن الأرشيف حُذف")
+
+          # --- عدم التراجع مقابل النسخة السابقة ---
+          old_cards = len(re.findall(r'<div class="item"', old))
+          if len(cards) < old_cards * 0.8:
+              errs.append(f"تراجع البطاقات {old_cards} → {len(cards)} — فقدان أرشيف")
+          shrink = 1 - len(new) / len(old)
+          if shrink > 0.20:
+              errs.append(f"انكمش الملف {shrink:.1%} ({len(old):,} → {len(new):,})")
+          else:
+              notes.append(f"الحجم {len(old):,} → {len(new):,} ({-shrink:+.1%})")
+
+          if errs:
+              print("❌ فشل التحقّق:")
+              for e in errs: print("  -", e)
+              sys.exit(1)
+          print("✅ نجح التحقّق — " + " · ".join(notes))
+          PY
+
+      - name: Commit ودفع إلى main
+        id: commit
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- malatya/index.html; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "لا تغيير — تخطّي النشر"
+            exit 0
+          fi
+          git config user.name  "malatya-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add malatya/index.html
+          git commit -m "النشرة اليومية — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: هل FTP مُعدّ؟
+        id: ftp
+        env:
+          S: ${{ secrets.FTP_SERVER }}
+          P: ${{ secrets.FTP_MALATYA_PASSWORD }}
+        run: |
+          if [ -n "$S" ] && [ -n "$P" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"; echo "✅ سننشر إلى الخادم"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"; echo "⏭️  بلا FTP — GitHub Pages يتحدّث كالعادة"
+          fi
+
+      - name: 🔒 بوّابة أمان — الحساب المحبوس فقط
+        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        env:
+          U: ${{ secrets.FTP_MALATYA_USERNAME }}
+        run: |
+          set -euo pipefail
+          case "$U" in
+            "${FTP_EXPECTED_USER_PREFIX}"*)
+              echo "✅ الحساب المحبوس داخل public_html/malatya" ;;
+            "") echo "❌ FTP_MALATYA_USERNAME فارغ"; exit 1 ;;
+            admin@*|eyad@*|smhmd1@*|guideclaude@*|*jmaheryc*)
+              echo "❌ توقّف: '$U' حساب واسع الصلاحية."
+              echo "   الجذر يحوي index.html (نظام الإدارة) و guide.html (دليل المغرب)."
+              echo "   انشر فقط بحساب ${FTP_EXPECTED_USER_PREFIX}…"; exit 1 ;;
+            *) echo "❌ توقّف: '$U' ليس الحساب المتوقّع ${FTP_EXPECTED_USER_PREFIX}…"; exit 1 ;;
+          esac
+
+      - name: تجهيز مجلد وسيط
+        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        run: |
+          set -euo pipefail
+          rm -rf _deploy && mkdir -p _deploy
+          cp malatya/index.html _deploy/index.html
+          ls -la _deploy/
+          test "$(ls -1 _deploy | wc -l)" -eq 1 || { echo "❌ المجلد الوسيط ليس ملفاً واحداً"; exit 1; }
+
+      - name: الرفع عبر FTPS
+        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_MALATYA_USERNAME }}
+          password: ${{ secrets.FTP_MALATYA_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: loose
+          local-dir: ./_deploy/
+          server-dir: ./
+          state-name: .ftp-deploy-malatya-state.json
+          dangerous-clean-slate: false
+          timeout: 60000
+          log-level: standard
+
+      - name: 🛡️ فحص السلامة — لم يُمسّ شيء آخر
+        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        run: |
+          set -euo pipefail
+          FAIL=0
+          T=$(date +%s)
+          echo "— نظام إدارة المهامّ (الجذر)؟"
+          curl -fsSL --max-time 45 "https://jmahery.com/?c=$T" | grep -q "ניהול משימות" \
+            && echo "  ✅ سليم" || { echo "  🚨 غير معروف — افحص فوراً"; FAIL=1; }
+          for u in "https://jmahery.com/guide.html" "https://guideclaude.jmahery.com/"; do
+            C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "$u?c=$T")
+            [ "$C" = "200" ] && echo "  ✅ $u → 200" || { echo "  🚨 $u → $C"; FAIL=1; }
+          done
+          exit $FAIL
+
+      - name: التحقّق من النشر الحيّ
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          echo "بانتظار GitHub Pages…"; sleep 90
+          T=$(date +%s)
+          URLS="https://smhmd1-cyber.github.io/claude-guide/malatya/?n=$T"
+          [ "${{ steps.ftp.outputs.enabled }}" = "true" ] && URLS="$URLS ${PORTAL_URL}?n=$T"
+          for u in $URLS; do
+            echo "أفحص $u"
+            D=$(curl -fsSL --max-time 45 "$u" | grep -o 'id="daily-date"[^>]*>[^<]*' | head -1 || echo "—")
+            echo "  → $D"
+          done
