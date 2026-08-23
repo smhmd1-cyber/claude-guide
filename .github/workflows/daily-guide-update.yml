@@ -1,0 +1,207 @@
+name: עדכון יומי — מדריך Claude
+
+# 05:00 UTC = 08:00 בישראל (קיץ) / 07:00 (חורף). GitHub Actions תמיד ב-UTC.
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:        # מאפשר גם הרצה ידנית מלשונית Actions
+
+# ברירת-מחדל שמרנית; ההרשאות ניתנות ברמת ה-job
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-guide-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: סריקה · עדכון · פריסה
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write       # נדרש כדי לדחוף את הקומיט ל-main
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: הרצת Claude — סריקה ועדכון המדריך
+        uses: anthropics/claude-code-action@v1
+        with:
+          # מפתח API מ-console.anthropic.com (לא דורש טרמינל).
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # חלופה למי שמעדיף לחייב את מנוי Max/Pro במקום לפי טוקנים —
+          # דורש הרצת `claude setup-token` בטרמינל:
+          # claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            עדכון יומי אוטומטי של המדריך החכם האינטראקטיבי ל-Claude.
+
+            אתה רץ בתוך GitHub Actions. **תפקידך: לסרוק ולערוך את `index.html` בלבד.** אל תעשה commit, אל תעשה push, ואל תעלה ל-FTP — ה-workflow מטפל בזה אחריך. יש אישור עומד; אל תשאל שאלות.
+
+            ═══════════════════════════════
+            **שלב 1 — סריקה עם שער שלוש-דרגות**
+            ═══════════════════════════════
+
+            **דרגה א׳ — מוסמך (עובדות נכנסות רק מכאן):**
+            - https://www.anthropic.com/news
+            - https://claude.com/blog
+            - https://code.claude.com/docs/en/changelog
+            - https://platform.claude.com/docs/en/release-notes/overview
+              ⚠️ `docs.claude.com/release-notes` מפנה (302) לכתובת הזו — פנה ישירות ליעד.
+            - https://platform.claude.com/docs/en/about-claude/model-deprecations
+            - https://status.anthropic.com
+            - https://anthropic.skilljar.com  ← ראה שלב 2
+
+            **דרגה ב׳ — אות מהיר (נכנס רק אם אומת בדרגה א׳):**
+            reddit.com/r/ClaudeAI · news.ycombinator.com · github.com/anthropics/releases
+
+            **דרגה ג׳ — רב-לשוני (העשרה בלבד — טריקים ופרשנות, **לעולם לא עובדות**):**
+            🇯🇵 zenn.dev · qiita.com · dev.classmethod.jp | 🇨🇳 juejin.cn · infoq.cn | 🇩🇪 heise | 🇫🇷 · 🇪🇸 · 🇸🇦 · 🇷🇺
+
+            **חוקי השער:**
+            - דרגה א׳ → ישר לציר-הזמן.
+            - דרגה ב׳ לא-מאומת → מגירת "בבדיקה". דרגה ג׳ עובדתית → מגירת "בבדיקה".
+            - דרגה ג׳ שהיא טריק/זווית → פרק הטריקים, עם קרדיט ותג-שפה (🇯🇵/🇨🇳).
+            - **הכל בעברית**, גם ממקור זר. תיאור אמיתי ומועיל — לא תרגום מכונה. לינק למקור בכל פריט.
+            - **אסור להמציא.** מקור שלא נטען — אמור זאת בדוח, אל תשלים מהזיכרון.
+
+            **ספר-הנראו (מונע כפילויות):** בלוק בלתי-נראה `<!--SEEN-LEDGER-START … SEEN-LEDGER-END-->` עם שורות `YYYY-MM-DD|slug`. לפני הוספה — בדוק שה-slug לא שם. אחרי הוספה — הוסף שורה. **לעולם אל תמחק שורות ישנות.**
+
+            **מגירת "בבדיקה"** (בין `<!--PENDING-START-->` ל-`<!--PENDING-END-->`): פריט לא-מאומת נכנס עם תאריך · אומת מאז → קדם לציר-הזמן והסר מהמגירה · בן 7+ ימים ללא אישור → הסר · מגירה ריקה → החזר את פסקת "אין כרגע פריטים בבדיקה".
+
+            ═══════════════════════════════
+            **שלב 2 — Claude Academy (מיזוג קטלוג)**
+            ═══════════════════════════════
+            המקור המוסמך: **anthropic.skilljar.com**. (`claude.ai/learning` הוא SPA מאחורי התחברות — לא ניתן לסריקה, קישור למשתמש בלבד.)
+
+            שלוף את כל שמות הקורסים → השווה מול הקיימים בין `<!--ACADEMY-CATALOG-START/END-->` → קורס חדש מקבל `<tr>` באותו פורמט (`<strong>שם באנגלית</strong><br><span>תיאור בעברית</span>` + מסלול: יסודות/Claude Code/פיתוח/Cowork/MCP/Skills/ענן/AI Fluency/חינוך/מגזר). קורס שהוסר → הסר שורה. עדכן את המונה `N קורסים`, ו**תמיד** את חותמת "נבדק מול הקטלוג הרשמי" — גם ביום שקט. קורס חדש → גם פריט בציר-הזמן.
+
+            📌 נכון ל-23/08/2026: **22 קורסים** (האחרון: AI Fluency for Creative Work).
+
+            ═══════════════════════════════
+            **שלב 3 — עדכון תוכן**
+            ═══════════════════════════════
+            פריטים חדשים בראש ציר-הזמן (`chapter-anthropic-news`), ואז הפרקים המושפעים, ליבת-המודלים, ופרק הטריקים (`chapter-genius-tricks`).
+
+            **ארכיון:** פריטי ציר-זמן ישנים מ-**4 חודשים** → קפל לתוך `id="news-archive"` (בין `<!--ARCHIVE-START/END-->`): שורה מסכמת אחת לחודש + הלינקים המקוריים, והסר מציר-הזמן הפעיל. **אל תמחק מידע — רק דחוס.**
+
+            ═══════════════════════════════
+            **שלב 4 — ספירות וחותמות**
+            ═══════════════════════════════
+            ספירת פרקים = מספר `id="chapter-*"` ייחודיים (נכון ל-23/08/2026: **132**).
+            עדכן את כל חותמות-הגרסה, התאריך והשעה האמיתיים (`TZ=Asia/Jerusalem date`), הבאנר, וכפתור "מה חדש".
+            📌 הגרסה האחרונה: **v28.5 · 23/08/2026 14:53** — העלה מספר-גרסה בכל עדכון תוכן.
+
+            ⚠️ **אל תיגע בפריטים היסטוריים מתוארכים.** ספירות ישנות (93/122/124) וחותמות (14:42/16:31/19:19/19:35) הן תיעוד, לא באג.
+
+            ═══════════════════════════════
+            **שלב 5 — בדיקה עצמית לפני סיום**
+            ═══════════════════════════════
+            - 8 העוגנים קיימים **פעם אחת בדיוק**: SEEN-LEDGER-START/END · PENDING-START/END · ARCHIVE-START/END · ACADEMY-CATALOG-START/END
+            - בלוק ספר-הנראו נשאר הערת-HTML תקינה (`<!--` … `-->`)
+            - איזון `<div>`, אין IDs כפולים, ספירת הפרקים לא ירדה
+            - מספר שורות הקטלוג = המונה
+            - הגרסה הישנה לא שורדת באף חותמת "נוכחית"
+            - ⚠️ ידוע ולא-באג: `goTo('...')` ו-`chapter-...` הם מציין-מקום בקטע-הדגמה. אל "תתקן" אותם.
+
+            **יום שקט?** עדיין עדכן חותמת תאריך/שעה, באנר ("סריקה שקטה…") וחותמת ה-Academy — כך רואים שהמערכת חיה.
+
+            **דוח סיום בעברית:** מה נוסף · כמה פריטים מכל דרגה · מה נכנס ל"בבדיקה" · קורסים חדשים · מה לארכיון · ספירת פרקים · מקורות עם לינקים.
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep"
+            --permission-mode acceptEdits
+
+      - name: ולידציה — לא פורסים קובץ שבור
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re, sys
+          h = open('index.html', encoding='utf-8').read()
+          errs = []
+          for a in ['SEEN-LEDGER-START','SEEN-LEDGER-END','PENDING-START','PENDING-END',
+                    'ARCHIVE-START','ARCHIVE-END','ACADEMY-CATALOG-START','ACADEMY-CATALOG-END']:
+              if h.count(a) != 1:
+                  errs.append(f"עוגן {a} מופיע {h.count(a)} פעמים (צריך 1)")
+          if h.count('<div') != h.count('</div>'):
+              errs.append(f"חוסר איזון div: {h.count('<div')} פתוחים מול {h.count('</div>')} סגורים")
+          ids = re.findall(r'\sid="([^"]+)"', h)
+          dups = sorted({i for i in ids if ids.count(i) > 1})
+          if dups:
+              errs.append(f"IDs כפולים: {dups[:5]}")
+          n = len(set(re.findall(r'id="(chapter-[a-z0-9-]+)"', h)))
+          if n < 130:
+              errs.append(f"ספירת פרקים ירדה ל-{n} — חשד למחיקת תוכן")
+          if len(h) < 2_000_000:
+              errs.append(f"הקובץ קטן מדי ({len(h)} בתים) — חשד לקטיעה")
+          if errs:
+              print("❌ ולידציה נכשלה:"); [print("  -", e) for e in errs]; sys.exit(1)
+          print(f"✅ ולידציה עברה — {n} פרקים, {len(h):,} בתים")
+          PY
+
+      - name: קומיט ודחיפה ל-main
+        id: commit
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- index.html; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "אין שינוי בקובץ — מדלג על פריסה"
+            exit 0
+          fi
+          git config user.name  "claude-guide-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "עדכון יומי אוטומטי — $(TZ=Asia/Jerusalem date '+%d/%m/%Y %H:%M')"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # ---------- פריסה ל-jmahery.com ----------
+      # בטיחות: מעלים רק מתיקיית-ביניים, כך שהפעולה כלל לא "מכירה"
+      # קבצים אחרים בשורש ולא יכולה למחוק אותם. guide.html לא נוגעים בו.
+      # שמות לטיניים בלבד — שרתי FTP מקלקלים UTF-8 בשמות קבצים.
+      # הקובץ העברי הישן נשאר על השרת כ-redirect סטטי ולא נוגעים בו יותר.
+      - name: הכנת תיקיית-ביניים לעלייה
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          mkdir -p _deploy
+          cp index.html _deploy/index.html
+          cp index.html _deploy/claude-guide.html
+          ls -la _deploy/
+
+      - name: העלאה ל-jmahery.com ב-FTPS
+        if: steps.commit.outputs.changed == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: loose
+          local-dir: ./_deploy/
+          server-dir: ./
+          # שם ייחודי — קריטי! מונע ירושה של state מפרויקט אחר בשורש המשותף
+          state-name: .ftp-deploy-claude-guide-state.json
+          dangerous-clean-slate: false
+          timeout: 60000
+          log-level: standard
+
+      - name: אימות שהגרסה החיה התעדכנה
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          echo "ממתין ל-GitHub Pages…"; sleep 90
+          STAMP=$(date +%s)
+          for url in \
+            "https://smhmd1-cyber.github.io/claude-guide/?nocache=$STAMP" \
+            "https://jmahery.com/index.html?nocache=$STAMP" \
+            "https://jmahery.com/claude-guide.html?nocache=$STAMP"
+          do
+            echo "בודק $url"
+            VER=$(curl -fsSL --max-time 45 "$url" | grep -o 'גרסה 2[0-9]\.[0-9]*' | head -1 || echo "לא נמצא")
+            echo "  → $VER"
+          done
