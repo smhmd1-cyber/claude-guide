@@ -44,9 +44,15 @@ jobs:
             أنت تعمل داخل GitHub Actions. **مهمتك: البحث وتحرير `malatya/index.html` فقط.** لا تقم بـ commit ولا push ولا رفع عبر FTP — سير العمل (workflow) يتولّى ذلك بعدك. لديك موافقة قائمة؛ لا تطرح أسئلة.
 
             ═══════════════════════════════
-            **الخطوة ١ — التاريخ**
+            **الخطوة ١ — التاريخ، ثم حدّث الختم فوراً**
             ═══════════════════════════════
-            نفّذ: `TZ=Asia/Jerusalem date '+%A %-d %B %Y — %H:%M'` واحفظ الناتج للترويسة (مثال: «الأحد 23 أغسطس 2026 — 12:05»). استخدم أسماء الأيام والأشهر بالعربية.
+            ١. نفّذ: `TZ=Asia/Jerusalem date '+%A %-d %B %Y — %H:%M'` (أسماء الأيام والأشهر بالعربية).
+
+            ٢. ⛔ **افعل هذا الآن، قبل أي بحث:** افتح `malatya/index.html` وبدّل نصّ
+            `<span id="daily-date">…</span>` بالتاريخ الذي حصلت عليه للتوّ، ثم احفظ.
+
+            **لماذا الآن؟** لأنّ ريّة تنتهي دون أي تعديل على الملف يرفضها التحقّق وتُعدّ عُطلاً.
+            بتحديث الختم أوّلاً تضمن ريّة صادقة حتى لو تعثّر البحث لاحقاً. لا تؤجّل هذه الخطوة.
 
             ═══════════════════════════════
             **الخطوة ٢ — ستة وكلاء بحث بالتوازي**
@@ -117,6 +123,45 @@ jobs:
           claude_args: |
             --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Task,Agent"
             --permission-mode acceptEdits
+
+      - name: 🔍 ماذا فعل Claude فعلاً؟
+        if: always()
+        run: |
+          set +e
+          F=/home/runner/work/_temp/claude-execution-output.json
+          echo "── حالة الملف ──"
+          git diff --stat -- malatya/index.html || true
+          git diff --quiet -- malatya/index.html && echo "⚠️ الملف لم يُمسّ إطلاقاً" || echo "✅ الملف عُدِّل"
+          echo
+          echo "── ردّ Claude النصّي ──"
+          if [ -f "$F" ]; then
+            python3 - "$F" <<'PY'
+          import json, sys
+          try:
+              d = json.load(open(sys.argv[1], encoding='utf-8'))
+          except Exception as e:
+              print("تعذّر تحليل JSON:", e); sys.exit(0)
+          items = d if isinstance(d, list) else [d]
+          for it in items:
+              if not isinstance(it, dict): continue
+              if it.get('type') == 'result':
+                  print("subtype:", it.get('subtype'), "| is_error:", it.get('is_error'))
+                  print("turns:", it.get('num_turns'), "| usage:", bool(it.get('modelUsage')))
+                  r = it.get('result')
+                  if r: print("\n--- النصّ ---\n", str(r)[:3000])
+              msg = (it.get('message') or {})
+              for c in (msg.get('content') or []):
+                  if isinstance(c, dict):
+                      if c.get('type') == 'text' and c.get('text', '').strip():
+                          print("[نصّ]", c['text'][:900])
+                      elif c.get('type') == 'tool_use':
+                          print("[أداة]", c.get('name'))
+          PY
+          else
+            echo "لا يوجد ملف مخرجات في $F"
+            ls -la /home/runner/work/_temp/ 2>/dev/null | head -20
+          fi
+          exit 0
 
       - name: التحقّق — لا ننشر ملفاً معطوباً
         run: |
