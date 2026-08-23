@@ -14,6 +14,14 @@ concurrency:
   group: daily-guide-update
   cancel-in-progress: false
 
+# חשבון ה-FTP כלוא (chroot) בתוך /home4/jmaheryc/guideclaude.jmahery.com,
+# שהיא ה-document root של guideclaude.jmahery.com. לכן "./" עבורו = הכלוב עצמו,
+# והוא פיזית לא יכול להגיע ל-public_html (מערכת הניהול ומדריך מרוקו).
+env:
+  FTP_TARGET_DIR: "./"
+  FTP_EXPECTED_USER_PREFIX: "guideclaude@"
+  GUIDE_SUBDOMAIN: "guideclaude.jmahery.com"
+
 jobs:
   update:
     name: סריקה · עדכון · פריסה
@@ -202,7 +210,11 @@ jobs:
       # ---------- פריסה ל-jmahery.com ----------
       # בטיחות: מעלים רק מתיקיית-ביניים, כך שהפעולה כלל לא "מכירה"
       # קבצים אחרים בשורש ולא יכולה למחוק אותם. guide.html לא נוגעים בו.
-      # FTP הוא רשות. אם הסודות לא הוגדרו — מדלגים בלי להיכשל.
+      # ═══════════════════════════════════════════════════════════
+      #  פריסה ל-jmahery.com — לתת-דומיין בלבד, לעולם לא לשורש.
+      #  שכבות הגנה: (1) חשבון FTP כלוא לתיקייה  (2) נעילת יעד בקוד
+      #  (3) תיקיית-ביניים  (4) state ייחודי  (5) בדיקת-שפיות אחרי
+      # ═══════════════════════════════════════════════════════════
       - name: בדיקה אם FTP מוגדר
         id: ftp
         env:
@@ -211,24 +223,49 @@ jobs:
         run: |
           if [ -n "$FTP_SERVER" ] && [ -n "$FTP_PASSWORD" ]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
-            echo "✅ FTP מוגדר — נפרוס גם ל-jmahery.com"
+            echo "✅ FTP מוגדר — נפרוס לתת-הדומיין"
           else
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "⏭️  FTP לא מוגדר — מדלגים על jmahery.com (GitHub Pages יתעדכן כרגיל)"
+            echo "⏭️  FTP לא מוגדר — מדלגים (GitHub Pages מתעדכן כרגיל)"
           fi
 
-      # שמות לטיניים בלבד — שרתי FTP מקלקלים UTF-8 בשמות קבצים.
-      # הקובץ העברי הישן נשאר על השרת כ-redirect סטטי ולא נוגעים בו יותר.
-      - name: הכנת תיקיית-ביניים לעלייה
+      - name: 🔒 שער-בטיחות — רק החשבון הכלוא רשאי לפרוס
+        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        env:
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        run: |
+          set -euo pipefail
+          # ההגנה האמיתית היא ה-chroot בשרת. הבדיקה כאן מוודאת שלא הוחלף
+          # בטעות לחשבון בעל גישה רחבה (admin/eyad/smhmd1 -> public_html).
+          case "$FTP_USERNAME" in
+            "${FTP_EXPECTED_USER_PREFIX}"*)
+              echo "✅ משתמש: ${FTP_USERNAME%%@*}@… — החשבון הכלוא" ;;
+            "")
+              echo "❌ FTP_USERNAME ריק"; exit 1 ;;
+            admin@*|eyad@*|smhmd1@*|*jmaheryc*)
+              echo "❌ עצירה: '$FTP_USERNAME' הוא חשבון בעל גישה רחבה."
+              echo "   חשבונות כאלה רואים את public_html, שם יושבים index.html"
+              echo "   (מערכת הניהול) ו-guide.html (מדריך מרוקו)."
+              echo "   פרוס רק עם ${FTP_EXPECTED_USER_PREFIX}…"
+              exit 1 ;;
+            *)
+              echo "❌ עצירה: '$FTP_USERNAME' אינו החשבון הייעודי הצפוי."
+              echo "   צפוי: ${FTP_EXPECTED_USER_PREFIX}…"
+              exit 1 ;;
+          esac
+          echo "✅ היעד '$FTP_TARGET_DIR' = שורש הכלוב, לא שורש האתר"
+
+      - name: הכנת תיקיית-ביניים
         if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
         run: |
           set -euo pipefail
-          mkdir -p _deploy
+          rm -rf _deploy && mkdir -p _deploy
           cp index.html _deploy/index.html
           cp index.html _deploy/claude-guide.html
-          ls -la _deploy/
+          echo "מה שיעלה (ורק זה):"; ls -la _deploy/
+          test "$(ls -1 _deploy | wc -l)" -eq 2 || { echo "❌ תיקיית-הביניים אינה בדיוק 2 קבצים"; exit 1; }
 
-      - name: העלאה ל-jmahery.com ב-FTPS
+      - name: העלאה ב-FTPS לתת-הדומיין
         if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
@@ -239,12 +276,27 @@ jobs:
           port: 21
           security: loose
           local-dir: ./_deploy/
-          server-dir: ./
-          # שם ייחודי — קריטי! מונע ירושה של state מפרויקט אחר בשורש המשותף
+          server-dir: ${{ env.FTP_TARGET_DIR }}
           state-name: .ftp-deploy-claude-guide-state.json
           dangerous-clean-slate: false
           timeout: 60000
           log-level: standard
+
+      - name: 🛡️ בדיקת-שפיות — לוודא ששום דבר אחר לא נדרס
+        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        run: |
+          set -euo pipefail
+          FAIL=0
+          echo "— מערכת ניהול המשימות (jmahery.com) עדיין חיה?"
+          if curl -fsSL --max-time 45 "https://jmahery.com/?c=$(date +%s)" | grep -q "ניהול משימות"; then
+            echo "  ✅ המערכת במקומה"
+          else
+            echo "  🚨 מערכת הניהול לא מזוהה בשורש — בדוק מיד!"; FAIL=1
+          fi
+          echo "— מדריך מרוקו (guide.html) עדיין חי?"
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "https://jmahery.com/guide.html?c=$(date +%s)")
+          if [ "$CODE" = "200" ]; then echo "  ✅ מגיב 200"; else echo "  🚨 מחזיר $CODE"; FAIL=1; fi
+          exit $FAIL
 
       - name: אימות שהגרסה החיה התעדכנה
         if: steps.commit.outputs.changed == 'true'
@@ -254,11 +306,9 @@ jobs:
           STAMP=$(date +%s)
           URLS="https://smhmd1-cyber.github.io/claude-guide/?nocache=$STAMP"
           if [ "${{ steps.ftp.outputs.enabled }}" = "true" ]; then
-            URLS="$URLS https://jmahery.com/index.html?nocache=$STAMP"
-            URLS="$URLS https://jmahery.com/claude-guide.html?nocache=$STAMP"
+            URLS="$URLS https://${GUIDE_SUBDOMAIN}/?nocache=$STAMP"
           fi
-          for url in $URLS
-          do
+          for url in $URLS; do
             echo "בודק $url"
             VER=$(curl -fsSL --max-time 45 "$url" | grep -o 'גרסה 2[0-9]\.[0-9]*' | head -1 || echo "לא נמצא")
             echo "  → $VER"
