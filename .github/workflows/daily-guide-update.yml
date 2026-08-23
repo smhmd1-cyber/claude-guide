@@ -32,11 +32,11 @@ jobs:
       - name: הרצת Claude — סריקה ועדכון המדריך
         uses: anthropics/claude-code-action@v1
         with:
-          # מפתח API מ-console.anthropic.com (לא דורש טרמינל).
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # חלופה למי שמעדיף לחייב את מנוי Max/Pro במקום לפי טוקנים —
-          # דורש הרצת `claude setup-token` בטרמינל:
-          # claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # טוקן מהמנוי (Max/Pro) — ללא חיוב לפי טוקנים.
+          # נוצר בטרמינל עם `claude setup-token`.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # חלופה בתשלום-לפי-שימוש (דורשת אשראי ב-console.anthropic.com):
+          # anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: |
             עדכון יומי אוטומטי של המדריך החכם האינטראקטיבי ל-Claude.
 
