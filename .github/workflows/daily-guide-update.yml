@@ -161,10 +161,25 @@ jobs:
       # ---------- פריסה ל-jmahery.com ----------
       # בטיחות: מעלים רק מתיקיית-ביניים, כך שהפעולה כלל לא "מכירה"
       # קבצים אחרים בשורש ולא יכולה למחוק אותם. guide.html לא נוגעים בו.
+      # FTP הוא רשות. אם הסודות לא הוגדרו — מדלגים בלי להיכשל.
+      - name: בדיקה אם FTP מוגדר
+        id: ftp
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          if [ -n "$FTP_SERVER" ] && [ -n "$FTP_PASSWORD" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "✅ FTP מוגדר — נפרוס גם ל-jmahery.com"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "⏭️  FTP לא מוגדר — מדלגים על jmahery.com (GitHub Pages יתעדכן כרגיל)"
+          fi
+
       # שמות לטיניים בלבד — שרתי FTP מקלקלים UTF-8 בשמות קבצים.
       # הקובץ העברי הישן נשאר על השרת כ-redirect סטטי ולא נוגעים בו יותר.
       - name: הכנת תיקיית-ביניים לעלייה
-        if: steps.commit.outputs.changed == 'true'
+        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
         run: |
           set -euo pipefail
           mkdir -p _deploy
@@ -173,7 +188,7 @@ jobs:
           ls -la _deploy/
 
       - name: העלאה ל-jmahery.com ב-FTPS
-        if: steps.commit.outputs.changed == 'true'
+        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -196,10 +211,12 @@ jobs:
           set -euo pipefail
           echo "ממתין ל-GitHub Pages…"; sleep 90
           STAMP=$(date +%s)
-          for url in \
-            "https://smhmd1-cyber.github.io/claude-guide/?nocache=$STAMP" \
-            "https://jmahery.com/index.html?nocache=$STAMP" \
-            "https://jmahery.com/claude-guide.html?nocache=$STAMP"
+          URLS="https://smhmd1-cyber.github.io/claude-guide/?nocache=$STAMP"
+          if [ "${{ steps.ftp.outputs.enabled }}" = "true" ]; then
+            URLS="$URLS https://jmahery.com/index.html?nocache=$STAMP"
+            URLS="$URLS https://jmahery.com/claude-guide.html?nocache=$STAMP"
+          fi
+          for url in $URLS
           do
             echo "בודק $url"
             VER=$(curl -fsSL --max-time 45 "$url" | grep -o 'גרסה 2[0-9]\.[0-9]*' | head -1 || echo "לא נמצא")
