@@ -118,28 +118,69 @@ jobs:
       - name: ולידציה — לא פורסים קובץ שבור
         run: |
           set -euo pipefail
+          # משווים מול הגרסה הקודמת בגיט במקום מספרי-קסם.
+          git show HEAD:index.html > /tmp/prev.html
           python3 - <<'PY'
           import re, sys
-          h = open('index.html', encoding='utf-8').read()
-          errs = []
+
+          def load(p):
+              return open(p, encoding='utf-8').read()
+
+          new = load('index.html')
+          old = load('/tmp/prev.html')
+
+          def ledger_lines(h):
+              m = re.search(r'SEEN-LEDGER-START(.*?)SEEN-LEDGER-END', h, re.S)
+              if not m: return None
+              return len([l for l in m.group(1).splitlines()
+                          if re.match(r'\s*\d{4}-\d{2}-\d{2}\|', l)])
+
+          def chapters(h):
+              return len(set(re.findall(r'id="(chapter-[a-z0-9-]+)"', h)))
+
+          errs, notes = [], []
+
+          # --- מבנה: חייב להיות תקין תמיד ---
           for a in ['SEEN-LEDGER-START','SEEN-LEDGER-END','PENDING-START','PENDING-END',
                     'ARCHIVE-START','ARCHIVE-END','ACADEMY-CATALOG-START','ACADEMY-CATALOG-END']:
-              if h.count(a) != 1:
-                  errs.append(f"עוגן {a} מופיע {h.count(a)} פעמים (צריך 1)")
-          if h.count('<div') != h.count('</div>'):
-              errs.append(f"חוסר איזון div: {h.count('<div')} פתוחים מול {h.count('</div>')} סגורים")
-          ids = re.findall(r'\sid="([^"]+)"', h)
-          dups = sorted({i for i in ids if ids.count(i) > 1})
+              if new.count(a) != 1:
+                  errs.append(f"עוגן {a} מופיע {new.count(a)} פעמים (צריך 1)")
+
+          if new.count('<div') != new.count('</div>'):
+              errs.append(f"חוסר איזון div: {new.count('<div')} פתוחים מול {new.count('</div>')} סגורים")
+
+          ids = re.findall(r'\sid="([^"]+)"', new)
+          dups = sorted({x for x in ids if ids.count(x) > 1})
           if dups:
               errs.append(f"IDs כפולים: {dups[:5]}")
-          n = len(set(re.findall(r'id="(chapter-[a-z0-9-]+)"', h)))
-          if n < 130:
-              errs.append(f"ספירת פרקים ירדה ל-{n} — חשד למחיקת תוכן")
-          if len(h) < 2_000_000:
-              errs.append(f"הקובץ קטן מדי ({len(h)} בתים) — חשד לקטיעה")
+
+          # --- אי-רגרסיה: משווים מול הקודם ---
+          ln_new, ln_old = ledger_lines(new), ledger_lines(old)
+          if ln_new is None:
+              errs.append("ספר-הנראו לא נמצא או נשבר")
+          elif ln_new < ln_old:
+              errs.append(f"ספר-הנראו איבד שורות: {ln_old} -> {ln_new}. אסור למחוק רשומות ישנות.")
+          else:
+              notes.append(f"ספר-נראו {ln_old} -> {ln_new}")
+
+          ch_new, ch_old = chapters(new), chapters(old)
+          if ch_new < ch_old:
+              errs.append(f"ספירת הפרקים ירדה: {ch_old} -> {ch_new}")
+          else:
+              notes.append(f"פרקים {ch_old} -> {ch_new}")
+
+          # גודל: ארכיון לגיטימי מקטין, קטיעה מוחקת. הגבול 20%.
+          shrink = 1 - len(new) / len(old)
+          if shrink > 0.20:
+              errs.append(f"הקובץ התכווץ ב-{shrink:.1%} ({len(old):,} -> {len(new):,}) — מעבר לסביר גם לארכיון")
+          else:
+              notes.append(f"גודל {len(old):,} -> {len(new):,} ({-shrink:+.1%})")
+
           if errs:
-              print("❌ ולידציה נכשלה:"); [print("  -", e) for e in errs]; sys.exit(1)
-          print(f"✅ ולידציה עברה — {n} פרקים, {len(h):,} בתים")
+              print("❌ ולידציה נכשלה:")
+              for e in errs: print("  -", e)
+              sys.exit(1)
+          print("✅ ולידציה עברה — " + " · ".join(notes))
           PY
 
       - name: קומיט ודחיפה ל-main
