@@ -82,6 +82,7 @@ jobs:
                    land-board.html aqar-board.html land-agent.html \
                    invest.html invest-legal.html invest-risk.html \
                    invest-paths.html invest-ops.html invest-sources.html invest-plan.html \
+                   invest-nace.html data/invest-nace.json \
                    data/invest-sources.json data/invest-structures.json data/invest-profile.json \
                    data/invest-incentive.json \
                    data/invest-risks.json data/invest-paths.json data/invest-watch.json \
