@@ -1,6 +1,6 @@
 {
- "accessed": "2026-08-24",
- "count": 52,
+ "accessed": "2026-08-25",
+ "count": 62,
  "items": [
   {
    "code": "L1",
@@ -521,6 +521,106 @@
    "lang": "tr",
    "why": "إشارة إلى تخصيص أراضٍ في OSB-1 — الشروط غير مؤكّدة",
    "cat": "اقتصاد"
+  },
+  {
+   "code": "I9",
+   "org": "Resmî Gazete",
+   "title": "Yatırımlarda Devlet Yardımları Hakkında Karar — Karar Sayısı 9903 (نص PDF رسمي)",
+   "url": "https://www.resmigazete.gov.tr/eskiler/2025/05/20250530-2.pdf",
+   "date": "2025-05-30",
+   "lang": "tr",
+   "why": "النظام النافذ للتشجيع الاستثماري — الحد الأدنى للاستثمار الثابت (م.5/2) والمواد 13–22 والمادة المؤقتة 4",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I10",
+   "org": "T.C. Sanayi ve Teknoloji Bakanlığı — yatirimadestek.gov.tr",
+   "title": "Karar 9903 — النص الكامل المنشور رسمياً (PDF)",
+   "url": "https://www.yatirimadestek.gov.tr/pdf/assets/upload/dosyalar/karar-yatirim_tesvik_uygulamalari.pdf",
+   "date": "2025",
+   "lang": "tr",
+   "why": "المصدر الذي جرى منه التحقّق الحرفي من نصوص المواد بعد تعذّر الجلب من الجريدة الرسمية",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I11",
+   "org": "ASMMMO (نقلاً عن الجريدة الرسمية)",
+   "title": "VUK Genel Tebliği Sıra No 585 — معدّل إعادة التقييم لسنة 2025 = %25,49",
+   "url": "https://www.asmmmo.org.tr/userfiles/others/files/Mvzt/Dyrlr/25/11-27-Vergi%20Usul%20Kanunu%20Genel%20Tebli%C4%9Fi%20(S%C4%B1ra%20No%20585).pdf",
+   "date": "2025-11-27",
+   "lang": "tr",
+   "why": "الأساس الذي تُحدَّث به مبالغ القرار 9903 سنوياً (م.5/10) — ومنه اشتُقّت عتبة 2026",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I12",
+   "org": "Resmî Gazete",
+   "title": "Cazibe Merkezleri Programı Kararı 2018/11201 — الملحق ek-1 (ملاطيا مدرجة)",
+   "url": "https://resmigazete.gov.tr/eskiler/2018/01/20180125-2.pdf",
+   "date": "2018-01-25",
+   "lang": "tr",
+   "why": "قائمة الولايات التي تُحيل إليها المادة المؤقتة 4 من القرار 9903 لمنح دعم المنطقة السادسة",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I13",
+   "org": "MuhasebeTR — أبو ذر أقبييق",
+   "title": "9903 Sayılı Yeni Teşvik Kararı Gereğince 6'ncı Bölge İllerine Sağlanan Destekler",
+   "url": "https://www.muhasebetr.com/yazarlarimiz/abuzerakbiyik/014/",
+   "date": "2026-01-20",
+   "lang": "tr",
+   "why": "تحليل مهني يذكر ملاطيا صراحةً ضمن ولايات تنال دعم المنطقة السادسة حتى 31/12/2026، ويذكر عتبة 7,5 مليون لعام 2026",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I14",
+   "org": "Alomaliye",
+   "title": "Yatırımlara Proje Bazlı Devlet Yardımı Verilmesi — Karar Sayısı 11572",
+   "url": "https://www.alomaliye.com/2026/08/09/yatirimlara-proje-bazli-devlet-yardimi-verilmesi-karar-sayisi-11572/",
+   "date": "2026-08-09",
+   "lang": "tr",
+   "why": "إثبات أنّ قرار أغسطس 2026 يخصّ النظام القائم على المشاريع (عتبات 100 مليون / 2 مليار ₺) ولا يمسّ القرار 9903",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I15",
+   "org": "Teşvik Akademi",
+   "title": "2026 Yılı Yatırım Teşvik Tutarları Açıklandı — 7,5 مليون ₺ للمناطق 3–6",
+   "url": "https://tesvikakademi.com/haber/2026-yili-yatirim-tesvik-tutarlari-aciklandi/",
+   "date": "2026",
+   "lang": "tr",
+   "why": "أحد ثلاثة مصادر مهنية تسند رقم عتبة 2026 — لم يُعثر على بلاغ رسمي منشور يقرّه، فالثقة متوسطة",
+   "cat": "حوافز"
+  },
+  {
+   "code": "T14",
+   "org": "Mevzuat Bilgi Sistemi",
+   "title": "Veraset ve İntikal Vergisi Kanunu No. 7338 — النص الكامل (م.1)",
+   "url": "https://www.mevzuat.gov.tr/MevzuatMetin/1.3.7338.pdf",
+   "date": "محدَّث",
+   "lang": "tr",
+   "why": "المادة 1: «الأموال الموجودة في تركيا» تخضع بمعيار الموقع بصرف النظر عن جنسية المالك أو إقامته",
+   "cat": "ضرائب"
+  },
+  {
+   "code": "T15",
+   "org": "Resmî Gazete",
+   "title": "VİV Genel Tebliği Seri No 57 — تعرفة وإعفاءات ضريبة الميراث والانتقال 2026",
+   "url": "https://www.resmigazete.gov.tr/eskiler/2025/12/20251231M5-22.pdf",
+   "date": "2025-12-31",
+   "lang": "tr",
+   "why": "الشرائح النافذة 2026 (ميراث %1–%10 · بلا عوض %10–%30) والإعفاء المقطوع لكل فرع 2.907.136 ₺",
+   "cat": "ضرائب"
+  },
+  {
+   "code": "T16",
+   "org": "PKF İstanbul",
+   "title": "Murisin Şahsi İşletmesi, Limited Şirket Payı ve Anonim Şirket Hissesi — أسس التقييم",
+   "url": "https://pkf.com.tr/murisin-sahsi-isletmesi-limited-sirket-payi-anonim-sirket-hissesi",
+   "date": "2026",
+   "lang": "tr",
+   "why": "كيف تُقوَّم حصة Ltd (حقوق الملكية) وسهم A.Ş. (القيمة الاسمية عند عدم التداول) في إقرار الميراث",
+   "cat": "ضرائب"
   }
  ]
 }
