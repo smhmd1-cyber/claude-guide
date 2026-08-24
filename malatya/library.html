@@ -37,9 +37,9 @@
     <a class="btn" href="index.html">← مركز التحكّم</a>
   </div>
 
-  <div class="note ok" id="state">
-    🔒 <b>المستندات محميّة بكلمة مرور.</b> عند الضغط على أي ملف يطلب المتصفّح اسم المستخدم وكلمة المرور
-    مرّة واحدة لكل جلسة. محتوى المكتبة غير مفهرَس في محرّكات البحث ولا يظهر في المستودع العام.
+  <div class="note info" id="state">
+    📂 <b>المكتبة مفتوحة لك مباشرةً</b> — اضغط أي ملف ليُفتح أو يُنزَّل فوراً.
+    المحتوى غير مفهرَس في محرّكات البحث، ولا يظهر في المستودع العام على GitHub.
   </div>
 
   <div id="lib"><p class="mut">… يُحمّل الفهرس</p></div>
@@ -76,7 +76,7 @@
       sec.className='card pil'; sec.id='p'+(+no);
       var h='<div class="hd"><div class="ic">'+m.i+'</div><div><div class="no">'+no+'</div>'+
             '<div class="ttl">'+m.t+'</div></div>'+
-            '<div style="flex:1"></div><span class="badge lock">🔒 '+files.length+' ملفاً</span></div>'+
+            '<div style="flex:1"></div><span class="badge info">📄 '+files.length+' ملفاً</span></div>'+
             '<div class="ds">'+m.d+'</div><div class="files">';
       files.forEach(function(f){
         var e=ext(f.n);
