@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>المسار التنفيذي والمهل — ملف الاستثمار المشترك</title>
-<meta name="description" content="من قرار المستثمر إلى وثيقة التشجيع: ثلاث بوّابات فحص قبل أي إنفاق، أربع عشرة خطوة بالترتيب، ومهلة ٣١ ديسمبر ٢٠٢٦ التي تحكم الجدول كلّه.">
+<meta name="description" content="من قرار المستثمر إلى وثيقة التشجيع: ثلاث بوّابات فحص، أربع عشرة خطوة بالترتيب، ما تساويه المهلة بالأرقام على استثمار ٨ ملايين ليرة، ومهلة ٣١ ديسمبر ٢٠٢٦.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/malatya.css?v=2">
 <style>
@@ -38,6 +38,9 @@
 .who.bank{background:rgba(255,107,122,.14);color:#ffc0c7}
 .stop{margin-top:8px;font-size:12.5px;color:#ffc0c7;line-height:1.75}
 .stop b{color:#ff8f9c;font-size:12.5px;display:inline}
+.cyc{border:1px solid var(--border-soft);border-radius:13px;padding:16px 18px;background:rgba(255,255,255,.015);margin-bottom:11px}
+.cyc .hd{display:flex;align-items:center;gap:11px;margin-bottom:11px;flex-wrap:wrap}
+.cyc .hd b{font-size:16px;color:#fff;font-weight:800}
 </style>
 </head>
 <body>
@@ -89,17 +92,25 @@
       يُسأل صراحةً: هل يفي <b>استئجار مبنى قائم</b> داخل OSB بالشرط، أم يلزم تملّك القطعة؟
       <span class="cite">E6</span> <span class="cite">E7</span></p></div>
 
-  <div class="gate"><b class="h">٣ · ما عتبة الاستثمار الثابت النافذة اليوم بالضبط؟</b>
-    <p>النصّ يقول ٦ ملايين ₺ للمناطق ٣–٦، والمادة ٥/١٠ توجب تحديث المبالغ سنوياً بمعدّل إعادة التقييم
-      (٪٢٥٫٤٩ لسنة ٢٠٢٥) — ما يعطي <b>٧٫٥ مليون ₺ لعام ٢٠٢٦</b>. ثلاثة مصادر مهنية تسند الرقم،
-      ولم يُعثر على بلاغ رسمي منشور يقرّه. الفرق بين ٦ و٧٫٥ مليون هو الفرق بين وثيقة ولا وثيقة —
-      فيُطلب تأكيد كتابي من المديرية العامة لتطبيق التشجيع أو من نظام E-TUYS.
-      <span class="cite">I9</span> <span class="cite">I11</span> <span class="cite">I15</span></p></div>
+  <div class="gate"><b class="h">٣ · هل يفرض الملحق EK-3 حداً أدنى خاصاً بكود نشاطك؟</b>
+    <p>الحد العام لعام ٢٠٢٦ في المنطقة الرابعة هو <b>٧٫٥ مليون ₺</b>، وسقفك (٨ ملايين فأكثر) يتجاوزه بهامش —
+      فسقط هذا القيد. لكن نظام Hedef يدعم مواضيع الملحق EK-3 <b>«إن استوفت الشروط المذكورة»</b>،
+      وقد يفرض الملحق حداً أدنى خاصاً بكود NACE بعينه أعلى من الحد العام. هذه هي الفجوة الوحيدة المتبقّية
+      في بند المبلغ، وسدّها سطر واحد من الملحق.
+      <span class="cite">I9</span> <span class="cite">I16</span></p></div>
 
   <h2>الخطوات بالترتيب</h2>
   <p class="lead">الترتيب مقصود: كل خطوة تفترض إغلاق ما قبلها. الخطوات المميَّزة بلون برتقالي
     هي التي يترتّب على تأخيرها فوات مهلة أو خسارة ميزة.</p>
   <div class="card" id="steps"></div>
+
+  <h2>ما تساويه هذه النافذة بالأرقام</h2>
+  <div class="note warn">
+    🧮 <b>حساب توضيحي لا تعهّد.</b> ما يلي اشتقاق حسابي من نسب منشورة، على استثمار ثابت <b>٨ ملايين ₺</b>
+    وبأسعار اليوم فقط — <span id="assum"></span>
+    ليس فيه عائد ولا ربح ولا إسقاط على سنوات مقبلة؛ كل بند دالّ على شرطه، وأولها وثيقة لم تُطلب بعد.
+  </div>
+  <div id="inc"></div>
 
   <h2>ما لا يُفعل</h2>
   <div class="grid g2">
@@ -124,12 +135,31 @@
   </footer>
 </div>
 
-<script src="assets/nav.js?v=4" defer></script>
+<script src="assets/nav.js?v=5" defer></script>
 <script>
 (function(){
 'use strict';
 var d = Math.ceil((new Date(2026,11,31) - new Date()) / 86400000);
 document.getElementById('cd').textContent = d > 0 ? d : '٠';
+
+fetch('data/invest-incentive.json?v='+Date.now(),{cache:'no-store'})
+ .then(function(r){return r.json();}).then(function(d){
+  document.getElementById('assum').textContent = d.assumption;
+  document.getElementById('inc').innerHTML = d.groups.map(function(g){
+    return '<div class="cyc"><div class="hd"><b>'+g.g+'</b></div><div class="tbl-wrap"><table>'+
+      '<thead><tr><th>البند</th><th>القيمة</th><th>الشرط أو التحفّظ</th></tr></thead><tbody>'+
+      g.rows.map(function(r){
+        return '<tr><td style="color:#fff;font-weight:700;min-width:170px">'+r.k+'</td>'+
+          '<td style="white-space:nowrap"><b class="num" style="font-size:15px;color:'+
+            (r.conf==='ok'?'#a9f0cb':'#ffd79a')+'">'+r.v+'</b></td>'+
+          '<td style="color:var(--text2);font-size:13px;line-height:1.8">'+r.n+' '+
+            (r.conf==='part'?'<span class="badge warn">يحتاج تأكيداً</span>':'')+
+            (r.src||[]).map(function(c){return '<span class="cite">'+c+'</span>';}).join(' ')+'</td></tr>';
+      }).join('')+'</tbody></table></div></div>';
+  }).join('');
+ }).catch(function(){
+  document.getElementById('inc').innerHTML='<div class="note warn">تعذّر تحميل <span class="num">data/invest-incentive.json</span>.</div>';
+ });
 
 var S = [
  [1,'تثبيت الكيان: Ltd أم A.Ş.','محدودة برأس مال أدنى ٥٠٫٠٠٠ ₺ أو مساهمة بـ٢٥٠٫٠٠٠ ₺. رأس المال المسجَّل شيء، والاستثمار الثابت المطلوب للوثيقة (٧٫٥ مليون ₺) شيء آخر — لا يُخلط بينهما. شكل الكيان يؤثّر لاحقاً على أساس تقييم الحصص في ضريبة الانتقال: حصة المحدودة تُقوَّم بحقوق الملكية، وسهم المساهمة غير المتداول بالقيمة الاسمية.',['law','acc'],['L3','L4','T16'],0,''],
@@ -140,7 +170,7 @@ var S = [
  [6,'التسجيل في E-TUYS وبدء دورة الإبلاغ','بعد دخول شريك أجنبي: EK-1 سنوياً حتى ٣١ مايو · EK-2 عند تغيّر رأس المال خلال شهر · EK-3 عند تغيّر الحصص. الإهمال هنا مخالفة إدارية لا تظهر إلا متأخرة.',['acc'],['L10'],0,''],
  [7,'بلاغ المستفيد الحقيقي','كل شخص طبيعي يملك أكثر من ٢٥٪ يُفصَح عنه (بلاغ VUK ٥٢٩). الأب يُفصح عنه بوصفه المموّل والمالك — وهذا هو الفارق الجوهري عن أي ترتيب صوري.',['acc'],['B5'],0,''],
  [8,'تأمين الموقع داخل OSB','تخصيص قطعة أو شراء من مخصَّص قائم أو استئجار مبنى — بعد الحسم في أيّها يفي بشرط المادة المؤقتة ٤.',['inc','you'],['E6','E7'],1,'لا موقع ⇐ لا معاملة منطقة سادسة. هذه البوّابة تُغلق قبل تقديم طلب الوثيقة لا بعده.'],
- [9,'تقديم طلب وثيقة التشجيع عبر E-TUYS','قبل ٣١/١٢/٢٠٢٦ للاستفادة من معاملة المنطقة السادسة. الطلب يتضمّن قائمة الآلات والمعدّات وكلفة الاستثمار الثابت وموقعه.',['inc','acc'],['I9','I10'],1,'تقديم في يناير ٢٠٢٧ يعني دعم المنطقة الرابعة: تأمينات ٤ سنوات بنسبة ٥٠٪ بدل ١٢ سنة بنسبة ١٠٠٪.'],
+ [9,'تقديم طلب وثيقة التشجيع عبر E-TUYS','قبل ٣١/١٢/٢٠٢٦ للاستفادة من معاملة المنطقة السادسة. الطلب يتضمّن قائمة الآلات والمعدّات وكلفة الاستثمار الثابت وموقعه.',['inc','acc'],['I9','I10'],1,'تقديم في يناير ٢٠٢٧ يعني دعم المنطقة الرابعة: ٥٠٪ لأربع سنوات بدل ١٠٠٪ لاثنتي عشرة، وسقوط دعم حصة العامل كلياً — الفارق ١١٫٨٠٨ ₺ شهرياً لكل عامل إضافي بأجر الحد الأدنى اليوم.'],
  [10,'الشراء والاستيراد ضمن الوثيقة','إعفاء KDV على الآلات والمعدّات، وإعفاء الرسوم الجمركية على المستورَد منها — كلاهما مشروط بأن يكون البند مدرجاً في قائمة الوثيقة.',['inc','acc'],['I9'],0,''],
  [11,'التنفيذ والتشغيل التجريبي','مع الاحتفاظ بمستندات كل بند من الاستثمار الثابت — هي أساس تأشيرة الإتمام لاحقاً.',['you'],[],0,''],
  [12,'تأشيرة الإتمام (tamamlama vizesi)','بعد انتهاء الاستثمار. بها يبدأ سريان دعم حصة صاحب العمل في التأمينات، ودعم حصة العامل في حالة معاملة المنطقة السادسة.',['inc','acc'],['I9'],0,''],
