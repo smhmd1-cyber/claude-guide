@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مطابقة الأنشطة مع الملحق EK-3 — ملف الاستثمار المشترك</title>
+<meta name="description" content="مطابقة تفصيلية للمسارات الأربعة الأعلى مع أكواد NACE والملحق EK-3 من القرار ٩٩٠٣ والمادة المؤقتة ٤: ماذا يمرّ، وما الذي يوقفه، وأي ترخيص يلزمه.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css?v=2">
+<style>
+.cite{font-family:var(--font-num);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;
+  background:rgba(91,157,255,.16);color:#bcd7ff;letter-spacing:.3px}
+.tr{font-family:var(--font-num);font-size:12.5px;color:#ffd79a;background:rgba(247,165,43,.09);
+  border-radius:6px;padding:1px 6px;direction:ltr;display:inline-block}
+.mt{border:1px solid var(--border-soft);border-radius:15px;background:rgba(255,255,255,.015);
+  padding:19px 21px;margin-bottom:14px}
+.mt>.hd{display:flex;align-items:flex-start;gap:13px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--border-soft)}
+.mt .pid{font-family:var(--font-num);font-size:12px;font-weight:800;color:var(--muted);padding-top:5px}
+.mt .nm{font-size:18px;font-weight:800;color:#fff;line-height:1.4}
+.mt .sc{margin-inline-start:auto;text-align:center}
+.mt .sc b{font-family:var(--font-num);font-size:22px;font-weight:900;display:block;line-height:1}
+.mt .sc small{font-size:10px;color:var(--muted);font-weight:700}
+.sec{padding:14px 0;border-bottom:1px dashed var(--border-soft)}
+.sec:last-child{border-bottom:0;padding-bottom:0}
+.sec .lb{font-size:11px;letter-spacing:.9px;color:var(--muted);font-weight:800;margin-bottom:8px}
+.sec p{margin:0;font-size:13.5px;color:var(--text2);line-height:1.9}
+.gate{display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border-radius:11px;margin-bottom:8px}
+.gate.pass{background:rgba(64,209,131,.08);border-inline-start:3px solid var(--green)}
+.gate.cond{background:rgba(247,165,43,.08);border-inline-start:3px solid var(--accent)}
+.gate.fail{background:rgba(255,107,122,.07);border-inline-start:3px solid var(--red)}
+.gate .ic{font-size:17px;flex:0 0 auto;line-height:1.3}
+.gate b{display:block;font-size:13.5px;margin-bottom:4px}
+.gate.pass b{color:#a9f0cb} .gate.cond b{color:#ffd79a} .gate.fail b{color:#ffc0c7}
+.gate p{margin:0;font-size:13px;color:var(--text2);line-height:1.85}
+.kv{display:grid;gap:6px}
+.kv .r{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.8}
+.kv .r b{flex:0 0 auto;color:#fff;font-weight:700;min-width:150px}
+.kv .r span{color:var(--text2)}
+.blk{border-inline-start:3px solid var(--red);background:rgba(255,107,122,.06);padding:10px 13px;
+  border-radius:0 9px 9px 0;font-size:13px;color:var(--text2);line-height:1.85;margin-bottom:7px}
+.vd{margin-top:14px;padding:13px 16px;border-radius:11px;font-size:14px;line-height:1.85}
+.vd.pass{background:rgba(64,209,131,.10);color:#c9f5de}
+.vd.cond{background:rgba(247,165,43,.10);color:#ffe6c2}
+.vd.fail{background:rgba(255,107,122,.09);color:#ffd7dc}
+.vd b{color:#fff}
+.ek3 td:first-child{font-family:var(--font-num);font-weight:800;color:#ffd79a;white-space:nowrap}
+.ek3 td:nth-child(2){color:#fff;font-size:12.5px;direction:ltr;text-align:left}
+.ek3 td:nth-child(3){font-size:12.5px;color:var(--text2);direction:ltr;text-align:left;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="logo">🔬</div>
+    <div><h1>مطابقة الأنشطة مع الملحق EK-3</h1>
+      <div class="sub">المسارات الأربعة الأعلى · كل مسار على حدة · بكوده وشرطه وما يوقفه</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر تحديث: <b>٢٥ أغسطس ٢٠٢٦</b></span>
+    <a class="btn" href="invest-paths.html">← المسارات</a>
+  </div>
+
+  <div class="note warn">
+    📄 <b>مصدر النصّ.</b> <span id="note-src"></span>
+  </div>
+
+  <h2>كيف يعمل الملحق EK-3</h2>
+  <div class="grid g2" style="margin-bottom:16px">
+    <div class="card"><h3 style="margin-top:0">بنيته</h3><p id="ek3-cols" style="font-size:13.5px;color:var(--text2);line-height:1.9"></p></div>
+    <div class="card"><h3 style="margin-top:0">دوره في القرار</h3><p id="ek3-rule" style="font-size:13.5px;color:var(--text2);line-height:1.9"></p>
+      <p id="ek3-gen" style="font-size:13px;color:var(--muted);line-height:1.85;margin-top:9px"></p></div>
+  </div>
+
+  <h3>الصفوف التي تخصّ هذا الملف</h3>
+  <div class="tbl-wrap"><table class="ek3">
+    <thead><tr><th>Kod</th><th>Tanım</th><th>ŞARTLAR</th><th>الحد الأدنى</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+
+  <h2>المطابقة — مساراً مساراً</h2>
+  <p class="lead">لكل مسار: كود NACE الذي يُسجَّل تحته وبدائله الخطرة · حالته في EK-3 · حالته في المادة المؤقتة ٤ ·
+    التراخيص · القيود الفنية · السوق · وما يوقفه. الدرجة المعروضة هي <b>أولوية الفحص</b> بعد إعادة التسجيل على ضوء المطابقة.</p>
+  <div id="items"></div>
+
+  <h2>ما تغيّر بعد المطابقة</h2>
+  <div class="grid g3">
+    <div class="card"><h3 style="margin-top:0">🔄 تبدّل الصدارة</h3>
+      <p>المنشأة المتكاملة تصدّرت وحدها، والتخزين المبرَّد صعد إلى الثاني لأنّ إدراجه في EK-3 تأكّد نصّاً،
+        وفرز وتعبئة المشمش نزل إلى الثالث بسبب خطر تكييفه خدمةَ تعبئة لا صناعة.</p></div>
+    <div class="card"><h3 style="margin-top:0">📉 مسار سقط</h3>
+      <p><b>التغليف والطباعة</b> كان خامساً بـ٧١؛ المطابقة كشفت شرطين قاتلين في البندين ١٧ و١٨
+        (٣٠ مليون ₺ والبدء من عجينة الورق · ١٠٠ مليون ₺ وتوسعة أو تحديث فقط) فنزل إلى ٦٤ وخرج من دائرة الفحص.</p></div>
+    <div class="card"><h3 style="margin-top:0">➕ أربعة مخاطر جديدة</h3>
+      <p>تكييف النشاط خدمةً · غموض «sarartma» · الإيجار داخل OSB · انغلاق نوافذ المنح الزراعية.
+        كلها في <a href="invest-risk.html">سجل المخاطر</a> بإجراء تخفيف مكتوب.</p></div>
+  </div>
+
+  <h2>الأسئلة الأربعة التي تُحسم بمراسلة واحدة</h2>
+  <p class="lead">كلها تُوجَّه إلى <b>المديرية العامة لتطبيق التشجيع ورؤوس الأموال الأجنبية</b> عبر نظام E-TUYS،
+    بنسخة إلى إدارة المنطقة الصناعية. أربعة أسئلة، رسالة واحدة، وتُغلق بها أربع فجوات دفعةً واحدة.</p>
+  <div class="card">
+    <ol style="margin:0;padding-inline-start:20px;color:var(--text2);font-size:13.5px;line-height:2.1">
+      <li>هل تُقبل منشأة <b>فرز وتعبئة</b> للمشمش المجفَّف تحت الكود <span class="tr">10.39.05</span>،
+        أم تُصنَّف <span class="tr">82.92</span>؟ وما العمليات التي يلزم وجودها على الخط ليُعدّ الاستثمار صناعياً؟</li>
+      <li>هل يشمل استثناء <span class="tr">«sarartma ve mumlama»</span> في البند <span class="tr">10.3</span>
+        عملية <b>الكبرتة</b> في المشمش؟ وهل يسقط الاستثناء إذا اقترنت الكبرتة بالتجفيف والفرز والتعبئة؟</li>
+      <li>هل يستوفي الاستثمار المنفَّذ في <b>مبنى مستأجَر داخل OSB</b> شرط «تحقيق الاستثمار داخل OSB»
+        في المادة ٢٢ والمادة المؤقتة ٤؟ وما مدّة الإيجار المطلوبة إن وُجدت؟</li>
+      <li>هل تُقبل <b>غرفة تبريد</b> بوصفها بنداً إنشائياً داخل وثيقة محرَّرة تحت <span class="tr">10.39</span>،
+        دون أن تجرّ الوثيقة إلى <span class="tr">52.10</span>؟</li>
+    </ol>
+  </div>
+
+  <footer class="site">
+    <span>🔬 مطابقة EK-3</span><span>·</span>
+    <a href="invest.html">ملف الاستثمار</a><a href="invest-paths.html">المسارات</a><a href="invest-plan.html">المسار التنفيذي</a><a href="invest-sources.html">المصادر</a>
+    <span style="flex:1"></span><span class="num">jmahery.com/malatya/invest-nace.html</span>
+  </footer>
+</div>
+
+<script src="assets/nav.js?v=6" defer></script>
+<script>
+(function(){
+'use strict';
+var ST = {pass:['pass','✅','يمرّ'], cond:['cond','◐','يمرّ بشرط'], fail:['fail','✖','لا يمرّ']};
+
+fetch('data/invest-nace.json?v='+Date.now(),{cache:'no-store'})
+ .then(function(r){return r.json();}).then(function(d){
+  document.getElementById('note-src').textContent = d.note;
+  document.getElementById('ek3-cols').textContent = d.ek3.cols;
+  document.getElementById('ek3-rule').textContent = d.ek3.rule;
+  document.getElementById('ek3-gen').textContent  = d.ek3.general;
+
+  document.getElementById('rows').innerHTML = d.ek3.rows.map(function(r){
+    return '<tr><td>'+r.kod+'</td><td>'+r.tanim+'</td><td>'+r.sart+'</td>'+
+      '<td style="font-size:12.5px;color:var(--text2)">'+r.min+
+      (r.conf==='part'?' <span class="badge warn">منقول</span>':'')+'</td></tr>';
+  }).join('');
+
+  document.getElementById('items').innerHTML = d.items.map(function(x){
+    var v = ST[x.verdict.st];
+    function gate(g, title){
+      var s = ST[g.st];
+      return '<div class="gate '+s[0]+'"><span class="ic">'+s[1]+'</span><div><b>'+title+' — '+s[2]+'</b>'+
+             '<p>'+g.txt+(g.conf==='part'?' <span class="badge warn">النصّ منقول لا مقروء من الأصل</span>':'')+'</p></div></div>';
+    }
+    return '<div class="mt" id="'+x.id+'">'+
+      '<div class="hd"><span class="pid">'+x.id+'</span>'+
+        '<div style="flex:1;min-width:210px"><div class="nm">'+x.name+'</div>'+
+          '<div style="margin-top:7px"><span class="tr">'+x.nace.main+'</span> '+
+          '<span style="font-size:12.5px;color:var(--muted)">'+x.nace.label+'</span></div></div>'+
+        '<div class="sc"><b style="color:'+(x.score>=78?'#40d183':(x.score>=70?'#f7a52b':'#ff6b7a'))+'">'+
+          x.score+'</b><small>أولوية فحص</small></div>'+
+      '</div>'+
+
+      '<div class="sec"><div class="lb">البوّابتان</div>'+
+        gate(x.ek3,'الملحق EK-3') + gate(x.g4,'المادة المؤقتة ٤') + '</div>'+
+
+      (x.nace.alt && x.nace.alt.length ? '<div class="sec"><div class="lb">أكواد بديلة — بعضها يُسقط كل شيء</div><div class="kv">'+
+        x.nace.alt.map(function(a){return '<div class="r"><b><span class="tr">'+a[0]+'</span></b><span>'+a[1]+'</span></div>';}).join('')+
+        '</div></div>' : '')+
+
+      '<div class="sec"><div class="lb">التراخيص</div><div class="kv">'+
+        x.lic.map(function(l){return '<div class="r"><b>'+l[0]+'</b><span>'+l[1]+'</span></div>';}).join('')+
+      '</div></div>'+
+
+      (x.tech && x.tech.length ? '<div class="sec"><div class="lb">القيود الفنية</div><div class="kv">'+
+        x.tech.map(function(t){return '<div class="r"><b>'+t[0]+'</b><span>'+t[1]+'</span></div>';}).join('')+
+      '</div></div>' : '')+
+
+      '<div class="sec"><div class="lb">السوق</div><p>'+x.market+'</p></div>'+
+
+      '<div class="sec"><div class="lb">ما يوقفه</div>'+
+        x.block.map(function(b){return '<div class="blk">'+b+'</div>';}).join('')+
+      '</div>'+
+
+      '<div class="vd '+v[0]+'">'+v[1]+' <b>الخلاصة:</b> '+x.verdict.txt+'</div>'+
+      '<div class="t-foot" style="margin-top:11px">'+
+        x.src.map(function(c){return '<span class="cite">'+c+'</span>';}).join(' ')+'</div>'+
+    '</div>';
+  }).join('');
+ }).catch(function(){
+  document.getElementById('items').innerHTML =
+    '<div class="note warn">تعذّر تحميل <span class="num">data/invest-nace.json</span>.</div>';
+ });
+})();
+</script>
+</body>
+</html>
