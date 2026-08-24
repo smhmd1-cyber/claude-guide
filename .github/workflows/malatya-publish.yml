@@ -35,6 +35,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # ⚠️ إلزامي: عند الاستدعاء عبر workflow_call يكون github.sha هو
+          # لقطة *ما قبل* دفع الوكيل، فيُنشر شجرة قديمة. نثبّت على رأس main.
+          ref: main
 
       - name: هل FTP مُعدّ؟
         id: ftp
