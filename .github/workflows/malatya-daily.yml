@@ -1,4 +1,4 @@
-name: النشرة اليومية — بوابة ملاطيا
+name: النشرة اليومية — منظومة ملاطيا
 
 # 06:10 UTC = 09:10 بتوقيت القدس (صيفاً) / 08:10 (شتاءً).
 # متأخّرة ساعة عن تحديث دليل Claude كي لا تتزاحم الريّات.
@@ -34,73 +34,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 📐 حساب نافذة التغطية
-        id: cov
-        run: |
-          set -euo pipefail
-          python3 - <<'PY' >> "$GITHUB_OUTPUT"
-          import re, datetime, os
-          h = open('malatya/index.html', encoding='utf-8').read()
-          today = datetime.date.fromisoformat(
-              os.popen("TZ=Asia/Jerusalem date +%F").read().strip())
-          dates = sorted(set(re.findall(r'data-date="(\d{4}-\d{2}-\d{2})"', h)))
-          # ⚠️ تواريخ المستقبل (فعاليات قادمة) تُستثنى من حساب التغطية،
-          # وإلّا بدت التغطية ممتدة لأيام لم تحدث بعد فتوقّف البحث.
-          past = [d for d in dates if datetime.date.fromisoformat(d) <= today]
-          last = datetime.date.fromisoformat(past[-1]) if past else today - datetime.timedelta(14)
-          start = last  # نعيد فحص آخر يوم مغطّى تحسّباً لأخبار متأخّرة
-          gaps = [ (start + datetime.timedelta(n)).isoformat()
-                   for n in range((today - start).days + 1)
-                   if (start + datetime.timedelta(n)).isoformat() not in past ]
-          print(f"last_covered={past[-1] if past else 'none'}")
-          print(f"search_from={start.isoformat()}")
-          print(f"today={today.isoformat()}")
-          print(f"gaps={','.join(gaps) if gaps else 'none'}")
-          print(f"cards={len(re.findall(chr(60)+'div class=.item.', h))}")
-          print(f"future={len([d for d in dates if d not in past])}")
-          PY
-          echo "— نافذة البحث —"; cat "$GITHUB_OUTPUT" | tail -6
-
       - name: تشغيل Claude — الرصد وتحرير النشرة
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
-            أنت محرّر «غرفة رصد ملاطيا». مهمتك اليوم: تحديث قسم «النشرة اليومية» داخل `malatya/index.html`.
+            أنت محرّر «غرفة رصد ملاطيا». مهمتك اليوم: تحديث قسم «النشرة اليومية» داخل `malatya/daleel.html`.
 
-            أنت تعمل داخل GitHub Actions. **مهمتك: البحث وتحرير `malatya/index.html` فقط.** لا تقم بـ commit ولا push ولا رفع عبر FTP — سير العمل (workflow) يتولّى ذلك بعدك. لديك موافقة قائمة؛ لا تطرح أسئلة.
-
-            ═══════════════════════════════
-            **الخطوة ١ — التاريخ، ثم حدّث الختم فوراً**
-            ═══════════════════════════════
-            ١. نفّذ: `TZ=Asia/Jerusalem date '+%A %-d %B %Y — %H:%M'` (أسماء الأيام والأشهر بالعربية).
-
-            ٢. ⛔ **افعل هذا الآن، قبل أي بحث:** افتح `malatya/index.html` وبدّل نصّ
-            `<span id="daily-date">…</span>` بالتاريخ الذي حصلت عليه للتوّ، ثم احفظ.
-
-            **لماذا الآن؟** لأنّ ريّة تنتهي دون أي تعديل على الملف يرفضها التحقّق وتُعدّ عُطلاً.
-            بتحديث الختم أوّلاً تضمن ريّة صادقة حتى لو تعثّر البحث لاحقاً. لا تؤجّل هذه الخطوة.
+            أنت تعمل داخل GitHub Actions. **مهمتك: البحث وتحرير `malatya/daleel.html` فقط.** لا تقم بـ commit ولا push ولا رفع عبر FTP — سير العمل (workflow) يتولّى ذلك بعدك. لديك موافقة قائمة؛ لا تطرح أسئلة.
 
             ═══════════════════════════════
-            **الخطوة ٢ — نافذة البحث (محسوبة آلياً — لا تُخمّنها)**
+            **الخطوة ١ — التاريخ**
             ═══════════════════════════════
-            حُسبت من الملف نفسه قبل تشغيلك:
-
-            - **آخر يوم مغطّى:** `${{ steps.cov.outputs.last_covered }}`
-            - **ابحث ابتداءً من:** `${{ steps.cov.outputs.search_from }}` وحتى `${{ steps.cov.outputs.today }}`
-            - **أيام بلا تغطية داخل النافذة:** `${{ steps.cov.outputs.gaps }}`
-            - البطاقات الحالية: `${{ steps.cov.outputs.cards }}`
-
-            ⚠️ **لماذا هذا مهمّ:** الأرشيف يغطّي آخر ١٠ أيام بكثافة. لو بحثتَ عن
-            «آخر ١٠ أيام» كما في النسخ السابقة، فكل ما ستجده مُدرَج أصلاً،
-            فتنتهي الريّة بصفر إضافات وتبدو معطوبة وهي سليمة.
-            **ابحث فقط عمّا هو أحدث من `last_covered`، وركّز على أيام `gaps`.**
+            نفّذ: `TZ=Asia/Jerusalem date '+%A %-d %B %Y — %H:%M'` واحفظ الناتج للترويسة (مثال: «الأحد 23 أغسطس 2026 — 12:05»). استخدم أسماء الأيام والأشهر بالعربية.
 
             ═══════════════════════════════
-            **الخطوة ٣ — ستة وكلاء بحث بالتوازي**
+            **الخطوة ٢ — ستة وكلاء بحث بالتوازي**
             ═══════════════════════════════
-            **إن توفّرت أداة الوكلاء الفرعيين** (Task أو Agent): شغّل **٦ وكلاء** بالتوازي (subagent_type: general-purpose، في رسالة واحدة).
-            **وإن لم تتوفّر — لا تتوقّف**: نفّذ المحاور الستّة بنفسك مباشرةً عبر WebSearch وWebFetch، محوراً بعد محور. النتيجة أهمّ من الطريقة. كل وكيل: يبحث بالتركية/الإنجليزية/العربية عبر WebSearch وWebFetch، يركّز على آخر **١٠ أيام**، يترجم للعربية، ويعيد ٨–١٤ عنصراً بصيغة (عنوان عربي · ملخّص سطرين · سعر/رقم إن وُجد · تاريخ · قضاء/قرية · مصدر+رابط). كل وكيل يصرّح صراحةً إن لم يجد جديداً. **ممنوع الاختلاق.**
+            شغّل **٦ وكلاء** (أداة Agent، subagent_type: general-purpose، في رسالة واحدة). كل وكيل: يبحث بالتركية/الإنجليزية/العربية عبر WebSearch وWebFetch، يركّز على آخر **١٠ أيام**، يترجم للعربية، ويعيد ٨–١٤ عنصراً بصيغة (عنوان عربي · ملخّص سطرين · سعر/رقم إن وُجد · تاريخ · قضاء/قرية · مصدر+رابط). كل وكيل يصرّح صراحةً إن لم يجد جديداً. **ممنوع الاختلاق.**
 
             ١. **الأسواق والعروض** — BİM · A101 · ŞOK · Migros · CarrefourSA · سوق الجملة (hal) · Esenlik
             ٢. **العقارات والأراضي** — إيجار/بيع ₺/م² وبساتين المشمش حسب الحي (sahibinden · hepsiemlak · emlakjet) + TOKİ/البلدية
@@ -112,23 +63,15 @@ jobs:
             انتظر الوكلاء الستة جميعاً قبل المتابعة.
 
             ═══════════════════════════════
-            **الخطوة ٤ — التحرير (اكتب أوّلاً بأوّل!)**
+            **الخطوة ٣ — التحرير**
             ═══════════════════════════════
-            ⚠️ **لا تجمع كل النتائج ثم تكتب في النهاية.** الريّة قد تُقطع قبل أن تصل،
-            فتضيع كل الجهد كما حدث في ريّة 23/08 (بحثتَ ثم انقطعتَ قبل الكتابة).
-
-            **بدلاً من ذلك:** فور انتهاء وكيل من محوره — **اكتب بطاقاته في الملف فوراً**
-            عبر Edit، ثم انتقل للمحور التالي. سبع كتابات صغيرة، لا كتابة واحدة كبيرة.
-            هكذا تبقى كل ريّة، حتى المقطوعة، حاملةً محتوى حقيقياً.
-
-            وبعد كتابة كل المحاور:
             احذف المكرّر، واختر **«أبرز ٥ اليوم»**. كل عنصر مترجم وله رابط مصدر.
             قسمٌ بلا جديد ⇐ اكتب `<p class="empty">لا جديد بارز اليوم في هذا القسم</p>`.
 
             **لا تحذف الأرشيف:** العناصر القديمة تبقى. أضِف الجديد فوقها. سكربت `sortDaily` في الملف يرتّب تلقائياً حسب `data-date`.
 
             ═══════════════════════════════
-            **الخطوة ٥ — بناء HTML النشرة**
+            **الخطوة ٤ — بناء HTML النشرة**
             ═══════════════════════════════
             استبدل ما بين `<!--DAILY-CONTENT-START-->` و `<!--DAILY-CONTENT-END-->` فقط. **أبقِ العلامتين في مكانهما.**
 
@@ -147,14 +90,14 @@ jobs:
             ⭐ أبرز اليوم · 🛒 الأسعار والعروض · 🏢 العقارات والأراضي · 🍽️ المطاعم والكافيهات والأفران · 🏬 المجمّعات والبازارات والمنتزهات · 🌾 الاقتصاد والمشمش والزراعة · 📰 الأخبار والبلدية والقرى
 
             ═══════════════════════════════
-            **الخطوة ٦ — الترويسة والأرقام**
+            **الخطوة ٥ — الترويسة والأرقام**
             ═══════════════════════════════
             - حدّث نص `<span id="daily-date">…</span>` بتاريخ اليوم من الخطوة ١.
             - حدّث أرقام شريط `<div class="chips">…</div>` لتطابق الواقع.
             - **لا تلمس** سكربت `sortDaily` ولا بقيّة أقسام الدليل (المعيشة، السكن، العقارات، الاستثمار، النقل، التسوّق، السياحة، الحياة العملية، المعجم).
 
             ═══════════════════════════════
-            **الخطوة ٧ — فحص ذاتي قبل الإنهاء**
+            **الخطوة ٦ — فحص ذاتي قبل الإنهاء**
             ═══════════════════════════════
             - `DAILY-CONTENT-START` و`DAILY-CONTENT-END` — مرّة واحدة بالضبط لكلٍّ منهما
             - `id="daily-date"` — مرّة واحدة
@@ -163,85 +106,21 @@ jobs:
             - الأقسام السبعة موجودة
             - الحجم لم ينكمش (الأرشيف محفوظ)
 
-            ⛔ **قاعدة حديدية — الملف يجب أن يتغيّر في كل ريّة.**
-            حتى لو لم تجد خبراً واحداً، أنت **ملزم** بتحديث `<span id="daily-date">` بتاريخ
-            ووقت اليوم من الخطوة ١. ريّة تُنهي دون أي تعديل على الملف = عُطل، وسيرفضها التحقّق.
-
             **يوم هادئ؟** حدّث الترويسة والتاريخ على أي حال، واكتب في الأقسام الفارغة `<p class="empty">…</p>` — هكذا يُرى أن النظام حيّ.
-
-            ═══════════════════════════════
-            **الخطوة ٨ — تقرير الرصد داخل الملف (إلزامي)**
-            ═══════════════════════════════
-            قبل أن تنهي، استبدل بلوك `<!--RESEARCH-REPORT ... -->` (أو أضِفه مباشرة
-            بعد `<!--DAILY-CONTENT-START-->` إن لم يكن موجوداً) بسطر واحد لكل محور:
-
-            ```
-            <!--RESEARCH-REPORT
-            run=YYYY-MM-DD HH:MM | window=<search_from>..<today>
-            🛒 found=N covered=N written=N
-            🏢 found=N covered=N written=N
-            … (كل المحاور الستّة)
-            note=<سطر واحد: لماذا كانت الحصيلة صفراً إن كانت كذلك>
-            -->
-            ```
-
-            `found` ما وجده الوكيل · `covered` ما كان مُدرَجاً أصلاً · `written` ما أضفتَه.
-            **هذا ليس تزييناً:** بدونه لا يمكن التمييز بين «لا جديد فعلاً» و«الوكيل تعطّل»،
-            وقد كلّف ذلك أربع جولات تشخيص. صفر مقبول — صفر بلا تفسير ليس مقبولاً.
 
             **تقرير ختامي بالعربية:** ما أُضيف لكل قسم · أبرز ٥ · ما لم يُعثر عليه · المصادر بروابط.
           claude_args: |
-            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Task,Agent"
+            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Agent"
             --permission-mode acceptEdits
-            --max-turns 120
-
-      - name: 🔍 ماذا فعل Claude فعلاً؟
-        if: always()
-        run: |
-          set +e
-          F=/home/runner/work/_temp/claude-execution-output.json
-          echo "── حالة الملف ──"
-          git diff --stat -- malatya/index.html || true
-          git diff --quiet -- malatya/index.html && echo "⚠️ الملف لم يُمسّ إطلاقاً" || echo "✅ الملف عُدِّل"
-          echo
-          echo "── ردّ Claude النصّي ──"
-          if [ -f "$F" ]; then
-            python3 - "$F" <<'PY'
-          import json, sys
-          try:
-              d = json.load(open(sys.argv[1], encoding='utf-8'))
-          except Exception as e:
-              print("تعذّر تحليل JSON:", e); sys.exit(0)
-          items = d if isinstance(d, list) else [d]
-          for it in items:
-              if not isinstance(it, dict): continue
-              if it.get('type') == 'result':
-                  print("subtype:", it.get('subtype'), "| is_error:", it.get('is_error'))
-                  print("turns:", it.get('num_turns'), "| usage:", bool(it.get('modelUsage')))
-                  r = it.get('result')
-                  if r: print("\n--- النصّ ---\n", str(r)[:3000])
-              msg = (it.get('message') or {})
-              for c in (msg.get('content') or []):
-                  if isinstance(c, dict):
-                      if c.get('type') == 'text' and c.get('text', '').strip():
-                          print("[نصّ]", c['text'][:900])
-                      elif c.get('type') == 'tool_use':
-                          print("[أداة]", c.get('name'))
-          PY
-          else
-            echo "لا يوجد ملف مخرجات في $F"
-            ls -la /home/runner/work/_temp/ 2>/dev/null | head -20
-          fi
-          exit 0
 
       - name: التحقّق — لا ننشر ملفاً معطوباً
         run: |
           set -euo pipefail
-          git show HEAD:malatya/index.html > /tmp/prev.html
+          git show HEAD:malatya/daleel.html > /tmp/prev.html
           python3 - <<'PY'
           import re, sys
 
-          new = open('malatya/index.html', encoding='utf-8').read()
+          new = open('malatya/daleel.html', encoding='utf-8').read()
           old = open('/tmp/prev.html', encoding='utf-8').read()
           errs, notes = [], []
 
@@ -292,39 +171,6 @@ jobs:
           else:
               notes.append(f"الحجم {len(old):,} → {len(new):,} ({-shrink:+.1%})")
 
-          # تقرير الرصد — بدونه نعود للتخمين
-          rep = re.search(r'<!--RESEARCH-REPORT(.*?)-->', new, re.S)
-          if not rep:
-              errs.append("بلوك <!--RESEARCH-REPORT--> مفقود — لا سبيل لمعرفة سبب أي حصيلة صفرية")
-          else:
-              import datetime as _dt
-              tod = _dt.date.today().isoformat()
-              if tod not in rep.group(1):
-                  errs.append(f"تقرير الرصد قديم — لا يحمل تاريخ اليوم ({tod})")
-              else:
-                  w = sum(int(x) for x in re.findall(r'written=(\d+)', rep.group(1)))
-                  notes.append(f"تقرير الرصد: {w} بطاقة مكتوبة")
-
-          # نموّ غير محدود: تحذير مبكر قبل أن يثقل الملف.
-          # السقف 400 (رُفع من 250 في 24 آب 2026): البوابة تطوي الأرشيف الأقدم
-          # من 10 أيام وقت التشغيل، فالصفحة تبقى خفيفة رغم تراكم البطاقات.
-          if len(cards) > 400:
-              errs.append(f"{len(cards)} بطاقة — تجاوزنا الحدّ. فعّل طيّ الأرشيف (>90 يوماً).")
-
-          # ⛔ ريّة لم تغيّر شيئاً = عُطل صامت، لا "يوم هادئ"
-          if new == old:
-              errs.append("الملف لم يتغيّر إطلاقاً — حتى ختم التاريخ لم يُحدَّث. "
-                          "هذا عُطل صامت (غالباً: الوكيل لم يعمل)، وليس يوماً هادئاً.")
-          else:
-              import re as _re
-              def _dd(t):
-                  m = _re.search(r'id="daily-date"[^>]*>([^<]*)', t)
-                  return m.group(1).strip() if m else ""
-              if _dd(new) == _dd(old):
-                  errs.append(f"ختم التاريخ لم يتغيّر ({_dd(old)}) رغم تعديل الملف")
-              else:
-                  notes.append(f"الختم {_dd(old)} → {_dd(new)}")
-
           if errs:
               print("❌ فشل التحقّق:")
               for e in errs: print("  -", e)
@@ -336,14 +182,14 @@ jobs:
         id: commit
         run: |
           set -euo pipefail
-          if git diff --quiet -- malatya/index.html; then
+          if git diff --quiet -- malatya/daleel.html; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "لا تغيير — تخطّي النشر"
+            echo "لا تغيير في الدليل — لا commit. (التشغيل اليدوي سينشر المجلّد كما هو)"
             exit 0
           fi
           git config user.name  "malatya-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add malatya/index.html
+          git add malatya/daleel.html
           git commit -m "النشرة اليومية — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -361,7 +207,7 @@ jobs:
           fi
 
       - name: 🔒 بوّابة أمان — الحساب المحبوس فقط
-        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        if: (steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch') && steps.ftp.outputs.enabled == 'true'
         env:
           U: ${{ secrets.FTP_MALATYA_USERNAME }}
         run: |
@@ -378,16 +224,24 @@ jobs:
           esac
 
       - name: تجهيز مجلد وسيط
-        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        if: (steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch') && steps.ftp.outputs.enabled == 'true'
         run: |
           set -euo pipefail
           rm -rf _deploy && mkdir -p _deploy
-          cp malatya/index.html _deploy/index.html
-          ls -la _deploy/
-          test "$(ls -1 _deploy | wc -l)" -eq 1 || { echo "❌ المجلد الوسيط ليس ملفاً واحداً"; exit 1; }
+          # ننشر مجلّد malatya كاملاً (مركز التحكّم + الدليل + الأدوات + البيانات + التقارير)
+          # عدا docs/ — مكتبة المستندات محميّة بكلمة مرور، تُرفع مرّة واحدة يدوياً ولا تُلمس هنا.
+          rsync -a --exclude 'docs/' --exclude '.git*' malatya/ _deploy/
+          echo "— محتويات النشر —"; find _deploy -maxdepth 2 | sort | head -40
+          for f in index.html daleel.html aqar.html reports.html library.html \
+                   land-board.html aqar-board.html land-agent.html \
+                   assets/malatya.css assets/nav.js data/reports-index.json; do
+            test -s "_deploy/$f" || { echo "❌ ناقص في حزمة النشر: $f"; exit 1; }
+          done
+          test ! -e _deploy/docs || { echo "❌ docs/ يجب ألّا تدخل النشر الآلي"; exit 1; }
+          echo "✅ حزمة النشر مكتملة ($(find _deploy -type f | wc -l) ملفاً)"
 
       - name: الرفع عبر FTPS
-        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        if: (steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch') && steps.ftp.outputs.enabled == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -404,7 +258,7 @@ jobs:
           log-level: standard
 
       - name: 🛡️ فحص السلامة — لم يُمسّ شيء آخر
-        if: steps.commit.outputs.changed == 'true' && steps.ftp.outputs.enabled == 'true'
+        if: (steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch') && steps.ftp.outputs.enabled == 'true'
         run: |
           set -euo pipefail
           FAIL=0
@@ -419,13 +273,17 @@ jobs:
           exit $FAIL
 
       - name: التحقّق من النشر الحيّ
-        if: steps.commit.outputs.changed == 'true'
+        if: steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
         run: |
           set -euo pipefail
           echo "بانتظار GitHub Pages…"; sleep 90
           T=$(date +%s)
-          URLS="https://smhmd1-cyber.github.io/claude-guide/malatya/?n=$T"
-          [ "${{ steps.ftp.outputs.enabled }}" = "true" ] && URLS="$URLS ${PORTAL_URL}?n=$T"
+          URLS="https://smhmd1-cyber.github.io/claude-guide/malatya/daleel.html?n=$T"
+          [ "${{ steps.ftp.outputs.enabled }}" = "true" ] && URLS="$URLS ${PORTAL_URL}daleel.html?n=$T"
+          if [ "${{ steps.ftp.outputs.enabled }}" = "true" ]; then
+            curl -fsSL --max-time 45 "${PORTAL_URL}?n=$T" | grep -q "منظومة ملاطيا" \
+              && echo "  ✅ مركز التحكّم حيّ" || echo "  ⚠️  تعذّر تأكيد مركز التحكّم"
+          fi
           for u in $URLS; do
             echo "أفحص $u"
             D=$(curl -fsSL --max-time 45 "$u" | grep -o 'id="daily-date"[^>]*>[^<]*' | head -1 || echo "—")
