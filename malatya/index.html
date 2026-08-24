@@ -52,7 +52,7 @@ a:hover{text-decoration:underline}
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   display:grid;place-items:center;font-size:22px;box-shadow:0 6px 16px rgba(247,165,43,.4)
 }
-.appbar .title{font-weight:800;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.appbar .title{font-weight:800;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .appbar .title small{display:block;font-weight:500;font-size:11.5px;color:var(--muted);letter-spacing:.3px}
 .appbar .spacer{flex:1}
 .appbar .updated{font-size:12px;color:var(--muted);white-space:nowrap}
@@ -66,16 +66,16 @@ a:hover{text-decoration:underline}
   padding:calc(var(--appbar-h) + var(--sp-8)) var(--sp-6) var(--sp-12)}
 .sidebar{position:sticky; top:calc(var(--appbar-h) + var(--sp-6)); align-self:start; height:calc(100vh - var(--appbar-h) - var(--sp-8))}
 .sidebar-inner{background:linear-gradient(180deg,var(--panel),var(--bg2)); border:1px solid var(--border);
-  border-radius:var(--r); padding:var(--sp-4); height:100%; overflow-y:auto; box-shadow:var(--shadow-sm)}
+  border-radius:var(--r); padding:10px; height:100%; overflow-y:auto; box-shadow:var(--shadow-sm)}
 .sidebar-inner::-webkit-scrollbar{width:8px}
 .sidebar-inner::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px}
-.nav-title{font-size:11px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase;
-  padding:var(--sp-2) var(--sp-3) var(--sp-3); font-weight:700}
-.nav-link{display:flex;align-items:center;gap:var(--sp-3);width:100%;text-align:right;
-  background:transparent;border:0;color:var(--text2);font-family:var(--font);font-size:14.5px;font-weight:600;
-  padding:11px var(--sp-3);border-radius:11px;cursor:pointer;transition:.15s;margin-bottom:2px;line-height:1.3}
-.nav-link .ico{width:30px;height:30px;flex:0 0 auto;border-radius:9px;background:var(--card);
-  display:grid;place-items:center;font-size:15px;border:1px solid var(--border-soft)}
+.nav-title{font-size:10.5px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase;
+  padding:10px 10px 5px; font-weight:700}
+.nav-link{display:flex;align-items:center;gap:9px;width:100%;text-align:right;
+  background:transparent;border:0;color:var(--text2);font-family:var(--font);font-size:14px;font-weight:600;
+  padding:7px 10px;border-radius:11px;cursor:pointer;transition:.15s;margin-bottom:1px;line-height:1.25}
+.nav-link .ico{width:25px;height:25px;flex:0 0 auto;border-radius:8px;background:var(--card);
+  display:grid;place-items:center;font-size:13px;border:1px solid var(--border-soft)}
 .nav-link:hover{background:var(--card);color:var(--text)}
 .nav-link.active{background:var(--accent-soft);color:#ffe6c2}
 .nav-link.active .ico{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#241200}
@@ -89,13 +89,13 @@ a:hover{text-decoration:underline}
 .ch-head{margin-bottom:var(--sp-6)}
 .ch-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--accent);
   background:var(--accent-soft);border:1px solid var(--accent-line);padding:5px 13px;border-radius:100px;margin-bottom:var(--sp-4)}
-.ch-head h1{font-size:31px;font-weight:900;line-height:1.25;letter-spacing:-.5px}
-.ch-head .lead{color:var(--text2);font-size:16.5px;margin-top:var(--sp-3);max-width:74ch}
-h2{font-size:22px;font-weight:800;margin:var(--sp-10) 0 var(--sp-4);display:flex;align-items:center;gap:10px}
-h2::before{content:"";width:5px;height:24px;border-radius:6px;background:linear-gradient(180deg,var(--accent),var(--accent2))}
-h3{font-size:17.5px;font-weight:700;margin:var(--sp-6) 0 var(--sp-3);color:#fff}
+.ch-head h1{font-size:27px;font-weight:900;line-height:1.25;letter-spacing:-.5px}
+.ch-head .lead{color:var(--text2);font-size:15.5px;margin-top:var(--sp-3);max-width:74ch}
+h2{font-size:20px;font-weight:800;margin:var(--sp-10) 0 var(--sp-4);display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:22px;border-radius:6px;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+h3{font-size:16.5px;font-weight:700;margin:var(--sp-6) 0 var(--sp-3);color:#fff}
 p{margin:var(--sp-3) 0;color:var(--text2)}
-.section-intro{color:var(--text2);font-size:15.5px}
+.section-intro{color:var(--text2);font-size:15px}
 strong{color:#fff;font-weight:700}
 hr.soft{border:0;border-top:1px solid var(--border-soft);margin:var(--sp-8) 0}
 
@@ -157,7 +157,7 @@ table.data td:first-child{font-weight:600;color:#fff}
 .pc{border:1px solid var(--border);border-radius:var(--r);padding:var(--sp-5)}
 .pc.pros{background:var(--green-soft);border-color:rgba(64,209,131,.28)}
 .pc.cons{background:var(--red-soft);border-color:rgba(255,107,122,.26)}
-.pc h4{font-size:16px;font-weight:800;margin-bottom:var(--sp-3);display:flex;align-items:center;gap:8px}
+.pc h4{font-size:15px;font-weight:800;margin-bottom:var(--sp-3);display:flex;align-items:center;gap:8px}
 .pc.pros h4{color:var(--green)} .pc.cons h4{color:var(--red)}
 .pc ul{list-style:none;display:flex;flex-direction:column;gap:9px}
 .pc li{position:relative;padding-inline-start:26px;font-size:14px;color:var(--text2)}
@@ -189,8 +189,8 @@ ul.feat li strong,ol.feat li strong{color:#fff}
   border:1px solid var(--accent-line);border-radius:var(--r-lg);padding:var(--sp-8) var(--sp-8);margin-bottom:var(--sp-6);
   position:relative;overflow:hidden}
 .hero::after{content:"🌇";position:absolute;left:26px;top:50%;transform:translateY(-50%);font-size:96px;opacity:.14}
-.hero h1{font-size:34px;font-weight:900;letter-spacing:-.5px}
-.hero .sub{color:var(--text2);margin-top:10px;font-size:16.5px;max-width:70ch}
+.hero h1{font-size:30px;font-weight:900;letter-spacing:-.5px}
+.hero .sub{color:var(--text2);margin-top:10px;font-size:15.5px;max-width:70ch}
 
 .callout .src{font-size:12px;color:var(--muted)}
 .mini{font-size:12.5px;color:var(--muted)}
@@ -238,7 +238,7 @@ ul.feat li strong,ol.feat li strong{color:#fff}
 h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight:600;font-family:var(--font-num)}
 .item{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);border-inline-start:4px solid var(--accent);
   border-radius:var(--r-sm);padding:14px 17px;margin:10px 0}
-.item h3{font-size:15.5px;font-weight:700;color:#fff;margin:0 0 5px;line-height:1.45}
+.item h3{font-size:15px;font-weight:700;color:#fff;margin:0 0 5px;line-height:1.45}
 .item p{color:var(--text2);font-size:14px;margin:4px 0}
 .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;align-items:center}
 .badge.b-price{background:var(--green-soft);color:var(--green);border:1px solid rgba(64,209,131,.3)}
@@ -355,7 +355,7 @@ h2:hover .permal{opacity:1}
     </div>
   </div>
   <div class="spacer"></div>
-  <div class="updated">🔴 النشرة تتحدّث يومياً <b>12:00</b> · 1$ ≈ <b>47₺</b></div>
+  <div class="updated">🔴 النشرة تتحدّث يومياً <b>12:00</b> · 1$ ≈ <b>48₺</b></div>
   <button class="navtoggle" aria-label="القائمة" onclick="document.body.classList.toggle('nav-open')">☰</button>
 </header>
 
@@ -1266,7 +1266,7 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 
 <div class="callout accent">
   <div class="c-h">🧭 كيف تستخدم هذا الدليل</div>
-  <p>تنقّل بين الأقسام من القائمة الجانبية. كل رقم مالي بالليرة التركية (₺) مذكور بجانبه ما يقابله بالدولار تقريباً (1$ ≈ <span class="num">46.9</span>₺). الكلمات المُخطّطة بخطّ منقّط (مثل <span class="term" data-tip="طابو (Tapu) — سند الملكية العقارية الرسمي في تركيا">طابو</span>) لها شرح عند مرور المؤشّر، وبالضغط عليها تنتقل إلى «المعجم».</p>
+  <p>تنقّل بين الأقسام من القائمة الجانبية. كل رقم مالي بالليرة التركية (₺) مذكور بجانبه ما يقابله بالدولار تقريباً (1$ ≈ <span class="num">48</span>₺). الكلمات المُخطّطة بخطّ منقّط (مثل <span class="term" data-tip="طابو (Tapu) — سند الملكية العقارية الرسمي في تركيا">طابو</span>) لها شرح عند مرور المؤشّر، وبالضغط عليها تنتقل إلى «المعجم».</p>
 </div></section>
     <section class="chapter" id="chapter-cost"><div class="ch-head">
   <div class="ch-eyebrow">💰 القسم 1</div>
@@ -1276,10 +1276,10 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 
 <h2>كم تحتاج شهرياً؟</h2>
 <div class="grid g4">
-  <div class="kpi green"><span class="k-ico">🧍</span><div class="k-label">فرد — بدون إيجار</div><div class="k-value"><span class="num">18–24</span> ألف ₺</div><div class="k-sub">~<span class="num">390–520$</span></div></div>
+  <div class="kpi green"><span class="k-ico">🧍</span><div class="k-label">فرد — بدون إيجار</div><div class="k-value"><span class="num">18–24</span> ألف ₺</div><div class="k-sub">~<span class="num">375–500$</span></div></div>
   <div class="kpi blue"><span class="k-ico">🧍‍♂️🏠</span><div class="k-label">فرد — شامل إيجار 1+1</div><div class="k-value"><span class="num">28–37</span> ألف ₺</div><div class="k-sub">شقة خارج المركز</div></div>
-  <div class="kpi amber"><span class="k-ico">👨‍👩‍👧‍👦</span><div class="k-label">أسرة (4) — بدون إيجار</div><div class="k-value"><span class="num">40–55</span> ألف ₺</div><div class="k-sub">~<span class="num">870–1,190$</span></div></div>
-  <div class="kpi accent"><span class="k-ico">👨‍👩‍👧‍👦🏠</span><div class="k-label">أسرة (4) — شامل إيجار 3+1</div><div class="k-value"><span class="num">58–78</span> ألف ₺</div><div class="k-sub">~<span class="num">1,240–1,660$</span></div></div>
+  <div class="kpi amber"><span class="k-ico">👨‍👩‍👧‍👦</span><div class="k-label">أسرة (4) — بدون إيجار</div><div class="k-value"><span class="num">40–55</span> ألف ₺</div><div class="k-sub">~<span class="num">833–1,150$</span></div></div>
+  <div class="kpi accent"><span class="k-ico">👨‍👩‍👧‍👦🏠</span><div class="k-label">أسرة (4) — شامل إيجار 3+1</div><div class="k-value"><span class="num">58–78</span> ألف ₺</div><div class="k-sub">~<span class="num">1,210–1,620$</span></div></div>
 </div>
 <p class="t-note">تقديرات مُركّبة لمستوى معيشة متوسّط مريح في ملاطيا، مبنية على أسعار Numbeo للبقالة والخدمات + الإيجار المحلي الفعلي. تعطي المصادر أرقاماً متفاوتة: موقع livingcost يقدّر إنفاقاً متقشّفاً أقل، ومتوسط Numbeo الوطني أعلى (وملاطيا أرخص منه).</p>
 
@@ -1288,17 +1288,17 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 <table class="data">
 <thead><tr><th>الصنف</th><th>بالليرة (₺)</th><th>~بالدولار</th></tr></thead>
 <tbody>
-<tr><td>حليب (1 لتر)</td><td><span class="num">40</span> ₺</td><td><span class="num">0.88$</span></td></tr>
-<tr><td>خبز سوبرماركت (500غ)</td><td><span class="num">34</span> ₺</td><td><span class="num">0.74$</span></td></tr>
+<tr><td>حليب (1 لتر)</td><td><span class="num">40</span> ₺</td><td><span class="num">0.83$</span></td></tr>
+<tr><td>خبز سوبرماركت (500غ)</td><td><span class="num">34</span> ₺</td><td><span class="num">0.71$</span></td></tr>
 <tr><td>الخبز الشعبي المدعوم (Halk Ekmek)</td><td><span class="num">10–15</span> ₺</td><td>~<span class="num">0.25$</span></td></tr>
-<tr><td>بيض (12 حبة)</td><td><span class="num">97</span> ₺</td><td><span class="num">2.1$</span></td></tr>
-<tr><td>أرز (1 كجم)</td><td><span class="num">107</span> ₺</td><td><span class="num">2.3$</span></td></tr>
-<tr><td>صدور دجاج (1 كجم)</td><td><span class="num">117</span> ₺</td><td><span class="num">2.5$</span></td></tr>
-<tr><td>لحم بقري (1 كجم) <span class="badge amber">تحقّق محلياً</span></td><td>~<span class="num">810</span> ₺</td><td>~<span class="num">17.6$</span></td></tr>
-<tr><td>جبن محلي (1 كجم)</td><td>~<span class="num">400</span> ₺</td><td><span class="num">8.7$</span></td></tr>
-<tr><td>طماطم / بطاطا / بصل (1 كجم)</td><td><span class="num">18–37</span> ₺</td><td><span class="num">0.4–0.8$</span></td></tr>
-<tr><td>تفّاح / برتقال (1 كجم)</td><td><span class="num">40–62</span> ₺</td><td><span class="num">0.9–1.4$</span></td></tr>
-<tr><td>مياه معدنية (1.5 لتر)</td><td><span class="num">21</span> ₺</td><td><span class="num">0.46$</span></td></tr>
+<tr><td>بيض (12 حبة)</td><td><span class="num">97</span> ₺</td><td><span class="num">2$</span></td></tr>
+<tr><td>أرز (1 كجم)</td><td><span class="num">107</span> ₺</td><td><span class="num">2.2$</span></td></tr>
+<tr><td>صدور دجاج (1 كجم)</td><td><span class="num">117</span> ₺</td><td><span class="num">2.4$</span></td></tr>
+<tr><td>لحم بقري (1 كجم) <span class="badge amber">تحقّق محلياً</span></td><td>~<span class="num">810</span> ₺</td><td>~<span class="num">17$</span></td></tr>
+<tr><td>جبن محلي (1 كجم)</td><td>~<span class="num">400</span> ₺</td><td><span class="num">8.3$</span></td></tr>
+<tr><td>طماطم / بطاطا / بصل (1 كجم)</td><td><span class="num">18–37</span> ₺</td><td><span class="num">0.38–0.77$</span></td></tr>
+<tr><td>تفّاح / برتقال (1 كجم)</td><td><span class="num">40–62</span> ₺</td><td><span class="num">0.83–1.3$</span></td></tr>
+<tr><td>مياه معدنية (1.5 لتر)</td><td><span class="num">21</span> ₺</td><td><span class="num">0.44$</span></td></tr>
 </tbody>
 </table>
 </div>
@@ -1306,8 +1306,8 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 
 <h3>المطاعم والمشروبات</h3>
 <div class="tag-row">
-  <span class="badge accent">وجبة مطعم شعبي: <span class="num">235</span> ₺ (~<span class="num">5$</span>)</span>
-  <span class="badge accent">عشاء لشخصين (3 أطباق): <span class="num">1,250</span> ₺ (~<span class="num">27$</span>)</span>
+  <span class="badge accent">وجبة مطعم شعبي: <span class="num">235</span> ₺ (~<span class="num">4.9$</span>)</span>
+  <span class="badge accent">عشاء لشخصين (3 أطباق): <span class="num">1,250</span> ₺ (~<span class="num">26$</span>)</span>
   <span class="badge accent">كومبو وجبات سريعة: <span class="num">350</span> ₺</span>
   <span class="badge accent">قهوة/كابتشينو: <span class="num">82</span> ₺</span>
 </div>
@@ -1324,9 +1324,9 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 <table class="data">
 <thead><tr><th>الخدمة</th><th>التكلفة الشهرية</th><th>ملاحظات</th></tr></thead>
 <tbody>
-<tr><td>خدمات أساسية (كهرباء+ماء+تدفئة+نفايات) لشقة ~85م²</td><td><span class="num">1,500</span> ₺ (~<span class="num">33$</span>)</td><td>متوسط سنوي؛ يرتفع كثيراً شتاءً</td></tr>
+<tr><td>خدمات أساسية (كهرباء+ماء+تدفئة+نفايات) لشقة ~85م²</td><td><span class="num">1,500</span> ₺ (~<span class="num">31$</span>)</td><td>متوسط سنوي؛ يرتفع كثيراً شتاءً</td></tr>
 <tr><td>إنترنت منزلي (60 ميغابت+)</td><td><span class="num">525</span> ₺ (~<span class="num">11$</span>)</td><td>ألياف/ADSL</td></tr>
-<tr><td>باقة موبايل (10 غيغا+)</td><td><span class="num">500</span> ₺ (~<span class="num">11$</span>)</td><td>Turkcell / Vodafone / Türk Telekom</td></tr>
+<tr><td>باقة موبايل (10 غيغا+)</td><td><span class="num">500</span> ₺ (~<span class="num">10$</span>)</td><td>Turkcell / Vodafone / Türk Telekom</td></tr>
 <tr><td>غاز التدفئة في ذروة الشتاء</td><td>~<span class="num">2,000–4,000</span> ₺</td><td>تقديري لأشهر ديسمبر–فبراير؛ يقارب الصفر صيفاً</td></tr>
 </tbody>
 </table>
@@ -1338,8 +1338,8 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 
 <h2>الأجور والحدّ الأدنى</h2>
 <div class="grid g3">
-  <div class="kpi accent"><span class="k-ico">🧾</span><div class="k-label">الحدّ الأدنى للأجور 2026 (صافٍ)</div><div class="k-value"><span class="num">28,076</span> ₺</div><div class="k-sub">~<span class="num">610$</span> · وطني، +27% عن 2025</div></div>
-  <div class="kpi blue"><span class="k-ico">📊</span><div class="k-label">متوسط الراتب في ملاطيا</div><div class="k-value">~<span class="num">46,300</span> ₺</div><div class="k-sub">~<span class="num">1,000$</span> · عيّنة صغيرة، مُنحاز لأعلى</div></div>
+  <div class="kpi accent"><span class="k-ico">🧾</span><div class="k-label">الحدّ الأدنى للأجور 2026 (صافٍ)</div><div class="k-value"><span class="num">28,076</span> ₺</div><div class="k-sub">~<span class="num">585$</span> · وطني، +27% عن 2025</div></div>
+  <div class="kpi blue"><span class="k-ico">📊</span><div class="k-label">متوسط الراتب في ملاطيا</div><div class="k-value">~<span class="num">46,300</span> ₺</div><div class="k-sub">~<span class="num">965$</span> · عيّنة صغيرة، مُنحاز لأعلى</div></div>
   <div class="kpi amber"><span class="k-ico">⚠️</span><div class="k-label">واقع سوق العمل</div><div class="k-value">قرب الحدّ الأدنى</div><div class="k-sub">كثير من الوظائف المحلية تدفع عند/قرب الحدّ الأدنى</div></div>
 </div>
 <p class="section-intro">الخلاصة: ملاطيا تمنحك <strong>قوة شرائية جيدة</strong> إن كان دخلك من خارجها (تحويلات، عمل عن بُعد، معاش). أما الاعتماد على راتب محلي فيعني دخلاً محدوداً نسبياً مقارنة بالمدن الكبرى.</p></section>
@@ -1354,8 +1354,8 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 <table class="data">
 <thead><tr><th>نوع الشقة</th><th>داخل المركز</th><th>خارج المركز</th></tr></thead>
 <tbody>
-<tr><td>غرفة نوم واحدة (≈ 1+1)</td><td><span class="num">15,667</span> ₺ (~<span class="num">341$</span>)</td><td><span class="num">10,667</span> ₺ (~<span class="num">232$</span>)</td></tr>
-<tr><td>ثلاث غرف (≈ 3+1 / 4+1)</td><td><span class="num">21,000</span> ₺ (~<span class="num">457$</span>)</td><td><span class="num">14,667</span> ₺ (~<span class="num">319$</span>)</td></tr>
+<tr><td>غرفة نوم واحدة (≈ 1+1)</td><td><span class="num">15,667</span> ₺ (~<span class="num">326$</span>)</td><td><span class="num">10,667</span> ₺ (~<span class="num">222$</span>)</td></tr>
+<tr><td>ثلاث غرف (≈ 3+1 / 4+1)</td><td><span class="num">21,000</span> ₺ (~<span class="num">438$</span>)</td><td><span class="num">14,667</span> ₺ (~<span class="num">306$</span>)</td></tr>
 </tbody>
 </table>
 </div>
@@ -1427,8 +1427,8 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 </div>
 
 <div class="grid g4">
-  <div class="kpi accent"><span class="k-ico">📐</span><div class="k-label">متوسط سعر المتر (شقق)</div><div class="k-value"><span class="num">21,672</span> ₺</div><div class="k-sub">~<span class="num">468$</span>/م² · +18.9% سنوياً</div></div>
-  <div class="kpi blue"><span class="k-ico">🏢</span><div class="k-label">متوسط سعر الشقة</div><div class="k-value"><span class="num">3.4</span> مليون ₺</div><div class="k-sub">~<span class="num">73,500$</span></div></div>
+  <div class="kpi accent"><span class="k-ico">📐</span><div class="k-label">متوسط سعر المتر (شقق)</div><div class="k-value"><span class="num">21,672</span> ₺</div><div class="k-sub">~<span class="num">452$</span>/م² · +18.9% سنوياً</div></div>
+  <div class="kpi blue"><span class="k-ico">🏢</span><div class="k-label">متوسط سعر الشقة</div><div class="k-value"><span class="num">3.4</span> مليون ₺</div><div class="k-sub">~<span class="num">70,800$</span></div></div>
   <div class="kpi green"><span class="k-ico">💹</span><div class="k-label">العائد الإيجاري</div><div class="k-value">~<span class="num">7%</span></div><div class="k-sub">استرداد رأس المال ~<span class="num">14</span> سنة</div></div>
   <div class="kpi amber"><span class="k-ico">🧾</span><div class="k-label">تكاليف المعاملة</div><div class="k-value">~<span class="num">5–12%</span></div><div class="k-sub">فوق سعر الشراء</div></div>
 </div>
@@ -1438,11 +1438,11 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 <table class="data">
 <thead><tr><th>المنطقة/القضاء</th><th>₺/م²</th><th>~$/م²</th><th>التغيّر السنوي</th></tr></thead>
 <tbody>
-<tr><td>Darende (دارنده)</td><td>~<span class="num">31,300</span></td><td><span class="num">676$</span></td><td><span class="badge red">+56.5%</span></td></tr>
-<tr><td>Yeşilyurt (يشيليورت)</td><td>~<span class="num">22,700</span></td><td><span class="num">490$</span></td><td><span class="badge amber">+29.5%</span></td></tr>
-<tr><td>Akçadağ (أقتشاداغ)</td><td>~<span class="num">20,700</span></td><td><span class="num">447$</span></td><td><span class="badge amber">+16.4%</span></td></tr>
-<tr><td>Battalgazi (بطالغازي)</td><td>~<span class="num">20,600</span></td><td><span class="num">445$</span></td><td><span class="badge amber">+23.7%</span></td></tr>
-<tr><td>Doğanşehir (دوغانشهير)</td><td>~<span class="num">15,500</span></td><td><span class="num">335$</span></td><td><span class="badge amber">+20.1%</span></td></tr>
+<tr><td>Darende (دارنده)</td><td>~<span class="num">31,300</span></td><td><span class="num">652$</span></td><td><span class="badge red">+56.5%</span></td></tr>
+<tr><td>Yeşilyurt (يشيليورت)</td><td>~<span class="num">22,700</span></td><td><span class="num">473$</span></td><td><span class="badge amber">+29.5%</span></td></tr>
+<tr><td>Akçadağ (أقتشاداغ)</td><td>~<span class="num">20,700</span></td><td><span class="num">431$</span></td><td><span class="badge amber">+16.4%</span></td></tr>
+<tr><td>Battalgazi (بطالغازي)</td><td>~<span class="num">20,600</span></td><td><span class="num">429$</span></td><td><span class="badge amber">+23.7%</span></td></tr>
+<tr><td>Doğanşehir (دوغانشهير)</td><td>~<span class="num">15,500</span></td><td><span class="num">323$</span></td><td><span class="badge amber">+20.1%</span></td></tr>
 </tbody>
 </table>
 </div>
@@ -1454,7 +1454,7 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 <thead><tr><th>النوع</th><th>السعر</th><th>ملاحظة</th></tr></thead>
 <tbody>
 <tr><td>حقل زراعي (tarla)</td><td><span class="num">88–300</span> ₺/م²</td><td>~<span class="num">1,900–6,500$</span> لكل <span class="term" data-tip="الدونم (Dönüm) — وحدة مساحة تركية = 1,000 متر مربع">دونم</span></td></tr>
-<tr><td>أرض سكنية بترخيص بناء (imarlı)</td><td><span class="num">3,247–9,029</span> ₺/م²</td><td><span class="num">70–195$</span>/م²</td></tr>
+<tr><td>أرض سكنية بترخيص بناء (imarlı)</td><td><span class="num">3,247–9,029</span> ₺/م²</td><td><span class="num">68–188$</span>/م²</td></tr>
 <tr><td>بستان/حديقة (bahçe)</td><td><span class="num">296–1,208</span> ₺/م²</td><td>حسب القرب من المدينة</td></tr>
 <tr><td>بستان مشمش بعيد (Yazıhan)</td><td>~<span class="num">124</span> ₺/م²</td><td>~<span class="num">2,680$</span>/دونم — مثمر لكن بعيد</td></tr>
 <tr><td>بستان مشمش قرب يشيليورت</td><td>~<span class="num">1,748</span> ₺/م²</td><td>~<span class="num">37,800$</span>/دونم — قرب مناطق التوسّع</td></tr>
@@ -1563,8 +1563,8 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 <table class="data">
 <thead><tr><th>الشكل</th><th>رأس المال الأدنى</th><th>ملاحظة</th></tr></thead>
 <tbody>
-<tr><td>شركة محدودة (LLC)</td><td><span class="num">50,000</span> ₺ (~<span class="num">1,150$</span>)</td><td>الأنسب للأجانب؛ يُدفع خلال 24 شهراً</td></tr>
-<tr><td>شركة مساهمة (JSC)</td><td><span class="num">250,000</span> ₺ (~<span class="num">5,770$</span>)</td><td>25% مقدماً</td></tr>
+<tr><td>شركة محدودة (LLC)</td><td><span class="num">50,000</span> ₺ (~<span class="num">1,040$</span>)</td><td>الأنسب للأجانب؛ يُدفع خلال 24 شهراً</td></tr>
+<tr><td>شركة مساهمة (JSC)</td><td><span class="num">250,000</span> ₺ (~<span class="num">5,210$</span>)</td><td>25% مقدماً</td></tr>
 </tbody>
 </table>
 </div>
@@ -1824,7 +1824,7 @@ note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 
 <p>تغطية جيدة عبر Turkcell وVodafone وTürk Telekom (4.5G واسع وطرح 5G)، وإنترنت منزلي بألياف بأسعار تنافسية.</p>
 <div class="callout danger">
   <div class="c-h">📱 تنبيه: تسجيل الهاتف الأجنبي (IMEI)</div>
-  <p>يُسمح باستخدام هاتف أجنبي <strong><span class="num">120</span> يوماً فقط</strong>، ثم يلزم تسجيله برسم مرتفع: <strong><span class="num">54,258</span> ₺ (~<span class="num">1,263$</span>) لعام 2026</strong>. قد يكون شراء هاتف محلياً أوفر أحياناً.</p>
+  <p>يُسمح باستخدام هاتف أجنبي <strong><span class="num">120</span> يوماً فقط</strong>، ثم يلزم تسجيله برسم مرتفع: <strong><span class="num">54,258</span> ₺ (~<span class="num">1,130$</span>) لعام 2026</strong>. قد يكون شراء هاتف محلياً أوفر أحياناً.</p>
 </div></section>
     <section class="chapter" id="chapter-verdict"><div class="ch-head">
   <div class="ch-eyebrow">⚖️ القسم 9</div>
