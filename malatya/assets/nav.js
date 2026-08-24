@@ -100,8 +100,8 @@
       });
     });
 
-    html += '<div class="ft">📁 <b style="color:#c2cdec">مكتبة المستندات</b> محميّة بكلمة مرور —' +
-            ' دراسات الجدوى والنماذج المالية للفريق فقط.<br>' +
+    html += '<div class="ft">📁 <b style="color:#c2cdec">مكتبة المستندات</b> — دراسات الجدوى' +
+            ' والنماذج المالية، تُفتح وتُنزَّل مباشرةً.<br>' +
             '<span style="opacity:.75">jmahery.com/malatya/</span></div>';
 
     dr.innerHTML = html;
