@@ -37,9 +37,9 @@
     <a class="btn" href="index.html">← مركز التحكّم</a>
   </div>
 
-  <div class="note warn" id="state">
-    🔒 <b>المستندات محميّة.</b> عند الضغط على أي ملف سيطلب المتصفّح اسم مستخدم وكلمة مرور مرّة واحدة لكل جلسة.
-    محتوى المكتبة غير مفهرَس في محرّكات البحث.
+  <div class="note ok" id="state">
+    🔒 <b>المستندات محميّة بكلمة مرور.</b> عند الضغط على أي ملف يطلب المتصفّح اسم المستخدم وكلمة المرور
+    مرّة واحدة لكل جلسة. محتوى المكتبة غير مفهرَس في محرّكات البحث ولا يظهر في المستودع العام.
   </div>
 
   <div id="lib"><p class="mut">… يُحمّل الفهرس</p></div>
@@ -89,22 +89,6 @@
     });
     if(!out.children.length) out.innerHTML='<p class="mut">لا ملفات في الفهرس بعد.</p>';
     if(location.hash){ var t=document.querySelector(location.hash); if(t) t.scrollIntoView(); }
-
-    /* فحص صادق: هل رُفعت المستندات فعلاً إلى الخادم؟
-       الخادم يردّ 200 بصفحة بديلة عند غياب الملف، فنتحقّق من نوع المحتوى. */
-    var k=Object.keys(groups).sort()[0];
-    if(!k || !groups[k].length) return;
-    var probe='docs/'+encodeURIComponent(k)+'/'+encodeURIComponent(groups[k][0].n);
-    fetch(probe,{method:'GET',headers:{Range:'bytes=0-0'},cache:'no-store'}).then(function(r){
-      var ct=(r.headers.get('content-type')||'').toLowerCase();
-      if(ct.indexOf('text/html')===0 || !r.ok){
-        var s=document.getElementById('state');
-        if(s){ s.className='note warn';
-          s.innerHTML='⏳ <b>المكتبة لم تُرفع إلى الخادم بعد.</b> الفهرس أدناه صحيح، لكن روابط التنزيل '+
-            'لن تعمل حتى يُرفع مجلّد <span class="num">docs</span> مرّة واحدة عبر WinSCP إلى '+
-            '<span class="num">public_html/malatya/</span> — المستندات لا تدخل المستودع العام عمداً.'; }
-      }
-    }).catch(function(){});
   }).catch(function(){
     document.getElementById('lib').innerHTML='<div class="note warn">تعذّر تحميل فهرس المكتبة (<span class="num">data/library.json</span>).</div>';
   });
