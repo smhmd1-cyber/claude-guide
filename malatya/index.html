@@ -251,6 +251,98 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
 .nav-link.live.active{background:rgba(255,92,108,.14);color:#ffd0d5}
 .nav-link.live.active .ico{background:linear-gradient(135deg,#ff5c6c,#ff8a3d);border-color:transparent}
 .nav-num.live-badge{font-size:9.5px;font-weight:800;color:#ff9aa2;letter-spacing:.5px}
+
+/* ════════ ترقيات غرفة الرصد — تعمل على البطاقات المسطّحة دون تغيير عقد الأتمتة ════════ */
+.dbar{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--r-sm);
+  padding:var(--sp-3) var(--sp-4);margin:var(--sp-4) 0 var(--sp-3)}
+.dbar .fx{position:relative;flex:1 1 260px;min-width:200px}
+.dbar .rst.off{display:none}
+@media (max-width:640px){
+  .dbar{gap:var(--sp-2)}
+  .dbar .fx{flex:1 1 100%}
+  .dbar select{flex:1 1 auto}
+  .dbar .hits{margin-inline-start:0;width:100%;text-align:center}
+}
+.dbar input[type=search]{width:100%;background:var(--bg2);color:var(--text);
+  border:1px solid var(--border);border-radius:100px;padding:8px 34px 8px 14px;
+  font-family:var(--font);font-size:13.5px;outline:none}
+.dbar input[type=search]:focus,.dbar select:focus{border-color:var(--accent-line);
+  box-shadow:0 0 0 3px var(--accent-soft)}
+.dbar .fx::before{content:"🔎";position:absolute;inset-inline-start:12px;top:50%;
+  transform:translateY(-50%);font-size:12px;opacity:.7;pointer-events:none}
+.dbar select{background:var(--bg2);color:var(--text2);border:1px solid var(--border);
+  border-radius:100px;padding:8px 12px;font-family:var(--font);font-size:12.5px;
+  font-weight:600;outline:none;cursor:pointer}
+.dbar .rst{background:transparent;color:var(--muted);border:1px solid var(--border);
+  border-radius:100px;padding:7px 13px;font-family:var(--font);font-size:12.5px;
+  font-weight:700;cursor:pointer}
+.dbar .rst:hover{color:var(--accent);border-color:var(--accent-line)}
+.dbar .hits{font-size:12.5px;font-weight:700;color:var(--muted);
+  font-family:var(--font-num);margin-inline-start:auto;white-space:nowrap}
+.dbar .hits b{color:var(--accent)}
+
+.cov{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;
+  font-size:12px;color:var(--muted);margin:0 0 var(--sp-4)}
+.cov .cv{background:var(--card);border:1px solid var(--border-soft);
+  border-radius:100px;padding:4px 11px;font-family:var(--font-num)}
+.cov .cv.gap{color:var(--amber);border-color:rgba(255,194,75,.35);background:var(--amber-soft)}
+.cov .cv.ok{color:var(--green);border-color:rgba(64,209,131,.3);background:var(--green-soft)}
+
+.badge.b-new{background:var(--red-soft);color:var(--red);
+  border:1px solid rgba(255,107,122,.35);animation:nwpulse 2.4s ease-in-out infinite}
+@keyframes nwpulse{0%,100%{opacity:1}50%{opacity:.62}}
+@media (prefers-reduced-motion:reduce){.badge.b-new{animation:none}}
+
+.fold{margin:var(--sp-2) 0 var(--sp-5);border:1px dashed var(--border);
+  border-radius:var(--r-sm);background:rgba(13,20,48,.5)}
+.fold>summary{cursor:pointer;list-style:none;padding:10px var(--sp-4);
+  font-size:13px;font-weight:700;color:var(--text2);display:flex;
+  align-items:center;gap:8px;flex-wrap:wrap;border-radius:var(--r-sm)}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"▾";color:var(--accent);transition:transform .18s ease;
+  display:inline-block;font-size:11px}
+.fold[open]>summary::before{transform:rotate(180deg)}
+.fold>summary:hover{color:var(--accent)}
+.fold>summary .rng{font-family:var(--font-num);font-size:11.5px;color:var(--muted);font-weight:600}
+.fold .inner{padding:0 var(--sp-3) var(--sp-3)}
+
+.daysep{display:flex;align-items:center;gap:10px;margin:var(--sp-4) 0 var(--sp-2);
+  font-size:11.5px;font-weight:700;color:var(--muted);font-family:var(--font-num)}
+.daysep::after{content:"";flex:1;height:1px;background:var(--border-soft)}
+
+p.srcnote{background:var(--blue-soft);border:1px solid rgba(91,157,255,.22);
+  border-radius:var(--r-sm);padding:10px var(--sp-4);font-style:normal;
+  color:var(--text2);font-size:12.5px;margin:var(--sp-2) 0 var(--sp-5);line-height:1.75}
+
+.xpanel{margin:var(--sp-3) 0 var(--sp-5);border:1px solid var(--border);
+  border-inline-start:4px solid var(--teal);background:var(--teal-soft);
+  border-radius:var(--r-sm)}
+.xpanel>summary{cursor:pointer;list-style:none;padding:11px var(--sp-4);
+  font-weight:800;color:#fff;font-size:13.5px;display:flex;align-items:center;gap:8px}
+.xpanel>summary::-webkit-details-marker{display:none}
+.xpanel>summary::before{content:"🔬"}
+.xpanel .xbody{padding:0 var(--sp-4) var(--sp-4)}
+.xpanel table{width:100%;border-collapse:collapse;font-size:12.5px;
+  font-family:var(--font-num);margin-bottom:8px}
+.xpanel th,.xpanel td{padding:5px 8px;text-align:start;
+  border-bottom:1px solid var(--border-soft);white-space:nowrap}
+.xpanel th{color:var(--muted);font-size:11px;font-weight:700}
+.xpanel td.w{color:var(--green);font-weight:700}
+.xpanel td.c{color:var(--muted)}
+.xpanel .xnote{font-size:12.5px;color:var(--text2);font-family:var(--font);line-height:1.7}
+
+.permal{background:none;border:none;cursor:pointer;color:var(--muted);
+  font-size:12px;padding:2px 6px;border-radius:7px;opacity:.55;transition:opacity .15s}
+h2:hover .permal{opacity:1}
+.permal:hover{color:var(--accent);background:var(--accent-soft)}
+.permal.done{color:var(--green);opacity:1}
+
+.nohit{text-align:center;color:var(--muted);font-size:13.5px;
+  padding:var(--sp-8) var(--sp-4);border:1px dashed var(--border);
+  border-radius:var(--r-sm);margin:var(--sp-4) 0}
+.hidden-x{display:none !important}
+
 </style>
 </head>
 <body>
@@ -278,167 +370,308 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
     <section class="chapter active" id="chapter-daily"><div class="ch-head">
   <div class="daily-eyebrow"><span class="live-dot"></span> نشرة مباشرة · تتحدّث تلقائياً كل ظهر (12:00)</div>
   <h1>النشرة اليومية — غرفة الرصد</h1>
-  <p class="lead">أحدث أخبار وعروض وأسعار مدن وقرى ملاطيا، من رصد <strong>6 وكلاء</strong> بالتركية والإنجليزية والعربية مترجَماً للعربية. آخر تحديث: <strong><span id="daily-date">الأحد 23 أغسطس 2026 — 21:14 (بتوقيت القدس)</span></strong> · تغطية آخر ~10 أيام · <strong>مرتّبة من الأحدث إلى الأقدم ⬇️</strong></p>
+  <p class="lead">أحدث أخبار وعروض وأسعار مدن وقرى ملاطيا، من رصد <strong>6 وكلاء</strong> بالتركية والإنجليزية والعربية مترجَماً للعربية. آخر تحديث: <strong><span id="daily-date">الاثنين 24 أغسطس 2026 — 17:37 (بتوقيت القدس)</span></strong> · تغطية آخر ~10 أيام · <strong>مرتّبة من الأحدث إلى الأقدم ⬇️</strong></p>
 </div>
-<div class="chips">
-  <span class="chip">📌 <b>~<span class="num">44</span></b> عنصراً</span>
+<div class="chips" id="daily-chips">
+  <span class="chip">📌 <b><span class="num">153</span></b> بطاقة</span>
   <span class="chip">💵 1$ ≈ <b><span class="num">48</span>₺</b></span>
   <span class="chip">🍑 تصدير المشمش <b><span class="num">260–280</span>₺</b>/كغ</span>
   <span class="chip">🏗️ تسليم <b><span class="num">4,520</span></b> وحدة</span>
   <span class="chip">🌡️ حتى <b><span class="num">36°</span></b></span>
 </div>
 <!--DAILY-CONTENT-START-->
+<!--RESEARCH-REPORT
+run=2026-08-24 17:37 | window=2026-08-14..2026-08-24 | source=cowork-6-agents
+🛒 found=13 covered=1 written=12 total=27
+🏢 found=14 covered=4 written=13 total=31
+🍽️ found=8 covered=2 written=7 total=18
+🏬 found=9 covered=3 written=8 total=18
+🌾 found=14 covered=4 written=11 total=25
+📰 found=13 covered=2 written=12 total=29
+note=دمج أرشيف البوابة (94 بطاقة) مع حصاد 24 آب (76 بطاقة) وإزالة المكرّر؛ واستُعيدت ترويسات الأقسام السبع التي كانت قد ضاعت في رفعة يدوية.
+-->
 <h2><span class="sec-ico">⭐</span> أبرز اليوم <span class="count">5</span></h2>
 <div class="highlights">
-  <div class="item" data-date="2026-08-18">
-    <h3>أزمة المشمش المجفّف تتصدّر المشهد: منافسة آسيا الوسطى وتراجع الصادرات</h3>
-    <p>مشمش ملاطيا يُطرح بـ<span class="num">7–8</span> دولار للكيلو مقابل <span class="num">1.90</span> دولار لمنافسين من آسيا الوسطى، مع تراجع الصادرات حتى <span class="num">40%.</span> رئيس البورصة يشير إلى رِكولت متوقّع <span class="num">67,418</span> طناً وسعر تصدير <span class="num">260–280</span> ₺/كغ.</p>
-    <div class="meta"><span class="badge b-price"><span class="num">7–8</span>$ مقابل <span class="num">1.90</span>$</span><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">ملاطيا عام (كايسي/تصدير)</span><a class="src" href="https://www.malatyaguncel.com/8-dolarlik-malatya-kayisisina-1-90-dolarlik-rakip-3107692h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
+<div class="item" data-date="2026-08-31">
+    <h3>ذروة تسليم مساكن الزلزال: <span class="num">4.520</span> وحدة في آب وأكبر مرحلة يوم <span class="num">31</span> منه</h3>
+    <p>يشمل برنامج آب تسليم <span class="num">4.520</span> مسكناً و<span class="num">392</span> محلاً و<span class="num">7</span> مخابز على مراحل، سُلّم منها <span class="num">676</span> وحدة في حي Çöşnük و<span class="num">383</span> في Cirikpınar و<span class="num">250</span> في Çavuşoğlu. المرحلة الكبرى بـ<span class="num">3.009</span> وحدات في حي Taştepe يوم <span class="num">31</span> آب.</p>
+    <div class="meta"><span class="badge b-price">4.520 وحدة</span><span class="badge b-date">2026-08-31</span><span class="badge b-area">Battalgazi / Yeşilyurt</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28484545/malatyada-deprem-konutlarinda-agustos-seferberligi-4-bin-520-konut-teslim-edilecek" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-12">
-    <h3>إعمار ما بعد الزلزال: تسليم <span class="num">4,520</span> مسكناً و<span class="num">392</span> محلاً خلال أغسطس</h3>
-    <p>أعلن والي ملاطيا برنامج تسليم <span class="num">4,520</span> مسكناً و<span class="num">392</span> محلاً و<span class="num">7</span> أفران في أغسطس؛ من أبرزها <span class="num">3,009</span> مساكن بحي Taştepe (Battalgazi) يوم <span class="num">31</span> أغسطس و<span class="num">250</span> مسكناً بحي Çavuşoğlu (Yeşilyurt).</p>
-    <div class="meta"><span class="badge b-price"><span class="num">4,520</span> مسكناً + <span class="num">392</span> محلاً</span><span class="badge b-date"><span class="num">12</span> أغسطس</span><span class="badge b-area">Battalgazi وYeşilyurt</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28484545/malatyada-deprem-konutlarinda-agustos-seferberligi-4-bin-520-konut-teslim-edilecek" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+<div class="item" data-date="2026-08-28">
+    <h3>الأرصاد: <span class="num">36</span> درجة اليوم وأمطار رعدية الأربعاء</h3>
+    <p>العظمى المتوقعة اليوم <span class="num">36</span> درجة والصغرى <span class="num">20</span>، ثم تنخفض إلى <span class="num">34</span> غداً مع أمطار رعدية يوم الأربعاء <span class="num">26</span> آب. Doğanyol تقترب من <span class="num">40</span> درجة.</p>
+    <div class="meta"><span class="badge b-price">36°C / 20°C</span><span class="badge b-date">2026-08-28</span><span class="badge b-area">عموم الولاية</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28569079/meteorolojiden-malatya-icin-yeni-tahmin-sicakliklar-dusuyor-yagis-geliyor" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-21">
-    <h3>انقطاعات كهرباء واسعة يومَي <span class="num">18</span> و<span class="num">21</span> أغسطس تطال أكثر من <span class="num">100</span> حي</h3>
-    <p>صيانة مقرّرة قطعت التيار عن خمسة أقضية يوم <span class="num">18</span> أغسطس، ثم عن أكثر من مئة حي يوم <span class="num">21</span> أغسطس شملت Pütürge وDoğanyol (منتصف الليل–<span class="num">06:00</span>) وعدة أقضية نهاراً.</p>
-    <div class="meta"><span class="badge b-price">+<span class="num">100</span> حي</span><span class="badge b-date"><span class="num">21</span> أغسطس</span><span class="badge b-area">عدة أقضية</span><a class="src" href="https://www.pusulamalatya.com/21-agustos-ta-malatya-da-elektrikler-kesilecek-iste-kesinti-yasanacak-mahalleler/57236" target="_blank" rel="noopener">بوصلة ملاطيا ↗</a></div>
+<div class="item" data-date="2026-08-23">
+    <h3>أسعار سوق الجملة (الحال) ليوم <span class="num">23</span> آب: البطاطا من <span class="num">₺7</span> والثوم اليابس حتى <span class="num">₺170</span></h3>
+    <p>القائمة اليومية المرجعية للمستهلك: بصل يابس <span class="num">₺6–10</span>، بطيخ <span class="num">₺25–30</span>، عنب <span class="num">₺130–150</span> للكيلوغرام، مع خيار عند <span class="num">₺5</span> كأدنى سعر في السوق.</p>
+    <div class="meta"><span class="badge b-price">₺7–23 بطاطا · ₺140–170 ثوم</span><span class="badge b-date">2026-08-23</span><span class="badge b-area">سوق الجملة — Battalgazi</span><a class="src" href="https://www.bimalatya.com/hal-fiyatlari" target="_blank" rel="noopener">Malatya.com ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-22">
-    <h3>العقارات: Yeşilyurt الأعلى عند <span class="num">23,905</span> ₺/م² ومتوسّط الإيجار <span class="num">18,579</span> ₺</h3>
-    <p>متوسّط بيع الشقق في عموم ملاطيا <span class="num">22,373</span> ₺/م² (+<span class="num">20.9%</span> سنوياً)، وسجّل Yeşilyurt الأعلى بـ<span class="num">23,905</span> ₺/م². متوسّط الإيجار الشهري <span class="num">18,579</span> ₺ (<span class="num">138</span> ₺/م²).</p>
-    <div class="meta"><span class="badge b-price"><span class="num">23,905</span> ₺/م²</span><span class="badge b-date"><span class="num">22</span> أغسطس</span><span class="badge b-area">ملاطيا / Yeşilyurt</span><a class="src" href="https://www.emlakjet.com/satilik-daire/malatya-yesilyurt" target="_blank" rel="noopener">Emlakjet ↗</a></div>
+<div class="item" data-date="2026-08-18">
+    <h3>إقليم Malatya يتصدّر تركيا في ارتفاع أسعار المساكن بنسبة <span class="num">35,5%</span></h3>
+    <p>وفق مؤشر أسعار المساكن (KFE) للبنك المركزي التركي عن تموز، سجّل الإقليم الذي يضم Malatya أعلى ارتفاع سنوي في البلاد مقابل <span class="num">25%</span> للمعدل الوطني، مع تراجع فعلي بعد التضخم بنسبة <span class="num">5,1%</span>.</p>
+    <div class="meta"><span class="badge b-price">+35,5% سنوياً</span><span class="badge b-date">2026-08-18</span><span class="badge b-area">إقليم Malatya</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28538881/malatyada-ev-fiyatlari-turkiye-ortalamasini-ezdi-gecti-yuzde-355-artti" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-16">
-    <h3>اختتام مهرجان طريق الثقافة والغاسترونومي بمئات آلاف الزوار</h3>
-    <p>اختُتم Türkiye Kültür Yolu Festivali (<span class="num">8–16</span> أغسطس) في حديقة <span class="num">100.</span> Yıl Kent Parkı بحفلات مجانية (Ceza، Ferhat Göçer)، مع «شارع الغاسترونومي» و<span class="num">31</span> «نقطة لذّة» تُبرز مطبخ ملاطيا.</p>
-    <div class="meta"><span class="badge b-date"><span class="num">16</span> أغسطس</span><span class="badge b-area">ملاطيا – <span class="num">100.</span> Yıl Kent Parkı</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28533997/malatya-kultur-yolu-festivali-sona-erdi-kapanisi-ferhat-gocer-yapti" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+<div class="item" data-date="2026-08-17">
+    <h3>موسم المشمش: محصول <span class="num">67.418</span> طناً وسعر تصديري <span class="num">₺260–280</span> للكيلو</h3>
+    <p>رئيس بورصة ملاطيا التجارية Ramazan Özcan: وفرة العرض دفعت الأسعار للهبوط، وكلفة الإنتاج <span class="num">₺100–150</span>؛ والسؤال هذا الموسم ليس «بكم نبيع» بل «من سيشتري». مؤسسة TMO لم تتدخل بعد.</p>
+    <div class="meta"><span class="badge b-price">₺260–280/كغ · 67.418 طناً</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.malatyatime.com/haber/malatyanin-kayisi-gundeminde-kritik-soru-kaca-satilsin-degil-kim-alacak-117792" target="_blank" rel="noopener">Malatya Time ↗</a></div>
   </div>
 </div>
-<h2><span class="sec-ico">🛒</span> الأسعار والعروض <span class="count">16 عناصر</span></h2>
-  <div class="item" data-date="2026-08-16">
-    <h3>كتالوج BİM الأكتويل <span class="num">16–21</span> أغسطس ساري في فروع ملاطيا</h3>
-    <p>عروض أسبوعية بأيام طرح متدرّجة تشمل إلكترونيات ومنظّفات وأغذية؛ من أبرزها تلفزيون Dijitsu <span class="num">55</span>" QLED وهاتف Samsung A<span class="num">16.</span></p>
-    <div class="meta"><span class="badge b-price">Samsung A<span class="num">16</span> <span class="num">10.990</span> ₺ · Dijitsu <span class="num">55</span>" <span class="num">21.500</span> ₺</span><span class="badge b-date"><span class="num">16</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع BİM)</span><a class="src" href="https://www.yeniasir.com.tr/yasam/2026/08/16/bim-aktuel-16-18-19-21-agustos-2026-katalogu-iste-haftanin-indirimleri" target="_blank" rel="noopener">يني عصر ↗</a></div>
+<h2><span class="sec-ico">🛒</span> الأسعار والعروض <span class="count">27</span></h2>
+<div class="item" data-date="2026-08-30">
+    <h3>كتالوج تخفيضات Esenlik البلدية ساري من <span class="num">17</span> حتى <span class="num">30</span> آب</h3>
+    <p>أعلنت أسواق Esenlik التابعة لبلدية ملاطيا الكبرى كتالوج تخفيضاتها لنصف الشهر الثاني، مع خصم إضافي <span class="num">20%</span> على الوجبات الخفيفة ومنتجات الأطفال طوال آب.</p>
+    <div class="meta"><span class="badge b-price">خصم إضافي 20%</span><span class="badge b-date">2026-08-30</span><span class="badge b-area">فروع Esenlik — عموم ملاطيا</span><a class="src" href="https://www.okatalog.com/malatya/katalog-brosur/esenlik-market" target="_blank" rel="noopener">oKatalog ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-20">
-    <h3>كتالوج A<span class="num">101</span> «Aldın Aldın» <span class="num">20–27</span> أغسطس</h3>
-    <p>تشكيلة تكنولوجيا وأجهزة منزلية ووسائل نقل كهربائية سارية في فروع A<span class="num">101</span> بملاطيا ضمن الشبكة الوطنية.</p>
-    <div class="meta"><span class="badge b-price">Philips <span class="num">65</span>" <span class="num">4</span>K <span class="num">29.999</span> ₺ · دراجة Volta VB<span class="num">1</span> <span class="num">19.990</span> ₺</span><span class="badge b-date"><span class="num">20</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع A<span class="num">101</span>)</span><a class="src" href="https://www.aktuelbul.com/a101-20-agustos-2026-aktuel-urunler-katalogu.html" target="_blank" rel="noopener">Aktüelbul ↗</a></div>
+<div class="item" data-date="2026-08-28">
+    <h3>كتالوج BİM ليوم الجمعة <span class="num">28</span> آب: <span class="num">39</span> منتجاً في أدوات المطبخ والمنسوجات</h3>
+    <p>يركّز على أطقم الخزف والزجاجيات والسجاد القابل للغسل ومنسوجات المنزل، ولا يتضمّن مواد غذائية أساسية.</p>
+    <div class="meta"><span class="badge b-price">طقم خزف 18 قطعة ₺1.990 · سجادة ₺649</span><span class="badge b-date">2026-08-28</span><span class="badge b-area">فروع BİM — عموم ملاطيا</span><a class="src" href="https://aktuel-urunler.com/bim-28-agustos-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-19">
-    <h3>كتالوج ŞOK <span class="num">19–25</span> أغسطس وحملة «<span class="num">1</span> Alana <span class="num">1</span> Bedava»</h3>
-    <p>عروض تشمل حملة اشترِ <span class="num">1</span> واحصل على <span class="num">1</span> مجاناً ومستلزمات مدرسية مخفّضة، صالحة في فروع ŞOK بملاطيا.</p>
-    <div class="meta"><span class="badge b-price">سُجُق Özlem <span class="num">200</span>g (<span class="num">1</span>+<span class="num">1</span>) <span class="num">359</span> ₺ · شاي Çaykur <span class="num">1</span>kg <span class="num">359</span> ₺</span><span class="badge b-date"><span class="num">19</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع ŞOK)</span><a class="src" href="https://www.gzt.com/ekonomi/sok-19-agustos-2026-katalogu-sokta-1-alana-1-bedava-kampanyasi-basladi-sokta-bu-hafta-indirimde-neler-var-4252454" target="_blank" rel="noopener">GZT ↗</a></div>
+<div class="item" data-date="2026-08-27">
+    <h3>كتالوج A101 ليوم <span class="num">27</span> آب: تركيز على الأجبان والألبان والمشروبات</h3>
+    <p>تشكيلة واسعة من الأجبان الطازجة والمعتّقة واللبن والقهوة والعصائر، مع تصدّر أسعار الأجبان للعروض.</p>
+    <div class="meta"><span class="badge b-price">جبن أبيض 800غ ₺269 · لبنة 450غ ₺139,50</span><span class="badge b-date">2026-08-27</span><span class="badge b-area">فروع A101 — عموم ملاطيا</span><a class="src" href="https://aktuel-urunler.com/a101-27-agustos-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-20">
-    <h3>بروشور Migros «Migroskop» ساري <span class="num">20</span> أغسطس–<span class="num">9</span> سبتمبر</h3>
-    <p>مئات المنتجات وخيارات ماركات متعددة (ألبان، أجبان، معكرونة، مثلجات)؛ صالح في فروع Migros بملاطيا، والأسعار التفصيلية داخل ملفات الكتالوج.</p>
-    <div class="meta"><span class="badge b-date"><span class="num">20</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع Migros)</span><a class="src" href="https://www.kataloglar.com.tr/migros/" target="_blank" rel="noopener">Kataloglar ↗</a></div>
+<div class="item" data-date="2026-08-25">
+    <h3>كتالوج BİM ليوم الثلاثاء <span class="num">25</span> آب: <span class="num">92</span> منتجاً بينها الألبان واللحوم المصنّعة</h3>
+    <p>ثلاث صفحات تشمل منتجات التنظيف والعناية والوجبات الخفيفة والمقانق، وأبرز الأسعار في قسمَي الألبان واللحوم.</p>
+    <div class="meta"><span class="badge b-price">حليب 1ل ₺32,50 · سجق Torku 500غ ₺319</span><span class="badge b-date">2026-08-25</span><span class="badge b-area">فروع BİM — عموم ملاطيا</span><a class="src" href="https://aktuel-urunler.com/bim-25-agustos-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-22">
+<div class="item" data-date="2026-08-23">
+    <h3>قائمة الحال ليوم <span class="num">23</span> آب بالتفصيل</h3>
+    <p>تراوحت أسعار الجملة بين <span class="num">₺5</span> للخيار و<span class="num">₺170</span> للثوم اليابس، مع البطيخ <span class="num">₺25–30</span> والعنب <span class="num">₺130–150</span>.</p>
+    <div class="meta"><span class="badge b-price">₺5 – ₺170</span><span class="badge b-date">2026-08-23</span><span class="badge b-area">سوق الجملة المركزي</span><a class="src" href="https://www.bimalatya.com/hal-fiyatlari" target="_blank" rel="noopener">Malatya.com ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-22">
     <h3>صفحة عروض CarrefourSA لمنطقة Malatya PZ</h3>
     <p>فرص إقليمية تشمل الأجهزة الصغيرة ومنتجات العناية بالأطفال والمنظّفات، مع خصومات على «المنتج الثاني».</p>
     <div class="meta"><span class="badge b-price">حتى <span class="num">50%</span> على أجهزة صغيرة</span><span class="badge b-date"><span class="num">22</span> أغسطس</span><span class="badge b-area">ملاطيا عام (CarrefourSA/Malatya PZ)</span><a class="src" href="https://www.carrefoursa.com/malatya-pz/firsatlar/b/9002" target="_blank" rel="noopener">CarrefourSA ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-17">
-    <h3>بروشور أسواق Esenlik البلدية ساري <span class="num">17–30</span> أغسطس</h3>
-    <p>كتالوج سلسلة Esenlik التابعة لبلدية ملاطيا الكبرى، يشمل المواد الأساسية والطازجة واللحوم والألبان ومواد التنظيف.</p>
-    <div class="meta"><span class="badge b-date"><span class="num">17</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع Esenlik)</span><a class="src" href="https://www.okatalog.com/malatya/katalog-brosur/esenlik-market" target="_blank" rel="noopener">okatalog ↗</a></div>
+<div class="item" data-date="2026-08-21">
+    <h3>في حال ملاطيا: الأفوكادو يبلغ <span class="num">₺350</span> للكيلو والبطاطا تبدأ من <span class="num">₺8</span></h3>
+    <p>قائمة <span class="num">21</span> آب أظهرت فجوة سعرية ضخمة بين أغلى وأرخص المنتجات: التين الأسود <span class="num">₺180–200</span> والبامية <span class="num">₺130–150</span>، فيما بقي البطيخ عند <span class="num">₺8–10</span>.</p>
+    <div class="meta"><span class="badge b-price">أفوكادو ₺350 · كيوي ₺110–240</span><span class="badge b-date">2026-08-21</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.malatyasoz.com/malatya-halinde-bugun-dikkat-ceken-fiyat-kilosu-350-tlye-kadar-cikti" target="_blank" rel="noopener">Malatya Söz ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-14">
+<div class="item" data-date="2026-08-21">
+    <h3>انتقادات لشركة Esenlik البلدية: فروع تتوسّع واتصال مغلق مع المواطن</h3>
+    <p>مقال رأي يشير إلى افتتاح الفرع الـ<span class="num">32</span> لـEsenlik في آب برئاسة المدير العام Kadir Çelik، ويسجّل شكاوى المستهلكين حول الأسعار والنظافة وطوابير الصناديق وغياب الردّ على الاستفسارات.</p>
+    <div class="meta"><span class="badge b-price">الفرع رقم 32</span><span class="badge b-date">2026-08-21</span><span class="badge b-area">عموم ملاطيا</span><a class="src" href="https://malatyaflashaber.com/esenlikte-kasa-acik-iletisim-kapali/" target="_blank" rel="noopener">Malatya Flaş Haber ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
+    <h3>كتالوج A<span class="num">101</span> «Aldın Aldın» <span class="num">20–27</span> أغسطس</h3>
+    <p>تشكيلة تكنولوجيا وأجهزة منزلية ووسائل نقل كهربائية سارية في فروع A<span class="num">101</span> بملاطيا ضمن الشبكة الوطنية.</p>
+    <div class="meta"><span class="badge b-price">Philips <span class="num">65</span>" <span class="num">4</span>K <span class="num">29.999</span> ₺ · دراجة Volta VB<span class="num">1</span> <span class="num">19.990</span> ₺</span><span class="badge b-date"><span class="num">20</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع A<span class="num">101</span>)</span><a class="src" href="https://www.aktuelbul.com/a101-20-agustos-2026-aktuel-urunler-katalogu.html" target="_blank" rel="noopener">Aktüelbul ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
+    <h3>بروشور Migros «Migroskop» ساري <span class="num">20</span> أغسطس–<span class="num">9</span> سبتمبر</h3>
+    <p>مئات المنتجات وخيارات ماركات متعددة (ألبان، أجبان، معكرونة، مثلجات)؛ صالح في فروع Migros بملاطيا، والأسعار التفصيلية داخل ملفات الكتالوج.</p>
+    <div class="meta"><span class="badge b-date"><span class="num">20</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع Migros)</span><a class="src" href="https://www.kataloglar.com.tr/migros/" target="_blank" rel="noopener">Kataloglar ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
+    <h3>كتالوج A101 «Aldın Aldın» ليوم <span class="num">20</span> آب: أدوات منزلية وإلكترونيات</h3>
+    <p>تشكيلة من احتياجات المنزل والمطبخ والعناية الشخصية، تصدّرتها أجهزة صغيرة ومستلزمات السيارات والحقائب.</p>
+    <div class="meta"><span class="badge b-price">خلاط لاسلكي ₺599 · حقيبة سفر ₺999</span><span class="badge b-date">2026-08-20</span><span class="badge b-area">فروع A101 — عموم ملاطيا</span><a class="src" href="https://www.haberaktuel.com/a101-20-agustos-2026-katalogu-yayinda-iste-aldin-aldin-aktuel-urunleri-ve-fiyatlari-3475774" target="_blank" rel="noopener">Haber Aktüel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
+    <h3>فارق لافت بين أسعار الحال وأسعار بسطات أسواق الأحياء</h3>
+    <p>مقارنة أُجريت في <span class="num">20</span> آب بين أسعار الجملة وأسعار الأسواق الشعبية أظهرت فوارق كبيرة شملت البندورة والفلفل والبطاطا وعدداً من الخضار والفواكه الموسمية.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد رقم موحّد</span><span class="badge b-date">2026-08-20</span><span class="badge b-area">أسواق الأحياء — عموم ملاطيا</span><a class="src" href="https://www.malatyasoz.com/malatyada-gunun-ozeti-iste-bugun-yasananlar" target="_blank" rel="noopener">Malatya Söz ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-19">
+    <h3>كتالوج ŞOK <span class="num">19–25</span> أغسطس وحملة «<span class="num">1</span> Alana <span class="num">1</span> Bedava»</h3>
+    <p>عروض تشمل حملة اشترِ <span class="num">1</span> واحصل على <span class="num">1</span> مجاناً ومستلزمات مدرسية مخفّضة، صالحة في فروع ŞOK بملاطيا.</p>
+    <div class="meta"><span class="badge b-price">سُجُق Özlem <span class="num">200</span>g (<span class="num">1</span>+<span class="num">1</span>) <span class="num">359</span> ₺ · شاي Çaykur <span class="num">1</span>kg <span class="num">359</span> ₺</span><span class="badge b-date"><span class="num">19</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع ŞOK)</span><a class="src" href="https://www.gzt.com/ekonomi/sok-19-agustos-2026-katalogu-sokta-1-alana-1-bedava-kampanyasi-basladi-sokta-bu-hafta-indirimde-neler-var-4252454" target="_blank" rel="noopener">GZT ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-19">
+    <h3>رقابة مشدّدة على أسواق الأحياء في Battalgazi انطلاقاً من سوق Üçbağlar</h3>
+    <p>جولات للضابطة البلدية شملت وضوح ملصقات الأسعار ومعايرة الموازين وترتيب البسطات وعدم إغلاق ممرات المشاة، وستستمر لتشمل كل أسواق القضاء.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-19</span><span class="badge b-area">Battalgazi — حي Üçbağlar</span><a class="src" href="https://www.malatyaguncel.com/battalgazi-de-semt-pazarlarina-siki-denetim-3107817h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-19">
+    <h3>كتالوج ŞOK لـ<span class="num">19</span> آب: <span class="num">41</span> منتجاً بينها عروض «اشترِ واحداً واحصل على الثاني مجاناً»</h3>
+    <p>شمل الكتالوج المقانق والمثلجات والمشروبات إضافة إلى الشاي الأسود والبرغل والزيتون.</p>
+    <div class="meta"><span class="badge b-price">شاي 1كغ ₺359 · برغل 1كغ ₺49,90</span><span class="badge b-date">2026-08-19</span><span class="badge b-area">فروع ŞOK — عموم ملاطيا</span><a class="src" href="https://aktuel-urunler.com/sok-19-agustos-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
+    <h3>كتالوج BİM الأكتويل <span class="num">16–21</span> أغسطس ساري في فروع ملاطيا</h3>
+    <p>عروض أسبوعية بأيام طرح متدرّجة تشمل إلكترونيات ومنظّفات وأغذية؛ من أبرزها تلفزيون Dijitsu <span class="num">55</span>" QLED وهاتف Samsung A<span class="num">16.</span></p>
+    <div class="meta"><span class="badge b-price">Samsung A<span class="num">16</span> <span class="num">10.990</span> ₺ · Dijitsu <span class="num">55</span>" <span class="num">21.500</span> ₺</span><span class="badge b-date"><span class="num">16</span> أغسطس</span><span class="badge b-area">ملاطيا عام (فروع BİM)</span><a class="src" href="https://www.yeniasir.com.tr/yasam/2026/08/16/bim-aktuel-16-18-19-21-agustos-2026-katalogu-iste-haftanin-indirimleri" target="_blank" rel="noopener">يني عصر ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
+    <h3>حملة تخفيضات في Tarım Kredi Market تشمل <span class="num">67</span> مجموعة منتجات</h3>
+    <p>تخفيضات على المواد الأساسية والألبان والمقانق، شملت زيت عباد الشمس والأرز والحمص ومستلزمات المخللات.</p>
+    <div class="meta"><span class="badge b-price">زيت 2ل ₺209 · أرز 1كغ ₺83,50 · حمص ₺59,90</span><span class="badge b-date">2026-08-16</span><span class="badge b-area">عموم ملاطيا</span><a class="src" href="https://www.evrendenalhaberi.com/tarim-kredi-markette-agustos-icin-fiyat-indirimleri-mujdesi/" target="_blank" rel="noopener">Evrenden Al Haberi ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-14">
     <h3>فوارق لافتة في سوق الجملة (Hal): أفوكادو حتى <span class="num">350</span> ₺ وبطاطا من <span class="num">8</span> ₺</h3>
     <p>قائمة البلدية ليوم <span class="num">14</span> أغسطس تُظهر فجوة سعرية واسعة؛ المشمش الطازج <span class="num">90–100</span> ₺/كغ والكيوي <span class="num">110–200</span> ₺ والثوم الجاف <span class="num">75–110</span> ₺.</p>
     <div class="meta"><span class="badge b-price">أفوكادو حتى <span class="num">350</span> ₺ · بطاطا من <span class="num">8</span> ₺ · مشمش <span class="num">90–100</span> ₺</span><span class="badge b-date"><span class="num">14</span> أغسطس</span><span class="badge b-area">ملاطيا عام (سوق الجملة/Hal)</span><a class="src" href="https://www.malatyasoz.com/avokado-350-patates-8-lira-malatya-halindeki-fiyat-farki-dikkat-cekti" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-13">
+<div class="item" data-date="2026-08-13">
     <h3>أسعار سوق الجملة (Hal) في ملاطيا — قائمة <span class="num">13</span> أغسطس</h3>
     <p>تحديث يومي رسمي؛ تجاوزت عدة منتجات حاجز <span class="num">100</span> ₺ مع دخول التين الأبيض والقرانيا بأسعار مرتفعة.</p>
     <div class="meta"><span class="badge b-price">تين أبيض <span class="num">150–200</span> ₺ · قرانيا <span class="num">130–160</span> ₺ · مشمش <span class="num">90–100</span> ₺</span><span class="badge b-date"><span class="num">13</span> أغسطس</span><span class="badge b-area">ملاطيا عام (سوق الجملة/Hal)</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28511191/malatya-hal-fiyatlari-13-agustos-2026-iste-guncel-sebze-ve-meyve-fiyatlari" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
   </div>
-<div class="item" data-date="2026-07-07">
-  <h3>BİM — سلع أساسية: زيت عبّاد الشمس 425₺ وحليب 39.50₺</h3>
-  <p>نشرة الثلاثاء <span class="num">7</span> يوليو ركّزت على السلع الأساسية: زيت عبّاد الشمس <span class="num">425</span>₺، حليب <span class="num">39.50</span>₺، أرز عثمانجيك، سجق دانا، أجبان وبروتين.</p>
-  <div class="meta"><span class="badge b-price">زيت <span class="num">425</span>₺</span><span class="badge b-date"><span class="num">7</span> يوليو</span><a class="src" href="https://www.ilkhaber-gazetesi.com/yasam/bim-7-temmuz-sali-aktuel-katalogu-yayinda-aycicek-yagi-425-tl-sut-39-50-tl-423764" target="_blank" rel="noopener">İlkhaber ↗</a></div>
-</div>
 <div class="item" data-date="2026-07-14">
   <h3>BİM — نشرة البقالة الأسبوعية (14 يوليو): ألبان ولحوم</h3>
   <p>حليب Aynes <span class="num">34.50</span>₺ · كاشار Binvezir <span class="num">349</span>₺/كغ · كاورما دانا Torku <span class="num">999</span>₺/كغ · دونر دجاج <span class="num">249</span>₺/كغ · لبنة İçim <span class="num">169</span>₺.</p>
   <div class="meta"><span class="badge b-price">كاشار <span class="num">349</span>₺</span><span class="badge b-date"><span class="num">14</span> يوليو</span><a class="src" href="https://aktuel-urunler.com/bim-14-temmuz-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-05">
-  <h3>سوق الجملة (Hal): الكيوي يقفز إلى 200₺ والمشمش مستقر 90–100₺</h3>
-  <p>ارتفاع سقف الكيوي من <span class="num">150</span> إلى <span class="num">200</span>₺/كغ، والفليفلة إلى <span class="num">70</span>₺، ودخول عنب Kardinal <span class="num">75–85</span>₺. المشمش الطازج مستقر <span class="num">90–100</span>₺.</p>
-  <div class="meta"><span class="badge b-price">كيوي <span class="num">200</span>₺</span><span class="badge b-date"><span class="num">5</span> يوليو</span><span class="badge b-area">سوق جملة ملاطيا</span><a class="src" href="https://www.malatyasoz.com/malatya-halinde-dikkat-ceken-degisim-o-meyve-200-tlye-yukseldi" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-09">
-  <h3>A101 «Aldın Aldın» — إلكترونيات وتبريد صيفي (9 يوليو)</h3>
-  <p>Samsung 50" QLED <span class="num">28,999</span>₺ · مروحة/سبيل ماء Kiwi <span class="num">10,999</span>₺ · مشروبات: كولا <span class="num">1.25</span>ل <span class="num">65</span>₺ · Fanta/Sprite <span class="num">1.5</span>ل <span class="num">69.50</span>₺.</p>
-  <div class="meta"><span class="badge b-price">QLED <span class="num">28,999</span>₺</span><span class="badge b-date"><span class="num">9</span> يوليو</span><a class="src" href="https://aktuel-urunler.com/a101-9-temmuz-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
 </div>
 <div class="item" data-date="2026-07-14">
   <h3>ŞOK — كتالوج الفرص (11–14 يوليو): أجهزة وأدوات صيفية</h3>
   <p>مكيّف Samsung 12,000 BTU <span class="num">28,999</span>₺ · مكنسة عمودية Torima <span class="num">8,999</span>₺ · ترمس Relax 2ل <span class="num">499</span>₺ · طقم بيكنيك 6 أشخاص <span class="num">249</span>₺.</p>
   <div class="meta"><span class="badge b-price">مكيّف <span class="num">28,999</span>₺</span><span class="badge b-date"><span class="num">11–14</span> يوليو</span><a class="src" href="https://www.gzt.com/ekonomi/sok-11-14-temmuz-2026-katalogu-sokta-bu-hafta-indirimde-neler-var-aktuel-urunler-katalogu-4240202" target="_blank" rel="noopener">GZT ↗</a></div>
 </div>
-<div class="item" data-date="2026-07-10">
-  <h3>BİM — نشرة المنزليات والنسيج الصيفي (10 يوليو)</h3>
-  <p>خزانة قماش <span class="num">799</span>₺ · سجاد Kilim 120×180 <span class="num">299</span>₺ · أكواب LAV 3 قطع <span class="num">149</span>₺ · تيشيرت Lee <span class="num">329</span>₺. (لا مواد غذائية في هذه النشرة.)</p>
-  <div class="meta"><span class="badge b-price">سجاد <span class="num">299</span>₺</span><span class="badge b-date"><span class="num">10</span> يوليو</span><a class="src" href="https://aktuel-urunler.com/bim-10-temmuz-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
+<div class="item" data-date="2026-07-14">
+  <h3>Migros و CarrefourSA — حملات وطنية سارية في فروع ملاطيا</h3>
+  <p>Migros «Seç Al» وخصومات متعدّدة بهدايا، وCarrefourSA صفحة الحملات وكوبونات — تسري وطنياً في فروع ملاطيا. لم تتوفّر أسعار غذائية محلية مفصّلة للفترة.</p>
+  <div class="meta"><span class="badge b-date">تموز 2026</span><a class="src" href="https://www.migros.com.tr/sec-al-kampanyasi-l-bbcadc1" target="_blank" rel="noopener">Migros ↗</a></div>
 </div>
 <div class="item" data-date="2026-07-13">
   <h3>سلسلة Esenlik البلدية — حملات نهاية الأسبوع</h3>
   <p>سلسلة بلدية المدينة الكبرى (تاريخياً ~<span class="num">57%</span> من تجزئة ملاطيا) تُشغّل «Cuma'dan Pazara» و«Hafta Sonu İndirimleri» (13 يوليو) وكتالوج تموز. الأسعار داخل الكتالوجات القابلة للتحميل.</p>
   <div class="meta"><span class="badge b-date"><span class="num">9–13</span> يوليو</span><span class="badge b-area">فروع ملاطيا</span><a class="src" href="https://esenlik.com.tr/kampanyalar" target="_blank" rel="noopener">Esenlik ↗</a></div>
 </div>
-<div class="item" data-date="2026-07-14">
-  <h3>Migros و CarrefourSA — حملات وطنية سارية في فروع ملاطيا</h3>
-  <p>Migros «Seç Al» وخصومات متعدّدة بهدايا، وCarrefourSA صفحة الحملات وكوبونات — تسري وطنياً في فروع ملاطيا. لم تتوفّر أسعار غذائية محلية مفصّلة للفترة.</p>
-  <div class="meta"><span class="badge b-date">تموز 2026</span><a class="src" href="https://www.migros.com.tr/sec-al-kampanyasi-l-bbcadc1" target="_blank" rel="noopener">Migros ↗</a></div>
+<div class="item" data-date="2026-07-10">
+  <h3>BİM — نشرة المنزليات والنسيج الصيفي (10 يوليو)</h3>
+  <p>خزانة قماش <span class="num">799</span>₺ · سجاد Kilim 120×180 <span class="num">299</span>₺ · أكواب LAV 3 قطع <span class="num">149</span>₺ · تيشيرت Lee <span class="num">329</span>₺. (لا مواد غذائية في هذه النشرة.)</p>
+  <div class="meta"><span class="badge b-price">سجاد <span class="num">299</span>₺</span><span class="badge b-date"><span class="num">10</span> يوليو</span><a class="src" href="https://aktuel-urunler.com/bim-10-temmuz-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
 </div>
-<h2><span class="sec-ico">🏢</span> العقارات والأراضي <span class="count">19 عناصر</span></h2>
-  <div class="item" data-date="2026-08-22">
+<div class="item" data-date="2026-07-09">
+  <h3>A101 «Aldın Aldın» — إلكترونيات وتبريد صيفي (9 يوليو)</h3>
+  <p>Samsung 50" QLED <span class="num">28,999</span>₺ · مروحة/سبيل ماء Kiwi <span class="num">10,999</span>₺ · مشروبات: كولا <span class="num">1.25</span>ل <span class="num">65</span>₺ · Fanta/Sprite <span class="num">1.5</span>ل <span class="num">69.50</span>₺.</p>
+  <div class="meta"><span class="badge b-price">QLED <span class="num">28,999</span>₺</span><span class="badge b-date"><span class="num">9</span> يوليو</span><a class="src" href="https://aktuel-urunler.com/a101-9-temmuz-2026-aktuel-urunler-katalogu/" target="_blank" rel="noopener">Aktüel Ürünler ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-07">
+  <h3>BİM — سلع أساسية: زيت عبّاد الشمس 425₺ وحليب 39.50₺</h3>
+  <p>نشرة الثلاثاء <span class="num">7</span> يوليو ركّزت على السلع الأساسية: زيت عبّاد الشمس <span class="num">425</span>₺، حليب <span class="num">39.50</span>₺، أرز عثمانجيك، سجق دانا، أجبان وبروتين.</p>
+  <div class="meta"><span class="badge b-price">زيت <span class="num">425</span>₺</span><span class="badge b-date"><span class="num">7</span> يوليو</span><a class="src" href="https://www.ilkhaber-gazetesi.com/yasam/bim-7-temmuz-sali-aktuel-katalogu-yayinda-aycicek-yagi-425-tl-sut-39-50-tl-423764" target="_blank" rel="noopener">İlkhaber ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-05">
+  <h3>سوق الجملة (Hal): الكيوي يقفز إلى 200₺ والمشمش مستقر 90–100₺</h3>
+  <p>ارتفاع سقف الكيوي من <span class="num">150</span> إلى <span class="num">200</span>₺/كغ، والفليفلة إلى <span class="num">70</span>₺، ودخول عنب Kardinal <span class="num">75–85</span>₺. المشمش الطازج مستقر <span class="num">90–100</span>₺.</p>
+  <div class="meta"><span class="badge b-price">كيوي <span class="num">200</span>₺</span><span class="badge b-date"><span class="num">5</span> يوليو</span><span class="badge b-area">سوق جملة ملاطيا</span><a class="src" href="https://www.malatyasoz.com/malatya-halinde-dikkat-ceken-degisim-o-meyve-200-tlye-yukseldi" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
+</div>
+<h2><span class="sec-ico">🏢</span> العقارات والأراضي <span class="count">31</span></h2>
+<div class="item" data-date="2026-09-16">
+    <h3>تعليق مخططات تنظيمية في <span class="num">8</span> أحياء بـYeşilyurt ومهلة اعتراض <span class="num">30</span> يوماً</h3>
+    <p>عُلّقت تطبيقات المادة <span class="num">18</span> من قانون التعمير رقم <span class="num">3194</span> في Yeşiltepe وÇavuşoğlu وAşağıbağlar وKaragöz وKonak وTecde وSütlüce وYavuz Selim.</p>
+    <p>مدة العرض العلني من <span class="num">17</span> آب حتى <span class="num">16</span> أيلول، وعلى أصحاب الأراضي مراجعة لوحة الإعلانات البلدية خلالها.</p>
+    <div class="meta"><span class="badge b-price">مهلة 30 يوماً</span><span class="badge b-date">2026-09-16</span><span class="badge b-area">Yeşilyurt</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28562328/malatyada-bu-mahallelerde-arsasi-olanlar-dikkat-karar-askiya-cikti" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-22">
     <h3>متوسّط بيع الشقق في عموم ملاطيا نحو <span class="num">22,373</span> ₺/م²</h3>
     <p>ارتفاع سنوي <span class="num">20.9%</span>، بمتوسّط سعر إعلان <span class="num">3,579,680</span> ₺ ضمن <span class="num">394</span> إعلاناً وعائد إيجاري تقديري <span class="num">7.38%.</span></p>
     <div class="meta"><span class="badge b-price"><span class="num">22,373</span> ₺/م² (+<span class="num">20.9%</span>)</span><span class="badge b-date"><span class="num">22</span> أغسطس</span><span class="badge b-area">ملاطيا (عموم الولاية)</span><a class="src" href="https://www.emlakjet.com/satilik-daire/malatya" target="_blank" rel="noopener">Emlakjet ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-22">
+<div class="item" data-date="2026-08-22">
     <h3>متوسّط إيجار الشقق في ملاطيا <span class="num">18,579</span> ₺ شهرياً (<span class="num">138</span> ₺/م²)</h3>
     <p>ارتفاع سنوي <span class="num">19.8%</span>؛ تراوحت الإيجارات المعروضة بين <span class="num">10,000</span> و<span class="num">45,000</span> ₺ ضمن <span class="num">209</span> إعلانات.</p>
     <div class="meta"><span class="badge b-price"><span class="num">18,579</span> ₺/شهر · <span class="num">138</span> ₺/م²</span><span class="badge b-date"><span class="num">22</span> أغسطس</span><span class="badge b-area">ملاطيا (عموم الولاية)</span><a class="src" href="https://www.emlakjet.com/kiralik-daire/malatya" target="_blank" rel="noopener">Emlakjet ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-22">
+<div class="item" data-date="2026-08-22">
     <h3>Yeşilyurt الأعلى لبيع الشقق عند <span class="num">23,905</span> ₺/م²</h3>
     <p>أعلى متوسّط سعر متر بالولاية بارتفاع <span class="num">30.9%</span> سنوياً، بمتوسّط إعلان <span class="num">4,183,375</span> ₺ ضمن <span class="num">232</span> إعلاناً.</p>
     <div class="meta"><span class="badge b-price"><span class="num">23,905</span> ₺/م² (+<span class="num">30.9%</span>)</span><span class="badge b-date"><span class="num">22</span> أغسطس</span><span class="badge b-area">Yeşilyurt</span><a class="src" href="https://www.emlakjet.com/satilik-daire/malatya-yesilyurt" target="_blank" rel="noopener">Emlakjet ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-20">
-    <h3>بيع الشقق في Battalgazi عند <span class="num">21,507</span> ₺/م²</h3>
-    <p>ارتفاع سنوي <span class="num">25.8%</span> بمتوسّط سعر إعلان <span class="num">3,010,980</span> ₺ ضمن <span class="num">163</span> إعلاناً؛ ومتوسّط الإيجار <span class="num">16,171</span> ₺ شهرياً.</p>
-    <div class="meta"><span class="badge b-price"><span class="num">21,507</span> ₺/م² (+<span class="num">25.8%</span>) · إيجار <span class="num">16,171</span> ₺</span><span class="badge b-date"><span class="num">20</span> أغسطس</span><span class="badge b-area">Battalgazi</span><a class="src" href="https://www.emlakjet.com/satilik-daire/malatya-battalgazi" target="_blank" rel="noopener">Emlakjet ↗</a></div>
-  </div>
-  <div class="item" data-date="2026-08-22">
+<div class="item" data-date="2026-08-22">
     <h3>بساتين المشمش والبيّارات في ملاطيا بمتوسّط <span class="num">5,820</span> ₺/م²</h3>
     <p>ارتفاع سنوي <span class="num">20.3%</span> ضمن <span class="num">76</span> إعلاناً؛ النطاق من <span class="num">410,000</span> ₺ لبستان <span class="num">25,500</span> م² في Akçadağ إلى <span class="num">30</span> مليون ₺ لبستان <span class="num">100</span> دونم في Kuluncak.</p>
     <div class="meta"><span class="badge b-price"><span class="num">5,820</span> ₺/م² · النطاق <span class="num">0.41–30</span> مليون ₺</span><span class="badge b-date"><span class="num">22</span> أغسطس</span><span class="badge b-area">ملاطيا (Akçadağ، Kuluncak…)</span><a class="src" href="https://www.emlakjet.com/satilik-bag-bahce/malatya" target="_blank" rel="noopener">Emlakjet ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-18">
-    <h3>تحليل سوق الإيجار: قفزة ما بعد الزلزال وتوقّع ضغط نزولي</h3>
-    <p>نطاقات حالية: Battalgazi <span class="num">15,000–25,000</span> ₺، Yeşilyurt <span class="num">18,000–30,000</span> ₺، مناطق TOKİ الاقتصادية <span class="num">8,000–14,000</span> ₺؛ ويُتوقّع أن يخفّض المعروض الجديد الأسعار.</p>
-    <div class="meta"><span class="badge b-price">إيجارات <span class="num">8,000–30,000</span> ₺/شهر</span><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">ملاطيا (Battalgazi، Yeşilyurt، Çöşnük، Tecde)</span><a class="src" href="https://www.malatyasoz.com/malatyada-kiracilar-icin-kritik-donem-konut-arzi-fiyatlari-dusurebilir" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
+<div class="item" data-date="2026-08-22">
+    <h3>ماذا سيحلّ مكان سوق الحاويات المجاور لمبنى بلدية ملاطيا الكبرى؟</h3>
+    <p>يتحدث التجار عن خطط لتحويل الموقع إلى ميدان عام مع مسجد أكبر، دون تأكيد رسمي، على أن تبدأ الإزالة بعد كانون الأول.</p>
+    <p>ويعترض الباعة مطالبين بالبقاء كمستأجرين بإيجار شهري رمزي بعد الاستثمارات التي ضخّوها في محالهم.</p>
+    <div class="meta"><span class="badge b-price">إزالة بعد كانون الأول</span><span class="badge b-date">2026-08-22</span><span class="badge b-area">Battalgazi</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28564104/malatya-buyuksehir-belediyesi-yanindaki-konteyner-dukkanlarinin-yerine-ne-yapilacagi-belli-oldu" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-21">
+<div class="item" data-date="2026-08-21">
     <h3>مشروع التحوّل الحضري في Akpınar–Halfettin بمرحلته النهائية</h3>
     <p>أعمال بنية تحتية وفوقية نهائية وإعادة تصميم شارع Akpınar بأربعة مسارات (عرض <span class="num">30</span> م) مع تجديد كامل للمرافق، ومساكن ومحال ومكاتب جديدة.</p>
     <div class="meta"><span class="badge b-date"><span class="num">21</span> أغسطس</span><span class="badge b-area">ملاطيا المركز / Akpınar–Halfettin</span><a class="src" href="https://www.malatyaguncel.com/malatya-nin-kalbinde-buyuk-donusum-akpinar-da-fin-3108105h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-12">
+<div class="item" data-date="2026-08-21">
+    <h3>Emlak Konut تعيد تشكيل قلب ملاطيا التجاري: شارع Akpınar بعرض <span class="num">30</span> متراً وأربعة مسارب</h3>
+    <p>ضمن إعادة الإعمار بإشراف وزارة البيئة والتعمير، يُعاد تنظيم المحور مع تجديد كامل لشبكات المياه والصرف والغاز والكهرباء والاتصالات.</p>
+    <p>يشمل المشروع وحدات سكنية ومحلات ومكاتب ومواقف تحت أرضية، وسيُمنع الوقوف على الشارع فور تشغيل المواقف.</p>
+    <div class="meta"><span class="badge b-price">30 متراً / 4 مسارب</span><span class="badge b-date">2026-08-21</span><span class="badge b-area">Battalgazi — Akpınar وHalfettin</span><a class="src" href="https://www.malatyadan.com/haber/malatyanin-kalbinde-buyuk-donusum-iste-yeni-akpinar-31850" target="_blank" rel="noopener">Malatyadan ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
+    <h3>بيع الشقق في Battalgazi عند <span class="num">21,507</span> ₺/م²</h3>
+    <p>ارتفاع سنوي <span class="num">25.8%</span> بمتوسّط سعر إعلان <span class="num">3,010,980</span> ₺ ضمن <span class="num">163</span> إعلاناً؛ ومتوسّط الإيجار <span class="num">16,171</span> ₺ شهرياً.</p>
+    <div class="meta"><span class="badge b-price"><span class="num">21,507</span> ₺/م² (+<span class="num">25.8%</span>) · إيجار <span class="num">16,171</span> ₺</span><span class="badge b-date"><span class="num">20</span> أغسطس</span><span class="badge b-area">Battalgazi</span><a class="src" href="https://www.emlakjet.com/satilik-daire/malatya-battalgazi" target="_blank" rel="noopener">Emlakjet ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
+    <h3>تسليم مفاتيح <span class="num">59</span> مسكناً ريفياً في حي Darıca بقضاء Akçadağ</h3>
+    <p>أعلن والي Malatya، Seddar Yavuz، بدء التسليم اعتباراً من الجمعة <span class="num">21</span> آب ضمن برنامج إعادة إعمار المناطق الريفية بعد زلزال <span class="num">6</span> شباط.</p>
+    <div class="meta"><span class="badge b-price">59 مسكناً</span><span class="badge b-date">2026-08-20</span><span class="badge b-area">Akçadağ — حي Darıca</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28552004/akcadag-daricada-deprem-konutlarinda-anahtar-heyecani-59-konut-teslim-ediliyor" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-19">
+    <h3>TOKİ تجري قرعة تحديد الشقق لـ<span class="num">73</span> مسكناً اجتماعياً في قضاء Kale</h3>
+    <p>القرعة شملت <span class="num">22</span> وحدة <span class="num">2+1</span> و<span class="num">51</span> وحدة <span class="num">3+1</span>، بدفعة أولى <span class="num">10%</span> وتقسيط <span class="num">240</span> شهراً عبر Ziraat Bankası.</p>
+    <p>التوقيع على العقود بين <span class="num">7</span> و<span class="num">11</span> أيلول، وسقف دخل الأسرة <span class="num">₺127.000</span> سنوياً.</p>
+    <div class="meta"><span class="badge b-price">دفعة 10% · 240 قسطاً</span><span class="badge b-date">2026-08-19</span><span class="badge b-area">Kale</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28546630/toki-malatyada-22-tane-11-51-tane-31-daire-icin-konut-belirleme-kurasi-cekecek" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-18">
+    <h3>تحليل سوق الإيجار: قفزة ما بعد الزلزال وتوقّع ضغط نزولي</h3>
+    <p>نطاقات حالية: Battalgazi <span class="num">15,000–25,000</span> ₺، Yeşilyurt <span class="num">18,000–30,000</span> ₺، مناطق TOKİ الاقتصادية <span class="num">8,000–14,000</span> ₺؛ ويُتوقّع أن يخفّض المعروض الجديد الأسعار.</p>
+    <div class="meta"><span class="badge b-price">إيجارات <span class="num">8,000–30,000</span> ₺/شهر</span><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">ملاطيا (Battalgazi، Yeşilyurt، Çöşnük، Tecde)</span><a class="src" href="https://www.malatyasoz.com/malatyada-kiracilar-icin-kritik-donem-konut-arzi-fiyatlari-dusurebilir" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-18">
+    <h3>مؤشر البنك المركزي: أسعار مساكن إقليم Malatya ترتفع <span class="num">35,5%</span> سنوياً وتتصدر تركيا</h3>
+    <p>الإقليم يضم Malatya وElazığ وBingöl وTunceli وVan وBitlis وHakkâri وMuş، والمعدل الوطني <span class="num">25%</span>.</p>
+    <p>وبعد خصم التضخم تراجعت الأسعار فعلياً بنسبة <span class="num">5,1%</span> سنوياً.</p>
+    <div class="meta"><span class="badge b-price">+35,5% مقابل 25% وطنياً</span><span class="badge b-date">2026-08-18</span><span class="badge b-area">إقليم Malatya</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28538881/malatyada-ev-fiyatlari-turkiye-ortalamasini-ezdi-gecti-yuzde-355-artti" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-17">
+    <h3>انطلاق برنامج «Yarısı Bizden» وMalatya ضمن المدن ذات الأولوية</h3>
+    <p>يشمل البرنامج الوطني تمليك <span class="num">2,5</span> مليون مواطن على مدى <span class="num">25</span> عاماً، إضافة إلى <span class="num">500</span> ألف وحدة سكن اجتماعي للإيجار و<span class="num">150</span> ألف وحدة تحول عمراني سنوياً.</p>
+    <p>Malatya مدرجة كمدينة أولوية بسبب إعادة الإعمار، مع تركيز على الأزواج الشباب والأسر الجديدة.</p>
+    <div class="meta"><span class="badge b-price">2,5 مليون مستفيد / 25 عاماً</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">عموم المحافظة</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28533898/konut-projesinde-yeni-donem-malatyada-yarisi-bizden-donemi-basliyor" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-17">
+    <h3>Yeşilyurt تتصدر أسعار الأراضي في ملاطيا وBattalgazi في المرتبة الثانية</h3>
+    <p>التوسع العمراني في أحياء Bostanbaşı وYakınca يدفع أسعار Yeşilyurt للصدارة، تليها Battalgazi قرب مركز المدينة.</p>
+    <p>ينبّه التقرير إلى تقييم سعر المتر مع صفة التنظيم والموقع معاً، وإلى الفجوة بين أسعار الإعلانات والقيم الرايجة البلدية؛ ولم تُنشر أرقام <span class="num">₺/م²</span> محدّدة.</p>
+    <div class="meta"><span class="badge b-price">لا أرقام ₺/م² منشورة</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">Yeşilyurt / Battalgazi</span><a class="src" href="https://www.busabahmalatya.com/malatyada-arsa-fiyatlarinda-hangi-ilce-onde-verilerde-en-degerli-bolgeler" target="_blank" rel="noopener">Bu Sabah Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-17">
+    <h3>مستجدّات مساكن Şehit Fevzi وKileyik وİkizce</h3>
+    <p>أُنجزت وحدات TOKİ في حي Şehit Fevzi بـBattalgazi وبدأ سكنها، فيما تتواصل الأعمال في منطقة Kileyik بـYeşilyurt استعداداً للتسليم.</p>
+    <p>المستحقون الذين رفضوا خيار المسكن القروي وُجّهوا إلى مشروعَي Ardıçtepe وİkizce حيث ما زالت الإنشاءات جارية.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">Battalgazi / Yeşilyurt</span><a class="src" href="https://www.busabahmalatya.com/hak-sahiplerinin-gozu-bu-bolgelerde-sehit-fevzi-kileyik-ve-ikizcede-konutlarda-son-durum" target="_blank" rel="noopener">Bu Sabah Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
+    <h3>أرخص شقة <span class="num">1+1</span> للإيجار في Yeşilyurt تبلغ <span class="num">₺8.500</span> شهرياً</h3>
+    <p>الوحدة في حي Yavuz Selim، مساحتها <span class="num">60</span> م² إجمالي و<span class="num">50</span> م² صافي، بالطابق الثالث، وعمر البناء <span class="num">11–15</span> سنة، بتدفئة غاز طبيعي ودون شرفة أو مصعد.</p>
+    <p>تشير المادة إلى أن الكلفة الفعلية أعلى بعد إضافة التأمين ورسوم البناء ومصاريف الانتقال.</p>
+    <div class="meta"><span class="badge b-price">₺8.500/شهر ≈ ₺142/م²</span><span class="badge b-date">2026-08-16</span><span class="badge b-area">Yeşilyurt — حي Yavuz Selim</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28527777/malatya-yesilyurt-ilcesinin-en-dusuk-kiralik-daiesi-8-bin-500-tl-oldu" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
+    <h3>TOKİ تطرح شقة <span class="num">3+1</span> في منطقة تحوّل Beydağı بـ<span class="num">₺4.497.945</span></h3>
+    <p>ضمن مزاد لـ<span class="num">540</span> عقاراً في <span class="num">51</span> ولاية بقيمة تتجاوز <span class="num">2,9</span> مليار ليرة؛ الشقة جاهزة للسكن بمساحة <span class="num">84,38</span> م² صافي و<span class="num">115,3</span> م² إجمالي.</p>
+    <p>دفعة أولى <span class="num">25%</span> وتقسيط <span class="num">120</span> شهراً مرتبط بمؤشر ÜFE عبر Halkbank فرع Beydağı، وانطلق المزاد في <span class="num">19</span> آب.</p>
+    <div class="meta"><span class="badge b-price">₺4.497.945 ≈ ₺39.010/م²</span><span class="badge b-date">2026-08-16</span><span class="badge b-area">Battalgazi — Beydağı</span><a class="src" href="https://www.busabahmalatya.com/tokiden-51-ilde-dev-muzayede-gozler-malatya-beydagindaki-o-daireye-cevrildi" target="_blank" rel="noopener">Bu Sabah Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
+    <h3>تسليم <span class="num">30</span> مسكناً ريفياً في حي Keller بقضاء Akçadağ</h3>
+    <p>بدأ تسليم المفاتيح اعتباراً من الاثنين <span class="num">17</span> آب بإعلان من والي Malatya، Seddar Yavuz، ضمن برنامج المساكن الريفية المنجزة بعد الزلزال.</p>
+    <div class="meta"><span class="badge b-price">30 مسكناً</span><span class="badge b-date">2026-08-16</span><span class="badge b-area">Akçadağ — حي Keller</span><a class="src" href="https://www.malatyaguncel.com/akcadag-da-30-deprem-konutu-hak-sahiplerine-teslim-3107415h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-13">
+    <h3><span class="num">730</span> عملية بيع سكني في ملاطيا خلال تموز و<span class="num">75%</span> منها مساكن مستعملة</h3>
+    <p>وفق TÜİK: <span class="num">182</span> وحدة جديدة و<span class="num">548</span> مستعملة، إضافة إلى <span class="num">129</span> محلاً تجارياً.</p>
+    <p>وطنياً تراجعت المبيعات <span class="num">17%</span> سنوياً إلى <span class="num">123.603</span> وحدة، بينما ارتفع البيع بقرض عقاري <span class="num">23,7%</span>.</p>
+    <div class="meta"><span class="badge b-price">730 وحدة</span><span class="badge b-date">2026-08-13</span><span class="badge b-area">عموم المحافظة</span><a class="src" href="https://www.malatyaguncel.com/malatya-da-konut-hareketliligi-ikinci-ele-kaydi-7-3106884h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-12">
     <h3>تسليم <span class="num">4,520</span> مسكناً و<span class="num">392</span> محلاً و<span class="num">7</span> أفران خلال أغسطس (إعمار)</h3>
     <p>من دفعات النافذة: <span class="num">12</span> أغسطس Çavuşoğlu/Yeşilyurt <span class="num">250</span> مسكناً و<span class="num">71</span> محلاً، <span class="num">17</span> أغسطس Selçuklu/Battalgazi <span class="num">202</span> مسكناً، <span class="num">31</span> أغسطس Taştepe/Battalgazi <span class="num">3,009</span> مساكن.</p>
     <div class="meta"><span class="badge b-price"><span class="num">4,520</span> مسكناً + <span class="num">392</span> محلاً</span><span class="badge b-date"><span class="num">12</span> أغسطس</span><span class="badge b-area">Battalgazi وYeşilyurt</span><a class="src" href="https://malatyapencere.com/malatyada-agustos-ayinda-4-bin-520-konut-ve-392-is-yeri/" target="_blank" rel="noopener">ملاطيا بنجرة ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-08">
+<div class="item" data-date="2026-08-08">
     <h3>تعليق خطط عمرانية (askı) لحيّي Yakınca وŞahnahan في Yeşilyurt</h3>
     <p>خطط <span class="num">1/25,000</span> و<span class="num">1/5,000</span> و<span class="num">1/1,000</span> معلّقة للاطّلاع العام <span class="num">30</span> يوماً منذ <span class="num">3</span> أغسطس، بعد مصادقة وزارة البيئة والتمدين في <span class="num">14</span> يوليو.</p>
     <div class="meta"><span class="badge b-date"><span class="num">8</span> أغسطس</span><span class="badge b-area">Yeşilyurt / Yakınca وŞahnahan</span><a class="src" href="https://www.malatyanethaber.com.tr/malatya-da-2-mahalleyi-kapsiyor-30-gunluk-aski-sureci-basladi/112591/" target="_blank" rel="noopener">ملاطيا نت ↗</a></div>
@@ -448,40 +681,10 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
   <p>إجمالي <span class="num">8,106</span> مساكن + <span class="num">346</span> محلاً + <span class="num">3</span> مساجد، بتسليم مرحلي: بوتورغه <span class="num">298</span> (4 يوليو)، دفعة كبرى 9 يوليو، ثم 24 يوليو و8 أغسطس.</p>
   <div class="meta"><span class="badge b-price"><span class="num">8,106</span> وحدة</span><span class="badge b-date"><span class="num">4</span> يوليو–<span class="num">8</span> أغسطس</span><span class="badge b-area">بطالغازي · يشيليورت · بوتورغه</span><a class="src" href="https://www.ertv.com.tr/malatya-da-8-bin-106-konut-teslim-edilecek-iste-teslim-tarihleri/38243" target="_blank" rel="noopener">ERTV ↗</a></div>
 </div>
-<div class="item" data-date="2026-07-02">
-  <h3>غرفة الوسطاء تُصدر تعرفة إيجار للمحلات لضبط الأسعار</h3>
-  <p>الشوارع الرئيسية (أتاتورك/كِشلا/إينونو) <span class="num">5,000–10,000</span>₺/م² · الواجهات الفرعية <span class="num">1,500–2,000</span>₺/م² · المكاتب العلوية <span class="num">10,000–30,000</span>₺/شهر.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">5,000–10,000</span>₺/م²</span><span class="badge b-date"><span class="num">1–2</span> يوليو</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://malatyahaber.com/haber/emlakclar-kira-belirleme-komisyonu-kurdu-fiyat-tarifesi-yapt" target="_blank" rel="noopener">ملاطيا هبر ↗</a></div>
-</div>
 <div class="item" data-date="2026-07-13">
   <h3>نطاقات الإيجار في يشيليورت حسب النوع (بيانات حيّة)</h3>
   <p>متوسط <span class="num">16,010</span>₺ · <span class="num">119</span>₺/م². أمثلة: 2+1 بوستان‌باشي <span class="num">27,000</span>₺ · 3+1 كاراكافاك <span class="num">22,000–25,500</span>₺ · تشيلِسيز <span class="num">24,000–26,000</span>₺.</p>
   <div class="meta"><span class="badge b-price">متوسط <span class="num">16,010</span>₺</span><span class="badge b-date">حيّ · 13 يوليو</span><span class="badge b-area">يشيليورت</span><a class="src" href="https://www.emlakjet.com/kiralik-daire/malatya-yesilyurt" target="_blank" rel="noopener">Emlakjet ↗</a></div>
-</div>
-<div class="item" data-date="2026-06-26">
-  <h3>أرخص إيجار في ملاطيا يبدأ من 6,000₺ (TOKİ أقتشاداغ)</h3>
-  <p>أدنى إيجار مُسجَّل <span class="num">6,000</span>₺ لشقة 2+1 (~<span class="num">90</span>م²) في مساكن TOKİ الجديدة بحي باش‌بينار، مع تدفئة مركزية ومصعد.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">6,000</span>₺</span><span class="badge b-date"><span class="num">26</span> يونيو</span><span class="badge b-area">أقتشاداغ – باش‌بينار</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28240843/malatyada-en-ucuz-kiralik-konut-6-bin-tlden-basliyor" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
-</div>
-<div class="item" data-date="2026-05-27">
-  <h3>متوسط سعر البيع 21,596₺/م² (+19% سنوياً)</h3>
-  <p>متوسط المدينة <span class="num">21,596</span>₺/م²، فترة استرداد <span class="num">15</span> سنة. أعلى ارتفاع: دارنده، يشيليورت، دوغانشهير، بطالغازي، أقتشاداغ.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">21,596</span>₺/م²</span><span class="badge b-date"><span class="num">27</span> مايو</span><span class="badge b-area">عموم ملاطيا</span><a class="src" href="https://www.malatyanethaber.com.tr/malatya-nin-konut-haritasi-degisiyor-iste-en-pahali-en-ucuz-ilceler/109104" target="_blank" rel="noopener">ملاطيا نت ↗</a></div>
-</div>
-<div class="item" data-date="2026-06-17">
-  <h3>إقليم ملاطيا يتصدّر تركيا بارتفاع أسعار المساكن +28.2% سنوياً</h3>
-  <p>وفق مؤشر البنك المركزي (مايو 2026)، الإقليم الأعلى في تركيا مقابل متوسط وطني <span class="num">+24.5%</span> — لكن بالقيمة الحقيقية انخفاض <span class="num">6.1%</span> بفعل التضخّم.</p>
-  <div class="meta"><span class="badge b-price">+<span class="num">28.2%</span></span><span class="badge b-date"><span class="num">16–17</span> يونيو</span><span class="badge b-area">إقليم ملاطيا</span><a class="src" href="https://www.malatyasoz.com/malatyada-sok-konut-artisi-fiyatlar-rekor-seviyeye-ulasti" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-14">
-  <h3>الأراضي والبساتين: متوسط 5,789₺/م²، بساتين مشمش 249–7,333₺/م²</h3>
-  <p>يشيليورت ~<span class="num">7,200</span>₺/م² · بطالغازي ~<span class="num">5,300</span> · أمثلة: بستان مشمش يشيليورت <span class="num">22,313</span>م² بـ<span class="num">39</span> مليون₺ · بستان كولونجاك <span class="num">100</span> ألف م² بـ<span class="num">30</span> مليون₺.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">249–7,333</span>₺/م²</span><span class="badge b-date">حيّ</span><span class="badge b-area">كل الأقضية</span><a class="src" href="https://www.emlakjet.com/satilik-bag-bahce/malatya" target="_blank" rel="noopener">Emlakjet ↗</a></div>
-</div>
-<div class="item" data-date="2026-06-22">
-  <h3>البلدية تشتري أرض MEGSAŞ (9,900م²) بـ26 مليون₺ للتحوّل الحضري</h3>
-  <p>اعتمدت البلدية الكبرى شراء قطعة في هانم‌إن‌تشيفتليغي/بطالغازي بقيمة <span class="num">25,987,500</span>₺ لمشاريع التحوّل الحضري وبناء مساكن.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">26</span> مليون₺</span><span class="badge b-date"><span class="num">22</span> يونيو</span><span class="badge b-area">بطالغازي</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28213028/malatyada-megsasa-ait-milyonluk-o-arsaya-konut-yapilacak" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
 </div>
 <div class="item" data-date="2026-07-09">
     <h3>تسليم 4,359 وحدة سكنية لمتضرّري الزلزال في بطالغازي ويشيليورت</h3>
@@ -493,33 +696,106 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
     <p>الحدّ الأقصى القانوني لتجديد عقود الإيجار هذا الشهر <span class="num">32.03%</span> (متوسط التضخّم 12 شهراً): إيجار <span class="num">20,000</span>₺ يصبح <span class="num">26,406</span>₺.</p>
     <div class="meta"><span class="badge b-price"><span class="num">32.03%</span></span><span class="badge b-date"><span class="num">4</span> يوليو</span><span class="badge b-area">ملاطيا عموماً</span><a class="src" href="https://www.malatyasoz.com/malatyada-kira-artis-orani-belli-oldu-iste-yeni-kira-tutarlari" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
   </div>
-<h2><span class="sec-ico">🍽️</span> المطاعم والكافيهات والأفران <span class="count">12 عناصر</span></h2>
-  <div class="item" data-date="2026-08-17">
+<div class="item" data-date="2026-07-02">
+  <h3>غرفة الوسطاء تُصدر تعرفة إيجار للمحلات لضبط الأسعار</h3>
+  <p>الشوارع الرئيسية (أتاتورك/كِشلا/إينونو) <span class="num">5,000–10,000</span>₺/م² · الواجهات الفرعية <span class="num">1,500–2,000</span>₺/م² · المكاتب العلوية <span class="num">10,000–30,000</span>₺/شهر.</p>
+  <div class="meta"><span class="badge b-price"><span class="num">5,000–10,000</span>₺/م²</span><span class="badge b-date"><span class="num">1–2</span> يوليو</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://malatyahaber.com/haber/emlakclar-kira-belirleme-komisyonu-kurdu-fiyat-tarifesi-yapt" target="_blank" rel="noopener">ملاطيا هبر ↗</a></div>
+</div>
+<div class="item" data-date="2026-06-26">
+  <h3>أرخص إيجار في ملاطيا يبدأ من 6,000₺ (TOKİ أقتشاداغ)</h3>
+  <p>أدنى إيجار مُسجَّل <span class="num">6,000</span>₺ لشقة 2+1 (~<span class="num">90</span>م²) في مساكن TOKİ الجديدة بحي باش‌بينار، مع تدفئة مركزية ومصعد.</p>
+  <div class="meta"><span class="badge b-price"><span class="num">6,000</span>₺</span><span class="badge b-date"><span class="num">26</span> يونيو</span><span class="badge b-area">أقتشاداغ – باش‌بينار</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28240843/malatyada-en-ucuz-kiralik-konut-6-bin-tlden-basliyor" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+</div>
+<div class="item" data-date="2026-06-22">
+  <h3>البلدية تشتري أرض MEGSAŞ (9,900م²) بـ26 مليون₺ للتحوّل الحضري</h3>
+  <p>اعتمدت البلدية الكبرى شراء قطعة في هانم‌إن‌تشيفتليغي/بطالغازي بقيمة <span class="num">25,987,500</span>₺ لمشاريع التحوّل الحضري وبناء مساكن.</p>
+  <div class="meta"><span class="badge b-price"><span class="num">26</span> مليون₺</span><span class="badge b-date"><span class="num">22</span> يونيو</span><span class="badge b-area">بطالغازي</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28213028/malatyada-megsasa-ait-milyonluk-o-arsaya-konut-yapilacak" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+</div>
+<div class="item" data-date="2026-06-17">
+  <h3>إقليم ملاطيا يتصدّر تركيا بارتفاع أسعار المساكن +28.2% سنوياً</h3>
+  <p>وفق مؤشر البنك المركزي (مايو 2026)، الإقليم الأعلى في تركيا مقابل متوسط وطني <span class="num">+24.5%</span> — لكن بالقيمة الحقيقية انخفاض <span class="num">6.1%</span> بفعل التضخّم.</p>
+  <div class="meta"><span class="badge b-price">+<span class="num">28.2%</span></span><span class="badge b-date"><span class="num">16–17</span> يونيو</span><span class="badge b-area">إقليم ملاطيا</span><a class="src" href="https://www.malatyasoz.com/malatyada-sok-konut-artisi-fiyatlar-rekor-seviyeye-ulasti" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
+</div>
+<div class="item" data-date="2026-05-27">
+  <h3>متوسط سعر البيع 21,596₺/م² (+19% سنوياً)</h3>
+  <p>متوسط المدينة <span class="num">21,596</span>₺/م²، فترة استرداد <span class="num">15</span> سنة. أعلى ارتفاع: دارنده، يشيليورت، دوغانشهير، بطالغازي، أقتشاداغ.</p>
+  <div class="meta"><span class="badge b-price"><span class="num">21,596</span>₺/م²</span><span class="badge b-date"><span class="num">27</span> مايو</span><span class="badge b-area">عموم ملاطيا</span><a class="src" href="https://www.malatyanethaber.com.tr/malatya-nin-konut-haritasi-degisiyor-iste-en-pahali-en-ucuz-ilceler/109104" target="_blank" rel="noopener">ملاطيا نت ↗</a></div>
+</div>
+<p class="empty srcnote">🔎 تنبيه منهجي: تعذّر جلب صفحات sahibinden.com وendeksa.com مباشرة (حجب آلي)، فاعتُمدت تقارير صحفية وبيانات رسمية تقتبس الأرقام. ولم يُرصد خلال النافذة أي جديد يخصّ أسعار بساتين المشمش والأراضي الزراعية تحديداً.</p>
+<h2><span class="sec-ico">🍽️</span> المطاعم والكافيهات والأفران <span class="count">18</span></h2>
+<div class="item" data-date="2026-08-24">
+    <h3>سعر الخبز الرسمي في ملاطيا: لا تعديل جديد حتى اليوم</h3>
+    <p>لم يصدر عن غرفة الأفران (Malatya Fırıncılar Odası) أي قرار جديد خلال نافذة الرصد.</p>
+    <p>آخر تعديل موثّق يعود إلى <span class="num">15</span> تموز <span class="num">2026</span> برفع خبز البيده <span class="num">200</span> غرام من <span class="num">₺15</span> إلى <span class="num">₺17,50</span> بزيادة <span class="num">16,67%</span>.</p>
+    <div class="meta"><span class="badge b-price">بيده 200غ = ₺17,50</span><span class="badge b-date">2026-08-24</span><span class="badge b-area">عموم ملاطيا</span><a class="src" href="https://www.malatyaguncel.com/malatya-da-9-ay-sonra-pide-ekmegine-zam-3101474h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-19">
+    <h3>رئيس البلدية Sami Er: مطبخ ملاطيا لا يُعرَّف به بالقدر الذي يستحقه</h3>
+    <p>في ختام «شارع الغاسترونومي والثقافة» الثاني، وصف Er مطبخ المدينة بأنه «مطبخ حيّ»، وأعلن خطة لإنشاء أكاديمية لفنون الطهي داخل مركز الغاسترونومي الجديد.</p>
+    <p>وأشار إلى مشاركة <span class="num">44</span> منشأة محلية من أصحاب الحرف، وسلّم جوائز الفائزين في مسابقات الطبخ.</p>
+    <div class="meta"><span class="badge b-price">44 منشأة مشاركة</span><span class="badge b-date">2026-08-19</span><span class="badge b-area">حديقة 100. Yıl Kent Parkı</span><a class="src" href="https://www.malatyaderinhaber.com/baskan-er-malatya-mutfagi-hak-ettigi-kadar-tanitilamiyor/16654/" target="_blank" rel="noopener">Malatya Derin Haber ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-17">
     <h3>اختتام «شارع الغاسترونومي والثقافة» الثاني بمئات آلاف الزوار</h3>
     <p>طبعة ثانية على مدى تسعة أيام (<span class="num">8–16</span> أغسطس) في <span class="num">100.</span> Yıl Kent Parkı بعروض طهاة وورش ومسابقات أطباق محلية ومطبخ مفتوح.</p>
     <div class="meta"><span class="badge b-date"><span class="num">17</span> أغسطس</span><span class="badge b-area">ملاطيا – <span class="num">100.</span> Yıl Kent Parkı</span><a class="src" href="https://www.malatyaguncel.com/malatya-gastronomi-festivali-yuzbinlerce-ziyaretci-3107578h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-16">
+<div class="item" data-date="2026-08-17">
+    <h3>اختتام «شارع الغاسترونومي والثقافة» بمشاركة الشيف Ömür Akkor</h3>
+    <p>اختُتمت النسخة الثانية بعد تسعة أيام على مساحة نحو <span class="num">300</span> ألف م²، وشملت ندوات طهي وورش عمل وعروض طهاة وجلسات تذوّق.</p>
+    <p>وشدّد Akkor على ضرورة إبراز أصالة المطبخ الملاطي وتنوّعه.</p>
+    <div class="meta"><span class="badge b-price">9 أيام / 300 ألف م²</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.malatyacadde.com/malatya-nin-lezzetleri-gastronomi-ve-kultur-sokagi-nda-bulustu/114902" target="_blank" rel="noopener">Malatya Cadde ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-17">
+    <h3>مطبخ ملاطيا يجد فرصته للتعريف بنفسه في مهرجان درب الثقافة</h3>
+    <p>استعرضت فعاليات <span class="num">8–16</span> آب أطباق المدينة ومنتجاتها ذات المؤشر الجغرافي عبر مطابخ مفتوحة وورش للأطفال ومسابقات طهي.</p>
+    <p>واعتُبرت الفعالية رافعة لتحويل صورة المدينة من «مدينة الزلزال» إلى وجهة غاسترونومية وثقافية.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.gazetemalatya.com/turkiye/malatya-mutfagi-festival-de-tanitim-imkani-buldu-31721" target="_blank" rel="noopener">Gazete Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
     <h3>طهاة مشهورون يقدّمون مطبخ ملاطيا عبر <span class="num">31</span> «نقطة لذّة»</h3>
     <p>ضمن مشروع «Lezzet Noktaları» (TGA) بقيادة الشيف Ömür Akkor، أُبرزت أطباق kağıt kebabı وanalı kızlı و<span class="num">86</span> صنفاً من البرغل عبر <span class="num">31</span> نقطة طعام.</p>
     <div class="meta"><span class="badge b-price"><span class="num">31</span> نقطة · <span class="num">86</span> صنف برغل</span><span class="badge b-date"><span class="num">16</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.cnnturk.com/kultur-sanat/unlu-seflerden-malatya-lezzet-cikarmasi-3455131" target="_blank" rel="noopener">CNN Türk ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-14">
+<div class="item" data-date="2026-08-16">
+    <h3>«تيريتلي كوفته» يحسم مسابقة ربات البيوت وتوزيع ليرات ذهبية على الفائزات</h3>
+    <p>جرى التحكيم وفق معايير: الطعم <span class="num">40</span>، العرض <span class="num">25</span>، الأصالة المحلية <span class="num">20</span>، النظافة <span class="num">15</span> نقطة.</p>
+    <p>فازت Sibel Altun بالمركز الأول (<span class="num">90,60</span>) ونالت ليرة ذهبية جمهورية، تلتها Gülsen Karabulut ثم Semra Gürbüz.</p>
+    <div class="meta"><span class="badge b-price">جوائز ذهبية</span><span class="badge b-date">2026-08-16</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.gunestv.com/malatya-kultur-yolu-festivalinde-mutfak-krallari-yaristi-tiritli-kofte-ile-altin-kazananlar-belli-oldu" target="_blank" rel="noopener">Güneş TV ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-14">
     <h3>دليل أماكن فطور اقتصادية في ملاطيا مع الأسعار</h3>
     <p>Çamlıca <span class="num">400–600</span> ₺، وGedik Sosyal Tesisleri <span class="num">820</span> ₺ لشخصين (<span class="num">410</span> ₺ للفرد)، وMAHZEN وYeşilçam وYeşil Elma <span class="num">200–400</span> ₺.</p>
     <div class="meta"><span class="badge b-price"><span class="num">200–820</span> ₺</span><span class="badge b-date"><span class="num">14</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.malatyasoz.com/malatyada-hafta-sonu-kahvaltisi-icin-butce-dostu-8-mekan" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-09">
+<div class="item" data-date="2026-08-13">
+    <h3>بلدية ملاطيا الكبرى ترفع رسوم رخص المطاعم والمقاهي</h3>
+    <p>التعرفة الجديدة لرسوم رخصة فتح العمل والإشغال: <span class="num">₺20.000</span> للمطاعم من الدرجة الأولى وحدائق الشاي، و<span class="num">₺10.000</span> للمقاهي ومحلات الكباب.</p>
+    <p>كما فُرض على الباعة الجائلين رسم يومي قدره <span class="num">₺100</span>، ما أثار تذمّر أصحاب المحال.</p>
+    <div class="meta"><span class="badge b-price">₺20.000 / ₺10.000 / ₺100 يومياً</span><span class="badge b-date">2026-08-13</span><span class="badge b-area">عموم ملاطيا</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28513050/malatyada-isgaliye-harclari-degisti-baloncu-ve-pamuk-sekerciler-gunluk-100-tl-odeyecek" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-09">
     <h3>افتتاح «مركز ملاطيا للغاسترونومي» بمطعم وفرن تقليدي</h3>
     <p>افتتحت بلدية ملاطيا الكبرى مركزاً داخل <span class="num">100.</span> Yıl Kent Parkı يضم مطعماً للأطباق الإقليمية وفرناً تقليدياً، على أن يتطوّر إلى «أكاديمية فنون طهي».</p>
     <div class="meta"><span class="badge b-date"><span class="num">9</span> أغسطس</span><span class="badge b-area">ملاطيا – <span class="num">100.</span> Yıl Kent Parkı</span><a class="src" href="https://www.malatyaguncel.com/malatya-gastronomi-merkezi-kapilarini-acti-3106309h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-09">
+<div class="item" data-date="2026-08-09">
     <h3>البلدية تستهدف تحويل مطبخ ملاطيا إلى علامة عالمية</h3>
     <p>أشار رئيس البلدية Sami Er إلى <span class="num">149</span> فعالية ضمن مهرجان الثقافة و<span class="num">31</span> نقطة طعام تتيح فرصاً للحرفيين، مع تأسيس «مركز الغاسترونومي».</p>
     <div class="meta"><span class="badge b-price"><span class="num">149</span> فعالية · <span class="num">31</span> نقطة</span><span class="badge b-date"><span class="num">9</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.malatyaguncel.com/malatya-mutfagi-dunyaya-acilacak-gastronomi-icin-3106276h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-  <div class="item" data-date="2026-07-15">
+<div class="item" data-date="2026-08-09">
+    <h3>افتتاح «مركز ملاطيا للغاسترونومي»: مطعم ومدرسة طهي في آن واحد</h3>
+    <p>افتُتح داخل حديقة 100. Yıl Kent Parkı ليجمع بين مطعم ومنشأة تدريب للحفاظ على المطبخ التقليدي، ويضمّ فرناً تقليدياً رمزاً لإرث طهوي عمره <span class="num">6000</span> عام.</p>
+    <p>وقال الشيف Ömür Akkor إن الهوية الغاسترونومية للمدينة تقوم على البرغل والقمح وتقاليد الخبز في الفرن، استناداً إلى شواهد Arslantepe.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-09</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.malatyahamle.com/m/d/17445/malatya-da-gastronominin-merkezi-acildi" target="_blank" rel="noopener">Malatya Hamle ↗</a></div>
+  </div>
+<div class="item" data-date="2026-07-18">
+  <h3>مسابقة حلويات المشمش بجوائز 55,000₺ (18 يوليو)</h3>
+  <p>ضمن مهرجان المشمش، مسابقة لأشهى حلويات المشمش (الأول <span class="num">20,000</span>₺)، تقييمها لجنة من رؤساء طهاة، في كرنك كولّية.</p>
+  <div class="meta"><span class="badge b-price">جوائز <span class="num">55,000</span>₺</span><span class="badge b-date"><span class="num">18</span> يوليو</span><span class="badge b-area">كرنك · المركز</span><a class="src" href="https://www.malatyacadde.com/malatya-da-kayisi-tatlilari-yarismasi-basliyor-en-lezzetli-tarifler-odullendirilecek/113525" target="_blank" rel="noopener">ملاطيا جادّة ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-15">
     <h3>سعر الخبز الرسمي في ملاطيا ثابت عند <span class="num">17.50</span> ₺ للرغيف (<span class="num">200</span> غرام)</h3>
     <p>قرار غرفة المخابز (Fırıncılar Odası) الأحدث رفع الرغيف إلى <span class="num">17.50</span> ₺ منذ <span class="num">15</span> يوليو، ولم تُسجَّل زيادة جديدة خلال فترة الرصد (<span class="num">12–22</span> أغسطس).</p>
     <div class="meta"><span class="badge b-price"><span class="num">17.50</span> ₺ / <span class="num">200</span> غرام</span><span class="badge b-date"><span class="num">15</span> يوليو</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28334005/malatyalilara-kotu-haber-ekmege-zam-onaylandi-iste-yeni-fiyati-ve-zam-tarihi" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
@@ -539,112 +815,222 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
   <p>ترميم شارع المطاعم التراثي في يشيليورت (13 قصراً مسجّلاً) بكلفة ~<span class="num">7.5</span> مليون₺، والإنجاز المتوقّع <span class="num">17</span> أغسطس ليعود محوراً للسياحة الغاسترونومية.</p>
   <div class="meta"><span class="badge b-price"><span class="num">7.5</span> مليون₺</span><span class="badge b-date"><span class="num">6</span> يوليو</span><span class="badge b-area">يشيليورت</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28291254/malatya-lezzet-caddesi-ne-zaman-acilacak-tarihi-konaklar-icin-geri-sayim-basladi" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
 </div>
-<div class="item" data-date="2026-07-18">
-  <h3>مسابقة حلويات المشمش بجوائز 55,000₺ (18 يوليو)</h3>
-  <p>ضمن مهرجان المشمش، مسابقة لأشهى حلويات المشمش (الأول <span class="num">20,000</span>₺)، تقييمها لجنة من رؤساء طهاة، في كرنك كولّية.</p>
-  <div class="meta"><span class="badge b-price">جوائز <span class="num">55,000</span>₺</span><span class="badge b-date"><span class="num">18</span> يوليو</span><span class="badge b-area">كرنك · المركز</span><a class="src" href="https://www.malatyacadde.com/malatya-da-kayisi-tatlilari-yarismasi-basliyor-en-lezzetli-tarifler-odullendirilecek/113525" target="_blank" rel="noopener">ملاطيا جادّة ↗</a></div>
-</div>
 <div class="item" data-date="2026-07-01">
   <h3>إلزام المطاعم والكافيهات بعرض السعرات والمكوّنات (من 1 يوليو)</h3>
   <p>تُلزم وزارة الزراعة المنشآت بعرض السعرات والمكوّنات ومسبّبات الحساسية على القوائم. السلاسل الوطنية من <span class="num">1</span> يوليو، والمنشآت الأكبر حتى نهاية 2026.</p>
   <div class="meta"><span class="badge b-date"><span class="num">1</span> يوليو</span><span class="badge b-area">تركيا · ملاطيا</span><a class="src" href="https://www.busabahmalatya.com/restoran-ve-kafelerde-yeni-donem-basliyor-1-temmuzdan-itibaren-zorunlu-olacak" target="_blank" rel="noopener">بو صباح ملاطيا ↗</a></div>
 </div>
-<div class="item" data-date="2026-07-13">
-    <h3>زيادة سعر خبز الأفران الخاصة إلى 17.50 ليرة (تسري 15 يوليو)</h3>
-    <p>أقرّت غرفة الخبّازين رفع رغيف البيده (<span class="num">200</span>غ) من <span class="num">15</span> إلى <span class="num">17.50</span>₺ (+<span class="num">16.7%</span>). الخبز الشعبي البلدي يبقى أرخص عند <span class="num">9</span>₺.</p>
-    <div class="meta"><span class="badge b-price"><span class="num">17.50</span>₺</span><span class="badge b-date"><span class="num">13</span> يوليو</span><span class="badge b-area">عموم ملاطيا</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28334005/malatyalilara-kotu-haber-ekmege-zam-onaylandi-iste-yeni-fiyati-ve-zam-tarihi" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+<p class="empty srcnote">🔎 لا جديد خلال النافذة بخصوص حملات التفتيش الغذائي (آخر حصيلة منشورة تعود إلى مطلع آب عن نتائج تموز)، ولا أخبار خاصة بمنصّات التوصيل Yemeksepeti / Getir / Trendyol Yemek تخصّ ملاطيا.</p>
+<h2><span class="sec-ico">🏬</span> المجمّعات والبازارات والمنتزهات <span class="count">18</span></h2>
+<div class="item" data-date="2026-09-04">
+    <h3>مخيم شبابي للتنمية المستدامة في منتزه Beydağı الطبيعي</h3>
+    <p>تنظّم بلدية ملاطيا الكبرى مخيماً لخمسة أيام (<span class="num">31</span> آب – <span class="num">4</span> أيلول) ضمن مسار «من ملاطيا إلى COP31 أنطاليا»، يستضيف <span class="num">50</span> طالباً ثانوياً مناصفة.</p>
+    <p>يشمل البرنامج ورشاً حول صفر نفايات وتغيّر المناخ وكفاءة المياه والتدوير.</p>
+    <div class="meta"><span class="badge b-price">مجاني · 50 مقعداً</span><span class="badge b-date">2026-09-04</span><span class="badge b-area">Battalgazi</span><a class="src" href="https://www.busabahmalatya.com/malatyadan-antalya-cop31e-uzanan-cevre-hareketi-gencler-beydagi-tabiat-parkinda-bulusuyor" target="_blank" rel="noopener">Bu Sabah Malatya ↗</a></div>
   </div>
-<h2><span class="sec-ico">🏬</span> المجمّعات والبازارات والمنتزهات <span class="count">11 عناصر</span></h2>
-  <div class="item" data-date="2026-08-16">
-    <h3>اختتام مهرجان طريق الثقافة (Kültür Yolu) بحفل Ferhat Göçer</h3>
-    <p>تسعة أيام (<span class="num">8–16</span> أغسطس) في <span class="num">100.</span> Yıl Kent Parkı بحفلات مجانية (Derya Uluğ، Oğuzhan Koç) وعروض مسرحية وورش وفعاليات للأطفال ومحطات طعام.</p>
-    <div class="meta"><span class="badge b-price">دخول مجاني · <span class="num">9</span> أيام</span><span class="badge b-date"><span class="num">16</span> أغسطس</span><span class="badge b-area">ملاطيا – <span class="num">100.</span> Yıl Kent Parkı</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28533997/malatya-kultur-yolu-festivali-sona-erdi-kapanisi-ferhat-gocer-yapti" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+<div class="item" data-date="2026-08-24">
+    <h3>برنامج سينما Malatya Park هذا الأسبوع: ستة أفلام في <span class="num">10</span> صالات</h3>
+    <p>تعرض صالات Malatya Park Yeşil Sineması (<span class="num">10</span> صالات و<span class="num">1.485</span> مقعداً، من <span class="num">12:00</span> حتى <span class="num">23:30</span>) أفلام Örümcek-Adam وOdyssey وPaw Patrol: Dino Filmi.</p>
+    <p>كما تُعرض Oak Caddesi'nin Sonu وRuhlar Bölgesi وTempus، مع حسومات يوم الأربعاء وللطلاب.</p>
+    <div class="meta"><span class="badge b-price">₺100–120 عادي · ₺70–90 طلاب</span><span class="badge b-date">2026-08-24</span><span class="badge b-area">Yeşilyurt — Malatya Park AVM</span><a class="src" href="https://www.malatyawebsite.com.tr/malatya-sinemalar" target="_blank" rel="noopener">Malatya Portal ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-13">
-    <h3>حفل Ceza يجذب الآلاف إلى <span class="num">100.</span> Yıl Kent Parkı</h3>
-    <p>ضمن اليوم السادس للمهرجان، أحيا فنان الراب Ceza حفلاً مجانياً حضره آلاف الأشخاص وقدّم أبرز أغانيه.</p>
-    <div class="meta"><span class="badge b-price">مجاني · آلاف الحضور</span><span class="badge b-date"><span class="num">13</span> أغسطس</span><span class="badge b-area">ملاطيا – <span class="num">100.</span> Yıl Kent Parkı</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28520199/cezadan-malatya-konseri-binlerce-kisi-100-yil-kent-parkina-akin-etti" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+<div class="item" data-date="2026-08-23">
+    <h3>مشروع طريق ساحلي في Kırkgöz ورياضات مائية ضمن رؤية سياحية جديدة</h3>
+    <p>بحث رئيس البلدية Sami Er مع البروفيسور Rafet Bozdoğan مشروع طريق ساحلي يمتد من منطقة القلعة باتجاه طريق Sivas، مع تجهيز Kırkgöz Sahil Parkı لرياضات مائية مع الحفاظ على الطابع الطبيعي.</p>
+    <p>وشملت الجولة الميدانية مركز فنون الطهو وموقع Arslantepe وشلال Günpınar وبركة Kudret.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-23</span><span class="badge b-area">Battalgazi</span><a class="src" href="https://www.malatyaderinhaber.com/kirkgoz-icin-uzun-vadeli-sahil-yolu-projesi/16676" target="_blank" rel="noopener">Malatya Derin Haber ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-22">
+<div class="item" data-date="2026-08-22">
     <h3>دليل الأسواق الأسبوعية (Semt/Halk Pazarı): نحو <span class="num">23</span> سوقاً</h3>
     <p>موزّعة بين Battalgazi وYeşilyurt عبر الأسبوع؛ الاثنين (Hacı Abdi، Fırat، Yakınca…)، الجمعة (Kernek، Turgut Özal…)، الأحد (Niyazi Mısri، Karakavak).</p>
     <div class="meta"><span class="badge b-price"><span class="num">23</span> سوقاً أسبوعياً</span><span class="badge b-date"><span class="num">22</span> أغسطس</span><span class="badge b-area">Battalgazi / Yeşilyurt</span><a class="src" href="https://www.malatyawebsite.com.tr/pazarlar" target="_blank" rel="noopener">Malatya Website ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-22">
+<div class="item" data-date="2026-08-22">
     <h3>Malatya Park AVM: الدوام <span class="num">10:00–22:00</span> دون فعاليات جديدة معلنة</h3>
     <p>أكبر وأقدم مركز تسوّق بالمدينة يعمل يومياً <span class="num">10:00–22:00</span>؛ لم يُدرج الموقع الرسمي فعاليات أو حملات أو متاجر جديدة خلال الفترة.</p>
     <div class="meta"><span class="badge b-price">يومياً <span class="num">10:00–22:00</span></span><span class="badge b-date"><span class="num">22</span> أغسطس</span><span class="badge b-area">Yeşilyurt (Malatya Park)</span><a class="src" href="https://www.malatyapark.com.tr/" target="_blank" rel="noopener">Malatya Park ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-20">
+<div class="item" data-date="2026-08-22">
+    <h3>Sami Er من السوق الجديد: «سوقنا سينتعش وسيكون أجمل من السابق»</h3>
+    <p>تفقّد رئيس البلدية أعمال السوق الجديد في شارع Akpınar بحي Hamidiye، وأعلن توسعة الشارع إلى <span class="num">30</span> متراً وتنظيم السوق بتجميع قطاعي (جزارون، بائعو المشمش المجفف، أحذية).</p>
+    <p>وأبدى تجّار من بينهم بائع المشمش المجفف Miraç Girgin ارتياحهم لمواقع محالهم الجديدة.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-22</span><span class="badge b-area">Battalgazi — حي Hamidiye</span><a class="src" href="https://malatyahaber.com/haber/carsmz-canlanacak-eskisinden-guzel-olacak" target="_blank" rel="noopener">Malatya Haber ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
     <h3>أعمال تشجير وتنسيق أخضر لبلدية ملاطيا الكبرى</h3>
     <p>زراعة <span class="num">1,209</span> أشجار على <span class="num">3,600</span> م و<span class="num">11,890</span> م² مسطحات موسمية على الطريق الجنوبي؛ إجمالي <span class="num">2026</span> نحو <span class="num">4,710</span> شجرة و<span class="num">11,775</span> م² مساحات خضراء.</p>
     <div class="meta"><span class="badge b-price"><span class="num">4,710</span> شجرة · <span class="num">11,775</span> م²</span><span class="badge b-date"><span class="num">20</span> أغسطس</span><span class="badge b-area">ملاطيا (Güney Çevre Yolu)</span><a class="src" href="https://www.malatyaguncel.com/buyuksehir-belediyesinden-yesil-alan-ve-peyzaj-cal-3107998h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-<div class="item" data-date="2026-07-10">
-  <h3>أسعار بورصة المشمش المجفّف حسب الرقم (10 يوليو)</h3>
-  <p>رقم 2–3: <span class="num">340</span>₺ · رقم 4: <span class="num">326–350</span> · رقم 5: <span class="num">310–345</span> · جامبو: <span class="num">440–600</span> · گون كوروسو: <span class="num">340–920</span> · صناعي: <span class="num">70–110</span>₺/كغ.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">340–920</span>₺/كغ</span><span class="badge b-date"><span class="num">10</span> يوليو</span><span class="badge b-area">سوق الشيرة</span><a class="src" href="https://www.malatyam.com/kayisi-fiyatlari.html" target="_blank" rel="noopener">مالاطيام ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-14">
-  <h3>خيمة الديمقراطية ودفاتر الذكرى في Malatya Park AVM</h3>
-  <p>ضمن برنامج «15 تموز»، يُفتتح ركن دفاتر الذكرى وخيمة الديمقراطية داخل المجمّع (14 يوليو، 11:00). أوقات العمل يومياً 10:00–22:00.</p>
-  <div class="meta"><span class="badge b-date"><span class="num">14</span> يوليو</span><span class="badge b-area">Malatya Park AVM</span><a class="src" href="https://www.malatyasoz.com/malatyada-13-gun-surecek-programin-detaylari-belli-oldu-herkes-oraya-akin-edecek" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
-</div>
-<div class="item" data-date="2026-06-28">
-  <h3>إعمار البازار التاريخي: نقل تجّار الشيرة والنحّاسين للمحال الدائمة</h3>
-  <p>البلدية تنقل التجّار من الحاويات إلى محال دائمة بنموذج «التجميع القطاعي» (كل مهنة معاً)، مع <span class="num">3,100–4,100</span> موقف ومشروع ترام، ومهلة شهرين للتسليم.</p>
-  <div class="meta"><span class="badge b-date">مستمر · يونيو</span><span class="badge b-area">مركز المدينة</span><a class="src" href="https://www.pusulamalatya.com/malatya-da-ticaret-yeniden-sekilleniyor/55271" target="_blank" rel="noopener">بوصولا ملاطيا ↗</a></div>
-</div>
+<div class="item" data-date="2026-08-17">
+    <h3>مهرجان «طريق الثقافة» يستقبل <span class="num">672</span> ألف زائر ويُختتم دون أي حادث أمني</h3>
+    <p>أعلنت ولاية ملاطيا أن المهرجان (<span class="num">8–16</span> آب) استقطب نحو <span class="num">600</span> ألف شخص في الحفلات الموسيقية إضافة إلى <span class="num">72</span> ألف زائر لفعاليات فنون الطهو.</p>
+    <p>وأكدت أن الأيام التسعة مرّت دون أي حادث أمني، بتنسيق بين وزارة الثقافة والولاية والبلدية الكبرى.</p>
+    <div class="meta"><span class="badge b-price">672 ألف زائر · مجاني</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">Battalgazi / Yeşilyurt</span><a class="src" href="https://www.busabahmalatya.com/malatya-valiligi-duyurdu-kultur-yolu-festivaline-kac-kisi-katildi" target="_blank" rel="noopener">Bu Sabah Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-17">
+    <h3>رئيس بلدية Battalgazi يستمع لشكاوى تجّار السوق الجديد</h3>
+    <p>زار Bayram Taşkın المحال العاملة في شارع Turgut Temelli (Emeksiz) داخل السوق الجديد واطّلع على ظروف العمل ودوّن المطالب لإحالتها إلى الوحدات البلدية.</p>
+    <p>وأفاد بأن الزيارات ستستمر إلى بقية أقسام السوق التي دخلت الخدمة.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">Battalgazi — Emeksiz</span><a class="src" href="https://www.gazetemalatya.com/ekonomi/baskan-taskin-yeni-carsi-da-esnaflari-dinledi-31727" target="_blank" rel="noopener">Gazete Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
+    <h3>اختتام مهرجان طريق الثقافة (Kültür Yolu) بحفل Ferhat Göçer</h3>
+    <p>تسعة أيام (<span class="num">8–16</span> أغسطس) في <span class="num">100.</span> Yıl Kent Parkı بحفلات مجانية (Derya Uluğ، Oğuzhan Koç) وعروض مسرحية وورش وفعاليات للأطفال ومحطات طعام.</p>
+    <div class="meta"><span class="badge b-price">دخول مجاني · <span class="num">9</span> أيام</span><span class="badge b-date"><span class="num">16</span> أغسطس</span><span class="badge b-area">ملاطيا – <span class="num">100.</span> Yıl Kent Parkı</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28533997/malatya-kultur-yolu-festivali-sona-erdi-kapanisi-ferhat-gocer-yapti" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-14">
+    <h3>مجمّع رياضي وشبابي حديث على <span class="num">8.200</span> م² في حي Tecde</h3>
+    <p>يضمّ المجمّع في شارع Şehit Sami Kıbrıs مسبحاً نصف أولمبي وصالة رياضية ومركز شباب ومكتبة عامة وملعب فوتسال مكشوف، بمساحة مغلقة <span class="num">5.250</span> م².</p>
+    <p>يبعد نحو <span class="num">200</span> متر عن حديقة 100. Yıl Kent Parkı وسيخدم أحياء Tecde وKarakavak وÇilesiz وBostanbaşı.</p>
+    <div class="meta"><span class="badge b-price">8.200 م²</span><span class="badge b-date">2026-08-14</span><span class="badge b-area">Yeşilyurt — حي Tecde</span><a class="src" href="https://www.malatyaguncel.com/tecde-ye-modern-spor-ve-genclik-kompleksi-geliyor-3107110h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-13">
+    <h3>حفل Ceza يجذب الآلاف إلى <span class="num">100.</span> Yıl Kent Parkı</h3>
+    <p>ضمن اليوم السادس للمهرجان، أحيا فنان الراب Ceza حفلاً مجانياً حضره آلاف الأشخاص وقدّم أبرز أغانيه.</p>
+    <div class="meta"><span class="badge b-price">مجاني · آلاف الحضور</span><span class="badge b-date"><span class="num">13</span> أغسطس</span><span class="badge b-area">ملاطيا – <span class="num">100.</span> Yıl Kent Parkı</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28520199/cezadan-malatya-konseri-binlerce-kisi-100-yil-kent-parkina-akin-etti" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-13">
+    <h3>خلف شلال Günpınar وادٍ مخفي ببرك طبيعية وشلالات صغيرة في Darende</h3>
+    <p>كشفت جولة سير على نحو كيلومترين في أعلى مجرى الماء عن ينابيع صخرية وبرك طبيعية مثل Meyronun Gölü وKürt Gölü وشلال Bacalı وممر Güvercin Kısığı بطول نحو <span class="num">100</span> متر.</p>
+    <p>الموقع مسجّل باعتباره المنتزه الطبيعي رقم <span class="num">243</span> في تركيا، ويستقبل أكثر من <span class="num">50</span> حافلة سياحية في مواسم الأعياد.</p>
+    <div class="meta"><span class="badge b-price">المنتزه الطبيعي رقم 243</span><span class="badge b-date">2026-08-13</span><span class="badge b-area">Darende</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28512244/malatyada-herkes-selaleyi-biliyor-ama-bunu-kimse-bilmiyor-gunpinarin-gizli-vadisi" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
 <div class="item" data-date="2026-07-21">
   <h3>منتزه أوردوزو پينارباشي يستضيف معرض المشمش</h3>
   <p>أبرز منطقة تنزّه في ملاطيا (ينابيع، بحيرة، مقاهٍ) تحتضن هذا العام معرض/مهرجان المشمش (17–21 يوليو). الدخول عادةً مجاني.</p>
   <div class="meta"><span class="badge b-date"><span class="num">17–21</span> يوليو</span><span class="badge b-area">أوردوزو</span><a class="src" href="https://www.malatya.gov.tr/turgut-ozal-tabiat-orduzu-parki" target="_blank" rel="noopener">ولاية ملاطيا ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-14">
-  <h3>جدول الأسواق الأسبوعية للأحياء (مرجع 2026)</h3>
-  <p>الجمعة: كرنك ويشيلتبه وتورغوت أوزال وبطالغازي المركز · الأحد: نيازي مصري وكاراكافاك ويشيليورت المركز · وبقية الأيام موزّعة على الأحياء.</p>
-  <div class="meta"><span class="badge b-date">دليل محدّث</span><span class="badge b-area">كل الأحياء</span><a class="src" href="https://www.malatyawebsite.com.tr/pazarlar" target="_blank" rel="noopener">بوابة ملاطيا ↗</a></div>
 </div>
 <div class="item" data-date="2026-07-21">
     <h3>مهرجان ومعرض المشمش الدولي الـ28 (17–21 يوليو) بمفهوم «معرض»</h3>
     <p>لأول مرة بصيغة معرض في مركز أوردوزو، بحفلات مسائية (محمد إردم، يافوز بينغول، إليف بوسه دوغان) ومسابقات وعروض جريد وأنشطة أطفال يومياً.</p>
     <div class="meta"><span class="badge b-date"><span class="num">17–21</span> يوليو</span><span class="badge b-area">أوردوزو · المركز</span><a class="src" href="https://www.malatyatime.com/haber/malatyada-duzenlenecek-bes-gunluk-festivalin-programi-ve-etkinlik-takvimi-belli-oldu-116833" target="_blank" rel="noopener">ملاطيا تايم ↗</a></div>
   </div>
-<h2><span class="sec-ico">🌾</span> الاقتصاد والمشمش والزراعة <span class="count">14 عناصر</span></h2>
-  <div class="item" data-date="2026-08-17">
-    <h3>رئيس بورصة ملاطيا: الدولار يرتفع والصادرات تنخفض</h3>
-    <p>سعر الإنتاج <span class="num">100–150</span> ₺/كغ وسعر التصدير للدرجة الرابعة <span class="num">260–280</span> ₺/كغ، مع قفزة السعر بالدولار إلى <span class="num">9.3</span>$ مطلع <span class="num">2026</span>؛ ورِكولت <span class="num">2026</span> المتوقّع <span class="num">67,418</span> طناً من المشمش المجفّف.</p>
-    <div class="meta"><span class="badge b-price">تصدير <span class="num">260–280</span> ₺/كغ · <span class="num">9.3</span>$ · رِكولت <span class="num">67,418</span> طن</span><span class="badge b-date"><span class="num">17</span> أغسطس</span><span class="badge b-area">ملاطيا عام (بورصة/Şire)</span><a class="src" href="https://www.malatyatime.com/haber/malatyanin-kayisi-gundeminde-kritik-soru-kaca-satilsin-degil-kim-alacak-117792" target="_blank" rel="noopener">ملاطيا تايم ↗</a></div>
+<div class="item" data-date="2026-07-14">
+  <h3>خيمة الديمقراطية ودفاتر الذكرى في Malatya Park AVM</h3>
+  <p>ضمن برنامج «15 تموز»، يُفتتح ركن دفاتر الذكرى وخيمة الديمقراطية داخل المجمّع (14 يوليو، 11:00). أوقات العمل يومياً 10:00–22:00.</p>
+  <div class="meta"><span class="badge b-date"><span class="num">14</span> يوليو</span><span class="badge b-area">Malatya Park AVM</span><a class="src" href="https://www.malatyasoz.com/malatyada-13-gun-surecek-programin-detaylari-belli-oldu-herkes-oraya-akin-edecek" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-10">
+  <h3>أسعار بورصة المشمش المجفّف حسب الرقم (10 يوليو)</h3>
+  <p>رقم 2–3: <span class="num">340</span>₺ · رقم 4: <span class="num">326–350</span> · رقم 5: <span class="num">310–345</span> · جامبو: <span class="num">440–600</span> · گون كوروسو: <span class="num">340–920</span> · صناعي: <span class="num">70–110</span>₺/كغ.</p>
+  <div class="meta"><span class="badge b-price"><span class="num">340–920</span>₺/كغ</span><span class="badge b-date"><span class="num">10</span> يوليو</span><span class="badge b-area">سوق الشيرة</span><a class="src" href="https://www.malatyam.com/kayisi-fiyatlari.html" target="_blank" rel="noopener">مالاطيام ↗</a></div>
+</div>
+<div class="item" data-date="2026-06-28">
+  <h3>إعمار البازار التاريخي: نقل تجّار الشيرة والنحّاسين للمحال الدائمة</h3>
+  <p>البلدية تنقل التجّار من الحاويات إلى محال دائمة بنموذج «التجميع القطاعي» (كل مهنة معاً)، مع <span class="num">3,100–4,100</span> موقف ومشروع ترام، ومهلة شهرين للتسليم.</p>
+  <div class="meta"><span class="badge b-date">مستمر · يونيو</span><span class="badge b-area">مركز المدينة</span><a class="src" href="https://www.pusulamalatya.com/malatya-da-ticaret-yeniden-sekilleniyor/55271" target="_blank" rel="noopener">بوصولا ملاطيا ↗</a></div>
+</div>
+<h2><span class="sec-ico">🌾</span> الاقتصاد والمشمش والزراعة <span class="count">25</span></h2>
+<div class="item" data-date="2026-08-25">
+    <h3>İŞKUR ملاطيا: التقديم على <span class="num">419</span> وظيفة ضمن برنامج المنفعة المجتمعية TYP</h3>
+    <p>الوظائف في مدارس الولاية لمهام مراقبة الساحات ودعم أمن الطلاب، والتقديم بين <span class="num">21</span> و<span class="num">25</span> آب (إعلان رقم <span class="num">336791</span>).</p>
+    <p>فترة العمل من <span class="num">11</span> أيلول <span class="num">2026</span> حتى <span class="num">10</span> آذار <span class="num">2027</span>، والقوائم النهائية من <span class="num">31</span> آب، بشرط ألا يتجاوز دخل الأسرة <span class="num">1,5</span> ضعف الحد الأدنى للأجور.</p>
+    <div class="meta"><span class="badge b-price">419 وظيفة</span><span class="badge b-date">2026-08-25</span><span class="badge b-area">عموم الولاية</span><a class="src" href="https://www.yenimalatyahaber.com/419-kisilik-typ-istihdami-icin-basvurular-basladi" target="_blank" rel="noopener">Yeni Malatya Haber ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-18">
-    <h3>منافسة آسيا الوسطى تضغط على صادرات المشمش المجفّف</h3>
-    <p>مشمش ملاطيا <span class="num">7–8</span>$ مقابل <span class="num">1.90</span>$ لمنافسين من كازاخستان وقيرغيزستان وأوزبكستان وتركمانستان؛ تراجع الصادرات حتى <span class="num">40%</span> وأسعار محلية <span class="num">200–300</span> ₺/كغ.</p>
-    <div class="meta"><span class="badge b-price"><span class="num">7–8</span>$ مقابل <span class="num">1.90</span>$ · تراجع <span class="num">40%</span></span><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.malatyaguncel.com/8-dolarlik-malatya-kayisisina-1-90-dolarlik-rakip-3107692h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
+<div class="item" data-date="2026-08-23">
+    <h3>أسعار الذهب في سوق ملاطيا: ربع الليرة الذهبية عند <span class="num">₺11.850</span></h3>
+    <p>أعلنت غرفة الصاغة أسعار <span class="num">23</span> آب مع تداول الأونصة عالمياً عند <span class="num">4.603,56</span> دولار.</p>
+    <p>غرام عيار <span class="num">24</span> بـ<span class="num">₺7.000/7.200</span>، والسوار عيار <span class="num">22</span> بـ<span class="num">₺6.420/6.850</span>، والليرة العثمانية <span class="num">₺46.290/48.750</span>.</p>
+    <div class="meta"><span class="badge b-price">ربع ذهب ₺11.850</span><span class="badge b-date">2026-08-23</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.busabahmalatya.com/malatya-piyasasinda-23-agustos-rakamlari-ceyrek-altin-11-bin-850-tl-oldu" target="_blank" rel="noopener">Bu Sabah Malatya ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-19">
-    <h3>التجارة الخارجية لملاطيا في يونيو <span class="num">2026:</span> فائض بأكثر من الضعفين</h3>
-    <p>صادرات <span class="num">29.908</span> مليون $ مقابل واردات <span class="num">11.155</span> مليون $ وفائض <span class="num">18.753</span> مليون $، بنسبة تغطية <span class="num">268.1%</span> (بيانات TÜİK).</p>
-    <div class="meta"><span class="badge b-price">صادرات <span class="num">29.9</span> مليون $ · تغطية <span class="num">268.1%</span></span><span class="badge b-date"><span class="num">19</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.malatyaguncel.com/malatya-ihracatta-guclu-ithalatta-kontrollu-3107786h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
-  </div>
-  <div class="item" data-date="2026-08-21">
+<div class="item" data-date="2026-08-21">
     <h3>لقاء اقتصادي: «ملاطيا الجديدة تحتاج رؤية جديدة»</h3>
     <p>جمع رئيس MAGİNDER (Karademir) بمرشّح رئاسة غرفة التجارة والصناعة (Boyraz) حول خارطة طريق ما بعد الزلزال وأعباء الإيجارات وأراضي الصناعة.</p>
     <div class="meta"><span class="badge b-date"><span class="num">21</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.malatyaguncel.com/malatya-nin-ekonomisi-icin-yeni-bir-vizyon-sart-3108094h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-16">
+<div class="item" data-date="2026-08-21">
+    <h3>تحويل <span class="num">₺195,6</span> مليون دعماً زراعياً إلى حسابات المزارعين</h3>
+    <p>أعلن وزير الزراعة والغابات İbrahim Yumaklı تحويل المبلغ، منه <span class="num">₺190,972</span> مليون لاستثمارات التنمية الريفية و<span class="num">₺4,588</span> مليون لدعم البحث والتطوير.</p>
+    <p>لم تُعلن حصة مخصصة لملاطيا ضمن هذه الدفعة.</p>
+    <div class="meta"><span class="badge b-price">₺195,6 مليون</span><span class="badge b-date">2026-08-21</span><span class="badge b-area">إعلان وطني</span><a class="src" href="https://www.malatyaguncel.com/tarimsal-destekleme-odemeleri-ciftcilerin-hesaplar-3108160h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-21">
+    <h3>Sadıkoğlu يعلن ترشحه مجدداً لرئاسة غرفة تجارة وصناعة ملاطيا</h3>
+    <p>أعلن رئيس MTSO، Oğuzhan Ata Sadıkoğlu، ترشحه لولاية جديدة عبر مقطع مصوّر، قائلاً «لسنا طلاب منصب بل طلاب خدمة لأعضائنا».</p>
+    <p>واستعرض فترة ولايته التي مرّت بالجائحة والزلزال، مؤكداً استمرار نهج الشمولية والحياد المؤسسي.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-21</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.malatyadan.com/haber/baskan-sadikoglu-makama-degil-uyelerimize-hizmete-talibiz-31847" target="_blank" rel="noopener">Malatyadan ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
+    <h3>أزمة ديون لدى مزارعي المشمش بعد هبوط السعر من <span class="num">₺320</span> إلى <span class="num">₺220</span></h3>
+    <p>قال Mehmet Avcı، أحد موردي المستلزمات الزراعية، إن التراجع جعل المزارعين عاجزين عن سداد ديونهم.</p>
+    <p>وأضاف أن نحو <span class="num">80%</span> من الموردين المحليين يعملون بنظام البيع الآجل، وأن كلفة سلفات النحاس وحدها <span class="num">₺7.500</span> للطن، محذّراً من انهيار متسلسل في سلسلة التوريد.</p>
+    <div class="meta"><span class="badge b-price">₺320 ← ₺220/كغ</span><span class="badge b-date">2026-08-20</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28551589/malatyada-kayisi-ureticisinin-borc-krizi-dunyada-tek-olan-bir-urunu-ayakalti-ettiler" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-20">
+    <h3>Ramazan Özcan بلا منافس لولاية ثالثة على رأس بورصة ملاطيا التجارية</h3>
+    <p>تقارير محلية تشير إلى فوزه المرجّح دون منافس في انتخابات تشرين الأول <span class="num">2026</span>.</p>
+    <p>وذُكرت أسماء Sami Payza وHikmet Yaşar وCelal Şerefhanlı كمرشحين محتملين لكن أياً منهم لم يتقدّم رسمياً، علماً أن Özcan يشغل المنصب منذ <span class="num">2018</span>.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-20</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.malatyadan.com/haber/mtb-baskani-ramazan-ozcan-3-donemde-rakipsiz-31834" target="_blank" rel="noopener">Malatyadan ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-19">
+    <h3>التجارة الخارجية لملاطيا في يونيو <span class="num">2026:</span> فائض بأكثر من الضعفين</h3>
+    <p>صادرات <span class="num">29.908</span> مليون $ مقابل واردات <span class="num">11.155</span> مليون $ وفائض <span class="num">18.753</span> مليون $، بنسبة تغطية <span class="num">268.1%</span> (بيانات TÜİK).</p>
+    <div class="meta"><span class="badge b-price">صادرات <span class="num">29.9</span> مليون $ · تغطية <span class="num">268.1%</span></span><span class="badge b-date"><span class="num">19</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.malatyaguncel.com/malatya-ihracatta-guclu-ithalatta-kontrollu-3107786h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-19">
+    <h3>Boyraz من Doğanşehir: مشاريع لإنعاش القوة التجارية والزراعية في الأقضية</h3>
+    <p>زار مرشح رئاسة غرفة تجارة وصناعة ملاطيا رئيس جمعية رجال أعمال Doğanşehir، Cahit Sarı، مؤكداً الأهمية الاستراتيجية للقضاء بحكم موقعه وإمكاناته.</p>
+    <p>وشدّد Sarı على أن الغرفة يجب أن تُعطي الأولوية للاقتصاد بعد التراجع الذي أعقب الزلزال.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-19</span><span class="badge b-area">Doğanşehir</span><a class="src" href="https://www.malatyacadde.com/boyraz-tum-ilcelerimizin-ticaret-ve-tarim-gucunu-dinc-tutacak-projeler-hazirliyoruz/114961" target="_blank" rel="noopener">Malatya Cadde ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-18">
+    <h3>منافسة آسيا الوسطى تضغط على صادرات المشمش المجفّف</h3>
+    <p>مشمش ملاطيا <span class="num">7–8</span>$ مقابل <span class="num">1.90</span>$ لمنافسين من كازاخستان وقيرغيزستان وأوزبكستان وتركمانستان؛ تراجع الصادرات حتى <span class="num">40%</span> وأسعار محلية <span class="num">200–300</span> ₺/كغ.</p>
+    <div class="meta"><span class="badge b-price"><span class="num">7–8</span>$ مقابل <span class="num">1.90</span>$ · تراجع <span class="num">40%</span></span><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.malatyaguncel.com/8-dolarlik-malatya-kayisisina-1-90-dolarlik-rakip-3107692h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-18">
+    <h3>إنذار في قطاع المشمش: «نبيع بـ<span class="num">7–8</span> دولارات ومنافسو آسيا الوسطى بـ<span class="num">1,90</span> دولار»</h3>
+    <p>حذّر رئيس غرفة الزراعة في Yeşilyurt، Doğan Solmaz، من خسارة ملاطيا لأسواقها أمام كازاخستان وقيرغيزستان وأوزبكستان وتركمانستان بعد تطويرها تقنيات التجفيف.</p>
+    <p>وأشار إلى تراجع الصادرات نحو <span class="num">40%</span> في السنوات الأخيرة بعدما كانت تركيا تغطي نحو <span class="num">85%</span> من الاستهلاك العالمي قبل عشر سنوات.</p>
+    <div class="meta"><span class="badge b-price">$7–8 مقابل $1,90</span><span class="badge b-date">2026-08-18</span><span class="badge b-area">Yeşilyurt</span><a class="src" href="https://www.malatyadan.com/haber/8-dolarlik-malatya-kayisisina-190-dolarlik-rakip-31824" target="_blank" rel="noopener">Malatyadan ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-17">
+    <h3>رئيس بورصة ملاطيا: الدولار يرتفع والصادرات تنخفض</h3>
+    <p>سعر الإنتاج <span class="num">100–150</span> ₺/كغ وسعر التصدير للدرجة الرابعة <span class="num">260–280</span> ₺/كغ، مع قفزة السعر بالدولار إلى <span class="num">9.3</span>$ مطلع <span class="num">2026</span>؛ ورِكولت <span class="num">2026</span> المتوقّع <span class="num">67,418</span> طناً من المشمش المجفّف.</p>
+    <div class="meta"><span class="badge b-price">تصدير <span class="num">260–280</span> ₺/كغ · <span class="num">9.3</span>$ · رِكولت <span class="num">67,418</span> طن</span><span class="badge b-date"><span class="num">17</span> أغسطس</span><span class="badge b-area">ملاطيا عام (بورصة/Şire)</span><a class="src" href="https://www.malatyatime.com/haber/malatyanin-kayisi-gundeminde-kritik-soru-kaca-satilsin-degil-kim-alacak-117792" target="_blank" rel="noopener">ملاطيا تايم ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
     <h3>MÜSİAD ملاطيا يدعو إلى تنويع القطاعات الصناعية</h3>
     <p>طالب رئيس الفرع (Yunus Akçin) بنقل نجاح قطاعَي المشمش والنسيج إلى صناعات جديدة لتقليل اعتماد المدينة على منتج واحد.</p>
     <div class="meta"><span class="badge b-date"><span class="num">16</span> أغسطس</span><span class="badge b-area">ملاطيا عام</span><a class="src" href="https://www.malatyaguncel.com/akcin-malatya-da-sektorel-cesitliligi-artirmaliy-3107362h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-13">
+<div class="item" data-date="2026-08-16">
+    <h3>ندوة حول مستقبل المشمش المجفف عبر المستودعات المرخّصة وشهادات ELÜS</h3>
+    <p>نظّمتها البلدية الكبرى وشركة MAKLİDAŞ وبورصة ملاطيا التجارية بحضور مديرية الزراعة ومصدّرين وممثلي معهد أبحاث المشمش، لبحث تداول الشهادات عبر بورصة TÜRİB.</p>
+    <p>وشملت جولة في منشآت MAKLİDAŞ البالغة <span class="num">11.500</span> م²، بهدف منع بيع صغار المنتجين محصولهم بأسعار متدنية في ذروة الحصاد.</p>
+    <div class="meta"><span class="badge b-price">منشأة 11.500 م²</span><span class="badge b-date">2026-08-16</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28529290/malatya-kayisisinda-ezber-bozuluyor-ureticiyi-rahatlatacak-model-gundemde" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-16">
+    <h3>تعديلات من وزارة التجارة على قواعد الإيداع المرخّص</h3>
+    <p>أُوقف منح تراخيص جديدة للمستودعات الأفقية وحُدّدت سعة دنيا للصوامع الفولاذية.</p>
+    <p>ورُفع الحد الأدنى لسعة التخزين إلى <span class="num">35</span> ألف طن ورأس المال الأدنى للمشغّلين، في قطاع يضم حالياً <span class="num">266</span> شركة بسعة إجمالية <span class="num">14,4</span> مليون طن.</p>
+    <div class="meta"><span class="badge b-price">حد أدنى 35.000 طن</span><span class="badge b-date">2026-08-16</span><span class="badge b-area">تنظيم وطني</span><a class="src" href="https://www.malatyaguncel.com/ticaret-bakanligi-lisansli-depoculuk-sektorunde-ye-3107364h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-13">
     <h3>MAGİNDER: نحو «اقتصاد مشمش جديد» وحلّ أزمة أراضي OSB</h3>
     <p>رسالة لمرشّحي غرفة التجارة والصناعة تركّز على تصنيع المشمش بدل بيعه خاماً وحلّ مشكلة أراضي المنطقة الصناعية وتحسين اللوجستيات ضمن رؤية «Malatya <span class="num">2030–2050</span>».</p>
     <div class="meta"><span class="badge b-date"><span class="num">13</span> أغسطس</span><span class="badge b-area">ملاطيا عام (OSB)</span><a class="src" href="https://www.malatyaguncel.com/maginder-baskani-karademir-den-mtso-mesaji-aday-d-3106938h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-10">
+<div class="item" data-date="2026-08-13">
+    <h3>رئيس MTSO يدعو المصارف لتسهيل التمويل بعد <span class="num">1.280</span> يوماً على الزلزال</h3>
+    <p>التقى Oğuzhan Ata Sadıkoğlu مديرَي Halkbank وVakıfBank الإقليميين، Gökhan Yiğit وHabil Tunç، مؤكداً أن الوصول إلى التمويل حاسم في مرحلة إعادة الإعمار.</p>
+    <p>وأشار إلى أن احتياجات التمويل ما تزال أولوية قصوى للمنشآت الساعية للحفاظ على الإنتاج والتشغيل.</p>
+    <div class="meta"><span class="badge b-price">1.280 يوماً</span><span class="badge b-date">2026-08-13</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.malatyadan.com/haber/tso-baskani-sadikoglundan-bankalara-cagri-31795" target="_blank" rel="noopener">Malatyadan ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-10">
     <h3>أجندة مستثمري المنطقة الصناعية: تمويل وأراضٍ وعمالة مؤهّلة</h3>
     <p>أبرز اجتماع MAGİNDER ثلاث مشكلات: صعوبة التمويل، وارتفاع أسعار الأراضي وندرتها، ونقص العمالة المؤهّلة، مع استمرار الاستثمارات بعد الزلزال.</p>
     <div class="meta"><span class="badge b-date"><span class="num">10</span> أغسطس</span><span class="badge b-area">ملاطيا عام (OSB)</span><a class="src" href="https://www.pusulamalatya.com/malatya-osb-de-yatirimcilarin-gundemi-finansman-arsa-ve-kalifiye-eleman/56896" target="_blank" rel="noopener">بوصلة ملاطيا ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-01">
+  <h3>الموسم الجديد للمشمش المجفّف يبدأ رسمياً 1 أغسطس</h3>
+  <p>المتداوَل حالياً مخزون المواسم السابقة، بينما الطازج في ذروة حصاده. أسعار الدرجات (مخزون): گون كوروسو <span class="num">500–860</span>₺ · قياسي <span class="num">330–340</span>₺.</p>
+  <div class="meta"><span class="badge b-date"><span class="num">1</span> أغسطس</span><span class="badge b-area">بورصة ملاطيا</span><a class="src" href="https://www.malatyasoz.com/malatyada-kuru-kayisi-fiyatlari-belli-oldu-bazi-urunler-860-tlyi-gordu" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-13">
+    <h3>صادرات المشمش المجفّف تتجاوز 115 مليون دولار في النصف الأول 2026</h3>
+    <p>أعلنت غرفة تجارة ملاطيا صادرات <span class="num">115.2</span> مليون دولار من <span class="num">12,844</span> طنّاً بمتوسط <span class="num">&gt;9$</span>/كغ — من أعلى المتوسطات في عشر سنوات، اعتماداً على المخزون قبل موسم 1 أغسطس.</p>
+    <div class="meta"><span class="badge b-price"><span class="num">115.2</span> مليون $</span><span class="badge b-date"><span class="num">13</span> يوليو</span><span class="badge b-area">عموم المحافظة</span><a class="src" href="https://www.cnnturk.com/ekonomi/malatya-kayisisi-ekonomiye-katkisini-surduruyor-ihracatta-dikkat-ceken-rakam-3441827" target="_blank" rel="noopener">CNN Türk ↗</a></div>
   </div>
 <div class="item" data-date="2026-07-10">
   <h3>افتتاح منشأة مشمش متكاملة بـ220 مليون₺ في المنطقة الصناعية الأولى</h3>
@@ -656,117 +1042,181 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
   <p>اعتمدت اللجنة <span class="num">341,955</span> طن طازج ← <span class="num">67,500</span> طن مجفّف، مع توقّع سعر <span class="num">350–400</span>₺/كغ وربما حتى <span class="num">500</span>₺ بسبب شحّ العرض.</p>
   <div class="meta"><span class="badge b-price"><span class="num">67,500</span> طن</span><span class="badge b-date"><span class="num">6–8</span> يوليو</span><span class="badge b-area">عموم المحافظة</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28300242/malatyada-kayisi-rekoltesi-sizdi-80-bin-ton-reddedildi-iste-2026-rekoltesi" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
 </div>
-<div class="item" data-date="2026-06-28">
-  <h3>حصاد المشمش الطازج جارٍ: 50–80₺/كغ على الشجرة</h3>
-  <p>انطلق الحصاد من قضاء كاله وأولى الشحنات المبرّدة إلى أوروبا. صنف ممتاز <span class="num">70–80</span>₺ · عادي <span class="num">50–60</span>₺ · تجزئة على البسطة <span class="num">125–150</span>₺.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">50–80</span>₺/كغ</span><span class="badge b-date">يونيو–يوليو</span><span class="badge b-area">كاله · بوتورغه</span><a class="src" href="https://www.haberler.com/ekonomi/malatya-da-2026-yas-kayisi-hasadi-basladi-ihracat-yola-cikti-20000987-haberi/" target="_blank" rel="noopener">هبرلر ↗</a></div>
-</div>
 <div class="item" data-date="2026-07-02">
   <h3>تحليل: أسعار المشمش التركي المجفّف قوية مع محصول 2026 أصغر</h3>
   <p>طقس حارّ وإزهار ضعيف وأضرار بَرَد تحدّ المحصول (جودة أدنى <span class="num">5–10%</span>). العرض الشحيح يسند الأسعار مع طلب خارجي صامد.</p>
   <div class="meta"><span class="badge b-date"><span class="num">2</span> يوليو</span><span class="badge b-area">ملاطيا · أنقرة</span><a class="src" href="https://commodity-board.com/sicak-havanin-2026-urun-potansiyelini-sinirlamasiyla-turk-kuru-kayisi-fiyatlari-gucunu-koruyor" target="_blank" rel="noopener">Commodity Board ↗</a></div>
+</div>
+<div class="item" data-date="2026-06-28">
+  <h3>حصاد المشمش الطازج جارٍ: 50–80₺/كغ على الشجرة</h3>
+  <p>انطلق الحصاد من قضاء كاله وأولى الشحنات المبرّدة إلى أوروبا. صنف ممتاز <span class="num">70–80</span>₺ · عادي <span class="num">50–60</span>₺ · تجزئة على البسطة <span class="num">125–150</span>₺.</p>
+  <div class="meta"><span class="badge b-price"><span class="num">50–80</span>₺/كغ</span><span class="badge b-date">يونيو–يوليو</span><span class="badge b-area">كاله · بوتورغه</span><a class="src" href="https://www.haberler.com/ekonomi/malatya-da-2026-yas-kayisi-hasadi-basladi-ihracat-yola-cikti-20000987-haberi/" target="_blank" rel="noopener">هبرلر ↗</a></div>
 </div>
 <div class="item" data-date="2026-05-13">
   <h3>هدف تصديري لموسم 2026: 750 مليون دولار و100 ألف طن</h3>
   <p>أعلن رئيس غرفة تجارة ملاطيا هدفاً بـ<span class="num">750</span> مليون دولار عائدات و<span class="num">100</span> ألف طن مجفّف خلال مؤتمر تجارة دولية.</p>
   <div class="meta"><span class="badge b-price"><span class="num">750</span> مليون $</span><span class="badge b-date"><span class="num">13</span> مايو</span><a class="src" href="https://www.malatyatime.com/haber/malatya-kayisisi-dunya-pazarinda-hedef-buyuttu-750-milyon-dolar-gelir-bekleniyor-115796" target="_blank" rel="noopener">ملاطيا تايم ↗</a></div>
 </div>
-<div class="item" data-date="2026-08-01">
-  <h3>الموسم الجديد للمشمش المجفّف يبدأ رسمياً 1 أغسطس</h3>
-  <p>المتداوَل حالياً مخزون المواسم السابقة، بينما الطازج في ذروة حصاده. أسعار الدرجات (مخزون): گون كوروسو <span class="num">500–860</span>₺ · قياسي <span class="num">330–340</span>₺.</p>
-  <div class="meta"><span class="badge b-date"><span class="num">1</span> أغسطس</span><span class="badge b-area">بورصة ملاطيا</span><a class="src" href="https://www.malatyasoz.com/malatyada-kuru-kayisi-fiyatlari-belli-oldu-bazi-urunler-860-tlyi-gordu" target="_blank" rel="noopener">ملاطيا سوز ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-13">
-    <h3>صادرات المشمش المجفّف تتجاوز 115 مليون دولار في النصف الأول 2026</h3>
-    <p>أعلنت غرفة تجارة ملاطيا صادرات <span class="num">115.2</span> مليون دولار من <span class="num">12,844</span> طنّاً بمتوسط <span class="num">&gt;9$</span>/كغ — من أعلى المتوسطات في عشر سنوات، اعتماداً على المخزون قبل موسم 1 أغسطس.</p>
-    <div class="meta"><span class="badge b-price"><span class="num">115.2</span> مليون $</span><span class="badge b-date"><span class="num">13</span> يوليو</span><span class="badge b-area">عموم المحافظة</span><a class="src" href="https://www.cnnturk.com/ekonomi/malatya-kayisisi-ekonomiye-katkisini-surduruyor-ihracatta-dikkat-ceken-rakam-3441827" target="_blank" rel="noopener">CNN Türk ↗</a></div>
+<p class="empty srcnote">🔎 تنبيه منهجي: تعذّر استخراج لوحة الأسعار اليومية الرسمية من موقع malatyatb.org.tr لأنها تُحمَّل عبر JavaScript، والملف المنشور عليه (piyasabulteni_tr.pdf) نشرة حبوب صادرة عن TMO سنة <span class="num">2022</span> ولا تتضمن أسعار المشمش المجفف. لذا فكل أسعار المشمش الواردة أعلاه منقولة عن تصريحات وتقارير صحفية مؤرّخة، ولا يوجد اليوم رقم رسمي مباشر من لوحة البورصة.</p>
+<h2><span class="sec-ico">📰</span> الأخبار والبلدية والقرى <span class="count">29</span></h2>
+<div class="item" data-date="2026-09-09">
+    <h3>بلدية Yeşilyurt تمنح <span class="num">₺20.000</span> للطلاب ضمن أول ألف في امتحان YKS</h3>
+    <p>الطلاب ضمن أول <span class="num">1000</span> يحصلون على <span class="num">₺20.000</span>، ومن <span class="num">1001</span> إلى <span class="num">2000</span> على <span class="num">₺10.000</span>.</p>
+    <p>تُقدَّم الطلبات حتى <span class="num">4</span> أيلول ويُقام حفل التكريم في <span class="num">9</span> أيلول برئاسة İlhan Geçit.</p>
+    <div class="meta"><span class="badge b-price">₺20.000 / ₺10.000</span><span class="badge b-date">2026-09-09</span><span class="badge b-area">Yeşilyurt</span><a class="src" href="https://www.malatyaguncel.com/yesilyurt-belediyesinden-egitime-destek-3108482h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
   </div>
-<h2><span class="sec-ico">📰</span> الأخبار والبلدية والقرى <span class="count">17 عناصر</span></h2>
-  <div class="item" data-date="2026-08-18">
-    <h3>مجلس بلدية ملاطيا الكبرى يُقرّ تعديلات المخطّط العمراني</h3>
-    <p>أقرّ المجلس في جلسة أغسطس تعديلات المخطّط <span class="num">1/5000</span> والتطبيقي <span class="num">1/1000</span>، وأحال بنوداً إلى اللجان، وحدّد جلسة سبتمبر يوم الأربعاء <span class="num">9</span> سبتمبر.</p>
-    <div class="meta"><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">ملاطيا الكبرى (Büyükşehir)</span><a class="src" href="https://www.malatyaguncel.com/malatya-buyuksehir-belediyesi-agustos-ayi-meclis-t-3107721h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
+<div class="item" data-date="2026-08-31">
+    <h3>برنامج آب: تسليم <span class="num">4.520</span> وحدة سكنية و<span class="num">392</span> محلاً و<span class="num">7</span> مخابز</h3>
+    <p>سُلّمت <span class="num">676</span> وحدة في حي Çöşnük و<span class="num">383</span> في Cirikpınar بـBattalgazi و<span class="num">250</span> في Çavuşoğlu بـYeşilyurt.</p>
+    <p>وتُسلَّم أكبر مرحلة بـ<span class="num">3.009</span> وحدات في حي Taştepe يوم <span class="num">31</span> آب.</p>
+    <div class="meta"><span class="badge b-price">4.520 وحدة</span><span class="badge b-date">2026-08-31</span><span class="badge b-area">Battalgazi / Yeşilyurt</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28484545/malatyada-deprem-konutlarinda-agustos-seferberligi-4-bin-520-konut-teslim-edilecek" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-21">
+<div class="item" data-date="2026-08-30">
+    <h3>مهرجان Zengibar للمصارعة والثقافة في Darende بدورته الـ<span class="num">73</span></h3>
+    <p>يُقام بين <span class="num">28</span> و<span class="num">30</span> آب على مدى ثلاثة أيام.</p>
+    <p>يتضمن البرنامج موكباً استعراضياً ومسابقات مصارعة Karakucak التقليدية ورماية تركية تقليدية ومسابقة طبخ وفعاليات ثقافية.</p>
+    <div class="meta"><span class="badge b-price">الدورة 73 · 3 أيام</span><span class="badge b-date">2026-08-30</span><span class="badge b-area">Darende</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28534986/malatya-darendede-festival-coskusu-basliyor-karakucak-guresleri-ve-okculuk-duzenlenecek" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-28">
+    <h3>الأرصاد: انخفاض الحرارة وأمطار رعدية الأربعاء <span class="num">26</span> آب</h3>
+    <p>العظمى <span class="num">36</span> درجة يوم <span class="num">24</span> آب والصغرى <span class="num">20</span> مع أجواء صافية وحارة، ثم <span class="num">34</span> الثلاثاء و<span class="num">33</span> الجمعة.</p>
+    <p>Doğanyol تقترب من <span class="num">40</span> درجة، والأمطار الرعدية متوقعة الأربعاء.</p>
+    <div class="meta"><span class="badge b-price">36°C / 20°C</span><span class="badge b-date">2026-08-28</span><span class="badge b-area">عموم الولاية · Doğanyol</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28569079/meteorolojiden-malatya-icin-yeni-tahmin-sicakliklar-dusuyor-yagis-geliyor" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-24">
+    <h3>مياه الصرف الصحي تفيض في شوارع مساكن TOKİ بقضاء Hekimhan</h3>
+    <p>يشتكي سكان المساكن الجديدة من تدفق مياه المجاري إلى الشوارع وما يصاحبها من روائح وحشرات ومخاطر صحية.</p>
+    <p>وأفاد السكان بعدم تلقيهم حلولاً رغم شكاواهم عبر CİMER، فيما أحالت البلدية الكبرى المسؤولية إلى الشركة المنفذة ووزارة البيئة والإعمار وAFAD.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-24</span><span class="badge b-area">Hekimhan</span><a class="src" href="https://www.malatyatime.com/haber/hekimhan-toki-konutlarinda-kanalizasyon-suyu-sokaklara-akti-117940" target="_blank" rel="noopener">Malatya Time ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-23">
+    <h3>مركز التجارة المؤقت بلا إنارة و<span class="num">350</span> تاجراً ينتظرون حلاً</h3>
+    <p>ينقطع تيار إنارة المساحات المشتركة في مركز AFAD-Emlak Konut المؤقت منذ أشهر.</p>
+    <p>السبب عدم تحديد الجهة المسؤولة عن الفاتورة المشتركة منذ الإنشاء، ما تسبب بتراكم الديون وتراجع المبيعات المسائية.</p>
+    <div class="meta"><span class="badge b-price">نحو 350 تاجراً</span><span class="badge b-date">2026-08-23</span><span class="badge b-area">Battalgazi</span><a class="src" href="https://malatyahaberi.com/gecici-ticaret-merkezi-karanlikta-esnaf-cozum-bekliyor/" target="_blank" rel="noopener">Malatya Haberi ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-23">
+    <h3>AFAD يسجّل أربع هزات أرضية خفيفة في ثلاثة أقضية</h3>
+    <p>رُصدت هزات بقوة <span class="num">1,7</span> و<span class="num">1,4</span> في Akçadağ، و<span class="num">1,2</span> في Darende، و<span class="num">0,9</span> في Doğanşehir.</p>
+    <p>جميعها على عمق نحو <span class="num">7</span> كيلومترات ولم تسفر عن أضرار أو إصابات.</p>
+    <div class="meta"><span class="badge b-price">1,7 – 0,9 درجة</span><span class="badge b-date">2026-08-23</span><span class="badge b-area">Akçadağ / Darende / Doğanşehir</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28568993/malatyada-bugun-kac-deprem-oldu-iste-afadin-23-agustos-2026-verileri" target="_blank" rel="noopener">Yeni Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-22">
+    <h3>انقطاع الكهرباء في ستة أقضية من الساعة <span class="num">09:00</span> حتى <span class="num">17:00</span></h3>
+    <p>شمل الانقطاع أحياء Güneşli وDoğanlar وResuluşağı في Akçadağ، وAlişar وKemerköprü وBeydağı وGülümuşağı وUluköy في Battalgazi.</p>
+    <p>كما شمل Üçgöze وSalkonak وGündüzbey في Yeşilyurt، وYuvali وSuçati وPolatdere في Doğanşehir، وSakarya وYazıköy في Darende، بسبب أعمال صيانة وTEİAŞ.</p>
+    <div class="meta"><span class="badge b-price">09:00 – 17:00</span><span class="badge b-date">2026-08-22</span><span class="badge b-area">Akçadağ / Battalgazi / Yeşilyurt / Doğanşehir / Darende</span><a class="src" href="https://www.pusulamalatya.com/malatya-nin-6-ilcesinde-elektrik-kesintisi-saatler-belli-oldu/57265" target="_blank" rel="noopener">Pusula Malatya ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-21">
     <h3>انقطاع كهرباء واسع في <span class="num">21</span> أغسطس يطال أكثر من <span class="num">100</span> حي</h3>
     <p>قطع للتيار في Pütürge وDoğanyol من منتصف الليل حتى <span class="num">06:00</span>، وتوزّعت الانقطاعات نهاراً على Battalgazi وYeşilyurt وHekimhan وAkçadağ وDoğanşehir وYazıhan.</p>
     <div class="meta"><span class="badge b-price">+<span class="num">100</span> حي</span><span class="badge b-date"><span class="num">21</span> أغسطس</span><span class="badge b-area">عدة أقضية</span><a class="src" href="https://www.pusulamalatya.com/21-agustos-ta-malatya-da-elektrikler-kesilecek-iste-kesinti-yasanacak-mahalleler/57236" target="_blank" rel="noopener">بوصلة ملاطيا ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-18">
-    <h3>انقطاع كهرباء مخطّط في <span class="num">5</span> أقضية يوم <span class="num">18</span> أغسطس</h3>
-    <p>Yeşilyurt <span class="num">09:00–17:00</span> (وبعضها حتى <span class="num">20:00</span>)، Kale <span class="num">10:00–16:00</span>، وHekimhan وKuluncak وDarende <span class="num">10:30–17:00</span> لأعمال صيانة مقرّرة.</p>
-    <div class="meta"><span class="badge b-price"><span class="num">5</span> أقضية</span><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">Yeşilyurt, Kale, Hekimhan, Kuluncak, Darende</span><a class="src" href="https://www.malatyacadde.com/malatya-da-18-agustos-ta-elektrik-kesintisi-yasanacak-5-ilcede-cok-sayida-mahalle-etkilenecek/114908" target="_blank" rel="noopener">ملاطيا جادّة ↗</a></div>
-  </div>
-  <div class="item" data-date="2026-08-19">
-    <h3>زلازل خفيفة تُسجَّل في ملاطيا يوم <span class="num">19</span> أغسطس</h3>
-    <p>سجّلت AFAD ثلاث هزّات صغيرة دون أضرار: <span class="num">0.9</span> في Yeşilyurt و<span class="num">1.2</span> في Kale وأكبرها <span class="num">1.5</span> (ML) في Battalgazi على عمق <span class="num">13.34</span> كم.</p>
-    <div class="meta"><span class="badge b-price"><span class="num">3</span> هزّات · أكبرها <span class="num">1.5</span></span><span class="badge b-date"><span class="num">19</span> أغسطس</span><span class="badge b-area">Yeşilyurt, Kale, Battalgazi</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28545630/malatyada-bugun-deprem-oldu-mu-afad-19-agustos-2026-verilerini-acikladi" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
-  </div>
-  <div class="item" data-date="2026-08-21">
+<div class="item" data-date="2026-08-21">
     <h3>حريق مرتفعات في Doğanşehir والسيطرة عليه</h3>
     <p>اندلع حريق في مرتفعات Sürgü Unluyurt وسُيطر عليه بـ<span class="num">3</span> سيارات إطفاء وفرق الحراجة والجندرمة ومساعدة الأهالي في المناطق الوعرة.</p>
     <div class="meta"><span class="badge b-price"><span class="num">3</span> سيارات إطفاء</span><span class="badge b-date"><span class="num">21</span> أغسطس</span><span class="badge b-area">Doğanşehir (Sürgü)</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28558076/dogansehirde-yayla-yangini-ekipler-ve-mahalle-sakinleri-seferber-oldu" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-21">
+<div class="item" data-date="2026-08-21">
     <h3>بلدية Yeşilyurt تبني <span class="num">4</span> بيوت عزاء جديدة نحو هدف <span class="num">17</span> منشأة</h3>
     <p>قيد الإنشاء في Yakınca وÖzalper وKoyunoğlu وİnönü بنموذج شراكة (البلدية أرضاً وبنية تحتية، والمتبرعون بناءً)، مع مدرسة قرآن للأطفال في İnönü.</p>
     <div class="meta"><span class="badge b-price"><span class="num">4</span> قيد الإنشاء / الهدف <span class="num">17</span></span><span class="badge b-date"><span class="num">21</span> أغسطس</span><span class="badge b-area">Yeşilyurt</span><a class="src" href="https://www.battalgazi.net/genel/yesilyurtta-4-yeni-taziye-evi-yukseliyor-hedef-17-tesis/5486" target="_blank" rel="noopener">ملاطيا هبر ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-17">
+<div class="item" data-date="2026-08-21">
+    <h3>Sami Er: «لم يعد هناك أي سبب لبقاء الحاويات في ملاطيا»</h3>
+    <p>أعلن رئيس البلدية الكبرى أن إزالة الأسواق والمحال المؤقتة المنتشرة منذ زلزال <span class="num">6</span> شباط ستُستكمل خلال أيام، بدءاً من المدخل الشرقي على الطريق الحزامي.</p>
+    <p>وأكد أن الإزالة ستتم «باحترام» للتجار، وستتبعها أعمال طرق وإسفلت وتنسيق حدائق.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-21</span><span class="badge b-area">Battalgazi / Yeşilyurt</span><a class="src" href="https://www.malatyaguncel.com/buyuksehir-belediye-baskani-er-malatya-da-konteyn-3108142h.htm" target="_blank" rel="noopener">Malatya Güncel ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-19">
+    <h3>زلازل خفيفة تُسجَّل في ملاطيا يوم <span class="num">19</span> أغسطس</h3>
+    <p>سجّلت AFAD ثلاث هزّات صغيرة دون أضرار: <span class="num">0.9</span> في Yeşilyurt و<span class="num">1.2</span> في Kale وأكبرها <span class="num">1.5</span> (ML) في Battalgazi على عمق <span class="num">13.34</span> كم.</p>
+    <div class="meta"><span class="badge b-price"><span class="num">3</span> هزّات · أكبرها <span class="num">1.5</span></span><span class="badge b-date"><span class="num">19</span> أغسطس</span><span class="badge b-area">Yeşilyurt, Kale, Battalgazi</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28545630/malatyada-bugun-deprem-oldu-mu-afad-19-agustos-2026-verilerini-acikladi" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-18">
+    <h3>مجلس بلدية ملاطيا الكبرى يُقرّ تعديلات المخطّط العمراني</h3>
+    <p>أقرّ المجلس في جلسة أغسطس تعديلات المخطّط <span class="num">1/5000</span> والتطبيقي <span class="num">1/1000</span>، وأحال بنوداً إلى اللجان، وحدّد جلسة سبتمبر يوم الأربعاء <span class="num">9</span> سبتمبر.</p>
+    <div class="meta"><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">ملاطيا الكبرى (Büyükşehir)</span><a class="src" href="https://www.malatyaguncel.com/malatya-buyuksehir-belediyesi-agustos-ayi-meclis-t-3107721h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-18">
+    <h3>انقطاع كهرباء مخطّط في <span class="num">5</span> أقضية يوم <span class="num">18</span> أغسطس</h3>
+    <p>Yeşilyurt <span class="num">09:00–17:00</span> (وبعضها حتى <span class="num">20:00</span>)، Kale <span class="num">10:00–16:00</span>، وHekimhan وKuluncak وDarende <span class="num">10:30–17:00</span> لأعمال صيانة مقرّرة.</p>
+    <div class="meta"><span class="badge b-price"><span class="num">5</span> أقضية</span><span class="badge b-date"><span class="num">18</span> أغسطس</span><span class="badge b-area">Yeşilyurt, Kale, Hekimhan, Kuluncak, Darende</span><a class="src" href="https://www.malatyacadde.com/malatya-da-18-agustos-ta-elektrik-kesintisi-yasanacak-5-ilcede-cok-sayida-mahalle-etkilenecek/114908" target="_blank" rel="noopener">ملاطيا جادّة ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-17">
     <h3>توقّعات الطقس: ارتفاع الحرارة نحو <span class="num">36°</span> بحلول <span class="num">22</span> أغسطس</h3>
     <p>بعد أمطار محتملة منتصف الأسبوع (عظمى <span class="num">31°</span>)، يميل الطقس للصفاء مع ارتفاع الحرارة إلى ~<span class="num">36°</span> يوم السبت وصغرى ليلية <span class="num">17–19°.</span></p>
     <div class="meta"><span class="badge b-price">عظمى ~<span class="num">36°</span> · صغرى <span class="num">17–19°</span></span><span class="badge b-date"><span class="num">17</span> أغسطس</span><span class="badge b-area">ملاطيا (عام)</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28533851/malatyada-sicakliklar-22-agustos-2026da-yeniden-yukseliyor" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-11">
+<div class="item" data-date="2026-08-17">
+    <h3>عاصفة استمرت خمس دقائق تقتلع الأشجار وتغرق شوارع ملاطيا</h3>
+    <p>ضربت عاصفة قوية مصحوبة بأمطار غزيرة مركز المدينة فاقتلعت الأشجار وأجزاء من الأسطح وغمرت الطرق.</p>
+    <p>تضرر سقف مرآب الحافلات MAŞTİ، وتحطمت واجهة صيدلية في شارع İstasyon، وغرقت مساكن Pırlanta في منطقة Yeşiltepe.</p>
+    <div class="meta"><span class="badge b-price">لا يوجد</span><span class="badge b-date">2026-08-17</span><span class="badge b-area">Battalgazi / Yeşilyurt</span><a class="src" href="https://www.malatyatime.com/haber/dakikalar-icinde-malatyayi-vurdu-catilar-uctu-agaclar-devrildi-yollar-gole-dondu-117804" target="_blank" rel="noopener">Malatya Time ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-14">
+    <h3>مشروع تحوّل كبير في منطقتَي Akpınar وHalfettin يبلغ مرحلته الأخيرة</h3>
+    <p>يشمل تجديد شبكات مياه الأمطار والصرف ومياه الشرب والغاز والكهرباء والاتصالات.</p>
+    <p>وطريقاً بعرض <span class="num">30</span> متراً بأربعة مسارب مع أرصفة وإنارة ومواقف وربط بالطريق الحزامي.</p>
+    <div class="meta"><span class="badge b-price">30 متراً / 4 مسارب</span><span class="badge b-date">2026-08-14</span><span class="badge b-area">مركز ملاطيا</span><a class="src" href="https://www.malatyatarafsiz.com/foto-galeri/malatyanin-kalbi-akpinarda-buyuk-donusum/181204" target="_blank" rel="noopener">Malatya Tarafsız ↗</a></div>
+  </div>
+<div class="item" data-date="2026-08-11">
     <h3>بلدية Darende تشغّل محطة أسفلت باستثمار <span class="num">40</span> مليون ₺</h3>
     <p>طاقة إنتاج <span class="num">5</span> شاحنات في الساعة لتلبية احتياجات القضاء محلياً دون انتظار الأسفلت من مناطق أخرى، ما يُنهي تأخيرات النقل وفقدان الحرارة.</p>
     <div class="meta"><span class="badge b-price"><span class="num">40</span> مليون ₺ · <span class="num">5</span> شاحنات/ساعة</span><span class="badge b-date"><span class="num">11</span> أغسطس</span><span class="badge b-area">Darende</span><a class="src" href="https://www.malatyaguncel.com/darende-belediyesi-ilceye-40-milyon-liralik-asfalt-3106401h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
   </div>
-  <div class="item" data-date="2026-08-11">
+<div class="item" data-date="2026-08-11">
     <h3>السيطرة على حريق غابة في Pütürge</h3>
     <p>حريق حرجي في حي Aktarla امتدّ لمساحة واسعة قبل إخماده بدعم جوي وأرضي (<span class="num">3</span> صهاريج وخزان <span class="num">35</span> طناً و<span class="num">4</span> آليات)، وبوشِر تحقيق في السبب.</p>
     <div class="meta"><span class="badge b-price"><span class="num">3</span> صهاريج · خزان <span class="num">35</span> طناً</span><span class="badge b-date"><span class="num">11</span> أغسطس</span><span class="badge b-area">Pütürge (Aktarla)</span><a class="src" href="https://malatyahaberi.com/puturgede-orman-yangini-kontrol-altina-alindi/" target="_blank" rel="noopener">ملاطيا هبري ↗</a></div>
   </div>
-<div class="item" data-date="2026-07-08">
-  <h3>مجلس البلدية الكبرى يُقرّ «المترو الخفيف» ومشروع مياه بـ3.5 مليار₺</h3>
-  <p>خط سكة خفيفة (محطة القطار – مستشفى البحث – ماستي – الجامعة – إيكيزجة)، ومصدر مياه بديل من حوض الفرات مع محطة معالجة جديدة في إنديريسي.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">3.5</span> مليار₺</span><span class="badge b-date"><span class="num">8</span> يوليو</span><span class="badge b-area">المركز</span><a class="src" href="https://hibya.com/buyuksehir-meclisinde-ulasim-ve-altyapi-projeleri-ele-alindi-968615" target="_blank" rel="noopener">هبية ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-01">
-  <h3>بطالغازي: ساحة ترفيه بـ180 دونماً و25 مركزاً ثقافياً</h3>
-  <p>ناقش المجلس مشروع ساحة الترفيه في تشارشيباشي (<span class="num">180</span> دونماً بميزانية <span class="num">100</span> مليون₺) المزمع إنجازها صيف 2026، وخطة <span class="num">25</span> مركزاً ثقافياً.</p>
-  <div class="meta"><span class="badge b-price"><span class="num">100</span> مليون₺</span><span class="badge b-date"><span class="num">1</span> يوليو</span><span class="badge b-area">بطالغازي</span><a class="src" href="https://www.maldiahaber.com/haber/battalgazi-belediye-meclisi-temmuz-ayi-toplantisi-gerceklestirildi-47949" target="_blank" rel="noopener">مالديا ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-07">
-  <h3>طريق «إسنبه» يربط 3 أقضية و55 حياً (7 كم)</h3>
-  <p>طريق يربط دارنده وحكيمهان وأقجاداغ مع <span class="num">55</span> حياً؛ أُنجز <span class="num">5</span> من <span class="num">7</span> كم بمعايير الطرق السريعة. البلدية تعمل على <span class="num">95</span> موقع طرق.</p>
-  <div class="meta"><span class="badge b-date"><span class="num">7</span> يوليو</span><span class="badge b-area">دارنده · حكيمهان · أقجاداغ</span><a class="src" href="https://www.malatyaguncel.com/malatya-da-3-ilce-ve-55-mahalleyi-birbirine-baglay-3099444h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
-</div>
+<div class="item" data-date="2026-08-10">
+    <h3>إعادة سيارة إسعاف ثانية إلى قضاء Arapgir بعد مطالبات الأهالي</h3>
+    <p>رُفع عدد سيارات الإسعاف في القضاء إلى اثنتين بعد سحب إحداها سابقاً، إثر ردود فعل واسعة على وسائل التواصل.</p>
+    <p>جاء القرار بعد حوادث سير متتالية اضطرت خلالها الفرق لطلب إسعاف من قضاء Arguvan المجاور.</p>
+    <div class="meta"><span class="badge b-price">2 سيارة إسعاف</span><span class="badge b-date">2026-08-10</span><span class="badge b-area">Arapgir</span><a class="src" href="https://malatyahaberi.com/arapgirde-ambulans-sayisi-yeniden-ikiye-cikarildi/" target="_blank" rel="noopener">Malatya Haberi ↗</a></div>
+  </div>
 <div class="item" data-date="2026-07-13">
   <h3>انقطاعات كهرباء مجدولة في 9 أقضية (12–13 يوليو)</h3>
   <p>أعلنت شركة فرات إيداش صيانة تطال يشيليورت وبطالغازي وبوتورغه ودوغانشهير وأرغوان وأرابغير وكولونجاك وكاله ودوغانيول، غالباً 09:00–17:00.</p>
   <div class="meta"><span class="badge b-date"><span class="num">12–13</span> يوليو</span><span class="badge b-area">9 أقضية</span><a class="src" href="https://www.malatyacadde.com/malatya-da-13-temmuz-da-planli-elektrik-kesintisi-cok-sayida-ilce-ve-mahalle-etkilenecek/113657" target="_blank" rel="noopener">ملاطيا جادّة ↗</a></div>
-</div>
-<div class="item" data-date="2026-07-12">
-  <h3>مهرجان أرغوان الأول للطبيعة والثقافة (12 يوليو)</h3>
-  <p>أُقيم في قرية بيريك (يونجالي) 10:00–19:00، بعروض موسيقى شعبية وفرقة رقص «أتماليلار» ورياضات مغامرة ومعارض تصوير.</p>
-  <div class="meta"><span class="badge b-date"><span class="num">12</span> يوليو</span><span class="badge b-area">أرغوان – بيريك</span><a class="src" href="https://www.malatyaderinhaber.com/arguvan-1-doga-ve-kultur-senligi-12-temmuz-da/16360" target="_blank" rel="noopener">ملاطيا درين ↗</a></div>
 </div>
 <div class="item" data-date="2026-07-13">
   <h3>بدء تسجيل «مركز يشيليورت للعلوم» (13 يوليو)</h3>
   <p>يفتح التسجيل لفئتين عمريتين (4–6 و7–14 سنة) في ورش تكنولوجيا وهندسة وفلك وعلوم، عبر مبنى الخدمات الجديد وحديقة الأمة.</p>
   <div class="meta"><span class="badge b-date"><span class="num">13</span> يوليو</span><span class="badge b-area">يشيليورت</span><a class="src" href="https://www.malatyacadde.com/yesilyurt-bilim-merkezi-basvurulari-13-temmuz-da-basliyor/113645" target="_blank" rel="noopener">ملاطيا جادّة ↗</a></div>
 </div>
-<div class="item" data-date="2026-07-09">
-  <h3>حريق في قرية أريتوبراك ببوتورغه يلتهم منزلين و20 دونماً</h3>
-  <p>حريق أتى على منزلين ونحو <span class="num">20</span> دونماً من بساتين وغابات دون إصابات بشرية؛ شاركت <span class="num">5</span> سيارات إطفاء ومنعت الامتداد.</p>
-  <div class="meta"><span class="badge b-date"><span class="num">9</span> يوليو</span><span class="badge b-area">بوتورغه – أريتوبراك</span><a class="src" href="https://www.malatyaguncel.com/puturge-de-yangin-2-ev-ve-20-donumluk-alan-kule-d-3099735h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
-</div>
 <div class="item" data-date="2026-07-13">
   <h3>موجة حرّ: الحرارة تلامس 39° في دوغانيول ويازيهان</h3>
   <p>طقس صافٍ أعلى من المعدلات: دوغانيول ويازيهان <span class="num">39°</span> · كاله وبوتورغه <span class="num">38°</span> · المركز <span class="num">37°</span>. يُتوقّع استمرار الموجة طوال الأسبوع.</p>
   <div class="meta"><span class="badge b-price"><span class="num">39°</span></span><span class="badge b-date"><span class="num">13</span> يوليو</span><span class="badge b-area">عموم الأقضية</span><a class="src" href="https://www.yenimalatya.com.tr/haber/28330246/13-temmuz-2026-malatya-hava-durumu-bazi-ilcelerde-termometreler-39-dereceyi-gosterecek" target="_blank" rel="noopener">يني ملاطيا ↗</a></div>
 </div>
+<div class="item" data-date="2026-07-12">
+  <h3>مهرجان أرغوان الأول للطبيعة والثقافة (12 يوليو)</h3>
+  <p>أُقيم في قرية بيريك (يونجالي) 10:00–19:00، بعروض موسيقى شعبية وفرقة رقص «أتماليلار» ورياضات مغامرة ومعارض تصوير.</p>
+  <div class="meta"><span class="badge b-date"><span class="num">12</span> يوليو</span><span class="badge b-area">أرغوان – بيريك</span><a class="src" href="https://www.malatyaderinhaber.com/arguvan-1-doga-ve-kultur-senligi-12-temmuz-da/16360" target="_blank" rel="noopener">ملاطيا درين ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-09">
+  <h3>حريق في قرية أريتوبراك ببوتورغه يلتهم منزلين و20 دونماً</h3>
+  <p>حريق أتى على منزلين ونحو <span class="num">20</span> دونماً من بساتين وغابات دون إصابات بشرية؛ شاركت <span class="num">5</span> سيارات إطفاء ومنعت الامتداد.</p>
+  <div class="meta"><span class="badge b-date"><span class="num">9</span> يوليو</span><span class="badge b-area">بوتورغه – أريتوبراك</span><a class="src" href="https://www.malatyaguncel.com/puturge-de-yangin-2-ev-ve-20-donumluk-alan-kule-d-3099735h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-08">
+  <h3>مجلس البلدية الكبرى يُقرّ «المترو الخفيف» ومشروع مياه بـ3.5 مليار₺</h3>
+  <p>خط سكة خفيفة (محطة القطار – مستشفى البحث – ماستي – الجامعة – إيكيزجة)، ومصدر مياه بديل من حوض الفرات مع محطة معالجة جديدة في إنديريسي.</p>
+  <div class="meta"><span class="badge b-price"><span class="num">3.5</span> مليار₺</span><span class="badge b-date"><span class="num">8</span> يوليو</span><span class="badge b-area">المركز</span><a class="src" href="https://hibya.com/buyuksehir-meclisinde-ulasim-ve-altyapi-projeleri-ele-alindi-968615" target="_blank" rel="noopener">هبية ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-07">
+  <h3>طريق «إسنبه» يربط 3 أقضية و55 حياً (7 كم)</h3>
+  <p>طريق يربط دارنده وحكيمهان وأقجاداغ مع <span class="num">55</span> حياً؛ أُنجز <span class="num">5</span> من <span class="num">7</span> كم بمعايير الطرق السريعة. البلدية تعمل على <span class="num">95</span> موقع طرق.</p>
+  <div class="meta"><span class="badge b-date"><span class="num">7</span> يوليو</span><span class="badge b-area">دارنده · حكيمهان · أقجاداغ</span><a class="src" href="https://www.malatyaguncel.com/malatya-da-3-ilce-ve-55-mahalleyi-birbirine-baglay-3099444h.htm" target="_blank" rel="noopener">ملاطيا غونجل ↗</a></div>
+</div>
+<div class="item" data-date="2026-07-01">
+  <h3>بطالغازي: ساحة ترفيه بـ180 دونماً و25 مركزاً ثقافياً</h3>
+  <p>ناقش المجلس مشروع ساحة الترفيه في تشارشيباشي (<span class="num">180</span> دونماً بميزانية <span class="num">100</span> مليون₺) المزمع إنجازها صيف 2026، وخطة <span class="num">25</span> مركزاً ثقافياً.</p>
+  <div class="meta"><span class="badge b-price"><span class="num">100</span> مليون₺</span><span class="badge b-date"><span class="num">1</span> يوليو</span><span class="badge b-area">بطالغازي</span><a class="src" href="https://www.maldiahaber.com/haber/battalgazi-belediye-meclisi-temmuz-ayi-toplantisi-gerceklestirildi-47949" target="_blank" rel="noopener">مالديا ↗</a></div>
+</div>
+<p class="empty srcnote">🔎 أقضية لم يُرصد لها خبر مستقلّ خلال النافذة: Pütürge وYazıhan وKuluncak وArguvan (وردت Arguvan إشارةً ضمن خبر Arapgir) وDoğanyol (وردت ضمن نشرة الطقس). لا جديد بارز اليوم فيها.</p>
 <!--DAILY-CONTENT-END-->
 
 <div class="callout accent" style="margin-top:26px">
@@ -1652,6 +2102,284 @@ window.GLOSSARY={
   function init(){if(mode==='anchor'){linkify(document.body);}else{var a=document.querySelector(CFG.activeSelector||'.chapter.active');if(a&&a.id!==glId)linkify(a);}}
   if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
 })();
+</script>
+<script>
+/* ════════ غرفة الرصد — الترقيات السبع ════════
+   تعمل كلّها وقت التشغيل على البطاقات المسطّحة كما يكتبها سير العمل اليومي.
+   لا تلمس ما بين علامتَي المحتوى اليومي، فيبقى عقد الأتمتة سليماً. */
+(function(){
+  if(window.__obsRoom) return; window.__obsRoom = 1;
+
+  var DISTRICTS = [
+    ['Battalgazi',   ['battalgazi','بطالغازي','باتالغازي']],
+    ['Yeşilyurt',    ['yeşilyurt','yesilyurt','يشيليورت','يشيل يورت']],
+    ['Darende',      ['darende','دارنده','دارندة']],
+    ['Akçadağ',      ['akçadağ','akcadag','أقجاداغ','اقجاداغ','أقتشاداغ','اقتشاداغ']],
+    ['Doğanşehir',   ['doğanşehir','dogansehir','دوغانشهير','دوغان شهير']],
+    ['Arapgir',      ['arapgir','أرابكير','ارابكير','أرابغير']],
+    ['Hekimhan',     ['hekimhan','حكيمهان','حكيم هان']],
+    ['Pütürge',      ['pütürge','puturge','بوتورغه','بوتورجه']],
+    ['Yazıhan',      ['yazıhan','yazihan','يازيهان']],
+    ['Kuluncak',     ['kuluncak','كولونجاك','قولونجاك']],
+    ['Arguvan',      ['arguvan','أرغوان','ارغوان']],
+    ['Kale',         ['kale','كاله','قلعة ملاطيا']],
+    ['Doğanyol',     ['doğanyol','doganyol','دوغانيول']]
+  ];
+
+  function todayISO(){
+    try { return new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Jerusalem'}); }
+    catch(e){ return new Date().toISOString().slice(0,10); }
+  }
+  function shift(iso,d){ var t=new Date(iso+'T12:00:00Z'); t.setUTCDate(t.getUTCDate()+d);
+    return t.toISOString().slice(0,10); }
+  var TODAY = todayISO(), RECENT = shift(TODAY,-10);
+
+  var AR_MON=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  function prettyDay(iso){
+    var p=iso.split('-'); return (+p[2])+' '+AR_MON[(+p[1])-1]+' '+p[0];
+  }
+
+  function ready(fn){
+    if(document.readyState!=='loading') fn();
+    else document.addEventListener('DOMContentLoaded',fn);
+  }
+
+  ready(function(){
+    var ch = document.getElementById('chapter-daily');
+    if(!ch) return;
+
+    /* ── تجميع الأقسام: كل ترويسة قسم ومَن يليها من بطاقات ── */
+    var groups=[], cur=null, kids=Array.prototype.slice.call(ch.children);
+    kids.forEach(function(el){
+      if(el.tagName==='H2' && el.querySelector('.sec-ico')){
+        cur={h2:el, items:[], notes:[], hl:null}; groups.push(cur);
+      } else if(cur){
+        if(el.classList && el.classList.contains('item')) cur.items.push(el);
+        else if(el.classList && el.classList.contains('highlights')){
+          cur.hl=el;
+          Array.prototype.slice.call(el.querySelectorAll('.item')).forEach(function(i){cur.items.push(i);});
+        }
+        else if(el.tagName==='P') cur.notes.push(el);
+      }
+    });
+    if(!groups.length) return;
+
+    var all = Array.prototype.slice.call(ch.querySelectorAll('.item'));
+    if(!all.length) return;
+
+    /* ── ٣ · شارة «جديد اليوم» ── */
+    all.forEach(function(it){
+      var d=it.getAttribute('data-date')||'';
+      it.__d=d;
+      it.__hay=(it.textContent||'').toLowerCase();
+      it.__dist=[];
+      var area=it.querySelector('.badge.b-area');
+      var hay=((area?area.textContent:'')+' '+it.__hay).toLowerCase();
+      DISTRICTS.forEach(function(D){
+        for(var i=0;i<D[1].length;i++){ if(hay.indexOf(D[1][i])>-1){ it.__dist.push(D[0]); return; } }
+      });
+      if(d===TODAY){
+        var meta=it.querySelector('.meta');
+        if(meta && !meta.querySelector('.b-new')){
+          var b=document.createElement('span');
+          b.className='badge b-new'; b.textContent='● جديد اليوم';
+          meta.insertBefore(b, meta.firstChild);
+        }
+      }
+    });
+
+    /* ── ٦ · نافذة التغطية ── */
+    var past = all.map(function(i){return i.__d;}).filter(function(d){return d && d<=TODAY;}).sort();
+    var have={}; past.forEach(function(d){have[d]=1;});
+    var gaps=[];
+    for(var k=13;k>=0;k--){ var dd=shift(TODAY,-k); if(!have[dd]) gaps.push(dd); }
+    var lastCov = past.length? past[past.length-1] : '—';
+
+    var cov=document.createElement('div');
+    cov.className='cov';
+    cov.innerHTML =
+      '<span class="cv '+(lastCov===TODAY?'ok':'gap')+'">آخر يوم مغطّى: '+
+        (lastCov==='—'?'—':prettyDay(lastCov))+'</span>'+
+      '<span class="cv">المدى: '+(past.length?prettyDay(past[0]):'—')+' ← '+
+        (past.length?prettyDay(past[past.length-1]):'—')+'</span>'+
+      (gaps.length
+        ? '<span class="cv gap">أيام بلا تغطية في آخر ١٤ يوماً: '+gaps.length+'</span>'
+        : '<span class="cv ok">تغطية متّصلة آخر ١٤ يوماً</span>');
+
+    /* ── ١ · شريط البحث والفلترة ── */
+    var used={}; all.forEach(function(i){ i.__dist.forEach(function(d){used[d]=(used[d]||0)+1;}); });
+    var optD = DISTRICTS.filter(function(D){return used[D[0]];})
+      .map(function(D){return '<option value="'+D[0]+'">'+D[0]+' ('+used[D[0]]+')</option>';}).join('');
+
+    var bar=document.createElement('div');
+    bar.className='dbar';
+    bar.innerHTML =
+      '<span class="fx"><input type="search" id="dq" placeholder="ابحث في البطاقات… (سعر، حي، جهة، مصدر)" aria-label="بحث في النشرة"></span>'+
+      '<select id="ddist" aria-label="تصفية حسب القضاء"><option value="">كل الأقضية</option>'+optD+'</select>'+
+      '<select id="dper" aria-label="تصفية حسب المدى الزمني">'+
+        '<option value="0">كل المدى</option>'+
+        '<option value="1">اليوم</option>'+
+        '<option value="3">آخر ٣ أيام</option>'+
+        '<option value="10">آخر ١٠ أيام</option>'+
+        '<option value="30">آخر ٣٠ يوماً</option>'+
+        '<option value="f">🔜 الفعاليات القادمة</option></select>'+
+      '<button type="button" class="rst" id="drst">مسح</button>'+
+      '<span class="hits" id="dhits"><b>'+all.length+'</b> من '+all.length+' بطاقة</span>';
+
+    var anchor = document.getElementById('daily-chips') || groups[0].h2;
+    anchor.parentNode.insertBefore(bar, anchor.nextSibling);
+    bar.parentNode.insertBefore(cov, bar.nextSibling);
+
+    /* ── ٢ · طيّ الأرشيف: ما هو أقدم من ١٠ أيام ── */
+    groups.forEach(function(g,gi){
+      g.h2.__base = (g.h2.querySelector('.count')||{}).textContent || String(g.items.length);
+      if(g.hl) return;                       /* «أبرز اليوم» لا يُطوى */
+      var old = g.items.filter(function(i){ return i.__d && i.__d < RECENT; });
+      if(old.length < 4) return;
+      var det=document.createElement('details');
+      det.className='fold';
+      var dates=old.map(function(i){return i.__d;}).sort();
+      det.innerHTML='<summary>🗄️ أرشيف أقدم — <b>'+old.length+'</b> بطاقة '+
+        '<span class="rng">'+prettyDay(dates[0])+' ← '+prettyDay(dates[dates.length-1])+'</span></summary>'+
+        '<div class="inner"></div>';
+      var inner=det.querySelector('.inner');
+      var last=null;
+      old.forEach(function(i){
+        if(i.__d!==last){
+          last=i.__d;
+          var sep=document.createElement('div');
+          sep.className='daysep'; sep.textContent=prettyDay(i.__d);
+          inner.appendChild(sep);
+        }
+        inner.appendChild(i);
+      });
+      var tail = g.items.filter(function(i){return old.indexOf(i)<0;}).pop();
+      if(tail && tail.nextSibling) ch.insertBefore(det, tail.nextSibling);
+      else if(tail) ch.appendChild(det);
+      else ch.insertBefore(det, g.h2.nextSibling);
+      g.fold=det;
+    });
+
+    /* ── ٧ · روابط دائمة للأقسام ── */
+    groups.forEach(function(g,i){
+      var id='rasd-'+(i+1);
+      if(!g.h2.id) g.h2.id=id;
+      var b=document.createElement('button');
+      b.type='button'; b.className='permal'; b.title='انسخ رابط هذا القسم'; b.textContent='🔗';
+      b.onclick=function(){
+        var u=location.origin+location.pathname+'#'+g.h2.id;
+        var done=function(){ b.classList.add('done'); b.textContent='✓';
+          setTimeout(function(){b.classList.remove('done'); b.textContent='🔗';},1400); };
+        if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done,done);
+        else { location.hash=g.h2.id; done(); }
+      };
+      var cnt=g.h2.querySelector('.count');
+      if(cnt) g.h2.insertBefore(b,cnt); else g.h2.appendChild(b);
+    });
+
+    /* ── ٥ · الأرقام تُحسب من الملف لا تُكتب يدوياً ── */
+    var chip=document.querySelector('#daily-chips .chip .num');
+    if(chip) chip.textContent=String(all.length);
+
+    /* ── ٤ · لوحة شفافية الرصد من <!--RESEARCH-REPORT--> ── */
+    (function(){
+      var walker=document.createTreeWalker(ch,NodeFilter.SHOW_COMMENT,null);
+      var node,raw=null;
+      while((node=walker.nextNode())){
+        if(node.nodeValue.indexOf('RESEARCH-REPORT')>-1){ raw=node.nodeValue; break; }
+      }
+      if(!raw) return;
+      var lines=raw.split('\n').map(function(s){return s.trim();}).filter(Boolean);
+      var head='', rows='', note='';
+      lines.forEach(function(l){
+        if(l.indexOf('RESEARCH-REPORT')===0) return;
+        if(l.indexOf('run=')===0){ head=l; return; }
+        if(l.indexOf('note=')===0){ note=l.slice(5); return; }
+        var m=l.match(/^(\S+)\s+found=(\d+)\s+covered=(\d+)\s+written=(\d+)(?:\s+total=(\d+))?/);
+        if(m) rows+='<tr><td>'+m[1]+'</td><td class="c">'+m[2]+'</td><td class="c">'+m[3]+
+                    '</td><td class="w">'+m[4]+'</td><td class="c">'+(m[5]||'—')+'</td></tr>';
+      });
+      if(!rows && !note) return;
+      var d=document.createElement('details');
+      d.className='xpanel';
+      d.innerHTML='<summary>شفافية الرصد — ماذا بحثنا وماذا لم نجد</summary><div class="xbody">'+
+        (rows?'<table><thead><tr><th>المحور</th><th>وُجد</th><th>مُدرَج سلفاً</th><th>أُضيف</th><th>الإجمالي</th></tr></thead><tbody>'+rows+'</tbody></table>':'')+
+        (note?'<p class="xnote">'+note+'</p>':'')+
+        (head?'<p class="xnote" style="color:var(--muted);font-family:var(--font-num);font-size:11.5px">'+head+'</p>':'')+
+        '</div>';
+      cov.parentNode.insertBefore(d, cov.nextSibling);
+    })();
+
+    /* ── الفلترة ── */
+    var q=document.getElementById('dq'), dsel=document.getElementById('ddist'),
+        psel=document.getElementById('dper'), hits=document.getElementById('dhits'),
+        rst=document.getElementById('drst');
+    var nohit=document.createElement('div');
+    nohit.className='nohit hidden-x';
+    nohit.textContent='لا بطاقة تطابق هذا البحث. جرّب كلمة أعمّ أو وسّع المدى الزمني.';
+    cov.parentNode.insertBefore(nohit, cov.nextSibling);
+
+    function apply(){
+      var text=(q.value||'').trim().toLowerCase();
+      var dist=dsel.value, per=psel.value;
+      var future = per==='f', days = future?0:(parseInt(per,10)||0);
+      var from = days? shift(TODAY,-(days-1)) : null;
+      var active = !!(text||dist||days||future);
+      var shown=0;
+
+      all.forEach(function(it){
+        var ok=true;
+        if(text && it.__hay.indexOf(text)<0) ok=false;
+        if(ok && dist && it.__dist.indexOf(dist)<0) ok=false;
+        if(ok && future && !(it.__d>TODAY)) ok=false;
+        if(ok && from && !(it.__d>=from && it.__d<=TODAY)) ok=false;
+        it.classList.toggle('hidden-x', !ok);
+        if(ok) shown++;
+      });
+
+      groups.forEach(function(g){
+        var vis=g.items.filter(function(i){return !i.classList.contains('hidden-x');}).length;
+        g.h2.classList.toggle('hidden-x', vis===0);
+        var c=g.h2.querySelector('.count'); if(c) c.textContent=vis;
+        if(g.hl) g.hl.classList.toggle('hidden-x', vis===0);
+        g.notes.forEach(function(n){ n.classList.toggle('hidden-x', active); });
+        if(g.fold){
+          var fv=Array.prototype.slice.call(g.fold.querySelectorAll('.item'))
+                  .filter(function(i){return !i.classList.contains('hidden-x');}).length;
+          g.fold.classList.toggle('hidden-x', fv===0);
+          if(active && fv) g.fold.open=true;
+          if(!active) g.fold.open=false;
+          Array.prototype.slice.call(g.fold.querySelectorAll('.daysep')).forEach(function(s){
+            var n=s.nextElementSibling, any=false;
+            while(n && !n.classList.contains('daysep')){
+              if(n.classList.contains('item') && !n.classList.contains('hidden-x')){any=true;break;}
+              n=n.nextElementSibling;
+            }
+            s.classList.toggle('hidden-x', !any);
+          });
+        }
+      });
+
+      hits.innerHTML='<b>'+shown+'</b> من '+all.length+' بطاقة';
+      nohit.classList.toggle('hidden-x', shown!==0);
+      rst.classList.toggle('off', !active);
+    }
+
+    var tmr; function debounced(){ clearTimeout(tmr); tmr=setTimeout(apply,140); }
+    q.addEventListener('input',debounced);
+    dsel.addEventListener('change',apply);
+    psel.addEventListener('change',apply);
+    rst.onclick=function(){ q.value=''; dsel.value=''; psel.value='0'; apply(); q.focus(); };
+    rst.classList.add('off');
+
+    /* فتح القسم المطلوب عند الوصول برابط دائم */
+    if(location.hash && /^#rasd-\d+$/.test(location.hash)){
+      var t=document.querySelector(location.hash);
+      if(t) setTimeout(function(){ t.scrollIntoView({behavior:'smooth',block:'start'}); },320);
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
