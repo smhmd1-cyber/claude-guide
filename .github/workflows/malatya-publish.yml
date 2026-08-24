@@ -10,6 +10,9 @@ on:
     paths:
       - 'malatya/**'
   workflow_dispatch:
+  # يُستدعى مباشرةً من النشرة ومن الوكيلين.
+  # ضروري لأن الدفع بـ GITHUB_TOKEN لا يُطلق حدث push في سير عمل آخر.
+  workflow_call:
 
 permissions:
   contents: read

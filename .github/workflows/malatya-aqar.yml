@@ -21,6 +21,8 @@ jobs:
     permissions:
       contents: write
       id-token: write
+    outputs:
+      pushed: ${{ steps.commit.outputs.pushed }}
 
     steps:
       - name: Checkout
@@ -169,8 +171,11 @@ jobs:
           PY
 
       - name: Commit ودفع إلى main
+        id: commit
         run: |
           set -euo pipefail
+          echo "pushed=false" >> "$GITHUB_OUTPUT"
+
           git add -A malatya/data malatya/reports agents/src
           if git diff --cached --quiet; then
             echo "لا تغيير — لا commit"; exit 0
@@ -179,4 +184,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "وكيل العقارات — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
           git push
-          echo "✅ دُفع — سيتولّى «نشر منظومة ملاطيا» رفعه تلقائياً"
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+          echo "✅ دُفع — سيُستدعى «نشر منظومة ملاطيا» الآن"
+
+  publish:
+    name: نشر إلى jmahery.com
+    needs: watch
+    if: needs.watch.outputs.pushed == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit

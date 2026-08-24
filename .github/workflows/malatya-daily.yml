@@ -27,6 +27,8 @@ jobs:
     permissions:
       contents: write
       id-token: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
 
     steps:
       - name: Checkout
@@ -204,3 +206,10 @@ jobs:
           fi
           echo "للنشر اليدوي عند الحاجة:"
           echo "https://github.com/smhmd1-cyber/claude-guide/actions/workflows/malatya-publish.yml"
+
+  publish:
+    name: نشر إلى jmahery.com
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit
