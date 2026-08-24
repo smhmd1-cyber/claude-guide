@@ -116,10 +116,13 @@ jobs:
             C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "$u?c=$T")
             [ "$C" = "200" ] && echo "  ✅ $u → 200" || { echo "  🚨 $u → $C"; FAIL=1; }
           done
-          echo "— مكتبة المستندات ما زالت محميّة؟"
+          echo "— مكتبة المستندات: مفتوحة للمستخدم، ومغلقة أمام التصفّح كقائمة —"
           C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "${PORTAL_URL}docs/?c=$T")
-          [ "$C" = "401" ] && echo "  ✅ docs/ → 401 (محميّة)" \
-            || { echo "  🚨 docs/ → $C (المفترض 401)"; FAIL=1; }
+          case "$C" in
+            403) echo "  ✅ docs/ → 403 (لا سرد للمجلّد — .htaccess فعّال)" ;;
+            401) echo "  ℹ️  docs/ → 401 (ما زالت حماية كلمة المرور قائمة)" ;;
+            *)   echo "  🚨 docs/ → $C (المفترض 403) — قد يكون .htaccess ضاع"; FAIL=1 ;;
+          esac
           exit $FAIL
 
       - name: التحقّق من النشر الحيّ
