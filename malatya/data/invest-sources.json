@@ -1,6 +1,6 @@
 {
  "accessed": "2026-08-25",
- "count": 69,
+ "count": 82,
  "items": [
   {
    "code": "L1",
@@ -690,6 +690,136 @@
    "date": "2025-12",
    "lang": "tr",
    "why": "33.030 ₺ إجمالي · 28.075,50 صافٍ · 39.223,13 تكلفة على صاحب العمل في الصناعة التحويلية",
+   "cat": "اقتصاد"
+  },
+  {
+   "code": "I20",
+   "org": "Yatırım Teşvik Belgesi (استشاري متخصّص)",
+   "title": "إعادة نشر جدول الملحق EK-3 من القرار 9903 — الأكواد والشروط",
+   "url": "https://www.yatirimtesvikbelgesi.com/post/yat%C4%B1r%C4%B1m-te%C5%9Fvik-belgesi-desteklenen-sekt%C3%B6rler",
+   "date": "2026-07-03",
+   "lang": "tr",
+   "why": "المصدر الوحيد الذي أتاح قراءة صفوف EK-3 (10.3 · 52.10.02 · 17 · 18) بعد تعذّر الجلب من الجريدة الرسمية — ثقة متوسطة",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I21",
+   "org": "TKDK / وزارة الزراعة والغابات",
+   "title": "IPARD III — الدعوة الحادية عشرة (M3: تجهيز وتسويق المنتجات الزراعية)",
+   "url": "https://www.tkdk.gov.tr/Content/File/BasvuruFiles/BasvuruCagriIlani/IPARDIII/IPARDIII_OnbirinciCagriIlani.pdf",
+   "date": "2026-06",
+   "lang": "tr",
+   "why": "٨١ ولاية مؤهَّلة ومنها ملاطيا · دعم ٥٠–٧٠٪ · مستودع التبريد نفقة مؤهَّلة بسقف ١٠ آلاف م³ — النافذة أُغلقت ٢٠/٧/٢٠٢٦",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I22",
+   "org": "Resmî Gazete / TRGM",
+   "title": "بلاغ برنامج التنمية الريفية 2026/9 وأصول تطبيقه — بند 14.1.4 مستودع التبريد",
+   "url": "https://www.tarimorman.gov.tr/TRGM/Belgeler/0KIRSAL%20KALKINMA%20DA%C4%B0RE%20BA%C5%9EKANLI%C4%9EI/KKYDP%20TEBL%C4%B0%C4%9E/18.04.2026/Uygulama%20Esaslari.pdf",
+   "date": "2026-04-03",
+   "lang": "tr",
+   "why": "دعم ٥٠–٧٠٪ بسقف ٣٠ مليون ₺ لمستودعات التبريد — نافذة ملاطيا أُغلقت ١٢/٦/٢٠٢٦",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I23",
+   "org": "Lexpera / القانون 4562",
+   "title": "قانون المناطق الصناعية المنظَّمة — م.4 (الرخص تصدر عن OSB) و م.18/11 (جواز التأجير)",
+   "url": "https://www.lexpera.com.tr/mevzuat/kanunlar/organize-sanayi-bolgeleri-kanunu-4562",
+   "date": "محدَّث",
+   "lang": "tr",
+   "why": "أساس مسألة: هل يفي استئجار مبنى داخل OSB بشرط «تحقيق الاستثمار داخل OSB»",
+   "cat": "حوافز"
+  },
+  {
+   "code": "N1",
+   "org": "Eurostat (نسخة CSO Ireland)",
+   "title": "NACE Rev.2.1 Manual and Guidelines — الفقرتان 102 و107",
+   "url": "https://www.cso.ie/en/media/csoie/methods/cars/NACE_Rev._2.1_Manual_and_Guidelines.pdf",
+   "date": "2024",
+   "lang": "en",
+   "why": "القاعدة الحاسمة: المنفِّذ بالأجرة يُصنَّف في صنف المنتج نفسه (صناعة تحويلية)، وشرط ملكية المدخلات يقع على الآمر",
+   "cat": "تصنيف"
+  },
+  {
+   "code": "N2",
+   "org": "SATSO — بوّابة NACE",
+   "title": "الأكواد السداسية تحت 10.39 و52.10 و82.92 و46.31",
+   "url": "https://ticaret.satso.org.tr/nace/249/1039-baska-yerde-siniflandirilmamis-meyve-ve-sebzelerin-islenmesi-ve-saklanmasi.aspx",
+   "date": "—",
+   "lang": "tr",
+   "why": "نصّ 10.39.05 يذكر «kuru kayısı» بالاسم · و82.92.01 مقيَّد بعبارة «bir ücret veya sözleşme temelinde»",
+   "cat": "تصنيف"
+  },
+  {
+   "code": "N3",
+   "org": "TOBB",
+   "title": "Kapasite Raporlarının Düzenlenmesi Usul ve Esasları — م.6/14",
+   "url": "https://www.tobb.org.tr/SanayiMudurlugu/Documents/Kapasite/KapasiteEsaslari.pdf",
+   "date": "2025",
+   "lang": "tr",
+   "why": "«Fason iş yaptıran firmalara kapasite raporu düzenlenemez» — الحظر على مُخرِج العمل لا على منفِّذه",
+   "cat": "تصنيف"
+  },
+  {
+   "code": "N4",
+   "org": "TÜİK (عبر Alomaliye)",
+   "title": "NACE Rev.2.1-Altılı 2026 — التصنيف الوطني النافذ",
+   "url": "https://www.alomaliye.com/2026/04/21/turkiyede-nace-faaliyet-siniflamalari/",
+   "date": "2026-04-21",
+   "lang": "tr",
+   "why": "الكود السداسي هو «ana faaliyet kodu» لدى الإدارة الضريبية — وهو ما يُبنى عليه ملف التشجيع",
+   "cat": "تصنيف"
+  },
+  {
+   "code": "G1",
+   "org": "Resmî Gazete (نسخة DENİB)",
+   "title": "Gıda İşletmelerinin Kayıt ve Onay İşlemlerine Dair Yönetmelik — الملحقان Ek-1 و Ek-2",
+   "url": "https://denib.gov.tr/files/downloads/sirku_ekleri_2024/2024-296-ek1-2.pdf",
+   "date": "2011-12-17",
+   "lang": "tr",
+   "why": "Onay للمنتجات حيوانية المنشأ فقط؛ المشمش نباتي ⇒ Kayıt — والمهلة ١٥ يوم عمل",
+   "cat": "تراخيص"
+  },
+  {
+   "code": "G3",
+   "org": "TEPGE — وزارة الزراعة والغابات",
+   "title": "Kayısı Ürün Raporu 2023 (منشور 377) — حدود ثاني أكسيد الكبريت",
+   "url": "https://arastirma.tarimorman.gov.tr/tepge/Belgeler/PDF%20%C3%9Cr%C3%BCn%20Raporlar%C4%B1/2023%20%C3%9Cr%C3%BCn%20Raporlar%C4%B1/Kay%C4%B1s%C4%B1%20%C3%9Cr%C3%BCn%20Raporu%202023-377%20TEPGE.pdf",
+   "date": "2023-11",
+   "lang": "tr",
+   "why": "٢٠٠٠ ppm في تركيا والاتحاد الأوروبي · ٣٠٠٠ في أمريكا وأستراليا · ٢٥٠٠ في كندا",
+   "cat": "تراخيص"
+  },
+  {
+   "code": "G4",
+   "org": "İklim Değişikliği Başkanlığı",
+   "title": "Florlu Sera Gazlarına İlişkin Yönetmelik — تسجيل EKOMVET ودوريات كشف التسرّب",
+   "url": "https://iklim.gov.tr/db/turkce/icerikler/files/FlorluSeraGazlar%C4%B1na%C4%B0li%C5%9FkinY%C3%B6netmelik_RG_32693_15.10.2024.pdf",
+   "date": "2024-10-15",
+   "lang": "tr",
+   "why": "التزام تشغيلي دائم على مستودعات التبريد: تسجيل · كشف دوري · تقرير سنوي عبر FARAVET · شهادات كفاءة",
+   "cat": "تراخيص"
+  },
+  {
+   "code": "G5",
+   "org": "وزارة التجارة",
+   "title": "Kuru Kayısı Kalite Kriterleri — الرطوبة والتدريج للمستودعات المرخَّصة",
+   "url": "https://ticaret.gov.tr/data/5d45e78513b87619c4131bb8/Kuru%20Kay%C4%B1s%C4%B1%20Kalite%20Kriterleri.pdf",
+   "date": "—",
+   "lang": "tr",
+   "why": "١٨٪ رطوبة حدّاً أقصى للمكبرت · تسع فئات boylama — المواصفة التي يقوم عليها خط التدريج",
+   "cat": "تراخيص"
+  },
+  {
+   "code": "E9",
+   "org": "TRGM — وزارة الزراعة والغابات",
+   "title": "Malatya Tarımsal Yatırım Rehberi 2025 — جدول المنشآت الصناعية الزراعية",
+   "url": "https://www.tarimorman.gov.tr/TRGM/TARYAT/Belgeler/Tar%C4%B1msal%20yat%C4%B1r%C4%B1m%20rehberi/Malatya%20Tar%C4%B1msal%20Yat%C4%B1r%C4%B1m%20Rehberi-2025.pdf",
+   "date": "2025",
+   "lang": "tr",
+   "why": "١٣٤ منشأة تجهيز وتعبئة فواكه وخضروات في ملاطيا من أصل ٨٠٢ منشأة غذائية مسجَّلة",
    "cat": "اقتصاد"
   }
  ]
