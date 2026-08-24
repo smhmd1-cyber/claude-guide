@@ -80,6 +80,10 @@ jobs:
           echo "— محتويات النشر —"; find _deploy -maxdepth 2 | sort | head -40
           for f in index.html daleel.html aqar.html reports.html library.html \
                    land-board.html aqar-board.html land-agent.html \
+                   invest.html invest-legal.html invest-risk.html \
+                   invest-paths.html invest-ops.html invest-sources.html \
+                   data/invest-sources.json data/invest-structures.json \
+                   data/invest-risks.json data/invest-paths.json data/invest-watch.json \
                    assets/malatya.css assets/nav.js data/reports-index.json; do
             test -s "_deploy/$f" || { echo "❌ ناقص في حزمة النشر: $f"; exit 1; }
           done

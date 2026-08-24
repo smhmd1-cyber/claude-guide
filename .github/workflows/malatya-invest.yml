@@ -1,0 +1,246 @@
+name: ملف الاستثمار — رصد دوري
+
+# 07:10 UTC = 10:10 بتوقيت القدس (صيفاً) — بعد الوكلاء الثلاثة.
+# مسح خفيف يومياً · موسَّع يوم الاثنين · شامل في أول الشهر.
+on:
+  schedule:
+    - cron: "10 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: malatya-invest
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    name: رصد التغييرات التشريعية والضريبية والحوافز
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      id-token: write
+    outputs:
+      pushed: ${{ steps.commit.outputs.pushed }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: تحديد عمق المسح
+        id: depth
+        run: |
+          set -euo pipefail
+          export TZ=Asia/Jerusalem
+          TODAY=$(date '+%Y-%m-%d'); DOW=$(date '+%u'); DOM=$(date '+%d')
+          if   [ "$DOM" = "01" ]; then MODE="شهري";  KIND="شامل"
+          elif [ "$DOW" = "1"  ]; then MODE="أسبوعي"; KIND="موسَّع"
+          else                        MODE="يومي";   KIND="خفيف"
+          fi
+          echo "today=$TODAY" >> "$GITHUB_OUTPUT"
+          echo "mode=$MODE"   >> "$GITHUB_OUTPUT"
+          echo "kind=$KIND"   >> "$GITHUB_OUTPUT"
+          echo "🗓️ $TODAY — مسح $MODE ($KIND)"
+
+      - name: تشغيل Claude — رصد ملف الاستثمار
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            أنت **«وكيل رصد ملف الاستثمار المشترك — ملاطيا»**. تعمل داخل GitHub Actions.
+            لديك موافقة قائمة؛ **لا تطرح أسئلة**، ولا تنتظر ردّاً.
+            **مهمتك: الرصد وتحديث ملفات البيانات فقط.** لا commit ولا push — سير العمل يتولّاهما بعدك.
+
+            التاريخ: `${{ steps.depth.outputs.today }}` — سمِّه `TODAY`.
+            عمق المسح اليوم: **${{ steps.depth.outputs.mode }}** (${{ steps.depth.outputs.kind }}).
+
+            ═══════════════════════════════
+            **السياق الذي تخدمه**
+            ═══════════════════════════════
+            أب **غير مقيم** في تركيا (بلا جنسية ولا إقامة ولا تصريح عمل) يستثمر مع ابنته
+            **المواطنة التركية** المقيمة في ملاطيا وزوجها. سقف المرحلة الأولى **٣ ملايين ليرة**.
+            القسم كامل في `malatya/invest*.html`، وبياناته في `malatya/data/invest-*.json`.
+            اقرأ `malatya/data/invest-sources.json` أولاً — فيه رموز المصادر (L·W·T·B·I·E) وروابطها.
+
+            ═══════════════════════════════
+            **قواعد ملزِمة — لا استثناء**
+            ═══════════════════════════════
+            1. **لا تختلق** مصدراً ولا رابطاً ولا رقم مادة قانونية ولا تاريخ جريدة رسمية. ما لم تتحقّق منه لا يُكتب.
+            2. **لا تستخدم** عبارات «الربح مضمون» أو «العائد مؤكَّد» أو «فرصة لا تُعوَّض» أو ما يشبهها.
+            3. **لا توصِ بمسار** ولا تعتمد فرصة. مهمتك رصد ما تغيّر، لا اتخاذ القرار.
+            4. أولوية المصادر: Resmî Gazete ← Mevzuat ← الوزارات ← GİB / TCMB ← الغرف والوكالات ←
+               الهيئات المهنية (TÜRMOB · İSMMMO). **لا تسند واقعة قانونية أو رقمية إلى مصدر صحفي.**
+            5. إن مَنَع موقع رسمي الجلب الآلي (resmigazete.gov.tr · mevzuat.gov.tr كثيراً ما يفعلان):
+               **سجّل ذلك صراحةً**، أثبت الرابط الرسمي للرجوع اليدوي، وتحقّق عبر مصدر مؤسسي موازٍ —
+               وضع `"confirm": true` على البند. لا تستخدم curl ولا بايثون للالتفاف.
+            6. أي تغيير يمسّ **نصّاً قانونياً أو معدّلاً ضريبياً** يُوسم `"confirm": true` دائماً —
+               لا يُعتمد واقعةً قبل مراجعة بشرية.
+            7. **لا تلمس** `daleel.html` ولا ملفات العقارات والأراضي ولا أي ملف خارج ما هو مذكور أدناه.
+
+            ═══════════════════════════════
+            **ما تفحصه بحسب العمق**
+            ═══════════════════════════════
+            **يومياً (دائماً):**
+            - الجريدة الرسمية: قرار رئاسي أو قانون يمسّ الاستثمار الأجنبي · رأس المال · الضرائب · القرار 32.
+            - سعر السياسة النقدية لدى TCMB، وسعر صرف الليرة مقابل الدولار واليورو — رقمان للرصد فقط.
+
+            **أسبوعياً (الاثنين) — أضِف:**
+            - دعوات KOSGEB وTKDK/IPARD III ووكالة الفرات (FKA): ما فُتح وما أُغلق وموعد الإقفال.
+            - بلاغات GİB الجديدة وتغيّر معدّلات الاقتطاع أو KDV.
+            - أسعار المشمش لدى بورصة ملاطيا، وتخصيصات قطع المنطقة الصناعية المنظَّمة (OSB).
+
+            **أول الشهر — أضِف:**
+            - التضخّم السنوي لدى TÜİK، والحد الأدنى للأجور عند تعديله.
+            - افحص **كل** روابط `invest-sources.json`: أيّها مات (404) — سجّله بنداً بعنوان «رابط معطّل».
+            - راجع `invest-risks.json` و`invest-paths.json`: هل يستوجب ما رُصد تعديل درجة أو إضافة خطر؟
+              إن نعم فعدّل، واذكر السبب في `note`، **ولا تحذف** أي عنصر قائم.
+
+            ═══════════════════════════════
+            **ما تكتبه**
+            ═══════════════════════════════
+            **(أ) `malatya/data/invest-watch.json`** — مصفوفة. أضِف سجلّ اليوم في **نهايتها**:
+            ```json
+            {"date":"TODAY","kind":"${{ steps.depth.outputs.mode }}","n":0,
+             "note":"سطران عمّا رُصد أو عن خلوّ اليوم من جديد",
+             "items":[{"t":"عنوان البند","d":"ماذا تغيّر ومَن يتأثّر من هياكل الملف",
+                       "u":"https://…","src":"T3","confirm":true}]}
+            ```
+            `n` = عدد البنود. احتفظ بآخر **٦٠** سجلاً. **يوم بلا جديد ⇐ سجّله بـ`items: []`** — الصمت نتيجة صحيحة.
+
+            **(ب) `malatya/data/invest-sources.json`** — عند العثور على مصدر رسمي جديد فعلاً:
+            أضِفه بالبنية نفسها `{code, org, title, url, date, lang, why, cat}` برمز جديد في سلسلته
+            (L·W·T·B·I·E)، وحدّث `count` و`accessed`. **لا تحذف مصدراً قائماً**، ولو مات رابطه —
+            سجّل موته بنداً في `invest-watch.json` بدل حذفه.
+
+            **(ج) `agents/src/invest-TODAY.md`** — يُكتب **فقط** إن كان المسح أسبوعياً أو شهرياً،
+            أو إن رُصد بند واحد على الأقل. اتبع الصيغة الموحَّدة ذات السبعة عشر قسماً المنشورة في
+            `malatya/invest-ops.html` — الأقسام التي لا جديد فيها تُكتب «لا تغيير» ولا تُحذف.
+            اختم بجدول **«بيانات مطلوبة من المستثمر»** — **لا تضع أسئلة في نهاية التقرير**.
+
+            ═══════════════════════════════
+            **فحص ذاتي قبل الإنهاء**
+            ═══════════════════════════════
+            - كل ملفات JSON صالحة (`python3 -m json.tool`).
+            - `invest-watch.json` مصفوفة، وسجلّ TODAY موجود **مرّة واحدة**.
+            - عدد عناصر `invest-sources.json` لم ينقص، و`count` يطابق طول `items`.
+            - عدد عناصر `invest-risks.json` و`invest-paths.json` لم ينقص.
+            - كل `u` في البنود يبدأ بـ `https://`، وكل `src` رمز موجود فعلاً في ملف المصادر.
+            - لم تُعدَّل أي صفحة HTML، ولا أي ملف خارج القائمة أعلاه.
+
+            **تقرير ختامي بالعربية:** عمق المسح · كم بنداً رُصد · ما الذي يحتاج تأكيداً بشرياً ·
+            ما تعذّر الوصول إليه وسببه · المصادر بروابطها.
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Agent"
+            --permission-mode acceptEdits
+
+      - name: التحقّق — لا ننشر بيانات معطوبة
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, subprocess, sys, os
+          TODAY = os.environ['TODAY']
+          errs, notes = [], []
+
+          def old(path):
+              r = subprocess.run(['git','show','HEAD:'+path],capture_output=True,text=True)
+              return json.loads(r.stdout) if r.returncode==0 and r.stdout.strip() else None
+
+          def load(p):
+              try:  return json.load(open(p,encoding='utf-8'))
+              except Exception as e: errs.append(f'{p}: {e}'); return None
+
+          w = load('malatya/data/invest-watch.json')
+          if w is not None:
+              if not isinstance(w,list): errs.append('invest-watch.json ليس مصفوفة')
+              else:
+                  rows=[r for r in w if r.get('date')==TODAY]
+                  if len(rows)!=1: errs.append(f'سجلّات اليوم {len(rows)} (المطلوب ١)')
+                  else:
+                      t=rows[0]
+                      items=t.get('items',[])
+                      if not isinstance(items,list): errs.append('items ليست مصفوفة')
+                      else:
+                          for it in items:
+                              u=str(it.get('u',''))
+                              if u and not u.startswith('https://'):
+                                  errs.append(f'رابط غير صالح: {u[:60]}')
+                          notes.append(f'سجلّ اليوم: {len(items)} بنداً')
+                  ow = old('malatya/data/invest-watch.json')
+                  if ow and len(w) < len(ow): errs.append(f'تراجع سجل الرصد {len(ow)} → {len(w)}')
+
+          for f,key in (('invest-sources.json','items'),('invest-risks.json','items'),
+                        ('invest-paths.json','items'),('invest-structures.json','structures')):
+              p='malatya/data/'+f
+              d=load(p); o=old(p)
+              if d is None: continue
+              cur=d.get(key)
+              if not isinstance(cur,list): errs.append(f'{f}: {key} ليست مصفوفة'); continue
+              if o and isinstance(o.get(key),list) and len(cur) < len(o[key]):
+                  errs.append(f'{f} انكمش {len(o[key])} → {len(cur)}')
+              else:
+                  notes.append(f'{f}: {len(cur)}')
+              if f=='invest-sources.json':
+                  if d.get('count') != len(cur):
+                      errs.append(f"count ({d.get('count')}) لا يطابق العدد ({len(cur)})")
+                  codes=[x.get('code') for x in cur]
+                  if len(set(codes)) != len(codes): errs.append('رموز مصادر مكرَّرة')
+
+          # كل src في بنود اليوم يجب أن يكون رمزاً موجوداً
+          try:
+              codes={x['code'] for x in json.load(open('malatya/data/invest-sources.json',encoding='utf-8'))['items']}
+              for r in (w or []):
+                  if r.get('date')!=TODAY: continue
+                  for it in r.get('items',[]):
+                      s=it.get('src')
+                      if s and s not in codes: errs.append(f'رمز مصدر غير معروف: {s}')
+          except Exception: pass
+
+          if errs:
+              print('❌ فشل التحقّق:'); [print('  -',e) for e in errs]; sys.exit(1)
+          print('✅ نجح التحقّق — ' + ' · '.join(notes))
+          PY
+        env:
+          TODAY: ${{ steps.depth.outputs.today }}
+
+      - name: منع تعديل الصفحات أو الملفات المحميّة
+        run: |
+          set -euo pipefail
+          BAD=$(git diff --name-only -- \
+                  ':!malatya/data/invest-watch.json' \
+                  ':!malatya/data/invest-sources.json' \
+                  ':!malatya/data/invest-risks.json' \
+                  ':!malatya/data/invest-paths.json' \
+                  ':!malatya/data/invest-structures.json' \
+                  ':!agents/src' || true)
+          if [ -n "$BAD" ]; then
+            echo "❌ الوكيل عدّل ملفات خارج نطاقه:"; echo "$BAD"; exit 1
+          fi
+          echo "✅ لم يُمسّ أي ملف خارج النطاق"
+
+      - name: Commit ودفع إلى main
+        id: commit
+        run: |
+          set -euo pipefail
+          echo "pushed=false" >> "$GITHUB_OUTPUT"
+
+          git add -A malatya/data agents/src
+          if git diff --cached --quiet; then
+            echo "لا تغيير — لا commit"; exit 0
+          fi
+          git config user.name  "malatya-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "ملف الاستثمار — رصد ${{ steps.depth.outputs.mode }} $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+          echo "✅ دُفع — سيُستدعى «نشر منظومة ملاطيا» الآن"
+
+  publish:
+    name: نشر إلى jmahery.com
+    needs: watch
+    if: needs.watch.outputs.pushed == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit
