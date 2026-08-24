@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة المتابعة وخطة الأتمتة — ملف الاستثمار المشترك</title>
+<meta name="description" content="دورات المتابعة اليومية والأسبوعية والشهرية والفصلية، البنية التقنية الفعلية التي تشغّلها، وصيغة التقرير الدوري الموحَّدة — بلا ادّعاء تشغيل ذاتي غير قائم.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css?v=2">
+<style>
+.cite{font-family:var(--font-num);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;
+  background:rgba(91,157,255,.16);color:#bcd7ff;letter-spacing:.3px}
+.cyc{border:1px solid var(--border-soft);border-radius:13px;padding:16px 18px;background:rgba(255,255,255,.015);margin-bottom:11px}
+.cyc .hd{display:flex;align-items:center;gap:11px;margin-bottom:11px;flex-wrap:wrap}
+.cyc .hd .ic{width:38px;height:38px;border-radius:11px;background:var(--card2);border:1px solid var(--border);
+  display:grid;place-items:center;font-size:18px;flex:0 0 auto}
+.cyc .hd b{font-size:16px;color:#fff;font-weight:800}
+.cyc ul{margin:0;padding-inline-start:18px;color:var(--text2);font-size:13.5px;line-height:1.95}
+.stepn{counter-reset:s}
+.stepn li{margin-bottom:7px}
+.fmt{display:grid;gap:7px}
+.fmt .r{display:flex;gap:11px;align-items:flex-start;padding:9px 13px;border:1px solid var(--border-soft);
+  border-radius:10px;background:rgba(255,255,255,.015)}
+.fmt .r .n{font-family:var(--font-num);font-size:11.5px;color:var(--muted);font-weight:800;flex:0 0 22px;padding-top:2px}
+.fmt .r b{font-size:14px;color:#fff;font-weight:700}
+.fmt .r small{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.65}
+.hon{border-inline-start:4px solid var(--accent);background:rgba(247,165,43,.07);padding:15px 18px;
+  border-radius:0 var(--r-sm) var(--r-sm) 0;margin:16px 0;font-size:14px;color:var(--text2);line-height:1.9}
+code.k{font-family:var(--font-num);font-size:12.5px;background:var(--card2);border:1px solid var(--border);
+  border-radius:6px;padding:1.5px 6px;color:#bcd7ff}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="logo">📡</div>
+    <div><h1>لوحة المتابعة وخطة الأتمتة</h1>
+      <div class="sub">المخرج ٨ — ما يُراقَب، ومتى، وبأي بنية تقنية فعلية</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر تحديث: <b>٢٤ أغسطس ٢٠٢٦</b></span>
+    <a class="btn" href="invest.html">← ملف الاستثمار</a>
+  </div>
+
+  <div class="hon">
+    🔌 <b>ما الذي يعمل فعلاً — دون مبالغة.</b> لا يوجد في هذه المنظومة برنامج يراقب تركيا ٢٤ ساعة.
+    ما يوجد هو <b>مهام مجدولة حقيقية</b> على GitHub Actions تعمل في أوقات محدَّدة، تجمع، وتقارن بالنسخة السابقة،
+    وتكتب ما تغيّر. بين تشغيلتين لا يحدث شيء. وأي تغيير في نصّ قانوني أو معدّل ضريبي
+    <b>لا يُنشَر قبل مراجعة بشرية</b> — تُصنَّف تلقائياً بوصفها «تحتاج تأكيداً» وتظهر بشارة صفراء حتى تُراجَع.
+  </div>
+
+  <h2>آخر ما رصدته المهمّة المجدولة</h2>
+  <p class="lead">هذه المخرجات الفعلية للتشغيلات الأخيرة — لا وصف لما «يُفترض» أن يحدث.
+    التشغيلة التي لا تجد جديداً تُسجَّل بصفر بنود، وهذا سجلّ صحيح لا فشل.</p>
+  <div id="watch"><p class="mut">… يُحمّل سجل الرصد</p></div>
+
+  <h2>دورات المتابعة</h2>
+  <p class="lead">أربع دورات بمسؤوليات غير متداخلة. لكلٍّ منها مصدر محدَّد ومخرَج محدَّد —
+    فلا تتحوّل المتابعة إلى قراءة أخبار عامة.</p>
+
+  <div class="cyc">
+    <div class="hd"><span class="ic">🌅</span><b>يومياً</b>
+      <span class="badge ok">آلي — مجدوَل</span><span class="badge">مسح خفيف</span></div>
+    <ul>
+      <li>الجريدة الرسمية <span class="cite">L1</span>: أي قرار رئاسي أو قانون يمسّ الاستثمار الأجنبي أو رأس المال أو الضرائب.</li>
+      <li>سعر صرف الليرة وسعر السياسة النقدية <span class="cite">E2</span> — رقمان فقط، للرصد لا للتحليل.</li>
+      <li>إعلانات العقارات والأراضي في ملاطيا (يتكفّل بها وكيلا <a href="aqar-board.html">العقارات</a> و<a href="land-board.html">الأراضي</a> القائمان).</li>
+      <li><b>المخرَج:</b> لا تقرير إن لم يتغيّر شيء. الصمت نتيجة صحيحة.</li>
+    </ul>
+  </div>
+
+  <div class="cyc">
+    <div class="hd"><span class="ic">📅</span><b>أسبوعياً — الاثنين</b>
+      <span class="badge ok">آلي — مجدوَل</span><span class="badge">مسح موسَّع</span></div>
+    <ul>
+      <li>نوافذ الدعم: دعوات KOSGEB <span class="cite">I4</span> وIPARD III <span class="cite">I8</span>
+        وإعلانات وكالة الفرات <span class="cite">I7</span> — فتح دعوة أو إغلاقها حدث يستحق التبليغ.</li>
+      <li>بلاغات GİB الجديدة <span class="cite">T1</span> وتغيّرات معدّلات الاقتطاع.</li>
+      <li>أسعار المشمش في بورصة ملاطيا <span class="cite">E5</span> وتخصيصات قطع OSB <span class="cite">E6</span> <span class="cite">E7</span>.</li>
+      <li><b>المخرَج:</b> فقرة «ما تغيّر هذا الأسبوع» تُضاف إلى صفحة الملف، أو لا شيء.</li>
+    </ul>
+  </div>
+
+  <div class="cyc">
+    <div class="hd"><span class="ic">🗓️</span><b>شهرياً — أول الشهر</b>
+      <span class="badge ok">آلي — مجدوَل</span><span class="badge warn">+ مراجعة بشرية</span></div>
+    <ul>
+      <li>مؤشّرات TÜİK: التضخّم السنوي <span class="cite">E1</span>، والحد الأدنى للأجور عند تعديله <span class="cite">E3</span>.</li>
+      <li>إعادة تقدير درجات المسارات العشرة إن تغيّر دليل أساسي.</li>
+      <li>مراجعة سجل المخاطر: هل ظهر خطر جديد أو سقط خطر قديم.</li>
+      <li><b>المخرَج:</b> تقرير بالصيغة الموحَّدة أدناه، مع تعليم كل تغيير قانوني بـ«يحتاج تأكيداً» قبل اعتماده.</li>
+    </ul>
+  </div>
+
+  <div class="cyc">
+    <div class="hd"><span class="ic">🔭</span><b>فصلياً</b>
+      <span class="badge warn">جلسة موجَّهة — ليست آلية</span></div>
+    <ul>
+      <li>مراجعة كاملة للمصادر الاثنين والخمسين: أيّها تغيّر، أيّها مات رابطه، أيّها يحتاج استبدالاً.</li>
+      <li>إعادة تقييم الهياكل الستة في ضوء أي تعديل تشريعي — خاصة مهلة توفيق رأس المال <span class="cite">L5</span>.</li>
+      <li>تحديث خريطة المحتوى: أي صفحة من الثماني والعشرين أصبحت جاهزة للبناء.</li>
+      <li><b>المخرَج:</b> نسخة مؤرَّخة من الملف كاملاً، مع سجل تغييرات صريح.</li>
+    </ul>
+  </div>
+
+  <h2>البنية التقنية الفعلية</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>المكوّن</th><th>ما يفعله</th><th>الحالة</th></tr></thead>
+    <tbody>
+      <tr><td><code class="k">malatya-invest.yml</code></td>
+        <td>مهمّة مجدولة تجمع المؤشّرات والدعوات والتغييرات التشريعية، وتقارنها بالنسخة السابقة، وتكتب
+          <code class="k">data/invest-watch.json</code> ثم تستدعي سير النشر.</td>
+        <td><span class="badge ok">مفعَّلة</span></td></tr>
+      <tr><td><code class="k">malatya-publish.yml</code></td>
+        <td>يرفع مجلّد <code class="k">malatya/</code> كاملاً إلى الخادم بعد أي تغيير، ويتحقّق من وجود الملفات المطلوبة.</td>
+        <td><span class="badge ok">قائم</span></td></tr>
+      <tr><td>ملفات <code class="k">data/invest-*.json</code></td>
+        <td>مصدر الحقيقة للمصادر والهياكل والمخاطر والمسارات — الصفحات تقرأ منها ولا تحتوي البيانات نصّاً.</td>
+        <td><span class="badge ok">قائمة</span></td></tr>
+      <tr><td>بوّابة المراجعة البشرية</td>
+        <td>أي تغيير يمسّ نصّاً قانونياً أو معدّلاً ضريبياً يُوسم <b>«يحتاج تأكيداً»</b> ولا يُعتمد واقعةً قبل مراجعته.</td>
+        <td><span class="badge warn">يدوي بقصد</span></td></tr>
+      <tr><td>الحارس اليومي</td>
+        <td>يتحقّق ظهراً أنّ المهام تقدّمت فعلاً، ويُنبّه على الهاتف عند التعثّر فقط.</td>
+        <td><span class="badge ok">قائم</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>صيغة التقرير الدوري الموحَّدة</h2>
+  <p class="lead">كل تقرير — يومي أو شهري — يخرج بالبنية نفسها، حتى تُقارَن التقارير ببعضها لا أن تُقرأ كل مرة من الصفر.
+    الأقسام التي لا جديد فيها تُكتب «لا تغيير» ولا تُحذف.</p>
+  <div class="fmt" id="fmt"></div>
+
+  <div class="note info" style="margin-top:18px">
+    📌 <b>قاعدة الصياغة الملزِمة في كل تقرير:</b> لا «ربح مضمون» ولا «عائد مؤكَّد» ولا «فرصة لا تُعوَّض».
+    كل رقم مقرون بمصدره وتاريخه، وكل ما لم يُتحقَّق منه يُذكر بوصفه كذلك، ولا يُختلق مصدر ولا رابط ولا رقم مادة قانونية.
+    ما ينقص من بيانات يوضَع في جدول <a href="invest-risk.html">«بيانات مطلوبة من المستثمر»</a> لا في أسئلة نهاية التقرير.
+  </div>
+
+  <footer class="site">
+    <span>📡 المتابعة والأتمتة</span><span>·</span>
+    <a href="invest.html">ملف الاستثمار</a><a href="invest-sources.html">المصادر</a><a href="index.html">مركز التحكّم</a>
+    <span style="flex:1"></span><span class="num">jmahery.com/malatya/invest-ops.html</span>
+  </footer>
+</div>
+
+<script src="assets/nav.js?v=3" defer></script>
+<script>
+(function(){
+'use strict';
+var F = [
+ ['العنوان والتاريخ ونطاق التغطية','ما الفترة التي يغطّيها التقرير وما الذي خرج عن نطاقه.'],
+ ['الخلاصة في ثلاثة أسطر','ما الذي يجب أن يُعرف إن لم يُقرأ الباقي.'],
+ ['ما تغيّر منذ التقرير السابق','قائمة صريحة — أو «لا تغيير».'],
+ ['التغييرات التشريعية والتنظيمية','النصّ ورقم المادة والجريدة الرسمية وتاريخ النفاذ، موسوماً بحالة التأكيد.'],
+ ['التغييرات الضريبية','المعدّل قبل وبعد، ومَن يتأثّر من هياكل الملف الستة.'],
+ ['الحوافز والدعوات','ما فُتح وما أُغلق وموعد الإقفال والجهة.'],
+ ['المؤشّرات الكلية','التضخّم · سعر السياسة · سعر الصرف · الحد الأدنى للأجور — أرقام لا تحليل.'],
+ ['اقتصاد ملاطيا','أسعار المشمش · تخصيصات OSB · حركة العقار والأرض.'],
+ ['أثر ما سبق على الهياكل الستة','أي صيغة تحسّنت وأيّها ساءت، ولماذا.'],
+ ['أثره على المسارات العشرة','تغيّر الدرجات إن تغيّرت، مع سبب كل تغيّر.'],
+ ['المخاطر: جديد · متصاعد · مُغلَق','حركة سجل المخاطر لا صورته الساكنة.'],
+ ['ما لم يُتحقَّق منه','صريحاً، بما في ذلك ما تعذّر الوصول إليه وسببه.'],
+ ['المصادر المستخدَمة','رمز ورابط وتاريخ اطلاع لكل مصدر ورد في التقرير.'],
+ ['بيانات مطلوبة من المستثمر','الجدول، محدَّثاً — بدلاً من أسئلة في نهاية التقرير.'],
+ ['الإجراءات المقترحة للفترة القادمة','فعل محدَّد لكلٍّ منها مسؤول ومهلة.'],
+ ['ما يحتاج مراجعة بشرية قبل الاعتماد','قائمة البنود الموسومة «يحتاج تأكيداً».'],
+ ['سجل التغييرات على الملف نفسه','أي صفحة تغيّرت وأي بيانات حُدِّثت وبأي تشغيلة.']
+];
+fetch('data/invest-watch.json?v='+Date.now(),{cache:'no-store'})
+ .then(function(r){return r.json();}).then(function(W){
+  var box = document.getElementById('watch');
+  var L = W.slice(-8).reverse();
+  box.innerHTML = L.map(function(w){
+    var items = (w.items||[]);
+    return '<div class="cyc"><div class="hd"><span class="ic">'+(items.length?'🔔':'🌙')+'</span>'+
+      '<b class="num">'+w.date+'</b><span class="badge">'+(w.kind||'مسح')+'</span>'+
+      '<span class="badge '+(items.length?'warn':'ok')+'">'+
+        (items.length? items.length+' بنداً' : 'لا تغيير')+'</span></div>'+
+      (w.note?'<p style="margin:0 0 9px;font-size:13.5px;color:var(--text2);line-height:1.85">'+w.note+'</p>':'')+
+      (items.length?'<ul>'+items.map(function(i){
+        return '<li><b style="color:#fff">'+(i.t||'')+'</b>'+
+               (i.d?' — '+i.d:'')+
+               (i.u?' <a href="'+i.u+'" target="_blank" rel="noopener">↗</a>':'')+
+               (i.confirm?' <span class="badge warn">يحتاج تأكيداً</span>':'')+'</li>';
+      }).join('')+'</ul>':'')+
+    '</div>';
+  }).join('');
+ }).catch(function(){
+  document.getElementById('watch').innerHTML =
+    '<div class="note warn">تعذّر تحميل <span class="num">data/invest-watch.json</span>.</div>';
+ });
+
+document.getElementById('fmt').innerHTML = F.map(function(x,i){
+  return '<div class="r"><span class="n">'+(i+1)+'</span><div><b>'+x[0]+'</b><small>'+x[1]+'</small></div></div>';
+}).join('');
+})();
+</script>
+</body>
+</html>

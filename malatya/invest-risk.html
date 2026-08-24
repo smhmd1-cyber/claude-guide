@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سجل المخاطر والبيانات المطلوبة — ملف الاستثمار المشترك</title>
+<meta name="description" content="خمسة عشر خطراً مصنَّفاً باحتماله وأثره وإجراء تخفيفه، ومصفوفة أولوية، وجدول البيانات المطلوبة من المستثمر قبل الانتقال إلى دراسة الفرص.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css?v=2">
+<style>
+.cite{font-family:var(--font-num);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;
+  background:rgba(91,157,255,.16);color:#bcd7ff;letter-spacing:.3px}
+.rk{border:1px solid var(--border-soft);border-radius:12px;padding:15px 17px;background:rgba(255,255,255,.015);margin-bottom:10px}
+.rk .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+.rk .rid{font-family:var(--font-num);font-size:12px;font-weight:800;color:var(--muted)}
+.rk .rnm{font-size:15.5px;font-weight:800;color:#fff}
+.rk p{margin:0 0 9px;font-size:13.5px;color:var(--text2);line-height:1.85}
+.rk .mit{border-inline-start:3px solid var(--green);background:rgba(64,209,131,.07);padding:9px 12px;
+  border-radius:0 8px 8px 0;font-size:13px;color:var(--text2);line-height:1.8}
+.rk .mit b{color:#a9f0cb}
+.pri{margin-inline-start:auto;font-family:var(--font-num);font-size:11.5px;font-weight:800;
+  padding:3px 9px;border-radius:7px}
+.pri.p1{background:rgba(255,107,122,.18);color:#ffc0c7}
+.pri.p2{background:rgba(247,165,43,.16);color:#ffd79a}
+.pri.p3{background:var(--card2);color:var(--muted)}
+.mx{border-collapse:separate;border-spacing:6px}
+.mx th{font-size:12px;color:var(--muted);font-weight:800;text-align:center;padding:4px}
+.mx td{border-radius:10px;padding:10px;vertical-align:top;min-width:120px;border:1px solid var(--border-soft)}
+.mx td.hi{background:rgba(255,107,122,.10);border-color:rgba(255,107,122,.3)}
+.mx td.md{background:rgba(247,165,43,.08);border-color:rgba(247,165,43,.25)}
+.mx td.lo{background:rgba(255,255,255,.015)}
+.mx .chip{display:inline-block;font-family:var(--font-num);font-size:11px;font-weight:800;
+  background:var(--card2);border:1px solid var(--border);color:var(--text2);border-radius:6px;padding:2px 6px;margin:2px}
+.flt{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0 18px}
+.flt button{background:var(--card2);border:1px solid var(--border);color:var(--text2);border-radius:9px;
+  padding:6px 13px;font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.14s}
+.flt button:hover{border-color:var(--accent-line);color:#fff}
+.flt button.on{background:linear-gradient(135deg,var(--accent),#ff8a3d);color:#241200;border-color:transparent}
+.need td:first-child{font-family:var(--font-num);color:var(--muted);font-weight:700;width:36px}
+.need td:nth-child(2){color:#fff;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="logo">🛡️</div>
+    <div><h1>سجل المخاطر والبيانات المطلوبة</h1>
+      <div class="sub">المخرج ٥ — سجل المخاطر · المخرج ٦ — بيانات مطلوبة من المستثمر</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر تحديث: <b>٢٤ أغسطس ٢٠٢٦</b></span>
+    <a class="btn" href="invest.html">← ملف الاستثمار</a>
+  </div>
+
+  <div class="note info">
+    🧭 <b>كيف يُقرأ هذا السجل.</b> الخطر هنا ليس تنبؤاً بأنّ شيئاً سيقع، بل بنداً يجب أن يكون له
+    <b>إجراء مكتوب</b> قبل تحويل أول ليرة. الأولوية <span class="pri p1">١</span> تعني: يُعالَج قبل التأسيس،
+    و<span class="pri p2">٢</span> قبل التشغيل، و<span class="pri p3">٣</span> يُراقَب دورياً.
+  </div>
+
+  <h2>المخرج ٥ — سجل المخاطر</h2>
+
+  <div class="grid g4" style="margin:16px 0">
+    <div class="kpi"><div class="k-num num" id="k-all">—</div><div class="k-lbl">خطراً مسجَّلاً</div></div>
+    <div class="kpi"><div class="k-num num" id="k-p1" style="color:#ff6b7a">—</div><div class="k-lbl">أولوية ١ — قبل التأسيس</div></div>
+    <div class="kpi"><div class="k-num num" id="k-p2" style="color:#f7a52b">—</div><div class="k-lbl">أولوية ٢ — قبل التشغيل</div></div>
+    <div class="kpi"><div class="k-num num" id="k-p3">—</div><div class="k-lbl">أولوية ٣ — مراقبة</div></div>
+  </div>
+
+  <h3>مصفوفة الاحتمال × الأثر</h3>
+  <div class="tbl-wrap"><table class="mx" id="mx"></table></div>
+
+  <div class="flt" id="flt"></div>
+  <div id="rks"></div>
+
+  <!-- ═════ المخرج ٦ ═════ -->
+  <h2>المخرج ٦ — بيانات مطلوبة من المستثمر</h2>
+  <p class="lead">لا يمكن الانتقال من «المسارات المرشّحة» إلى «توصية مسار» قبل تثبيت هذه البنود.
+    كل بند مذكور معه <b>لماذا يغيّر النتيجة</b> — فلا يُطلب رقم لأجل الطلب.
+    البنود مرتَّبة بحسب أثرها على القرار، لا بحسب سهولة جمعها.</p>
+
+  <div class="tbl-wrap"><table class="need">
+    <thead><tr><th>#</th><th>البيان المطلوب</th><th>لماذا يغيّر النتيجة</th><th>الأثر</th></tr></thead>
+    <tbody id="need"></tbody>
+  </table></div>
+
+  <div class="note warn" style="margin-top:18px">
+    ⚠️ <b>ملاحظة صريحة على الأرقام.</b> لا يوجد في هذا الملف أي عائد موعود ولا نموذج ربح.
+    عند بناء النموذج المالي لاحقاً ستُعرض <b>ثلاثة سيناريوهات</b> (متحفّظ · أساسي · متفائل) مع مصدر كل مدخل
+    وحساسية النتيجة لتغيّره — لا رقم واحد يُقدَّم بوصفه توقّعاً.
+  </div>
+
+  <footer class="site">
+    <span>🛡️ المخاطر والبيانات</span><span>·</span>
+    <a href="invest.html">ملف الاستثمار</a><a href="invest-legal.html">الأساس القانوني</a><a href="invest-paths.html">المسارات</a>
+    <span style="flex:1"></span><span class="num">jmahery.com/malatya/invest-risk.html</span>
+  </footer>
+</div>
+
+<script src="assets/nav.js?v=3" defer></script>
+<script>
+(function(){
+'use strict';
+var W = {'عالٍ':3,'متوسط':2,'منخفض':1};
+var box = document.getElementById('rks');
+
+fetch('data/invest-risks.json?v='+Date.now(),{cache:'no-store'})
+ .then(function(r){return r.json();}).then(function(d){
+  var R = d.items;
+  R.forEach(function(x){
+    var s = W[x.prob]*W[x.impact];
+    x.pri = s>=6 ? 1 : (s>=3 ? 2 : 3);
+  });
+
+  document.getElementById('k-all').textContent = R.length;
+  [1,2,3].forEach(function(p){
+    document.getElementById('k-p'+p).textContent = R.filter(function(x){return x.pri===p;}).length;
+  });
+
+  /* مصفوفة */
+  var LV = ['عالٍ','متوسط','منخفض'];
+  var h = '<thead><tr><th></th>';
+  LV.slice().reverse().forEach(function(i){ h += '<th>أثر '+i+'</th>'; });
+  h += '</tr></thead><tbody>';
+  LV.forEach(function(p){
+    h += '<tr><th>احتمال '+p+'</th>';
+    LV.slice().reverse().forEach(function(im){
+      var cell = R.filter(function(x){return x.prob===p && x.impact===im;});
+      var sc = W[p]*W[im], cls = sc>=6?'hi':(sc>=3?'md':'lo');
+      h += '<td class="'+cls+'">'+(cell.length
+            ? cell.map(function(x){return '<a class="chip" href="#'+x.id+'" title="'+x.name+'">'+x.id+'</a>';}).join('')
+            : '<span style="color:var(--muted);font-size:11.5px">—</span>')+'</td>';
+    });
+    h += '</tr>';
+  });
+  document.getElementById('mx').innerHTML = h+'</tbody>';
+
+  /* فلاتر */
+  var cats = ['الكل'].concat(R.map(function(x){return x.cat;}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+  document.getElementById('flt').innerHTML = cats.map(function(c,i){
+    return '<button data-c="'+c+'"'+(i===0?' class="on"':'')+'>'+c+'</button>';
+  }).join('');
+
+  function render(cat){
+    var list = (cat==='الكل') ? R : R.filter(function(x){return x.cat===cat;});
+    list = list.slice().sort(function(a,b){return a.pri-b.pri || a.id.localeCompare(b.id);});
+    box.innerHTML = list.map(function(x){
+      return '<div class="rk" id="'+x.id+'"><div class="top">'+
+        '<span class="rid">'+x.id+'</span><span class="rnm">'+x.name+'</span>'+
+        '<span class="badge">'+x.cat+'</span>'+
+        '<span class="badge '+(x.prob==='عالٍ'?'err':(x.prob==='متوسط'?'warn':''))+'">احتمال '+x.prob+'</span>'+
+        '<span class="badge '+(x.impact==='عالٍ'?'err':(x.impact==='متوسط'?'warn':''))+'">أثر '+x.impact+'</span>'+
+        '<span class="pri p'+x.pri+'">أولوية '+x.pri+'</span></div>'+
+        '<p>'+x.desc+'</p>'+
+        '<div class="mit"><b>الإجراء:</b> '+x.mitig+'</div>'+
+        (x.src?'<div class="t-foot"><span class="cite">'+x.src+'</span></div>':'')+
+      '</div>';
+    }).join('');
+  }
+  render('الكل');
+
+  document.getElementById('flt').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    [].forEach.call(this.querySelectorAll('button'), function(x){ x.classList.remove('on'); });
+    b.classList.add('on'); render(b.dataset.c);
+  });
+ }).catch(function(){
+  box.innerHTML = '<div class="note warn">تعذّر تحميل <span class="num">data/invest-risks.json</span>.</div>';
+ });
+
+/* ═════ المخرج ٦ ═════ */
+var NEED = [
+ ['رأس المال المتاح فعلياً في المرحلة الأولى، وهل الـ٣ ملايين سقف أم توقّع',
+  'يحدّد ما إن كان الهيكل مساهمةً وحدها أم مساهمة + قرض، ويحسم أهلية الحوافز التي تبدأ من ٦ ملايين ليرة.','حاسم'],
+ ['دولة الإقامة الضريبية للأب ووثيقة إثباتها',
+  'يحدّد إن كانت معاهدة منع الازدواج الضريبي تخفّض اقتطاع الأرباح ١٥٪ — وهو أكبر بند ضريبي متكرّر.','حاسم'],
+ ['هل يقبل الأب الظهور شريكاً مسجَّلاً في السجل التجاري',
+  'إن كان الجواب لا، يسقط الهيكل الأنظف ويبقى مسار القرض الموثَّق وحده — ولا يوجد خيار ثالث مقبول.','حاسم'],
+ ['أفق الاستثمار الزمني ونيّة الخروج',
+  'يفرّق بين مسار أصل يُدار طويلاً ومسار يُباع بعد ٣–٥ سنوات، ويغيّر ترتيب المسارات كلياً.','حاسم'],
+ ['من سيدير التشغيل يومياً: الابنة، زوجها، أم مدير مُعيَّن',
+  'يحدّد الحاجة إلى تصريح عمل، وبنية الأجور، وبند صلاحيات التوقيع في النظام الأساسي.','عالٍ'],
+ ['الخبرة القطاعية الفعلية للفريق المحلي',
+  'المسار الذي لا يقابله خبرة يحتاج شريكاً تشغيلياً — وهذا يغيّر الهيكل والمخاطر معاً.','عالٍ'],
+ ['قدرة تحمّل الخسارة: ما أقصى مبلغ يمكن فقده دون أثر شخصي',
+  'يضبط اختيار السيناريو المتحفّظ ويمنع اختيار مسار عائده مشروط بافتراض واحد.','عالٍ'],
+ ['هل توجد أصول عائلية قائمة في ملاطيا (عقار، أرض، حصة في نشاط)',
+  'قد تُغني عن جزء من رأس المال أو تفتح مساراً غير مطروح، وتغيّر حساب الضمانات.','عالٍ'],
+ ['الوضع الاجتماعي للزوج: هل يشارك برأس مال أم بالعمل فقط',
+  'يحدّد إن كان شريكاً في الحصص أم موظفاً — والفرق جوهري عند أي خلاف لاحق.','متوسط'],
+ ['تفضيل القطاع أو استبعاده (أغذية · عقار · خدمات · صناعة)',
+  'يُسقط مسارات ويرفع أخرى قبل صرف جهد الفحص الميداني عليها.','متوسط'],
+ ['هل مطلوب دخل شهري من الاستثمار أم إعادة استثمار الأرباح',
+  'يغيّر هيكل التوزيع والعبء الضريبي السنوي، ويرجّح الدَّين على الملكية أو العكس.','متوسط'],
+ ['التوقيت المستهدف للتنفيذ',
+  'مهلة توفيق رأس المال تنتهي ٣١/١٢/٢٠٢٦، ودعوات IPARD وKOSGEB لها نوافذ زمنية محدَّدة.','متوسط']
+];
+document.getElementById('need').innerHTML = NEED.map(function(n,i){
+  var b = n[2]==='حاسم'?'err':(n[2]==='عالٍ'?'warn':'');
+  return '<tr><td>'+(i+1)+'</td><td>'+n[0]+'</td><td style="color:var(--text2);font-size:13px;line-height:1.8">'+
+         n[1]+'</td><td><span class="badge '+b+'">'+n[2]+'</span></td></tr>';
+}).join('');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أرشيف المصادر — ملف الاستثمار المشترك</title>
+<meta name="description" content="اثنان وخمسون مصدراً برموز الإحالة وروابطها المباشرة وتواريخها ولغتها وسبب استخدامها، مرتَّبة بحسب أولوية المصدر الرسمي التركي.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css?v=2">
+<style>
+.src{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border-soft);
+  border-radius:11px;background:rgba(255,255,255,.015);margin-bottom:8px}
+.src .code{font-family:var(--font-num);font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:7px;
+  background:rgba(91,157,255,.16);color:#bcd7ff;flex:0 0 auto;letter-spacing:.3px}
+.src .bd{flex:1;min-width:0}
+.src .org{font-size:11.5px;color:var(--muted);font-weight:700}
+.src a.ti{font-size:14.5px;color:#fff;font-weight:700;text-decoration:none;line-height:1.55;display:block;margin:2px 0 5px}
+.src a.ti:hover{color:var(--accent)}
+.src .why{font-size:12.5px;color:var(--text2);line-height:1.75}
+.src .mt{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;align-items:center}
+.src .u{font-family:var(--font-num);font-size:11px;color:var(--muted);opacity:.75;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;display:block;margin-top:5px;direction:ltr;text-align:left}
+.flt{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 20px}
+.flt button{background:var(--card2);border:1px solid var(--border);color:var(--text2);border-radius:9px;
+  padding:6px 13px;font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.14s}
+.flt button:hover{border-color:var(--accent-line);color:#fff}
+.flt button.on{background:linear-gradient(135deg,var(--accent),#ff8a3d);color:#241200;border-color:transparent}
+#q{width:100%;background:var(--card2);border:1px solid var(--border);color:var(--text);border-radius:11px;
+  padding:11px 15px;font-family:inherit;font-size:14px;margin-bottom:14px}
+#q:focus{outline:none;border-color:var(--accent-line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="logo">📚</div>
+    <div><h1>أرشيف المصادر</h1>
+      <div class="sub">كل رقم ونصّ في هذا الملف يعود إلى واحد من هذه المصادر</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">تاريخ الاطلاع: <b id="acc">—</b></span>
+    <a class="btn" href="invest.html">← ملف الاستثمار</a>
+  </div>
+
+  <div class="note info">
+    📐 <b>ترتيب أولوية المصادر المتَّبع.</b> الجريدة الرسمية (Resmî Gazete) ← نظام المعلومات التشريعية (Mevzuat)
+    ← الوزارات والمؤسسات الرسمية ← رئاسة الإيرادات (GİB) والبنك المركزي (TCMB) ← الغرف والبورصات والوكالات
+    ← الهيئات المهنية (TÜRMOB · İSMMMO) والمكاتب الكبرى. لم يُستخدَم مصدر صحفي بوصفه سنداً لواقعة قانونية أو رقمية.
+  </div>
+
+  <div class="note warn">
+    🚧 <b>قيد تقني يُذكر صراحةً.</b> موقعا <span class="num">resmigazete.gov.tr</span> و<span class="num">mevzuat.gov.tr</span>
+    يمنعان الجلب الآلي. رابط النصّ الرسمي مثبَّت هنا للرجوع اليدوي، وما بُني عليه من وقائع
+    جرى التحقّق منه عبر مصادر مؤسسية موازية (هيئات مهنية · غرف · مكاتب مراجعة) تنقل النصّ نفسه.
+    هذا يرفع احتمال الخطأ قليلاً — ولذلك تُوسم هذه البنود بثقة أدنى في صفحة <a href="invest-legal.html">الأساس القانوني</a>.
+  </div>
+
+  <div class="grid g4" style="margin:18px 0">
+    <div class="kpi"><div class="k-num num" id="k-n">—</div><div class="k-lbl">مصدراً</div></div>
+    <div class="kpi"><div class="k-num num" id="k-off">—</div><div class="k-lbl">رسمي حكومي</div></div>
+    <div class="kpi"><div class="k-num num" id="k-tr">—</div><div class="k-lbl">بالتركية</div></div>
+    <div class="kpi"><div class="k-num num" id="k-cat">—</div><div class="k-lbl">محاور</div></div>
+  </div>
+
+  <input id="q" type="search" placeholder="ابحث في المصادر — بالرمز أو الجهة أو العنوان أو الموضوع…">
+  <div class="flt" id="flt"></div>
+  <div id="list"></div>
+
+  <footer class="site">
+    <span>📚 أرشيف المصادر</span><span>·</span>
+    <a href="invest.html">ملف الاستثمار</a><a href="invest-legal.html">الأساس القانوني</a><a href="index.html">مركز التحكّم</a>
+    <span style="flex:1"></span><span class="num">jmahery.com/malatya/invest-sources.html</span>
+  </footer>
+</div>
+
+<script src="assets/nav.js?v=3" defer></script>
+<script>
+(function(){
+'use strict';
+var ALL = [], cur = 'الكل', box = document.getElementById('list');
+var OFF = /resmigazete|mevzuat|gov\.tr|tcmb|kosgeb|tkdk/i;
+
+function host(u){ try{ return u.replace(/^https?:\/\//,'').split('/')[0]; }catch(e){ return ''; } }
+
+function render(){
+  var q = (document.getElementById('q').value||'').trim().toLowerCase();
+  var L = ALL.filter(function(s){
+    if(cur!=='الكل' && s.cat!==cur) return false;
+    if(!q) return true;
+    return (s.code+' '+s.org+' '+s.title+' '+s.why+' '+s.url).toLowerCase().indexOf(q) > -1;
+  });
+  if(!L.length){ box.innerHTML = '<p class="mut">لا نتائج.</p>'; return; }
+  box.innerHTML = L.map(function(s){
+    return '<div class="src" id="'+s.code+'"><span class="code">'+s.code+'</span><div class="bd">'+
+      '<div class="org">'+s.org+'</div>'+
+      '<a class="ti" href="'+s.url+'" target="_blank" rel="noopener">'+s.title+' ↗</a>'+
+      '<div class="why">'+s.why+'</div>'+
+      '<div class="mt"><span class="badge">'+s.cat+'</span>'+
+        '<span class="badge">'+(s.lang==='tr'?'تركية':(s.lang==='en'?'إنجليزية':'عربية'))+'</span>'+
+        (s.date?'<span class="badge info num">'+s.date+'</span>':'')+
+        (OFF.test(s.url)?'<span class="badge ok">رسمي</span>':'')+
+      '</div><span class="u">'+host(s.url)+'</span></div></div>';
+  }).join('');
+}
+
+fetch('data/invest-sources.json?v='+Date.now(),{cache:'no-store'})
+ .then(function(r){return r.json();}).then(function(d){
+  ALL = d.items;
+  document.getElementById('acc').textContent = d.accessed || '—';
+  document.getElementById('k-n').textContent = ALL.length;
+  document.getElementById('k-off').textContent = ALL.filter(function(s){return OFF.test(s.url);}).length;
+  document.getElementById('k-tr').textContent = ALL.filter(function(s){return s.lang==='tr';}).length;
+  var cats = ALL.map(function(s){return s.cat;}).filter(function(v,i,a){return a.indexOf(v)===i;});
+  document.getElementById('k-cat').textContent = cats.length;
+  document.getElementById('flt').innerHTML = ['الكل'].concat(cats).map(function(c,i){
+    return '<button data-c="'+c+'"'+(i===0?' class="on"':'')+'>'+c+
+      (c==='الكل'?'':' <span class="num" style="opacity:.6">'+ALL.filter(function(s){return s.cat===c;}).length+'</span>')+
+    '</button>';
+  }).join('');
+  render();
+  if(location.hash){ var t=document.querySelector(location.hash); if(t) t.scrollIntoView(); }
+ }).catch(function(){
+  box.innerHTML = '<div class="note warn">تعذّر تحميل <span class="num">data/invest-sources.json</span>.</div>';
+ });
+
+document.getElementById('flt').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  [].forEach.call(this.querySelectorAll('button'), function(x){ x.classList.remove('on'); });
+  b.classList.add('on'); cur = b.dataset.c; render();
+});
+document.getElementById('q').addEventListener('input', render);
+})();
+</script>
+</body>
+</html>
