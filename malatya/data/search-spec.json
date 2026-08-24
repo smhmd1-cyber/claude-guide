@@ -1,0 +1,39 @@
+{
+  "_قانون_حديدي": "اعرض فقط: جديد / قيد الإنشاء (جاهز للتسليم) / حتى 3 سنوات. استبعد أي أقدم نهائياً. الافتراضي: كل ولاية ملاطيا. التزم حرفياً بالمعايير ولا تجلب ما لا يطابقها.",
+  "scope": {
+    "il": "Malatya",
+    "all_districts": ["Battalgazi","Yeşilyurt","Akçadağ","Arapgir","Arguvan","Darende","Doğanşehir","Hekimhan","Kale","Kuluncak","Pütürge","Yazıhan"],
+    "urban_priority": ["Yeşilyurt","Battalgazi"],
+    "priority_mahalle": ["Fahri Kayahan","Tecde","Yüzüncü Yıl / Yüzüncü Yıl Parkı","Orduzu","Yaka","Tandoğan","Bostanbaşı"]
+  },
+  "hard_filter": {"only": ["sıfır/جديد","قيد الإنشاء/جاهز للتسليم","≤3 سنوات"], "exclude_all_else": true, "bina_yasi_max": 3},
+  "sources": {
+    "primary": "emlakjet.com (قوائم + صفحات تفاصيل + صفحات المكاتب emlak-ofisleri/<slug> + projeler)",
+    "best_effort_unavailable": ["sahibinden.com (محمي/فارغ عبر الجلب)","hepsiemlak.com","hurriyetemlak.com","zingat.com","صفحات التواصل (فيسبوك/إنستغرام/تيليجرام) — تسجيل دخول/حماية"],
+    "note": "تُجرَّب البدائل وتُبلَّغ التغطية الفعلية؛ لا يُدّعى ما لا يُجلب."
+  },
+  "trusted_offices_whitelist": [
+    {"name": "Metropol Gayrimenkul (Turyap)", "lic": "4400128", "eids": true},
+    {"name": "Özgür Gayrimenkul", "lic": "4400241", "eids": true},
+    {"name": "Turanlar Gayrimenkul", "lic": "4400235", "eids": true},
+    {"name": "Hasan Akbulut Gayrimenkul", "lic": "4400384", "eids": true},
+    {"name": "Atakan Emlak", "lic": "4400167", "eids": true},
+    {"name": "Bozdoğan İnşaat & Gayrimenkul", "lic": "—", "eids": true},
+    {"name": "Koz Emlak / Erkan Emlak / Furkan Doğan / Vip Line / Fourx4 / İkizler / Değer / Kıvanç / Galata", "lic": "—", "note": "مرئية على emlakjet — تُرجّح عند توثّقها EIDS"}
+  ],
+  "active_briefs": [
+    {
+      "name": "كل ولاية ملاطيا — جديد/قيد الإنشاء/≤3 سنوات (مع أولوية الأحياء السبعة)",
+      "il": "Malatya", "ilceler_all": true, "urban_priority": ["Yeşilyurt","Battalgazi"],
+      "priority_mahalle": ["Fahri Kayahan","Tecde","Yüzüncü Yıl","Orduzu","Yaka","Tandoğan","Bostanbaşı"],
+      "deal": ["satilik","kiralik"], "types": ["daire","proje"],
+      "rooms": ["2+1","3+1","3+2","4+1","4+2"],
+      "bina_yasi_max": 3,
+      "status_only": ["sıfır","yapım aşamasında","teslime hazır","≤3 yaş"],
+      "specs_nice": ["site","asansör","otopark","ısıtma","deprem_2018+","çocuk oyun alanı"],
+      "must_avoid": ["az hasarlı","hisseli",">3 yaş"],
+      "enabled": true
+    }
+  ],
+  "_notlar": "القانون الحديدي يَجُبّ ما عداه. صفحات المكاتب الموثوقة على emlakjet تُجلب لاستخراج كل وحداتهم الجديدة. تحقّق yapı denetim/كود 2018/DASK/الطابو قبل أي عربون."
+}
