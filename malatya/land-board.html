@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة الأراضي — منظومة ملاطيا</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css">
+<style>
+.op{border:1px solid var(--border);border-radius:var(--r-sm);background:var(--card2);padding:14px 16px;margin-bottom:10px}
+.op .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.op .sc{font-family:var(--font-num);font-weight:800;font-size:17px;color:var(--teal)}
+.op .mh{font-weight:800;color:#fff;font-size:15px}
+.chartbox{border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;
+  background:linear-gradient(180deg,var(--card),var(--bg2))}
+.chartbox .cap{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:4px}
+.chartbox .val{font-size:22px;font-weight:800}
+.spark i{background:linear-gradient(180deg,var(--teal),rgba(63,208,199,.25))}
+.spark i.b{background:linear-gradient(180deg,var(--accent),rgba(247,165,43,.25))}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">🌾</div>
+    <div><h1>لوحة الأراضي</h1><div class="sub">رصد قطع التَرلا والأرسا وفجوة التحويل من زراعي إلى عمراني</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر رصد: <b id="stamp">—</b></span>
+    <a class="btn" href="index.html">← مركز التحكّم</a>
+  </div>
+
+  <div class="grid g4" style="margin-top:6px">
+    <div class="kpi teal"><span class="k-ico">🧾</span><div class="k-label">قطع مرصودة اليوم</div><div class="k-value num" id="k1">—</div><div class="k-sub">تَرلا / أرسا</div></div>
+    <div class="kpi green"><span class="k-ico">⭐</span><div class="k-label">قطع بدرجة ≥٧٠</div><div class="k-value num" id="k2">—</div><div class="k-sub">تستحقّ فحصاً</div></div>
+    <div class="kpi amber"><span class="k-ico">📊</span><div class="k-label">متوسّط الدرجة</div><div class="k-value num" id="k3">—</div><div class="k-sub">من ١٠٠</div></div>
+    <div class="kpi violet"><span class="k-ico">📅</span><div class="k-label">أيام الرصد</div><div class="k-value num" id="k4">—</div><div class="k-sub">منذ الانطلاق</div></div>
+  </div>
+
+  <h2>الاتجاه</h2>
+  <div class="grid g2">
+    <div class="chartbox"><div class="cap">عدد القطع المرصودة يومياً</div><div class="val num" id="t1">—</div><div class="spark" id="s1"></div></div>
+    <div class="chartbox"><div class="cap">متوسّط الدرجة اليومي</div><div class="val num" id="t2">—</div><div class="spark" id="s2"></div></div>
+  </div>
+
+  <h2>أعلى القطع — آخر رصد</h2>
+  <div id="ops"><p class="mut">…</p></div>
+  <div id="note"></div>
+
+  <h2>سجلّ الرصد اليومي</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>التاريخ</th><th>القطع</th><th>≥٧٠</th><th>متوسّط الدرجة</th><th>الخلاصة</th></tr></thead>
+    <tbody id="tb"></tbody>
+  </table></div>
+
+  <footer class="site">
+    <span>🌰 منظومة ملاطيا</span><span>·</span>
+    <a href="land-agent.html">وكيل التقييم</a><a href="reports.html">الأرشيف</a><a href="index.html">مركز التحكّم</a>
+  </footer>
+</div>
+<script src="assets/nav.js" defer></script>
+<script>
+(function(){
+  'use strict';
+  var AR=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  function fmt(s){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||'');return m?((+m[3])+' '+AR[+m[2]-1]+' '+m[1]):(s||'—');}
+  function n(x){return (x==null||x===''||isNaN(x))?'—':Number(x).toLocaleString('en-US');}
+  function set(i,v){var e=document.getElementById(i); if(e)e.textContent=v;}
+  function spark(id,vals,cls){
+    var box=document.getElementById(id); if(!box)return; box.innerHTML='';
+    var mx=Math.max.apply(null,vals.concat([1]));
+    vals.forEach(function(v){var b=document.createElement('i'); if(cls)b.className=cls;
+      b.style.height=Math.max(3,Math.round((v/mx)*56))+'px'; b.title=v; box.appendChild(b);});
+  }
+
+  fetch('data/land-reports.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(a){
+    if(!Array.isArray(a)||!a.length) throw 0;
+    a.sort(function(x,y){return x.date<y.date?-1:1;});
+    var L=a[a.length-1];
+    set('stamp',fmt(L.date));
+    set('k1',n(L.n)); set('k2',n(L.hi)); set('k3',(L.avg!=null?L.avg:'—')); set('k4',n(a.length));
+
+    var cnt=a.map(function(r){return +r.n||0;}), avg=a.map(function(r){return +r.avg||0;});
+    set('t1',n(cnt[cnt.length-1])); set('t2',avg[avg.length-1]||'—');
+    spark('s1',cnt); spark('s2',avg,'b');
+
+    var ops=document.getElementById('ops'); ops.innerHTML='';
+    (L.top||[]).forEach(function(t){
+      var d=document.createElement('div'); d.className='op';
+      d.innerHTML='<div class="top"><span class="sc">'+(t.sc||'')+'</span>'+
+        '<span class="mh">'+(t.nb||'')+'</span>'+
+        (t.ppm?'<span class="badge">'+n(t.ppm)+' ₺/م²</span>':'')+
+        '<span style="flex:1"></span>'+
+        (t.url?'<a class="btn sm" href="'+t.url+'" target="_blank" rel="noopener">الإعلان ↗</a>':'')+'</div>';
+      ops.appendChild(d);
+    });
+    if(!ops.children.length) ops.innerHTML='<p class="mut">لا قطع مرشّحة في آخر رصد.</p>';
+    if(L.note) document.getElementById('note').innerHTML='<div class="note">'+L.note+'</div>';
+
+    var tb=document.getElementById('tb'); tb.innerHTML='';
+    a.slice().reverse().forEach(function(r){
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td class="num">'+r.date+'</td><td class="num">'+n(r.n)+'</td><td class="num">'+n(r.hi)+
+        '</td><td class="num">'+(r.avg!=null?r.avg:'—')+'</td><td>'+(r.note||'—')+'</td>';
+      tb.appendChild(tr);
+    });
+  }).catch(function(){
+    document.getElementById('ops').innerHTML='<div class="note warn">تعذّر تحميل <span class="num">data/land-reports.json</span>.</div>';
+  });
+})();
+</script>
+</body>
+</html>

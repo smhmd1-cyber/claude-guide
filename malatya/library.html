@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مكتبة المشاريع — منظومة ملاطيا</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css">
+<style>
+.pil{scroll-margin-top:20px;margin-bottom:16px}
+.pil .hd{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.pil .ic{width:46px;height:46px;border-radius:14px;flex:0 0 auto;display:grid;place-items:center;font-size:23px;
+  background:var(--card2);border:1px solid var(--border)}
+.pil .ttl{font-size:19px;font-weight:800;color:#fff;line-height:1.35}
+.pil .no{font-family:var(--font-num);font-size:12px;color:var(--muted);font-weight:700}
+.pil .ds{font-size:14px;color:var(--text2);margin-top:9px}
+.files{margin-top:14px;display:grid;gap:7px}
+.f{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--border-soft);
+  border-radius:10px;background:rgba(255,255,255,.015);font-size:13.5px;color:var(--text2)}
+.f:hover{border-color:var(--accent-line);text-decoration:none;color:var(--text)}
+.f .ext{font-family:var(--font-num);font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:6px;flex:0 0 auto;letter-spacing:.4px}
+.ext.docx{background:rgba(91,157,255,.18);color:#bcd7ff}
+.ext.pdf{background:rgba(255,107,122,.16);color:#ffc0c7}
+.ext.xlsx{background:rgba(64,209,131,.16);color:#a9f0cb}
+.ext.md,.ext.json,.ext.txt{background:var(--card2);color:var(--muted)}
+.f .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.f .sz{font-family:var(--font-num);font-size:11.5px;color:var(--muted);flex:0 0 auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">📚</div>
+    <div><h1>مكتبة المشاريع</h1><div class="sub">الركائز الثمانية · دراسات الجدوى والنماذج المالية ووثائق التنفيذ</div></div>
+    <div class="spacer"></div>
+    <a class="btn" href="index.html">← مركز التحكّم</a>
+  </div>
+
+  <div class="note warn">
+    🔒 <b>المستندات محميّة.</b> عند الضغط على أي ملف سيطلب المتصفّح اسم مستخدم وكلمة مرور مرّة واحدة لكل جلسة.
+    محتوى المكتبة غير مفهرَس في محرّكات البحث.
+  </div>
+
+  <div id="lib"><p class="mut">… يُحمّل الفهرس</p></div>
+
+  <footer class="site">
+    <span>🌰 منظومة ملاطيا</span><span>·</span>
+    <a href="index.html">مركز التحكّم</a><a href="daleel.html">الدليل</a><a href="reports.html">الأرشيف</a>
+  </footer>
+</div>
+<script src="assets/nav.js" defer></script>
+<script>
+(function(){
+  'use strict';
+  var META = {
+    '01':{i:'🧭',t:'حقيبة التأسيس ونظرة عامة',d:'المرحلة الأولى: استكشاف اقتصادي وقانوني واجتماعي لملاطيا، مع نظرة عامة على فرص الاستثمار وإدارة الأعمال.'},
+    '02':{i:'🗺️',t:'استكشاف المجالات والإقامة',d:'مقارنات المجالات الاستثمارية (بديلة · إضافية · جديدة تناسب الفريق) ومسار إقامة المستثمر.'},
+    '03':{i:'🍑',t:'مشروع المشمش',d:'دراسة جدوى ونموذج مالي لتصنيع وتعبئة المشمش بقيمة مضافة.'},
+    '04':{i:'🏛️',t:'استوديو العمارة والتصميم',d:'جدوى وخطة إطلاق: عمارة، تصميم داخلي، تصوير معماري (Archviz)، وتسويق بالذكاء الاصطناعي.'},
+    '05':{i:'🏥',t:'السياحة العلاجية',d:'جدوى + حزمة تنفيذ + خطة محتوى وصفحات هبوط + قائمة عيادات وعرض شراكة إينونو.'},
+    '06':{i:'🌾',t:'استثمار الأراضي',d:'خطة الاستثمار، القطع المفلترة ونموذج الفحص، الهيكل القانوني ومسودة الاتفاقية، وأداة تقييم القطع وحاسبة الربح.'},
+    '07':{i:'☀️',t:'الطاقة الشمسية',d:'جدوى استراتيجية مفصّلة + نموذجان ماليان (NPV/IRR/LCOE) + عرض شراكة تقنية + موردون وRFQ وباقات منتجات.'},
+    '08':{i:'🔎',t:'باحث العقارات الذكي',d:'عقل الوكيل ومواصفات البحث وسجلّ الإعلانات وتقاريره اليومية.'}
+  };
+  var CLR = ['','blue','amber','violet','green','teal','amber','blue'];
+  function sz(b){ if(b==null) return ''; var u=['B','KB','MB']; var i=0; while(b>=1024&&i<2){b/=1024;i++;} return (i?b.toFixed(1):b)+' '+u[i]; }
+  function ext(n){ var m=/\.([a-z0-9]+)$/i.exec(n); return m?m[1].toLowerCase():'file'; }
+
+  fetch('data/library.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(groups){
+    var out=document.getElementById('lib'); out.innerHTML='';
+    Object.keys(groups).sort().forEach(function(key,idx){
+      var no=key.slice(0,2), m=META[no]||{i:'📁',t:key,d:''};
+      var files=groups[key]||[];
+      var sec=document.createElement('section');
+      sec.className='card pil'; sec.id='p'+(+no);
+      var h='<div class="hd"><div class="ic">'+m.i+'</div><div><div class="no">'+no+'</div>'+
+            '<div class="ttl">'+m.t+'</div></div>'+
+            '<div style="flex:1"></div><span class="badge lock">🔒 '+files.length+' ملفاً</span></div>'+
+            '<div class="ds">'+m.d+'</div><div class="files">';
+      files.forEach(function(f){
+        var e=ext(f.n);
+        h+='<a class="f" href="docs/'+encodeURIComponent(key)+'/'+encodeURIComponent(f.n)+'" target="_blank" rel="noopener">'+
+           '<span class="ext '+e+'">'+e+'</span><span class="nm">'+f.n.replace(/\.[^.]+$/,'')+'</span>'+
+           '<span class="sz">'+sz(f.s)+'</span></a>';
+      });
+      h+='</div>';
+      sec.innerHTML=h; out.appendChild(sec);
+    });
+    if(!out.children.length) out.innerHTML='<p class="mut">لا ملفات في الفهرس بعد.</p>';
+    if(location.hash){ var t=document.querySelector(location.hash); if(t) t.scrollIntoView(); }
+  }).catch(function(){
+    document.getElementById('lib').innerHTML='<div class="note warn">تعذّر تحميل فهرس المكتبة (<span class="num">data/library.json</span>).</div>';
+  });
+})();
+</script>
+</body>
+</html>

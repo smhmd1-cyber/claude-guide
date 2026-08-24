@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /malatya/docs/
+Disallow: /malatya/library.html

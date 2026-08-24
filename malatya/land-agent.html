@@ -1,0 +1,220 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>وكيل تقييم الأراضي الذكي — ملاطيا</title>
+<style>
+:root{color-scheme:light;--navy:#1F3864;--blue:#2E5496;--gold:#B07A00;--green:#2E7D32;--red:#B00020;--bg:#f7f5f0;--card:#fff;--ink:#1a1a1a;--mut:#666}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Tahoma,sans-serif;line-height:1.6}
+.wrap{max-width:920px;margin:0 auto;padding:18px}
+h1{color:var(--navy);font-size:23px;margin:0 0 4px}.sub{color:var(--mut);font-size:13px;margin:0 0 14px}
+.card{background:var(--card);border:1px solid #e3ddd0;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.qp{background:#eef3fa;border:1px solid #cfe0f5}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 14px}
+@media(max-width:620px){.grid{grid-template-columns:1fr 1fr}}
+label{font-size:12.5px;font-weight:bold;color:var(--navy);display:block;margin-bottom:3px}
+input,select,textarea{width:100%;padding:8px;border:1px solid #cfc8ba;border-radius:8px;font-family:inherit;font-size:14px;background:#fff}
+.chk{display:flex;gap:14px;flex-wrap:wrap}.chk label{display:flex;align-items:center;gap:5px;font-weight:normal}
+button{background:var(--navy);color:#fff;border:0;border-radius:10px;padding:11px 20px;font-size:15px;font-weight:bold;cursor:pointer;font-family:inherit}
+button:hover{background:#16294a}button.alt{background:var(--gold)}button.sm{padding:7px 12px;font-size:13px}
+.hidden{display:none}
+.verdict{text-align:center;padding:16px;border-radius:12px;color:#fff;font-size:21px;font-weight:bold}.score{font-size:38px;font-weight:bold}
+.bar{height:13px;background:#eee;border-radius:7px;overflow:hidden;margin:3px 0}.bar>span{display:block;height:100%;border-radius:7px}
+.row{display:flex;justify-content:space-between;gap:10px;margin:6px 0;font-size:14px}
+.flag{background:#fdecec;border-right:4px solid var(--red);padding:7px 10px;border-radius:6px;margin:5px 0;font-size:14px}
+.ok{background:#eaf6ec;border-right:4px solid var(--green);padding:7px 10px;border-radius:6px;margin:5px 0;font-size:14px}
+.note{background:#fbf3dd;border-right:4px solid var(--gold);padding:7px 10px;border-radius:6px;margin:5px 0;font-size:14px}
+h2{color:var(--blue);font-size:17px;margin:4px 0 8px;border-bottom:2px solid #eee;padding-bottom:4px}
+a{color:var(--blue)}.mut{color:var(--mut);font-size:12px}
+.kpi{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;text-align:center}
+.kpi div{background:#f3f0e9;border-radius:8px;padding:8px}.kpi b{display:block;color:var(--navy);font-size:17px}
+ul{margin:6px 0;padding-inline-start:20px}li{margin:3px 0;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border:1px solid #ddd;padding:6px;text-align:center}th{background:var(--navy);color:#fff}
+.hist{display:flex;align-items:flex-end;gap:6px;height:90px;margin:8px 0}.hist .b{flex:1;background:var(--blue);border-radius:4px 4px 0 0;position:relative}.hist .l{font-size:10px;color:var(--mut);text-align:center}
+.cmpgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:620px){.cmpgrid{grid-template-columns:1fr}}.cmpcol{background:#f7f9fc;border:1px solid #e0e8f3;border-radius:8px;padding:9px}.cmpcol h3{margin:2px 0 6px;font-size:14px;color:var(--navy)}.aist{font-size:12px}
+</style></head><body><div class="wrap">
+<h1>🧭 وكيل تقييم الأراضي الذكي — ملاطيا (نسخة احتمالية مؤسسية)</h1>
+<p class="sub">أعطِ الأداة الإعلان → محرّك تقييم ٥ أركان + نموذج احتمالي (محاكاة آلاف السيناريوهات) + احتمال التحويل والخسارة + درجة ثقة + رأي خبير ومحامي شيطان + محفظة مقارنة. <b>تكمّم عدم اليقين بدل ادّعاء اليقين.</b></p>
+
+<div class="card qp">
+  <label>① رابط الإعلان (أرسله لي في المحادثة لأجلبه وأكمله)</label>
+  <input id="adurl" placeholder="https://www.emlakjet.com/ilan/...">
+  <div style="margin:8px 0 12px"><button class="sm" onclick="copyReq()">📋 انسخ رسالة الطلب للمحادثة</button> <button class="sm alt" onclick="showPF()">📁 المحفظة/المقارنة</button></div>
+  <label>② أو الصق نصّ الإعلان للتعبئة الآلية</label>
+  <textarea id="adtext" style="height:70px" placeholder="Battalgazi - Bahri Mahallesi · Tarla · 4.000 m² · Su Hattı, Yolu Açılmış · 562 TL/m² · 2.250.000 TL · Sulu · Müstakil"></textarea>
+  <div style="margin-top:8px"><button class="sm alt" onclick="parseAd()">⚙️ تعبئة آلية</button> <div id="parsemsg" class="mut" style="margin-top:8px"></div></div>
+</div>
+
+<div class="card"><h2 style="margin-top:0;border:0">🔗 الاستفسار الذكي عبر Gemini</h2><div class="grid"><div style="grid-column:1/3"><label>مفتاح Gemini API (يُحفظ على جهازك فقط)</label><input id="gkey" type="password" placeholder="AIza..."></div><div><label>النموذج</label><select id="gmodel"><option value="gemini-2.0-flash">gemini-2.0-flash</option><option value="gemini-2.5-flash">gemini-2.5-flash</option><option value="gemini-1.5-flash">gemini-1.5-flash</option></select></div></div><div style="margin-top:8px"><button class="sm alt" onclick="saveKey()">💾 حفظ المفتاح</button> <span id="gstat" class="mut"></span></div><p class="mut">مفتاح مجاني من Google AI Studio: aistudio.google.com/app/apikey — يُخزَّن محلياً في متصفّحك فقط. داخل Cowork قد تُحجب شبكة Gemini فيُستخدم Claude تلقائياً؛ افتح الأداة في المتصفّح لاستخدام Gemini.</p></div><div class="card"><div class="grid">
+  <div><label>الحي (Mahalle)</label><select id="nb"></select></div>
+  <div><label>الوصف (Vasıf)</label><select id="vasif"><option value="tarla">تارلا</option><option value="bag">بستان</option><option value="arsa">أرض مُجهّزة</option></select></div>
+  <div><label>المساحة (م²)</label><input id="area" type="number" value="5000"></div>
+  <div><label>السعر/م² (ل.ت)</label><input id="ppm" type="number" value="500"></div>
+  <div><label>صنف التربة</label><select id="soil"><option value="kuru">جافة/هامشية</option><option value="sulu">مروية (Sulu)</option><option value="mutlak">مطلقة/ممتازة</option><option value="bilinmiyor" selected>غير معروف</option></select></div>
+  <div><label>القرب من الاحتياط/النمو</label><select id="dist"><option value="inside">داخل المنطقة</option><option value="adj">ملاصقة</option><option value="near" selected>قريبة</option><option value="far">بعيدة</option></select></div>
+  <div><label>الواجهة على الطريق</label><select id="road"><option value="cephe">واجهة طريق</option><option value="yakin">قريبة</option><option value="yok">بلا طريق</option></select></div>
+  <div><label>الطابو</label><select id="tapu"><option value="mustakil">مستقل</option><option value="hisseli">مشاع</option><option value="bilinmiyor" selected>غير معروف</option></select></div>
+  <div><label>قيود (رهن/حجز)</label><select id="lien"><option value="yok">لا يوجد</option><option value="var">يوجد</option><option value="bilinmiyor" selected>غير معروف</option></select></div>
+  <div><label>قيمة الأرض المُجهّزة (ل.ت/م²)</label><input id="arsaval" type="number" placeholder="افتراضي حسب الحي"></div>
+  <div><label>سنوات الحيازة</label><input id="years" type="number" value="4"></div>
+  <div><label>تصاعد سعر الأرض السنوي %</label><input id="escal" type="number" value="12"></div>
+  <div><label>هدف العائد IRR %</label><input id="tirr" type="number" value="25"></div>
+  <div><label>منطقة خطر (فيضان/صدع)؟</label><select id="risk"><option value="no">لا</option><option value="yes">نعم</option></select></div>
+  <div style="grid-column:1/-1"><label>البنية التحتية</label><div class="chk"><label><input type="checkbox" id="elek">كهرباء</label><label><input type="checkbox" id="su">ماء</label><label><input type="checkbox" id="kanal">صرف</label></div></div>
+</div>
+<div style="text-align:center;margin-top:14px"><button onclick="analyze()">🔎 تحليل ذكي شامل + توصية</button></div>
+</div>
+
+<div id="pf" class="hidden"></div>
+<div id="out" class="hidden"></div>
+<p class="mut">تنويه صريح: لا تضمن أي أداة نجاحاً 100% أو خطأً صفرياً في الأراضي — التحويل قرار حكومي والسوق متغيّر. الأداة تُقدّر الاحتمالات وتوزيع العوائد ودرجة الثقة، ولا تُغني عن التحقّق الرسمي (طابو/إمار/تربة) ومحامٍ ومخمّن معتمد والشراء عبر الشريك التركي.</p>
+</div>
+<script>
+var NB={
+"ياقينجا (Yakınca)":{low:300,med:550,high:900,arsa:3000,growth:90,q:"Yakınca Mahallesi Yeşilyurt Malatya"},
+"إكيزجه (İkizce)":{low:250,med:400,high:700,arsa:2800,growth:80,q:"İkizce Mahallesi Yeşilyurt Malatya"},
+"مولاكاسم (Mullakasım)":{low:280,med:450,high:800,arsa:2800,growth:75,q:"Mullakasım Mahallesi Yeşilyurt Malatya"},
+"كيلتبه (Kiltepe)":{low:300,med:550,high:900,arsa:3000,growth:78,q:"Kiltepe Mahallesi Yeşilyurt Malatya"},
+"حاتونصويو (Hatunsuyu)":{low:600,med:1200,high:1700,arsa:4146,growth:85,q:"Hatunsuyu Mahallesi Battalgazi Malatya"},
+"بحري (Bahri)":{low:280,med:560,high:1100,arsa:2500,growth:55,q:"Bahri Mahallesi Battalgazi Malatya"},
+"بوران (Boran)":{low:600,med:976,high:1300,arsa:2500,growth:50,q:"Boran Mahallesi Battalgazi Malatya"},
+"أخرى (Diğer)":{low:300,med:800,high:1700,arsa:3000,growth:50,q:"Malatya"}};
+var lastSummary=null;var sel=document.getElementById('nb');for(var k in NB){var o=document.createElement('option');o.value=k;o.textContent=k;sel.appendChild(o);}
+function clamp(x,a,b){return Math.max(a,Math.min(b,x));}
+function bc(s){return s>=70?'#2E7D32':s>=50?'#B07A00':'#B00020';}
+function trNum(s){return parseInt(String(s).replace(/[^\d]/g,''),10);}
+function rtri(a,m,b){var u=Math.random(),c=(m-a)/(b-a);return u<c? a+Math.sqrt(u*(b-a)*(m-a)) : b-Math.sqrt((1-u)*(b-a)*(b-m));}
+function copyReq(){var u=document.getElementById('adurl').value.trim();if(!u){alert('الصق الرابط أولاً');return;}var msg='افحص لي هذا الإعلان وأكمل الفحص وأعطني التوصية: '+u;try{if(window.cowork&&window.cowork.sendPrompt){window.cowork.sendPrompt(msg);return;}}catch(e){}try{if(typeof sendPrompt==='function'){sendPrompt(msg);return;}}catch(e){}try{navigator.clipboard.writeText(msg);document.getElementById('parsemsg').textContent='نُسخت الرسالة — الصقها في المحادثة.';}catch(e){prompt('انسخ وأرسل في المحادثة:',msg);}}
+function setV(id,v){var e=document.getElementById(id);if(e)e.value=v;}
+function setC(id,v){var e=document.getElementById(id);if(e)e.checked=v;}
+function parseAd(){
+ var raw=(document.getElementById('adtext').value||'').trim();var msg=document.getElementById('parsemsg');
+ if(!raw){msg.innerHTML='الصق نصّ الإعلان في الحقل ②، أو ضع الرابط في الحقل ① ثم اضغط «📋 انسخ رسالة الطلب».';return;}
+ var urlM=raw.match(/https?:\/\/\S+/i);var rest=raw.replace(/https?:\/\/\S+/ig,'').replace(/[\s•·|,\.\-–—]/g,'');
+ if(urlM&&rest.length<30){setV('adurl',urlM[0]);msg.innerHTML='⚠️ هذا <b>رابط</b> وليس نصّ إعلان — والأداة لا تفتح الروابط بنفسها داخل المتصفّح/Cowork.<br>• اضغط الزر ① «📋 انسخ رسالة الطلب للمحادثة» لأجلب الإعلان وأُكمل الحقول والتوصية،<br>• أو افتح صفحة الإعلان وانسخ <b>نصّها</b> (العنوان + المواصفات + السعر) والصقه في الحقل ②.';return;}
+ var t=raw.toLowerCase(),got=[],gaps=[],warn='';
+ var best=null,bestPos=1e9;for(var k in NB){var tr=(k.match(/\(([^)]+)\)/)||[])[1];if(!tr)continue;var p=t.indexOf(tr.toLowerCase());if(p>=0&&p<bestPos){bestPos=p;best=k;}}
+ if(best){sel.value=best;got.push('الحي: '+best);}else gaps.push('الحي (اختره يدوياً)');
+ if(/tarla/i.test(t)){setV('vasif','tarla');got.push('الوصف: تارلا');}else if(/\barsa\b/i.test(t)){setV('vasif','arsa');got.push('الوصف: أرض مُجهّزة');}else if(/(bağ|bahçe|bahce)/i.test(t)){setV('vasif','bag');got.push('الوصف: بستان');}
+ var ppm=null,pm=t.match(/([\d.]+)(?:,\d+)?\s*(?:tl|₺)\s*\/\s*m\s*[²2]/i);if(pm)ppm=trNum(pm[1]);
+ var totals=[],mt,reT=/([\d][\d.]{3,})\s*(?:tl|₺)(?!\s*\/\s*m\s*[²2])/ig;while((mt=reT.exec(t))!==null){var vv=trNum(mt[1]);if(vv>=10000)totals.push(vv);}
+ var total=totals.length?totals[0]:null;
+ var tc=t.replace(/[\d.]+(?:,\d+)?\s*(?:tl|₺)\s*\/\s*m\s*[²2]/ig,' ');
+ var areas=[],ma,reA=/([\d][\d.]*)\s*m\s*[²2](?!\s*\/)/ig;while((ma=reA.exec(tc))!==null){var av=trNum(ma[1]);if(av>=100&&av<=100000000)areas.push(av);}
+ var area=areas.length?areas[0]:null;
+ if(area==null){var dn=t.match(/([\d.,]+)\s*dönüm/i);if(dn)area=Math.round(parseFloat(String(dn[1]).replace(/\./g,'').replace(',','.'))*1000);}
+ if(ppm==null&&total&&area)ppm=Math.round(total/area);
+ if(area==null&&total&&ppm)area=Math.round(total/ppm);
+ if(area){setV('area',area);got.push('المساحة: '+area.toLocaleString()+' م²');}else gaps.push('المساحة');
+ if(ppm){setV('ppm',ppm);got.push('السعر/م²: '+ppm.toLocaleString()+(pm?'':' (محسوب)'));}else gaps.push('السعر/م²');
+ if(area&&ppm&&total){var calc=area*ppm,df=Math.abs(calc-total)/total;if(df>0.2)warn='تعارض بالأرقام: المساحة×السعر/م² ('+calc.toLocaleString()+' ل.ت) لا يساوي السعر الكلّي المُعلَن ('+total.toLocaleString()+' ل.ت). راجع الأرقام يدوياً.';}
+ if(/sulu/i.test(t)){setV('soil','sulu');got.push('تربة: مروية');}else if(/mutlak/i.test(t)){setV('soil','mutlak');got.push('تربة: مطلقة');}else if(/kuru|marjinal|kıraç|kirac/i.test(t)){setV('soil','kuru');got.push('تربة: جافة');}else{setV('soil','bilinmiyor');gaps.push('صنف التربة (مديرية الزراعة)');}
+ if(/hisseli/i.test(t)){setV('tapu','hisseli');got.push('طابو: مشاع');}else if(/müstakil|mustakil/i.test(t)){setV('tapu','mustakil');got.push('طابو: مستقل');}else{setV('tapu','bilinmiyor');gaps.push('نوع الطابو (TKGM)');}
+ if(/ipotek|haciz|şerh|serh|takyidat/i.test(t)){setV('lien','var');got.push('⚠️ قيود مذكورة');}else{setV('lien','bilinmiyor');gaps.push('قيود الطابو (TKGM)');}
+ if(/yola cephe|yola sıfır|yola sifir|cepheli|imar yolu/i.test(t)){setV('road','cephe');got.push('واجهة طريق');}else if(/yolu açılmış|yolu acilmis|yol mevcut|yolu var/i.test(t)){setV('road','cephe');got.push('طريق مفتوح');}else if(/yol yok|yolu yok|yolsuz/i.test(t)){setV('road','yok');got.push('بلا طريق');}else{setV('road','yakin');gaps.push('وضع الطريق');}
+ var e1=/elektrik/i.test(t);setC('elek',e1);if(e1)got.push('كهرباء');
+ var s1=/su hatt|suyu var|su var|artezyen|içme suyu|sondaj/i.test(t);setC('su',s1);if(s1)got.push('ماء');
+ var k1=/kanalizasyon/i.test(t);setC('kanal',k1);if(k1)got.push('صرف');
+ if(/dere|taşkın|taskin|\bfay\b|heyelan/i.test(t)){setV('risk','yes');got.push('⚠️ إشارة خطر (مجرى/صدع)');}
+ var hh='<b>✅ عُبّئت تلقائياً:</b> '+(got.join(' · ')||'لا شيء واضح — الصق نصّ الإعلان كاملاً')+'.';
+ if(warn)hh+='<div class="flag" style="margin-top:6px">⚠️ '+warn+'</div>';
+ if(gaps.length)hh+='<div class="note" style="margin-top:6px"><b>غير مذكور في الإعلان</b> (يُترك «غير معروف» فيخفض درجة الثقة — أكمله يدوياً إن عرفته): '+gaps.join(' · ')+'</div>';
+ hh+='<div class="mut" style="margin-top:4px">راجع الحقول ثم اضغط «🔎 تحليل».</div>';
+ msg.innerHTML=hh;
+}
+function pct(arr,p){return arr[Math.min(arr.length-1,Math.floor(arr.length*p))];}
+function analyze(){
+ var nb=NB[sel.value],area=+document.getElementById('area').value||0,ppm=+document.getElementById('ppm').value||0;
+ var soil=document.getElementById('soil').value,vasif=document.getElementById('vasif').value,dist=document.getElementById('dist').value;
+ var road=document.getElementById('road').value,tapu=document.getElementById('tapu').value,lien=document.getElementById('lien').value;
+ var risk=document.getElementById('risk').value,arsaval=+document.getElementById('arsaval').value||nb.arsa;
+ var years=+document.getElementById('years').value||4,esc=(+document.getElementById('escal').value||12)/100,tirr=(+document.getElementById('tirr').value||25)/100;
+ var elek=document.getElementById('elek').checked,su=document.getElementById('su').checked,kanal=document.getElementById('kanal').checked;
+ var flags=[],oks=[],flips=[];
+ var base={inside:90,adj:75,near:50,far:22}[dist],sm={kuru:1,sulu:.55,mutlak:.3,bilinmiyor:.8}[soil];
+ var conv=vasif==='arsa'?85:clamp(base*sm,0,100);
+ if(soil==='sulu'||soil==='mutlak'){flags.push('تربة «'+(soil==='sulu'?'مروية':'مطلقة')+'» تصعّب التحويل وإذن خارج الزراعة.');flips.push('لو كانت التربة جافة/هامشية لارتفعت التوصية.');}
+ if(dist==='far')flags.push('بعيدة عن الاحتياط/النمو — تحويل ضعيف الاحتمال.');
+ if(dist==='inside'||dist==='adj')oks.push('ضمن/ملاصقة لاتجاه النمو.');
+ var ratio=ppm/nb.med,priceScore=clamp(110-ratio*60,15,100),gap=arsaval/Math.max(ppm,1);
+ if(gap>=5)priceScore=clamp(priceScore+15,0,100);else if(gap>=3)priceScore=clamp(priceScore+8,0,100);
+ if(ppm>arsaval*0.6){flags.push('السعر قريب من سعر الأرض المُجهّزة — هامش ضعيف.');priceScore=clamp(priceScore-25,0,100);}
+ if(ratio<=0.8)oks.push('سعر/م² أقل من وسيط الحي ('+nb.med+').');
+ var legal=100;if(tapu==='hisseli'){legal=45;flags.push('طابو مشاع — صعوبة بيع/تطوير.');}else if(tapu==='bilinmiyor'){legal=70;}
+ if(lien==='var'){legal=Math.min(legal,15);flags.push('رهن/حجز/إشارة — خطر؛ يُفكّ قبل الشراء.');}else if(tapu==='mustakil'&&lien==='yok')oks.push('طابو مستقل وبلا قيود.');
+ var phys=(road==='cephe'?55:road==='yakin'?35:15)+(elek?15:0)+(su?15:0)+(kanal?10:0);phys=clamp(phys,0,100);
+ if(road==='yok')flags.push('بلا واجهة طريق.');if(risk==='yes'){phys=clamp(phys-40,0,100);flags.push('منطقة خطر (فيضان/صدع).');}
+ if(su&&elek)oks.push('بنية تحتية متوفّرة.');
+ var liq=clamp((area>=1500&&area<=12000?85:area<1500?55:60)*(0.6+nb.growth/250),0,100);
+ var W={conv:.30,price:.25,legal:.20,phys:.15,liq:.10};
+ var total=Math.round(conv*W.conv+priceScore*W.price+legal*W.legal+phys*W.phys+liq*W.liq);
+ var cap=100;if(lien==='var')cap=40;else{if(soil==='sulu'||soil==='mutlak')cap=Math.min(cap,65);if(tapu==='hisseli')cap=Math.min(cap,65);if(road==='yok')cap=Math.min(cap,60);}
+ var capped=Math.min(total,cap);
+ // probability of conversion
+ var pbase={inside:.80,adj:.60,near:.35,far:.10}[dist],psoil={kuru:1,sulu:.45,mutlak:.25,bilinmiyor:.7}[soil];
+ var p=vasif==='arsa'?0.99:clamp(pbase*psoil*(0.7+0.3*nb.growth/100),0.02,0.92);
+ // Monte Carlo
+ var N=3000,fees=0.06,sellC=0.03,investLand=area*ppm*(1+fees),mults=[],loss=0;
+ for(var i=0;i<N;i++){var net;if(Math.random()<p){var av=rtri(arsaval*0.7,arsaval,arsaval*1.3),dop=0.35+Math.random()*0.10,pc=Math.random()<0.15;var gross=area*(1-dop)*av,upl=gross-area*ppm,share=pc?upl*0.9:0;net=(gross-share)*(1-sellC);}else{var g=Math.max(esc-0.05+(Math.random()*0.06-0.03),0);net=area*ppm*Math.pow(1+g,years)*(1-sellC);}var mm=net/investLand;mults.push(mm);if(mm<1)loss++;}
+ mults.sort(function(a,b){return a-b;});
+ var P10=pct(mults,0.1),P50=pct(mults,0.5),P90=pct(mults,0.9),EV=mults.reduce(function(a,b){return a+b;},0)/N,pLoss=loss/N;
+ // confidence
+ var conf=55,miss=[];
+ if(soil!=='bilinmiyor')conf+=12;else miss.push('صنف التربة (مديرية الزراعة)');
+ if(tapu!=='bilinmiyor')conf+=10;else miss.push('نوع الطابو (TKGM)');
+ if(lien!=='bilinmiyor')conf+=8;else miss.push('قيود الطابو (TKGM)');
+ if(dist==='inside'||dist==='adj'||dist==='far')conf+=8;else miss.push('وضع الإعمار واتجاه النمو (e-İmar)');
+ if(+document.getElementById('arsaval').value)conf+=7;
+ conf=clamp(conf,30,97);
+ // max offer for target IRR (target the conversion upside)
+ var tgtMult=Math.pow(1+tirr,years);
+ var expConvNet=p*area*0.6*arsaval*(1-sellC)*(1-0.15*0.9);
+ var maxInvest=expConvNet/tgtMult,maxPPM=Math.max(0,Math.round(maxInvest/(area*(1+fees))));
+ // final verdict blends score + prob of loss
+ var verdict,vcolor;
+ if(capped>=70&&pLoss<0.35){verdict='شراء / تفاوض قوي';vcolor='#2E7D32';}
+ else if(capped>=50&&pLoss<0.6){verdict='مشروط — أكمل الفحص الرسمي';vcolor='#B07A00';}
+ else{verdict='تجنّب';vcolor='#B00020';}
+ // histogram buckets
+ var bks=[0,0,0,0,0],lab=['<1×','1-2×','2-4×','4-6×','6×+'];
+ mults.forEach(function(m){if(m<1)bks[0]++;else if(m<2)bks[1]++;else if(m<4)bks[2]++;else if(m<6)bks[3]++;else bks[4]++;});
+ var bmax=Math.max.apply(null,bks)||1;
+ function bar(l,s){return '<div class="row"><span>'+l+'</span><b>'+Math.round(s)+'</b></div><div class="bar"><span style="width:'+Math.round(s)+'%;background:'+bc(s)+'"></span></div>';}
+ var maps='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(nb.q);
+ var h='';
+ h+='<div class="card"><div class="verdict" style="background:'+vcolor+'">'+verdict+'<div class="score">'+capped+'/100</div><div style="font-size:14px;font-weight:normal">درجة الثقة: '+Math.round(conf)+'% • احتمال التحويل: '+Math.round(p*100)+'% • احتمال الخسارة: '+Math.round(pLoss*100)+'%</div></div>';
+ if(capped<total)h+='<p class="note">قُيّدت الدرجة بعلم أحمر. قبل التقييد: '+total+'.</p>';h+='</div>';
+ h+='<div class="card"><h2>📊 التحليل الاحتمالي (محاكاة '+N+' سيناريو)</h2><div class="kpi"><div><b>'+EV.toFixed(2)+'×</b>المتوقّع (EV)</div><div><b>'+P10.toFixed(2)+'×</b>متشائم P10</div><div><b>'+P50.toFixed(2)+'×</b>وسيط P50</div><div><b>'+P90.toFixed(2)+'×</b>متفائل P90</div></div>';
+ h+='<div class="hist">';for(var j=0;j<5;j++){h+='<div style="flex:1"><div class="b" style="height:'+Math.round(bks[j]/bmax*80)+'px"></div><div class="l">'+lab[j]+'<br>'+Math.round(bks[j]/N*100)+'%</div></div>';}h+='</div>';
+ h+='<p class="mut">التوزيع يفترض احتمال تحويل '+Math.round(p*100)+'%، وتذبذب قيمة الأرض المُجهّزة وDOP، واحتمال 15% أن يكون الارتفاع عبر «تغيير مخطّط» (حصة 90% للدولة).</p></div>';
+ h+='<div class="card"><h2>الأركان</h2>'+bar('أفق التحويل (30%)',conv)+bar('السعر (25%)',priceScore)+bar('القانوني (20%)',legal)+bar('الفني/الموقع (15%)',phys)+bar('السيولة (10%)',liq)+'</div>';
+ h+='<div class="card"><h2>💰 السوق والتفاوض</h2><div class="kpi"><div><b>'+ppm+'</b>سعرك/م²</div><div><b>'+nb.med+'</b>وسيط الحي</div><div><b>'+nb.arsa+'</b>مُجهّزة/م²</div><div><b>'+gap.toFixed(1)+'×</b>فجوة التحويل</div></div>';
+ h+='<p style="margin-top:8px">💡 <b>أقصى سعر/م² مقترح</b> لتحقيق عائد '+Math.round(tirr*100)+'% سنوياً خلال '+years+' سنوات: <b>~'+maxPPM.toLocaleString()+' ل.ت/م²</b> '+(ppm<=maxPPM?'(سعرك الحالي ضمن الهدف ✓)':'(سعرك أعلى من الهدف — تفاوض للخفض)')+'.</p></div>';
+ if(flags.length){h+='<div class="card"><h2>⚠️ الأعلام الحمراء</h2>';flags.forEach(function(f){h+='<div class="flag">'+f+'</div>';});h+='</div>';}
+ if(oks.length){h+='<div class="card"><h2>✓ نقاط القوة</h2>';oks.forEach(function(f){h+='<div class="ok">'+f+'</div>';});h+='</div>';}
+ h+='<div class="card"><h2>🎯 ارفع درجة الثقة بالتحقّق من</h2>'+(miss.length?'<ul>'+miss.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>':'<div class="ok">كل العوامل الأساسية مُدخلة — تبقّى التحقّق الرسمي الميداني.</div>')+(flips.length?flips.map(function(f){return '<div class="note">'+f+'</div>';}).join(''):'')+'</div>';
+ h+='<div class="card"><h2>🤖 رأي الخبير</h2><div id="ai">…</div></div>';
+ h+='<div class="card"><h2>😈 محامي الشيطان (أقوى أسباب عدم الشراء)</h2><div id="dev">…</div></div>';
+ h+='<div class="card"><h2>قائمة الفحص الرسمي</h2><ul><li>الطابو والقيود: TKGM «Parsel Sorgu» (Ada/Parsel).</li><li>الإعمار واتجاه النمو: e-İmar البلدية.</li><li>صنف التربة وإذن خارج الزراعة: مديرية الزراعة.</li><li>زيارة ميدانية + محامٍ عقاري؛ الشراء عبر الشريك التركي.</li></ul><p>📍 <a href="'+maps+'" target="_blank">'+sel.value+' على الخريطة</a></p>'+
+   '<div style="margin-top:8px"><button class="sm alt" onclick=\'saverec('+JSON.stringify(JSON.stringify({n:sel.value,a:area,p:ppm,sc:capped,ev:+EV.toFixed(2),pl:Math.round(pLoss*100),pc:Math.round(p*100),v:verdict}))+')\'>➕ احفظ في المحفظة</button></div></div>';
+ h+='<div class="card"><h2>💬 استفسار ذكي حرّ عن هذه القطعة</h2><input id="q" placeholder="اسأل: هل السعر مناسب؟ أفضل سعر تفاوض؟ مخاطر هذا الحي؟ أفق التحويل؟"><div style="margin-top:8px"><button class="sm" onclick="askQ()">اسأل</button> <button class="sm alt" onclick="compareAI()">🆚 قارن مصدرين (Gemini + Claude)</button></div><div id="qa" class="note" style="display:none;margin-top:8px"></div><div id="cmp" style="display:none;margin-top:8px"></div></div>'; var out=document.getElementById('out');out.className='';out.innerHTML=h;out.scrollIntoView({behavior:'smooth'});
+ var sum={الحي:sel.value,المساحة:area,'سعر/م²':ppm,'وسيط':nb.med,'مُجهّزة':nb.arsa,التربة:soil,القرب:dist,الطابو:tapu,القيود:lien,الدرجة:capped,الثقة:Math.round(conf),' احتمال_التحويل':Math.round(p*100),'احتمال_الخسارة':Math.round(pLoss*100),EV:EV.toFixed(2),P10:P10.toFixed(2),P90:P90.toFixed(2),التوصية:verdict,الأعلام:flags};
+ lastSummary=sum;callAI('ai','أنت خبير أراضٍ حذِر في ملاطيا. اكتب رأياً موجزاً بالعربية (4-6 جُمل): الفرصة، أهم تحذير، أفق التحويل، اتجاه السعر، وتوصية نهائية مع السبب. ذكّر بحصة فرق القيمة 90% عند تغيير المخطّط والشراء عبر الشريك التركي. لا تبالغ.',sum);
+ callAI('dev','أنت محامي الشيطان. بناءً على المعطيات، اذكر بإيجاز أقوى ٣ أسباب لعدم شراء هذه القطعة أو المخاطر الأكبر، بالعربية، نقاطاً.',sum);
+}
+function askAI(id,prompt,data){var el=document.getElementById(id);try{if(window.cowork&&window.cowork.askClaude){window.cowork.askClaude(prompt,[data]).then(function(r){el.textContent=(r&&(r.text||r))||'—';}).catch(function(){el.textContent='تعذّر تشغيل AI — اعتمد التحليل الرقمي.';});}else{el.innerHTML='<span class="mut">AI داخل Cowork. انسخ الموجّه:</span><br><textarea style="height:80px">'+prompt+'\n\n'+JSON.stringify(data)+'</textarea>';}}catch(e){el.textContent='—';}}
+// portfolio
+function saverec(js){var r=JSON.parse(js);var a=JSON.parse(localStorage.getItem('mly_pf')||'[]');a.push(r);localStorage.setItem('mly_pf',JSON.stringify(a));showPF();}
+function delrec(i){var a=JSON.parse(localStorage.getItem('mly_pf')||'[]');a.splice(i,1);localStorage.setItem('mly_pf',JSON.stringify(a));showPF();}
+function showPF(){var a=JSON.parse(localStorage.getItem('mly_pf')||'[]');var pf=document.getElementById('pf');pf.className='card';var h='<h2>📁 المحفظة — مقارنة القطع</h2>';if(!a.length){h+='<p class="mut">لا قطع محفوظة بعد. حلّل قطعة ثم «احفظ في المحفظة».</p>';}else{h+='<table><tr><th>الحي</th><th>م²</th><th>سعر/م²</th><th>الدرجة</th><th>EV</th><th>خسارة%</th><th>تحويل%</th><th>التوصية</th><th></th></tr>';a.sort(function(x,y){return y.sc-x.sc;});a.forEach(function(r,i){h+='<tr><td>'+r.n+'</td><td>'+r.a+'</td><td>'+r.p+'</td><td><b>'+r.sc+'</b></td><td>'+r.ev+'×</td><td>'+r.pl+'</td><td>'+r.pc+'</td><td>'+r.v+'</td><td><button class="sm" style="background:#999;padding:3px 8px" onclick="delrec('+i+')">حذف</button></td></tr>';});h+='</table>';}pf.innerHTML=h;pf.scrollIntoView({behavior:'smooth'});}
+
+function geminiCall(prompt,data){var key=localStorage.getItem('gmn_key'),model=localStorage.getItem('gmn_model')||'gemini-2.0-flash';if(!key)return Promise.reject('nokey');var url='https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+key;return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt+'  ||  بيانات القطعة وتحليلها: '+JSON.stringify(data)}]}]})}).then(function(r){return r.json();}).then(function(j){if(j&&j.candidates&&j.candidates[0]&&j.candidates[0].content)return j.candidates[0].content.parts.map(function(x){return x.text||'';}).join('');throw((j&&j.error&&j.error.message)||'Gemini error');});}
+function aiText(r){if(r==null)return '';if(typeof r==='string')return r;if(typeof r.text==='string')return r.text;if(typeof r.completion==='string')return r.completion;if(typeof r.output==='string')return r.output;if(typeof r.response==='string')return r.response;if(r.content){if(typeof r.content==='string')return r.content;if(r.content.length&&r.content[0])return r.content.map(function(x){return (x&&x.text)||'';}).join('');}if(r.message&&r.message.content){var c=r.message.content;return typeof c==='string'?c:(c.map?c.map(function(x){return (x&&x.text)||'';}).join(''):'');}return '';}
+function hasClaude(){return !!(window.cowork&&typeof window.cowork.askClaude==='function');}
+function claudeCall(prompt,data){if(!hasClaude())return Promise.reject('no-claude');try{return Promise.resolve(window.cowork.askClaude(prompt,[data])).then(function(r){var t=(aiText(r)||'').trim();if(!t)throw 'empty';return t;});}catch(e){return Promise.reject(e);}}
+function fbBox(prompt,data){return '<span class="mut">تعذّر تشغيل الذكاء الاصطناعي تلقائياً هنا. افتح الأداة من شريط Cowork الجانبي ليتوفّر Claude، أو أدخل مفتاح Gemini وافتحها في المتصفّح. وبدلاً من ذلك انسخ الموجّه:</span><br><textarea style="height:80px">'+prompt+'  ||  '+JSON.stringify(data)+'</textarea>';}
+function callAI(id,prompt,data){var el=document.getElementById(id);if(!el)return;el.textContent='… يفكّر';var key=localStorage.getItem('gmn_key');var seq=[];if(key)seq.push(function(){return geminiCall(prompt,data);});seq.push(function(){return claudeCall(prompt,data);});(function run(i){if(i>=seq.length){el.innerHTML=fbBox(prompt,data);return;}seq[i]().then(function(t){t=(t||'').trim();if(!t)throw 'empty';el.textContent=t;}).catch(function(){run(i+1);});})(0);}
+function compareAI(){var qel=document.getElementById('q');var q=(qel&&qel.value.trim())||'قدّم تقييماً معمّقاً لهذه القطعة: الفرصة، أهم المخاطر، أفق التحويل، السعر العادل، والتوصية النهائية مع السبب.';var prompt='أنت خبير أراضٍ حذِر في ملاطيا. أجب بدقّة وإيجاز بالعربية بناءً على بيانات القطعة وتحليلها. ذكّر عند اللزوم بأن التحويل قرار حكومي وأن حصة فرق القيمة 90% والشراء عبر الشريك التركي. المطلوب: '+q;var data=lastSummary||{};var box=document.getElementById('cmp');if(!box)return;box.style.display='block';box.innerHTML='<div class="mut">سؤال المقارنة: '+q+'</div><div class="cmpgrid" style="margin-top:6px"><div class="cmpcol"><h3>🔷 Gemini</h3><div id="cmpG">… ينتظر Gemini</div></div><div class="cmpcol"><h3>🟣 Claude</h3><div id="cmpC">… ينتظر Claude</div></div></div>';geminiCall(prompt,data).then(function(t){document.getElementById('cmpG').textContent=(t||'').trim()||'—';}).catch(function(e){document.getElementById('cmpG').innerHTML='<span class="mut">Gemini غير متاح: أدخل مفتاحاً وافتح الأداة في المتصفّح (شبكة Gemini محجوبة داخل Cowork).</span>';});claudeCall(prompt,data).then(function(t){document.getElementById('cmpC').textContent=(t||'').trim()||'—';}).catch(function(e){document.getElementById('cmpC').innerHTML='<span class="mut">Claude غير متاح هنا — افتح الأداة من شريط Cowork الجانبي ليتوفّر Claude.</span>';});}
+function saveKey(){var g=document.getElementById('gkey'),m=document.getElementById('gmodel');if(g&&g.value)localStorage.setItem('gmn_key',g.value.trim());if(m&&m.value)localStorage.setItem('gmn_model',m.value);var s=document.getElementById('gstat');if(s)s.textContent=(localStorage.getItem('gmn_key')?'تم الحفظ ✓ — Gemini مفعّل في المتصفّح':'أدخل مفتاحاً صالحاً');}
+function loadKey(){var m=localStorage.getItem('gmn_model'),s=document.getElementById('gstat'),mm=document.getElementById('gmodel');if(m&&mm)mm.value=m;if(s){var g=localStorage.getItem('gmn_key')?'Gemini: مفعّل ✓':'Gemini: غير مُعَدّ';var c=hasClaude()?'Claude: متاح ✓':'Claude: يتوفّر داخل شريط Cowork';s.innerHTML='<span class="aist">'+g+' • '+c+'</span>';}}
+function askQ(){var qel=document.getElementById('q');if(!qel||!qel.value.trim())return;var el=document.getElementById('qa');el.style.display='block';callAI('qa','أنت خبير أراضٍ في ملاطيا. أجب باختصار ودقّة بالعربية عن سؤال المستثمر بناءً على بيانات القطعة وتحليلها، واذكر تحذيراً عند اللزوم. السؤال: '+qel.value.trim(),lastSummary||{});}
+loadKey();
+</script><script src="assets/nav.js" defer></script>
+</body></html>
