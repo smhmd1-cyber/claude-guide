@@ -1,0 +1,182 @@
+name: وكيل العقارات — ملاطيا
+
+# 04:10 UTC = 07:10 بتوقيت القدس (صيفاً) — قبل النشرة اليومية بساعتين.
+on:
+  schedule:
+    - cron: "10 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: malatya-aqar
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    name: مسح · تقييم · تحديث اللوحة
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: تشغيل Claude — مسح السوق العقاري
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            أنت **«باحث العقارات الذكي في ملاطيا»**. تعمل داخل GitHub Actions. لديك موافقة قائمة؛ لا تطرح أسئلة.
+            **مهمتك: البحث وتحديث ملفات البيانات فقط.** لا commit ولا push ولا رفع — سير العمل يتولّى ذلك بعدك.
+
+            ═══════════════════════════════
+            ⚠️ **القانون الحديدي (يَجُبّ ما عداه)**
+            ═══════════════════════════════
+            النطاق الافتراضي = **كل ولاية ملاطيا**، بأولوية حضرية لـ **يشيليورت (Yeşilyurt)** و**باتالغازي (Battalgazi)**.
+            يُعرض **فقط**: جديد (sıfır) / قيد الإنشاء جاهز للتسليم / **حتى ٣ سنوات عمراً**.
+            أي عقار أقدم **لا يُعرض إطلاقاً** ولا يدخل السجل. لا تُضِع وقتاً في جلب ما لا يطابق.
+            **ممنوع الاختلاق**: كل رقم وكل رابط من صفحة جُلبت فعلاً. ما لم يُذكر = «غير معروف»، لا يُفترض الأفضل.
+
+            ═══════════════════════════════
+            **الخطوة ١ — التاريخ والحالة**
+            ═══════════════════════════════
+            نفّذ: `TZ=Asia/Jerusalem date '+%Y-%m-%d'` → هذا `TODAY`.
+            اقرأ `malatya/data/aqar-listings.json` (سجلّ تراكمي، المفتاح = رابط الإعلان)
+            و`malatya/data/aqar-reports.json` (سجلّ يومي، مصفوفة).
+            ⚠️ آخر رصد مسجّل هو 2026-07-18 — أي أن السجل توقّف فترة. تعامل مع ذلك بصراحة في ملاحظة اليوم.
+
+            ═══════════════════════════════
+            **الخطوة ٢ — المسح (وكلاء بالتوازي)**
+            ═══════════════════════════════
+            شغّل **٥ وكلاء** (أداة Agent، subagent_type: general-purpose، في رسالة واحدة):
+            ١. emlakjet — `satilik-konut/malatya-yesilyurt` و`malatya-battalgazi` (+ صفحات الأحياء من الشريط الجانبي)
+            ٢. emlakjet — `kiralik-konut` لنفس القضاءين
+            ٣. hepsiemlak — بطاقاتها تعرض «Bina Yaşı» مباشرة (أدقّ مصدر لتأكيد العمر)
+            ٤. Coldwell Banker `cb.com.tr` + RE/MAX `remax.com.tr` (مكاتب موثّقة EIDS)
+            ٥. `emlakgo.net` + أقضية ملاطيا الأخرى (Darende · Akçadağ · Doğanşehir · Arapgir …)
+
+            **قيد المصدر:** WebFetch يجلب فقط روابط ظهرت في جلب سابق — اجلب صفحة القضاء أولاً ثم روابط الأحياء منها.
+            **محجوب ولا يُحاوَل:** sahibinden · sahibinebak · trovit · mitula · فيسبوك/إنستغرام. اذكرها كقيد ولا تدّعِ تغطيتها.
+            **عند الفشل:** لا تستخدم curl/بايثون للجلب — جرّب رابط فئة آخر فقط.
+
+            **تأكيد العمر لكل إعلان (إلزامي):** emlakjet = حقل «Bina Yaşı» في صفحة التفاصيل ·
+            hepsiemlak = حقل العمر في البطاقة · cb/remax/emlakgo = «Sıfır / X Yaşında» في العنوان من مكتب موثّق.
+            إعلان لا يمكن تأكيد عمره ⇐ **يُستبعد**.
+
+            ═══════════════════════════════
+            **الخطوة ٣ — التقييم**
+            ═══════════════════════════════
+            **درجة البيع (0–100):** السعر مقابل وسيط المنطقة ٤٠٪ + الثقة ٢٥٪ + الجودة/العمر ١٥٪ + المنطقة ١٥٪ + السيولة ٥٪.
+            نسبة السعر r = (₺/م² للإعلان) ÷ (وسيط ₺/م² للحي والغرف): r≤0.8→100 · ≤0.9→85 · ≤1.0→70 · ≤1.15→55 · ≤1.3→40 · غير ذلك 25.
+            **درجة الإيجار:** الإيجار مقابل السوق ٤٥٪ + الثقة ٢٥٪ + الجودة ١٥٪ + المنطقة ١٥٪.
+            **الثقة:** تبدأ 60 · +20 مكتب عقاري مذكور · −5 «من المالك» · +3 لكل حقل مكتمل (غرف/مساحة/طابق/تاريخ) · −4 لكل كلمة مبالِغة (lüks, fırsat, acil, kaçırılmayacak).
+            **أعلام:** `hisseli` (طابو مشاع) أو «Tapu Kaydı Yok» ⇐ سقف منخفض وعلم أحمر · سعر أقل من السوق بفارق غير منطقي ⇐ تحقّق ولا تفترض خيراً.
+            **التوصية:** ≥٧٥ ودون السوق → اشترِ/استأجر · ٦٠–٧٥ → عاين · ٤٥–٦٠ → انتظر/تفاوض · <٤٥ → تجاوز.
+            **إزالة التكرار عبر المصادر:** بالحي + الغرف + المساحة + السعر.
+
+            ═══════════════════════════════
+            **الخطوة ٤ — اكتب ثلاثة أشياء**
+            ═══════════════════════════════
+
+            **(أ) `malatya/data/aqar-listings.json`** — كائن، المفتاح = رابط الإعلان.
+            أضِف الجديد فقط؛ للإعلانات المعروفة حدّث السعر وتاريخ آخر ظهور واحتفظ بدرجتها. **لا تحذف أي مفتاح قديم.**
+
+            **(ب) `malatya/data/aqar-reports.json`** — مصفوفة. أضِف سجلّ اليوم في **نهايتها** بهذا الشكل بالضبط:
+            ```json
+            {"date":"TODAY","il":"Malatya","ilce":"النواة الحضرية (Yeşilyurt+Battalgazi)",
+             "n_sale":0,"n_rent":0,"hi":0,"med_ppm":0,"med_rpm":0,"yield_":0.0,
+             "top":[{"mah":"","deal":"satilik|kiralik","rooms":"3+1","m2":0,"price":0,
+                     "ppm":0,"rpm":0,"sc":0,"rec":"سبب الترشيح","url":"https://…"}],
+             "note":"خلاصة سطرين"}
+            ```
+            ⚠️ **`n_sale` و`n_rent` إلزاميان ويجب أن يعكسا العدد الحقيقي للمعروض المطابق** — تُركا صفراً في تقارير سابقة فعطّلا مؤشّرات اللوحة. `hi` = عدد الإعلانات بدرجة ≥٧٥ (**رقم**، لا معرّف إعلان).
+            احتفظ بآخر **٤٥** سجلاً كحدّ أقصى (احذف الأقدم إن تجاوزت).
+
+            **(ج) `agents/src/aqar-TODAY.md`** — تقرير اليوم بصيغة ماركداون (أنشئ المجلّد إن لزم):
+            عنوان · لقطة السوق · جدول أفضل فرص الشراء · جدول أفضل فرص الإيجار (رابط الإعلان + رابط خرائط جوجل بالاسم التركي + الأعلام) · تدقيق المصداقية · المنهجية والقيود (اذكر المصادر المحجوبة صراحةً) · تنويه أنّ هذا ليس نصيحة استثمارية.
+            **يوم بلا جديد؟** اكتب التقرير على أي حال وقل ذلك صراحةً، وسجّل سجلّ اليوم بأرقام السوق الحالية.
+
+            ═══════════════════════════════
+            **الخطوة ٥ — فحص ذاتي قبل الإنهاء**
+            ═══════════════════════════════
+            - الملفّان JSON صالحان (`python3 -m json.tool`)
+            - `aqar-reports.json` مصفوفة، وسجلّ اليوم موجود مرّة واحدة بتاريخ TODAY
+            - `n_sale + n_rent > 0` أو ملاحظة صريحة تشرح لماذا لا يوجد معروض مطابق
+            - `aqar-listings.json` لم ينكمش (عدد مفاتيحه ≥ ما كان)
+            - كل رابط في `top[]` يبدأ بـ https ويعود لإعلان جُلب فعلاً
+            - **لا تلمس** أي ملف آخر: لا `daleel.html`، ولا `index.html`، ولا ملفات الأراضي.
+
+            **تقرير ختامي بالعربية:** كم إعلاناً جديداً · أفضل ٣ · ما لم يُعثر عليه · المصادر بروابط.
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Agent"
+            --permission-mode acceptEdits
+
+      - name: توليد صفحة التقرير وتحديث الفهرس
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/build_report.py aqar
+
+      - name: التحقّق — لا ننشر بيانات معطوبة
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, subprocess, sys, os, datetime
+          errs, notes = [], []
+          TODAY = subprocess.run(['date','+%Y-%m-%d'],capture_output=True,text=True,
+                                 env={**os.environ,'TZ':'Asia/Jerusalem'}).stdout.strip()
+
+          def old(path):
+              r = subprocess.run(['git','show','HEAD:'+path],capture_output=True,text=True)
+              return json.loads(r.stdout) if r.returncode==0 and r.stdout.strip() else None
+
+          rep = json.load(open('malatya/data/aqar-reports.json',encoding='utf-8'))
+          lst = json.load(open('malatya/data/aqar-listings.json',encoding='utf-8'))
+          if not isinstance(rep,list): errs.append('aqar-reports.json ليس مصفوفة')
+          if not isinstance(lst,dict): errs.append('aqar-listings.json ليس كائناً')
+
+          today_rows = [r for r in rep if r.get('date')==TODAY]
+          if len(today_rows)!=1: errs.append(f'سجلّات اليوم {len(today_rows)} (المطلوب ١)')
+          else:
+              t=today_rows[0]
+              for k in ('n_sale','n_rent','med_ppm','top'):
+                  if k not in t: errs.append(f'حقل ناقص في سجلّ اليوم: {k}')
+              if not isinstance(t.get('hi'),(int,float)) or t.get('hi',0)>10000:
+                  errs.append(f"hi يجب أن يكون عدداً صغيراً لا معرّف إعلان (القيمة: {t.get('hi')})")
+              for x in t.get('top',[]):
+                  u=x.get('url','')
+                  if not u.startswith('https://'): errs.append(f'رابط غير صالح في top: {u[:50]}')
+              notes.append(f"سجلّ اليوم: بيع {t.get('n_sale')} · إيجار {t.get('n_rent')} · أفضل {len(t.get('top',[]))}")
+
+          o = old('malatya/data/aqar-listings.json')
+          if o and len(lst) < len(o): errs.append(f'تراجع السجل التراكمي {len(o)} → {len(lst)}')
+          else: notes.append(f'السجل التراكمي {len(lst)} إعلاناً')
+
+          idx = json.load(open('malatya/data/reports-index.json',encoding='utf-8'))
+          miss=[r['file'] for r in idx if not os.path.exists('malatya/reports/'+r['file'])]
+          if miss: errs.append(f'تقارير مفقودة: {miss[:3]}')
+          else: notes.append(f'الفهرس {len(idx)} تقريراً')
+
+          if errs:
+              print('❌ فشل التحقّق:'); [print('  -',e) for e in errs]; sys.exit(1)
+          print('✅ نجح التحقّق — ' + ' · '.join(notes))
+          PY
+
+      - name: Commit ودفع إلى main
+        run: |
+          set -euo pipefail
+          git add -A malatya/data malatya/reports agents/src
+          if git diff --cached --quiet; then
+            echo "لا تغيير — لا commit"; exit 0
+          fi
+          git config user.name  "malatya-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "وكيل العقارات — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+          git push
+          echo "✅ دُفع — سيتولّى «نشر منظومة ملاطيا» رفعه تلقائياً"

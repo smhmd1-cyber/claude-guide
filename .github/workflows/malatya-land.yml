@@ -1,0 +1,171 @@
+name: وكيل الأراضي — ملاطيا
+
+# 05:10 UTC = 08:10 بتوقيت القدس (صيفاً) — بين وكيل العقارات والنشرة اليومية.
+on:
+  schedule:
+    - cron: "10 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: malatya-land
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    name: رصد · تقييم · تحديث اللوحة
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: تشغيل Claude — رصد سوق الأراضي
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            أنت **«وكيل رصد أراضي ملاطيا»**. تعمل داخل GitHub Actions. لديك موافقة قائمة؛ لا تطرح أسئلة.
+            **مهمتك: الرصد وتحديث ملفات البيانات فقط.** لا commit ولا push ولا رفع — سير العمل يتولّى ذلك بعدك.
+
+            **الأطروحة:** قطع زراعية/مفرزة (tarla / arsa) تحمل **فجوة تحويل** من زراعي إلى عمراني.
+            هذا وكيل منفصل تماماً عن وكيل الشقق — لا تخلط بينهما ولا تلمس ملفاته.
+            **ممنوع الاختلاق**: كل رقم ورابط من صفحة جُلبت فعلاً. ما لم يُذكر = «غير معروف»، لا يُفترض الأفضل.
+
+            ═══════════════════════════════
+            **الخطوة ١ — التاريخ والحالة**
+            ═══════════════════════════════
+            نفّذ: `TZ=Asia/Jerusalem date '+%Y-%m-%d'` → هذا `TODAY`.
+            اقرأ `malatya/data/land-listings.json` (تراكمي، المفتاح = رابط الإعلان، يحفظ درجة كل قطعة)
+            و`malatya/data/land-reports.json` (سجلّ يومي، مصفوفة).
+            ⚠️ آخر رصد مسجّل 2026-07-18 — السجل توقّف فترة؛ اذكر ذلك بصراحة في ملاحظة اليوم.
+            **مهم:** احتفظ بالدرجات المخزّنة للقطع المعروفة؛ لا تُعِد تقييم إلا الجديد فعلاً.
+
+            ═══════════════════════════════
+            **الخطوة ٢ — المصادر**
+            ═══════════════════════════════
+            emlakjet، أربع صفحات: `satilik-tarla` و`satilik-arsa` لكلٍّ من `malatya-battalgazi` و`malatya-yesilyurt`.
+            صيغتا بطاقة: كتلة `### [العنوان](رابط)`، وروابط مضغوطة سطراً واحداً (الأغنى — تحمل علم `YENİ`
+            ومواصفات Parselli/Hisseli و Yolu Açılmış و Su/Elektrik/Kanalizasyon).
+            وسّع عند الحاجة إلى بقية أقضية ملاطيا. **عند الفشل:** لا curl/بايثون — جرّب رابط فئة آخر فقط.
+
+            ═══════════════════════════════
+            **الخطوة ٣ — محرّك الركائز الخمس**
+            ═══════════════════════════════
+            الدرجة = التحويل ٣٠٪ · السعر ٢٥٪ · القانوني ٢٠٪ · التقني ١٥٪ · السيولة ١٠٪.
+
+            **مراجع السعر (₺/م² خام ← بعد التطوير):** ياقنجا Yakınca 550→3000 · إكيزجة İkizce 400→2800 ·
+            ملّاقاسم Mullakasım 450→2800 · كيلتبه Kiltepe 550→3000 · هاتونصويو Hatunsuyu 1200→4146 ·
+            بحري Bahri 560→2500 · بوران Boran 976→2500.
+
+            **سقوف إلزامية:** `hisseli` (مشاع) أو `sulu` (مروية) ⇐ سقف ٦٥ · بلا طريق ⇐ سقف ٦٠ · رهن/حجز ⇐ سقف ٤٠.
+            **الطريق غير المذكور = مجهول (بلا سقف)، لا يُعامَل «yok».**
+
+            ═══════════════════════════════
+            **الخطوة ٤ — اكتب ثلاثة أشياء**
+            ═══════════════════════════════
+
+            **(أ) `malatya/data/land-listings.json`** — كائن، المفتاح = رابط الإعلان.
+            أضِف الجديد فقط، حدّث السعر وتاريخ آخر ظهور. **لا تحذف أي مفتاح قديم.**
+
+            **(ب) `malatya/data/land-reports.json`** — مصفوفة. أضِف سجلّ اليوم في **نهايتها** بهذا الشكل بالضبط:
+            ```json
+            {"date":"TODAY","n":0,"hi":0,"avg":0.0,
+             "top":[{"nb":"اسم الحي","ppm":0,"sc":0.0,"url":"https://…"}],
+             "note":"خلاصة سطرين"}
+            ```
+            `n` = عدد القطع المرصودة اليوم · `hi` = عدد القطع بدرجة ≥٧٠ · `avg` = متوسّط الدرجة.
+            `top` = أعلى ٣ قطع. احتفظ بآخر **٤٥** سجلاً كحدّ أقصى.
+
+            **(ج) `agents/src/land-TODAY.md`** — تقرير اليوم بصيغة ماركداون (أنشئ المجلّد إن لزم):
+            عنوان · لقطة السوق · جدول أعلى القطع (المساحة · ₺/م² · الدرجة · الأعلام · رابط الإعلان ·
+            رابط خرائط جوجل بالاسم التركي) · ما الجديد مقابل أمس · المنهجية والقيود · تنويه أنّ هذا ليس نصيحة استثمارية.
+            **يوم بلا جديد؟** اكتب التقرير على أي حال وقل ذلك صراحةً (السوق راكد أحياناً لأسابيع — هذه معلومة لا فشل).
+
+            ═══════════════════════════════
+            **الخطوة ٥ — فحص ذاتي قبل الإنهاء**
+            ═══════════════════════════════
+            - الملفّان JSON صالحان (`python3 -m json.tool`)
+            - `land-reports.json` مصفوفة، وسجلّ اليوم موجود مرّة واحدة بتاريخ TODAY
+            - `n` و`hi` و`avg` أرقام معقولة (`hi ≤ n`، و`avg` بين 0 و100)
+            - `land-listings.json` لم ينكمش
+            - كل رابط في `top[]` يبدأ بـ https
+            - **لا تلمس** أي ملف آخر: لا `daleel.html`، ولا `index.html`، ولا ملفات العقارات.
+
+            **تقرير ختامي بالعربية:** كم قطعة جديدة · أعلى ٣ · ما لم يُعثر عليه · المصادر بروابط.
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Agent"
+            --permission-mode acceptEdits
+
+      - name: توليد صفحة التقرير وتحديث الفهرس
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/build_report.py land
+
+      - name: التحقّق — لا ننشر بيانات معطوبة
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, subprocess, sys, os
+          errs, notes = [], []
+          TODAY = subprocess.run(['date','+%Y-%m-%d'],capture_output=True,text=True,
+                                 env={**os.environ,'TZ':'Asia/Jerusalem'}).stdout.strip()
+
+          def old(path):
+              r = subprocess.run(['git','show','HEAD:'+path],capture_output=True,text=True)
+              return json.loads(r.stdout) if r.returncode==0 and r.stdout.strip() else None
+
+          rep = json.load(open('malatya/data/land-reports.json',encoding='utf-8'))
+          lst = json.load(open('malatya/data/land-listings.json',encoding='utf-8'))
+          if not isinstance(rep,list): errs.append('land-reports.json ليس مصفوفة')
+          if not isinstance(lst,dict): errs.append('land-listings.json ليس كائناً')
+
+          rows=[r for r in rep if r.get('date')==TODAY]
+          if len(rows)!=1: errs.append(f'سجلّات اليوم {len(rows)} (المطلوب ١)')
+          else:
+              t=rows[0]
+              for k in ('n','hi','avg','top'):
+                  if k not in t: errs.append(f'حقل ناقص في سجلّ اليوم: {k}')
+              if isinstance(t.get('hi'),(int,float)) and isinstance(t.get('n'),(int,float)) and t['hi']>t['n']:
+                  errs.append(f"hi ({t['hi']}) أكبر من n ({t['n']})")
+              a=t.get('avg')
+              if isinstance(a,(int,float)) and not (0<=a<=100): errs.append(f'avg خارج النطاق: {a}')
+              for x in t.get('top',[]):
+                  if not str(x.get('url','')).startswith('https://'):
+                      errs.append(f"رابط غير صالح في top: {str(x.get('url'))[:50]}")
+              notes.append(f"سجلّ اليوم: {t.get('n')} قطعة · ≥٧٠: {t.get('hi')} · متوسّط {t.get('avg')}")
+
+          o=old('malatya/data/land-listings.json')
+          if o and len(lst)<len(o): errs.append(f'تراجع السجل التراكمي {len(o)} → {len(lst)}')
+          else: notes.append(f'السجل التراكمي {len(lst)} قطعة')
+
+          idx=json.load(open('malatya/data/reports-index.json',encoding='utf-8'))
+          miss=[r['file'] for r in idx if not os.path.exists('malatya/reports/'+r['file'])]
+          if miss: errs.append(f'تقارير مفقودة: {miss[:3]}')
+          else: notes.append(f'الفهرس {len(idx)} تقريراً')
+
+          if errs:
+              print('❌ فشل التحقّق:'); [print('  -',e) for e in errs]; sys.exit(1)
+          print('✅ نجح التحقّق — ' + ' · '.join(notes))
+          PY
+
+      - name: Commit ودفع إلى main
+        run: |
+          set -euo pipefail
+          git add -A malatya/data malatya/reports agents/src
+          if git diff --cached --quiet; then
+            echo "لا تغيير — لا commit"; exit 0
+          fi
+          git config user.name  "malatya-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "وكيل الأراضي — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+          git push
+          echo "✅ دُفع — سيتولّى «نشر منظومة ملاطيا» رفعه تلقائياً"

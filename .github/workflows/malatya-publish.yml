@@ -1,0 +1,131 @@
+name: نشر منظومة ملاطيا
+
+# ينشر مجلّد malatya كاملاً إلى jmahery.com عند أي تغيير فيه —
+# سواء جاء من النشرة اليومية، أو من وكيل العقارات، أو وكيل الأراضي،
+# أو من رفعة يدوية عبر واجهة GitHub. هذا يسدّ الثغرة القديمة:
+# «الرفع اليدوي كان لا ينشر شيئاً».
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'malatya/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: malatya-publish
+  cancel-in-progress: false
+
+# حساب FTP محبوس (chroot) داخل public_html/malatya — لا يرى الجذر إطلاقاً.
+env:
+  FTP_EXPECTED_USER_PREFIX: "malatya@"
+  PORTAL_URL: "https://jmahery.com/malatya/"
+
+jobs:
+  publish:
+    name: تجهيز · نشر · تحقّق
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: هل FTP مُعدّ؟
+        id: ftp
+        env:
+          S: ${{ secrets.FTP_SERVER }}
+          P: ${{ secrets.FTP_MALATYA_PASSWORD }}
+        run: |
+          if [ -n "$S" ] && [ -n "$P" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"; echo "✅ سننشر إلى الخادم"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"; echo "⏭️  بلا FTP — GitHub Pages يتحدّث كالعادة"
+          fi
+
+      - name: 🔒 بوّابة أمان — الحساب المحبوس فقط
+        if: steps.ftp.outputs.enabled == 'true'
+        env:
+          U: ${{ secrets.FTP_MALATYA_USERNAME }}
+        run: |
+          set -euo pipefail
+          case "$U" in
+            "${FTP_EXPECTED_USER_PREFIX}"*)
+              echo "✅ الحساب المحبوس داخل public_html/malatya" ;;
+            "") echo "❌ FTP_MALATYA_USERNAME فارغ"; exit 1 ;;
+            admin@*|eyad@*|smhmd1@*|guideclaude@*|*jmaheryc*)
+              echo "❌ توقّف: '$U' حساب واسع الصلاحية."
+              echo "   الجذر يحوي index.html (نظام الإدارة) و guide.html (دليل المغرب)."
+              echo "   انشر فقط بحساب ${FTP_EXPECTED_USER_PREFIX}…"; exit 1 ;;
+            *) echo "❌ توقّف: '$U' ليس الحساب المتوقّع ${FTP_EXPECTED_USER_PREFIX}…"; exit 1 ;;
+          esac
+
+      - name: تجهيز مجلد وسيط
+        if: steps.ftp.outputs.enabled == 'true'
+        run: |
+          set -euo pipefail
+          rm -rf _deploy && mkdir -p _deploy
+          # docs/ = مكتبة المستندات المحميّة بكلمة مرور — تعيش على الخادم فقط
+          # (في .gitignore)، ولا تدخل النشر الآلي إطلاقاً.
+          rsync -a --exclude 'docs/' --exclude '.git*' malatya/ _deploy/
+          echo "— محتويات النشر —"; find _deploy -maxdepth 2 | sort | head -40
+          for f in index.html daleel.html aqar.html reports.html library.html \
+                   land-board.html aqar-board.html land-agent.html \
+                   assets/malatya.css assets/nav.js data/reports-index.json; do
+            test -s "_deploy/$f" || { echo "❌ ناقص في حزمة النشر: $f"; exit 1; }
+          done
+          test ! -e _deploy/docs || { echo "❌ docs/ يجب ألّا تدخل النشر الآلي"; exit 1; }
+          echo "✅ حزمة النشر مكتملة ($(find _deploy -type f | wc -l) ملفاً)"
+
+      - name: الرفع عبر FTPS
+        if: steps.ftp.outputs.enabled == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_MALATYA_USERNAME }}
+          password: ${{ secrets.FTP_MALATYA_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: loose
+          local-dir: ./_deploy/
+          server-dir: ./
+          state-name: .ftp-deploy-malatya-state.json
+          dangerous-clean-slate: false
+          timeout: 60000
+          log-level: standard
+
+      - name: 🛡️ فحص السلامة — لم يُمسّ شيء آخر
+        if: steps.ftp.outputs.enabled == 'true'
+        run: |
+          set -euo pipefail
+          FAIL=0
+          T=$(date +%s)
+          echo "— نظام إدارة المهامّ (الجذر)؟"
+          curl -fsSL --max-time 45 "https://jmahery.com/?c=$T" | grep -q "ניהול משימות" \
+            && echo "  ✅ سليم" || { echo "  🚨 غير معروف — افحص فوراً"; FAIL=1; }
+          for u in "https://jmahery.com/guide.html" "https://guideclaude.jmahery.com/"; do
+            C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "$u?c=$T")
+            [ "$C" = "200" ] && echo "  ✅ $u → 200" || { echo "  🚨 $u → $C"; FAIL=1; }
+          done
+          echo "— مكتبة المستندات ما زالت محميّة؟"
+          C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "${PORTAL_URL}docs/?c=$T")
+          [ "$C" = "401" ] && echo "  ✅ docs/ → 401 (محميّة)" \
+            || { echo "  🚨 docs/ → $C (المفترض 401)"; FAIL=1; }
+          exit $FAIL
+
+      - name: التحقّق من النشر الحيّ
+        run: |
+          set -euo pipefail
+          echo "بانتظار GitHub Pages…"; sleep 90
+          T=$(date +%s)
+          echo "— مركز التحكّم —"
+          curl -fsSL --max-time 45 "${PORTAL_URL}?n=$T" | grep -q "منظومة ملاطيا" \
+            && echo "  ✅ حيّ" || echo "  ⚠️  تعذّر تأكيد مركز التحكّم"
+          echo "— الدليل والنشرة —"
+          curl -fsSL --max-time 45 "${PORTAL_URL}daleel.html?n=$T" \
+            | grep -o 'id="daily-date"[^>]*>[^<]*' | head -1 || echo "  ⚠️  تعذّرت القراءة"
+          echo "— مرآة GitHub Pages —"
+          curl -fsSL --max-time 45 "https://smhmd1-cyber.github.io/claude-guide/malatya/?n=$T" \
+            | grep -q "منظومة ملاطيا" && echo "  ✅ حيّة" || echo "  ⚠️  تعذّر تأكيد المرآة"

@@ -194,98 +194,13 @@ jobs:
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
-      - name: هل FTP مُعدّ؟
-        id: ftp
-        env:
-          S: ${{ secrets.FTP_SERVER }}
-          P: ${{ secrets.FTP_MALATYA_PASSWORD }}
+      - name: 🚀 النشر
         run: |
-          if [ -n "$S" ] && [ -n "$P" ]; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"; echo "✅ سننشر إلى الخادم"
+          if [ "${{ steps.commit.outputs.changed }}" = "true" ]; then
+            echo "✅ دُفع التغيير — سيتولّى سير العمل «نشر منظومة ملاطيا» رفعه تلقائياً"
+            echo "   (يُشغَّل على كل push يمسّ malatya/**)"
           else
-            echo "enabled=false" >> "$GITHUB_OUTPUT"; echo "⏭️  بلا FTP — GitHub Pages يتحدّث كالعادة"
+            echo "⏭️  لا تغيير في الدليل اليوم — لا نشر"
           fi
-
-      - name: 🔒 بوّابة أمان — الحساب المحبوس فقط
-        if: (steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch') && steps.ftp.outputs.enabled == 'true'
-        env:
-          U: ${{ secrets.FTP_MALATYA_USERNAME }}
-        run: |
-          set -euo pipefail
-          case "$U" in
-            "${FTP_EXPECTED_USER_PREFIX}"*)
-              echo "✅ الحساب المحبوس داخل public_html/malatya" ;;
-            "") echo "❌ FTP_MALATYA_USERNAME فارغ"; exit 1 ;;
-            admin@*|eyad@*|smhmd1@*|guideclaude@*|*jmaheryc*)
-              echo "❌ توقّف: '$U' حساب واسع الصلاحية."
-              echo "   الجذر يحوي index.html (نظام الإدارة) و guide.html (دليل المغرب)."
-              echo "   انشر فقط بحساب ${FTP_EXPECTED_USER_PREFIX}…"; exit 1 ;;
-            *) echo "❌ توقّف: '$U' ليس الحساب المتوقّع ${FTP_EXPECTED_USER_PREFIX}…"; exit 1 ;;
-          esac
-
-      - name: تجهيز مجلد وسيط
-        if: (steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch') && steps.ftp.outputs.enabled == 'true'
-        run: |
-          set -euo pipefail
-          rm -rf _deploy && mkdir -p _deploy
-          # ننشر مجلّد malatya كاملاً (مركز التحكّم + الدليل + الأدوات + البيانات + التقارير)
-          # عدا docs/ — مكتبة المستندات محميّة بكلمة مرور، تُرفع مرّة واحدة يدوياً ولا تُلمس هنا.
-          rsync -a --exclude 'docs/' --exclude '.git*' malatya/ _deploy/
-          echo "— محتويات النشر —"; find _deploy -maxdepth 2 | sort | head -40
-          for f in index.html daleel.html aqar.html reports.html library.html \
-                   land-board.html aqar-board.html land-agent.html \
-                   assets/malatya.css assets/nav.js data/reports-index.json; do
-            test -s "_deploy/$f" || { echo "❌ ناقص في حزمة النشر: $f"; exit 1; }
-          done
-          test ! -e _deploy/docs || { echo "❌ docs/ يجب ألّا تدخل النشر الآلي"; exit 1; }
-          echo "✅ حزمة النشر مكتملة ($(find _deploy -type f | wc -l) ملفاً)"
-
-      - name: الرفع عبر FTPS
-        if: (steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch') && steps.ftp.outputs.enabled == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_MALATYA_USERNAME }}
-          password: ${{ secrets.FTP_MALATYA_PASSWORD }}
-          protocol: ftps
-          port: 21
-          security: loose
-          local-dir: ./_deploy/
-          server-dir: ./
-          state-name: .ftp-deploy-malatya-state.json
-          dangerous-clean-slate: false
-          timeout: 60000
-          log-level: standard
-
-      - name: 🛡️ فحص السلامة — لم يُمسّ شيء آخر
-        if: (steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch') && steps.ftp.outputs.enabled == 'true'
-        run: |
-          set -euo pipefail
-          FAIL=0
-          T=$(date +%s)
-          echo "— نظام إدارة المهامّ (الجذر)؟"
-          curl -fsSL --max-time 45 "https://jmahery.com/?c=$T" | grep -q "ניהול משימות" \
-            && echo "  ✅ سليم" || { echo "  🚨 غير معروف — افحص فوراً"; FAIL=1; }
-          for u in "https://jmahery.com/guide.html" "https://guideclaude.jmahery.com/"; do
-            C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "$u?c=$T")
-            [ "$C" = "200" ] && echo "  ✅ $u → 200" || { echo "  🚨 $u → $C"; FAIL=1; }
-          done
-          exit $FAIL
-
-      - name: التحقّق من النشر الحيّ
-        if: steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
-        run: |
-          set -euo pipefail
-          echo "بانتظار GitHub Pages…"; sleep 90
-          T=$(date +%s)
-          URLS="https://smhmd1-cyber.github.io/claude-guide/malatya/daleel.html?n=$T"
-          [ "${{ steps.ftp.outputs.enabled }}" = "true" ] && URLS="$URLS ${PORTAL_URL}daleel.html?n=$T"
-          if [ "${{ steps.ftp.outputs.enabled }}" = "true" ]; then
-            curl -fsSL --max-time 45 "${PORTAL_URL}?n=$T" | grep -q "منظومة ملاطيا" \
-              && echo "  ✅ مركز التحكّم حيّ" || echo "  ⚠️  تعذّر تأكيد مركز التحكّم"
-          fi
-          for u in $URLS; do
-            echo "أفحص $u"
-            D=$(curl -fsSL --max-time 45 "$u" | grep -o 'id="daily-date"[^>]*>[^<]*' | head -1 || echo "—")
-            echo "  → $D"
-          done
+          echo "للنشر اليدوي عند الحاجة:"
+          echo "https://github.com/smhmd1-cyber/claude-guide/actions/workflows/malatya-publish.yml"
