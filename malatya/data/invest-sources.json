@@ -1,6 +1,6 @@
 {
  "accessed": "2026-08-25",
- "count": 62,
+ "count": 69,
  "items": [
   {
    "code": "L1",
@@ -621,6 +621,76 @@
    "lang": "tr",
    "why": "كيف تُقوَّم حصة Ltd (حقوق الملكية) وسهم A.Ş. (القيمة الاسمية عند عدم التداول) في إقرار الميراث",
    "cat": "ضرائب"
+  },
+  {
+   "code": "I16",
+   "org": "Lexpera",
+   "title": "Karar 9903 — النص المُدمَج (المواد 5 · 10 · 15 · 18 · 19 · 20 · 22 والمادة المؤقتة 4)",
+   "url": "https://www.lexpera.com.tr/mevzuat/cumhurbaskani-kararlari/yatirimlarda-devlet-yardimlari-hakkinda-karar-9903",
+   "date": "محدَّث",
+   "lang": "tr",
+   "why": "المصدر الذي جرى منه اقتباس نصوص المواد حرفياً بعد تعذّر الجلب من الجريدة الرسمية",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I17",
+   "org": "PwC Türkiye",
+   "title": "Yatırım Teşvik Bülteni 2025/02 — تحليل القرار 9903 بالجداول",
+   "url": "https://www.pwc.com.tr/tr/Hizmetlerimiz/vergi/dolayli-vergi/bultenler/yat%C4%B1r%C4%B1m-te%C5%9Fvik-b%C3%BCltenleri/9903-sayili-yatirimlarda-devlet-yardimlari-hakkindaki-karar.pdf",
+   "date": "2025",
+   "lang": "tr",
+   "why": "تثبيت معدّل التخفيض 60% ومعدّلات المساهمة بحسب البرنامج لا المنطقة",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I18",
+   "org": "Andersen Türkiye",
+   "title": "Yatırımlarda Devlet Yardımları Hakkında 9903 Sayılı Karar — جداول المناطق والبرامج",
+   "url": "https://tr.andersen.com/tr/images/pdf/and_25-yatirimlarda-yeni-tesvik-sistemi.pdf",
+   "date": "2025",
+   "lang": "tr",
+   "why": "مقارنة مدد ونِسب دعم التأمينات بين المناطق، وعتبات البرامج الأعلى",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I19",
+   "org": "Alomaliye",
+   "title": "رموز دعم التشجيع 2026 — 09903 · 19903 · 29903 وقيمها الشهرية",
+   "url": "https://www.alomaliye.com/2026/08/24/yatirimlarda-devlet-yardimlari-uyarinca-uygulanan-tesvik-2026/",
+   "date": "2026-08-24",
+   "lang": "tr",
+   "why": "القيمة الشهرية لدعم القسط لعامل بأجر الحد الأدنى بحسب رمز الدعم",
+   "cat": "حوافز"
+  },
+  {
+   "code": "T17",
+   "org": "KPMG Vergi",
+   "title": "القانون 7555 — قيود التخفيض الضريبي الجديدة (10 فترات · 50٪ · 4 فترات)",
+   "url": "https://kpmgvergi.com/blog/yururluge-giren-7555-sayili-torba-yasa-tesvik-belgeli-yatirimlarda-neleri-degistirdi/1354",
+   "date": "2025-07",
+   "lang": "tr",
+   "why": "قيود سارية على الوثائق المطلوبة اعتباراً من 16/6/2025 — تخصّ هذا الملف مباشرة",
+   "cat": "ضرائب"
+  },
+  {
+   "code": "T18",
+   "org": "TÜRMOB",
+   "title": "القانون 7566 — رفع قسط MYÖ نقطة واحدة من 1/1/2026 (حصة صاحب العمل 21,75%)",
+   "url": "https://www.turmob.org.tr/ekutuphane/Read/b3b760ee-f83f-4038-89a3-a27b7abbd9c7",
+   "date": "2025-12",
+   "lang": "tr",
+   "why": "النسبة التي يُحسب عليها دعم حصة صاحب العمل في 2026",
+   "cat": "ضرائب"
+  },
+  {
+   "code": "E8",
+   "org": "T.C. Çalışma ve Sosyal Güvenlik Bakanlığı",
+   "title": "Asgari Ücret 2026 — الجدول الرسمي وتكلفة صاحب العمل",
+   "url": "https://www.csgb.gov.tr/Media/gm2fekds/asgari-%C3%BCcret-2026.pdf",
+   "date": "2025-12",
+   "lang": "tr",
+   "why": "33.030 ₺ إجمالي · 28.075,50 صافٍ · 39.223,13 تكلفة على صاحب العمل في الصناعة التحويلية",
+   "cat": "اقتصاد"
   }
  ]
 }
