@@ -34,6 +34,17 @@
 .srt button{background:var(--card2);border:1px solid var(--border);color:var(--text2);border-radius:9px;
   padding:6px 13px;font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.14s}
 .srt button:hover{border-color:var(--accent-line);color:#fff}
+.dlt{display:inline-block;font-family:var(--font-num);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px}
+.dlt.up{background:rgba(64,209,131,.16);color:#a9f0cb}
+.dlt.dn{background:rgba(255,107,122,.14);color:#ffc0c7}
+.incb{margin:11px 0 0;padding:10px 13px;border-radius:10px;font-size:12.5px;line-height:1.8;color:var(--text2)}
+.incb b{display:block;margin-bottom:3px;font-size:13px}
+.incb.yes{background:rgba(64,209,131,.08);border-inline-start:3px solid var(--green)}
+.incb.yes b{color:#a9f0cb}
+.incb.part{background:rgba(247,165,43,.07);border-inline-start:3px solid var(--accent)}
+.incb.part b{color:#ffd79a}
+.incb.no{background:rgba(255,255,255,.02);border-inline-start:3px solid var(--border)}
+.incb.no b{color:var(--muted)}
 .srt button.on{background:linear-gradient(135deg,var(--accent),#ff8a3d);color:#241200;border-color:transparent}
 </style>
 </head>
@@ -45,7 +56,7 @@
     <div><h1>المسارات المرشّحة للفحص</h1>
       <div class="sub">المخرج ٧ — عشرة مسارات ضمن سقف المرحلة الأولى · بلا اعتماد أي مسار</div></div>
     <div class="spacer"></div>
-    <span class="stamp">آخر تحديث: <b>٢٤ أغسطس ٢٠٢٦</b></span>
+    <span class="stamp">آخر تحديث: <b>٢٥ أغسطس ٢٠٢٦</b></span>
     <a class="btn" href="invest.html">← ملف الاستثمار</a>
   </div>
 
@@ -66,6 +77,11 @@
   </table></div>
 
   <h2>المسارات العشرة</h2>
+  <div class="note info">
+    🔄 <b>أُعيد التسجيل في ٢٥/٨/٢٠٢٦</b> بعد تثبيت قرارات المستثمر الأربعة. الفرق عن الدرجة السابقة مبيَّن على كل بطاقة،
+    وسببه شيئان لا ثالث لهما: رفع السقف إلى ٦–٧٫٥ مليون ₺ فصار بلوغ عتبة وثيقة التشجيع ممكناً،
+    واختيار الاحتفاظ بالأصل طويلاً فانخفض وزن سهولة الخروج. لم تتغيّر وقائع أي مسار — تغيّر ما يُقاس به.
+  </div>
   <div class="srt" id="srt">
     <span style="font-size:12.5px;color:var(--muted);font-weight:700">ترتيب:</span>
     <button data-s="score" class="on">أولوية الفحص</button>
@@ -94,29 +110,25 @@
   </footer>
 </div>
 
-<script src="assets/nav.js?v=3" defer></script>
+<script src="assets/nav.js?v=4" defer></script>
 <script>
 (function(){
 'use strict';
 
-var RUB = [
- ['حماية رأس المال وقابلية الاسترداد', 18, 'كم من المبلغ يبقى قابلاً للاسترداد إن توقّف المشروع بعد سنة — أصل ملموس قابل للبيع مقابل مصروف غارق.'],
- ['نظافة الهيكل القانوني والامتثال', 14, 'هل ينفَّذ المسار بمساهمة مسجَّلة وإفصاح كامل دون أي ترتيب صوري أو رمادي.'],
- ['قوّة الدليل الحالي', 12, 'عدد المصادر المستقلة التي تسند جدوى المسار، وحداثتها، ومدى كونها رسمية لا انطباعية.'],
- ['ملاءمة السقف المالي (٣ ملايين ₺)', 11, 'هل يبدأ المسار فعلاً ضمن السقف بحجم قابل للحياة، أم يحتاج ضعفه ليعمل.'],
- ['قابلية الإدارة محلياً بلا حضور الأب', 10, 'هل يديره فريق محلي صغير دون خبرة نادرة أو حضور يومي للمستثمر.'],
- ['وضوح الطلب ومصدره', 9, 'هل المشتري معروف بالاسم والنوع، أم أنّ الطلب مفترَض من مؤشّرات عامة.'],
- ['التعرّض للتقلّب الكلي والمناخ', 8, 'حساسية المسار للتضخّم وسعر الفائدة وموسم واحد أو محصول واحد.'],
- ['سهولة الخروج وتسييل الأصل', 7, 'وجود سوق ثانوية للأصل أو النشاط، ومدّة البيع المتوقَّعة.'],
- ['أهلية الحوافز والدعم', 6, 'قابلية المسار للاستفادة من KOSGEB أو IPARD أو الوكالة، ولو جزئياً.'],
- ['التوافق مع خبرة الفريق العائلي', 5, 'مدى قرب المسار من خبرة قائمة فعلاً لدى الابنة أو زوجها.']
-];
-document.getElementById('rub').innerHTML = RUB.map(function(r){
-  return '<tr><td style="color:#fff;font-weight:700">'+r[0]+'</td><td>'+r[1]+
-         '<div class="bar"><i style="width:'+(r[1]*100/18)+'%;background:linear-gradient(90deg,var(--accent),#ff8a3d)"></i></div></td>'+
-         '<td style="color:var(--text2);font-size:13px;line-height:1.8">'+r[2]+'</td></tr>';
-}).join('') + '<tr><td style="color:#fff;font-weight:800">المجموع</td><td>100</td>'+
-  '<td style="color:var(--muted);font-size:12.5px">الدرجة تُراجَع كلما تغيّر دليل أو استُوفيت بيانات ناقصة.</td></tr>';
+var OLDW = {prot:18,legal:14,evid:12,cap:11,mgmt:10,dem:9,macro:8,exit:7,inc:6,team:5};
+fetch('data/invest-profile.json?v='+Date.now(),{cache:'no-store'})
+ .then(function(r){return r.json();}).then(function(pr){
+  document.getElementById('rub').innerHTML = pr.weights.map(function(w){
+    var d = w.w - (OLDW[w.k]||w.w);
+    var tag = d===0 ? '' : '<span class="dlt '+(d>0?'up':'dn')+'">'+(d>0?'▲ +':'▼ ')+d+'</span>';
+    return '<tr><td style="color:#fff;font-weight:700">'+w.name+'</td><td>'+w.w+' '+tag+
+      '<div class="bar"><i style="width:'+(w.w*100/18)+'%;background:linear-gradient(90deg,var(--accent),#ff8a3d)"></i></div></td>'+
+      '<td style="color:var(--text2);font-size:13px;line-height:1.8">'+w.why+'</td></tr>';
+  }).join('') + '<tr><td style="color:#fff;font-weight:800">المجموع</td><td>100</td>'+
+    '<td style="color:var(--muted);font-size:12.5px">الأوزان تُراجَع كلما تغيّر قرار من قرارات المستثمر — لا كلما تغيّر مزاج.</td></tr>';
+ }).catch(function(){
+  document.getElementById('rub').innerHTML='<tr><td>تعذّر تحميل <span class="num">data/invest-profile.json</span>.</td></tr>';
+ });
 
 var box = document.getElementById('paths'), DATA = [];
 function col(s){ return s>=70?'#40d183':(s>=55?'#f7a52b':'#ff6b7a'); }
@@ -131,8 +143,15 @@ function render(key){
       '<div style="flex:1;min-width:200px"><div class="pnm">'+p.name+'</div>'+
         '<span class="badge" style="margin-top:6px;display:inline-block">'+p.cat+'</span></div>'+
       '<div class="sc"><b style="color:'+col(p.score)+'">'+p.score+'</b><small>أولوية فحص / ١٠٠</small>'+
-        '<div class="bar" style="margin-inline:auto"><i style="width:'+p.score+'%;background:'+col(p.score)+'"></i></div></div>'+
+        '<div class="bar" style="margin-inline:auto"><i style="width:'+p.score+'%;background:'+col(p.score)+'"></i></div>'+
+        (p.prev!=null && p.prev!==p.score ? '<div class="dlt '+(p.score>p.prev?'up':'dn')+'" style="margin-top:5px">'+
+           (p.score>p.prev?'▲ +':'▼ ')+(p.score-p.prev)+' عن '+p.prev+'</div>' : '')+
       '</div>'+
+      '</div>'+
+      (p.inc ? '<div class="incb '+p.inc.st+'"><b>'+
+         (p.inc.st==='yes'?'✅ مؤهَّل مبدئياً لدعم المنطقة السادسة':
+          p.inc.st==='part'?'◐ مؤهَّل بشرط تغيير طبيعة النشاط':'✖ خارج نطاق المادة المؤقتة ٤')+
+         '</b> '+p.inc.txt+'</div>' : '')+
       '<div class="ds">'+p.desc+'</div>'+
       '<div class="two">'+
         '<div class="bx ev"><b>✅ الدليل الذي أدرجه</b><ul>'+
