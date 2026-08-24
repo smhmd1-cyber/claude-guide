@@ -126,14 +126,14 @@
     <div class="agent">
       <span class="dot"></span>
       <div><div class="nm">🏢 وكيل العقارات</div>
-        <div class="ds">مسح يومي لخمسة مصادر · جديد و≤٣ سنوات فقط · يُغذّي لوحة العقارات والأرشيف</div></div>
-      <div class="sp"></div><span class="badge ok">٧:٠٨ صباحاً</span>
+        <div class="ds">مسح يومي لخمسة مصادر · جديد و≤٣ سنوات فقط · يُغذّي لوحة العقارات والأرشيف تلقائياً</div></div>
+      <div class="sp"></div><span class="badge ok">٧:١٠ صباحاً</span>
     </div>
     <div class="agent">
       <span class="dot"></span>
       <div><div class="nm">🌾 وكيل الأراضي</div>
-        <div class="ds">رصد قطع بفجوة تحويل زراعي←عمراني · محرّك خماسي الركائز · يُغذّي لوحة الأراضي</div></div>
-      <div class="sp"></div><span class="badge ok">٩:٠٠ صباحاً</span>
+        <div class="ds">رصد قطع بفجوة تحويل زراعي←عمراني · محرّك خماسي الركائز · يُغذّي لوحة الأراضي تلقائياً</div></div>
+      <div class="sp"></div><span class="badge ok">٨:١٠ صباحاً</span>
     </div>
     <div class="note info">تشغيل يدوي خارج الموعد: افتح تبويب <b>Actions</b> في المستودع واضغط
       <b>Run workflow</b> على المهمّة المطلوبة. النتيجة تُنشر على هذا الموقع خلال دقائق دون أي رفع يدوي.</div>
@@ -166,7 +166,7 @@
   }
   function n(x){ return (x==null||isNaN(x)) ? '—' : Number(x).toLocaleString('en-US'); }
   function set(id,v){ var e=document.getElementById(id); if(e) e.textContent = v; }
-  function getJSON(u){ return fetch(u,{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }); }
+  function getJSON(u){ return fetch(u+(u.indexOf('?')<0?'?':'&')+'v='+Date.now(),{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }); }
 
   /* ---- الركائز ---- */
   var PILLARS = [

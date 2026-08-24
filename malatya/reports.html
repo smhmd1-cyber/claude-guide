@@ -85,13 +85,13 @@
   function open(r){
     var v=document.getElementById('view');
     v.innerHTML='<p class="mut">… يُحمّل</p>';
-    fetch('reports/'+r.file,{cache:'no-store'}).then(function(x){ if(!x.ok) throw 0; return x.text(); })
+    fetch('reports/'+r.file+'?v='+Date.now(),{cache:'no-store'}).then(function(x){ if(!x.ok) throw 0; return x.text(); })
       .then(function(html){ v.innerHTML='<h1>'+(r.track==='land'?'🌾':'🏢')+' تقرير '+fmt(r.date)+'</h1>'+html;
                             v.scrollTop=0; })
       .catch(function(){ v.innerHTML='<div class="note warn">تعذّر تحميل هذا التقرير.</div>'; });
   }
 
-  fetch('data/reports-index.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(a){
+  fetch('data/reports-index.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(a){
     ALL=a||[];
     document.getElementById('c-aqar').textContent=ALL.filter(function(r){return r.track==='aqar';}).length;
     document.getElementById('c-land').textContent=ALL.filter(function(r){return r.track==='land';}).length;

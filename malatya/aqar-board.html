@@ -74,7 +74,7 @@
       b.title=n(v); box.appendChild(b); });
   }
 
-  fetch('data/aqar-reports.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(a){
+  fetch('data/aqar-reports.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(a){
     if(!Array.isArray(a)||!a.length) throw 0;
     a.sort(function(x,y){return x.date<y.date?-1:1;});
     var L=a[a.length-1];

@@ -67,7 +67,7 @@
   function sz(b){ if(b==null) return ''; var u=['B','KB','MB']; var i=0; while(b>=1024&&i<2){b/=1024;i++;} return (i?b.toFixed(1):b)+' '+u[i]; }
   function ext(n){ var m=/\.([a-z0-9]+)$/i.exec(n); return m?m[1].toLowerCase():'file'; }
 
-  fetch('data/library.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(groups){
+  fetch('data/library.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(groups){
     var out=document.getElementById('lib'); out.innerHTML='';
     Object.keys(groups).sort().forEach(function(key,idx){
       var no=key.slice(0,2), m=META[no]||{i:'📁',t:key,d:''};
