@@ -1,6 +1,6 @@
 {
  "accessed": "2026-08-25",
- "count": 82,
+ "count": 94,
  "items": [
   {
    "code": "L1",
@@ -821,6 +821,126 @@
    "lang": "tr",
    "why": "١٣٤ منشأة تجهيز وتعبئة فواكه وخضروات في ملاطيا من أصل ٨٠٢ منشأة غذائية مسجَّلة",
    "cat": "اقتصاد"
+  },
+  {
+   "code": "I24",
+   "org": "İstanbul Sanayi Odası",
+   "title": "Yatırım Teşvik Sistemi Notu — القرار 9903 ونطاق NACE Rev.2.1",
+   "url": "https://www.iso.org.tr/file/TesvikSistemiNotu-10117.pdf",
+   "date": "2025-05",
+   "lang": "tr",
+   "why": "مذكّرة غرفة صناعة إسطنبول — ومنها الادّعاء بأنّ شرط ورود النشاط في القائمة لا يُطلب لاستثمارات ١٠–٣٢ و٣٨٫٢ (نقطة تعارض تحتاج حسماً)",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I25",
+   "org": "TKDK / وزارة الزراعة والغابات",
+   "title": "IPARD III — الدعوة الثانية عشرة (التدبير 101: الأصول المادية للمنشآت الزراعية)",
+   "url": "https://www.tkdk.gov.tr/ProjeIslemleri/CagriIlanArsiv",
+   "date": "2026-07-28",
+   "lang": "tr",
+   "why": "نافذة مفتوحة: إغلاق النظام الإلكتروني ٣١/٨/٢٠٢٦ والتسليم الورقي ٧/٩/٢٠٢٦ · دعم ٦٠–٧٥٪ · ملاطيا ضمن مجموعة S4 بميزة عشر نقاط",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I26",
+   "org": "KOSGEB",
+   "title": "Yeşil Sanayi Destek Programı — دعم الطاقة الشمسية للمنشآت",
+   "url": "https://www.kosgeb.gov.tr/site/tr/genel/destekdetay/9022/yesil-sanayi-destek-programi",
+   "date": "2026",
+   "lang": "tr",
+   "why": "سقف ١٤ مليون ₺ ونسبة ٩٠٪ لملاطيا بوصفها منطقة زلزال — لمنظومات الأسطح داخل المنشآت الصناعية (حالة النافذة غير مؤكَّدة)",
+   "cat": "حوافز"
+  },
+  {
+   "code": "E10",
+   "org": "Enerji Atlası / وزارة الطاقة",
+   "title": "خريطة طاقة ملاطيا الشمسية ومناقصات YEKA 2026",
+   "url": "https://www.enerjiatlasi.com/gunes-enerjisi-haritasi/malatya",
+   "date": "2026",
+   "lang": "tr",
+   "why": "١٤٦ ميغاواط عاملة منها ١٢٠ بلا رخصة · مناقصتا YEKA ملاطيا-١ (٥٥) وملاطيا-٢ (٤٠) بتقديم ١٣/١٠/٢٠٢٦",
+   "cat": "اقتصاد"
+  },
+  {
+   "code": "G6",
+   "org": "Resmî Gazete / İstanbul Sanayi Odası",
+   "title": "تعديل لائحة التوليد الكهربائي بلا رخصة — المقاصّة الساعيّة",
+   "url": "https://www.iso.org.tr/duyurular/resm%C3%AE-gazete/elektrik-piyasasinda-lisanssiz-elektrik-uretim-yonetmeliginde-degisiklik-yapilmasina-dair-yonetmelik-yayimlandi/",
+   "date": "2026-04-02",
+   "lang": "tr",
+   "why": "الانتقال من المقاصّة الشهرية إلى الساعيّة من ١/٥/٢٠٢٦، وسقف الفائض عند ضعف الاستهلاك السنوي بلا مقابل",
+   "cat": "تراخيص"
+  },
+  {
+   "code": "G7",
+   "org": "Resmî Gazete (نسخة مؤسسية)",
+   "title": "لائحة قيد واعتماد المنشآت الغذائية — الملحقان Ek-1 و Ek-2 والمهل",
+   "url": "https://bolvadin.meb.gov.tr/meb_iys_dosyalar/2019_02/06170959_GYda_Yletmelerinin_KayYt_ve_Onay_Ylemlerine_Dair_YYnetmelik.pdf",
+   "date": "2011-12-17",
+   "lang": "tr",
+   "why": "الألبان حيوانية المنشأ ⇒ Onay: فحص ١٥ يوم عمل · معاينة ٢٠ يوم عمل · موافقة مشروطة ٣ أشهر تمتدّ إلى ٦ وقد تبلغ ٩",
+   "cat": "تراخيص"
+  },
+  {
+   "code": "G8",
+   "org": "Türkiye Çevre Ajansı (TÜÇA)",
+   "title": "نظام الإيداع الإلزامي — أصول التطبيق وتعرفة المشاركة",
+   "url": "https://portal.dbys.gov.tr/tr-tr/announcement/zorunlu-depozito-yonetim-sistemi-uygulamalarina-iliskin-usul-ve-esaslar_p2025021162",
+   "date": "2026-07-01",
+   "lang": "tr",
+   "why": "انطلاق النظام في ٨١ ولاية بقيمة ١ ₺ للعبوة — يعيد توجيه تدفّقات PET والألمنيوم بعيداً عن السوق الحرّة",
+   "cat": "تراخيص"
+  },
+  {
+   "code": "G9",
+   "org": "Alomaliye / Resmî Gazete",
+   "title": "تعديل لائحة تقييم الأثر البيئي — إلغاء قرار «لا يلزم تقييم»",
+   "url": "https://www.alomaliye.com/2026/03/05/ced-yonetmeligi-degisti-ced-gerekli-degildir-kaldirildi-ced-raporu-hazirlanmalidir-donemi-basladi/",
+   "date": "2026-03-05",
+   "lang": "tr",
+   "why": "صارت القرارات ثلاثة: إيجابي · سلبي · يلزم إعداد تقرير — تشديد يمسّ التدوير والإنتاج الحيواني",
+   "cat": "تراخيص"
+  },
+  {
+   "code": "N5",
+   "org": "Eurostat / EIONET",
+   "title": "مفردات NACE Rev.2.1 — إعادة هيكلة القسم 38 والقسم 35",
+   "url": "https://dd.eionet.europa.eu/vocabulary/eurostat/nace_r21/view?page=24",
+   "date": "2023",
+   "lang": "en",
+   "why": "38.2 صار «استرجاع النفايات» و38.21 «استرجاع المواد»؛ وتوليد الكهرباء المتجدّدة انتقل إلى 35.12 — أساس فهم نصّ المادة المؤقتة ٤",
+   "cat": "تصنيف"
+  },
+  {
+   "code": "E11",
+   "org": "Tarım ve Orman Bakanlığı — GKGM",
+   "title": "قائمة منشآت الأعلاف المركَّبة الخاضعة للموافقة — ملاطيا",
+   "url": "https://www.tarimorman.gov.tr/GKGM/Belgeler/DB_Yem/yem_isletmeleri/Onay_Karma_Yem_Isletme.pdf",
+   "date": "2025",
+   "lang": "tr",
+   "why": "ثماني منشآت أعلاف خاضعة للموافقة في ملاطيا — قياس السوق القائم لا افتراضه",
+   "cat": "اقتصاد"
+  },
+  {
+   "code": "E12",
+   "org": "Ulusal Süt Konseyi / SETBİR",
+   "title": "سعر الحليب الخام المرجعي وبارِتة الحليب إلى العلف",
+   "url": "https://www.setbir.org.tr/sut-sektoru/cig-sut-yem-paritesi/",
+   "date": "2026-03",
+   "lang": "tr",
+   "why": "٢٢٫٢٢ ₺/لتر صافياً للمنتج نافذاً من ٢٢/١/٢٠٢٦ · بارِتة حليب/علف ١٫٤١٧ — مرساة تسعير لا تقدير",
+   "cat": "اقتصاد"
+  },
+  {
+   "code": "G10",
+   "org": "Tarım ve Orman Bakanlığı — HHGM",
+   "title": "دليل الوساطة في منازعات الزراعة التعاقدية",
+   "url": "https://www.tarimorman.gov.tr/HHGM/Belgeler/So%CC%88zles%CC%A7meli%20Tar%C4%B1m%20Uyus%CC%A7mazl%C4%B1klar%C4%B1nda%20Arabuluculuk%20Rehberi.pdf",
+   "date": "2023",
+   "lang": "tr",
+   "why": "أنماط النزاع الموثَّقة في عقود التكامل: السلف العينية · رفض المنتج · الشرط الجزائي ٢٠–٥٠٪ · الوساطة شرط لقبول الدعوى",
+   "cat": "تراخيص"
   }
  ]
 }
