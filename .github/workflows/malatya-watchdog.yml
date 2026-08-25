@@ -1,0 +1,162 @@
+name: حارس منظومة ملاطيا (إصلاح ذاتي)
+
+# جدولة GitHub «أفضل جهد» لا ضمان: قد تتأخّر ساعات أو تُسقَط ريّة كاملة،
+# وقد تفشل الريّة لأي سبب. هذا الحارس يفحص أربع مرّات يومياً، ويعيد
+# التشغيل بنفسه (عبر workflow_call — بلا PAT وبلا تدخّل بشري)،
+# وفي آخر موعد إن بقي الخلل يفتح بلاغاً فيصلك بريد من GitHub.
+on:
+  schedule:
+    - cron: "45 6 * * *"    # 09:45 بتوقيت القدس (صيفاً) — بعد الموعد الأصلي بنصف ساعة
+    - cron: "0 9 * * *"     # 12:00
+    - cron: "0 12 * * *"    # 15:00
+    - cron: "0 15 * * *"    # 18:00 — آخر محاولة، وبعدها بلاغ
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  id-token: write
+
+concurrency:
+  group: malatya-watchdog
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: فحص المواضع الثلاثة
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      need_daily:  ${{ steps.probe.outputs.need_daily }}
+      need_deploy: ${{ steps.probe.outputs.need_deploy }}
+      escalate:    ${{ steps.probe.outputs.escalate }}
+      summary:     ${{ steps.probe.outputs.summary }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: 🔎 فحص المستودع والمرآة والموقع الحيّ
+        id: probe
+        run: |
+          set -uo pipefail
+          T=$(date +%s)
+          TODAY=$(TZ=Asia/Jerusalem date +%F)
+          HM=$(TZ=Asia/Jerusalem date +%H%M)
+          F=malatya/daleel.html
+
+          # ── تاريخ المستودع: status.json إن وُجد، وإلّا آخر commit مسّ ملف النشرة
+          REPO_DATE=$(python3 -c "import json;print(json.load(open('malatya/status.json')).get('date',''))" 2>/dev/null || echo "")
+          if [ -z "$REPO_DATE" ]; then
+            C=$(git log -1 --format=%cI -- "$F" 2>/dev/null || echo "")
+            [ -n "$C" ] && REPO_DATE=$(TZ=Asia/Jerusalem date -d "$C" +%F 2>/dev/null || echo "")
+            echo "ℹ️ لا status.json بعد — اعتمدت تاريخ آخر commit: ${REPO_DATE:-?}"
+          fi
+          REPO_ITEMS=$(grep -c '<div class="item"' "$F" 2>/dev/null || echo 0)
+          REPO_STAMP=$(grep -o 'id="daily-date"[^>]*>[^<]*' "$F" 2>/dev/null | head -1 | sed 's/.*>//' || echo "")
+
+          # ── الموقع الحيّ
+          LIVE_DATE=$(curl -fsSL --max-time 30 "https://jmahery.com/malatya/status.json?n=$T" 2>/dev/null \
+                      | python3 -c "import sys,json;print(json.load(sys.stdin).get('date',''))" 2>/dev/null || echo "")
+          LIVE_STAMP=$(curl -fsSL --max-time 30 "https://jmahery.com/malatya/daleel.html?n=$T" 2>/dev/null \
+                       | grep -o 'id="daily-date"[^>]*>[^<]*' | head -1 | sed 's/.*>//' || echo "")
+
+          HUB_OK=no
+          curl -fsSL --max-time 30 "https://jmahery.com/malatya/?n=$T" 2>/dev/null | grep -q "منظومة ملاطيا" && HUB_OK=yes
+
+          echo "اليوم=$TODAY الساعة=$HM"
+          echo "المستودع: تاريخ=$REPO_DATE بطاقات=$REPO_ITEMS ختم=$REPO_STAMP"
+          echo "الحيّ:     تاريخ=${LIVE_DATE:-—} ختم=$LIVE_STAMP"
+          echo "مركز التحكّم=$HUB_OK"
+
+          NEED_DAILY=false
+          NEED_DEPLOY=false
+          [ "$REPO_DATE" != "$TODAY" ] && NEED_DAILY=true
+
+          # انحراف المرآة: المستودع محدَّث والموقع الحيّ يحمل ختماً مختلفاً
+          if [ "$NEED_DAILY" = "false" ]; then
+            if [ -n "$LIVE_DATE" ]; then
+              [ "$LIVE_DATE" != "$TODAY" ] && NEED_DEPLOY=true
+            elif [ -n "$LIVE_STAMP" ] && [ "$LIVE_STAMP" != "$REPO_STAMP" ]; then
+              NEED_DEPLOY=true
+            elif [ -z "$LIVE_STAMP" ]; then
+              NEED_DEPLOY=true
+            fi
+          fi
+
+          ESCALATE=false
+          if [ "$HM" -ge 1700 ] && { [ "$NEED_DAILY" = "true" ] || [ "$NEED_DEPLOY" = "true" ]; }; then ESCALATE=true; fi
+          [ "$HUB_OK" != "yes" ] && ESCALATE=true
+          # فقدان أرشيف: أخطر من تأخّر يوم — تصعيد فوري في أي ساعة
+          if [ "$REPO_ITEMS" -lt 10 ] || [ "$REPO_ITEMS" -gt 400 ]; then ESCALATE=true; fi
+
+          SUM="اليوم $TODAY · المستودع ${REPO_DATE:-تعذّرت القراءة} · الحيّ ${LIVE_DATE:-${LIVE_STAMP:-تعذّرت القراءة}} · بطاقات $REPO_ITEMS · مركز التحكّم $HUB_OK"
+
+          {
+            echo "need_daily=$NEED_DAILY"
+            echo "need_deploy=$NEED_DEPLOY"
+            echo "escalate=$ESCALATE"
+            echo "summary=$SUM"
+          } >> "$GITHUB_OUTPUT"
+
+          if [ "$NEED_DAILY" = "false" ] && [ "$NEED_DEPLOY" = "false" ] && [ "$HUB_OK" = "yes" ]; then
+            echo "✅ كل شيء سليم — لا إجراء"
+          else
+            echo "⚠️ سنتدخّل: need_daily=$NEED_DAILY need_deploy=$NEED_DEPLOY"
+          fi
+
+  # إعادة تشغيل النشرة كاملةً — نفس الملف، لا نسخة ثانية تتعفّن
+  heal_daily:
+    name: إصلاح — إعادة تشغيل النشرة
+    needs: check
+    if: needs.check.outputs.need_daily == 'true'
+    uses: ./.github/workflows/malatya-daily.yml
+    secrets: inherit
+
+  # المستودع متقدّم والموقع متأخّر ⇐ إعادة نشر فقط
+  heal_deploy:
+    name: إصلاح — إعادة النشر (malatya-publish)
+    needs: check
+    if: needs.check.outputs.need_deploy == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit
+
+  escalate:
+    name: تصعيد — بلاغ إلى صاحب المستودع
+    needs: [check, heal_daily, heal_deploy]
+    if: >-
+      always() && (
+        needs.check.outputs.escalate == 'true' ||
+        needs.heal_daily.result == 'failure' ||
+        needs.heal_deploy.result == 'failure'
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: 🚨 فتح/تحديث البلاغ
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D=$(TZ=Asia/Jerusalem date +%F)
+          TITLE="🚨 نشرة ملاطيا لم تتقدّم — $D"
+          URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="الحارس حاول الإصلاح ولم ينجح.
+
+          الحالة: ${{ needs.check.outputs.summary }}
+          إصلاح النشرة: ${{ needs.heal_daily.result }}
+          إصلاح النشر:  ${{ needs.heal_deploy.result }}
+          سجلّ الريّة: $URL
+
+          ما يستحقّ الفحص أوّلاً:
+          1. الفحص القبلي في سجلّ «النشرة اليومية» — هل تغيّر اسم ملف أو مسار؟
+          2. صلاحية \`CLAUDE_CODE_OAUTH_TOKEN\`.
+          3. أسرار FTP: \`FTP_SERVER\` · \`FTP_MALATYA_USERNAME\` · \`FTP_MALATYA_PASSWORD\`."
+          NUM=$(gh issue list --state open --limit 50 --json number,title \
+                --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1 || echo "")
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body "$BODY"
+          else
+            gh issue create --title "$TITLE" --body "$BODY"
+          fi
