@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: "0 5 * * *"
   workflow_dispatch:        # מאפשר גם הרצה ידנית מלשונית Actions
-
+  workflow_call:
 # ברירת-מחדל שמרנית; ההרשאות ניתנות ברמת ה-job
 permissions:
   contents: read
