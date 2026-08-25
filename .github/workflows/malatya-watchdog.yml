@@ -16,6 +16,7 @@ permissions:
   contents: write
   issues: write
   id-token: write
+  actions: read
 
 concurrency:
   group: malatya-watchdog
@@ -38,6 +39,8 @@ jobs:
 
       - name: 🔎 فحص المستودع والمرآة والموقع الحيّ
         id: probe
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -uo pipefail
           T=$(date +%s)
@@ -72,6 +75,16 @@ jobs:
           NEED_DAILY=false
           NEED_DEPLOY=false
           [ "$REPO_DATE" != "$TODAY" ] && NEED_DAILY=true
+
+          # ريّة يومية جارية أو في الطابور؟ لا نطلب ثانية — الأولى لم تنتهِ بعد.
+          if [ "$NEED_DAILY" = "true" ]; then
+            BUSY=$(gh run list --workflow malatya-daily.yml --limit 5 \
+                   --json status --jq '[.[]|select(.status=="in_progress" or .status=="queued")]|length' 2>/dev/null || echo 0)
+            if [ "${BUSY:-0}" != "0" ]; then
+              NEED_DAILY=false
+              echo "⏳ ريّة يومية جارية بالفعل ($BUSY) — نتخطّى الطلب الثاني"
+            fi
+          fi
 
           # انحراف المرآة: المستودع محدَّث والموقع الحيّ يحمل ختماً مختلفاً
           if [ "$NEED_DAILY" = "false" ]; then
