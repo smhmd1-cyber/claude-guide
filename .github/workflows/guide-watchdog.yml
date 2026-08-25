@@ -1,0 +1,153 @@
+name: שומר המדריך (תיקון עצמי)
+
+# למה זה קיים? `failure-alarm.yml` מבוסס על workflow_run — הוא מדבר רק
+# *אחרי* שריצה הסתיימה. אם הריצה לא רצה בכלל (תזמון GitHub הוא "מאמץ
+# מיטבי" ולפעמים מדלג, או שנתיב-קובץ השתנה) — הוא שותק, והמדריך קופא
+# בשקט. השומר סוגר בדיוק את הפער הזה: בודק, מריץ מחדש לבד, ורק אם
+# נכשל — פותח Issue ששולח לך מייל.
+on:
+  schedule:
+    - cron: "45 5 * * *"    # 08:45 בישראל (קיץ) — 45 דק' אחרי המועד המקורי
+    - cron: "0 8 * * *"     # 11:00
+    - cron: "0 11 * * *"    # 14:00
+    - cron: "0 14 * * *"    # 17:00 — ניסיון אחרון, ואחריו Issue
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  id-token: write
+  actions: read
+
+concurrency:
+  group: guide-watchdog
+  cancel-in-progress: false
+
+env:
+  TARGET_WF: daily-guide-update.yml
+  PAGES_URL: "https://smhmd1-cyber.github.io/claude-guide/"
+  SUBDOMAIN_URL: "https://guideclaude.jmahery.com/"
+  PAGE_MARK: "מדריך חכם אינטראקטיבי"
+
+jobs:
+  check:
+    name: בדיקת מצב המדריך
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      need_run: ${{ steps.probe.outputs.need_run }}
+      escalate: ${{ steps.probe.outputs.escalate }}
+      summary:  ${{ steps.probe.outputs.summary }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: 🔎 האם המדריך התעדכן היום?
+        id: probe
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          T=$(date +%s)
+          TODAY=$(TZ=Asia/Jerusalem date +%F)
+          HM=$(TZ=Asia/Jerusalem date +%H%M)
+
+          # ── מקור-אמת ראשי: הריצה המוצלחת האחרונה של העדכון היומי.
+          # עדיף על "תאריך הקומיט האחרון", כי יום שקט בלי שינוי
+          # אינו כשל — אבל ריצה שנכשלה כן.
+          LAST_OK_ISO=$(gh run list --workflow "$TARGET_WF" --status success --limit 1 \
+                        --json updatedAt --jq '.[0].updatedAt // empty' 2>/dev/null || echo "")
+          LAST_OK=""
+          [ -n "$LAST_OK_ISO" ] && LAST_OK=$(TZ=Asia/Jerusalem date -d "$LAST_OK_ISO" +%F 2>/dev/null || echo "")
+
+          # ── גיבוי: תאריך הקומיט האחרון שנגע ב-index.html
+          LAST_COMMIT=""
+          C=$(git log -1 --format=%cI -- index.html 2>/dev/null || echo "")
+          [ -n "$C" ] && LAST_COMMIT=$(TZ=Asia/Jerusalem date -d "$C" +%F 2>/dev/null || echo "")
+          [ -z "$LAST_OK" ] && LAST_OK="$LAST_COMMIT"
+
+          # ── האם ריצה כבר באוויר? אז לא מבקשים שנייה.
+          BUSY=$(gh run list --workflow "$TARGET_WF" --limit 5 \
+                 --json status --jq '[.[]|select(.status=="in_progress" or .status=="queued")]|length' 2>/dev/null || echo 0)
+
+          # ── האם הגרסאות החיות בכלל עונות?
+          PAGES_OK=no; SUB_OK=no
+          curl -fsSL --max-time 30 "${PAGES_URL}?n=$T" 2>/dev/null | grep -q "$PAGE_MARK" && PAGES_OK=yes
+          SUB_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "${SUBDOMAIN_URL}?n=$T" 2>/dev/null || echo "000")
+          [ "$SUB_CODE" = "200" ] && SUB_OK=yes
+
+          CHAPTERS=$(grep -o 'id="chapter-[a-z0-9-]*"' index.html 2>/dev/null | sort -u | wc -l)
+
+          echo "היום=$TODAY שעה=$HM"
+          echo "ריצה מוצלחת אחרונה=${LAST_OK:-לא נקרא} | קומיט אחרון=${LAST_COMMIT:-—} | באוויר=$BUSY"
+          echo "Pages=$PAGES_OK | תת-דומיין=$SUB_CODE | פרקים=$CHAPTERS"
+
+          NEED_RUN=false
+          if [ "$LAST_OK" != "$TODAY" ] && [ "${BUSY:-0}" = "0" ]; then NEED_RUN=true; fi
+
+          ESCALATE=false
+          if [ "$HM" -ge 1600 ] && [ "$NEED_RUN" = "true" ]; then ESCALATE=true; fi
+          [ "$PAGES_OK" != "yes" ] && ESCALATE=true
+          # פחות מ-100 פרקים = המדריך נחתך. סף שמרני; היום יש 132.
+          if [ "${CHAPTERS:-0}" -lt 100 ]; then ESCALATE=true; fi
+
+          SUM="היום $TODAY · ריצה מוצלחת אחרונה ${LAST_OK:-לא נקרא} · קומיט ${LAST_COMMIT:-—} · Pages $PAGES_OK · תת-דומיין $SUB_CODE · פרקים $CHAPTERS"
+
+          {
+            echo "need_run=$NEED_RUN"
+            echo "escalate=$ESCALATE"
+            echo "summary=$SUM"
+          } >> "$GITHUB_OUTPUT"
+
+          if [ "$NEED_RUN" = "false" ] && [ "$ESCALATE" = "false" ]; then
+            echo "✅ הכול תקין — אין התערבות"
+          else
+            echo "⚠️ מתערבים: need_run=$NEED_RUN escalate=$ESCALATE"
+          fi
+
+  heal:
+    name: תיקון — הרצה חוזרת של העדכון היומי
+    needs: check
+    if: needs.check.outputs.need_run == 'true'
+    uses: ./.github/workflows/daily-guide-update.yml
+    secrets: inherit
+
+  escalate:
+    name: הסלמה — Issue לבעל הריפו
+    needs: [check, heal]
+    if: >-
+      always() && (
+        needs.check.outputs.escalate == 'true' ||
+        needs.heal.result == 'failure'
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: 🚨 פתיחת/עדכון Issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D=$(TZ=Asia/Jerusalem date +%F)
+          TITLE="🚨 המדריך לא התעדכן — $D"
+          URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="השומר ניסה לתקן ולא הצליח.
+
+          מצב: ${{ needs.check.outputs.summary }}
+          תוצאת התיקון: ${{ needs.heal.result }}
+          לוג הריצה: $URL
+
+          מה לבדוק, לפי הסבירות:
+          1. תוקף \`CLAUDE_CODE_OAUTH_TOKEN\` — הסיבה השכיחה ביותר.
+          2. שלב הוולידציה בלוג של \`$TARGET_WF\` — איזו בדיקה נפלה.
+          3. סודות ה-FTP: \`FTP_SERVER\` · \`FTP_USERNAME\` · \`FTP_PASSWORD\`.
+          4. האם שם קובץ או נתיב השתנה — זו הייתה סיבת התקלה של מלטיה ב-25/08/2026."
+          NUM=$(gh issue list --state open --limit 50 --json number,title \
+                --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1 || echo "")
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body "$BODY"
+          else
+            gh issue create --title "$TITLE" --body "$BODY"
+          fi
