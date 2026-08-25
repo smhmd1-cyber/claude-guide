@@ -1758,5 +1758,91 @@
       }
     ],
     "note": "استُؤنف الرصد بعد توقّف 5 أسابيع (آخر جولة 2026-07-18). الـfeed لم يعد جامداً: emlakjet وحده أظهر 376 إعلاناً حياً (234 يشيليورت+142 باتالغازي) بدل الـ~90 المتكرر سابقاً. 31 إعلاناً جديداً مؤكَّد العمر (23 بيع+8 إيجار) عبر emlakjet وColdwell Banker وRE/MAX؛ hepsiemlak حجب WebFetch بالكامل (403 على كل مسار)؛ emlakgo.net لا يغطي دارنده/أقچاداغ/دوغانشهير/أرابگير سكنياً (أراضٍ خام فقط). 5 إعلانات استُبعدت رغم عناوين مضلِّلة تحوي 'sıfır/yeni' (عمرها الفعلي 5-15 سنة). وسيط الأسعار هذه الجولة محسوب من عيّنة اليوم نفسها (لا يوجد مصدر خارجي كEndeksa) فهو تقريبي وليس مرجعاً مستقلاً. 5 إعلانات بعلم Tapu Kaydı Yok حُدِّد سقف درجتها عند 40 رغم جاذبية السعر."
+  },
+  {
+    "date": "2026-08-25",
+    "il": "Malatya",
+    "ilce": "النواة الحضرية (Yeşilyurt+Battalgazi)",
+    "n_sale": 32,
+    "n_rent": 19,
+    "hi": 18,
+    "med_ppm": 33754,
+    "med_rpm": 190,
+    "yield_": 6.8,
+    "top": [
+      {
+        "mah": "Bostanbaşı",
+        "deal": "satilik",
+        "rooms": "3+1",
+        "m2": 196,
+        "price": 3950000,
+        "ppm": 20153,
+        "rpm": 0,
+        "sc": 98,
+        "rec": "🆕 الأعلى اليوم: r=0.60 مقابل وسيط اليوم، ثقة 92، Coldwell Banker موثّق EIDS — سعر أدنى بكثير من الوسيط، يستحق تحقّقاً مباشراً من صحة البيانات قبل أي التزام",
+        "url": "https://www.cb.com.tr/malatya-yesilyurt-bostanbasi-satilik/daire/353305"
+      },
+      {
+        "mah": "Tecde",
+        "deal": "satilik",
+        "rooms": "4+1",
+        "m2": 250,
+        "price": 4900000,
+        "ppm": 19600,
+        "rpm": 0,
+        "sc": 94,
+        "rec": "🆕 RE/MAX: r=0.58، عمر البناء 3 سنوات بالضبط (الحد الأقصى المسموح)، مصعدان+موقف مزدوج",
+        "url": "https://remax.com.tr/tr/portfoy/P61363478"
+      },
+      {
+        "mah": "Tecde",
+        "deal": "satilik",
+        "rooms": "4+1",
+        "m2": 220,
+        "price": 5050000,
+        "ppm": 22955,
+        "rpm": 0,
+        "sc": 92,
+        "rec": "قائم (مُعاد التحقق): Hasan Akbulut EIDS، سِفِر(0)، قابل لقرض — لا يزال من أقوى الخيارات",
+        "url": "https://www.emlakjet.com/ilan/hasan-akbulut-dan-tecde-de-41-yapili-sifir-daire-19671362"
+      },
+      {
+        "mah": "Bostanbaşı",
+        "deal": "satilik",
+        "rooms": "3+1",
+        "m2": 175,
+        "price": 5575000,
+        "ppm": 31857,
+        "rpm": 0,
+        "sc": 84,
+        "rec": "🆕 Yat Gayrimenkul: سِفِر(0)+مصعد+موقف+قابل لقرض؛ عبارات تسويقية مبالِغة في العنوان",
+        "url": "https://www.emlakjet.com/ilan/bostan-basinda-kanal-caddesi-nde-sifir-satilik-daire-19307803"
+      },
+      {
+        "mah": "İnönü",
+        "deal": "kiralik",
+        "rooms": "3+1",
+        "m2": 140,
+        "price": 21000,
+        "ppm": 0,
+        "rpm": 150,
+        "sc": 94,
+        "rec": "أفضل إيجار (مُعاد التحقق): Hasan Akbulut EIDS، سِفِر(0)، مصعد+موقف مزدوج",
+        "url": "https://www.emlakjet.com/ilan/ozhan-dan-komur-tevzi-de-sifir-kiralik-lux-daire-19748011"
+      },
+      {
+        "mah": "Orduzu",
+        "deal": "kiralik",
+        "rooms": "2+1",
+        "m2": 100,
+        "price": 19000,
+        "ppm": 0,
+        "rpm": 190,
+        "sc": 80,
+        "rec": "قائم (مُعاد التحقق): Emlak Park YG & Serttaş، سِفِر(0)، مفروش كامل، قرب البحيرة",
+        "url": "https://www.emlakjet.com/ilan/orduzu-kaldirim-tokide-full-esyali-21-kiralik-daire-19741001"
+      }
+    ],
+    "note": "استمرار الرصد بعد جولة أمس (2026-08-24 التي استأنفت بعد توقّف 5 أسابيع). 28 إعلاناً جديداً مؤكَّد العمر دخل السجل اليوم (16 بيع + 12 إيجار) عبر emlakjet وColdwell Banker وRE/MAX، بالإضافة إلى 23 إعلاناً معروفاً أُعيد رصده وتحديث سعره/تاريخه. hepsiemlak محجوب بالكامل (403 على كل مسار) لليوم الثاني على التوالي. لا عرض سكني جديد في الأقضية الريفية (Darende/Akçadağ/Doğanşehir/Arapgir وغيرها) — Akçadağ فيها 3 'Çiftlik Evi' من أفراد بلا تأكيد عمر، استُبعدت. 4 إعلانات RE/MAX ظهرت في نتائج البحث لكن تبيّن أنها أُزيلت من المنصة (İlan Yayından Kaldırılmıştır) — استُبعدت من السجل. ⚠️ ملاحظة نمطية: كل الإيجارات الجديدة الاثني عشر (وحدات TOKİ لإعادة الإعمار بعد الزلزال) بلا سند طابو مسجّل بعد (Tapu Kaydı Yok) فسقطت درجتها للحد الأقصى 40 رغم أسعار جذابة ظاهرياً. أعلى بيع اليوم (Coldwell Banker/Bostanbaşı، 3.95M) سعره أدنى بكثير من وسيط اليوم — يستحق تحقّقاً مباشراً قبل الاعتماد عليه."
   }
 ]
