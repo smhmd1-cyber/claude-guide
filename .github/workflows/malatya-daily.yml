@@ -405,7 +405,7 @@ jobs:
             "oldest_data_date": min(dates) if dates else None,
             "newest_data_date": max(dates) if dates else None,
             "written_today": written,
-            "bytes": len(h),
+            "chars": len(h),
             "daily_file": p,
             "commit": os.environ.get('GITHUB_SHA', '')[:12],
             "run_url": "%s/%s/actions/runs/%s" % (os.environ.get('GITHUB_SERVER_URL',''),
