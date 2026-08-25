@@ -72,8 +72,13 @@ jobs:
                  --json status --jq '[.[]|select(.status=="in_progress" or .status=="queued")]|length' 2>/dev/null || echo 0)
 
           # ── האם הגרסאות החיות בכלל עונות?
+          # ⚠️ لا تمرّر curl عبر أنبوب إلى grep -q: مع pipefail يخرج grep عند أول
+          # تطابق فيتلقّى curl إشارة SIGPIPE ويعود بخطأ، فتبدو الصفحة السليمة معطوبة.
+          # الدليل ٢٫٣ ميغابايت والعنوان في أوّله — لذلك أخفق الاختبار الأول.
           PAGES_OK=no; SUB_OK=no
-          curl -fsSL --max-time 30 "${PAGES_URL}?n=$T" 2>/dev/null | grep -q "$PAGE_MARK" && PAGES_OK=yes
+          if curl -fsSL --max-time 30 -o /tmp/pages.html "${PAGES_URL}?n=$T" 2>/dev/null; then
+            grep -q "$PAGE_MARK" /tmp/pages.html && PAGES_OK=yes
+          fi
           SUB_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "${SUBDOMAIN_URL}?n=$T" 2>/dev/null || echo "000")
           [ "$SUB_CODE" = "200" ] && SUB_OK=yes
 
@@ -128,6 +133,9 @@ jobs:
       - name: 🚨 פתיחת/עדכון Issue
         env:
           GH_TOKEN: ${{ github.token }}
+          # ⚠️ إلزامي: وظيفة التصعيد بلا checkout، فلا سياق مستودع لـgh.
+          # بدونه يفشل gh بـ"could not determine repository".
+          GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
           D=$(TZ=Asia/Jerusalem date +%F)
@@ -145,7 +153,7 @@ jobs:
           3. סודות ה-FTP: \`FTP_SERVER\` · \`FTP_USERNAME\` · \`FTP_PASSWORD\`.
           4. האם שם קובץ או נתיב השתנה — זו הייתה סיבת התקלה של מלטיה ב-25/08/2026."
           NUM=$(gh issue list --state open --limit 50 --json number,title \
-                --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1 || echo "")
+                --jq "[.[] | select(.title==\"$TITLE\") | .number] | first // empty" || echo "")
           if [ -n "$NUM" ]; then
             gh issue comment "$NUM" --body "$BODY"
           else
