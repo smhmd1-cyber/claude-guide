@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قطاعات أخرى فُحصت — ملف الاستثمار المشترك</title>
+<meta name="description" content="ستة قطاعات خارج عنقود المشمش — الطاقة الشمسية والمواشي والدواجن والأعلاف والأثاث ومواد البناء وإعادة التدوير والألبان — بمطابقة NACE والملحق EK-3 والمادة المؤقتة ٤، وما سقط منها ولماذا.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css?v=2">
+<style>
+.cite{font-family:var(--font-num);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;
+  background:rgba(91,157,255,.16);color:#bcd7ff;letter-spacing:.3px}
+.disc{background:linear-gradient(135deg,rgba(64,209,131,.13),rgba(91,157,255,.07));
+  border:1px solid rgba(64,209,131,.35);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:26px}
+.disc h3{margin:0 0 10px;font-size:20px;color:#fff}
+.disc p{margin:0;font-size:14.5px;color:var(--text2);line-height:1.95}
+.disc .todo{margin-top:13px;padding-top:13px;border-top:1px solid rgba(64,209,131,.25);
+  font-size:13.5px;color:#c9f5de;line-height:1.85}
+.sec{border:1px solid var(--border-soft);border-radius:15px;background:rgba(255,255,255,.015);
+  padding:19px 21px;margin-bottom:14px}
+.sec>.hd{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding-bottom:13px;
+  border-bottom:1px solid var(--border-soft);margin-bottom:14px}
+.sec .ic{width:42px;height:42px;border-radius:13px;background:var(--card2);border:1px solid var(--border);
+  display:grid;place-items:center;font-size:21px;flex:0 0 auto}
+.sec .nm{font-size:19px;font-weight:800;color:#fff}
+.sec .pl{margin-inline-start:auto;display:flex;gap:6px;flex-wrap:wrap}
+.pchip{display:flex;align-items:center;gap:7px;background:var(--card2);border:1px solid var(--border);
+  border-radius:9px;padding:5px 11px;font-size:12.5px;color:var(--text2);text-decoration:none;transition:.14s}
+.pchip:hover{border-color:var(--accent-line);color:#fff}
+.pchip b{font-family:var(--font-num);font-size:14px;font-weight:900}
+.fnd{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--border-soft)}
+.fnd:last-child{border-bottom:0}
+.fnd .k{flex:0 0 210px;font-size:13.5px;font-weight:700;color:#fff;line-height:1.6}
+.fnd .v{flex:1;font-size:13.5px;color:var(--text2);line-height:1.9}
+@media(max-width:720px){.fnd{flex-direction:column;gap:4px}.fnd .k{flex:none}}
+.exc td:first-child{color:#fff;font-weight:700;min-width:180px}
+.exc td:nth-child(2){font-family:var(--font-num);color:#ffc0c7;white-space:nowrap;direction:ltr;text-align:left}
+.exc td:nth-child(3){font-size:13px;color:var(--text2);line-height:1.85}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="logo">🧪</div>
+    <div><h1>قطاعات أخرى فُحصت</h1>
+      <div class="sub">ستة قطاعات خارج عنقود المشمش · بالمنهج نفسه · وما سقط منها ولماذا</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر تحديث: <b>٢٥ أغسطس ٢٠٢٦</b></span>
+    <a class="btn" href="invest-paths.html">← المسارات</a>
+  </div>
+
+  <div class="note warn">
+    📄 <span id="note-src"></span>
+  </div>
+
+  <div class="disc">
+    <h3 id="d-t">—</h3>
+    <p id="d-txt"></p>
+    <div class="todo">🔎 <b>ما يلزم:</b> <span id="d-todo"></span> <span id="d-src"></span></div>
+  </div>
+
+  <h2>القطاعات الستة</h2>
+  <p class="lead">لكل قطاع: أهمّ ما كشفه الفحص، والمسارات التي خرجت منه بدرجة أولوية الفحص الخاصة بها.
+    الدرجة محسوبة بالشبكة المعيارية نفسها المطبَّقة على مسارات المشمش — فالمقارنة بينها مشروعة.</p>
+  <div id="secs"></div>
+
+  <h2>ما فُحص وسقط — ولماذا</h2>
+  <p class="lead">هذه ليست مسارات ضعيفة، بل مسارات <b>مستبعَدة بنصّ</b>. إدراجها هنا يوفّر إعادة فحصها لاحقاً،
+    ويبيّن أنّ الملحق EK-3 يُسقط بالشرط لا بالتقدير.</p>
+  <div class="tbl-wrap"><table class="exc">
+    <thead><tr><th>النشاط</th><th>الكود</th><th>سبب السقوط</th></tr></thead>
+    <tbody id="exc"></tbody>
+  </table></div>
+
+  <h2>ما تغيّر في الترتيب</h2>
+  <div class="grid g3">
+    <div class="card"><h3 style="margin-top:0">🥇 الصدارة لم تتغيّر</h3>
+      <p>لا مسار من القطاعات الستة تجاوز مسارات المشمش الأربعة الأولى. أعلاها — الهياكل المعدنية للطاقة الشمسية
+        والأثاث — عند ٧٢، مقابل ٨١ للمنشأة المتكاملة.</p></div>
+    <div class="card"><h3 style="margin-top:0">📐 نمط متكرّر</h3>
+      <p>كل مسار صناعي داخل نطاق ١٠–٣٢ ينال ميزة المهلة؛ وكل مسار زراعي أو خدمي يخرج منها مهما كان جاذباً.
+        هذا ليس تفضيلاً بل بنية النصّ.</p></div>
+    <div class="card"><h3 style="margin-top:0">⏰ نافذة تُغلق خلال أيام</h3>
+      <p>دعوة IPARD الثانية عشرة للمنشآت الزراعية مفتوحة حتى <b>٣١ أغسطس</b> إلكترونياً و<b>٧ سبتمبر</b> ورقياً،
+        وملاطيا ضمن المجموعة التي تنال عشر نقاط تفضيل. <span class="cite">I25</span></p></div>
+  </div>
+
+  <footer class="site">
+    <span>🧪 قطاعات أخرى</span><span>·</span>
+    <a href="invest.html">ملف الاستثمار</a><a href="invest-paths.html">المسارات</a><a href="invest-nace.html">مطابقة EK-3</a><a href="invest-sources.html">المصادر</a>
+    <span style="flex:1"></span><span class="num">jmahery.com/malatya/invest-sectors.html</span>
+  </footer>
+</div>
+
+<script src="assets/nav.js?v=7" defer></script>
+<script>
+(function(){
+'use strict';
+function col(s){ return s>=70?'#40d183':(s>=60?'#f7a52b':'#ff6b7a'); }
+
+Promise.all([
+  fetch('data/invest-sectors.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}),
+  fetch('data/invest-paths.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();})
+]).then(function(res){
+  var d = res[0], P = {};
+  res[1].items.forEach(function(p){ P[p.id] = p; });
+
+  document.getElementById('note-src').textContent = d.note;
+  document.getElementById('d-t').textContent   = d.discovery.t;
+  document.getElementById('d-txt').innerHTML   = d.discovery.txt;
+  document.getElementById('d-todo').textContent = d.discovery.todo;
+  document.getElementById('d-src').innerHTML =
+    (d.discovery.src||[]).map(function(c){return '<span class="cite">'+c+'</span>';}).join(' ');
+
+  document.getElementById('secs').innerHTML = d.sectors.map(function(s){
+    return '<div class="sec"><div class="hd"><span class="ic">'+s.ico+'</span>'+
+      '<span class="nm">'+s.k+'</span><div class="pl">'+
+      s.paths.map(function(id){
+        var p = P[id]; if(!p) return '';
+        return '<a class="pchip" href="invest-paths.html#'+id+'">'+
+          '<b style="color:'+col(p.score)+'">'+p.score+'</b> '+p.name.slice(0,42)+'</a>';
+      }).join('')+'</div></div>'+
+      s.find.map(function(f){
+        return '<div class="fnd"><div class="k">'+f[0]+'</div><div class="v">'+f[1]+'</div></div>';
+      }).join('')+
+    '</div>';
+  }).join('');
+
+  document.getElementById('exc').innerHTML = d.excluded.map(function(e){
+    return '<tr><td>'+e.n+'</td><td>'+e.k+'</td><td>'+e.why+'</td></tr>';
+  }).join('');
+}).catch(function(){
+  document.getElementById('secs').innerHTML =
+    '<div class="note warn">تعذّر تحميل <span class="num">data/invest-sectors.json</span>.</div>';
+});
+})();
+</script>
+</body>
+</html>
