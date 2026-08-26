@@ -234,7 +234,28 @@ jobs:
           git config user.name  "malatya-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "ملف الاستثمار — رصد ${{ steps.depth.outputs.mode }} $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
-          git push
+          # ═══════════════════════════════════════════════════════════
+          # دفعٌ مقاوم للتسابق. خمسة سيور عمل تدفع إلى main (النشرة ·
+          # الأراضي · العقارات · الاستثمار · دليل Claude)، وكلٌّ منها قد
+          # يعمل حتى ٤٥ دقيقة، وجدولة GitHub تتأخّر ساعةً أحياناً — في
+          # 26/08/2026 انطلقت النشرة 07:05 بدل 06:10 فلامست موعد الاستثمار.
+          # عند التداخل يُرفض دفع الثاني (non-fast-forward)، ومع set -e
+          # تموت الريّة وتضيع ساعة بحث كاملة. لذلك: أعِد الأساس وأعِد المحاولة.
+          # ═══════════════════════════════════════════════════════════
+          for i in 1 2 3 4 5; do
+            if git push; then echo "✅ دُفع إلى main (محاولة $i)"; break; fi
+            if [ "$i" = "5" ]; then
+              echo "❌ تعذّر الدفع بعد خمس محاولات — main يتغيّر أسرع من قدرتنا"; exit 1
+            fi
+            echo "↻ main تقدّم أثناء عملنا — أُعيد الأساس وأحاول ثانيةً (محاولة $i)"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort 2>/dev/null || true
+              echo "❌ تعارض حقيقي أثناء إعادة الأساس — يحتاج يداً بشرية، ولن نفرض شيئاً"
+              exit 1
+            fi
+            sleep $((i * 5))
+          done
           echo "pushed=true" >> "$GITHUB_OUTPUT"
           echo "✅ دُفع — سيُستدعى «نشر منظومة ملاطيا» الآن"
 

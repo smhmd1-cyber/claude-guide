@@ -55,6 +55,12 @@ jobs:
             [ -n "$C" ] && REPO_DATE=$(TZ=Asia/Jerusalem date -d "$C" +%F 2>/dev/null || echo "")
             echo "ℹ️ لا status.json بعد — اعتمدت تاريخ آخر commit: ${REPO_DATE:-?}"
           fi
+          # ── نشرة عقيمة: تاريخ اليوم على الملف وبطاقة واحدة لم تُكتب.
+          # عطل 26/08/2026: الوكيل استدعى ScheduleWakeup وانتظر إشعارات لا تأتي
+          # في ريّة دفعة واحدة، فتقدّم الختم والمحتوى ميّت. التاريخ وحده لم يعد
+          # دليل صحّة — نقرأ الراية sterile وعدد البطاقات المكتوبة كذلك.
+          REPO_STERILE=$(python3 -c "import json;d=json.load(open('malatya/status.json'));print('true' if d.get('sterile') else 'false')" 2>/dev/null || echo "unknown")
+          REPO_WRITTEN=$(python3 -c "import json;print(json.load(open('malatya/status.json')).get('cards_written','?'))" 2>/dev/null || echo "?")
           REPO_ITEMS=$(grep -c '<div class="item"' "$F" 2>/dev/null || echo 0)
           # ⚠️ grep -m1 لا | head -1: مع pipefail يُغلق head الأنبوب فيموت grep
           # بـSIGPIPE فتعود القيمة فارغة ويبدو الموقع السليم منحرفاً.
@@ -83,7 +89,21 @@ jobs:
 
           NEED_DAILY=false
           NEED_DEPLOY=false
+          STERILE=false
           [ "$REPO_DATE" != "$TODAY" ] && NEED_DAILY=true
+
+          # نشرة اليوم موجودة لكنّها عقيمة: نمنح **إعادة تشغيل واحدة فقط**
+          # عند نبضة الظهر. لا نعيدها في كل نبضة — الأربع محاولات مجتمعةً
+          # تحرق حصّة الاشتراك بلا طائل إن كانت العلّة في الوكيل لا في الحظّ.
+          if [ "$NEED_DAILY" = "false" ] && [ "$REPO_STERILE" = "true" ]; then
+            STERILE=true
+            if [ "$HM" -ge 1100 ] 2>/dev/null && [ "$HM" -lt 1300 ] 2>/dev/null; then
+              NEED_DAILY=true
+              echo "🌱 نشرة عقيمة (بطاقات مكتوبة=$REPO_WRITTEN) — محاولة واحدة عند الظهر"
+            else
+              echo "🌱 نشرة عقيمة (بطاقات مكتوبة=$REPO_WRITTEN) — خارج نافذة الإعادة الوحيدة"
+            fi
+          fi
 
           # ريّة يومية جارية أو في الطابور؟ لا نطلب ثانية — الأولى لم تنتهِ بعد.
           if [ "$NEED_DAILY" = "true" ]; then
@@ -111,8 +131,11 @@ jobs:
           [ "$HUB_OK" != "yes" ] && ESCALATE=true
           # فقدان أرشيف: أخطر من تأخّر يوم — تصعيد فوري في أي ساعة
           if [ "$REPO_ITEMS" -lt 10 ] || [ "$REPO_ITEMS" -gt 400 ]; then ESCALATE=true; fi
+          # نشرة عقيمة صمدت حتى آخر نبضة ⇒ بلاغ. تاريخٌ يتقدّم بمحتوى ميّت
+          # لا يصرخ من تلقاء نفسه، وهذا بالضبط ما يجعله أخطر من عطل صريح.
+          if [ "$STERILE" = "true" ] && [ "$HM" -ge 1700 ]; then ESCALATE=true; fi
 
-          SUM="اليوم $TODAY · المستودع ${REPO_DATE:-تعذّرت القراءة} · الحيّ ${LIVE_DATE:-${LIVE_STAMP:-تعذّرت القراءة}} · بطاقات $REPO_ITEMS · مركز التحكّم $HUB_OK"
+          SUM="اليوم $TODAY · المستودع ${REPO_DATE:-تعذّرت القراءة} · الحيّ ${LIVE_DATE:-${LIVE_STAMP:-تعذّرت القراءة}} · بطاقات $REPO_ITEMS · مكتوبة اليوم ${REPO_WRITTEN} · عقيمة $STERILE · مركز التحكّم $HUB_OK"
 
           {
             echo "need_daily=$NEED_DAILY"
@@ -121,8 +144,10 @@ jobs:
             echo "summary=$SUM"
           } >> "$GITHUB_OUTPUT"
 
-          if [ "$NEED_DAILY" = "false" ] && [ "$NEED_DEPLOY" = "false" ] && [ "$HUB_OK" = "yes" ]; then
+          if [ "$NEED_DAILY" = "false" ] && [ "$NEED_DEPLOY" = "false" ] && [ "$HUB_OK" = "yes" ] && [ "$STERILE" != "true" ]; then
             echo "✅ كل شيء سليم — لا إجراء"
+          elif [ "$STERILE" = "true" ] && [ "$NEED_DAILY" = "false" ] && [ "$NEED_DEPLOY" = "false" ]; then
+            echo "🌱 النشرة منشورة ومتقدّمة، لكنّها عقيمة — لا إجراء الآن، والبلاغ عند 18:00"
           else
             echo "⚠️ سنتدخّل: need_daily=$NEED_DAILY need_deploy=$NEED_DEPLOY"
           fi

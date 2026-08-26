@@ -49,7 +49,18 @@ jobs:
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import os, sys
+          import os, sys, re, datetime
+
+          def bad_dates(text):
+              """تواريخ تعبر الـregex لكنّها مستحيلة تقويمياً: 2026-13-45 · 2026-02-30."""
+              out = []
+              for v in re.findall(r'data-date="([^"]*)"', text):
+                  try:
+                      datetime.date.fromisoformat(v)
+                  except ValueError:
+                      out.append(v)
+              return sorted(set(out))
+
           d = os.environ['DAILY_FILE']; h = os.environ['HUB_FILE']; mark = os.environ['HUB_MARK']
           errs = []
           if not os.path.exists(d):
@@ -65,6 +76,13 @@ jobs:
                   errs.append('%s: id="daily-date" ظهر %d مرّة (المطلوب ١)' % (d, t.count('id="daily-date"')))
               if t.count('class="item"') < 10:
                   errs.append("%s: البطاقات %d فقط — الأرشيف يبدو مفقوداً" % (d, t.count('class="item"')))
+              # ⚠️ لغم 26/08/2026: تاريخ مثل 2026-13-45 يعبر تحقّق الأمس (الـregex
+              # يقبله)، ثم يُفجّر خطوة «حساب نافذة التغطية» في ريّة الغد بـValueError
+              # قبل أن يبدأ الوكيل — فتتجمّد النشرة أبداً ولا يقدر الإصلاح الذاتي
+              # على شيء. نسمّيه هنا بالاسم بدل تتبّع أثر بايثون خام.
+              bad = bad_dates(t)
+              if bad:
+                  errs.append("%s: تواريخ مستحيلة تقويمياً في data-date: %s — صحّحها يدوياً في الملف" % (d, bad[:5]))
           if os.path.exists(h):
               g = open(h, encoding='utf-8').read()
               if mark not in g:
@@ -87,10 +105,18 @@ jobs:
           h = open(os.environ['DAILY_FILE'], encoding='utf-8').read()
           today = datetime.date.fromisoformat(
               os.popen("TZ=Asia/Jerusalem date +%F").read().strip())
-          dates = sorted(set(re.findall(r'data-date="(\d{4}-\d{2}-\d{2})"', h)))
+          # ⚠️ متسامحون هنا عمداً: القارئ لا ينهار على بيانات فاسدة، بل يتخطّاها
+          # ويكمل. الرفض مكانه بوّابتا «الفحص القبلي» و«التحقّق» — لا هنا. قبل
+          # 26/08/2026 كان تاريخ واحد مستحيل يقتل هذه الخطوة ويجمّد النشرة أبداً.
+          def _d(v):
+              try:
+                  return datetime.date.fromisoformat(v)
+              except ValueError:
+                  return None
+          dates = sorted({v for v in re.findall(r'data-date="(\d{4}-\d{2}-\d{2})"', h) if _d(v)})
           # تواريخ المستقبل (فعاليات قادمة) تُستثنى من حساب التغطية.
-          past = [d for d in dates if datetime.date.fromisoformat(d) <= today]
-          last = datetime.date.fromisoformat(past[-1]) if past else today - datetime.timedelta(14)
+          past = [d for d in dates if _d(d) <= today]
+          last = _d(past[-1]) if past else today - datetime.timedelta(14)
           start = last
           gaps = [ (start + datetime.timedelta(n)).isoformat()
                    for n in range((today - start).days + 1)
@@ -325,12 +351,22 @@ jobs:
         run: |
           set -euo pipefail
           # النسخة السابقة من الملف — لقياس ما أضافه الوكيل فعلاً هذه الريّة.
-          git show "HEAD:$DAILY_FILE" > /tmp/before-stamp.html
+          # التسامح مع ملف غير موجود في HEAD (أوّل إضافة) بدل قتل الريّة.
+          git show "HEAD:$DAILY_FILE" > /tmp/before-stamp.html 2>/dev/null || : > /tmp/before-stamp.html
+          # الأسطر المضافة وحدها — مقياسٌ لا يخدعه طيّ الأرشيف ولا إعادة الترتيب.
+          git diff -U0 -- "$DAILY_FILE" > /tmp/daily.diff 2>/dev/null || : > /tmp/daily.diff
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
           import re, os
           p = os.environ['DAILY_FILE']
           h = open(p, encoding='utf-8').read()
           before = open('/tmp/before-stamp.html', encoding='utf-8').read()
+          # cards_written = بطاقات ظهرت في أسطر مُضافة فعلاً في هذه الريّة.
+          # ⚠️ لماذا لا يكفي الفرق الصافي: يوم يُطوى فيه الأرشيف تنقص البطاقات
+          # صافيةً بينما الوكيل كتب عشرات الجديدة — الفرق الصافي يرفع رايةً كاذبة.
+          # والعكس أخطر: ريّة ثانية في اليوم نفسه تجد التقرير مختوماً فتبدو سليمة.
+          added = [l[1:] for l in open('/tmp/daily.diff', encoding='utf-8', errors='replace')
+                   if l.startswith('+') and not l.startswith('+++')]
+          cards_written = sum(x.count('<div class="item"') for x in added)
           # ⚠️ لا يكفي أن يحمل بلوك التقرير تاريخ اليوم: ريّة ثانية في اليوم نفسه
           # تجد البلوك مختوماً من الريّة الأولى فتبدو سليمة وهي لم تكتب شيئاً.
           # المقياس الصادق: كم بطاقة أضاف الوكيل في هذه الريّة بالذات.
@@ -357,26 +393,36 @@ jobs:
                   nb = nb.rstrip("\n") + "\nstamped_by=workflow — الوكيل لم يجدّد تقريره؛ الأرقام أعلاه قد تكون من ريّة سابقة.\n"
               h = h[:m.start()] + "<!--RESEARCH-REPORT" + nb + "-->" + h[m.end():]
               degraded = "true"
-          # نشرةٌ لم تنمُ ولو ببطاقة واحدة = ريّة عقيمة، مهما بدا التقرير مرتّباً.
-          if cards_added <= 0:
+          # ⚠️ رايتان مختلفتان عمداً، لأنّ علاجهما مختلف:
+          #   sterile  = لم تُكتب بطاقة واحدة ⇒ عطل حقيقي، يستحقّ إعادة تشغيل وبلاغاً.
+          #   degraded = عقيمة **أو** تقرير خُتم آلياً ⇒ نقص توثيق، يُذكر ولا يُعاد له تشغيل.
+          # خلطهما يجعل الحارس يعيد تشغيل نشرةٍ صحيحة لأنّ الوكيل نسي سطر تقرير.
+          sterile = "true" if cards_written <= 0 else "false"
+          if sterile == "true":
               degraded = "true"
           open(p, 'w', encoding='utf-8').write(h)
           print("degraded=" + degraded)
+          print("sterile=" + sterile)
+          print("cards_written=%d" % cards_written)
           print("cards_added=%d" % cards_added)
           PY
+          CW=$(grep -m1 '^cards_written=' "$GITHUB_OUTPUT" | cut -d= -f2)
           CA=$(grep -m1 '^cards_added=' "$GITHUB_OUTPUT" | cut -d= -f2)
-          echo "بطاقات أضافها الوكيل هذه الريّة: ${CA:-؟}"
-          if grep -qx 'degraded=true' "$GITHUB_OUTPUT"; then
-            echo "⚠️ ريّة ضعيفة — رُفعت راية report_degraded (بطاقات جديدة: ${CA:-؟})"
-            echo "⚠️ report_degraded=true — بطاقات جديدة: ${CA:-؟} · التقرير قد يكون مختوماً آلياً." >> "$GITHUB_STEP_SUMMARY"
+          echo "بطاقات كتبها الوكيل هذه الريّة: ${CW:-؟} (الفرق الصافي: ${CA:-؟})"
+          if grep -qx 'sterile=true' "$GITHUB_OUTPUT"; then
+            echo "🌱 ريّة عقيمة — لم تُكتب بطاقة واحدة. هذا عطل، لا يوم هادئ."
+            echo "🌱 sterile=true — لم تُكتب بطاقة واحدة (صافي: ${CA:-؟}). راجع «🔍 ماذا فعل Claude فعلاً؟»." >> "$GITHUB_STEP_SUMMARY"
+          elif grep -qx 'degraded=true' "$GITHUB_OUTPUT"; then
+            echo "⚠️ ${CW} بطاقة مكتوبة، لكنّ تقرير الرصد خُتم آلياً — نقص توثيق لا أكثر"
+            echo "⚠️ report_degraded=true — ${CW} بطاقة مكتوبة، والتقرير خُتم آلياً." >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "✅ ريّة سليمة — التقرير من الوكيل و${CA} بطاقة جديدة"
+            echo "✅ ريّة سليمة — التقرير من الوكيل و${CW} بطاقة مكتوبة"
           fi
 
       - name: التحقّق — لا ننشر ملفاً معطوباً
         run: |
           set -euo pipefail
-          git show "HEAD:$DAILY_FILE" > /tmp/prev.html
+          git show "HEAD:$DAILY_FILE" > /tmp/prev.html 2>/dev/null || : > /tmp/prev.html
           # tee: سبب الفشل يظهر في صفحة Summary بلا فتح السجلّ. pipefail يحفظ رمز الخروج.
           python3 - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
           import re, sys, os, datetime
@@ -416,24 +462,40 @@ jobs:
           cards = re.findall(r'<div class="item"([^>]*)>', new)
           missing = [c for c in cards if 'data-date=' not in c]
           dates = re.findall(r'<div class="item"[^>]*data-date="([^"]*)"', new)
-          bad = [d for d in dates if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', d)]
+          # ⚠️ الشكل وحده لا يكفي: `2026-13-45` و`2026-02-30` يمرّان من الـregex
+          # ثم يقتلان خطوة «حساب نافذة التغطية» في الريّة التالية. نرفضهما هنا،
+          # عند البوّابة، قبل الـcommit — فالمنع أرخص من تجميدٍ يحتاج يداً بشرية.
+          def _cal_ok(v):
+              if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', v):
+                  return False
+              try:
+                  datetime.date.fromisoformat(v)
+                  return True
+              except ValueError:
+                  return False
+          bad = [d for d in dates if not _cal_ok(d)]
           if missing:
               errs.append("%d بطاقة بلا data-date" % len(missing))
           if bad:
-              errs.append("data-date بصيغة خاطئة: %s" % bad[:5])
+              errs.append("data-date غير صالح (صيغة خاطئة أو تاريخ مستحيل تقويمياً): %s" % bad[:5])
           if cards and not missing and not bad:
               notes.append("البطاقات %d كلّها بتاريخ صالح (%s→%s)" % (len(cards), min(dates), max(dates)))
           if len(cards) < 10:
               errs.append("عدد البطاقات %d — يبدو أن الأرشيف حُذف" % len(cards))
 
-          old_cards = len(re.findall(r'<div class="item"', old))
-          if len(cards) < old_cards * 0.8:
-              errs.append("تراجع البطاقات %d → %d — فقدان أرشيف" % (old_cards, len(cards)))
-          shrink = 1 - len(new) / len(old)
-          if shrink > 0.20:
-              errs.append("انكمش الملف %.1f%% (%d → %d)" % (shrink * 100, len(old), len(new)))
+          # ⚠️ القسمة على len(old) تنفجر إن كان الملف جديداً بالكامل (لا نسخة في
+          # HEAD). المقارنات النسبية بلا نسخة سابقة بلا معنى أصلاً — نتخطّاها.
+          if old:
+              old_cards = len(re.findall(r'<div class="item"', old))
+              if len(cards) < old_cards * 0.8:
+                  errs.append("تراجع البطاقات %d → %d — فقدان أرشيف" % (old_cards, len(cards)))
+              shrink = 1 - len(new) / len(old)
+              if shrink > 0.20:
+                  errs.append("انكمش الملف %.1f%% (%d → %d)" % (shrink * 100, len(old), len(new)))
+              else:
+                  notes.append("الحجم %d → %d (%+.1f%%)" % (len(old), len(new), -shrink * 100))
           else:
-              notes.append("الحجم %d → %d (%+.1f%%)" % (len(old), len(new), -shrink * 100))
+              notes.append("لا نسخة سابقة في HEAD — تُخطّيت مقارنات الحجم والأرشيف")
 
           rep = re.search(r'<!--RESEARCH-REPORT(.*?)-->', new, re.S)
           if not rep:
@@ -475,6 +537,8 @@ jobs:
         env:
           REPORT_DEGRADED: ${{ steps.report.outputs.degraded }}
           CARDS_ADDED: ${{ steps.report.outputs.cards_added }}
+          CARDS_WRITTEN: ${{ steps.report.outputs.cards_written }}
+          STERILE: ${{ steps.report.outputs.sterile }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -498,6 +562,8 @@ jobs:
             "written_today": written,
             "chars": len(h),
             "report_degraded": os.environ.get('REPORT_DEGRADED') == 'true',
+            "sterile": os.environ.get('STERILE') == 'true',
+            "cards_written": int(os.environ.get('CARDS_WRITTEN') or 0),
             "cards_added": int(os.environ.get('CARDS_ADDED') or 0),
             "daily_file": p,
             "commit": os.environ.get('GITHUB_SHA', '')[:12],
@@ -523,7 +589,46 @@ jobs:
             exit 0
           fi
           git commit -m "النشرة اليومية — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
-          git push
+          # ═══════════════════════════════════════════════════════════
+          # دفعٌ مقاوم للتسابق. خمسة سيور عمل تدفع إلى main (النشرة ·
+          # الأراضي · العقارات · الاستثمار · دليل Claude)، وكلٌّ منها قد
+          # يعمل حتى ٤٥ دقيقة، وجدولة GitHub تتأخّر ساعةً أحياناً — في
+          # 26/08/2026 انطلقت النشرة 07:05 بدل 06:10 فلامست موعد الاستثمار.
+          # عند التداخل يُرفض دفع الثاني (non-fast-forward)، ومع set -e
+          # تموت الريّة وتضيع ساعة بحث كاملة. لذلك: أعِد الأساس وأعِد المحاولة.
+          # ═══════════════════════════════════════════════════════════
+          for i in 1 2 3 4 5; do
+            if git push; then echo "✅ دُفع إلى main (محاولة $i)"; break; fi
+            if [ "$i" = "5" ]; then
+              echo "❌ تعذّر الدفع بعد خمس محاولات — main يتغيّر أسرع من قدرتنا"; exit 1
+            fi
+            echo "↻ main تقدّم أثناء عملنا — أُعيد الأساس وأحاول ثانيةً (محاولة $i)"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort 2>/dev/null || true
+              # ═══════════════════════════════════════════════════════════
+              # تعارضٌ حقيقي: ريّةٌ أخرى حرّرت ملف النشرة نفسه بينما كنّا نبحث.
+              # دمجُهما آلياً غير ممكن بأمان (نصّان مختلفان لليوم ذاته)، وفرضُ
+              # أحدهما يبتلع بطاقات الآخر. لكنّ إسقاط ١٥ دقيقة بحثٍ في العدم
+              # غير مقبول أيضاً — وهذا ما جرى فعلاً في 27/08/2026 00:08 حين
+              # ضاعت ١٦٠ إضافة. لذلك: نحفظ عملنا في فرع إنقاذ ثم نفشل بوضوح.
+              # ═══════════════════════════════════════════════════════════
+              RESCUE="rescue/daily-$(TZ=Asia/Jerusalem date +%Y%m%d-%H%M%S)"
+              if git push origin "HEAD:refs/heads/$RESCUE" 2>/dev/null; then
+                echo "🛟 تعارض مع main — لم يضِع شيء: عمل هذه الريّة محفوظ في الفرع $RESCUE"
+                {
+                  echo "## 🛟 تعارض دفع — العمل محفوظ"
+                  echo "ريّة أخرى حرّرت \`$DAILY_FILE\` أثناء بحثنا، فتعذّر الدمج الآلي."
+                  echo "بطاقات هذه الريّة محفوظة في الفرع: \`$RESCUE\`"
+                  echo "قارنها بـ main واختر ما يُدمج يدوياً — لا شيء ضاع."
+                } >> "$GITHUB_STEP_SUMMARY"
+              else
+                echo "❌ تعارض مع main وتعذّر حتى حفظ فرع الإنقاذ"
+              fi
+              exit 1
+            fi
+            sleep $((i * 5))
+          done
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
   # ⛔ لا نرفع عبر FTP من هنا. malatya-publish.yml هو المالك الوحيد لملف
