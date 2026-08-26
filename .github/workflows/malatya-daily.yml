@@ -324,10 +324,18 @@ jobs:
           SEARCH_FROM: ${{ steps.cov.outputs.search_from }}
         run: |
           set -euo pipefail
+          # النسخة السابقة من الملف — لقياس ما أضافه الوكيل فعلاً هذه الريّة.
+          git show "HEAD:$DAILY_FILE" > /tmp/before-stamp.html
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
           import re, os
           p = os.environ['DAILY_FILE']
           h = open(p, encoding='utf-8').read()
+          before = open('/tmp/before-stamp.html', encoding='utf-8').read()
+          # ⚠️ لا يكفي أن يحمل بلوك التقرير تاريخ اليوم: ريّة ثانية في اليوم نفسه
+          # تجد البلوك مختوماً من الريّة الأولى فتبدو سليمة وهي لم تكتب شيئاً.
+          # المقياس الصادق: كم بطاقة أضاف الوكيل في هذه الريّة بالذات.
+          cards_added = len(re.findall(r'<div class="item"', h)) - \
+                        len(re.findall(r'<div class="item"', before))
           today = os.popen("TZ=Asia/Jerusalem date +%F").read().strip()
           hm    = os.popen("TZ=Asia/Jerusalem date +%H:%M").read().strip()
           win   = "%s..%s" % (os.environ.get('SEARCH_FROM') or today, today)
@@ -349,14 +357,20 @@ jobs:
                   nb = nb.rstrip("\n") + "\nstamped_by=workflow — الوكيل لم يجدّد تقريره؛ الأرقام أعلاه قد تكون من ريّة سابقة.\n"
               h = h[:m.start()] + "<!--RESEARCH-REPORT" + nb + "-->" + h[m.end():]
               degraded = "true"
+          # نشرةٌ لم تنمُ ولو ببطاقة واحدة = ريّة عقيمة، مهما بدا التقرير مرتّباً.
+          if cards_added <= 0:
+              degraded = "true"
           open(p, 'w', encoding='utf-8').write(h)
           print("degraded=" + degraded)
+          print("cards_added=%d" % cards_added)
           PY
+          CA=$(grep -m1 '^cards_added=' "$GITHUB_OUTPUT" | cut -d= -f2)
+          echo "بطاقات أضافها الوكيل هذه الريّة: ${CA:-؟}"
           if grep -qx 'degraded=true' "$GITHUB_OUTPUT"; then
-            echo "⚠️ تقرير الرصد لم يجدّده الوكيل — خُتم آلياً ورُفعت راية report_degraded"
-            echo "⚠️ تقرير الرصد خُتم آلياً (report_degraded=true) — الوكيل لم يوثّق حصيلته." >> "$GITHUB_STEP_SUMMARY"
+            echo "⚠️ ريّة ضعيفة — رُفعت راية report_degraded (بطاقات جديدة: ${CA:-؟})"
+            echo "⚠️ report_degraded=true — بطاقات جديدة: ${CA:-؟} · التقرير قد يكون مختوماً آلياً." >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "✅ تقرير الرصد جديد ومكتوب من الوكيل"
+            echo "✅ ريّة سليمة — التقرير من الوكيل و${CA} بطاقة جديدة"
           fi
 
       - name: التحقّق — لا ننشر ملفاً معطوباً
@@ -460,6 +474,7 @@ jobs:
       - name: 🧾 توليد malatya/status.json
         env:
           REPORT_DEGRADED: ${{ steps.report.outputs.degraded }}
+          CARDS_ADDED: ${{ steps.report.outputs.cards_added }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -483,6 +498,7 @@ jobs:
             "written_today": written,
             "chars": len(h),
             "report_degraded": os.environ.get('REPORT_DEGRADED') == 'true',
+            "cards_added": int(os.environ.get('CARDS_ADDED') or 0),
             "daily_file": p,
             "commit": os.environ.get('GITHUB_SHA', '')[:12],
             "run_url": "%s/%s/actions/runs/%s" % (os.environ.get('GITHUB_SERVER_URL',''),
