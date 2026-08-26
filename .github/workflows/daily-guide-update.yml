@@ -287,8 +287,13 @@ jobs:
         run: |
           set -euo pipefail
           FAIL=0
+          # ⚠️ אסור צינור מ-curl אל grep -q: grep סוגר את הצינור בהתאמה הראשונה,
+          # curl מת ב-SIGPIPE ומחזיר «curl: (23) Failure writing output to
+          # destination», ועם pipefail אתר תקין נראה כאילו נמחק — אזעקת שווא
+          # שמפילה את כל הפרסום. קרה בפועל ב-26/08/2026 בפרסום מלטיה.
           echo "— מערכת ניהול המשימות (jmahery.com) עדיין חיה?"
-          if curl -fsSL --max-time 45 "https://jmahery.com/?c=$(date +%s)" | grep -q "ניהול משימות"; then
+          if curl -fsSL --max-time 45 -o /tmp/root.html "https://jmahery.com/?c=$(date +%s)" \
+             && grep -q "ניהול משימות" /tmp/root.html; then
             echo "  ✅ המערכת במקומה"
           else
             echo "  🚨 מערכת הניהול לא מזוהה בשורש — בדוק מיד!"; FAIL=1
@@ -310,6 +315,10 @@ jobs:
           fi
           for url in $URLS; do
             echo "בודק $url"
-            VER=$(curl -fsSL --max-time 45 "$url" | grep -o 'גרסה 2[0-9]\.[0-9]*' | head -1 || echo "לא נמצא")
+            if curl -fsSL --max-time 45 -o /tmp/live-guide.html "$url"; then
+              VER=$(grep -m1 -o 'גרסה 2[0-9]\.[0-9]*' /tmp/live-guide.html || echo "לא נמצא")
+            else
+              VER="לא נטען"
+            fi
             echo "  → $VER"
           done

@@ -116,9 +116,18 @@ jobs:
           set -euo pipefail
           FAIL=0
           T=$(date +%s)
+          # ⚠️ ممنوع أنبوبٌ من curl إلى grep -q / head: هذان يغلقان الأنبوب فور
+          # أوّل مطابقة، فيموت curl بـSIGPIPE ويعود «curl: (23) Failure writing
+          # output to destination»، ومع pipefail يبدو الموقعُ السليم مفقوداً.
+          # حدث فعلاً في ريّة 26/08/2026: «تعذّر تأكيد المرآة» والمرآة سليمة.
+          # هنا الخطر أكبر: إنذار كاذب يرفع FAIL=1 ويُفشل النشر كلّه.
           echo "— نظام إدارة المهامّ (الجذر)؟"
-          curl -fsSL --max-time 45 "https://jmahery.com/?c=$T" | grep -q "ניהול משימות" \
-            && echo "  ✅ سليم" || { echo "  🚨 غير معروف — افحص فوراً"; FAIL=1; }
+          if curl -fsSL --max-time 45 -o /tmp/root.html "https://jmahery.com/?c=$T" \
+             && grep -q "ניהול משימות" /tmp/root.html; then
+            echo "  ✅ سليم"
+          else
+            echo "  🚨 غير معروف — افحص فوراً"; FAIL=1
+          fi
           for u in "https://jmahery.com/guide.html" "https://guideclaude.jmahery.com/"; do
             C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "$u?c=$T")
             [ "$C" = "200" ] && echo "  ✅ $u → 200" || { echo "  🚨 $u → $C"; FAIL=1; }
@@ -137,12 +146,25 @@ jobs:
           set -euo pipefail
           echo "بانتظار GitHub Pages…"; sleep 90
           T=$(date +%s)
+          # ننزّل إلى ملف ثم نقرأ — لا أنبوب من curl (انظر شرح SIGPIPE أعلاه).
           echo "— مركز التحكّم —"
-          curl -fsSL --max-time 45 "${PORTAL_URL}?n=$T" | grep -q "منظومة ملاطيا" \
-            && echo "  ✅ حيّ" || echo "  ⚠️  تعذّر تأكيد مركز التحكّم"
+          if curl -fsSL --max-time 45 -o /tmp/hub.html "${PORTAL_URL}?n=$T" \
+             && grep -q "منظومة ملاطيا" /tmp/hub.html; then
+            echo "  ✅ حيّ"
+          else
+            echo "  ⚠️  تعذّر تأكيد مركز التحكّم"
+          fi
           echo "— الدليل والنشرة —"
-          curl -fsSL --max-time 45 "${PORTAL_URL}daleel.html?n=$T" \
-            | grep -o 'id="daily-date"[^>]*>[^<]*' | head -1 || echo "  ⚠️  تعذّرت القراءة"
+          if curl -fsSL --max-time 45 -o /tmp/live-daleel.html "${PORTAL_URL}daleel.html?n=$T"; then
+            grep -m1 -o 'id="daily-date"[^>]*>[^<]*' /tmp/live-daleel.html \
+              || echo "  ⚠️  لم يُعثر على ختم التاريخ في الصفحة الحيّة"
+          else
+            echo "  ⚠️  تعذّرت القراءة"
+          fi
           echo "— مرآة GitHub Pages —"
-          curl -fsSL --max-time 45 "https://smhmd1-cyber.github.io/claude-guide/malatya/?n=$T" \
-            | grep -q "منظومة ملاطيا" && echo "  ✅ حيّة" || echo "  ⚠️  تعذّر تأكيد المرآة"
+          if curl -fsSL --max-time 45 -o /tmp/mirror.html "https://smhmd1-cyber.github.io/claude-guide/malatya/?n=$T" \
+             && grep -q "منظومة ملاطيا" /tmp/mirror.html; then
+            echo "  ✅ حيّة"
+          else
+            echo "  ⚠️  تعذّر تأكيد المرآة"
+          fi
