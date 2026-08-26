@@ -286,11 +286,61 @@ jobs:
           fi
           echo "✅ التطويق سليم"
 
+      # ═══════════════════════════════════════════════════════════
+      # ختم تقرير الرصد — بياناتٌ آليّة يملكها سير العمل، لا الوكيل.
+      # سبب عطل 26/08/2026: Claude حدّث الختم وحرّر النشرة فعلاً، لكنه
+      # ترك بلوك <!--RESEARCH-REPORT--> بتاريخ الأمس، فأفشل «التحقّق»
+      # الريّةَ كاملةً قبل الـcommit — فضاع تحريرٌ سليم وتجمّدت النشرة.
+      # القاعدة: لا تُهدَر ريّة صالحة بسبب سطر بيانات وصفية. نختم نحن،
+      # ونرفع راية report_degraded ليقرأها الحارس وأي مراقب خارجي.
+      # ═══════════════════════════════════════════════════════════
+      - name: 🖋️ ختم تقرير الرصد
+        id: report
+        env:
+          SEARCH_FROM: ${{ steps.cov.outputs.search_from }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import re, os
+          p = os.environ['DAILY_FILE']
+          h = open(p, encoding='utf-8').read()
+          today = os.popen("TZ=Asia/Jerusalem date +%F").read().strip()
+          hm    = os.popen("TZ=Asia/Jerusalem date +%H:%M").read().strip()
+          win   = "%s..%s" % (os.environ.get('SEARCH_FROM') or today, today)
+          runln = "run=%s %s | window=%s | source=workflow-stamp" % (today, hm, win)
+          m = re.search(r'<!--RESEARCH-REPORT(.*?)-->', h, re.S)
+          degraded = "false"
+          if not m:
+              block = ("<!--RESEARCH-REPORT\n" + runln +
+                       "\nnote=الوكيل لم يكتب تقرير رصد — حصيلة هذه الريّة غير موثّقة.\n-->")
+              anchor = "<!--DAILY-CONTENT-START-->"
+              h = h.replace(anchor, anchor + "\n" + block, 1)
+              degraded = "true"
+          elif today not in m.group(1):
+              body = m.group(1)
+              nb, n = re.subn(r'(?m)^run=.*$', runln, body, count=1)
+              if n == 0:
+                  nb = "\n" + runln + body
+              if 'stamped_by=workflow' not in nb:
+                  nb = nb.rstrip("\n") + "\nstamped_by=workflow — الوكيل لم يجدّد تقريره؛ الأرقام أعلاه قد تكون من ريّة سابقة.\n"
+              h = h[:m.start()] + "<!--RESEARCH-REPORT" + nb + "-->" + h[m.end():]
+              degraded = "true"
+          open(p, 'w', encoding='utf-8').write(h)
+          print("degraded=" + degraded)
+          PY
+          if grep -qx 'degraded=true' "$GITHUB_OUTPUT"; then
+            echo "⚠️ تقرير الرصد لم يجدّده الوكيل — خُتم آلياً ورُفعت راية report_degraded"
+            echo "⚠️ تقرير الرصد خُتم آلياً (report_degraded=true) — الوكيل لم يوثّق حصيلته." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "✅ تقرير الرصد جديد ومكتوب من الوكيل"
+          fi
+
       - name: التحقّق — لا ننشر ملفاً معطوباً
         run: |
           set -euo pipefail
           git show "HEAD:$DAILY_FILE" > /tmp/prev.html
-          python3 - <<'PY'
+          # tee: سبب الفشل يظهر في صفحة Summary بلا فتح السجلّ. pipefail يحفظ رمز الخروج.
+          python3 - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
           import re, sys, os, datetime
 
           path = os.environ['DAILY_FILE']
@@ -384,6 +434,8 @@ jobs:
       # بلا تحويل HTML إلى نصّ وبلا تخمين أعداد.
       # ═══════════════════════════════════════════════════════════
       - name: 🧾 توليد malatya/status.json
+        env:
+          REPORT_DEGRADED: ${{ steps.report.outputs.degraded }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -406,6 +458,7 @@ jobs:
             "newest_data_date": max(dates) if dates else None,
             "written_today": written,
             "chars": len(h),
+            "report_degraded": os.environ.get('REPORT_DEGRADED') == 'true',
             "daily_file": p,
             "commit": os.environ.get('GITHUB_SHA', '')[:12],
             "run_url": "%s/%s/actions/runs/%s" % (os.environ.get('GITHUB_SERVER_URL',''),
