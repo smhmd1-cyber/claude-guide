@@ -104,7 +104,7 @@
   </footer>
 </div>
 
-<script src="assets/nav.js?v=7" defer></script>
+<script src="assets/nav.js?v=8" defer></script>
 <script>
 (function(){
 'use strict';
@@ -160,7 +160,10 @@ fetch('data/invest-risks.json?v='+Date.now(),{cache:'no-store'})
         '<span class="pri p'+x.pri+'">أولوية '+x.pri+'</span></div>'+
         '<p>'+x.desc+'</p>'+
         '<div class="mit"><b>الإجراء:</b> '+x.mitig+'</div>'+
-        (x.src?'<div class="t-foot"><span class="cite">'+x.src+'</span></div>':'')+
+        '<div class="t-foot">'+
+          (x.src?'<span class="cite">'+x.src+'</span>':'')+
+          (x.basis?'<span class="badge">تقدير تحليلي — لا واقعة موثَّقة</span>':'')+
+        '</div>'+
       '</div>';
     }).join('');
   }

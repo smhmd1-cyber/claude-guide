@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>العناية الواجبة والأسئلة الشائعة — ملف الاستثمار المشترك</title>
+<meta name="description" content="قائمة تحقّق للعناية الواجبة قبل أي شراء أو شراكة — الكيان والذمّة المالية والأصل والعقود ومن يفحص ماذا — وأحد عشر سؤالاً شائعاً بإجاباتها ومصادرها.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css?v=2">
+<style>
+.cite{font-family:var(--font-num);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;
+  background:rgba(91,157,255,.16);color:#bcd7ff;letter-spacing:.3px}
+.dg{border:1px solid var(--border-soft);border-radius:14px;background:rgba(255,255,255,.015);padding:17px 19px;margin-bottom:12px}
+.dg h3{margin:0 0 12px;font-size:16.5px;display:flex;align-items:center;gap:9px}
+.ck{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--border-soft)}
+.ck:last-child{border-bottom:0}
+.ck .bx{width:17px;height:17px;border-radius:5px;border:1.5px solid var(--border);flex:0 0 auto;margin-top:3px}
+.ck .t{flex:1}
+.ck b{display:block;font-size:14px;color:#fff;font-weight:700;line-height:1.55}
+.ck small{display:block;font-size:12.5px;color:var(--text2);line-height:1.8;margin-top:3px}
+.fq{border:1px solid var(--border-soft);border-radius:12px;background:rgba(255,255,255,.015);margin-bottom:9px;overflow:hidden}
+.fq summary{cursor:pointer;padding:14px 17px;font-size:15px;font-weight:700;color:#fff;list-style:none;display:flex;gap:10px;align-items:flex-start}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary::before{content:"›";font-size:20px;color:var(--accent);transition:.18s;line-height:1.1}
+.fq[open] summary::before{transform:rotate(90deg)}
+.fq .a{padding:0 17px 15px 17px;font-size:13.5px;color:var(--text2);line-height:1.95}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">🔍</div>
+    <div><h1>العناية الواجبة والأسئلة الشائعة</h1><div class="sub">خريطة القسم ١٨ و٢٦ · تُفعَّل عند وجود صفقة محدَّدة</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر تحديث: <b>٢٧ أغسطس ٢٠٢٦</b></span>
+    <a class="btn" href="invest.html">← ملف الاستثمار</a>
+  </div>
+
+  <div class="note info" id="note"></div>
+
+  <h2>قائمة العناية الواجبة</h2>
+  <p class="lead">كل بند يُطلب مستنده الأصلي ويُتحقَّق من تاريخه — والقائمة تُقرأ بترتيبها:
+    كيان، ثم ذمّة، ثم أصل، ثم عقود.</p>
+  <div id="dd"></div>
+
+  <h2>الأسئلة الشائعة</h2>
+  <p class="lead">أسئلة وردت فعلاً في بناء هذا الملف، بإجاباتها ومصادرها — لا أسئلة مفترَضة.</p>
+  <div id="faq"></div>
+
+  <footer class="site">
+    <span>🔍 العناية الواجبة والأسئلة الشائعة</span><span>·</span>
+    <a href="invest.html">ملف الاستثمار</a><a href="invest-plan.html">المسار التنفيذي</a><a href="invest-sources.html">المصادر</a>
+    <span style="flex:1"></span><span class="num">jmahery.com/malatya/invest-dd.html</span>
+  </footer>
+</div>
+<script src="assets/nav.js?v=8" defer></script>
+<script>
+fetch('data/invest-dd.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+ document.getElementById('note').innerHTML='🔍 '+d.note;
+ document.getElementById('dd').innerHTML=d.groups.map(function(g){return '<div class="dg"><h3><span>'+g.ico+'</span>'+g.g+'</h3>'+
+  g.items.map(function(i){return '<div class="ck"><span class="bx"></span><span class="t"><b>'+i[0]+'</b><small>'+i[1]+'</small></span></div>';}).join('')+
+  '</div>';}).join('');
+ document.getElementById('faq').innerHTML=d.faq.map(function(f){return '<details class="fq"><summary>'+f[0]+'</summary><div class="a">'+f[1]+
+  (f[2]&&f[2].length?'<div class="t-foot" style="margin-top:9px">'+f[2].map(function(c){return '<span class="cite">'+c+'</span>';}).join(' ')+'</div>':'')+
+  '</div></details>';}).join('');
+}).catch(function(){document.getElementById('dd').innerHTML='<div class="note warn">تعذّر تحميل <span class="num">data/invest-dd.json</span>.</div>';});
+</script>
+</body>
+</html>

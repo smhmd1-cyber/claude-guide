@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إطار النموذج المالي — ملف الاستثمار المشترك</title>
+<meta name="description" content="إطار النموذج المالي بثلاثة سيناريوهات: المدخلات العشرة وحالة توافرها، وقواعد البناء الثماني، والبوّابة التي تسبق أي رقم.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css?v=2">
+<style>
+.cite{font-family:var(--font-num);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;
+  background:rgba(91,157,255,.16);color:#bcd7ff;letter-spacing:.3px}
+.gt{background:linear-gradient(135deg,rgba(255,107,122,.13),rgba(247,165,43,.07));
+  border:1px solid rgba(255,107,122,.35);border-radius:var(--r-lg);padding:20px 23px;margin-bottom:24px;
+  font-size:14.5px;color:var(--text2);line-height:1.95}
+.inp td:first-child{color:#fff;font-weight:700;min-width:210px}
+.inp td:nth-child(2){font-size:13px;color:var(--text2);line-height:1.8}
+.sc{border:1px solid var(--border-soft);border-radius:14px;background:rgba(255,255,255,.015);padding:17px 19px}
+.sc h3{margin:0 0 9px;font-size:17px}
+.sc p{margin:0 0 10px;font-size:13.5px;color:var(--text2);line-height:1.9}
+.sc .u{font-size:12.5px;color:#ffd79a;line-height:1.8;border-top:1px dashed var(--border-soft);padding-top:9px}
+.rl{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--border-soft);font-size:13.5px;color:var(--text2);line-height:1.9}
+.rl:last-child{border-bottom:0}
+.rl .n{font-family:var(--font-num);font-size:11.5px;font-weight:800;color:var(--muted);flex:0 0 20px;padding-top:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">🧮</div>
+    <div><h1>إطار النموذج المالي</h1><div class="sub">خريطة القسم ١٧ · إطار جاهز بلا أرقام — والأرقام تنتظر مصادرها</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر تحديث: <b>٢٧ أغسطس ٢٠٢٦</b></span>
+    <a class="btn" href="invest.html">← ملف الاستثمار</a>
+  </div>
+
+  <div class="gt" id="why"></div>
+
+  <h2>المدخلات المطلوبة</h2>
+  <p class="lead">عشرة مدخلات يقوم عليها أي نموذج. المتوافر منها اليوم مُعلَّم، وما ينقص لا يُعوَّض بتقدير —
+    يُنتظر مصدره.</p>
+  <div class="grid g3" style="margin:14px 0 18px">
+    <div class="kpi"><div class="k-num num" id="k-have" style="color:#40d183">—</div><div class="k-lbl">مدخلاً متوافراً</div></div>
+    <div class="kpi"><div class="k-num num" id="k-part" style="color:#f7a52b">—</div><div class="k-lbl">متوافراً جزئياً</div></div>
+    <div class="kpi"><div class="k-num num" id="k-no" style="color:#ff6b7a">—</div><div class="k-lbl">ينتظر عرض سعر</div></div>
+  </div>
+  <div class="tbl-wrap"><table class="inp">
+    <thead><tr><th>المدخل</th><th>من أين يأتي</th><th>الحالة</th></tr></thead>
+    <tbody id="inp"></tbody>
+  </table></div>
+
+  <h2>السيناريوهات الثلاثة</h2>
+  <p class="lead">لا رقم واحد يُقدَّم بوصفه توقّعاً. ثلاثة سيناريوهات، ولكلٍّ منها استعماله المحدَّد —
+    والقرار يُتَّخذ على المتحفّظ لا على الأساسي.</p>
+  <div class="grid g3" id="scen"></div>
+
+  <h2>قواعد البناء</h2>
+  <div class="card" id="rules"></div>
+
+  <footer class="site">
+    <span>🧮 إطار النموذج المالي</span><span>·</span>
+    <a href="invest.html">ملف الاستثمار</a><a href="invest-plan.html">المسار التنفيذي</a><a href="invest-sources.html">المصادر</a>
+    <span style="flex:1"></span><span class="num">jmahery.com/malatya/invest-model.html</span>
+  </footer>
+</div>
+<script src="assets/nav.js?v=8" defer></script>
+<script>
+fetch('data/invest-model.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+ document.getElementById('why').innerHTML='🧮 <b>'+d.state+'.</b> '+d.why+
+  '<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,107,122,.25);color:#ffd7dc">🚧 <b>البوّابة:</b> '+d.gate+'</div>';
+ var M={'true':['ok','متوافر'],'جزئي':['warn','جزئي'],'false':['err','ينتظر']};
+ document.getElementById('inp').innerHTML=d.inputs.map(function(i){
+  var m=M[String(i.have)]||M['false'];
+  return '<tr><td>'+i.k+'</td><td>'+i.from+'</td><td><span class="badge '+m[0]+'">'+m[1]+'</span></td></tr>';}).join('');
+ document.getElementById('k-have').textContent=d.inputs.filter(function(i){return i.have===true;}).length;
+ document.getElementById('k-part').textContent=d.inputs.filter(function(i){return i.have==='جزئي';}).length;
+ document.getElementById('k-no').textContent=d.inputs.filter(function(i){return i.have===false;}).length;
+ document.getElementById('scen').innerHTML=d.scen.map(function(s){return '<div class="sc"><h3>'+s.n+'</h3><p>'+s.d+'</p><div class="u">↳ '+s.use+'</div></div>';}).join('');
+ document.getElementById('rules').innerHTML=d.rules.map(function(r,i){return '<div class="rl"><span class="n">'+(i+1)+'</span><span>'+r+'</span></div>';}).join('');
+}).catch(function(){document.getElementById('inp').innerHTML='<tr><td>تعذّر تحميل <span class="num">data/invest-model.json</span>.</td></tr>';});
+</script>
+</body>
+</html>

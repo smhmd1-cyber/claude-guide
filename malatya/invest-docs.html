@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بنود العقود واختيار المستشارين — ملف الاستثمار المشترك</title>
+<meta name="description" content="قائمة البنود المطلوبة في عقد التأسيس واتفاق الشركاء ومستندات الامتثال، ودليل اختيار المحامي والمحاسب ومستشار التشجيع والمهندس المستقل.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/malatya.css?v=2">
+<style>
+.cite{font-family:var(--font-num);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;
+  background:rgba(91,157,255,.16);color:#bcd7ff;letter-spacing:.3px}
+.ct{border:1px solid var(--border-soft);border-radius:14px;background:rgba(255,255,255,.015);padding:18px 20px;margin-bottom:12px}
+.ct .hd{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.ct .hd .ic{width:38px;height:38px;border-radius:11px;background:var(--card2);border:1px solid var(--border);display:grid;place-items:center;font-size:19px;flex:0 0 auto}
+.ct .hd b{font-size:17px;color:#fff;font-weight:800}
+.ct .why{font-size:13px;color:var(--muted);line-height:1.8;margin:0 0 11px}
+.ct ul{margin:0;padding-inline-start:19px;color:var(--text2);font-size:13.5px;line-height:2.05}
+.ad{border:1px solid var(--border-soft);border-radius:14px;background:rgba(255,255,255,.015);padding:17px 19px}
+.ad h3{margin:0 0 12px;font-size:16.5px;display:flex;align-items:center;gap:9px}
+.ad .lb{font-size:10.5px;letter-spacing:.9px;color:var(--muted);font-weight:800;margin:12px 0 6px}
+.ad ul{margin:0;padding-inline-start:18px;color:var(--text2);font-size:13px;line-height:1.95}
+.ad ul.q li{color:#ffe6c2}
+.flag{border-inline-start:3px solid var(--red);background:rgba(255,107,122,.06);padding:10px 13px;border-radius:0 9px 9px 0;
+  font-size:13.5px;color:var(--text2);line-height:1.85;margin-bottom:7px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">📑</div>
+    <div><h1>بنود العقود واختيار المستشارين</h1><div class="sub">خريطة القسم ٩ و٢٥ · طلبٌ للمحامي لا مسودّة للتوقيع</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر تحديث: <b>٢٧ أغسطس ٢٠٢٦</b></span>
+    <a class="btn" href="invest.html">← ملف الاستثمار</a>
+  </div>
+
+  <div class="note err" id="warn"></div>
+
+  <h2>بنود يجب أن يصوغها محامٍ</h2>
+  <p class="lead">أربع وثائق، لكلٍّ منها دورها ووقت الاحتكام إليه. القائمة تُسلَّم للمحامي بوصفها <b>طلباً</b>،
+    فيصوغ ويراجع ويضيف ما تقتضيه حالتكم.</p>
+  <div id="ct"></div>
+
+  <h2>كيف تختار مستشاريك</h2>
+  <p class="lead">أربعة أدوار لا يُغني أحدها عن الآخر. لكل دور ما يجب توافره، وأسئلة تُطرح في اللقاء الأول —
+    الأسئلة بالبرتقالي هي التي تكشف الفرق بين مكتب يعرف ملفّك ومكتب يتعلّم عليه.</p>
+  <div class="grid g2" id="ad"></div>
+
+  <h2>علامات تُنهي اللقاء</h2>
+  <div id="flags"></div>
+
+  <footer class="site">
+    <span>📑 بنود العقود واختيار المستشارين</span><span>·</span>
+    <a href="invest.html">ملف الاستثمار</a><a href="invest-plan.html">المسار التنفيذي</a><a href="invest-sources.html">المصادر</a>
+    <span style="flex:1"></span><span class="num">jmahery.com/malatya/invest-docs.html</span>
+  </footer>
+</div>
+<script src="assets/nav.js?v=8" defer></script>
+<script>
+fetch('data/invest-docs.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+ document.getElementById('warn').innerHTML='⚖️ '+d.warn;
+ document.getElementById('ct').innerHTML=d.contracts.map(function(c){return '<div class="ct"><div class="hd"><span class="ic">'+c.ico+'</span><b>'+c.t+'</b></div>'+
+  '<p class="why">'+c.why+'</p><ul>'+c.items.map(function(i){return '<li>'+i+'</li>';}).join('')+'</ul></div>';}).join('');
+ document.getElementById('ad').innerHTML=d.advisors.map(function(a){return '<div class="ad"><h3><span>'+a.ico+'</span>'+a.r+'</h3>'+
+  '<div class="lb">ما يجب توافره</div><ul>'+a.need.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'+
+  '<div class="lb">أسئلة اللقاء الأول</div><ul class="q">'+a.ask.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>';}).join('');
+ document.getElementById('flags').innerHTML=d.flags.map(function(f){return '<div class="flag">🚩 '+f+'</div>';}).join('');
+}).catch(function(){document.getElementById('ct').innerHTML='<div class="note warn">تعذّر تحميل <span class="num">data/invest-docs.json</span>.</div>';});
+</script>
+</body>
+</html>
