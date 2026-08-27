@@ -87,6 +87,9 @@ jobs:
                    invest-paths.html invest-ops.html invest-sources.html invest-plan.html \
                    invest-nace.html data/invest-nace.json \
                    invest-sectors.html data/invest-sectors.json \
+                   invest-docs.html invest-dd.html invest-log.html invest-model.html \
+                   data/invest-docs.json data/invest-dd.json data/invest-costs.json \
+                   data/invest-decisions-log.json data/invest-model.json \
                    data/invest-sources.json data/invest-structures.json data/invest-profile.json \
                    data/invest-incentive.json \
                    data/invest-risks.json data/invest-paths.json data/invest-watch.json \
