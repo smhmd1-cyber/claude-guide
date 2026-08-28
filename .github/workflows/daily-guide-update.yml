@@ -312,13 +312,17 @@ jobs:
           # curl מת ב-SIGPIPE ומחזיר «curl: (23) Failure writing output to
           # destination», ועם pipefail אתר תקין נראה כאילו נמחק — אזעקת שווא
           # שמפילה את כל הפרסום. קרה בפועל ב-26/08/2026 בפרסום מלטיה.
-          echo "— מערכת ניהול המשימות (jmahery.com) עדיין חיה?"
-          if curl -fsSL --max-time 45 -o /tmp/root.html "https://jmahery.com/?c=$(date +%s)" \
-             && grep -q "ניהול משימות" /tmp/root.html; then
+          echo "— מערכת ניהול המשימות (/mytask/) עדיין חיה?"
+          if curl -fsSL --max-time 45 -o /tmp/mytask.html "https://jmahery.com/mytask/?c=$(date +%s)" \
+             && grep -q "ניהול משימות" /tmp/mytask.html; then
             echo "  ✅ המערכת במקומה"
           else
-            echo "  🚨 מערכת הניהול לא מזוהה בשורש — בדוק מיד!"; FAIL=1
+            echo "  🚨 מערכת הניהול לא מזוהה ב-/mytask/ — בדוק מיד!"; FAIL=1
           fi
+          # השורש כבר לא מגיש את מערכת המשימות (מאז 28/08/2026: הפניה ל-jmahery.co.il,
+          # ו-/index.html מחזיר 404). מצבו נרשם לידיעה ואינו מפיל את הפרסום.
+          RC=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "https://jmahery.com/?c=$(date +%s)")
+          echo "  ℹ️  שורש הדומיין → $RC (הפניה חיצונית — לא שער כשל)"
           echo "— מדריך מרוקו (guide.html) עדיין חי?"
           CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "https://jmahery.com/guide.html?c=$(date +%s)")
           if [ "$CODE" = "200" ]; then echo "  ✅ מגיב 200"; else echo "  🚨 מחזיר $CODE"; FAIL=1; fi
