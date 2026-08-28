@@ -128,14 +128,20 @@ jobs:
           # output to destination»، ومع pipefail يبدو الموقعُ السليم مفقوداً.
           # حدث فعلاً في ريّة 26/08/2026: «تعذّر تأكيد المرآة» والمرآة سليمة.
           # هنا الخطر أكبر: إنذار كاذب يرفع FAIL=1 ويُفشل النشر كلّه.
-          echo "— نظام إدارة المهامّ (الجذر)؟"
-          if curl -fsSL --max-time 45 -o /tmp/root.html "https://jmahery.com/?c=$T" \
-             && grep -q "ניהול משימות" /tmp/root.html; then
+          echo "— نظام إدارة المهامّ (/mytask/)؟"
+          if curl -fsSL --max-time 45 -o /tmp/mytask.html "https://jmahery.com/mytask/?c=$T" \
+             && grep -q "ניהול משימות" /tmp/mytask.html; then
             echo "  ✅ سليم"
           else
             echo "  🚨 غير معروف — افحص فوراً"; FAIL=1
           fi
-          for u in "https://jmahery.com/guide.html" "https://guideclaude.jmahery.com/"; do
+          # الجذر لم يعد يخدم نظام المهامّ منذ 28/08/2026 (يحوّل إلى jmahery.co.il،
+          # و/index.html يردّ 404). حالته تُطبَع للعلم ولا تُفشل النشر: النظام نفسه
+          # سليم في /mytask/ وهو ما يفحصه الشرط أعلاه.
+          RC=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "https://jmahery.com/?c=$T")
+          echo "  ℹ️  جذر النطاق → $RC (تحويل خارجي — ليس بوّابة فشل)"
+          for u in "https://jmahery.com/guide.html" "https://guideclaude.jmahery.com/" \
+                   "https://jmahery.com/%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%97%D7%9B%D7%9D-%D7%90%D7%99%D7%A0%D7%98%D7%A8%D7%90%D7%A7%D7%98%D7%99%D7%91%D7%99.html"; do
             C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "$u?c=$T")
             [ "$C" = "200" ] && echo "  ✅ $u → 200" || { echo "  🚨 $u → $C"; FAIL=1; }
           done

@@ -15,6 +15,7 @@
     واجهة عامة: POST /api/api/services/app/Ad/AdsByFilter
     الجسم: {"keys":{"ats":["2"]},"sorting":null,"skipCount":N,"maxResultCount":20}
     ats=2 قضائي · ats=3 مزايدة. القيم يجب أن تكون مصفوفات.
+    يُجمَع قسم «Emlak» كاملاً: أرضاً ومبانيَ ومحالَّ ومنشآت، ويُصنَّف كلٌّ بفئته.
     لا يوجد مفتاح تصفية بالولاية في هذه الواجهة — جُرِّب واسمه غير معلن — فالتصفية
     على ملاطيا تجري عندنا بعد الجلب اعتماداً على addressCityName.
     السعر هنا = «muhammen bedel»: تقدير رسمي مُعتمَد لا طلب بائع، وهو حدّ المزايدة.
@@ -194,6 +195,8 @@ def ej_parse(html):
                 "d": x.get("datePosted") or "",
                 "u": "https://www.emlakjet.com/ilan/" + mid.group(1),
                 "img": (x.get("image") or "").replace(EJ_IMG, ""),
+                "cat": "أرض · أرسا",
+                "land": True,
             })
     total = None
     for rx in EJ_TOTALS:
@@ -239,9 +242,27 @@ def source_emlakjet():
 BIK_API = "https://www.ilan.gov.tr/api/api/services/app/Ad/AdsByFilter"
 BIK_PAGE = 20
 BIK_ATS = {"2": "بيع قضائي (İCRA)", "3": "مزايدة عامة (İHALE)"}
-# فئات الأرض داخل قسم «Emlak»: أرسا · تَرلا وأراضٍ زراعية وبساتين وكروم
-BIK_LAND = re.compile(r'/emlak-(arsa|tarla|tarim|bag|bahce|zeytinlik)', re.I)
+# كل قسم «Emlak» — أرضاً كان أم مبنى — داخل ولاية ملاطيا
+BIK_EMLAK = re.compile(r'/emlak-', re.I)
 BIK_SCAN_PAGES = 40 if not FULL_SCAN else 2000
+
+# تصنيف نوع العقار من مُعرّف الفئة في الرابط. الترتيب مهمّ: الأخصّ أولاً.
+CAT_RULES = [
+    (re.compile(r'/emlak-arsa', re.I),                                  "أرض · أرسا",          True),
+    (re.compile(r'/emlak-(tarla|tarim|bag|bahce|zeytinlik)', re.I),     "أرض زراعية وبساتين",  True),
+    (re.compile(r'/emlak-(isyeri|ticari|dukkan|magaza|depo|fabrika|imalathane)', re.I),
+                                                                        "تجاري وصناعي",        False),
+    (re.compile(r'/emlak-(devremulk|turistik|tesis|otel)', re.I),       "سياحي ومنشآت",        False),
+    (re.compile(r'/emlak-(bina|apartman)', re.I),                       "مبنى كامل",           False),
+    (re.compile(r'/emlak-(konut|daire|villa|mustakil|residence)', re.I),"سكن",                 False),
+]
+
+
+def classify(url):
+    for rx, name, is_land in CAT_RULES:
+        if rx.search(url or ""):
+            return name, is_land
+    return "عقار آخر", False
 
 
 def bik_pick(filters, key):
@@ -272,8 +293,9 @@ def source_ilangovtr():
                 if (a.get("addressCityName") or "").upper() != "MALATYA":
                     continue
                 url = a.get("urlStr") or ""
-                if not BIK_LAND.search(url):
+                if not BIK_EMLAK.search(url):
                     continue
+                cat, is_land = classify(url)
                 aid = str(a.get("id"))
                 if aid in seen:
                     continue
@@ -292,13 +314,18 @@ def source_ilangovtr():
                     "u": "https://www.ilan.gov.tr" + url,
                     "img": "",
                     "kind": label,
+                    "cat": cat,
+                    "land": is_land,
+                    "m2kind": "مساحة الأرض" if is_land else "مساحة مبنية معلنة",
                     "org": (a.get("advertiserName") or "").strip(),
                     "sale1": bik_pick(f, "Birinci Satış Günü") or bik_pick(f, "İhale ve Teklif Açma Tarihi"),
                     "sale2": bik_pick(f, "İkinci Satış Günü"),
                     "dosya": bik_pick(f, "Dosya No") or bik_pick(f, "İhale Kayıt No"),
                 })
             time.sleep(0.35)
-    print("  ilan.gov.tr: فُحص %d إعلاناً، منها %d في ملاطيا وتخصّ الأرض" % (scanned, len(found)))
+    lands = len([r for r in found if r.get("land")])
+    print("  ilan.gov.tr: فُحص %d إعلاناً، منها %d في ملاطيا (%d أرض · %d مبانٍ وغيرها)"
+          % (scanned, len(found), lands, len(found) - lands))
     return found, {"scanned": scanned, "full_scan": FULL_SCAN}
 
 
@@ -407,7 +434,7 @@ def main():
     # لا سعر سوق، وخلطهما يفسد الوسيط.
     by = defaultdict(list)
     for r in rows:
-        if r.get("ppm") and r.get("src") == "emlakjet":
+        if r.get("ppm") and r.get("src") == "emlakjet" and r.get("land"):
             by[r["ilce"]].append(r)
     stats = []
     for d in DISTRICTS:
@@ -424,13 +451,13 @@ def main():
                           "ppm_max": None, "p_med": None})
     stats.sort(key=lambda s: -s["n"])
 
-    market = [r["ppm"] for r in rows if r.get("ppm") and r.get("src") == "emlakjet"]
+    market = [r["ppm"] for r in rows if r.get("ppm") and r.get("src") == "emlakjet" and r.get("land")]
     market.sort()
     prices = [r["p"] for r in rows if r.get("p")]
     doc = {
         "updated": today.date().isoformat(),
         "province": "Malatya",
-        "scope": "إعلانات بيع الأراضي (arsa/tarla/bahçe) في ولاية ملاطيا فقط",
+        "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
         "total": len(rows),
         "sources": metas,
         "note": ("أسعار المصدر السوقيّ كما يعلنها البائع أو المكتب — ليست تقييماً. "
@@ -448,6 +475,9 @@ def main():
             "m2_recovered": recovered,
             "dropped_outside_province": outside,
             "by_source": {k: len([r for r in rows if r.get("src") == k]) for k in collected},
+            "by_cat": {c: len([r for r in rows if r.get("cat") == c])
+                       for c in sorted({r.get("cat") or "عقار آخر" for r in rows})},
+            "land_count": len([r for r in rows if r.get("land")]),
         },
         "stats": stats,
         "items": rows,
