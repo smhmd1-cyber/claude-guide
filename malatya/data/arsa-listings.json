@@ -1,7 +1,7 @@
 {
  "updated": "2026-08-28",
  "province": "Malatya",
- "scope": "إعلانات بيع الأراضي (arsa/tarla/bahçe) في ولاية ملاطيا فقط",
+ "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
  "total": 251,
  "sources": [
   {
@@ -42,7 +42,11 @@
   "by_source": {
    "emlakjet": 251,
    "ilangovtr": 0
-  }
+  },
+  "by_cat": {
+   "أرض · أرسا": 251
+  },
+  "land_count": 251
  },
  "stats": [
   {
@@ -162,6 +166,8 @@
    "d": "2026-08-26",
    "u": "https://www.emlakjet.com/ilan/19773772",
    "img": "19773772/5231B07F3986B2F3B3F29D09F16F987819773772.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 860
   },
   {
@@ -175,6 +181,8 @@
    "d": "2026-08-26",
    "u": "https://www.emlakjet.com/ilan/19772014",
    "img": "19772014/96BE03C34FEC94D5E980EBBB10434C7B19772014.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1000
   },
   {
@@ -188,6 +196,8 @@
    "d": "2026-08-25",
    "u": "https://www.emlakjet.com/ilan/19766422",
    "img": "19766422/EF76DE078552927523C0C7BDC6E30E4319766422.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1528
   },
   {
@@ -201,6 +211,8 @@
    "d": "2026-08-22",
    "u": "https://www.emlakjet.com/ilan/19757208",
    "img": "19757208/218E0E3EE1ABE745188E90DBB26A377619757208.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 23981
   },
   {
@@ -214,6 +226,8 @@
    "d": "2026-08-21",
    "u": "https://www.emlakjet.com/ilan/19753447",
    "img": "19753447/6F6C948B9B84088E450ED4DDE17DF83B19753447.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3144
   },
   {
@@ -227,6 +241,8 @@
    "d": "2026-08-21",
    "u": "https://www.emlakjet.com/ilan/19752517",
    "img": "19752517/E3605632C7E362EA99CA37EEB3D3B90A19752517.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 11538
   },
   {
@@ -240,6 +256,8 @@
    "d": "2026-08-20",
    "u": "https://www.emlakjet.com/ilan/19751622",
    "img": "19751622/FA37EF310FF19254380269CD0018553119751622.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4770
   },
   {
@@ -253,6 +271,8 @@
    "d": "2026-08-20",
    "u": "https://www.emlakjet.com/ilan/19747894",
    "img": "19747894/185FBF44B8EA7047B61896079692E77419747894.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 474
   },
   {
@@ -266,6 +286,8 @@
    "d": "2026-08-20",
    "u": "https://www.emlakjet.com/ilan/19747351",
    "img": "19747351/1755C46EC5AE4884F69F168619BBFFCD19747351.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2262
   },
   {
@@ -279,6 +301,8 @@
    "d": "2026-08-20",
    "u": "https://www.emlakjet.com/ilan/19746803",
    "img": "19746803/70B6EC7191201FE6522F2FC61DE65D0A19746803.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 699
   },
   {
@@ -292,6 +316,8 @@
    "d": "2026-08-20",
    "u": "https://www.emlakjet.com/ilan/19746800",
    "img": "19746800/B30EEB81C04FC42C662A6FC12610496C19746800.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 475
   },
   {
@@ -305,6 +331,8 @@
    "d": "2026-08-17",
    "u": "https://www.emlakjet.com/ilan/19733693",
    "img": "19733693/8315F9FF7BF4E3D5678E26E8A706E23A19733693.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4506
   },
   {
@@ -318,6 +346,8 @@
    "d": "2026-08-14",
    "u": "https://www.emlakjet.com/ilan/19727958",
    "img": "19727958/3C19B0DAA7D0B77926501557E1DCB2D719727958.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3351
   },
   {
@@ -331,6 +361,8 @@
    "d": "2026-08-14",
    "u": "https://www.emlakjet.com/ilan/19724765",
    "img": "19724765/D1CB38A9D98B6BE382415A7DFF5BA90519724765.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1250
   },
   {
@@ -344,6 +376,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723089",
    "img": "19723089/D29DC4A5851BC9751F6B840B932B505A19723089.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 497
   },
   {
@@ -357,6 +391,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723076",
    "img": "19723076/0A2BF3A7DEC335B7C474095470A3052D19723076.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 587
   },
   {
@@ -370,6 +406,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723068",
    "img": "19723068/D38B63DC3F684168FB691E48A663319E19723068.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1026
   },
   {
@@ -383,6 +421,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723063",
    "img": "19723063/F95A926629360232121ED6CF2D9F794119723063.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4012
   },
   {
@@ -396,6 +436,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723061",
    "img": "19723061/A8DA34A4A23E017FBD5F044BBA3F37EF19723061.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 887
   },
   {
@@ -409,6 +451,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723058",
    "img": "19723058/FF28510B8C56E0DB009DE931BC6D709819723058.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 175
   },
   {
@@ -422,6 +466,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723054",
    "img": "19723054/EC950400251941E1C778746E129C1DBA19723054.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 591
   },
   {
@@ -435,6 +481,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723047",
    "img": "19723047/647DF76259D8EB2F836D6E42539089FD19723047.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4992
   },
   {
@@ -448,6 +496,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723045",
    "img": "19723045/3FDA4A7B11630880E6B0E941F001A77D19723045.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 328
   },
   {
@@ -461,6 +511,8 @@
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19721384",
    "img": "19721384/FBCA5A273A65DA14B6536A6DA4C4940719721384.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 12330
   },
   {
@@ -474,6 +526,8 @@
    "d": "2026-08-09",
    "u": "https://www.emlakjet.com/ilan/19707200",
    "img": "19707200/21F8E9E802A0D73D6132F8099D0B595019707200.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 407
   },
   {
@@ -487,6 +541,8 @@
    "d": "2026-08-08",
    "u": "https://www.emlakjet.com/ilan/19703432",
    "img": "19703432/968847F63127F637B9AC266DDE20415919703432.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6560
   },
   {
@@ -500,6 +556,8 @@
    "d": "2026-08-08",
    "u": "https://www.emlakjet.com/ilan/19703003",
    "img": "19703003/8E625C2E6C3E6D6CE88A7D550EFEBC4B19703003.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6311
   },
   {
@@ -513,6 +571,8 @@
    "d": "2026-08-07",
    "u": "https://www.emlakjet.com/ilan/19699886",
    "img": "19699886/57F49E0682D94D2D12B71321C6A21B3819699886.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 256
   },
   {
@@ -526,6 +586,8 @@
    "d": "2026-08-07",
    "u": "https://www.emlakjet.com/ilan/19699308",
    "img": "19699308/5FC4B485D2D47AF714500EC6E8BF2DB219699308.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6311
   },
   {
@@ -539,6 +601,8 @@
    "d": "2026-08-06",
    "u": "https://www.emlakjet.com/ilan/19696240",
    "img": "19696240/E8E1FFFF75B1FBADF5FDCE1D3C04137619696240.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1227
   },
   {
@@ -552,6 +616,8 @@
    "d": "2026-08-04",
    "u": "https://www.emlakjet.com/ilan/19686053",
    "img": "19686053/0DC461FFE00B36988BA004C7CE97452B19686053.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2268
   },
   {
@@ -565,6 +631,8 @@
    "d": "2026-08-03",
    "u": "https://www.emlakjet.com/ilan/19681981",
    "img": "19681981/FCC12E9EE8D6754425AF42F378D1132119681981.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9343
   },
   {
@@ -578,6 +646,8 @@
    "d": "2026-08-03",
    "u": "https://www.emlakjet.com/ilan/19679585",
    "img": "19679585/8946720C7EE3DD7875BC16EE8669410E19679585.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7759
   },
   {
@@ -591,6 +661,8 @@
    "d": "2026-08-02",
    "u": "https://www.emlakjet.com/ilan/19676502",
    "img": "19676502/BCC096469DB49E9E5F719AD1EF737CA019676502.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8367
   },
   {
@@ -604,6 +676,8 @@
    "d": "2026-08-02",
    "u": "https://www.emlakjet.com/ilan/19676472",
    "img": "19676472/CB33C254FA37A2AA511B26B76CED2DF719676472.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9091
   },
   {
@@ -617,6 +691,8 @@
    "d": "2026-08-01",
    "u": "https://www.emlakjet.com/ilan/19671859",
    "img": "19671859/772DFEC3FD5B98CC68FA02D2FF703BCA19671859.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 11600
   },
   {
@@ -630,6 +706,8 @@
    "d": "2026-07-31",
    "u": "https://www.emlakjet.com/ilan/19669903",
    "img": "19669903/E809C4AD8EC10940668A9E13D5FAA5F319669903.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 868
   },
   {
@@ -643,6 +721,8 @@
    "d": "2026-07-31",
    "u": "https://www.emlakjet.com/ilan/19668339",
    "img": "19668339/C0BF1DEC714E4475C18342898856631C19668339.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 422
   },
   {
@@ -656,6 +736,8 @@
    "d": "2026-07-30",
    "u": "https://www.emlakjet.com/ilan/19663918",
    "img": "19663918/5F181E804DE9340B6085E4A6BCAAA73B19663918.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8970
   },
   {
@@ -669,6 +751,8 @@
    "d": "2026-07-30",
    "u": "https://www.emlakjet.com/ilan/19663856",
    "img": "19663856/769B72427AF846EB2D027DC2A576B10919663856.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 846
   },
   {
@@ -682,6 +766,8 @@
    "d": "2026-07-29",
    "u": "https://www.emlakjet.com/ilan/19662868",
    "img": "19662868/90D0312AFA75FEEF24B9117E95D6AF8319662868.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1015
   },
   {
@@ -695,6 +781,8 @@
    "d": "2026-07-29",
    "u": "https://www.emlakjet.com/ilan/19660451",
    "img": "19660451/9EC91AB7E55488F37F5F3144799DB6D219660451.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1150
   },
   {
@@ -708,6 +796,8 @@
    "d": "2026-07-28",
    "u": "https://www.emlakjet.com/ilan/19657097",
    "img": "19657097/72D806ED940D6CFDA59D07B4189F14D019657097.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1029
   },
   {
@@ -721,6 +811,8 @@
    "d": "2026-07-28",
    "u": "https://www.emlakjet.com/ilan/19656996",
    "img": "19656996/ED808F142199576AF2B75290135BE3CD19656996.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1734
   },
   {
@@ -734,6 +826,8 @@
    "d": "2026-07-27",
    "u": "https://www.emlakjet.com/ilan/19654121",
    "img": "19654121/2C9CF371852C28E9096C3CF84D607FB519654121.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4476
   },
   {
@@ -747,6 +841,8 @@
    "d": "2026-07-25",
    "u": "https://www.emlakjet.com/ilan/19646397",
    "img": "19646397/149AC121E36792EBCE072F9DB7D1D56419646397.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2440
   },
   {
@@ -760,6 +856,8 @@
    "d": "2026-07-25",
    "u": "https://www.emlakjet.com/ilan/19646160",
    "img": "19646160/827D873C3A299888B721686310F6643419646160.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7259
   },
   {
@@ -773,6 +871,8 @@
    "d": "2026-07-25",
    "u": "https://www.emlakjet.com/ilan/19646158",
    "img": "19646158/A7DDE9C4F6F89C36DCA8F2742175266219646158.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6901
   },
   {
@@ -786,6 +886,8 @@
    "d": "2026-07-24",
    "u": "https://www.emlakjet.com/ilan/19645511",
    "img": "19645511/E2A9E2F95AC827C8C9A93112468545A619645511.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10159
   },
   {
@@ -799,6 +901,8 @@
    "d": "2026-07-22",
    "u": "https://www.emlakjet.com/ilan/19636577",
    "img": "19636577/876EF2A5FB422E9D855598FE6F722DD519636577.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 555
   },
   {
@@ -812,6 +916,8 @@
    "d": "2026-07-22",
    "u": "https://www.emlakjet.com/ilan/19636163",
    "img": "19636163/65C232D8F4B2342B6AF9DCE5D17468E719636163.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4174
   },
   {
@@ -825,6 +931,8 @@
    "d": "2026-07-22",
    "u": "https://www.emlakjet.com/ilan/19634791",
    "img": "19634791/AEB9015C49F0C5E4A5C76B728026391C19634791.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2545
   },
   {
@@ -838,6 +946,8 @@
    "d": "2026-07-21",
    "u": "https://www.emlakjet.com/ilan/19630888",
    "img": "19630888/1F4C4B1095B6D250CEF0165C400C6BF219630888.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 16
   },
   {
@@ -851,6 +961,8 @@
    "d": "2026-07-21",
    "u": "https://www.emlakjet.com/ilan/19630314",
    "img": "19630314/A590C0A15CA0EA17B96AC7D20F41D07919630314.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7271
   },
   {
@@ -864,6 +976,8 @@
    "d": "2026-07-20",
    "u": "https://www.emlakjet.com/ilan/19625739",
    "img": "19625739/397ED0467C0254FE2C4BE806ECA3F78819625739.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9717
   },
   {
@@ -877,6 +991,8 @@
    "d": "2026-07-20",
    "u": "https://www.emlakjet.com/ilan/19624695",
    "img": "19624695/E8C581C023F267BFF67451E9783C592619624695.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2076
   },
   {
@@ -890,6 +1006,8 @@
    "d": "2026-07-19",
    "u": "https://www.emlakjet.com/ilan/19622472",
    "img": "19622472/182187666AAD677A724488F946AE57FC19622472.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 959
   },
   {
@@ -903,6 +1021,8 @@
    "d": "2026-07-18",
    "u": "https://www.emlakjet.com/ilan/19621276",
    "img": "19621276/D02A5ADC583B8BF5FDB1AC5FE38F5F7319621276.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7417
   },
   {
@@ -916,6 +1036,8 @@
    "d": "2026-07-18",
    "u": "https://www.emlakjet.com/ilan/19621275",
    "img": "19621275/AD070D6E2CC86E5A86DA6137A9DA696819621275.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 155
   },
   {
@@ -929,6 +1051,8 @@
    "d": "2026-07-18",
    "u": "https://www.emlakjet.com/ilan/19621265",
    "img": "19621265/72395E18458B7C2ABFA2DDFF5AF2EFE219621265.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 409
   },
   {
@@ -942,6 +1066,8 @@
    "d": "2026-07-18",
    "u": "https://www.emlakjet.com/ilan/19621261",
    "img": "19621261/E67C70B0C718B418B12DC3A25132A47519621261.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5198
   },
   {
@@ -955,6 +1081,8 @@
    "d": "2026-07-18",
    "u": "https://www.emlakjet.com/ilan/19619530",
    "img": "19619530/7D51BC5A3496E63BB34C8DB1FA4CFCF519619530.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9583
   },
   {
@@ -968,6 +1096,8 @@
    "d": "2026-07-17",
    "u": "https://www.emlakjet.com/ilan/19613346",
    "img": "19613346/2A7608D7CC901C61465257C1A4ECE11919613346.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9545
   },
   {
@@ -981,6 +1111,8 @@
    "d": "2026-07-16",
    "u": "https://www.emlakjet.com/ilan/19610851",
    "img": "19610851/CDBA4B4FB07F356A8794EDEB597E74D819610851.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 717
   },
   {
@@ -994,6 +1126,8 @@
    "d": "2026-07-16",
    "u": "https://www.emlakjet.com/ilan/19610616",
    "img": "19610616/CEA58DDD6AAEEC8D8AF45720018C887919610616.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 24390
   },
   {
@@ -1007,6 +1141,8 @@
    "d": "2026-07-16",
    "u": "https://www.emlakjet.com/ilan/19610109",
    "img": "19610109/F143ED1AC3FD073F2F14CF16BCCFD53919610109.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 631
   },
   {
@@ -1020,6 +1156,8 @@
    "d": "2026-07-15",
    "u": "https://www.emlakjet.com/ilan/19608099",
    "img": "19608099/7594C79DD1A7EDA68486B7525D2949B119608099.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 140
   },
   {
@@ -1033,6 +1171,8 @@
    "d": "2026-07-15",
    "u": "https://www.emlakjet.com/ilan/19604571",
    "img": "19604571/4FB711672453570FFD2704A2C4D94FC719604571.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10593
   },
   {
@@ -1046,6 +1186,8 @@
    "d": "2026-07-14",
    "u": "https://www.emlakjet.com/ilan/19604103",
    "img": "19604103/EE681B9C94799CB73ED6C652A7F0F38F19604103.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10
   },
   {
@@ -1059,6 +1201,8 @@
    "d": "2026-07-13",
    "u": "https://www.emlakjet.com/ilan/19596681",
    "img": "19596681/51834EEA110401B83FA57D09D4BB003519596681.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1250
   },
   {
@@ -1072,6 +1216,8 @@
    "d": "2026-07-12",
    "u": "https://www.emlakjet.com/ilan/19593775",
    "img": "19593775/A2B58AD448CBAFDCFE2C32E860D894D219593775.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1735
   },
   {
@@ -1085,6 +1231,8 @@
    "d": "2026-07-11",
    "u": "https://www.emlakjet.com/ilan/19588576",
    "img": "19588576/C08CDEA4665FD012626684B8AC0FAC6C19588576.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1748
   },
   {
@@ -1098,6 +1246,8 @@
    "d": "2026-07-10",
    "u": "https://www.emlakjet.com/ilan/19584745",
    "img": "19584745/77597B8FB0F8EC844866A9AF79C6075719584745.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 12703
   },
   {
@@ -1111,6 +1261,8 @@
    "d": "2026-07-09",
    "u": "https://www.emlakjet.com/ilan/19582352",
    "img": "19582352/92A3C9211A4CC741CB1F4D7D1960A0EE19582352.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3467
   },
   {
@@ -1124,6 +1276,8 @@
    "d": "2026-07-08",
    "u": "https://www.emlakjet.com/ilan/19576026",
    "img": "19576026/EBB7457890B0FA09D199A461EAB9512119576026.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 161
   },
   {
@@ -1137,6 +1291,8 @@
    "d": "2026-07-07",
    "u": "https://www.emlakjet.com/ilan/19570438",
    "img": "19570438/D76E7F012969308870F5BF6E9527CBE019570438.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3354
   },
   {
@@ -1150,6 +1306,8 @@
    "d": "2026-07-05",
    "u": "https://www.emlakjet.com/ilan/19564206",
    "img": "19564206/BF05FF0E5FEC1F491ADD444FCF8A9FBF19564206.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 928
   },
   {
@@ -1163,6 +1321,8 @@
    "d": "2026-07-05",
    "u": "https://www.emlakjet.com/ilan/19564203",
    "img": "19564203/E1BB56CED9BFBBDBDEBF4789915FD92E19564203.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8809
   },
   {
@@ -1176,6 +1336,8 @@
    "d": "2026-07-05",
    "u": "https://www.emlakjet.com/ilan/19563791",
    "img": "19563791/C1E0CA915665628BC8157B54649B825319563791.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 425
   },
   {
@@ -1189,6 +1351,8 @@
    "d": "2026-07-04",
    "u": "https://www.emlakjet.com/ilan/19559425",
    "img": "19559425/73E01B677C34BFE2B0229A98EDF3E17819559425.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6762
   },
   {
@@ -1202,6 +1366,8 @@
    "d": "2026-07-04",
    "u": "https://www.emlakjet.com/ilan/19559130",
    "img": "19559130/273A399DFACA0BA5540CD923207F3B9519559130.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1033
   },
   {
@@ -1215,6 +1381,8 @@
    "d": "2026-07-04",
    "u": "https://www.emlakjet.com/ilan/19558640",
    "img": "19558640/390C53DB88A1FBC252CDE709FC59927619558640.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 300
   },
   {
@@ -1228,6 +1396,8 @@
    "d": "2026-07-04",
    "u": "https://www.emlakjet.com/ilan/19558608",
    "img": "19558608/44DEFC460FA3FFD81719A21FFAD176EE19558608.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1186
   },
   {
@@ -1241,6 +1411,8 @@
    "d": "2026-07-03",
    "u": "https://www.emlakjet.com/ilan/19556155",
    "img": "19556155/83A12746D449C3B822D6C7A14F2DBEB019556155.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 249
   },
   {
@@ -1254,6 +1426,8 @@
    "d": "2026-07-03",
    "u": "https://www.emlakjet.com/ilan/19555772",
    "img": "19555772/E15FC7DE400C8DB5344B48075C9CF30619555772.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10993
   },
   {
@@ -1267,6 +1441,8 @@
    "d": "2026-07-02",
    "u": "https://www.emlakjet.com/ilan/19551747",
    "img": "19551747/F003064EDCA2CAB68A1554F20C1055F119551747.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 29491
   },
   {
@@ -1280,6 +1456,8 @@
    "d": "2026-06-30",
    "u": "https://www.emlakjet.com/ilan/19543306",
    "img": "19543306/3701769B5C0E32BE79A5CEB7102BDC0F19543306.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 628
   },
   {
@@ -1293,6 +1471,8 @@
    "d": "2026-06-28",
    "u": "https://www.emlakjet.com/ilan/19534043",
    "img": "19534043/11C7EF8E79E6D48A2E90BF099D91960719534043.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 396
   },
   {
@@ -1306,6 +1486,8 @@
    "d": "2026-06-28",
    "u": "https://www.emlakjet.com/ilan/19533391",
    "img": "19533391/C745B9EA78FCA91B8FBE537736939E9D19533391.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1333
   },
   {
@@ -1319,6 +1501,8 @@
    "d": "2026-06-28",
    "u": "https://www.emlakjet.com/ilan/19532945",
    "img": "19532945/C73B8E6783C81C9CCB37B8471CD1418719532945.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 350
   },
   {
@@ -1332,6 +1516,8 @@
    "d": "2026-06-26",
    "u": "https://www.emlakjet.com/ilan/19525956",
    "img": "19525956/04AE502D45C70C54F9E02AE25B33F93919525956.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3757
   },
   {
@@ -1345,6 +1531,8 @@
    "d": "2026-06-22",
    "u": "https://www.emlakjet.com/ilan/19509438",
    "img": "19509438/BB5DC2496F8CA32CAF63102C2805F32019509438.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5561
   },
   {
@@ -1358,6 +1546,8 @@
    "d": "2026-06-22",
    "u": "https://www.emlakjet.com/ilan/19509372",
    "img": "19509372/A4CD1F3C67580863D64D478EE5D35E3819509372.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 13043
   },
   {
@@ -1371,6 +1561,8 @@
    "d": "2026-06-19",
    "u": "https://www.emlakjet.com/ilan/19500228",
    "img": "19500228/1521553AA63784509E67B27AD677D2CC19500228.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 379
   },
   {
@@ -1384,6 +1576,8 @@
    "d": "2026-06-19",
    "u": "https://www.emlakjet.com/ilan/19500014",
    "img": "19500014/65D21570267128FE9C2E7027543FC05619500014.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2119
   },
   {
@@ -1397,6 +1591,8 @@
    "d": "2026-06-19",
    "u": "https://www.emlakjet.com/ilan/19499874",
    "img": "19499874/04B9A897BEB5A7D669CDFD577E2B1EA419499874.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 732
   },
   {
@@ -1410,6 +1606,8 @@
    "d": "2026-06-18",
    "u": "https://www.emlakjet.com/ilan/19493259",
    "img": "19493259/F2858579DC70482250D3004F9E9D2B4F19493259.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 340
   },
   {
@@ -1423,6 +1621,8 @@
    "d": "2026-06-17",
    "u": "https://www.emlakjet.com/ilan/19488945",
    "img": "19488945/5928A665D4833783DBEC85E4E8BDAB2E19488945.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 350
   },
   {
@@ -1436,6 +1636,8 @@
    "d": "2026-06-17",
    "u": "https://www.emlakjet.com/ilan/19488916",
    "img": "19488916/88E8FA6676043678261DF85AF58F670B19488916.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 350
   },
   {
@@ -1449,6 +1651,8 @@
    "d": "2026-06-17",
    "u": "https://www.emlakjet.com/ilan/19488398",
    "img": "19488398/E40AC1A9908028BBB369E9818B858BC319488398.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5500
   },
   {
@@ -1462,6 +1666,8 @@
    "d": "2026-06-16",
    "u": "https://www.emlakjet.com/ilan/19484803",
    "img": "19484803/7857242208562D47A0EE9830CE4077B019484803.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 589
   },
   {
@@ -1475,6 +1681,8 @@
    "d": "2026-06-15",
    "u": "https://www.emlakjet.com/ilan/19482322",
    "img": "19482322/FB2DAD4BA51DF3699ADA2050266F7F5E19482322.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1597
   },
   {
@@ -1488,6 +1696,8 @@
    "d": "2026-06-15",
    "u": "https://www.emlakjet.com/ilan/19482321",
    "img": "19482321/BA0DF850A2BEEE5C9A3E4E0E95F4B27A19482321.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8316
   },
   {
@@ -1501,6 +1711,8 @@
    "d": "2026-06-15",
    "u": "https://www.emlakjet.com/ilan/19480817",
    "img": "19480817/B0C58F4AF74FC3B2C4E87F6E4228815B19480817.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1000
   },
   {
@@ -1514,6 +1726,8 @@
    "d": "2026-06-14",
    "u": "https://www.emlakjet.com/ilan/19479227",
    "img": "19479227/5B97202C2CB119294C85E75F7906D17419479227.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 124
   },
   {
@@ -1527,6 +1741,8 @@
    "d": "2026-06-12",
    "u": "https://www.emlakjet.com/ilan/19471099",
    "img": "19471099/6B22E00FC30056A6F6FDB33433C7A9BA19471099.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 415
   },
   {
@@ -1540,6 +1756,8 @@
    "d": "2026-06-12",
    "u": "https://www.emlakjet.com/ilan/19470655",
    "img": "19470655/9B4D51A3AB54E6FCB195AEC0EC37455519470655.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 649
   },
   {
@@ -1553,6 +1771,8 @@
    "d": "2026-06-10",
    "u": "https://www.emlakjet.com/ilan/19463039",
    "img": "19463039/C8243A21597F39CBDFA778D6B00368EE19463039.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3750
   },
   {
@@ -1566,6 +1786,8 @@
    "d": "2026-06-10",
    "u": "https://www.emlakjet.com/ilan/19463023",
    "img": "19463023/E5CD88CB4D1601F0093890F0736CCCA219463023.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 37143
   },
   {
@@ -1579,6 +1801,8 @@
    "d": "2026-06-09",
    "u": "https://www.emlakjet.com/ilan/19460827",
    "img": "19460827/8F07D7128ED17C24AAE78EAB9ECA723619460827.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8896
   },
   {
@@ -1592,6 +1816,8 @@
    "d": "2026-06-09",
    "u": "https://www.emlakjet.com/ilan/19460461",
    "img": "19460461/7F67E62B0B815EFAB32B6D25E7A953EF19460461.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6727
   },
   {
@@ -1605,6 +1831,8 @@
    "d": "2026-06-07",
    "u": "https://www.emlakjet.com/ilan/19451646",
    "img": "19451646/A6873FD00759771683DF7B1ECED2969919451646.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2143
   },
   {
@@ -1618,6 +1846,8 @@
    "d": "2026-06-07",
    "u": "https://www.emlakjet.com/ilan/19451550",
    "img": "19451550/72DB6287AF76E783333A4B2D554957A219451550.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6571
   },
   {
@@ -1631,6 +1861,8 @@
    "d": "2026-06-07",
    "u": "https://www.emlakjet.com/ilan/19451203",
    "img": "19451203/EDE32CE28E440AB3AF234255FD34566A19451203.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1845
   },
   {
@@ -1644,6 +1876,8 @@
    "d": "2026-06-07",
    "u": "https://www.emlakjet.com/ilan/19451186",
    "img": "19451186/C2F65CB0371A5C59CEEA9BE083B0D5B119451186.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1686
   },
   {
@@ -1657,6 +1891,8 @@
    "d": "2026-06-07",
    "u": "https://www.emlakjet.com/ilan/19451164",
    "img": "19451164/BCC38DC39516FAC1FF7C5A953BABE38619451164.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1943
   },
   {
@@ -1670,6 +1906,8 @@
    "d": "2026-06-06",
    "u": "https://www.emlakjet.com/ilan/19447657",
    "img": "19447657/6E1DF718497AE4C9D7F6A49DFDD1251B19447657.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8875
   },
   {
@@ -1683,6 +1921,8 @@
    "d": "2026-06-06",
    "u": "https://www.emlakjet.com/ilan/19446670",
    "img": "19446670/272CC3B27F8450F07DBDBD93B31531B419446670.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10085
   },
   {
@@ -1696,6 +1936,8 @@
    "d": "2026-06-05",
    "u": "https://www.emlakjet.com/ilan/19445632",
    "img": "19445632/5A183A225B0358E0605C5CA5A24A3DDB19445632.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4024
   },
   {
@@ -1709,6 +1951,8 @@
    "d": "2026-06-04",
    "u": "https://www.emlakjet.com/ilan/19438215",
    "img": "19438215/CEB97E150D324F8A609E41FA459E6B9C19438215.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 693
   },
   {
@@ -1722,6 +1966,8 @@
    "d": "2026-06-04",
    "u": "https://www.emlakjet.com/ilan/19437736",
    "img": "19437736/5E9AAD15D6C25783487AF88C03A3550B19437736.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 192
   },
   {
@@ -1735,6 +1981,8 @@
    "d": "2026-06-03",
    "u": "https://www.emlakjet.com/ilan/19435059",
    "img": "19435059/509AE3CB00462316671A79ECEDD8E89519435059.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4667
   },
   {
@@ -1748,6 +1996,8 @@
    "d": "2026-05-27",
    "u": "https://www.emlakjet.com/ilan/19418898",
    "img": "19418898/8AF0555EC086BA4CA319469914A738D619418898.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1138
   },
   {
@@ -1761,6 +2011,8 @@
    "d": "2026-05-27",
    "u": "https://www.emlakjet.com/ilan/19418897",
    "img": "19418897/86D6138DEAE7E8112804CA3FF3124FA419418897.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2046
   },
   {
@@ -1774,6 +2026,8 @@
    "d": "2026-05-25",
    "u": "https://www.emlakjet.com/ilan/19413177",
    "img": "19413177/C259ABF4B608E5ADC239A763951FF81219413177.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10346
   },
   {
@@ -1787,6 +2041,8 @@
    "d": "2026-05-25",
    "u": "https://www.emlakjet.com/ilan/19413084",
    "img": "19413084/945E03A5808BB816C57B286E270076A119413084.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2577
   },
   {
@@ -1800,6 +2056,8 @@
    "d": "2026-05-25",
    "u": "https://www.emlakjet.com/ilan/19413005",
    "img": "19413005/B91E1214F3031A4C31869469BAAA92FE19413005.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 880
   },
   {
@@ -1813,6 +2071,8 @@
    "d": "2026-05-24",
    "u": "https://www.emlakjet.com/ilan/19409345",
    "img": "19409345/180D62F543D523E138865A51B1FF7DF119409345.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 598
   },
   {
@@ -1826,6 +2086,8 @@
    "d": "2026-05-24",
    "u": "https://www.emlakjet.com/ilan/19409344",
    "img": "19409344/9F518722B9C0C6D78E06F4EEA241CB0C19409344.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 311
   },
   {
@@ -1839,6 +2101,8 @@
    "d": "2026-05-23",
    "u": "https://www.emlakjet.com/ilan/19405746",
    "img": "19405746/C261885F311A0433A3B90B6F4ABB3A5419405746.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8312
   },
   {
@@ -1852,6 +2116,8 @@
    "d": "2026-05-21",
    "u": "https://www.emlakjet.com/ilan/19399587",
    "img": "19399587/1076042FFE520224AB3C5BB04CD4D25819399587.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 932
   },
   {
@@ -1865,6 +2131,8 @@
    "d": "2026-05-21",
    "u": "https://www.emlakjet.com/ilan/19398492",
    "img": "19398492/C25080838AEF3926883BFC4263DD2F6B19398492.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5067
   },
   {
@@ -1878,6 +2146,8 @@
    "d": "2026-05-21",
    "u": "https://www.emlakjet.com/ilan/19398269",
    "img": "19398269/359ECF5D8B55585C286A89931A6FC0CE19398269.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2840
   },
   {
@@ -1891,6 +2161,8 @@
    "d": "2026-05-20",
    "u": "https://www.emlakjet.com/ilan/19393727",
    "img": "19393727/012CEE928B236132B643F6376EE4627019393727.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3293
   },
   {
@@ -1904,6 +2176,8 @@
    "d": "2026-05-20",
    "u": "https://www.emlakjet.com/ilan/19391391",
    "img": "19391391/E8F86AA16663F339C46B4A24AE08641E19391391.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7812
   },
   {
@@ -1917,6 +2191,8 @@
    "d": "2026-05-16",
    "u": "https://www.emlakjet.com/ilan/19378456",
    "img": "19378456/EC339CD0E90DDCE7484B24FDE806BC7319378456.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1520
   },
   {
@@ -1930,6 +2206,8 @@
    "d": "2026-05-15",
    "u": "https://www.emlakjet.com/ilan/19373491",
    "img": "19373491/305095E7C322F02CBFE90D8E568C797019373491.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 362
   },
   {
@@ -1943,6 +2221,8 @@
    "d": "2026-05-14",
    "u": "https://www.emlakjet.com/ilan/19369386",
    "img": "19369386/472B9205F77A285F29915FD260892A1119369386.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1900
   },
   {
@@ -1956,6 +2236,8 @@
    "d": "2026-05-14",
    "u": "https://www.emlakjet.com/ilan/19369385",
    "img": "19369385/2453CD5B6D35ED98AD22C6ED2B4E4F9A19369385.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1500
   },
   {
@@ -1969,6 +2251,8 @@
    "d": "2026-05-14",
    "u": "https://www.emlakjet.com/ilan/19368100",
    "img": "19368100/B4B9F3A755BEC74195679CB09A953F2519368100.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 257
   },
   {
@@ -1982,6 +2266,8 @@
    "d": "2026-05-14",
    "u": "https://www.emlakjet.com/ilan/19366915",
    "img": "19366915/1DD5D6BF4A73F071B94425D8ACA3E1C319366915.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6034
   },
   {
@@ -1995,6 +2281,8 @@
    "d": "2026-05-13",
    "u": "https://www.emlakjet.com/ilan/19364312",
    "img": "19364312/5A83168CB49CD716AFFA98BAC74B4C0B19364312.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1138
   },
   {
@@ -2008,6 +2296,8 @@
    "d": "2026-05-13",
    "u": "https://www.emlakjet.com/ilan/19361416",
    "img": "19361416/3FC3FFA40476D21C3AE94CBD688351E819361416.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2623
   },
   {
@@ -2021,6 +2311,8 @@
    "d": "2026-05-11",
    "u": "https://www.emlakjet.com/ilan/19355446",
    "img": "19355446/68BF85213684398564EBF958904FA2CC19355446.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 12468
   },
   {
@@ -2034,6 +2326,8 @@
    "d": "2026-05-10",
    "u": "https://www.emlakjet.com/ilan/19350533",
    "img": "19350533/99C5FCDCB2940839A6BB885B1E3739A419350533.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 649
   },
   {
@@ -2047,6 +2341,8 @@
    "d": "2026-05-09",
    "u": "https://www.emlakjet.com/ilan/19346333",
    "img": "19346333/2CADE362E30AEAF157C277F279B26EAF19346333.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2676
   },
   {
@@ -2060,6 +2356,8 @@
    "d": "2026-05-09",
    "u": "https://www.emlakjet.com/ilan/19346026",
    "img": "19346026/DA8320A801DD0D0EDC33E4D115906C0819346026.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2556
   },
   {
@@ -2073,6 +2371,8 @@
    "d": "2026-05-08",
    "u": "https://www.emlakjet.com/ilan/19341967",
    "img": "19341967/66913C7E4D828FAD3BD597C7B166C6D119341967.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9737
   },
   {
@@ -2086,6 +2386,8 @@
    "d": "2026-05-08",
    "u": "https://www.emlakjet.com/ilan/19341812",
    "img": "19341812/BEDD2A05C8DE2BD63CA03E7BE563825819341812.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5239
   },
   {
@@ -2099,6 +2401,8 @@
    "d": "2026-05-07",
    "u": "https://www.emlakjet.com/ilan/19340145",
    "img": "19340145/BF7F7598B6257629A24C18C41BDF6C1D19340145.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8249
   },
   {
@@ -2112,6 +2416,8 @@
    "d": "2026-05-06",
    "u": "https://www.emlakjet.com/ilan/19336616",
    "img": "19336616/C44C6CD7B1F8F4465D9AC48A018572F019336616.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3661
   },
   {
@@ -2125,6 +2431,8 @@
    "d": "2026-05-04",
    "u": "https://www.emlakjet.com/ilan/19326093",
    "img": "19326093/73375D0A7D92EFDFF2981ABE3F88A3A419326093.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7654
   },
   {
@@ -2138,6 +2446,8 @@
    "d": "2026-05-03",
    "u": "https://www.emlakjet.com/ilan/19323119",
    "img": "19323119/FA8D996320F11CB1BA16F819A70C612C19323119.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3279
   },
   {
@@ -2151,6 +2461,8 @@
    "d": "2026-05-02",
    "u": "https://www.emlakjet.com/ilan/19319539",
    "img": "19319539/25025A22BC57D5F208A7D80F4C9905F719319539.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 675
   },
   {
@@ -2164,6 +2476,8 @@
    "d": "2026-05-02",
    "u": "https://www.emlakjet.com/ilan/19318707",
    "img": "19318707/85D0B66D885A6C45D6E10A438CEA229E19318707.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 760
   },
   {
@@ -2177,6 +2491,8 @@
    "d": "2026-05-01",
    "u": "https://www.emlakjet.com/ilan/19316787",
    "img": "19316787/1684805260F52D7AF9CE4337FF29097419316787.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1146
   },
   {
@@ -2190,6 +2506,8 @@
    "d": "2026-05-01",
    "u": "https://www.emlakjet.com/ilan/19314497",
    "img": "19314497/3B31C8FC0C505494AD187C2D1CB3E86C19314497.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7500
   },
   {
@@ -2203,6 +2521,8 @@
    "d": "2026-05-01",
    "u": "https://www.emlakjet.com/ilan/19313208",
    "img": "19313208/32611BEEDA65BEF86FD541967E05614E19313208.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6540
   },
   {
@@ -2216,6 +2536,8 @@
    "d": "2026-04-30",
    "u": "https://www.emlakjet.com/ilan/19310608",
    "img": "19310608/1E8772CE9130C8D423C5CE3C6F75954019310608.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1567
   },
   {
@@ -2229,6 +2551,8 @@
    "d": "2026-04-30",
    "u": "https://www.emlakjet.com/ilan/19307363",
    "img": "19307363/DB12F46BCF6B118273E728B2775052BB19307363.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1700
   },
   {
@@ -2242,6 +2566,8 @@
    "d": "2026-04-30",
    "u": "https://www.emlakjet.com/ilan/19307358",
    "img": "19307358/A3E7EA02CFE49D76F54E17AF0D2BCE0D19307358.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1600
   },
   {
@@ -2255,6 +2581,8 @@
    "d": "2026-04-30",
    "u": "https://www.emlakjet.com/ilan/19307355",
    "img": "19307355/AECEB6C92F3A63C5347770A49B570A9619307355.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4346
   },
   {
@@ -2268,6 +2596,8 @@
    "d": "2026-04-27",
    "u": "https://www.emlakjet.com/ilan/19295402",
    "img": "19295402/057F8FB5087C8AE5D4F56E7C39766A9A19295402.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 606
   },
   {
@@ -2281,6 +2611,8 @@
    "d": "2026-04-18",
    "u": "https://www.emlakjet.com/ilan/19265112",
    "img": "19265112/053FC84CE6B01821EE3F84937235B52519265112.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10519
   },
   {
@@ -2294,6 +2626,8 @@
    "d": "2026-04-16",
    "u": "https://www.emlakjet.com/ilan/19255692",
    "img": "19255692/CEE9DB2DE1673B5463026AB679E44BE419255692.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2000
   },
   {
@@ -2307,6 +2641,8 @@
    "d": "2026-04-11",
    "u": "https://www.emlakjet.com/ilan/19234580",
    "img": "19234580/B850B6BAA20065C2D9D0D8E6C4A82D6B19234580.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7263
   },
   {
@@ -2320,6 +2656,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19224768",
    "img": "19224768/6D76577C30EFAC3742DF775249D0A51C19224768.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1575
   },
   {
@@ -2333,6 +2671,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19224766",
    "img": "19224766/C25DB77C3F470480A535444FFEE35AE119224766.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1693
   },
   {
@@ -2346,6 +2686,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19224755",
    "img": "19224755/BC4AC9D38C5673D49F47B59CC08784FB19224755.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1107
   },
   {
@@ -2359,6 +2701,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19222790",
    "img": "19222790/0F85B446A1655EA750F517413B726E1419222790.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 252
   },
   {
@@ -2372,6 +2716,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19216562",
    "img": "19216562/6A63FA7ED49DFD9E68EE678EC5FE8BA719216562.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2184
   },
   {
@@ -2385,6 +2731,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19216033",
    "img": "19216033/1639F524F2E44053875F46078C60306B19216033.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 74
   },
   {
@@ -2398,6 +2746,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19216032",
    "img": "19216032/18D3663357CCF14996A2FACD1D4A7AD719216032.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 826
   },
   {
@@ -2411,6 +2761,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19216021",
    "img": "19216021/91CF015B63F7E20BE5892A6F9633A58B19216021.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7463
   },
   {
@@ -2424,6 +2776,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19216017",
    "img": "19216017/EB26ECD6705A4B6FB866E0C57979B13719216017.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 100
   },
   {
@@ -2437,6 +2791,8 @@
    "d": "2026-04-10",
    "u": "https://www.emlakjet.com/ilan/19213192",
    "img": "19213192/D7172CA8A89EFF4C86410D8F8FB2286019213192.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4355
   },
   {
@@ -2450,6 +2806,8 @@
    "d": "2026-04-03",
    "u": "https://www.emlakjet.com/ilan/19184655",
    "img": "19184655/82CB4FD52E29E4E8B5847EB4B4BB543E19184655.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1026
   },
   {
@@ -2463,6 +2821,8 @@
    "d": "2026-04-02",
    "u": "https://www.emlakjet.com/ilan/19182146",
    "img": "19182146/C9B150F740E7536EE308ADECA66833F619182146.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2178
   },
   {
@@ -2476,6 +2836,8 @@
    "d": "2026-04-01",
    "u": "https://www.emlakjet.com/ilan/19176938",
    "img": "19176938/529E52A7FE1DB79E9A448C307F0E460F19176938.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6275
   },
   {
@@ -2489,6 +2851,8 @@
    "d": "2026-03-26",
    "u": "https://www.emlakjet.com/ilan/19153586",
    "img": "19153586/AFA7C006CEE25C08D30B7900CE20895719153586.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5417
   },
   {
@@ -2502,6 +2866,8 @@
    "d": "2026-03-21",
    "u": "https://www.emlakjet.com/ilan/19138541",
    "img": "19138541/E0A7A9467F944611A31BA39EF10E669319138541.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 350
   },
   {
@@ -2515,6 +2881,8 @@
    "d": "2026-03-19",
    "u": "https://www.emlakjet.com/ilan/19137206",
    "img": "19137206/886F0672471B8709880EE31345560D2319137206.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 350
   },
   {
@@ -2528,6 +2896,8 @@
    "d": "2026-03-07",
    "u": "https://www.emlakjet.com/ilan/19097683",
    "img": "19097683/FCF00CA91C78F49DF2C5CE07E72A6A2E19097683.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 194
   },
   {
@@ -2541,6 +2911,8 @@
    "d": "2026-03-07",
    "u": "https://www.emlakjet.com/ilan/19097682",
    "img": "19097682/2102D5F0400BF04CF2A987264C5AD66C19097682.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 191
   },
   {
@@ -2554,6 +2926,8 @@
    "d": "2026-03-06",
    "u": "https://www.emlakjet.com/ilan/19093112",
    "img": "19093112/C6192729A6FF6F19BBF854300DF8650B19093112.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2679
   },
   {
@@ -2567,6 +2941,8 @@
    "d": "2026-03-05",
    "u": "https://www.emlakjet.com/ilan/19089093",
    "img": "19089093/20AFF3D3B6BDE459875B8CD5707991B519089093.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7273
   },
   {
@@ -2580,6 +2956,8 @@
    "d": "2026-03-02",
    "u": "https://www.emlakjet.com/ilan/19077142",
    "img": "19077142/0A6B0E5B6E33ABA98913466F01E4321119077142.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1768
   },
   {
@@ -2593,6 +2971,8 @@
    "d": "2026-03-01",
    "u": "https://www.emlakjet.com/ilan/19073234",
    "img": "19073234/2212067BCD5B8CB9D67728A0FF74938C19073234.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 360
   },
   {
@@ -2606,6 +2986,8 @@
    "d": "2026-02-28",
    "u": "https://www.emlakjet.com/ilan/19070598",
    "img": "19070598/B15ABE12748CF1B5E8C8299A31EA575F19070598.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9033
   },
   {
@@ -2619,6 +3001,8 @@
    "d": "2026-02-28",
    "u": "https://www.emlakjet.com/ilan/19070597",
    "img": "19070597/D85879C7A5FD07895FEE1E3974509F1919070597.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10350
   },
   {
@@ -2632,6 +3016,8 @@
    "d": "2026-02-28",
    "u": "https://www.emlakjet.com/ilan/19069660",
    "img": "19069660/751EDEEEF93FEAC76AE66AF15C7413B819069660.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3104
   },
   {
@@ -2645,6 +3031,8 @@
    "d": "2026-02-27",
    "u": "https://www.emlakjet.com/ilan/19067351",
    "img": "19067351/0A62B6E27B2578479D62C02948C9E21819067351.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 362
   },
   {
@@ -2658,6 +3046,8 @@
    "d": "2026-02-27",
    "u": "https://www.emlakjet.com/ilan/19067346",
    "img": "19067346/E1EEAA8F16CEE6367D625ACFB85AEFC719067346.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 12333
   },
   {
@@ -2671,6 +3061,8 @@
    "d": "2026-02-27",
    "u": "https://www.emlakjet.com/ilan/19066381",
    "img": "19066381/04F1800C7DDF37F3A671D807E1BF3DD619066381.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 643
   },
   {
@@ -2684,6 +3076,8 @@
    "d": "2026-02-26",
    "u": "https://www.emlakjet.com/ilan/19064111",
    "img": "19064111/D6E90DB7560BDE6D715E2BDBA45286BE19064111.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10202
   },
   {
@@ -2697,6 +3091,8 @@
    "d": "2026-02-22",
    "u": "https://www.emlakjet.com/ilan/19049647",
    "img": "19049647/D9277F4FE64276F71428DDEF63E6472019049647.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1658
   },
   {
@@ -2710,6 +3106,8 @@
    "d": "2026-02-21",
    "u": "https://www.emlakjet.com/ilan/19045172",
    "img": "19045172/E53806CD3123D13BB2A8656A150C353719045172.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 948
   },
   {
@@ -2723,6 +3121,8 @@
    "d": "2026-02-20",
    "u": "https://www.emlakjet.com/ilan/19043870",
    "img": "19043870/63A818579C5F596521E04C544602A87519043870.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3804
   },
   {
@@ -2736,6 +3136,8 @@
    "d": "2026-02-19",
    "u": "https://www.emlakjet.com/ilan/19036404",
    "img": "19036404/4EBDDAA2F052017F816B14DC9861575819036404.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 585
   },
   {
@@ -2749,6 +3151,8 @@
    "d": "2026-02-17",
    "u": "https://www.emlakjet.com/ilan/19029303",
    "img": "19029303/C4C8EA1AAA29DCD9D0A3624A3DA0BB7719029303.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 7093
   },
   {
@@ -2762,6 +3166,8 @@
    "d": "2026-02-16",
    "u": "https://www.emlakjet.com/ilan/19027769",
    "img": "19027769/2BF1CF1FB7A17B5E6969B6F5671833DB19027769.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1048
   },
   {
@@ -2775,6 +3181,8 @@
    "d": "2026-02-14",
    "u": "https://www.emlakjet.com/ilan/19014246",
    "img": "19014246/B66991D6DBBA833CA29AA426E11E1C3619014246.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1250
   },
   {
@@ -2788,6 +3196,8 @@
    "d": "2026-02-11",
    "u": "https://www.emlakjet.com/ilan/18992796",
    "img": "18992796/827B51440A650E413AA97E1BA72DB44B18992796.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 329
   },
   {
@@ -2801,6 +3211,8 @@
    "d": "2026-02-10",
    "u": "https://www.emlakjet.com/ilan/18986297",
    "img": "18986297/D5B5B06D6C774EE77A21AC4907BC737718986297.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1110
   },
   {
@@ -2814,6 +3226,8 @@
    "d": "2026-02-10",
    "u": "https://www.emlakjet.com/ilan/18986296",
    "img": "18986296/90AD61688CFB52B90EBA7F19447BB86B18986296.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1251
   },
   {
@@ -2827,6 +3241,8 @@
    "d": "2026-02-08",
    "u": "https://www.emlakjet.com/ilan/18979036",
    "img": "18979036/29B78CAB3E42A02FE554F0654A3F1D2618979036.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 587
   },
   {
@@ -2840,6 +3256,8 @@
    "d": "2026-01-31",
    "u": "https://www.emlakjet.com/ilan/18937003",
    "img": "18937003/BAB936FE3B02402318A967515CFCC7DD18937003.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 301
   },
   {
@@ -2853,6 +3271,8 @@
    "d": "2026-01-30",
    "u": "https://www.emlakjet.com/ilan/18928724",
    "img": "18928724/7F5032159AA6059A4E78BA9E27CB8D3F18928724.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6100
   },
   {
@@ -2866,6 +3286,8 @@
    "d": "2026-01-21",
    "u": "https://www.emlakjet.com/ilan/18868883",
    "img": "18868883/36E3FFDFA2D54C090DFE1D48087AB0E018868883.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2000
   },
   {
@@ -2879,6 +3301,8 @@
    "d": "2026-01-17",
    "u": "https://www.emlakjet.com/ilan/18848044",
    "img": "18848044/1159231C01F695A19F5069A7F13976D318848044.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 44318
   },
   {
@@ -2892,6 +3316,8 @@
    "d": "2026-01-12",
    "u": "https://www.emlakjet.com/ilan/18814754",
    "img": "18814754/FDF8559A93B0FC70E790E14BC005CA8518814754.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 195
   },
   {
@@ -2905,6 +3331,8 @@
    "d": "2026-01-10",
    "u": "https://www.emlakjet.com/ilan/18802434",
    "img": "18802434/6B3CE3FE3B61E20070854004007AE89C18802434.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9362
   },
   {
@@ -2918,6 +3346,8 @@
    "d": "2026-01-05",
    "u": "https://www.emlakjet.com/ilan/18769816",
    "img": "18769816/4E1E414A577AFE714E923F201B2F28B218769816.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1678
   },
   {
@@ -2931,6 +3361,8 @@
    "d": "2026-01-04",
    "u": "https://www.emlakjet.com/ilan/18761360",
    "img": "18761360/AE6D9D738AFF2D7EF8CD88EFEF296B3B18761360.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1466
   },
   {
@@ -2944,6 +3376,8 @@
    "d": "2026-01-03",
    "u": "https://www.emlakjet.com/ilan/18752330",
    "img": "18752330/FD1576BDCCCA8EE95E5C05F8FFE29DF518752330.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 508
   },
   {
@@ -2957,6 +3391,8 @@
    "d": "2025-12-27",
    "u": "https://www.emlakjet.com/ilan/18709053",
    "img": "18709053/798A63F9A8305AEBCCACB1BB766C1ADC18709053.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 607
   },
   {
@@ -2970,6 +3406,8 @@
    "d": "2025-12-20",
    "u": "https://www.emlakjet.com/ilan/18664000",
    "img": "18664000/70856144D4F3044146F79115D561230F18664000.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6442
   },
   {
@@ -2983,6 +3421,8 @@
    "d": "2025-12-13",
    "u": "https://www.emlakjet.com/ilan/18609115",
    "img": "18609115/96754D4A8FB6258C6F6415CB9655AFB018609115.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1300
   },
   {
@@ -2996,6 +3436,8 @@
    "d": "2025-12-13",
    "u": "https://www.emlakjet.com/ilan/18609114",
    "img": "18609114/8DF7E8254FE24353F5BC0A6C3DD0BDB918609114.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 8100
   },
   {
@@ -3009,6 +3451,8 @@
    "d": "2025-12-04",
    "u": "https://www.emlakjet.com/ilan/18548306",
    "img": "18548306/2837855C8763E6E0D20D7428FD2EAFA518548306.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 251
   },
   {
@@ -3022,6 +3466,8 @@
    "d": "2025-12-04",
    "u": "https://www.emlakjet.com/ilan/18547875",
    "img": "18547875/9B0F4762B2DA802C6F8980B9DE5E795E18547875.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 300
   },
   {
@@ -3035,6 +3481,8 @@
    "d": "2025-12-02",
    "u": "https://www.emlakjet.com/ilan/18531257",
    "img": "18531257/8967340938E2716AEB20CEE4AC362BFC18531257.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1332
   },
   {
@@ -3048,6 +3496,8 @@
    "d": "2025-12-01",
    "u": "https://www.emlakjet.com/ilan/18527733",
    "img": "18527733/39182B334BC959CDC2EE98D6F7440FC018527733.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1208
   },
   {
@@ -3061,6 +3511,8 @@
    "d": "2025-11-22",
    "u": "https://www.emlakjet.com/ilan/18470728",
    "img": "18470728/560ED18BB43657C806300CCA9AC6020618470728.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1558
   },
   {
@@ -3074,6 +3526,8 @@
    "d": "2025-11-20",
    "u": "https://www.emlakjet.com/ilan/18458825",
    "img": "18458825/0F269203169EACF0FE3AE71EE36980CC18458825.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1000
   },
   {
@@ -3087,6 +3541,8 @@
    "d": "2025-11-17",
    "u": "https://www.emlakjet.com/ilan/18440341",
    "img": "18440341/9D977D084C63793BFCDD6EDFF8C05C7818440341.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "sus": true,
    "ppm": null
   },
@@ -3101,6 +3557,8 @@
    "d": "2025-11-12",
    "u": "https://www.emlakjet.com/ilan/18406285",
    "img": "18406285/27101852C40597C3E0F4EBA7BFCF830518406285.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 402
   },
   {
@@ -3114,6 +3572,8 @@
    "d": "2025-11-06",
    "u": "https://www.emlakjet.com/ilan/18368854",
    "img": "18368854/89723BCBCC59BFEFB23BDAE1128EA55718368854.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1750
   },
   {
@@ -3127,6 +3587,8 @@
    "d": "2025-10-16",
    "u": "https://www.emlakjet.com/ilan/18252342",
    "img": "18252342/897DBB6FE42258D101796088BDB5949418252342.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3316
   },
   {
@@ -3140,6 +3602,8 @@
    "d": "2025-09-23",
    "u": "https://www.emlakjet.com/ilan/18110576",
    "img": "18110576/3D61526F2F9C70D709DE665658281FB718110576.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 12500
   },
   {
@@ -3153,6 +3617,8 @@
    "d": "2025-09-20",
    "u": "https://www.emlakjet.com/ilan/18097302",
    "img": "18097302/B18BDE8AA498A5AFAA7E5EAA517C76D418097302.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 2120
   },
   {
@@ -3166,6 +3632,8 @@
    "d": "2025-09-07",
    "u": "https://www.emlakjet.com/ilan/18025142",
    "img": "18025142/1609BC2085AF73C7187227EB3ED231E318025142.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4146
   },
   {
@@ -3179,6 +3647,8 @@
    "d": "2025-08-24",
    "u": "https://www.emlakjet.com/ilan/17944956",
    "img": "17944956/E816216F636E047DB1AD7600A917C12717944956.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1500
   },
   {
@@ -3192,6 +3662,8 @@
    "d": "2025-08-16",
    "u": "https://www.emlakjet.com/ilan/17893830",
    "img": "17893830/4584DB0E498578789062E5EB99FA426417893830.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 3859
   },
   {
@@ -3205,6 +3677,8 @@
    "d": "2025-07-29",
    "u": "https://www.emlakjet.com/ilan/17731623",
    "img": "17731623/6CFB9D0DACF04404A5F65DC92B1E305517731623.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 562
   },
   {
@@ -3218,6 +3692,8 @@
    "d": "2025-07-27",
    "u": "https://www.emlakjet.com/ilan/17721957",
    "img": "17721957/92232DE2CA725B1C1C2E5CDC1D9C9B2517721957.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6006
   },
   {
@@ -3231,6 +3707,8 @@
    "d": "2025-07-21",
    "u": "https://www.emlakjet.com/ilan/17690763",
    "img": "17690763/421F54A9DEAF244C84D5CFBBF376740717690763.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 872
   },
   {
@@ -3244,6 +3722,8 @@
    "d": "2025-07-17",
    "u": "https://www.emlakjet.com/ilan/17672727",
    "img": "17672727/7DE5E5B72C8D2B1D64F62EF80BB48F8717672727.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1013
   },
   {
@@ -3257,6 +3737,8 @@
    "d": "2025-07-16",
    "u": "https://www.emlakjet.com/ilan/17662898",
    "img": "17662898/F07D73D176FB5BB3DFC8B2BDA21EDAB817662898.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1625
   },
   {
@@ -3270,6 +3752,8 @@
    "d": "2025-07-11",
    "u": "https://www.emlakjet.com/ilan/17636097",
    "img": "17636097/C2AF2FDC8CF554D5F60B9E7AA35D7F4C17636097.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "m2src": "العنوان",
    "ppm": 4340
   },
@@ -3284,6 +3768,8 @@
    "d": "2025-07-03",
    "u": "https://www.emlakjet.com/ilan/17588522",
    "img": "17588522/8AA26364EB7EF2CCB10454AF74590EF917588522.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 1140
   },
   {
@@ -3297,6 +3783,8 @@
    "d": "2025-06-05",
    "u": "https://www.emlakjet.com/ilan/17455746",
    "img": "17455746/22BB1D24672DC2D9394E058B6A45F21217455746.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 727
   },
   {
@@ -3310,6 +3798,8 @@
    "d": "2025-05-10",
    "u": "https://www.emlakjet.com/ilan/17311308",
    "img": "17311308/0AA78F85BE91E67CEE21C86FDAD94B2617311308.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 6044
   },
   {
@@ -3323,6 +3813,8 @@
    "d": "2025-01-31",
    "u": "https://www.emlakjet.com/ilan/16758638",
    "img": "16758638/42BD0306E674A494A35E22D8FE3FC32416758638.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 4593
   },
   {
@@ -3336,6 +3828,8 @@
    "d": "2025-01-27",
    "u": "https://www.emlakjet.com/ilan/16739696",
    "img": "16739696/8C61F69B0842461F70388B40C11B269E16739696.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5159
   },
   {
@@ -3349,6 +3843,8 @@
    "d": "2025-01-13",
    "u": "https://www.emlakjet.com/ilan/16651700",
    "img": "16651700/89257EE20504BB490E97E0D000A3533A16651700.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 904
   },
   {
@@ -3362,6 +3858,8 @@
    "d": "2024-12-08",
    "u": "https://www.emlakjet.com/ilan/16437437",
    "img": "16437437/7BD270ADF292FA90FF508BF8D28A0B9316437437.png",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 9688
   },
   {
@@ -3375,6 +3873,8 @@
    "d": "2022-04-18",
    "u": "https://www.emlakjet.com/ilan/11007933",
    "img": "11007933/6F10A23F76103C2E63B9CA7C7848B29111007933.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 476
   },
   {
@@ -3388,6 +3888,8 @@
    "d": "2021-07-11",
    "u": "https://www.emlakjet.com/ilan/9751282",
    "img": "9751282/F36C1BA9103D704EE35A5C5BB93A2C379751282.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5019
   },
   {
@@ -3401,6 +3903,8 @@
    "d": "2021-07-11",
    "u": "https://www.emlakjet.com/ilan/9751228",
    "img": "9751228/C6FFD1811122AA1714E19C2284749F379751228.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 5282
   },
   {
@@ -3414,6 +3918,8 @@
    "d": "2021-01-14",
    "u": "https://www.emlakjet.com/ilan/9124699",
    "img": "9124699/4D43E4DFEEE6A2FD72DC4239B4AF4C619124699.png",
+   "cat": "أرض · أرسا",
+   "land": true,
    "ppm": 10601
   }
  ]
