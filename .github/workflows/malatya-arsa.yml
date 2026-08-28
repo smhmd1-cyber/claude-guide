@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '25 5 * * *'      # 08:25 بتوقيت القدس صيفاً — بعد وكيل الأراضي مباشرةً
   workflow_dispatch:
+    inputs:
+      full_scan:
+        description: 'مسح أرشيف ilan.gov.tr كاملاً (بطيء — مرّة واحدة عند التأسيس)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -15,6 +20,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
     steps:
@@ -29,38 +35,69 @@ jobs:
       - name: تثبيت المتطلّبات
         run: pip install --quiet requests
 
-      - name: سحب إعلانات الأرسا في ولاية ملاطيا
+      - name: سحب إعلانات الأرض في ولاية ملاطيا
         run: python scripts/scrape_arsa.py
         env:
           ARSA_OUT: malatya/data/arsa-listings.json
+          ILAN_FULL_SCAN: ${{ inputs.full_scan && '1' || '' }}
 
       - name: التحقّق من سلامة الملف
         run: |
           python - <<'PY'
           import json, sys
           d = json.load(open('malatya/data/arsa-listings.json', encoding='utf-8'))
-          errs = []
+          E = []
           if d.get('province') != 'Malatya':
-              errs.append('province ليست Malatya')
+              E.append('province ليست Malatya')
           items = d.get('items') or []
           if len(items) < 30:
-              errs.append('عدد الإعلانات %d — أقل من الحدّ الأدنى المعقول (30)' % len(items))
-          ids = [r.get('id') for r in items]
-          if len(ids) != len(set(ids)):
-              errs.append('توجد معرّفات مكرّرة')
-          for r in items:
-              for k in ('id', 't', 'ilce', 'u'):
-                  if not r.get(k):
-                      errs.append('حقل %s ناقص في الإعلان %s' % (k, r.get('id')))
-                      break
-              if r.get('u') and not r['u'].startswith('https://'):
-                  errs.append('رابط غير https في %s' % r.get('id'))
+              E.append('عدد الإعلانات %d — أقل من الحدّ الأدنى المعقول (30)' % len(items))
           if d.get('total') != len(items):
-              errs.append('total لا يساوي عدد العناصر')
-          if errs:
-              print('\n'.join('✗ ' + e for e in errs[:20]))
+              E.append('total لا يساوي عدد العناصر')
+
+          DIST = {"Battalgazi","Yeşilyurt","Akçadağ","Arapgir","Arguvan","Darende","Doğanşehir",
+                  "Doğanyol","Hekimhan","Kale","Kuluncak","Pütürge","Yazıhan"}
+          keys = set()
+          for r in items:
+              k = (r.get('src') or 'emlakjet', r.get('id'))
+              if k in keys:
+                  E.append('معرّف مكرّر داخل المصدر: %s/%s' % k)
+              keys.add(k)
+              for f in ('id', 't', 'ilce', 'u'):
+                  if not r.get(f):
+                      E.append('حقل %s ناقص في %s/%s' % (f, k[0], k[1])); break
+              if not str(r.get('u','')).startswith('https://'):
+                  E.append('رابط غير https في %s/%s' % k)
+              if r.get('ilce') not in DIST:
+                  E.append('إلچة خارج ولاية ملاطيا: %r في %s/%s' % (r.get('ilce'), k[0], k[1]))
+              if r.get('ppm') is not None and r.get('src') == 'ilangovtr' and r.get('ppm') <= 0:
+                  E.append('₺/م² غير صالح في %s/%s' % k)
+
+          srcs = d.get('sources') or []
+          if not srcs:
+              E.append('لا توجد قائمة مصادر')
+          if all(s.get('status') == 'failed' for s in srcs):
+              E.append('كل المصادر فشلت')
+          for s in srcs:
+              n = len([r for r in items if (r.get('src') or 'emlakjet') == s.get('key')])
+              if s.get('count') != n:
+                  E.append('عدّاد المصدر %s (%s) لا يطابق العناصر (%d)' % (s.get('key'), s.get('count'), n))
+
+          # وسيط ₺/م² يجب أن يُحتسب من السوق وحده
+          mk = sorted(r['ppm'] for r in items if r.get('ppm') and (r.get('src') or 'emlakjet') == 'emlakjet')
+          if mk:
+              import statistics
+              exp = int(statistics.median(mk))
+              if d['summary'].get('ppm_median') != exp:
+                  E.append('ppm_median %s ≠ الوسيط المعاد حسابه %d' % (d['summary'].get('ppm_median'), exp))
+
+          if E:
+              print('\n'.join('✗ ' + e for e in E[:25]))
               sys.exit(1)
-          print('✓ %d إعلاناً · %d إلچة فيها إعلانات' % (len(items), d['summary']['districts_with_listings']))
+          print('✓ %d إعلاناً · %s · %d إلچة فيها إعلانات'
+                % (len(items), d['summary'].get('by_source'), d['summary']['districts_with_listings']))
+          for s in srcs:
+              print('   %-12s %-7s %d' % (s.get('key'), s.get('status'), s.get('count')))
           PY
 
       - name: حصر التعديلات في ملف البيانات وحده
