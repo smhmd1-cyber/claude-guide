@@ -1,0 +1,99 @@
+name: ملاطيا — أراضي البناء (يومي)
+
+on:
+  schedule:
+    - cron: '25 5 * * *'      # 08:25 بتوقيت القدس صيفاً — بعد وكيل الأراضي مباشرةً
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: malatya-arsa
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: تثبيت المتطلّبات
+        run: pip install --quiet requests
+
+      - name: سحب إعلانات الأرسا في ولاية ملاطيا
+        run: python scripts/scrape_arsa.py
+        env:
+          ARSA_OUT: malatya/data/arsa-listings.json
+
+      - name: التحقّق من سلامة الملف
+        run: |
+          python - <<'PY'
+          import json, sys
+          d = json.load(open('malatya/data/arsa-listings.json', encoding='utf-8'))
+          errs = []
+          if d.get('province') != 'Malatya':
+              errs.append('province ليست Malatya')
+          items = d.get('items') or []
+          if len(items) < 30:
+              errs.append('عدد الإعلانات %d — أقل من الحدّ الأدنى المعقول (30)' % len(items))
+          ids = [r.get('id') for r in items]
+          if len(ids) != len(set(ids)):
+              errs.append('توجد معرّفات مكرّرة')
+          for r in items:
+              for k in ('id', 't', 'ilce', 'u'):
+                  if not r.get(k):
+                      errs.append('حقل %s ناقص في الإعلان %s' % (k, r.get('id')))
+                      break
+              if r.get('u') and not r['u'].startswith('https://'):
+                  errs.append('رابط غير https في %s' % r.get('id'))
+          if d.get('total') != len(items):
+              errs.append('total لا يساوي عدد العناصر')
+          if errs:
+              print('\n'.join('✗ ' + e for e in errs[:20]))
+              sys.exit(1)
+          print('✓ %d إعلاناً · %d إلچة فيها إعلانات' % (len(items), d['summary']['districts_with_listings']))
+          PY
+
+      - name: حصر التعديلات في ملف البيانات وحده
+        run: |
+          CHANGED=$(git status --porcelain | awk '{print $2}')
+          echo "$CHANGED"
+          for f in $CHANGED; do
+            case "$f" in
+              malatya/data/arsa-listings.json) ;;
+              *) echo "✗ تعديل خارج النطاق المسموح: $f"; exit 1 ;;
+            esac
+          done
+
+      - name: حفظ ودفع
+        id: commit
+        run: |
+          git config user.name  "malatya-arsa-bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet -- malatya/data/arsa-listings.json; then
+            echo "لا تغيير في البيانات اليوم."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git add malatya/data/arsa-listings.json
+          git commit -m "أراضي البناء — تحديث $(date -u +%F)"
+          for i in 1 2 3 4 5; do
+            git fetch origin main && git rebase origin/main && git push origin HEAD:main && break
+            echo "محاولة الدفع $i فشلت — إعادة المحاولة"; sleep 6
+          done
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: scrape
+    if: needs.scrape.outputs.changed == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit
