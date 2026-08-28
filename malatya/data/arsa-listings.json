@@ -2,7 +2,7 @@
  "updated": "2026-08-28",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
- "total": 307,
+ "total": 309,
  "sources": [
   {
    "key": "emlakjet",
@@ -11,10 +11,10 @@
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
    "status": "ok",
-   "count": 250,
+   "count": 252,
    "site_reported_total": 252,
    "pages": 9,
-   "detail_cached": 248,
+   "detail_cached": 250,
    "detail_fetched": 2,
    "detail_failed": 0
   },
@@ -35,49 +35,54 @@
  "summary": {
   "districts_with_listings": 12,
   "districts_total": 13,
-  "ppm_median": 1750,
+  "ppm_median": 1748,
   "ppm_p10": 350,
-  "ppm_p90": 9688,
+  "ppm_p90": 9583,
   "price_min": 410000,
   "price_max": 403180132,
   "flagged": 1,
   "m2_recovered": 1,
   "dropped_outside_province": 0,
   "by_source": {
-   "emlakjet": 250,
+   "emlakjet": 252,
    "ilangovtr": 57
   },
+  "overrides": {
+   "hidden": 0,
+   "patched": 0,
+   "manual": 0
+  },
   "by_cat": {
-   "أرض · أرسا": 257,
+   "أرض · أرسا": 259,
    "أرض زراعية وبساتين": 22,
    "سكن": 22,
    "عقار آخر": 6
   },
-  "land_count": 279,
+  "land_count": 281,
   "by_zon": {
    "مرخّصة للبناء": 106,
-   "زراعية": 165,
+   "زراعية": 167,
    "بلا إمار أو مقيَّدة": 1,
    "تصنيف آخر": 2,
    "غير مذكور": 33
   },
   "by_tapu": {
    "بلا قيد طابو": 6,
-   "طابو مستقلّ": 210,
-   "طابو مشاع (حصّة)": 29,
+   "طابو مستقلّ": 211,
+   "طابو مشاع (حصّة)": 30,
    "طابو من تعاونية": 4,
    "نوع الطابو غير معروف": 1
   },
-  "zon_declared": 250
+  "zon_declared": 252
  },
  "stats": [
   {
    "ilce": "Yeşilyurt",
-   "n": 137,
-   "ppm_med": 4340,
+   "n": 138,
+   "ppm_med": 4257,
    "ppm_min": 10,
    "ppm_max": 44318,
-   "p_med": 6750000,
+   "p_med": 7075000,
    "note": null
   },
   {
@@ -91,11 +96,11 @@
   },
   {
    "ilce": "Akçadağ",
-   "n": 51,
-   "ppm_med": 629,
+   "n": 52,
+   "ppm_med": 628,
    "ppm_min": 16,
    "ppm_max": 5067,
-   "p_med": 8250000,
+   "p_med": 8000000,
    "note": null
   },
   {
@@ -209,11 +214,11 @@
   },
   {
    "zon": "زراعية",
-   "n": 165,
-   "ppm_med": 916,
+   "n": 167,
+   "ppm_med": 895,
    "ppm_p10": 251,
    "ppm_p90": 2440,
-   "n_priced": 146
+   "n_priced": 148
   },
   {
    "zon": "بلا إمار أو مقيَّدة",
@@ -3677,6 +3682,28 @@
   },
   {
    "src": "emlakjet",
+   "id": "19488945",
+   "t": "Malatya Yeşilyurt Gözene Dutlukaya'da 63.600m2 Satılık Arsa",
+   "ilce": "Yeşilyurt",
+   "mah": "Gözene Mahallesi",
+   "m2": 63600,
+   "p": 22260000,
+   "d": "2026-06-17",
+   "u": "https://www.emlakjet.com/ilan/19488945",
+   "img": "19488945/5928A665D4833783DBEC85E4E8BDAB2E19488945.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Tarla",
+   "tapu": "طابو مشاع (حصّة)",
+   "kredi": "صالح للتمويل",
+   "parsel": "964",
+   "zon": "زراعية",
+   "zonf": "حقل — تَرلا",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 350
+  },
+  {
+   "src": "emlakjet",
    "id": "19488916",
    "t": "Malatya Yeşilyurt Gözene Dutlukuyu'da 39.500m2 Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -6328,6 +6355,29 @@
    "zonf": "كرم وبستان",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 251
+  },
+  {
+   "src": "emlakjet",
+   "id": "18547875",
+   "t": "Acilihtiyaçtan Akçadağ Dedeköyde Sulama Kanlının Yanında Satılık 18 Dönüm Sulu Tarla-bahçe",
+   "ilce": "Akçadağ",
+   "mah": "Dedeköy Mahallesi",
+   "m2": 18350,
+   "p": 5500000,
+   "d": "2025-12-04",
+   "u": "https://www.emlakjet.com/ilan/18547875",
+   "img": "18547875/9B0F4762B2DA802C6F8980B9DE5E795E18547875.jpeg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مستقلّ",
+   "kredi": "غير صالح للتمويل",
+   "ada": "116",
+   "parsel": "195",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 300
   },
   {
    "src": "emlakjet",
