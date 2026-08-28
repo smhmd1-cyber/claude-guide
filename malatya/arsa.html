@@ -237,7 +237,17 @@
     document.getElementById('srcnote').innerHTML=
       'المصدر: <b>'+esc(d.source.name)+'</b> — <a href="'+esc(d.source.url)+'" target="_blank" rel="noopener nofollow">صفحة نتائج «أرسا للبيع · ملاطيا»</a>.<br>'+
       'الطريقة: '+esc(d.source.method)+'.<br>'+
-      'المصدر أعلن <b class="num">'+n(d.source.site_reported_total)+'</b> إعلاناً، وسُحب <b class="num">'+n(d.total)+'</b> إعلاناً فريداً — تطابق تامّ.<br>'+
+      (function(){
+        var rep=d.source.site_reported_total;
+        if(typeof rep==='number'){
+          var gap=rep-d.total;
+          return 'المصدر أعلن <b class="num">'+n(rep)+'</b> إعلاناً، وسُحب <b class="num">'+n(d.total)+
+            '</b> إعلاناً فريداً — '+(gap===0?'تطابق تامّ':('فارق <b class="num">'+n(Math.abs(gap))+'</b> إعلان؛ يُرجَّح تكراراً أُزيل أو إعلاناً سُحب أثناء المسح'))+'.<br>';
+        }
+        return 'سُحبت صفحات النتائج تباعاً حتى آخر صفحة، ثم أُزيل التكرار بالمعرّف: '+
+          '<b class="num">'+n(d.total)+'</b> إعلاناً فريداً. '+
+          '(عدّاد المصدر المعلن لا يظهر في نصّ الصفحة المُرسَل من الخادم، فلم يُقارَن به هذه المرّة.)<br>';
+      })()+
       'نطاق التغطية: '+esc(d.scope)+'.<br>'+
       (d.summary.flagged?('<span style="color:var(--amber)">'+d.summary.flagged+' إعلان تحمل مساحة معلنة غير متّسقة مع نصّ الإعلان (خطأ في المصدر) — عُرضت كما هي مع وسمها، واستُبعدت من حساب ₺/م².</span><br>'):'')+
       esc(d.note);

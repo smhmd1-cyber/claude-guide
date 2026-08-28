@@ -44,7 +44,15 @@ HEADERS = {
 
 SCHEMA_RE = re.compile(
     r'<script[^>]+id="listing-realestate-schema"[^>]*>(.*?)</script>', re.S)
-TOTAL_RE = re.compile(r'([\d\.]+)\s*ilan bulundu')
+# عدّاد «X ilan bulundu» يُرسم أحياناً على العميل ولا يظهر في HTML الخادم؛
+# لذلك نجرّب أيضاً العدّادات البنيوية في حمولة Next.js. إن لم يُعثر على أيٍّ منها
+# يبقى الحقل فارغاً — الصفحة تتعامل مع ذلك صراحةً ولا تدّعي مطابقة لم تُجرَ.
+TOTAL_RES = [
+    re.compile(r'([\d\.]+)\s*ilan bulundu'),
+    re.compile(r'\\*"totalCount\\*"\s*:\s*(\d+)'),
+    re.compile(r'\\*"totalListingCount\\*"\s*:\s*(\d+)'),
+    re.compile(r'\\*"total\\*"\s*:\s*(\d+)\s*,\s*\\*"page'),
+]
 ID_RE = re.compile(r'-(\d+)$')
 
 
@@ -68,9 +76,11 @@ def parse_page(html):
         return [], None
     graph = json.loads(m.group(1)).get("@graph") or []
     total = None
-    t = TOTAL_RE.search(html)
-    if t:
-        total = int(t.group(1).replace(".", ""))
+    for rx in TOTAL_RES:
+        t = rx.search(html)
+        if t:
+            total = int(t.group(1).replace(".", ""))
+            break
     out = []
     for x in graph:
         if x.get("@type") != "RealEstateListing":
