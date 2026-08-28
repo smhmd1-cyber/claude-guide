@@ -2,10 +2,15 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>أراضي البناء للبيع — ولاية ملاطيا</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🗺️%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/malatya.css?v=2">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
 <style>
 .filters{border:1px solid var(--border);border-radius:var(--r);background:var(--card);
   padding:16px 18px;margin:14px 0 6px;display:grid;gap:12px}
@@ -153,7 +158,7 @@
     <a href="land-board.html">لوحة الأراضي</a><a href="land-agent.html">وكيل التقييم</a><a href="index.html">مركز التحكّم</a>
   </footer>
 </div>
-<script src="assets/nav.js?v=9" defer></script>
+<script src="assets/nav.js?v=10" defer></script>
 <script>
 (function(){
   'use strict';
@@ -161,7 +166,7 @@
   var PER=24;
   var DATA=null, VIEW=[], PAGE=1, DIST='', SRC='', CAT='', ZON='', TAPU='';
   var ZB='مرخّصة للبناء', ZA='زراعية';
-  var SRCLABEL={emlakjet:'السوق', ilangovtr:'رسمي'};
+  var SRCLABEL={emlakjet:'السوق', ilangovtr:'رسمي', manual:'يدوي'};
 
   function fmtDate(s){ var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||''); return m?((+m[3])+' '+AR[+m[2]-1]+' '+m[1]):(s||'—'); }
   function n(x){ return (x==null||x===''||isNaN(x))?'—':Number(x).toLocaleString('en-US'); }
@@ -206,10 +211,13 @@
 
   function card(r){
     var official = srcOf(r)==='ilangovtr';
+    var manual = srcOf(r)==='manual';
     var img=r.img?('https://imaj.emlakjet.com/resize/640/0/listing/'+r.img):'';
     var head = img
       ? '<div class="ph" style="background-image:url(\''+esc(img)+'\')"><span class="src m">السوق</span><span class="pp">'+n(r.p)+' ₺</span></div>'
-      : '<div class="ph noimg">⚖️<span class="src o">'+esc(r.kind||'رسمي')+'</span><span class="pp">'+n(r.p)+' ₺</span></div>';
+      : (manual
+        ? '<div class="ph noimg">📝<span class="src m">أدخلتَه بنفسك</span><span class="pp">'+n(r.p)+' ₺</span></div>'
+        : '<div class="ph noimg">⚖️<span class="src o">'+esc(r.kind||'رسمي')+'</span><span class="pp">'+n(r.p)+' ₺</span></div>');
     var meta='';
     meta+='<span class="m"'+(r.m2kind?(' title="'+esc(r.m2kind)+'"'):'')+'>'+(r.m2!=null?(n(r.m2)+' م²'+(r.m2kind&&!r.land?' مبنية':'')):'مساحة غير مذكورة')+'</span>';
     if(official && r.cat) meta+='<span class="m vi">'+esc(r.cat)+'</span>';
@@ -219,6 +227,8 @@
       meta+='<span class="m '+zc+'" title="'+esc(r.zonsrc||'')+'">'+esc(zt)+(official?' (مستنبَط)':'')+'</span>';
     }
     if(r.tapu) meta+='<span class="m">'+esc(r.tapu)+'</span>';
+    if(r.edited) meta+='<span class="m warn">عُدّل يدوياً</span>';
+    if(r.note) meta+='<span class="m" style="color:var(--blue);border-color:rgba(91,157,255,.35)">'+esc(r.note)+'</span>';
     if(r.ppm!=null) meta+='<span class="m hi">'+n(r.ppm)+' ₺/م²</span>';
     if(r.m2src) meta+='<span class="m warn">مساحة من نصّ الإعلان</span>';
     if(r.sus) meta+='<span class="m warn">مساحة معلنة غير متّسقة</span>';
@@ -231,7 +241,7 @@
         '<div class="lo">'+esc(r.ilce)+(r.mah?(' · '+esc(r.mah)):'')+(official&&r.org?(' · '+esc(r.org)):'')+'</div>'+
         '<div class="mt">'+meta+'</div>'+
       '</div>'+
-      '<a class="go" href="'+esc(r.u)+'" target="_blank" rel="noopener nofollow">'+(official?'فتح الإعلان الرسمي ↗':'فتح الإعلان على المصدر ↗')+'</a>'+
+      '<a class="go" href="'+esc(r.u)+'" target="_blank" rel="noopener nofollow">'+(official?'فتح الإعلان الرسمي ↗':(manual?'فتح الرابط الذي أدخلتَه ↗':'فتح الإعلان على المصدر ↗'))+'</a>'+
     '</article>';
   }
 
@@ -318,7 +328,8 @@
     function count(key){ if(bys && bys[key]!=null) return bys[key]; return d.items.filter(function(r){return srcOf(r)===key;}).length; }
     var sEntries=[{label:'كل المصادر', val:'', count:d.total}];
     srcs.forEach(function(s){
-      sEntries.push({label:(s.kind==='رسميّ'||s.kind==='رسمي')?'رسمي — قضاء ومزايدات':'سوق — إعلانات بائعين',
+      sEntries.push({label:(s.kind==='يدوي')?'يدوي — أدخلتَه بنفسك'
+                     :((s.kind==='رسميّ'||s.kind==='رسمي')?'رسمي — قضاء ومزايدات':'سوق — إعلانات بائعين'),
                      val:s.key, count:count(s.key), cls:(s.kind&&s.kind.indexOf('رسم')===0)?'sofficial':''});
     });
     chipRow(document.getElementById('schips'), sEntries, '', function(v){

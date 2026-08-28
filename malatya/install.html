@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>التثبيت والإعداد — منظومة ملاطيا</title>
+<link rel="icon" href="assets/icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
+<style>
+.step{border:1px solid var(--border);border-radius:var(--r);background:var(--card);padding:18px 20px;margin-bottom:14px}
+.step h3{margin:0 0 8px;display:flex;align-items:center;gap:10px}
+.step h3 .num{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);font-family:var(--font-num);font-weight:800;font-size:15px;flex:none}
+.step ol,.step ul{margin:8px 0;padding-inline-start:22px;line-height:2}
+.kbd{font-family:var(--font-num);background:var(--bg2);border:1px solid var(--border);
+  border-radius:6px;padding:2px 7px;font-size:12.5px;direction:ltr;display:inline-block}
+.plat{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.plat button{border:1px solid var(--border);background:var(--card2);color:var(--text2);border-radius:999px;
+  padding:9px 16px;font-weight:800;font-size:13.5px;cursor:pointer;font-family:var(--font);min-height:44px}
+.plat button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.pbox{display:none}.pbox.on{display:block}
+.chk{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border-soft)}
+.chk:last-child{border:0}
+.chk .st{font-size:18px;flex:none;line-height:1.4}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">⬇️</div>
+    <div><h1>التثبيت والإعداد</h1>
+      <div class="sub">ثبّت المنظومة كتطبيق، وافتح لنفسك صلاحية التعديل — مرّة واحدة، ثمّ لا تحتاج أحداً</div></div>
+    <div class="spacer"></div>
+    <a class="btn" href="index.html">← مركز التحكّم</a>
+  </div>
+
+  <h2>ما الذي تحصل عليه</h2>
+  <div class="grid g3">
+    <div class="card"><b>تطبيق على جهازك</b><p class="mut" style="margin:6px 0 0">أيقونة على الشاشة الرئيسية أو قائمة البرامج، تفتح بلا شريط متصفّح، وتعمل صفحاتها حين تنقطع الشبكة.</p></div>
+    <div class="card"><b>صلاحية التعديل</b><p class="mut" style="margin:6px 0 0">تضيف وتعدّل وتحذف وتنشر من داخل المنظومة، فتظهر النتيجة على الموقع خلال دقائق.</p></div>
+    <div class="card"><b>استقلال كامل</b><p class="mut" style="margin:6px 0 0">لا تنتظر أحداً: التحديث اليومي يعمل وحده، وأنت تتدخّل متى شئت وتتراجع متى شئت.</p></div>
+  </div>
+
+  <h2>الجزء الأول — التثبيت كتطبيق</h2>
+  <div class="step">
+    <h3><span class="num">1</span> ثبّت الآن</h3>
+    <p class="mut">إن كان جهازك يدعم التثبيت المباشر سيظهر الزرّ. وإلّا فاتبع خطوات نظامك أدناه.</p>
+    <div class="bar">
+      <button class="btn primary" id="install" hidden>ثبّت التطبيق على هذا الجهاز</button>
+      <span class="pill" id="state">جارٍ الفحص…</span>
+    </div>
+    <div class="plat" id="plat">
+      <button data-p="android" class="on">أندرويد</button>
+      <button data-p="ios">آيفون وآيباد</button>
+      <button data-p="win">ويندوز</button>
+      <button data-p="mac">ماك</button>
+    </div>
+    <div class="pbox on" id="b-android">
+      <ol>
+        <li>افتح <span class="kbd">jmahery.com/malatya/</span> في Chrome.</li>
+        <li>اضغط النقاط الثلاث ⋮ أعلى اليمين.</li>
+        <li>اختر <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li>
+        <li>ستظهر أيقونة المنظومة مع بقية تطبيقاتك.</li>
+      </ol>
+    </div>
+    <div class="pbox" id="b-ios">
+      <ol>
+        <li>افتح الموقع في <b>Safari</b> — لا يعمل التثبيت من Chrome على الآيفون.</li>
+        <li>اضغط زرّ المشاركة <b>⬆︎</b> في شريط الأسفل.</li>
+        <li>مرّر واختر <b>«إضافة إلى الشاشة الرئيسية»</b>.</li>
+        <li>اضغط «إضافة». تظهر الأيقونة على الشاشة الرئيسية.</li>
+      </ol>
+      <p class="mut">آبل لا تتيح زرّ تثبيت داخل الصفحة، لذلك هذه هي الطريقة الوحيدة على أجهزتها.</p>
+    </div>
+    <div class="pbox" id="b-win">
+      <ol>
+        <li>افتح الموقع في Chrome أو Edge.</li>
+        <li>في شريط العنوان تظهر أيقونة تثبيت (شاشة صغيرة بسهم) — اضغطها.</li>
+        <li>أو: القائمة ⋮ ← <b>«تثبيت منظومة ملاطيا»</b>.</li>
+        <li>تصير المنظومة برنامجاً في قائمة ابدأ، ويمكن تثبيتها في شريط المهامّ.</li>
+      </ol>
+    </div>
+    <div class="pbox" id="b-mac">
+      <ol>
+        <li>Chrome أو Edge: القائمة ⋮ ← <b>«تثبيت…»</b>.</li>
+        <li>Safari: <b>ملف</b> ← <b>«إضافة إلى Dock»</b>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>الجزء الثاني — صلاحية التعديل</h2>
+  <div class="note info">
+    المنظومة تُنشر من مستودعك على GitHub. لتعدّل بنفسك تحتاج <b>رمز وصول</b> تصنعه أنت.
+    الرمز يُحفظ في متصفّح هذا الجهاز فقط، ولا يمرّ بأي طرف ثالث. إن ضاع الجهاز:
+    ألغِ الرمز من GitHub فيصير بلا قيمة فوراً.
+  </div>
+
+  <div class="step">
+    <h3><span class="num">2</span> أنشئ الرمز</h3>
+    <ol>
+      <li>افتح <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">صفحة إنشاء الرمز على GitHub ↗</a> (سجّل الدخول إن طُلب).</li>
+      <li><b>Token name</b>: اكتب <span class="kbd">malatya-admin</span>.</li>
+      <li><b>Expiration</b>: اختر مدّة تناسبك — ٩٠ يوماً معقولة. عند انتهائها تُنشئ رمزاً جديداً بالخطوات نفسها.</li>
+      <li><b>Repository access</b>: اختر <b>Only select repositories</b> ثم اختر <span class="kbd">claude-guide</span> وحده.
+          <br><span class="mut">لا تختر «All repositories» — لا داعي أن يفتح الرمز ما لا يحتاجه.</span></li>
+      <li><b>Permissions → Repository permissions</b>، اضبط اثنين فقط:
+        <ul>
+          <li><span class="kbd">Contents</span> → <b>Read and write</b> — ليحفظ تعديلاتك.</li>
+          <li><span class="kbd">Actions</span> → <b>Read and write</b> — ليشغّل التحديث والنشر.</li>
+        </ul>
+        اترك الباقي على <span class="kbd">No access</span>.</li>
+      <li>اضغط <b>Generate token</b>، ثم <b>انسخ الرمز فوراً</b> — لا يظهر ثانيةً.</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <h3><span class="num">3</span> الصقه في المنظومة</h3>
+    <ol>
+      <li>افتح <a href="admin.html"><b>لوحة الإدارة</b></a>.</li>
+      <li>الصق الرمز في الحقل واضغط <b>«اتّصل»</b>.</li>
+      <li>إن ظهر «متّصلة» فقد انتهيت. وإن ظهر خطأ فالسبب في ٩٥٪ من الحالات أحد اثنين:
+        الرمز لم يشمل مستودع <span class="kbd">claude-guide</span>، أو صلاحية <span class="kbd">Contents</span> بقيت على القراءة فقط.</li>
+    </ol>
+  </div>
+
+  <h2>تحقّق أن كل شيء يعمل</h2>
+  <div class="card" id="checks">
+    <div class="chk"><span class="st" id="c1">…</span><div><b>اتصال آمن (https)</b><div class="mut">شرط للتثبيت ولحفظ الرمز.</div></div></div>
+    <div class="chk"><span class="st" id="c2">…</span><div><b>محرّك التطبيق (Service Worker)</b><div class="mut">هو ما يجعل الصفحات تعمل بلا شبكة.</div></div></div>
+    <div class="chk"><span class="st" id="c3">…</span><div><b>ملفّ التطبيق (manifest)</b><div class="mut">يحمل الاسم والأيقونة وسلوك النافذة.</div></div></div>
+    <div class="chk"><span class="st" id="c4">…</span><div><b>ملفّ البيانات الحيّ</b><div class="mut">إن فشل هذا فالمشكلة في النشر لا في جهازك.</div></div></div>
+    <div class="chk"><span class="st" id="c5">…</span><div><b>رمز الوصول محفوظ على هذا الجهاز</b><div class="mut">اختياري — بدونه تتصفّح ولا تعدّل.</div></div></div>
+  </div>
+  <div class="bar"><button class="btn" id="recheck">أعد الفحص</button>
+    <button class="btn" id="clearcache">امسح الذاكرة المخزَّنة وحدّث</button></div>
+
+  <h2>أسئلة تتكرّر</h2>
+  <ul class="clean">
+    <li><b>هل يرى أحد رمزي؟</b> لا. يُحفظ في تخزين المتصفّح على جهازك، ويُرسَل إلى GitHub وحده عند كل عملية. من يفتح صفحة الإدارة بلا رمز لا يستطيع شيئاً.</li>
+    <li><b>ماذا لو انتهت صلاحية الرمز؟</b> ستظهر رسالة «الرمز غير صالح أو انتهت صلاحيته». أنشئ رمزاً جديداً بالخطوات نفسها والصقه — لا شيء آخر يتغيّر.</li>
+    <li><b>ماذا لو ثبّتّه على الهاتف والحاسوب؟</b> لا مانع. كل جهاز يحمل رمزه، ويمكن إنشاء رمز لكل جهاز على حدة لتلغي واحداً دون أن تعطّل الآخر.</li>
+    <li><b>هل التطبيق نسخة منفصلة؟</b> لا — هو الموقع نفسه في إطار تطبيق. ما تنشره يظهر في الاثنين.</li>
+    <li><b>أرى بيانات قديمة.</b> اضغط «امسح الذاكرة المخزَّنة» أعلاه. المنظومة لا تعرض بيانات مخزَّنة إلّا حين تنقطع الشبكة، وتقول لك ذلك صراحةً.</li>
+  </ul>
+
+  <footer class="site">
+    <span>🌰 منظومة ملاطيا</span><span>·</span>
+    <a href="admin.html">لوحة الإدارة</a><a href="manual.html">دليل التشغيل</a><a href="index.html">مركز التحكّم</a>
+  </footer>
+</div>
+<script src="assets/nav.js?v=10" defer></script>
+<script>
+(function(){
+  'use strict';
+  function $(i){ return document.getElementById(i); }
+
+  document.querySelectorAll('#plat button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#plat button').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      document.querySelectorAll('.pbox').forEach(function(p){ p.classList.toggle('on', p.id==='b-'+b.dataset.p); });
+    });
+  });
+  var ua=navigator.userAgent;
+  var guess = /iPhone|iPad|iPod/.test(ua) ? 'ios'
+            : /Android/.test(ua) ? 'android'
+            : /Macintosh/.test(ua) ? 'mac' : 'win';
+  var gb=document.querySelector('#plat button[data-p="'+guess+'"]'); if(gb) gb.click();
+
+  var deferred=null;
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault(); deferred=e; $('install').hidden=false;
+    $('state').textContent='جاهزة للتثبيت';
+    $('state').className='pill ok';
+  });
+  $('install').addEventListener('click', async function(){
+    if(!deferred) return;
+    deferred.prompt(); var r=await deferred.userChoice;
+    $('state').textContent = r.outcome==='accepted' ? 'ثُبّتت' : 'أُجّل التثبيت';
+    deferred=null; $('install').hidden=true;
+  });
+
+  function mark(id, ok, txt){
+    var e=$(id); e.textContent = ok===null?'⏳':(ok?'✅':'⚠️');
+    if(txt){ e.title=txt; }
+  }
+  async function run(){
+    var standalone = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
+    $('state').textContent = standalone ? 'تعمل كتطبيق مثبَّت' : ($('install').hidden ? 'التثبيت من قائمة المتصفّح' : 'جاهزة للتثبيت');
+    $('state').className = 'pill ' + (standalone ? 'ok' : '');
+
+    mark('c1', !!window.isSecureContext);
+    if('serviceWorker' in navigator){
+      try{ var reg=await navigator.serviceWorker.getRegistration(); mark('c2', !!reg); }
+      catch(e){ mark('c2', false); }
+    } else mark('c2', false);
+    try{ var r=await fetch('manifest.webmanifest?c='+Date.now()); mark('c3', r.ok); }catch(e){ mark('c3', false); }
+    try{ var r2=await fetch('data/arsa-listings.json?c='+Date.now(), {cache:'no-store'}); mark('c4', r2.ok); }catch(e){ mark('c4', false); }
+    mark('c5', !!localStorage.getItem('mly_tok'));
+  }
+  $('recheck').addEventListener('click', run);
+  $('clearcache').addEventListener('click', async function(){
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.controller)
+        navigator.serviceWorker.controller.postMessage('clear-cache');
+      if(window.caches){ var ks=await caches.keys(); await Promise.all(ks.map(function(k){ return caches.delete(k); })); }
+    }catch(e){}
+    location.reload(true);
+  });
+  run();
+})();
+</script>
+</body>
+</html>

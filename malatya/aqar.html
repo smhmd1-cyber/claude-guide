@@ -1,5 +1,10 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover">
 <title>ملاطيا العقارية — محرّك البحث</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
 <style>
 :root{--navy:#1F3864;--blue:#2E5496;--gold:#B07A00;--green:#2E7D32;--red:#B00020;--bg:#eef0f4;--card:#fff;--ink:#1a1a1a;--mut:#6a6a6a;--line:#e1e4ea}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Tahoma,sans-serif;line-height:1.55}
@@ -158,5 +163,5 @@ function detail(id){
 function close_(){document.getElementById('modal').style.display='none';}
 function resetF(){document.getElementById('q').value='';document.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});['pmin','pmax','amin','amax'].forEach(function(k){document.getElementById(k).value='';});document.getElementById('siteOnly').checked=false;document.querySelector('input[name=age][value=newcand]').checked=true;document.getElementById('sort').value='best';render();}
 render();
-</script><script src="assets/nav.js?v=9" defer></script>
+</script><script src="assets/nav.js?v=10" defer></script>
 </body></html>

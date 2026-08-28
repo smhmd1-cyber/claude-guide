@@ -1,0 +1,41 @@
+{
+  "id": "/malatya/",
+  "name": "منظومة ملاطيا",
+  "short_name": "ملاطيا",
+  "description": "مركز التحكّم: الأراضي والعقارات والدليل وملفّ الاستثمار — ولاية ملاطيا.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html?src=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "أراضي البناء للبيع",
+      "short_name": "الأراضي",
+      "url": "./arsa.html?src=pwa",
+      "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "لوحة الإدارة",
+      "short_name": "الإدارة",
+      "url": "./admin.html?src=pwa",
+      "icons": [{ "src": "assets/icons/admin-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "الدليل والنشرة",
+      "short_name": "الدليل",
+      "url": "./daleel.html?src=pwa",
+      "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

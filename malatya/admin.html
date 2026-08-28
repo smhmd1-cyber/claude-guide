@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>لوحة الإدارة — منظومة ملاطيا</title>
+<link rel="icon" href="assets/icons/admin-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
+<style>
+/* [hidden] لا يصمد أمام display المصرَّح في الصنف — بدون هذا السطر تظهر
+   التبويبات قبل الاتصال، وقد ظهرت فعلاً حتى أمسكها الاختبار. */
+[hidden]{display:none !important}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 4px;border-bottom:1px solid var(--border);padding-bottom:10px}
+.tab{border:1px solid var(--border);background:var(--card2);color:var(--text2);border-radius:var(--r-sm);
+  padding:10px 15px;font-size:13.5px;font-weight:800;cursor:pointer;font-family:var(--font);min-height:44px}
+.tab.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.tab:disabled{opacity:.4;cursor:not-allowed}
+.pane{display:none}
+.pane.on{display:block}
+.fld{display:grid;gap:6px;margin-bottom:12px}
+.fld label{font-size:12.5px;font-weight:800;color:var(--muted)}
+.fld input,.fld select,.fld textarea{background:var(--bg2);color:var(--text);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:11px 13px;font-family:var(--font);font-size:14px;outline:none;width:100%}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent-line)}
+.fld .hint{font-size:12px;color:var(--muted);line-height:1.7}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.code{font-family:var(--font-num);direction:ltr;text-align:left;white-space:pre;overflow:auto;
+  min-height:340px;line-height:1.55;font-size:12.5px;tab-size:2}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;
+  font-size:12.5px;font-weight:800;border:1px solid var(--border);background:var(--card2)}
+.pill.ok{color:var(--green);border-color:rgba(64,209,131,.4)}
+.pill.bad{color:var(--red);border-color:rgba(255,107,122,.4)}
+.pill.warn{color:var(--amber);border-color:rgba(255,194,75,.4)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.bar input[type=text]{flex:1;min-width:180px;background:var(--bg2);color:var(--text);
+  border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 12px;font-family:var(--font);font-size:14px}
+.tree{border:1px solid var(--border);border-radius:var(--r);background:var(--card);max-height:360px;overflow:auto}
+.tree button{display:block;width:100%;text-align:start;background:none;border:0;border-bottom:1px solid var(--border-soft);
+  color:var(--text2);padding:11px 14px;font-family:var(--font);font-size:13.5px;cursor:pointer;min-height:44px}
+.tree button:hover{background:var(--card2);color:#fff}
+.tree button.on{background:var(--accent-soft);color:var(--accent)}
+.tree .dir{color:var(--muted);font-weight:800;font-size:12px;padding:9px 14px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.diff{font-family:var(--font-num);direction:ltr;text-align:left;font-size:12px;line-height:1.6;
+  border:1px solid var(--border);border-radius:var(--r-sm);max-height:280px;overflow:auto;background:var(--bg2);padding:10px}
+.diff .a{color:var(--green)}.diff .d{color:var(--red)}.diff .c{color:var(--muted)}
+.confirm{border:1px solid rgba(255,107,122,.45);background:var(--red-soft);border-radius:var(--r);padding:14px 16px;margin:12px 0}
+.toast{position:fixed;inset-inline-start:50%;transform:translateX(50%);bottom:calc(18px + env(safe-area-inset-bottom));
+  z-index:9999;background:var(--card2);border:1px solid var(--border);border-radius:var(--r);
+  padding:12px 18px;box-shadow:var(--shadow);font-weight:800;font-size:13.5px;max-width:92vw}
+.toast.ok{border-color:rgba(64,209,131,.5);color:var(--green)}
+.toast.bad{border-color:rgba(255,107,122,.5);color:var(--red)}
+.mini{font-size:12px;color:var(--muted)}
+.log{max-height:300px;overflow:auto;font-size:12.5px}
+.log div{padding:7px 0;border-bottom:1px solid var(--border-soft)}
+@media(max-width:640px){
+  .row2{grid-template-columns:1fr}
+  .tab{flex:1 1 auto;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">🛠️</div>
+    <div><h1>لوحة الإدارة</h1>
+      <div class="sub">أضف · عدّل · احذف · انشر — من دون وسيط</div></div>
+    <div class="spacer"></div>
+    <span id="conn" class="pill">غير متّصلة</span>
+    <a class="btn" href="index.html">← مركز التحكّم</a>
+  </div>
+
+  <!-- ــــــ الاتصال ــــــ -->
+  <section id="setup">
+    <div class="note info">
+      هذه اللوحة تكتب مباشرةً إلى مستودعك على GitHub، ومنه يُنشر الموقع تلقائياً.
+      تحتاج <b>رمز وصول</b> تُنشئه أنت مرّة واحدة — يُحفظ في متصفّحك على هذا الجهاز وحده،
+      ولا يُرسَل إلى أي جهة سوى GitHub. لا أحد غيرك يراه، ولا يخرج من الجهاز.
+      خطوات إنشائه بالصور في <a href="install.html"><b>صفحة التثبيت والإعداد</b></a>.
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="fld">
+          <label for="tok">رمز الوصول (GitHub token)</label>
+          <input type="password" id="tok" autocomplete="off" spellcheck="false" placeholder="github_pat_… أو ghp_…">
+          <div class="hint">صلاحيات مطلوبة على مستودع <b>claude-guide</b> وحده:
+            <span dir="ltr">Contents: Read and write</span> · <span dir="ltr">Actions: Read and write</span>.
+            لا تمنحه أكثر من ذلك ولا تمنحه على كل مستودعاتك.</div>
+        </div>
+        <div class="bar">
+          <button class="btn primary" id="connect">اتّصل</button>
+          <button class="btn" id="forget">امسح الرمز من هذا الجهاز</button>
+        </div>
+        <div id="setupmsg"></div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">تثبيت المنظومة كتطبيق</h3>
+        <p class="mini">تعمل بلا متصفّح ظاهر، وتُفتح من الشاشة الرئيسية على الهاتف أو من قائمة البرامج على الحاسوب.</p>
+        <div class="bar">
+          <button class="btn primary" id="install" hidden>ثبّت التطبيق الآن</button>
+          <a class="btn" href="install.html">دليل التثبيت خطوة بخطوة</a>
+        </div>
+        <p class="mini" id="pwastate">—</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ــــــ التبويبات ــــــ -->
+  <div class="tabs" id="tabs" hidden>
+    <button class="tab on" data-p="health">الحالة والتشغيل</button>
+    <button class="tab" data-p="items">الإعلانات</button>
+    <button class="tab" data-p="files">ملفّات المنظومة</button>
+    <button class="tab" data-p="backup">نسخ احتياطي</button>
+    <button class="tab" data-p="log">السجلّ</button>
+  </div>
+
+  <!-- الحالة -->
+  <section class="pane on" id="p-health" hidden>
+    <div class="grid g4" style="margin-top:14px">
+      <div class="kpi teal"><span class="k-ico">🗂️</span><div class="k-label">إعلانات منشورة</div><div class="k-value num" id="h1">—</div><div class="k-sub" id="h1s">من الملفّ الحيّ</div></div>
+      <div class="kpi green"><span class="k-ico">🕒</span><div class="k-label">آخر تحديث</div><div class="k-value num" id="h2" style="font-size:20px">—</div><div class="k-sub" id="h2s">—</div></div>
+      <div class="kpi"><span class="k-ico">🔗</span><div class="k-label">المستودع</div><div class="k-value num" id="h3" style="font-size:18px">—</div><div class="k-sub" id="h3s">—</div></div>
+      <div class="kpi red"><span class="k-ico">⚙️</span><div class="k-label">آخر تشغيل</div><div class="k-value num" id="h4" style="font-size:18px">—</div><div class="k-sub" id="h4s">—</div></div>
+    </div>
+
+    <h2>تشغيل يدوي</h2>
+    <p class="mut">كل سير عمل يعمل وحده يومياً. هذه الأزرار لتشغيله الآن دون انتظار.</p>
+    <div id="wfs"><p class="mut">…</p></div>
+
+    <h2>آخر التشغيلات</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>سير العمل</th><th>الحالة</th><th>وقت البدء</th><th></th></tr></thead>
+      <tbody id="runs"></tbody>
+    </table></div>
+    <div class="bar"><button class="btn" id="refreshRuns">حدّث القائمة</button></div>
+
+    <h2>فحص الموقع الحيّ</h2>
+    <div id="live"><p class="mut">…</p></div>
+    <div class="bar"><button class="btn" id="checkLive">افحص الآن</button></div>
+  </section>
+
+  <!-- الإعلانات -->
+  <section class="pane" id="p-items" hidden>
+    <div class="note info" style="margin-top:14px">
+      <b>لماذا تعديلاتك لا تضيع:</b> ملفّ الإعلانات يُعاد بناؤه كل يوم من المصادر، فلو كتبنا فيه
+      مباشرةً لمُحيت تعديلاتك في اليوم التالي. لذلك تُحفظ تعديلاتك في ملفّ منفصل
+      (<span dir="ltr">data/arsa-overrides.json</span>) يقرؤه السحّاب ويطبّقه <b>بعد</b> كل سحب.
+      النتيجة: تعديلك دائم، والتحديث اليومي مستمرّ، ولا يدهس أحدهما الآخر.
+    </div>
+
+    <div class="bar">
+      <input type="text" id="q" placeholder="ابحث بالعنوان أو الحيّ أو رقم الإعلان…">
+      <select id="fsrc" class="btn"><option value="">كل المصادر</option></select>
+      <select id="fzon" class="btn"><option value="">كل التصنيفات</option></select>
+      <button class="btn primary" id="addNew">أضف إعلاناً يدوياً</button>
+    </div>
+    <p class="mut" id="icount">…</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>العنوان</th><th>الإلچة</th><th>م²</th><th>₺</th><th>التصنيف</th><th>الحالة</th><th></th></tr></thead>
+      <tbody id="itb"></tbody>
+    </table></div>
+    <div class="bar" id="ipager"></div>
+
+    <div id="editor" hidden>
+      <h2 id="edtitle">تعديل إعلان</h2>
+      <div class="card">
+        <div class="row2">
+          <div class="fld"><label>العنوان</label><input type="text" id="e_t"></div>
+          <div class="fld"><label>الإلچة</label><select id="e_ilce"></select></div>
+        </div>
+        <div class="row2">
+          <div class="fld"><label>الحيّ (اختياري)</label><input type="text" id="e_mah"></div>
+          <div class="fld"><label>التصنيف</label><select id="e_zon"></select></div>
+        </div>
+        <div class="row2">
+          <div class="fld"><label>المساحة م²</label><input type="number" id="e_m2" min="1"></div>
+          <div class="fld"><label>السعر ₺</label><input type="number" id="e_p" min="0"></div>
+        </div>
+        <div class="row2">
+          <div class="fld"><label>تاريخ النشر</label><input type="date" id="e_d"></div>
+          <div class="fld"><label>نوع الطابو (اختياري)</label><input type="text" id="e_tapu"></div>
+        </div>
+        <div class="fld"><label>الرابط</label><input type="text" id="e_u" dir="ltr" placeholder="https://…"></div>
+        <div class="fld"><label>ملاحظتك (تظهر على البطاقة)</label><input type="text" id="e_note"></div>
+        <div id="ederr"></div>
+        <div class="bar">
+          <button class="btn primary" id="esave">احفظ</button>
+          <button class="btn" id="ecancel">إلغاء</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="pending" hidden>
+      <div class="note warn">
+        <b id="pendn">—</b> تعديل لم يُرفَع بعد. الرفع يكتب ملفّ التعديلات في المستودع،
+        ثمّ يشغّل التحديث فيظهر الأثر على الموقع خلال دقائق.
+      </div>
+      <div class="bar">
+        <button class="btn primary" id="pushOv">ارفع التعديلات وشغّل التحديث</button>
+        <button class="btn" id="dropOv">تراجَع عن كل ما لم يُرفَع</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- الملفّات -->
+  <section class="pane" id="p-files" hidden>
+    <div class="note warn" style="margin-top:14px">
+      هنا تعدّل ملفّات المنظومة نفسها. كل حفظ يصير <b>نسخةً في تاريخ المستودع</b>، فالتراجع ممكن دائماً
+      من <span dir="ltr">GitHub → Commits</span>. ومع ذلك: لا تحفظ ما لا تفهمه، واقرأ فرق النصّ قبل الحفظ.
+    </div>
+    <div class="grid g2">
+      <div>
+        <div class="bar">
+          <select id="fdir" class="btn">
+            <option value="malatya">malatya/ — الصفحات والأصول</option>
+            <option value="malatya/data">malatya/data/ — البيانات</option>
+            <option value="malatya/assets">malatya/assets/ — التنسيق والقائمة</option>
+            <option value="scripts">scripts/ — سحّاب البيانات</option>
+            <option value=".github/workflows">.github/workflows/ — الأتمتة</option>
+          </select>
+          <button class="btn" id="freload">حدّث</button>
+        </div>
+        <div class="tree" id="ftree"><div class="dir">…</div></div>
+      </div>
+      <div>
+        <div class="fld">
+          <label id="flabel">لم يُفتح ملفّ بعد</label>
+          <textarea class="code" id="fbody" spellcheck="false" disabled></textarea>
+        </div>
+        <div class="fld"><label>وصف التعديل (يُحفظ في تاريخ المستودع)</label>
+          <input type="text" id="fmsg" placeholder="مثال: تصحيح رقم هاتف في صفحة الدليل"></div>
+        <div id="fcheck"></div>
+        <div class="bar">
+          <button class="btn" id="fdiff" disabled>أرِني الفرق</button>
+          <button class="btn primary" id="fsave" disabled>احفظ وانشر</button>
+          <button class="btn" id="fdl" disabled>نزّل نسخة</button>
+        </div>
+        <div id="fdiffbox"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- النسخ الاحتياطي -->
+  <section class="pane" id="p-backup" hidden>
+    <h2 style="margin-top:18px">نسخة كاملة إلى جهازك</h2>
+    <p class="mut">ملفّ واحد يحوي كل ملفّات البيانات والصفحات كما هي الآن. احفظه قبل أي تغيير كبير.</p>
+    <div class="bar"><button class="btn primary" id="dobackup">نزّل نسخة كاملة</button><span id="bkmsg" class="mini"></span></div>
+
+    <h2>استعادة من نسخة</h2>
+    <p class="mut">اختر ملفّ نسخة، وسأعرض ما اختلف قبل أن يُكتب شيء. أنت تختار ما يُستعاد.</p>
+    <div class="fld"><input type="file" id="bkfile" accept=".json"></div>
+    <div id="bkdiff"></div>
+
+    <h2>تاريخ المستودع</h2>
+    <p class="mut">كل حفظ من هذه اللوحة يظهر هناك، ويمكن التراجع عنه بضغطة.</p>
+    <p><a class="btn" id="ghlink" href="#" target="_blank" rel="noopener">افتح سجلّ التغييرات على GitHub ↗</a></p>
+  </section>
+
+  <!-- السجلّ -->
+  <section class="pane" id="p-log" hidden>
+    <h2 style="margin-top:18px">ما فعلتَه من هذا الجهاز</h2>
+    <div class="card log" id="loglist"><p class="mut">لا شيء بعد.</p></div>
+    <div class="bar"><button class="btn" id="clearlog">امسح السجلّ المحلّي</button></div>
+    <h2>آخر التغييرات في المستودع</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>الوصف</th><th>مَن</th><th>متى</th></tr></thead>
+      <tbody id="commits"></tbody>
+    </table></div>
+  </section>
+
+  <footer class="site">
+    <span>🌰 منظومة ملاطيا</span><span>·</span>
+    <a href="manual.html">دليل التشغيل</a><a href="install.html">التثبيت</a><a href="index.html">مركز التحكّم</a>
+  </footer>
+</div>
+<script src="assets/nav.js?v=10" defer></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ═══════════ إعدادات ثابتة ═══════════ */
+  var OWNER='smhmd1-cyber', REPO='claude-guide', BRANCH='main';
+  var DATA='malatya/data/arsa-listings.json';
+  var OVER='malatya/data/arsa-overrides.json';
+  var DISTRICTS=['Battalgazi','Yeşilyurt','Akçadağ','Arapgir','Arguvan','Darende','Doğanşehir',
+                 'Doğanyol','Hekimhan','Kale','Kuluncak','Pütürge','Yazıhan','Merkez'];
+  var ZONS=['مرخّصة للبناء','زراعية','بلا إمار أو مقيَّدة','تصنيف آخر','غير مذكور'];
+  var PER=25;
+
+  /* ═══════════ أدوات ═══════════ */
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+    return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+  function n(x){ return (x==null||x===''||isNaN(x))?'—':Number(x).toLocaleString('en-US'); }
+  function today(){ return new Date().toISOString().slice(0,10); }
+  function toast(msg,kind){
+    var t=document.createElement('div'); t.className='toast '+(kind||'');
+    t.textContent=msg; document.body.appendChild(t);
+    setTimeout(function(){ t.remove(); }, kind==='bad'?7000:3500);
+  }
+  function b64enc(str){
+    var bytes=new TextEncoder().encode(str), bin='';
+    for(var i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+  function b64dec(b64){
+    var bin=atob(String(b64).replace(/\s/g,'')), bytes=new Uint8Array(bin.length);
+    for(var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    return new TextDecoder('utf-8').decode(bytes);
+  }
+  function logAdd(text){
+    var L=JSON.parse(localStorage.getItem('mly_log')||'[]');
+    L.unshift({t:new Date().toISOString(), m:text});
+    localStorage.setItem('mly_log', JSON.stringify(L.slice(0,200)));
+    renderLog();
+  }
+  function renderLog(){
+    var L=JSON.parse(localStorage.getItem('mly_log')||'[]'), box=$('loglist');
+    if(!box) return;
+    box.innerHTML = L.length ? L.map(function(x){
+      return '<div><b>'+esc(new Date(x.t).toLocaleString('ar'))+'</b> — '+esc(x.m)+'</div>'; }).join('')
+      : '<p class="mut">لا شيء بعد.</p>';
+  }
+
+  /* ═══════════ طبقة GitHub ═══════════ */
+  var GH={
+    token:'',
+    async api(path, opts){
+      if(window.__GH_MOCK) return window.__GH_MOCK(path, opts);
+      opts=opts||{};
+      var h=Object.assign({
+        'Accept':'application/vnd.github+json',
+        'X-GitHub-Api-Version':'2022-11-28'
+      }, opts.headers||{});
+      if(GH.token) h['Authorization']='Bearer '+GH.token;
+      if(opts.body) h['Content-Type']='application/json';
+      var r=await fetch('https://api.github.com'+path, {method:opts.method||'GET', headers:h, body:opts.body});
+      if(r.status===204) return {};
+      var txt=await r.text();
+      var j=null; try{ j=txt?JSON.parse(txt):null; }catch(e){}
+      if(!r.ok){
+        var msg=(j&&j.message)||('HTTP '+r.status);
+        if(r.status===401) msg='الرمز غير صالح أو انتهت صلاحيته';
+        if(r.status===403) msg='الرمز لا يملك الصلاحية المطلوبة لهذه العملية';
+        if(r.status===404) msg='غير موجود — تأكّد أن الرمز يشمل هذا المستودع';
+        var e=new Error(msg); e.status=r.status; throw e;
+      }
+      return j;
+    },
+    me(){ return GH.api('/user'); },
+    repo(){ return GH.api('/repos/'+OWNER+'/'+REPO); },
+    async getFile(path){
+      var j=await GH.api('/repos/'+OWNER+'/'+REPO+'/contents/'+encodeURI(path)+'?ref='+BRANCH);
+      return {text: j.content?b64dec(j.content):'', sha:j.sha, size:j.size};
+    },
+    listDir(path){ return GH.api('/repos/'+OWNER+'/'+REPO+'/contents/'+encodeURI(path)+'?ref='+BRANCH); },
+    putFile(path, text, sha, message){
+      var body={message:message, content:b64enc(text), branch:BRANCH};
+      if(sha) body.sha=sha;
+      return GH.api('/repos/'+OWNER+'/'+REPO+'/contents/'+encodeURI(path), {method:'PUT', body:JSON.stringify(body)});
+    },
+    workflows(){ return GH.api('/repos/'+OWNER+'/'+REPO+'/actions/workflows'); },
+    runs(){ return GH.api('/repos/'+OWNER+'/'+REPO+'/actions/runs?per_page=12'); },
+    dispatch(file, inputs){
+      return GH.api('/repos/'+OWNER+'/'+REPO+'/actions/workflows/'+encodeURIComponent(file)+'/dispatches',
+        {method:'POST', body:JSON.stringify({ref:BRANCH, inputs:inputs||{}})});
+    },
+    commits(){ return GH.api('/repos/'+OWNER+'/'+REPO+'/commits?sha='+BRANCH+'&per_page=12'); }
+  };
+  window.GH=GH;
+
+  /* ═══════════ الاتصال ═══════════ */
+  function setConn(state, text){
+    var el=$('conn'); el.className='pill '+(state||'');
+    el.textContent=text;
+  }
+  async function connect(silent){
+    var t=($('tok').value||'').trim() || localStorage.getItem('mly_tok') || '';
+    if(!t){ if(!silent) $('setupmsg').innerHTML='<p class="mut">الصق الرمز أولاً.</p>'; return false; }
+    GH.token=t;
+    setConn('warn','جارٍ التحقّق…');
+    try{
+      var rp=await GH.repo();
+      localStorage.setItem('mly_tok', t);
+      $('tok').value='';
+      setConn('ok','متّصلة');
+      $('setupmsg').innerHTML='<p class="mut">متّصلة بالمستودع <b dir="ltr">'+esc(rp.full_name)+'</b>'+
+        (rp.private?' (خاصّ)':'')+' — آخر تحديث '+esc(new Date(rp.pushed_at).toLocaleString('ar'))+'.</p>';
+      $('h3').textContent=rp.name; $('h3s').textContent=rp.private?'مستودع خاصّ':'مستودع عامّ';
+      $('ghlink').href='https://github.com/'+OWNER+'/'+REPO+'/commits/'+BRANCH;
+      $('tabs').hidden=false; showPane('health');
+      loadHealth(); loadItems(); loadTree(); loadCommits();
+      if(!silent) logAdd('اتّصال ناجح باللوحة');
+      return true;
+    }catch(e){
+      setConn('bad','فشل الاتصال');
+      $('setupmsg').innerHTML='<div class="note warn"><b>تعذّر الاتصال:</b> '+esc(e.message)+
+        '<br>راجع <a href="install.html">صفحة التثبيت</a> — الأغلب أن الرمز لا يشمل هذا المستودع أو ينقصه إذن Contents.</div>';
+      return false;
+    }
+  }
+  $('connect').addEventListener('click', function(){ connect(false); });
+  $('forget').addEventListener('click', function(){
+    localStorage.removeItem('mly_tok'); GH.token=''; setConn('','غير متّصلة');
+    $('tabs').hidden=true; document.querySelectorAll('.pane').forEach(function(p){ p.hidden=true; });
+    $('setupmsg').innerHTML='<p class="mut">مُسِح الرمز من هذا الجهاز. المنظومة نفسها لم تتغيّر.</p>';
+    toast('مُسِح الرمز من هذا الجهاز');
+  });
+
+  function showPane(name){
+    document.querySelectorAll('.tab').forEach(function(b){ b.classList.toggle('on', b.dataset.p===name); });
+    document.querySelectorAll('.pane').forEach(function(p){
+      var on = p.id==='p-'+name; p.hidden=!on; p.classList.toggle('on', on);
+    });
+  }
+  document.querySelectorAll('.tab').forEach(function(b){
+    b.addEventListener('click', function(){ showPane(b.dataset.p); });
+  });
+
+  /* ═══════════ الحالة ═══════════ */
+  async function loadHealth(){
+    try{
+      var r=await fetch('data/arsa-listings.json?v='+Date.now(), {cache:'no-store'});
+      var d=await r.json();
+      $('h1').textContent=n(d.total);
+      $('h1s').textContent=Object.keys(d.summary.by_source||{}).map(function(k){
+        return k+': '+d.summary.by_source[k]; }).join(' · ');
+      $('h2').textContent=d.updated||'—';
+      var days=Math.round((Date.now()-new Date(d.updated+'T00:00:00Z').getTime())/86400000);
+      $('h2s').textContent = days<=0?'اليوم':(days===1?'أمس':('قبل '+days+' يوماً'));
+      if(days>2) $('h2s').innerHTML='<span style="color:var(--amber)">قبل '+days+' يوماً — افحص الأتمتة</span>';
+    }catch(e){ $('h1').textContent='—'; $('h1s').textContent='تعذّر قراءة الملفّ الحيّ'; }
+    loadWorkflows(); loadRuns();
+  }
+
+  var WF_LABEL={'malatya-arsa.yml':'أراضي البناء','malatya-land.yml':'وكيل الأراضي',
+    'malatya-aqar.yml':'وكيل العقارات','malatya-daily.yml':'النشرة اليومية',
+    'malatya-invest.yml':'ملفّ الاستثمار','malatya-publish.yml':'النشر إلى الخادم',
+    'malatya-alarm.yml':'التنبيه','malatya-watchdog.yml':'الحارس','guide-watchdog.yml':'حارس الدليل'};
+
+  async function loadWorkflows(){
+    var box=$('wfs');
+    try{
+      var j=await GH.workflows();
+      var list=(j.workflows||[]).filter(function(w){ return w.state==='active'; });
+      box.innerHTML='<div class="bar">'+list.map(function(w){
+        var f=w.path.split('/').pop();
+        return '<button class="btn" data-wf="'+esc(f)+'">▶ '+esc(WF_LABEL[f]||w.name)+'</button>';
+      }).join('')+'</div>';
+      box.querySelectorAll('[data-wf]').forEach(function(b){
+        b.addEventListener('click', async function(){
+          b.disabled=true; var old=b.textContent; b.textContent='جارٍ التشغيل…';
+          try{
+            await GH.dispatch(b.dataset.wf);
+            toast('شُغّل: '+(WF_LABEL[b.dataset.wf]||b.dataset.wf)+' — تابع الحالة بعد دقائق','ok');
+            logAdd('تشغيل يدوي: '+b.dataset.wf);
+            setTimeout(loadRuns, 4000);
+          }catch(e){ toast('تعذّر التشغيل: '+e.message,'bad'); }
+          b.disabled=false; b.textContent=old;
+        });
+      });
+    }catch(e){ box.innerHTML='<div class="note warn">تعذّر قراءة قائمة الأتمتة: '+esc(e.message)+'</div>'; }
+  }
+
+  async function loadRuns(){
+    var tb=$('runs');
+    try{
+      var j=await GH.runs();
+      var rows=(j.workflow_runs||[]).slice(0,10);
+      $('h4').textContent = rows.length ? (rows[0].conclusion==='success'?'ناجح':(rows[0].conclusion||rows[0].status)) : '—';
+      $('h4s').textContent = rows.length ? (WF_LABEL[rows[0].path.split('/').pop()]||rows[0].name) : '—';
+      tb.innerHTML=rows.map(function(r){
+        var f=r.path.split('/').pop();
+        var cls=r.conclusion==='success'?'ok':(r.conclusion==='failure'?'bad':'warn');
+        var st=r.status!=='completed'?'يعمل الآن':(r.conclusion==='success'?'ناجح':(r.conclusion==='cancelled'?'أُلغي':'فشل'));
+        return '<tr><td>'+esc(WF_LABEL[f]||r.name)+'</td>'+
+          '<td><span class="pill '+cls+'">'+st+'</span></td>'+
+          '<td>'+esc(new Date(r.created_at).toLocaleString('ar'))+'</td>'+
+          '<td><a href="'+esc(r.html_url)+'" target="_blank" rel="noopener">التفاصيل ↗</a></td></tr>';
+      }).join('');
+    }catch(e){ tb.innerHTML='<tr><td colspan="4" class="mut">تعذّر: '+esc(e.message)+'</td></tr>'; }
+  }
+  $('refreshRuns').addEventListener('click', loadRuns);
+
+  var LIVE=[['index.html','مركز التحكّم'],['arsa.html','أراضي البناء'],['land-board.html','لوحة الأراضي'],
+            ['daleel.html','الدليل'],['data/arsa-listings.json','ملفّ الإعلانات'],['manifest.webmanifest','ملفّ التطبيق']];
+  async function checkLive(){
+    var box=$('live'); box.innerHTML='<p class="mut">جارٍ الفحص…</p>';
+    var out=[];
+    for(var i=0;i<LIVE.length;i++){
+      var u=LIVE[i][0], label=LIVE[i][1];
+      try{
+        var r=await fetch(u+'?c='+Date.now(), {cache:'no-store'});
+        out.push('<span class="pill '+(r.ok?'ok':'bad')+'">'+esc(label)+' — '+r.status+'</span>');
+      }catch(e){ out.push('<span class="pill bad">'+esc(label)+' — تعذّر</span>'); }
+    }
+    box.innerHTML='<div class="bar">'+out.join('')+'</div>';
+  }
+  $('checkLive').addEventListener('click', checkLive);
+
+  /* ═══════════ الإعلانات ═══════════ */
+  var ITEMS=[], OVR={items:[],patch:{},hidden:[]}, OVR_SHA=null, DIRTY=false, PAGE=1, EDIT_KEY=null;
+
+  function keyOf(r){ return (r.src||'emlakjet')+':'+r.id; }
+  function applyOverrides(base, ov){
+    var hidden={}; (ov.hidden||[]).forEach(function(k){ hidden[k]=1; });
+    var out=base.filter(function(r){ return !hidden[keyOf(r)]; }).map(function(r){
+      var p=(ov.patch||{})[keyOf(r)];
+      return p ? Object.assign({}, r, p, {edited:true}) : r;
+    });
+    (ov.items||[]).forEach(function(r){ out.push(Object.assign({manual:true}, r)); });
+    return out;
+  }
+  async function loadItems(){
+    try{
+      var f=await GH.getFile(DATA);
+      ITEMS=JSON.parse(f.text).items||[];
+    }catch(e){ ITEMS=[]; toast('تعذّر قراءة ملفّ الإعلانات: '+e.message,'bad'); }
+    try{
+      var g=await GH.getFile(OVER);
+      OVR=JSON.parse(g.text); OVR_SHA=g.sha;
+    }catch(e){ OVR={items:[],patch:{},hidden:[]}; OVR_SHA=null; }
+    OVR.items=OVR.items||[]; OVR.patch=OVR.patch||{}; OVR.hidden=OVR.hidden||[];
+    var srcs={}; ITEMS.forEach(function(r){ srcs[r.src||'emlakjet']=1; });
+    $('fsrc').innerHTML='<option value="">كل المصادر</option>'+Object.keys(srcs).concat(['manual'])
+      .filter(function(v,i,a){ return a.indexOf(v)===i; })
+      .map(function(s){ return '<option value="'+esc(s)+'">'+esc(s)+'</option>'; }).join('');
+    $('fzon').innerHTML='<option value="">كل التصنيفات</option>'+ZONS.map(function(z){
+      return '<option value="'+esc(z)+'">'+esc(z)+'</option>'; }).join('');
+    renderItems();
+  }
+  function currentRows(){
+    var q=($('q').value||'').trim().toLowerCase();
+    var fs=$('fsrc').value, fz=$('fzon').value;
+    return applyOverrides(ITEMS, OVR).filter(function(r){
+      if(fs && (r.src||'emlakjet')!==fs) return false;
+      if(fz && (r.zon||'غير مذكور')!==fz) return false;
+      if(q){
+        var hay=((r.t||'')+' '+(r.mah||'')+' '+(r.ilce||'')+' '+(r.id||'')).toLowerCase();
+        if(hay.indexOf(q)<0) return false;
+      }
+      return true;
+    });
+  }
+  function renderItems(){
+    var rows=currentRows(), pages=Math.max(1,Math.ceil(rows.length/PER));
+    if(PAGE>pages) PAGE=pages;
+    $('icount').innerHTML='ظهر <b>'+n(rows.length)+'</b> من <b>'+n(applyOverrides(ITEMS,OVR).length)+'</b>'+
+      (OVR.hidden.length?(' — <span style="color:var(--red)">'+OVR.hidden.length+' مخفيّ</span>'):'');
+    $('itb').innerHTML=rows.slice((PAGE-1)*PER, PAGE*PER).map(function(r){
+      var k=keyOf(r);
+      var badge = r.manual ? '<span class="pill ok">يدوي</span>'
+                : (r.edited ? '<span class="pill warn">معدَّل</span>' : '<span class="mini">آليّ</span>');
+      return '<tr><td>'+esc((r.t||'').slice(0,70))+'<br><span class="mini" dir="ltr">'+esc(k)+'</span></td>'+
+        '<td>'+esc(r.ilce||'—')+'</td><td class="num">'+n(r.m2)+'</td><td class="num">'+n(r.p)+'</td>'+
+        '<td>'+esc(r.zon||'—')+'</td><td>'+badge+'</td>'+
+        '<td><button class="btn sm" data-ed="'+esc(k)+'">تعديل</button> '+
+            '<button class="btn sm" data-del="'+esc(k)+'">حذف</button></td></tr>';
+    }).join('') || '<tr><td colspan="7" class="mut">لا شيء يطابق البحث.</td></tr>';
+    $('itb').querySelectorAll('[data-ed]').forEach(function(b){
+      b.addEventListener('click', function(){ openEditor(b.dataset.ed); }); });
+    $('itb').querySelectorAll('[data-del]').forEach(function(b){
+      b.addEventListener('click', function(){ askDelete(b.dataset.del); }); });
+    var pg=$('ipager'); pg.innerHTML='';
+    for(var i=1;i<=pages && pages>1;i++){
+      (function(i){
+        var b=document.createElement('button');
+        b.className='btn sm'+(i===PAGE?' primary':''); b.textContent=i;
+        b.onclick=function(){ PAGE=i; renderItems(); };
+        pg.appendChild(b);
+      })(i);
+    }
+    $('pending').hidden=!DIRTY;
+    $('pendn').textContent=(OVR.items.length+Object.keys(OVR.patch).length+OVR.hidden.length)+' ';
+  }
+  ['q','fsrc','fzon'].forEach(function(id){
+    $(id).addEventListener('input', function(){ PAGE=1; renderItems(); });
+  });
+
+  function fillSelect(el, arr, val){
+    el.innerHTML=arr.map(function(v){ return '<option'+(v===val?' selected':'')+'>'+esc(v)+'</option>'; }).join('');
+  }
+  function openEditor(key){
+    var r=currentRows().filter(function(x){ return keyOf(x)===key; })[0];
+    if(!r) return;
+    EDIT_KEY=key;
+    $('edtitle').textContent='تعديل: '+(r.t||key);
+    $('e_t').value=r.t||''; $('e_mah').value=r.mah||''; $('e_m2').value=r.m2||'';
+    $('e_p').value=r.p||''; $('e_d').value=r.d||''; $('e_u').value=r.u||'';
+    $('e_tapu').value=r.tapu||''; $('e_note').value=r.note||'';
+    fillSelect($('e_ilce'), DISTRICTS, r.ilce);
+    fillSelect($('e_zon'), ZONS, r.zon||'غير مذكور');
+    $('ederr').innerHTML=''; $('editor').hidden=false;
+    $('editor').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  $('addNew').addEventListener('click', function(){
+    EDIT_KEY=null;
+    $('edtitle').textContent='إعلان يدوي جديد';
+    ['e_t','e_mah','e_m2','e_p','e_u','e_tapu','e_note'].forEach(function(i){ $(i).value=''; });
+    $('e_d').value=today();
+    fillSelect($('e_ilce'), DISTRICTS, 'Battalgazi');
+    fillSelect($('e_zon'), ZONS, 'غير مذكور');
+    $('ederr').innerHTML=''; $('editor').hidden=false;
+    $('editor').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  $('ecancel').addEventListener('click', function(){ $('editor').hidden=true; EDIT_KEY=null; });
+
+  function validate(o, isManual){
+    var e=[];
+    if(!o.t || o.t.length<4) e.push('العنوان قصير جداً.');
+    if(DISTRICTS.indexOf(o.ilce)<0) e.push('الإلچة خارج ولاية ملاطيا.');
+    if(o.m2!=null && (!(o.m2>0) || o.m2>1000000)) e.push('المساحة غير معقولة (١ – ١٬٠٠٠٬٠٠٠ م²).');
+    if(o.p!=null && !(o.p>=0)) e.push('السعر غير صالح.');
+    if(o.d && !/^\d{4}-\d{2}-\d{2}$/.test(o.d)) e.push('التاريخ بصيغة غير صحيحة.');
+    if(isManual){
+      if(!o.u || o.u.indexOf('https://')!==0) e.push('الرابط مطلوب ويجب أن يبدأ بـhttps.');
+    } else if(o.u && o.u.indexOf('https://')!==0) e.push('الرابط يجب أن يبدأ بـhttps.');
+    return e;
+  }
+  $('esave').addEventListener('click', function(){
+    var o={
+      t:($('e_t').value||'').trim(),
+      ilce:$('e_ilce').value,
+      mah:($('e_mah').value||'').trim(),
+      m2:$('e_m2').value===''?null:Number($('e_m2').value),
+      p:$('e_p').value===''?null:Number($('e_p').value),
+      d:$('e_d').value||today(),
+      u:($('e_u').value||'').trim(),
+      zon:$('e_zon').value,
+      tapu:($('e_tapu').value||'').trim()||undefined,
+      note:($('e_note').value||'').trim()||undefined
+    };
+    var isManual = !EDIT_KEY || EDIT_KEY.indexOf('manual:')===0;
+    var errs=validate(o, isManual);
+    if(errs.length){ $('ederr').innerHTML='<div class="note warn">'+errs.map(esc).join('<br>')+'</div>'; return; }
+    if(o.p!=null && o.m2) o.ppm=Math.round(o.p/o.m2);
+    if(!EDIT_KEY){
+      o.src='manual'; o.id='m'+Date.now().toString(36);
+      o.land = (o.zon!=='زراعية');
+      o.cat='مُدخَل يدوياً'; o.zonsrc='أدخلتَه بنفسك';
+      OVR.items.push(o);
+      logAdd('إضافة إعلان يدوي: '+o.t.slice(0,50));
+    } else if(EDIT_KEY.indexOf('manual:')===0){
+      var id=EDIT_KEY.split(':')[1];
+      OVR.items=OVR.items.map(function(x){ return x.id===id ? Object.assign({}, x, o) : x; });
+      logAdd('تعديل إعلان يدوي: '+id);
+    } else {
+      OVR.patch[EDIT_KEY]=Object.assign({}, OVR.patch[EDIT_KEY]||{}, o, {editedAt:today()});
+      logAdd('تعديل إعلان آليّ: '+EDIT_KEY);
+    }
+    DIRTY=true; $('editor').hidden=true; EDIT_KEY=null; renderItems();
+    toast('حُفظ محلّياً — اضغط «ارفع التعديلات» لينشر','ok');
+  });
+
+  function askDelete(key){
+    var box=document.createElement('div'); box.className='confirm';
+    box.innerHTML='<b>حذف هذا الإعلان من اللوحة؟</b><br>'+
+      '<span class="mini">لا يُحذف من المصدر الأصلي — يُخفى من منظومتك فقط، ويمكن إرجاعه لاحقاً.</span>'+
+      '<div class="bar"><button class="btn" id="cyes">نعم، أخفِه</button><button class="btn" id="cno">تراجَع</button></div>';
+    $('itb').parentNode.parentNode.insertBefore(box, $('itb').parentNode);
+    box.querySelector('#cno').onclick=function(){ box.remove(); };
+    box.querySelector('#cyes').onclick=function(){
+      if(key.indexOf('manual:')===0){
+        var id=key.split(':')[1];
+        OVR.items=OVR.items.filter(function(x){ return x.id!==id; });
+      } else if(OVR.hidden.indexOf(key)<0){ OVR.hidden.push(key); }
+      DIRTY=true; box.remove(); renderItems();
+      logAdd('إخفاء إعلان: '+key);
+      toast('أُخفي — اضغط «ارفع التعديلات» لينشر','ok');
+    };
+  }
+
+  $('dropOv').addEventListener('click', function(){ DIRTY=false; loadItems(); toast('أُلغيت التعديلات غير المرفوعة'); });
+  $('pushOv').addEventListener('click', async function(){
+    var b=this; b.disabled=true; var old=b.textContent; b.textContent='جارٍ الرفع…';
+    try{
+      var payload={
+        note:'ملفّ التعديلات اليدوية. يقرؤه scripts/scrape_arsa.py ويطبّقه بعد كل سحب: '+
+             'patch يعدّل حقول إعلان قائم · hidden يخفيه · items تضيف إعلانات ليست في المصادر.',
+        updated: today(),
+        patch: OVR.patch, hidden: OVR.hidden, items: OVR.items
+      };
+      var res=await GH.putFile(OVER, JSON.stringify(payload, null, 1), OVR_SHA,
+        'تعديلات يدوية من لوحة الإدارة — '+today());
+      OVR_SHA=res.content?res.content.sha:OVR_SHA;
+      DIRTY=false; renderItems();
+      logAdd('رفع ملفّ التعديلات');
+      toast('رُفعت التعديلات','ok');
+      try{ await GH.dispatch('malatya-arsa.yml'); toast('شُغّل التحديث — يظهر الأثر خلال دقائق','ok'); }
+      catch(e){ toast('رُفعت، لكن تعذّر تشغيل التحديث: '+e.message,'bad'); }
+    }catch(e){ toast('تعذّر الرفع: '+e.message,'bad'); }
+    b.disabled=false; b.textContent=old;
+  });
+
+  /* ═══════════ الملفّات ═══════════ */
+  var F_PATH=null, F_SHA=null, F_ORIG='';
+  async function loadTree(){
+    var box=$('ftree'); box.innerHTML='<div class="dir">جارٍ القراءة…</div>';
+    try{
+      var list=await GH.listDir($('fdir').value);
+      var files=(list||[]).filter(function(x){ return x.type==='file'; })
+        .sort(function(a,b){ return a.name.localeCompare(b.name); });
+      box.innerHTML='<div class="dir">'+esc($('fdir').value)+' — '+files.length+' ملفّاً</div>'+
+        files.map(function(f){
+          return '<button data-path="'+esc(f.path)+'">'+esc(f.name)+
+                 ' <span class="mini">'+Math.round(f.size/1024)+' ك.ب</span></button>';
+        }).join('');
+      box.querySelectorAll('[data-path]').forEach(function(b){
+        b.addEventListener('click', function(){
+          box.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+          b.classList.add('on'); openFile(b.dataset.path);
+        });
+      });
+    }catch(e){ box.innerHTML='<div class="dir">تعذّر: '+esc(e.message)+'</div>'; }
+  }
+  $('fdir').addEventListener('change', loadTree);
+  $('freload').addEventListener('click', loadTree);
+
+  async function openFile(path){
+    $('flabel').textContent='جارٍ الفتح: '+path;
+    try{
+      var f=await GH.getFile(path);
+      F_PATH=path; F_SHA=f.sha; F_ORIG=f.text;
+      $('fbody').value=f.text; $('fbody').disabled=false;
+      $('flabel').innerHTML='<span dir="ltr">'+esc(path)+'</span> — '+Math.round(f.size/1024)+' ك.ب';
+      $('fdiff').disabled=false; $('fsave').disabled=false; $('fdl').disabled=false;
+      $('fmsg').value='تعديل '+path.split('/').pop();
+      $('fcheck').innerHTML=''; $('fdiffbox').innerHTML='';
+    }catch(e){ $('flabel').textContent='تعذّر الفتح: '+e.message; }
+  }
+
+  /* فحوص قبل الحفظ — أخطاء تسكت ولا تظهر إلّا بعد النشر */
+  function preflight(path, text){
+    var errs=[], warns=[];
+    if(/\.json$/.test(path)){
+      try{ JSON.parse(text); }catch(e){ errs.push('JSON غير صالح: '+e.message); }
+    }
+    if(/\.html$/.test(path)){
+      var scripts=text.match(/<script>([\s\S]*?)<\/script>/g)||[];
+      scripts.forEach(function(s){
+        if(/\breturn\s*\n/.test(s)) errs.push('«return» في آخر السطر داخل <script> — جافاسكربت تُنهي الجملة هناك فتعود الدالّة بلا قيمة، وتظهر الصفحة فارغة بلا رسالة خطأ.');
+      });
+      var op=(text.match(/<div\b/g)||[]).length, cl=(text.match(/<\/div>/g)||[]).length;
+      if(op!==cl) warns.push('عدد <div> ('+op+') لا يساوي عدد </div> ('+cl+') — قد يكون مقصوداً، وقد يكسر التخطيط.');
+      if(text.indexOf('assets/malatya.css')<0) warns.push('الصفحة لا تستدعي ملفّ التنسيق — ستظهر بلا تصميم.');
+    }
+    if(/\.ya?ml$/.test(path)){
+      if(/\t/.test(text)) errs.push('يوجد محرف Tab — YAML يرفض الجدولة، استعمل مسافات.');
+    }
+    return {errs:errs, warns:warns};
+  }
+  function showCheck(){
+    if(!F_PATH) return {errs:[],warns:[]};
+    var c=preflight(F_PATH, $('fbody').value);
+    $('fcheck').innerHTML =
+      (c.errs.length?'<div class="note warn"><b>يمنع الحفظ:</b><br>'+c.errs.map(esc).join('<br>')+'</div>':'')+
+      (c.warns.length?'<div class="note info"><b>انتبه:</b><br>'+c.warns.map(esc).join('<br>')+'</div>':'')+
+      (!c.errs.length&&!c.warns.length?'<p class="mini" style="color:var(--green)">الفحوص المبدئية سليمة.</p>':'');
+    return c;
+  }
+  $('fbody').addEventListener('input', function(){ showCheck(); });
+
+  function lineDiff(a,b){
+    var A=a.split('\n'), B=b.split('\n'), out=[], i=0, j=0;
+    var setB={}; B.forEach(function(l,ix){ (setB[l]=setB[l]||[]).push(ix); });
+    while(i<A.length||j<B.length){
+      if(i<A.length && j<B.length && A[i]===B[j]){ i++; j++; continue; }
+      if(j<B.length && (i>=A.length || A.indexOf(B[j], i)<0)){ out.push(['a', j+1, B[j]]); j++; continue; }
+      if(i<A.length && (j>=B.length || B.indexOf(A[i], j)<0)){ out.push(['d', i+1, A[i]]); i++; continue; }
+      out.push(['d', i+1, A[i]]); out.push(['a', j+1, B[j]]); i++; j++;
+    }
+    return out;
+  }
+  $('fdiff').addEventListener('click', function(){
+    var d=lineDiff(F_ORIG, $('fbody').value);
+    if(!d.length){ $('fdiffbox').innerHTML='<p class="mut">لا فرق — الملفّ كما هو.</p>'; return; }
+    $('fdiffbox').innerHTML='<div class="diff">'+d.slice(0,400).map(function(x){
+      return '<div class="'+x[0]+'">'+(x[0]==='a'?'+ ':'- ')+esc(x[2]).slice(0,300)+'</div>';
+    }).join('')+(d.length>400?'<div class="c">… و'+(d.length-400)+' سطراً آخر</div>':'')+'</div>';
+  });
+  $('fdl').addEventListener('click', function(){
+    dl(F_PATH.split('/').pop(), $('fbody').value, 'text/plain');
+  });
+  $('fsave').addEventListener('click', async function(){
+    var c=showCheck();
+    if(c.errs.length){ toast('الحفظ ممنوع — صحّح الأخطاء أولاً','bad'); return; }
+    if($('fbody').value===F_ORIG){ toast('لا تغيير في الملفّ'); return; }
+    var b=this; b.disabled=true; var old=b.textContent; b.textContent='جارٍ الحفظ…';
+    try{
+      var res=await GH.putFile(F_PATH, $('fbody').value, F_SHA, $('fmsg').value||('تعديل '+F_PATH));
+      F_SHA=res.content?res.content.sha:F_SHA; F_ORIG=$('fbody').value;
+      logAdd('حفظ ملفّ: '+F_PATH);
+      toast('حُفظ — النشر إلى الخادم يبدأ تلقائياً','ok');
+      $('fdiffbox').innerHTML='';
+      loadCommits();
+    }catch(e){
+      if(e.status===409) toast('تغيّر الملفّ في المستودع بعد فتحه. أعد فتحه ثم أعد التعديل.','bad');
+      else toast('تعذّر الحفظ: '+e.message,'bad');
+    }
+    b.disabled=false; b.textContent=old;
+  });
+
+  /* ═══════════ النسخ الاحتياطي ═══════════ */
+  function dl(name, text, mime){
+    var blob=new Blob([text], {type:(mime||'application/json')+';charset=utf-8'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+  }
+  $('dobackup').addEventListener('click', async function(){
+    var b=this; b.disabled=true; $('bkmsg').textContent='جارٍ التجميع…';
+    var bundle={kind:'malatya-backup', at:new Date().toISOString(), repo:OWNER+'/'+REPO, files:{}};
+    try{
+      for(var dir of ['malatya','malatya/data','malatya/assets','scripts','.github/workflows']){
+        var list=await GH.listDir(dir);
+        for(var f of (list||[]).filter(function(x){ return x.type==='file' && x.size<400000; })){
+          try{ bundle.files[f.path]=(await GH.getFile(f.path)).text; }catch(e){}
+        }
+      }
+      dl('malatya-backup-'+today()+'.json', JSON.stringify(bundle), 'application/json');
+      $('bkmsg').textContent=Object.keys(bundle.files).length+' ملفّاً في النسخة.';
+      logAdd('تنزيل نسخة احتياطية ('+Object.keys(bundle.files).length+' ملفّاً)');
+    }catch(e){ $('bkmsg').textContent='تعذّر: '+e.message; }
+    b.disabled=false;
+  });
+
+  $('bkfile').addEventListener('change', async function(){
+    var file=this.files&&this.files[0]; if(!file) return;
+    var box=$('bkdiff'); box.innerHTML='<p class="mut">جارٍ المقارنة…</p>';
+    try{
+      var bundle=JSON.parse(await file.text());
+      if(bundle.kind!=='malatya-backup') throw new Error('هذا ليس ملفّ نسخة من هذه المنظومة.');
+      var paths=Object.keys(bundle.files), diffs=[];
+      for(var p of paths){
+        var cur=''; try{ cur=(await GH.getFile(p)).text; }catch(e){ cur=null; }
+        if(cur!==bundle.files[p]) diffs.push({p:p, missing:cur===null});
+      }
+      if(!diffs.length){ box.innerHTML='<div class="note ok">النسخة مطابقة للحالة الحالية — لا شيء يُستعاد.</div>'; return; }
+      box.innerHTML='<div class="note warn"><b>'+diffs.length+' ملفّاً يختلف.</b> اختر ما تريد إرجاعه إلى حالة النسخة.</div>'+
+        '<div class="tree">'+diffs.map(function(d,i){
+          return '<label style="display:block;padding:11px 14px;border-bottom:1px solid var(--border-soft)">'+
+            '<input type="checkbox" data-i="'+i+'"> <span dir="ltr">'+esc(d.p)+'</span>'+
+            (d.missing?' <span class="pill warn">غير موجود الآن</span>':'')+'</label>';
+        }).join('')+'</div>'+
+        '<div class="bar"><button class="btn primary" id="dorestore">أرجِع المحدَّد</button></div>';
+      box.querySelector('#dorestore').addEventListener('click', async function(){
+        var picks=[].slice.call(box.querySelectorAll('input[type=checkbox]:checked')).map(function(c){ return diffs[+c.dataset.i]; });
+        if(!picks.length){ toast('لم تختر شيئاً'); return; }
+        this.disabled=true;
+        for(var d of picks){
+          try{
+            var sha=null; try{ sha=(await GH.getFile(d.p)).sha; }catch(e){}
+            await GH.putFile(d.p, bundle.files[d.p], sha, 'استعادة من نسخة '+(bundle.at||'').slice(0,10)+' — '+d.p);
+          }catch(e){ toast('تعذّرت استعادة '+d.p+': '+e.message,'bad'); }
+        }
+        logAdd('استعادة '+picks.length+' ملفّاً من نسخة');
+        toast('اكتملت الاستعادة','ok'); loadCommits();
+      });
+    }catch(e){ box.innerHTML='<div class="note warn">تعذّر: '+esc(e.message)+'</div>'; }
+  });
+
+  /* ═══════════ السجلّ ═══════════ */
+  async function loadCommits(){
+    var tb=$('commits'); if(!tb) return;
+    try{
+      var j=await GH.commits();
+      tb.innerHTML=(j||[]).map(function(c){
+        return '<tr><td><a href="'+esc(c.html_url)+'" target="_blank" rel="noopener">'+
+          esc((c.commit.message||'').split('\n')[0].slice(0,80))+'</a></td>'+
+          '<td>'+esc(c.commit.author.name)+'</td>'+
+          '<td>'+esc(new Date(c.commit.author.date).toLocaleString('ar'))+'</td></tr>';
+      }).join('');
+    }catch(e){ tb.innerHTML='<tr><td colspan="3" class="mut">تعذّر: '+esc(e.message)+'</td></tr>'; }
+  }
+  $('clearlog').addEventListener('click', function(){ localStorage.removeItem('mly_log'); renderLog(); });
+
+  /* ═══════════ التثبيت كتطبيق ═══════════ */
+  var deferred=null;
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault(); deferred=e; $('install').hidden=false;
+    $('pwastate').textContent='جاهزة للتثبيت على هذا الجهاز.';
+  });
+  $('install').addEventListener('click', async function(){
+    if(!deferred) return;
+    deferred.prompt(); var r=await deferred.userChoice;
+    $('pwastate').textContent = r.outcome==='accepted' ? 'ثُبّتت.' : 'أُجّل التثبيت.';
+    deferred=null; $('install').hidden=true;
+  });
+  if(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)
+    $('pwastate').textContent='تعمل الآن كتطبيق مثبَّت.';
+  else if(!window.isSecureContext)
+    $('pwastate').textContent='التثبيت يحتاج اتصالاً آمناً (https).';
+
+  /* ═══════════ إقلاع ═══════════ */
+  renderLog();
+  if(localStorage.getItem('mly_tok')) connect(true);
+  window.__admin={applyOverrides:applyOverrides, validate:validate, preflight:preflight, lineDiff:lineDiff, keyOf:keyOf};
+})();
+</script>
+</body>
+</html>

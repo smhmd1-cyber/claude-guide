@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>بلا اتصال — منظومة ملاطيا</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">📴</div>
+    <div><h1>لا يوجد اتصال</h1>
+      <div class="sub">المنظومة مثبَّتة على جهازك، لكنّ هذه الصفحة تحتاج شبكة</div></div>
+  </div>
+
+  <div class="note warn">
+    الصفحات التي فتحتها من قبل تعمل الآن من الذاكرة. أمّا الأرقام والإعلانات فلا تُعرض
+    من نسخة قديمة دون أن تعرف: <b>عرض سعر الأمس على أنه سعر اليوم أسوأ من عدم عرضه</b>.
+    لذلك تظهر هذه الصفحة بدل بيانات قد تكون بائتة.
+  </div>
+
+  <h2>ما يمكنك فعله الآن</h2>
+  <ul class="clean">
+    <li>تحقّق من الشبكة أو بيانات الهاتف، ثمّ اضغط «أعد المحاولة».</li>
+    <li>الصفحات المخزَّنة تُفتح من القائمة (زرّ البوصلة 🧭 أسفل الشاشة).</li>
+    <li>لوحة الإدارة تحتاج اتصالاً دائماً — فهي تكتب إلى المستودع مباشرةً.</li>
+  </ul>
+
+  <p><button class="btn primary" id="retry">أعد المحاولة</button>
+     <a class="btn" href="index.html">مركز التحكّم</a></p>
+
+  <footer class="site"><span>🌰 منظومة ملاطيا</span></footer>
+</div>
+<script src="assets/nav.js?v=10" defer></script>
+<script>
+(function(){
+  document.getElementById('retry').addEventListener('click', function(){ location.reload(); });
+  window.addEventListener('online', function(){ location.reload(); });
+})();
+</script>
+</body>
+</html>

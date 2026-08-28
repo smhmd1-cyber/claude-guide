@@ -42,6 +42,11 @@ from datetime import datetime, timezone, timedelta
 import requests
 
 OUT = os.environ.get("ARSA_OUT", "malatya/data/arsa-listings.json")
+# ملفّ التعديلات اليدوية: تكتبه لوحة الإدارة، ويقرؤه السحّاب. الفصل مقصود —
+# هذا الملفّ من صنع الإنسان ولا يمسّه السحّاب، وملفّ الإعلانات من صنع السحّاب
+# ويُعاد بناؤه كل يوم. لولا هذا الفصل لدهس التحديثُ اليوميّ كلَّ تعديل يدوي.
+OVERRIDES = os.environ.get("ARSA_OVERRIDES",
+                           os.path.join(os.path.dirname(OUT), "arsa-overrides.json"))
 FULL_SCAN = os.environ.get("ILAN_FULL_SCAN", "") == "1"
 
 SUSPECT_M2 = 1_000_000     # أكبر من ذلك = خطأ فاصل في المصدر لا قطعة حقيقية
@@ -602,6 +607,56 @@ def parse_tr_date(s):
 PREV_BY_ID = {}
 
 
+def apply_overrides(rows):
+    """يطبّق ما كتبه الإنسان فوق ما سحبته الآلة.
+
+    hidden: مفاتيح تُخفى · patch: حقول تُبدَّل في إعلان قائم · items: إعلانات
+    يدوية ليست في أي مصدر. المفتاح «src:id».
+    """
+    stats = {"hidden": 0, "patched": 0, "manual": 0}
+    try:
+        with open(OVERRIDES, encoding="utf-8") as f:
+            ov = json.load(f)
+    except FileNotFoundError:
+        return rows, stats
+    except Exception as e:
+        print("  تعذّرت قراءة ملفّ التعديلات (%s) — تُجوهِل: %s" % (OVERRIDES, e), file=sys.stderr)
+        return rows, stats
+
+    hidden = set(ov.get("hidden") or [])
+    patch = ov.get("patch") or {}
+    out = []
+    for r in rows:
+        k = "%s:%s" % (r.get("src") or "emlakjet", r.get("id"))
+        if k in hidden:
+            stats["hidden"] += 1
+            continue
+        if k in patch:
+            r = dict(r)
+            r.update({kk: vv for kk, vv in patch[k].items() if vv is not None})
+            r["edited"] = True
+            stats["patched"] += 1
+        out.append(r)
+
+    for it in (ov.get("items") or []):
+        if not it.get("id") or not it.get("t"):
+            continue
+        it = dict(it)
+        it["src"] = "manual"
+        it.setdefault("zonsrc", "أدخلتَه بنفسك")
+        it.setdefault("cat", "مُدخَل يدوياً")
+        it.setdefault("zon", ZON_UNK)
+        it.setdefault("land", True)
+        it["manual"] = True
+        out.append(it)
+        stats["manual"] += 1
+
+    if any(stats.values()):
+        print("  تعديلات يدوية: %d مخفيّ · %d معدَّل · %d مُضاف"
+              % (stats["hidden"], stats["patched"], stats["manual"]))
+    return out, stats
+
+
 def load_previous():
     try:
         with open(OUT, encoding="utf-8") as f:
@@ -676,11 +731,6 @@ def main():
     if not rows:
         raise RuntimeError("لم يبقَ أي إعلان بعد التصفية — لا يُكتب الملف.")
 
-    # العدّاد المعلن لكل مصدر يُعاد حسابه من الصفوف الباقية بعد كل تصفية،
-    # وإلّا أعلن الملف عدداً لا يطابق ما فيه.
-    for meta in metas:
-        meta["count"] = len([r for r in rows if r.get("src") == meta["key"]])
-
     # رخصة الاستعمال: معلَنة في إعلانات السوق، ومستنبَطة في المزادات الرسمية
     for r in rows:
         if r.get("src") == "emlakjet":
@@ -696,6 +746,13 @@ def main():
             r["zon"] = z
             r["zonsrc"] = ("مستنبَط من نصّ الإعلان الرسمي"
                            if z != ZON_UNK else "غير مذكور في الإعلان")
+
+    rows, ov_stats = apply_overrides(rows)
+
+    # العدّاد المعلن لكل مصدر يُعاد حسابه هنا — بعد التصفية والإخفاء اليدوي معاً.
+    # لو حُسب قبلهما لأعلن الملفّ عدداً لا يطابق ما فيه، وهذا ما تمسكه البوّابة.
+    for meta in metas:
+        meta["count"] = len([r for r in rows if r.get("src") == meta["key"]])
 
     # المساحة: إن كانت المعلنة غير معقولة نحاول انتشالها من نصّ العنوان
     recovered = 0
@@ -747,6 +804,15 @@ def main():
             "n_priced": len(pp),
         })
 
+    n_manual = len([r for r in rows if r.get("src") == "manual"])
+    if n_manual:
+        metas.append({
+            "key": "manual", "name": "إدخال يدوي من لوحة الإدارة",
+            "url": "admin.html", "kind": "يدوي",
+            "price_note": "ما أدخلتَه بنفسك — لا سحب آليّ",
+            "status": "ok", "count": n_manual,
+        })
+
     market = [r["ppm"] for r in rows if r.get("ppm") and r.get("src") == "emlakjet" and r.get("land")]
     market.sort()
     prices = [r["p"] for r in rows if r.get("p")]
@@ -770,7 +836,9 @@ def main():
             "flagged": len([r for r in rows if r.get("sus")]),
             "m2_recovered": recovered,
             "dropped_outside_province": outside,
-            "by_source": {k: len([r for r in rows if r.get("src") == k]) for k in collected},
+            "by_source": {k: len([r for r in rows if (r.get("src") or "emlakjet") == k])
+                          for k in sorted({(r.get("src") or "emlakjet") for r in rows})},
+            "overrides": ov_stats,
             "by_cat": {c: len([r for r in rows if r.get("cat") == c])
                        for c in sorted({r.get("cat") or "عقار آخر" for r in rows})},
             "land_count": len([r for r in rows if r.get("land")]),

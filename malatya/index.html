@@ -2,11 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>منظومة ملاطيا — مركز التحكّم</title>
 <meta name="description" content="مركز واحد يجمع دليل ملاطيا والنشرة اليومية ومحرّك البحث العقاري ولوحات الأراضي والعقارات ومكتبة المشاريع الثمانية.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌰%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/malatya.css?v=2">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
 <style>
 /* ==== خاص بمركز التحكّم ==== */
 .hero{background:linear-gradient(135deg,rgba(247,165,43,.12),rgba(91,157,255,.08)),linear-gradient(180deg,var(--card),var(--bg2));
@@ -183,6 +188,29 @@
     <div class="card"><h3 style="margin-top:0">🌾 الأراضي</h3><div id="last-land" class="mut">…</div></div>
   </div>
 
+
+  <h2>التشغيل والإدارة</h2>
+  <div class="grid g3">
+    <a class="tile teal" href="admin.html">
+      <span class="t-ico">🛠️</span>
+      <div class="t-name">لوحة الإدارة</div>
+      <div class="t-desc">أضف إعلاناً، صحّح سعراً، أخفِ ما لا يعنيك، وعدّل أي صفحة — ثمّ انشر. كل ذلك من داخل المنظومة، ومن أي جهاز.</div>
+      <div class="t-foot"><span class="badge ok">تحتاج رمز وصول</span></div>
+    </a>
+    <a class="tile" href="manual.html">
+      <span class="t-ico">📘</span>
+      <div class="t-name">دليل التشغيل</div>
+      <div class="t-desc">الدورة اليومية، وكيف تعدّل، وماذا تفعل حين يفشل شيء، وكيف توسّع المنظومة بمصدر أو صفحة جديدة.</div>
+      <div class="t-foot"><span class="badge info">اقرأه مرّة</span></div>
+    </a>
+    <a class="tile amber" href="install.html">
+      <span class="t-ico">⬇️</span>
+      <div class="t-name">التثبيت والإعداد</div>
+      <div class="t-desc">ثبّت المنظومة كتطبيق على الهاتف أو الحاسوب، وافتح لنفسك صلاحية التعديل في خطوات معدودة.</div>
+      <div class="t-foot"><span class="badge ok">مرّة واحدة</span></div>
+    </a>
+  </div>
+
   <footer class="site">
     <span>🌰 منظومة ملاطيا</span><span>·</span>
     <a href="daleel.html">الدليل</a><a href="aqar.html">المحرّك</a>
@@ -192,7 +220,7 @@
   </footer>
 </div>
 
-<script src="assets/nav.js?v=9" defer></script>
+<script src="assets/nav.js?v=10" defer></script>
 <script>
 (function(){
   'use strict';

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>دليل التشغيل — منظومة ملاطيا</title>
+<link rel="icon" href="assets/icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
+<style>
+.toc{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px}
+.toc a{border:1px solid var(--border);background:var(--card2);border-radius:999px;
+  padding:8px 15px;font-size:13px;font-weight:800;min-height:40px;display:inline-flex;align-items:center}
+.q{border:1px solid var(--border);border-radius:var(--r);background:var(--card);margin-bottom:10px;overflow:hidden}
+.q>summary{padding:14px 18px;cursor:pointer;font-weight:800;font-size:14.5px;list-style:none;
+  display:flex;align-items:center;gap:10px;min-height:48px}
+.q>summary::-webkit-details-marker{display:none}
+.q>summary::before{content:'▸';color:var(--accent);font-size:15px;flex:none}
+.q[open]>summary::before{content:'▾'}
+.q .body{padding:0 18px 16px;line-height:2;color:var(--text2);font-size:14px}
+.q .body ol,.q .body ul{padding-inline-start:22px}
+.kbd{font-family:var(--font-num);background:var(--bg2);border:1px solid var(--border);
+  border-radius:6px;padding:2px 7px;font-size:12.5px;direction:ltr;display:inline-block}
+table.map td:first-child{font-family:var(--font-num);direction:ltr;text-align:left;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">📘</div>
+    <div><h1>دليل التشغيل</h1>
+      <div class="sub">كل ما تحتاجه لتدير المنظومة وتصلحها وتطوّرها بنفسك</div></div>
+    <div class="spacer"></div>
+    <a class="btn" href="admin.html">لوحة الإدارة</a>
+    <a class="btn" href="index.html">← مركز التحكّم</a>
+  </div>
+
+  <div class="toc">
+    <a href="#daily">الدورة اليومية</a>
+    <a href="#edit">تعديل الإعلانات</a>
+    <a href="#code">تعديل الصفحات</a>
+    <a href="#fix">حين يفشل شيء</a>
+    <a href="#grow">التوسيع</a>
+    <a href="#map">خريطة الملفّات</a>
+    <a href="#rules">قواعد لا تُكسر</a>
+  </div>
+
+  <h2 id="daily">الدورة اليومية — تعمل بلا تدخّل</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>الساعة (القدس)</th><th>ماذا يحدث</th><th>إن فشل</th></tr></thead>
+    <tbody>
+      <tr><td>٠٧:١٠</td><td>وكيل العقارات يمسح المصادر ويكتب بيانات اليوم</td><td>تبقى بيانات الأمس، ولا يُكتب ملفّ ناقص</td></tr>
+      <tr><td>٠٨:١٠</td><td>وكيل الأراضي يرصد القطع ويكتب تقريره</td><td>كما سبق</td></tr>
+      <tr><td>٠٨:٢٥</td><td>سحّاب أراضي البناء: السوق + المصدر الرسمي + تعديلاتك اليدوية</td><td>مصدر يفشل لا يُسقط الآخر، والفشل يُكتب في الملفّ ويظهر على الصفحة</td></tr>
+      <tr><td>٠٩:١٠</td><td>وكيل النشرة يحرّر الدليل</td><td>كما سبق</td></tr>
+      <tr><td>بعد كل واحد</td><td>سير النشر يرفع المجلّد إلى الخادم ويفحص أن بقية مواقعك سليمة</td><td>يتوقّف النشر ويظهر السبب في سجلّ التشغيل</td></tr>
+    </tbody>
+  </table></div>
+  <p class="mut">كل هذا يظهر في <a href="admin.html">لوحة الإدارة ← الحالة والتشغيل</a>، ومنها تشغّل أيّاً منها الآن دون انتظار.</p>
+
+  <h2 id="edit">تعديل الإعلانات</h2>
+  <details class="q" open><summary>أضف إعلاناً ليس على الإنترنت</summary><div class="body">
+    <ol>
+      <li>لوحة الإدارة ← <b>الإعلانات</b> ← <b>أضف إعلاناً يدوياً</b>.</li>
+      <li>املأ العنوان والإلچة والمساحة والسعر والرابط. الرابط مطلوب: ضع رابط المكتب أو أي مرجع — لتعرف لاحقاً من أين جاء.</li>
+      <li>احفظ، ثمّ اضغط <b>ارفع التعديلات وشغّل التحديث</b>.</li>
+      <li>خلال دقائق يظهر على الصفحة بوسم <b>«أدخلتَه بنفسك»</b> — لا يُخلط بما سُحب آلياً.</li>
+    </ol>
+  </div></details>
+  <details class="q"><summary>صحّح سعراً أو مساحة في إعلان آليّ</summary><div class="body">
+    اضغط <b>تعديل</b> بجانب الإعلان، غيّر ما تريد، احفظ وارفع.
+    التصحيح يُحفظ في ملفّ منفصل ويُطبَّق <b>بعد</b> كل سحب — فلا يمحوه التحديث اليومي،
+    ولا يمنع الإعلان من تلقّي بقية تحديثاته. يظهر عليه وسم <b>«عُدّل يدوياً»</b> ليعرف قارئه أن يداً بشرية لمسته.
+  </div></details>
+  <details class="q"><summary>احذف إعلاناً</summary><div class="body">
+    <b>حذف</b> يُخفيه من منظومتك ولا يمسّ المصدر الأصلي. يُسجَّل مفتاحه في قائمة الإخفاء،
+    فلا يعود حتى لو ظهر في السحب التالي. للإرجاع: افتح
+    <span class="kbd">malatya/data/arsa-overrides.json</span> من تبويب الملفّات واحذف مفتاحه من <span class="kbd">hidden</span>.
+  </div></details>
+  <details class="q"><summary>لماذا لا يظهر التعديل فوراً؟</summary><div class="body">
+    لأن الصفحة تقرأ ملفّ بيانات جاهزاً، وهذا الملفّ يُبنى من المصادر + تعديلاتك.
+    الرفع يشغّل البناء تلقائياً، والنشر إلى الخادم يتبعه. المدّة المعتادة ٣–٦ دقائق.
+    تابعها في <b>الحالة والتشغيل ← آخر التشغيلات</b>.
+  </div></details>
+
+  <h2 id="code">تعديل الصفحات والنصوص والأتمتة</h2>
+  <details class="q"><summary>غيّر نصّاً في صفحة</summary><div class="body">
+    <b>ملفّات المنظومة</b> ← اختر <span class="kbd">malatya/</span> ← افتح الصفحة ← عدّل النصّ ←
+    <b>أرِني الفرق</b> للتأكّد أنك غيّرت ما قصدته وحده ← اكتب وصفاً للتعديل ← <b>احفظ وانشر</b>.
+    الحفظ يصنع نسخة في تاريخ المستودع، والتراجع ممكن دائماً.
+  </div></details>
+  <details class="q"><summary>ما الذي يمنعك من كسر الموقع</summary><div class="body">
+    قبل الحفظ تعمل فحوص تلقائية:
+    <ul>
+      <li><b>JSON غير صالح</b> — يمنع الحفظ. فاصلة زائدة واحدة تُعطّل الصفحة كلّها.</li>
+      <li><b>«return» في آخر السطر داخل &lt;script&gt;</b> — يمنع الحفظ. جافاسكربت تُنهي الجملة هناك تلقائياً فتعود الدالّة بلا قيمة، وتظهر الصفحة <b>فارغة بلا أي رسالة خطأ</b>. هذا العطل أصاب المنظومة فعلاً من قبل.</li>
+      <li><b>Tab داخل ملفّ YAML</b> — يمنع الحفظ. YAML يرفض الجدولة.</li>
+      <li><b>اختلال عدد &lt;div&gt;</b> أو غياب ملفّ التنسيق — تنبيه لا منع.</li>
+    </ul>
+    وبعد الحفظ يفحص سير النشر اكتمال الملفّات وسلامة مواقعك الأخرى قبل أن يرفع شيئاً.
+  </div></details>
+  <details class="q"><summary>عدّل الأتمتة نفسها</summary><div class="body">
+    <span class="kbd">.github/workflows/</span> فيها سيَر العمل، و<span class="kbd">scripts/scrape_arsa.py</span> هو السحّاب.
+    أكثر ما يُعدَّل عملياً:
+    <ul>
+      <li><b>موعد التشغيل</b>: سطر <span class="kbd">cron</span> — بتوقيت UTC لا القدس (اطرح ٣ ساعات صيفاً).</li>
+      <li><b>حدّ الأمان</b>: <span class="kbd">if len(items) &lt; 30</span> يمنع نشر ملفّ شبه فارغ.</li>
+      <li><b>خريطة التصنيف</b>: <span class="kbd">IMAR_MAP</span> — أضف سطراً لأي قيمة تركية جديدة تظهر تحت «تصنيف آخر».</li>
+    </ul>
+  </div></details>
+
+  <h2 id="fix">حين يفشل شيء — التشخيص بالترتيب</h2>
+  <details class="q"><summary>البيانات لم تتحدّث اليوم</summary><div class="body">
+    <ol>
+      <li>الحالة والتشغيل ← بطاقة <b>آخر تحديث</b>. إن قالت «قبل يومين» فالأتمتة متوقّفة.</li>
+      <li>انظر <b>آخر التشغيلات</b>: افتح <b>التفاصيل</b> لأوّل تشغيل فاشل واقرأ آخر سطر أحمر.</li>
+      <li>الأسباب الشائعة: المصدر حجب الطلب · تغيّرت بنية صفحته · انتهت مهلة. في الحالتين الأوليين يظهر سبب الفشل داخل الملفّ نفسه ويُعرض على الصفحة.</li>
+      <li>جرّب <b>▶ أراضي البناء</b> لتشغيل فوري. إن نجح فكانت عارضة.</li>
+    </ol>
+  </div></details>
+  <details class="q"><summary>عدّلتُ وحفظت ولم يتغيّر الموقع</summary><div class="body">
+    <ol>
+      <li>هل نجح النشر؟ الحالة والتشغيل ← آخر التشغيلات ← «النشر إلى الخادم».</li>
+      <li>إن فشل النشر: افتح التفاصيل. الحارس يمنع النشر إذا بدا أن موقعاً آخر على الاستضافة تضرّر — وهذا مقصود.</li>
+      <li>إن نجح ولم تر التغيير: أنت ترى نسخة مخزَّنة. <a href="install.html">صفحة التثبيت</a> ← <b>امسح الذاكرة المخزَّنة وحدّث</b>.</li>
+    </ol>
+  </div></details>
+  <details class="q"><summary>«الرمز غير صالح أو انتهت صلاحيته»</summary><div class="body">
+    انتهت مدّة الرمز أو أُلغي. أنشئ رمزاً جديداً بخطوات <a href="install.html">صفحة التثبيت</a> والصقه. لا شيء آخر يتأثّر.
+  </div></details>
+  <details class="q"><summary>«تغيّر الملفّ في المستودع بعد فتحه»</summary><div class="body">
+    عدّلتَ ملفّاً بينما كتبت فيه الأتمتة أو جهاز آخر. أعد فتح الملفّ — تظهر النسخة الجديدة — ثمّ أعد تعديلك عليها.
+    هذه حماية لا خطأ: بدونها كان تعديلك سيمحو تعديل غيرك بصمت.
+  </div></details>
+  <details class="q"><summary>أفسدتُ شيئاً وأريد الرجوع</summary><div class="body">
+    <ol>
+      <li><b>الأسرع</b>: نسخ احتياطي ← ارفع آخر نسخة نزّلتها ← اختر الملفّات ← أرجِع.</li>
+      <li><b>الأدقّ</b>: افتح <a id="hist" href="https://github.com/smhmd1-cyber/claude-guide/commits/main" target="_blank" rel="noopener">تاريخ المستودع ↗</a>، اعثر على التغيير، واضغط <span class="kbd">Revert</span>.</li>
+    </ol>
+    لا يوجد تغيير لا رجعة فيه — كل حفظ محفوظ في التاريخ.
+  </div></details>
+
+  <h2 id="grow">التوسيع</h2>
+  <details class="q"><summary>أضف مصدراً جديداً للإعلانات</summary><div class="body">
+    في <span class="kbd">scripts/scrape_arsa.py</span> اكتب دالّة تُعيد
+    <span class="kbd">(rows, meta)</span> بالحقول نفسها (<span class="kbd">src, id, t, ilce, m2, p, d, u</span>)،
+    ثمّ أضفها إلى قائمة <span class="kbd">adapters</span>. الباقي يعمل وحده: التصفية والدمج والإحصاء والعرض.
+    <br><b>قبل أي جهد</b>: افحص أن المصدر يستجيب لعميل عاديّ. sahibinden و hepsiemlak و hurriyetemlak
+    تردّ <span class="kbd">403</span> لكل عميل آليّ — لا تُبنى عليها أتمتة.
+  </div></details>
+  <details class="q"><summary>أضف صفحة جديدة</summary><div class="body">
+    <ol>
+      <li>انسخ صفحة قائمة قريبة الشكل، وغيّر العنوان والمحتوى.</li>
+      <li>احفظها باسم جديد في <span class="kbd">malatya/</span>.</li>
+      <li>أضفها إلى القائمة: <span class="kbd">malatya/assets/nav.js</span> ← مصفوفة <span class="kbd">SECTIONS</span>.</li>
+      <li>ارفع رقم النسخة في كل الصفحات: <span class="kbd">nav.js?v=10</span> ← <span class="kbd">v=11</span>، وإلّا رأى الزوّار القائمة القديمة من ذاكرة متصفّحهم.</li>
+      <li>أضفها إلى قائمة اكتمال النشر في <span class="kbd">malatya-publish.yml</span>.</li>
+    </ol>
+  </div></details>
+
+  <h2 id="map">خريطة الملفّات</h2>
+  <div class="tbl-wrap"><table class="map">
+    <thead><tr><th>الملفّ</th><th>ما هو</th><th>مَن يكتبه</th></tr></thead>
+    <tbody>
+      <tr><td>malatya/index.html</td><td>مركز التحكّم</td><td>أنت</td></tr>
+      <tr><td>malatya/arsa.html</td><td>لوحة أراضي البناء</td><td>أنت</td></tr>
+      <tr><td>malatya/admin.html</td><td>لوحة الإدارة</td><td>أنت</td></tr>
+      <tr><td>malatya/data/arsa-listings.json</td><td>الإعلانات الجاهزة للعرض</td><td><b>الآلة</b> — لا تعدّله يدوياً</td></tr>
+      <tr><td>malatya/data/arsa-overrides.json</td><td>تعديلاتك: إضافة وتصحيح وإخفاء</td><td><b>أنت</b> عبر اللوحة</td></tr>
+      <tr><td>malatya/assets/malatya.css</td><td>التنسيق لكل الصفحات</td><td>أنت</td></tr>
+      <tr><td>malatya/assets/nav.js</td><td>القائمة + تشغيل التطبيق</td><td>أنت</td></tr>
+      <tr><td>malatya/sw.js</td><td>محرّك العمل بلا شبكة</td><td>أنت (بحذر)</td></tr>
+      <tr><td>scripts/scrape_arsa.py</td><td>سحّاب الأراضي</td><td>أنت</td></tr>
+      <tr><td>.github/workflows/*.yml</td><td>الأتمتة والنشر</td><td>أنت</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="rules">قواعد لا تُكسر</h2>
+  <div class="note warn">
+    <ol style="margin:0;padding-inline-start:20px;line-height:2">
+      <li><b>لا تعدّل <span class="kbd">arsa-listings.json</span> يدوياً.</b> يُعاد بناؤه كل يوم فيُمحى تعديلك. استعمل تبويب الإعلانات.</li>
+      <li><b>لا تلمس <span class="kbd">guide.html</span> في جذر الموقع</b> — هو دليل المغرب، مشروع آخر. المنظومة كلّها داخل <span class="kbd">/malatya/</span>.</li>
+      <li><b>لا تنشر رقماً بلا مصدر.</b> كل رقم على الصفحات مسحوب أو مُدخَل بيدك وموسوم بذلك. الرقم الذي لا يُعرف مصدره أسوأ من غيابه.</li>
+      <li><b>لا توسّع صلاحية الرمز.</b> مستودع واحد وصلاحيتان. الرمز الواسع خسارته أفدح.</li>
+      <li><b>اقرأ الفرق قبل الحفظ.</b> ثانيتان تمنعان ساعة إصلاح.</li>
+    </ol>
+  </div>
+
+  <footer class="site">
+    <span>🌰 منظومة ملاطيا</span><span>·</span>
+    <a href="admin.html">لوحة الإدارة</a><a href="install.html">التثبيت</a><a href="index.html">مركز التحكّم</a>
+  </footer>
+</div>
+<script src="assets/nav.js?v=10" defer></script>
+</body>
+</html>

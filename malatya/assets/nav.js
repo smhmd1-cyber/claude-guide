@@ -47,6 +47,11 @@
     { g: 'الأرشيف والمراجع', items: [
       { h: 'reports.html',     i: '🗂️', n: 'أرشيف التقارير اليومية',  d: 'كل تقارير الوكيلين منذ الانطلاق' },
       { h: 'library.html',     i: '📚', n: 'مكتبة المشاريع الثمانية',  d: 'دراسات الجدوى والنماذج المالية' }
+    ]},
+    { g: 'التشغيل والإدارة', items: [
+      { h: 'admin.html',   i: '🛠️', n: 'لوحة الإدارة',    d: 'أضف · عدّل · احذف · انشر — من دون وسيط' },
+      { h: 'manual.html',  i: '📘', n: 'دليل التشغيل',     d: 'كيف تدير المنظومة وتصلحها وتوسّعها بنفسك' },
+      { h: 'install.html', i: '⬇️', n: 'التثبيت والإعداد', d: 'ثبّتها كتطبيق وافتح صلاحية التعديل' }
     ]}
   ];
 
@@ -138,3 +143,116 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
   else build();
 })();
+
+
+/* ═══════════ MLY-PWA-START — تشغيل المنظومة كتطبيق ═══════════
+ * أُضيف في ٢٨/٠٨/٢٠٢٦. يعيش هنا لأن nav.js يُحمَّل في كل صفحة، فلا حاجة
+ * لتعديل عشرين صفحة كلّما تغيّر شيء في سلوك التطبيق.
+ *
+ * ثلاث وظائف: تسجيل عامل الخدمة · زرّ التثبيت داخل قائمة التنقّل ·
+ * إشعار «تحديث جاهز» حين ينزل إصدار جديد — لأن المستخدم الذي لا يعلم أنه
+ * يرى نسخة قديمة أسوأ حالاً ممّن يعلم.
+ */
+(function () {
+  'use strict';
+
+  var BASE = (function () {
+    var s = document.currentScript;
+    if (!s) {
+      var a = document.getElementsByTagName('script');
+      for (var i = a.length - 1; i >= 0; i--) if (/nav\.js/.test(a[i].src)) { s = a[i]; break; }
+    }
+    return s ? s.src.replace(/assets\/nav\.js.*$/, '') : '';
+  })();
+
+  /* ── عامل الخدمة ── */
+  if ('serviceWorker' in navigator && window.isSecureContext) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register(BASE + 'sw.js', { scope: BASE || './' })
+        .then(function (reg) {
+          reg.addEventListener('updatefound', function () {
+            var nw = reg.installing;
+            if (!nw) return;
+            nw.addEventListener('statechange', function () {
+              // controller موجود ⇒ هذه ترقية لا تثبيت أوّل
+              if (nw.state === 'installed' && navigator.serviceWorker.controller) showUpdate(reg);
+            });
+          });
+        })
+        .catch(function () { /* التثبيت ليس شرطاً لعمل الموقع */ });
+
+      var refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function () {
+        if (refreshing) return;
+        refreshing = true;
+        location.reload();
+      });
+    });
+  }
+
+  function showUpdate(reg) {
+    if (document.getElementById('mly-upd')) return;
+    var bar = document.createElement('div');
+    bar.id = 'mly-upd';
+    bar.className = 'on';
+    bar.innerHTML = '<span>وصل تحديث للمنظومة</span>';
+    var b = document.createElement('button');
+    b.className = 'btn sm primary';
+    b.textContent = 'حدّث الآن';
+    b.onclick = function () {
+      b.disabled = true; b.textContent = 'جارٍ…';
+      if (reg.waiting) reg.waiting.postMessage('skip-waiting'); else location.reload();
+    };
+    var x = document.createElement('button');
+    x.className = 'btn sm';
+    x.textContent = 'لاحقاً';
+    x.onclick = function () { bar.remove(); };
+    bar.appendChild(b); bar.appendChild(x);
+    document.body.appendChild(bar);
+  }
+
+  /* ── زرّ التثبيت ── */
+  var deferred = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferred = e;
+    addInstallEntry();
+  });
+  window.addEventListener('appinstalled', function () {
+    deferred = null;
+    var el = document.getElementById('mly-install-entry');
+    if (el) el.remove();
+  });
+
+  /* قائمة nav.js عبارة عن #mly-drawer فيه .hd ثمّ مجموعات .grp/.it ثمّ .ft */
+  function addInstallEntry() {
+    var tries = 0;
+    var t = setInterval(function () {
+      if (document.getElementById('mly-install-entry')) { clearInterval(t); return; }
+      var drawer = document.getElementById('mly-drawer');
+      if (drawer) {
+        clearInterval(t);
+        var wrap = document.createElement('div');
+        wrap.id = 'mly-install-entry';
+        wrap.style.cssText = 'padding:12px 16px;border-top:1px solid var(--border)';
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'btn primary';
+        b.style.width = '100%';
+        b.textContent = '⬇️ ثبّت المنظومة كتطبيق';
+        b.onclick = async function () {
+          if (!deferred) { location.href = 'install.html'; return; }
+          deferred.prompt();
+          await deferred.userChoice;
+          deferred = null;
+          wrap.remove();
+        };
+        wrap.appendChild(b);
+        var ft = drawer.querySelector('.ft');
+        if (ft) drawer.insertBefore(wrap, ft); else drawer.appendChild(wrap);
+      }
+      if (++tries > 40) clearInterval(t);
+    }, 300);
+  }
+})();
+/* ═══════════ MLY-PWA-END ═══════════ */
