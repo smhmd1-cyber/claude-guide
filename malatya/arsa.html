@@ -271,7 +271,7 @@
     buildDistricts();
 
     document.getElementById('stb').innerHTML=d.stats.map(function(s){
-      return '<tr><td><b>'+esc(s.ilce)+'</b></td><td class="num">'+n(s.n)+'</td>'+
+      return '<tr><td><b>'+esc(s.ilce)+'</b>'+(s.note?('<br><span class="mut" style="font-size:11.5px;font-weight:600">'+esc(s.note)+'</span>'):'')+'</td><td class="num">'+n(s.n)+'</td>'+
         '<td class="num">'+(s.ppm_med!=null?n(s.ppm_med):'—')+'</td>'+
         '<td class="num">'+(s.ppm_min!=null?n(s.ppm_min):'—')+'</td>'+
         '<td class="num">'+(s.ppm_max!=null?n(s.ppm_max):'—')+'</td>'+
@@ -280,6 +280,7 @@
     set('statnote','عمود «كل الإعلانات» يشمل المصدرين وكل أنواع العقار، أمّا أعمدة ₺/م² فمن إعلانات الأرض في السوق وحدها — '+
       'البدل المحمّن تقدير قضائي لا سعر سوق، وخلطهما يفسد الوسيط. '+
       'الإلچات بلا إعلانات تظهر بـ«—»: غياب إعلان على هذه المصادر اليوم، لا غياب أراضٍ معروضة فيها. '+
+      'و«Merkez» ليست إلچة: هي تسمية ما قبل ٢٠١٣ ما زالت الدوائر الرسمية تستعملها لمركز ملاطيا قبل قسمته إلى باتالغازي ويشيليورت — تُعرض كما وردت بلا تخمين. '+
       'والفارق الكبير بين الأدنى والأعلى داخل الإلچة الواحدة طبيعي: أرض عمرانية داخل المدينة وحقل زراعي بعيد يظهران في القائمة نفسها.');
 
     document.getElementById('srctb').innerHTML=srcs.map(function(s){

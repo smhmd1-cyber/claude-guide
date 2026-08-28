@@ -52,6 +52,14 @@ DISTRICTS = [
 ]
 DISTRICTS_UP = {d.upper(): d for d in DISTRICTS}
 
+# ما تكتبه الجهات الرسمية ولا يطابق القائمة حرفياً.
+# «Arapkir» تهجئة قديمة لـ«Arapgir» — الإلچة نفسها.
+# «Merkez» اسم ما قبل ٢٠١٣: قُسِّم مركز ملاطيا يومها إلى باتالغازي ويشيليورت،
+# وما زالت سجلّات الدوائر تستعمله. لا نخمّن أيّهما — نُبقيه باسمه ونُظهره كما هو.
+ALIASES = {"ARAPKIR": "Arapgir", "MERKEZ": "Merkez"}
+LEGACY = {"Merkez": "مركز ملاطيا — تسمية ما قبل ٢٠١٣، لم تُفصَّل الإلچة"}
+ALLOWED = DISTRICTS + list(LEGACY)
+
 HEADERS = {
     "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                    "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"),
@@ -198,7 +206,8 @@ def norm_district(name):
     for key, std in DISTRICTS_UP.items():
         if up == key or n.casefold() == std.casefold():
             return std
-    # «Merkez» في ملاطيا تعني باتالغازي تاريخياً — لا نخمّن، نتركها كما هي
+    if up in ALIASES:
+        return ALIASES[up]
     return None
 
 
@@ -465,6 +474,11 @@ def main():
     if not rows:
         raise RuntimeError("لم يبقَ أي إعلان بعد التصفية — لا يُكتب الملف.")
 
+    # العدّاد المعلن لكل مصدر يُعاد حسابه من الصفوف الباقية بعد كل تصفية،
+    # وإلّا أعلن الملف عدداً لا يطابق ما فيه.
+    for meta in metas:
+        meta["count"] = len([r for r in rows if r.get("src") == meta["key"]])
+
     # المساحة: إن كانت المعلنة غير معقولة نحاول انتشالها من نصّ العنوان
     recovered = 0
     for r in rows:
@@ -487,7 +501,7 @@ def main():
         if r.get("ppm") and r.get("src") == "emlakjet" and r.get("land"):
             by[r["ilce"]].append(r)
     stats = []
-    for d in DISTRICTS:
+    for d in ALLOWED:
         n = len([r for r in rows if r["ilce"] == d])
         rs = by.get(d, [])
         if rs:
@@ -495,10 +509,11 @@ def main():
             pr = sorted(x["p"] for x in rs)
             stats.append({"ilce": d, "n": n, "ppm_med": int(statistics.median(pp)),
                           "ppm_min": pp[0], "ppm_max": pp[-1],
-                          "p_med": int(statistics.median(pr))})
+                          "p_med": int(statistics.median(pr)),
+                          "note": LEGACY.get(d)})
         else:
             stats.append({"ilce": d, "n": n, "ppm_med": None, "ppm_min": None,
-                          "ppm_max": None, "p_med": None})
+                          "ppm_max": None, "p_med": None, "note": LEGACY.get(d)})
     stats.sort(key=lambda s: -s["n"])
 
     market = [r["ppm"] for r in rows if r.get("ppm") and r.get("src") == "emlakjet" and r.get("land")]
@@ -514,7 +529,7 @@ def main():
                  "وأسعار المصدر الرسميّ بدلٌ محمّن: تقدير معتمَد وحدٌّ أدنى للمزايدة، لا سعر بيع. "
                  "تحقّق من الطابو والإفراز والحالة العمرانية قبل أي التزام."),
         "summary": {
-            "districts_with_listings": len([s for s in stats if s["n"]]),
+            "districts_with_listings": len([s for s in stats if s["n"] and s["ilce"] in DISTRICTS]),
             "districts_total": len(DISTRICTS),
             "ppm_median": int(statistics.median(market)) if market else None,
             "ppm_p10": market[int(len(market) * 0.10)] if market else None,

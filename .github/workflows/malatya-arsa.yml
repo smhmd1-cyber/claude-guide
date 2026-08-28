@@ -55,8 +55,10 @@ jobs:
           if d.get('total') != len(items):
               E.append('total لا يساوي عدد العناصر')
 
+          # «Merkez» تسمية ما قبل ٢٠١٣ ما زالت الدوائر الرسمية تستعملها لمركز ملاطيا،
+          # فتُقبل كسلّة صريحة لا تُنسب إلى إلچة بعينها.
           DIST = {"Battalgazi","Yeşilyurt","Akçadağ","Arapgir","Arguvan","Darende","Doğanşehir",
-                  "Doğanyol","Hekimhan","Kale","Kuluncak","Pütürge","Yazıhan"}
+                  "Doğanyol","Hekimhan","Kale","Kuluncak","Pütürge","Yazıhan","Merkez"}
           keys = set()
           for r in items:
               k = (r.get('src') or 'emlakjet', r.get('id'))
