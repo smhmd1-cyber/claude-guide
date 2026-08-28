@@ -3,33 +3,55 @@
  "province": "Malatya",
  "scope": "إعلانات بيع الأراضي (arsa/tarla/bahçe) في ولاية ملاطيا فقط",
  "total": 251,
- "source": {
-  "name": "Emlakjet",
-  "url": "https://www.emlakjet.com/satilik-arsa/malatya/",
-  "method": "JSON-LD (schema.org RealEstateListing) من كل صفحات النتائج",
-  "site_reported_total": null,
-  "fetched": "2026-08-28"
- },
- "note": "الأسعار والمساحات كما يعلنها البائع/المكتب على المنصة — ليست تقييماً ولا سعراً رسمياً. تحقّق من الطابو والإفراز والحالة العمرانية قبل أي التزام.",
+ "sources": [
+  {
+   "key": "emlakjet",
+   "name": "Emlakjet",
+   "url": "https://www.emlakjet.com/satilik-arsa/malatya/",
+   "kind": "سوق",
+   "price_note": "سعر يطلبه البائع أو المكتب",
+   "status": "ok",
+   "count": 251,
+   "site_reported_total": 251,
+   "pages": 9
+  },
+  {
+   "key": "ilangovtr",
+   "name": "ilan.gov.tr — هيئة الإعلانات الصحفية (BİK)",
+   "url": "https://www.ilan.gov.tr/ilan/kategori/1/emlak",
+   "kind": "رسميّ",
+   "price_note": "بدل محمّن: تقدير رسمي معتمَد وحدٌّ أدنى للمزايدة",
+   "status": "failed",
+   "error": "تعذّر استدعاء https://www.ilan.gov.tr/api/api/services/app/Ad/AdsByFilter — SSLError: HTTPSConnectionPool(host='www.ilan.gov.tr', port=443): Max retries exceeded with url: /api/api/services/app/Ad/Ads",
+   "count": 0,
+   "note": "عُرضت بيانات آخر سحب ناجح لهذا المصدر"
+  }
+ ],
+ "note": "أسعار المصدر السوقيّ كما يعلنها البائع أو المكتب — ليست تقييماً. وأسعار المصدر الرسميّ بدلٌ محمّن: تقدير معتمَد وحدٌّ أدنى للمزايدة، لا سعر بيع. تحقّق من الطابو والإفراز والحالة العمرانية قبل أي التزام.",
  "summary": {
   "districts_with_listings": 11,
   "districts_total": 13,
-  "ppm_median": 1735,
-  "ppm_p10": 340,
+  "ppm_median": 1741,
+  "ppm_p10": 350,
   "ppm_p90": 9688,
   "price_min": 410000,
   "price_max": 75000000,
-  "flagged": 2,
-  "dropped_outside_province": 0
+  "flagged": 1,
+  "m2_recovered": 1,
+  "dropped_outside_province": 0,
+  "by_source": {
+   "emlakjet": 251,
+   "ilangovtr": 0
+  }
  },
  "stats": [
   {
    "ilce": "Yeşilyurt",
    "n": 113,
-   "ppm_med": 4099,
+   "ppm_med": 4174,
    "ppm_min": 10,
    "ppm_max": 44318,
-   "p_med": 7075000
+   "p_med": 7400000
   },
   {
    "ilce": "Battalgazi",
@@ -130,6 +152,7 @@
  ],
  "items": [
   {
+   "src": "emlakjet",
    "id": "19773772",
    "t": "Battalgazi Kadıçayırı Mahallesi'nde Satılık Müstakil Tapulu Arsa",
    "ilce": "Battalgazi",
@@ -142,6 +165,7 @@
    "ppm": 860
   },
   {
+   "src": "emlakjet",
    "id": "19772014",
    "t": "Yusuf Karadaglı Gayrimenkulden Satilik Yola Yakin Tarla",
    "ilce": "Yeşilyurt",
@@ -154,6 +178,7 @@
    "ppm": 1000
   },
   {
+   "src": "emlakjet",
    "id": "19766422",
    "t": "Tugay Kınacı'dan Kuzey Çevreyoluna Sıfır 10 Dönüm Satılık Tarla",
    "ilce": "Yeşilyurt",
@@ -166,6 +191,7 @@
    "ppm": 1528
   },
   {
+   "src": "emlakjet",
    "id": "19757208",
    "t": "Dilek İstasyon'da 417 M² Müstakil Tek Tapu, 2 Katlı Arsa 3+1 Ev",
    "ilce": "Yeşilyurt",
@@ -178,6 +204,7 @@
    "ppm": 23981
   },
   {
+   "src": "emlakjet",
    "id": "19753447",
    "t": "Erkan Emlaktan Hatunsuyunda İmarlı 970 M2 Satılık Arsa",
    "ilce": "Battalgazi",
@@ -190,6 +217,7 @@
    "ppm": 3144
   },
   {
+   "src": "emlakjet",
    "id": "19752517",
    "t": "Güven Emlak'tan Özalperde 3 Kata İmarlı Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -202,6 +230,7 @@
    "ppm": 11538
   },
   {
+   "src": "emlakjet",
    "id": "19751622",
    "t": "Yusuf Karadağlıdan Dilek Merkezde Satılık İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -214,6 +243,7 @@
    "ppm": 4770
   },
   {
+   "src": "emlakjet",
    "id": "19747894",
    "t": "Yusuf Karadağlıdan Havaalanı Civarı Satılık Sulu Hünnap Bahçesi",
    "ilce": "Akçadağ",
@@ -226,6 +256,7 @@
    "ppm": 474
   },
   {
+   "src": "emlakjet",
    "id": "19747351",
    "t": "Eski Malatya Ulu Camii Yanı 320 M2 Köşe Arsa",
    "ilce": "Battalgazi",
@@ -238,6 +269,7 @@
    "ppm": 2262
   },
   {
+   "src": "emlakjet",
    "id": "19746803",
    "t": "Gündüzbey Kozluk'ta Havadar, Ruhsatlı Evi Olan Bağ",
    "ilce": "Yeşilyurt",
@@ -250,6 +282,7 @@
    "ppm": 699
   },
   {
+   "src": "emlakjet",
    "id": "19746800",
    "t": "Akçadağ Örende Su Sorunu Olmayan, Yol Cepheli, 84 Dönüm Bahçe",
    "ilce": "Akçadağ",
@@ -262,6 +295,7 @@
    "ppm": 475
   },
   {
+   "src": "emlakjet",
    "id": "19733693",
    "t": "Battalgazi Toygar'da 1032m² İmarlı Arsa",
    "ilce": "Battalgazi",
@@ -274,6 +308,7 @@
    "ppm": 4506
   },
   {
+   "src": "emlakjet",
    "id": "19727958",
    "t": "Hatun Suyu Kıraç Mahallesi 970 Metrekare Satılık Arsa",
    "ilce": "Battalgazi",
@@ -286,6 +321,7 @@
    "ppm": 3351
   },
   {
+   "src": "emlakjet",
    "id": "19724765",
    "t": "Organize San.bitimi Cihadiyede 8435 M2 Satılık Arazi",
    "ilce": "Yeşilyurt",
@@ -298,6 +334,7 @@
    "ppm": 1250
   },
   {
+   "src": "emlakjet",
    "id": "19723089",
    "t": "Özgür'den Yazıhan Durucasu'da 16.500 M² Satılık Bahçe",
    "ilce": "Yazıhan",
@@ -310,6 +347,7 @@
    "ppm": 497
   },
   {
+   "src": "emlakjet",
    "id": "19723076",
    "t": "Özgür'den Karanlıkdere'de Harika Konumda Bahçe",
    "ilce": "Akçadağ",
@@ -322,6 +360,7 @@
    "ppm": 587
   },
   {
+   "src": "emlakjet",
    "id": "19723068",
    "t": "Özgür'den Kuyulu'da Tam Verimli Satılık Badem Bahçesi",
    "ilce": "Yeşilyurt",
@@ -334,6 +373,7 @@
    "ppm": 1026
   },
   {
+   "src": "emlakjet",
    "id": "19723063",
    "t": "Özgür'den Yeșilyurt Mollakasım'da Muhteşem 2243 M² Villalık Arsa",
    "ilce": "Yeşilyurt",
@@ -346,6 +386,7 @@
    "ppm": 4012
   },
   {
+   "src": "emlakjet",
    "id": "19723061",
    "t": "Özgürden Hekimhan Girmanada Sulama Sistemli Satılık Bahçeli Ev",
    "ilce": "Hekimhan",
@@ -358,6 +399,7 @@
    "ppm": 887
   },
   {
+   "src": "emlakjet",
    "id": "19723058",
    "t": "Özgür'den Akçadağ Cezaevi'nin Yakında 42 Dönüm Yatırımlık Tarla",
    "ilce": "Akçadağ",
@@ -370,6 +412,7 @@
    "ppm": 175
   },
   {
+   "src": "emlakjet",
    "id": "19723054",
    "t": "Özgür`den Karanlıkdere Köy Evleri Yanında Harika Konumda Tarla",
    "ilce": "Akçadağ",
@@ -382,6 +425,7 @@
    "ppm": 591
   },
   {
+   "src": "emlakjet",
    "id": "19723047",
    "t": "Özgür'den Dolamantepe'de Satılık İmarlı Fırsat Arsalar",
    "ilce": "Battalgazi",
@@ -394,6 +438,7 @@
    "ppm": 4992
   },
   {
+   "src": "emlakjet",
    "id": "19723045",
    "t": "Özgür`den Akçadağ`da Fırsat Harika Konumda Sulu Tarla",
    "ilce": "Akçadağ",
@@ -406,6 +451,7 @@
    "ppm": 328
   },
   {
+   "src": "emlakjet",
    "id": "19721384",
    "t": "Güven Emlak'tan Tecde Kanal Üstü Villa İmarlı Fırsat Arsa",
    "ilce": "Yeşilyurt",
@@ -418,6 +464,7 @@
    "ppm": 12330
   },
   {
+   "src": "emlakjet",
    "id": "19707200",
    "t": "Akçadağ Altunluda Satılık 8.5 Dönüm Bahçe",
    "ilce": "Akçadağ",
@@ -430,6 +477,7 @@
    "ppm": 407
   },
   {
+   "src": "emlakjet",
    "id": "19703432",
    "t": "Erdoğan Gayrimenkulden Satılık Harika Konumda Beylerderesi Yaşam Vadisi Projesinde Arsa Hissesi",
    "ilce": "Yeşilyurt",
@@ -442,6 +490,7 @@
    "ppm": 6560
   },
   {
+   "src": "emlakjet",
    "id": "19703003",
    "t": "Orduzu Pınarbaşı'nda Manzaralı 412m² Villa Arsası",
    "ilce": "Battalgazi",
@@ -454,6 +503,7 @@
    "ppm": 6311
   },
   {
+   "src": "emlakjet",
    "id": "19699886",
    "t": "Özhan'dan Yazıhanda 39 Dönüm Satılık Arsa",
    "ilce": "Yazıhan",
@@ -466,6 +516,7 @@
    "ppm": 256
   },
   {
+   "src": "emlakjet",
    "id": "19699308",
    "t": "Size Özel Villalık Arsanız Hazır",
    "ilce": "Battalgazi",
@@ -478,6 +529,7 @@
    "ppm": 6311
   },
   {
+   "src": "emlakjet",
    "id": "19696240",
    "t": "Fourx4 Gayrimenkulden Konak Ana Yola Yakın Satılık Bağ 4075 M2",
    "ilce": "Yeşilyurt",
@@ -490,6 +542,7 @@
    "ppm": 1227
   },
   {
+   "src": "emlakjet",
    "id": "19686053",
    "t": "Yusuf Karadağlı'dan Gündüzbey'de İmarlı Fırsat 615m2 Arsa",
    "ilce": "Yeşilyurt",
@@ -502,6 +555,7 @@
    "ppm": 2268
   },
   {
+   "src": "emlakjet",
    "id": "19681981",
    "t": "Yusuf Karadağlı'dan Çavuşoğlunda 198m2 İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -514,6 +568,7 @@
    "ppm": 9343
   },
   {
+   "src": "emlakjet",
    "id": "19679585",
    "t": "Hs Life Grup Tan Satlık Villalık Arsa Duvarlarına Kadar Yapılmış",
    "ilce": "Yeşilyurt",
@@ -526,6 +581,7 @@
    "ppm": 7759
   },
   {
+   "src": "emlakjet",
    "id": "19676502",
    "t": "Kıvanç Gayrimenkul'den Yakada Satılık Fırsat Arsa",
    "ilce": "Yeşilyurt",
@@ -538,6 +594,7 @@
    "ppm": 8367
   },
   {
+   "src": "emlakjet",
    "id": "19676472",
    "t": "Vip Lineden Mullakasımda 2.167 M2 Arsa İçinde Villa",
    "ilce": "Yeşilyurt",
@@ -550,6 +607,7 @@
    "ppm": 9091
   },
   {
+   "src": "emlakjet",
    "id": "19671859",
    "t": "Hasan Akbulut'dan 'de Aşağıbağlar'da İmarlı 250m2 Arsa",
    "ilce": "Yeşilyurt",
@@ -562,6 +620,7 @@
    "ppm": 11600
   },
   {
+   "src": "emlakjet",
    "id": "19669903",
    "t": "Sahibinden Havuzlu Bahçe .yol Sorunu Yok",
    "ilce": "Kale",
@@ -574,6 +633,7 @@
    "ppm": 868
   },
   {
+   "src": "emlakjet",
    "id": "19668339",
    "t": "Pütürge Taşbaşı Mahallesi'nde 6500 Metre² Tek Tapu Arsa",
    "ilce": "Pütürge",
@@ -586,6 +646,7 @@
    "ppm": 422
   },
   {
+   "src": "emlakjet",
    "id": "19663918",
    "t": "Malatya Topsöğüt Satılık Konut + İşyeri İmarlı ( 864.m ) Arsa",
    "ilce": "Yeşilyurt",
@@ -598,6 +659,7 @@
    "ppm": 8970
   },
   {
+   "src": "emlakjet",
    "id": "19663856",
    "t": "$$ Malatya'da Hazır Çiftlik Ve Gelir Getiren Kayısı Bahçesi $$",
    "ilce": "Battalgazi",
@@ -610,6 +672,7 @@
    "ppm": 846
   },
   {
+   "src": "emlakjet",
    "id": "19662868",
    "t": "Akçadağ Havaalanı Karşısında Satılık Kayısı Bahçesi",
    "ilce": "Akçadağ",
@@ -622,6 +685,7 @@
    "ppm": 1015
   },
   {
+   "src": "emlakjet",
    "id": "19660451",
    "t": "Kumsaldan Battalgazi'de Kuzey Çevre Yoluna Komşu 20 Dönüm Bahçe",
    "ilce": "Battalgazi",
@@ -634,6 +698,7 @@
    "ppm": 1150
   },
   {
+   "src": "emlakjet",
    "id": "19657097",
    "t": "Furkan Doğandan Kale Kıyıcakda 8500 M2 Baraj Manzaralı Satılık Tarla",
    "ilce": "Kale",
@@ -646,6 +711,7 @@
    "ppm": 1029
   },
   {
+   "src": "emlakjet",
    "id": "19656996",
    "t": "Furkan Doğandan Kalede Full Baraj Manzaralı 1110 M2 İmarlı Arsa",
    "ilce": "Kale",
@@ -658,6 +724,7 @@
    "ppm": 1734
   },
   {
+   "src": "emlakjet",
    "id": "19654121",
    "t": "Çamurlu Mahallesinde Satılık Arsa",
    "ilce": "Battalgazi",
@@ -670,6 +737,7 @@
    "ppm": 4476
   },
   {
+   "src": "emlakjet",
    "id": "19646397",
    "t": "Koz Emlak'tan Satılık Bahçe Ve Sıfır Ev",
    "ilce": "Battalgazi",
@@ -682,6 +750,7 @@
    "ppm": 2440
   },
   {
+   "src": "emlakjet",
    "id": "19646160",
    "t": "Villa İmarlı 675 M2 Tek Tapu Önü Açık Toki Karşısı Fırsat Arsa..",
    "ilce": "Battalgazi",
@@ -694,6 +763,7 @@
    "ppm": 7259
   },
   {
+   "src": "emlakjet",
    "id": "19646158",
    "t": "Bahçebaşı Toki Karşısı Villa+konut İmarlı Tek Tapu 710 M2 Arsa..",
    "ilce": "Battalgazi",
@@ -706,6 +776,7 @@
    "ppm": 6901
   },
   {
+   "src": "emlakjet",
    "id": "19645511",
    "t": "Güven Emlak'tan Yeşilyurt Merkeze Yakın İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -718,6 +789,7 @@
    "ppm": 10159
   },
   {
+   "src": "emlakjet",
    "id": "19636577",
    "t": "Kıvanç Gayrimenkul'den Kotangölünde Satılık Arazi",
    "ilce": "Akçadağ",
@@ -730,6 +802,7 @@
    "ppm": 555
   },
   {
+   "src": "emlakjet",
    "id": "19636163",
    "t": "Enes Işık 'tan Tepe Köyde Satılık 230 M2. Arsa",
    "ilce": "Yeşilyurt",
@@ -742,6 +815,7 @@
    "ppm": 4174
   },
   {
+   "src": "emlakjet",
    "id": "19634791",
    "t": "Arıkandan Şahnahan’da Satılık Müstakil 5,5 Dönüm Arsa",
    "ilce": "Yeşilyurt",
@@ -754,6 +828,7 @@
    "ppm": 2545
   },
   {
+   "src": "emlakjet",
    "id": "19630888",
    "t": "***güven Emlak'tan Havaalanı Civarı Fırsat Kayısı Bahçesi***",
    "ilce": "Akçadağ",
@@ -766,6 +841,7 @@
    "ppm": 16
   },
   {
+   "src": "emlakjet",
    "id": "19630314",
    "t": "Acil!! Güven Emlak'tan Çamurlu'da Yatırımlık İmarlı Arsa",
    "ilce": "Battalgazi",
@@ -778,6 +854,7 @@
    "ppm": 7271
   },
   {
+   "src": "emlakjet",
    "id": "19625739",
    "t": "Güven Emlak'tan Yeşilyurt Merkeze Yakın İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -790,6 +867,7 @@
    "ppm": 9717
   },
   {
+   "src": "emlakjet",
    "id": "19624695",
    "t": "Darende Ulupınarda Ana Yola Yakın İmarlı Arsa",
    "ilce": "Darende",
@@ -802,6 +880,7 @@
    "ppm": 2076
   },
   {
+   "src": "emlakjet",
    "id": "19622472",
    "t": "Battalgazi Boranda 5.422 M² Sulu Tarla | Yatırımlık Fırsat",
    "ilce": "Battalgazi",
@@ -814,6 +893,7 @@
    "ppm": 959
   },
   {
+   "src": "emlakjet",
    "id": "19621276",
    "t": "Özhan'dan Darende Balabanda Satılık Arsalı Kerpiç Ev",
    "ilce": "Darende",
@@ -826,6 +906,7 @@
    "ppm": 7417
   },
   {
+   "src": "emlakjet",
    "id": "19621275",
    "t": "Özhan'dan Akçadağ'da 6 Dönüm Fırsat Satılık Arsa",
    "ilce": "Akçadağ",
@@ -838,6 +919,7 @@
    "ppm": 155
   },
   {
+   "src": "emlakjet",
    "id": "19621265",
    "t": "Özhan'dan Darende Çaybaşı Mahallesin'de 6 Dönüm Satılık Arsa",
    "ilce": "Darende",
@@ -850,6 +932,7 @@
    "ppm": 409
   },
   {
+   "src": "emlakjet",
    "id": "19621261",
    "t": "Özhan'dan Hıroğlu Mahallesin'de Villa İmarlı Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -862,6 +945,7 @@
    "ppm": 5198
   },
   {
+   "src": "emlakjet",
    "id": "19619530",
    "t": "Yusuf Karadağlıdan Molla Kasımda Acil Satlık Arsa",
    "ilce": "Yeşilyurt",
@@ -874,6 +958,7 @@
    "ppm": 9583
   },
   {
+   "src": "emlakjet",
    "id": "19613346",
    "t": "Tecde Gedik De Panoramik Manzaralı Villa İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -886,6 +971,7 @@
    "ppm": 9545
   },
   {
+   "src": "emlakjet",
    "id": "19610851",
    "t": "Enes Işık 'tan Malatya Havalimanı Yolu'nda Yatırımlık 6.000 M²",
    "ilce": "Akçadağ",
@@ -898,6 +984,7 @@
    "ppm": 717
   },
   {
+   "src": "emlakjet",
    "id": "19610616",
    "t": "Satılık Ticari+konut İmarlı Arsa Ana Yol Cepheli",
    "ilce": "Battalgazi",
@@ -910,6 +997,7 @@
    "ppm": 24390
   },
   {
+   "src": "emlakjet",
    "id": "19610109",
    "t": "Yusuf Karadağlı'dan Akçadağ'da Satılık Müstakil Tapulu Bahçe",
    "ilce": "Akçadağ",
@@ -922,6 +1010,7 @@
    "ppm": 631
   },
   {
+   "src": "emlakjet",
    "id": "19608099",
    "t": "Yusuf Karadağl'dan Doğanşehir Fındık'ta Sulu Tütün Tarlası",
    "ilce": "Doğanşehir",
@@ -934,6 +1023,7 @@
    "ppm": 140
   },
   {
+   "src": "emlakjet",
    "id": "19604571",
    "t": "Koz Emlak 2' Den Battalgazi Hanımınçiftliğinde Satılık Arsa",
    "ilce": "Battalgazi",
@@ -946,6 +1036,7 @@
    "ppm": 10593
   },
   {
+   "src": "emlakjet",
    "id": "19604103",
    "t": "Satılık 47 Dönüm Arsa",
    "ilce": "Yeşilyurt",
@@ -958,6 +1049,7 @@
    "ppm": 10
   },
   {
+   "src": "emlakjet",
    "id": "19596681",
    "t": "Güven Emlak'tan Battalgazi Serintepe Mevkii Kayısı Bahçesi",
    "ilce": "Battalgazi",
@@ -970,6 +1062,7 @@
    "ppm": 1250
   },
   {
+   "src": "emlakjet",
    "id": "19593775",
    "t": "Yusuf Karadağlı'dan Çolakoğlu'nda 1585m2 Satılık Hobi Bahçesi",
    "ilce": "Battalgazi",
@@ -982,6 +1075,7 @@
    "ppm": 1735
   },
   {
+   "src": "emlakjet",
    "id": "19588576",
    "t": "Satılık Kayısı Bahçesi",
    "ilce": "Yeşilyurt",
@@ -994,6 +1088,7 @@
    "ppm": 1748
   },
   {
+   "src": "emlakjet",
    "id": "19584745",
    "t": "Kıvanç Gayrimenkul'den Gündüzbeyde Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1006,6 +1101,7 @@
    "ppm": 12703
   },
   {
+   "src": "emlakjet",
    "id": "19582352",
    "t": "Yeşilyurtta Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1018,6 +1114,7 @@
    "ppm": 3467
   },
   {
+   "src": "emlakjet",
    "id": "19576026",
    "t": "Malatya Yazıhan Mısırdere Satlık Tarla",
    "ilce": "Yazıhan",
@@ -1030,6 +1127,7 @@
    "ppm": 161
   },
   {
+   "src": "emlakjet",
    "id": "19570438",
    "t": "Gündüzbeyde Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1042,6 +1140,7 @@
    "ppm": 3354
   },
   {
+   "src": "emlakjet",
    "id": "19564206",
    "t": "Bozdoğandan Bulgurluda Satılık Bağ Bahçe",
    "ilce": "Battalgazi",
@@ -1054,6 +1153,7 @@
    "ppm": 928
   },
   {
+   "src": "emlakjet",
    "id": "19564203",
    "t": "Bozdoğandan Hoca Ahmet Yesevi Mah Satılık Ticari İmarlı Arasa",
    "ilce": "Yeşilyurt",
@@ -1066,6 +1166,7 @@
    "ppm": 8809
   },
   {
+   "src": "emlakjet",
    "id": "19563791",
    "t": "Satılık Sulu Tarla",
    "ilce": "Akçadağ",
@@ -1078,6 +1179,7 @@
    "ppm": 425
   },
   {
+   "src": "emlakjet",
    "id": "19559425",
    "t": "Yusuf Karadağlı'dan Gündüzbey'de 525m2 Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1090,6 +1192,7 @@
    "ppm": 6762
   },
   {
+   "src": "emlakjet",
    "id": "19559130",
    "t": "Erkan Emlaktan Kuyuluda Satılık 10548 M2 Tarla",
    "ilce": "Yeşilyurt",
@@ -1102,6 +1205,7 @@
    "ppm": 1033
   },
   {
+   "src": "emlakjet",
    "id": "19558640",
    "t": "Malatya Kuluncak Kızılhisar Köyü 1850 Rakım 100 Dönüm Kayısı Bahçesi Canay Gayrimenkulden",
    "ilce": "Kuluncak",
@@ -1114,6 +1218,7 @@
    "ppm": 300
   },
   {
+   "src": "emlakjet",
    "id": "19558608",
    "t": "Fourx4 Gayrimenkulden Konak Merkeze 1.5 Km Mesafede Satılık Bağ",
    "ilce": "Yeşilyurt",
@@ -1126,6 +1231,7 @@
    "ppm": 1186
   },
   {
+   "src": "emlakjet",
    "id": "19556155",
    "t": "Bozdoğandan Gözenede Satılık Bahçe",
    "ilce": "Yeşilyurt",
@@ -1138,6 +1244,7 @@
    "ppm": 249
   },
   {
+   "src": "emlakjet",
    "id": "19555772",
    "t": "Gündüzbey Ana Bulvar Üzerinde Tic+konut Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1150,6 +1257,7 @@
    "ppm": 10993
   },
   {
+   "src": "emlakjet",
    "id": "19551747",
    "t": "Erkan Emlaktan Yeşiltepede Ana Cadde Üzeri Satılık 373 M2 Arsa",
    "ilce": "Yeşilyurt",
@@ -1162,6 +1270,7 @@
    "ppm": 29491
   },
   {
+   "src": "emlakjet",
    "id": "19543306",
    "t": "Turanlardan...karapınarda Tam Yatırımlık Bahçe!!!",
    "ilce": "Akçadağ",
@@ -1174,6 +1283,7 @@
    "ppm": 628
   },
   {
+   "src": "emlakjet",
    "id": "19534043",
    "t": "Yusuf Karadağlı'dan Yazıhan Durucasu'da 5300m Satılık Arsa",
    "ilce": "Yazıhan",
@@ -1186,6 +1296,7 @@
    "ppm": 396
   },
   {
+   "src": "emlakjet",
    "id": "19533391",
    "t": "Akçadağ Karapınar Satılık Fırsat Müstakil Ev Ve Tarla",
    "ilce": "Akçadağ",
@@ -1198,6 +1309,7 @@
    "ppm": 1333
   },
   {
+   "src": "emlakjet",
    "id": "19532945",
    "t": "Bozdoğan'dan Tohmada Satılık 16 Dönüm Tarla",
    "ilce": "Yeşilyurt",
@@ -1210,6 +1322,7 @@
    "ppm": 350
   },
   {
+   "src": "emlakjet",
    "id": "19525956",
    "t": "Esentepe'de Yatırımlık İmarlı Arsa",
    "ilce": "Doğanşehir",
@@ -1222,6 +1335,7 @@
    "ppm": 3757
   },
   {
+   "src": "emlakjet",
    "id": "19509438",
    "t": "Koz Emlak'tan Yeşilyurt Mollakasım'da Satılık 990m2 Arsa",
    "ilce": "Yeşilyurt",
@@ -1234,6 +1348,7 @@
    "ppm": 5561
   },
   {
+   "src": "emlakjet",
    "id": "19509372",
    "t": "İkizler Gayrimenkul'den Yeşilyurt Tarafında Satılık 1150 M2 Arsa",
    "ilce": "Yeşilyurt",
@@ -1246,6 +1361,7 @@
    "ppm": 13043
   },
   {
+   "src": "emlakjet",
    "id": "19500228",
    "t": "Söğüt'de Toplamda 15.833m2 Satılık Sulu Tarla",
    "ilce": "Doğanşehir",
@@ -1258,6 +1374,7 @@
    "ppm": 379
   },
   {
+   "src": "emlakjet",
    "id": "19500014",
    "t": "Dilek De Satılık 1180 M2 Bahçe",
    "ilce": "Yeşilyurt",
@@ -1270,6 +1387,7 @@
    "ppm": 2119
   },
   {
+   "src": "emlakjet",
    "id": "19499874",
    "t": "Özgür'den Yeşilyurt Sütlüce'de 13.600 M² Satılık Bakımlı Bahçe",
    "ilce": "Yeşilyurt",
@@ -1282,6 +1400,7 @@
    "ppm": 732
   },
   {
+   "src": "emlakjet",
    "id": "19493259",
    "t": "İkizler Gayrimenkul'den Bahride Satılık 34 Dönüm Bahçe...",
    "ilce": "Akçadağ",
@@ -1294,6 +1413,7 @@
    "ppm": 340
   },
   {
+   "src": "emlakjet",
    "id": "19488945",
    "t": "Malatya Yeşilyurt Gözene Dutlukaya'da 63.600m2 Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1306,6 +1426,7 @@
    "ppm": 350
   },
   {
+   "src": "emlakjet",
    "id": "19488916",
    "t": "Malatya Yeşilyurt Gözene Dutlukuyu'da 39.500m2 Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1318,6 +1439,7 @@
    "ppm": 350
   },
   {
+   "src": "emlakjet",
    "id": "19488398",
    "t": "Gündüzbeyde Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1330,6 +1452,7 @@
    "ppm": 5500
   },
   {
+   "src": "emlakjet",
    "id": "19484803",
    "t": "İkizler Gayrimenkul'den Satılık 28 Dönüm Bahçe.",
    "ilce": "Akçadağ",
@@ -1342,6 +1465,7 @@
    "ppm": 589
   },
   {
+   "src": "emlakjet",
    "id": "19482322",
    "t": "Özgür'den Kırkgöz Sahilpark Yoluna Yakın 6.700 M² Satılık Tarla",
    "ilce": "Battalgazi",
@@ -1354,6 +1478,7 @@
    "ppm": 1597
   },
   {
+   "src": "emlakjet",
    "id": "19482321",
    "t": "Özgür'den Yıldıztepe'de 475 M² Villa İmarlı Satılık Arsa",
    "ilce": "Battalgazi",
@@ -1366,6 +1491,7 @@
    "ppm": 8316
   },
   {
+   "src": "emlakjet",
    "id": "19480817",
    "t": "Arıkandan Akçadağ Sultansuyunda Satılık 10 Dönüm Bahçe",
    "ilce": "Akçadağ",
@@ -1378,6 +1504,7 @@
    "ppm": 1000
   },
   {
+   "src": "emlakjet",
    "id": "19479227",
    "t": "Yazıhan Tahtalı'da 8.5 Dönüm Satılık Kayısı Bahçe",
    "ilce": "Yazıhan",
@@ -1390,6 +1517,7 @@
    "ppm": 124
   },
   {
+   "src": "emlakjet",
    "id": "19471099",
    "t": "Akcadağ Havaalanı Civarı Satılık Sulu Ve Fıskiyeli Arazi.",
    "ilce": "Akçadağ",
@@ -1402,6 +1530,7 @@
    "ppm": 415
   },
   {
+   "src": "emlakjet",
    "id": "19470655",
    "t": "Koz Emlak'tan Akçadağ Eğin Mah. 19dönüm Sulu Bahçe",
    "ilce": "Akçadağ",
@@ -1414,6 +1543,7 @@
    "ppm": 649
   },
   {
+   "src": "emlakjet",
    "id": "19463039",
    "t": "Gündüzbeyde Satılık Bahçe",
    "ilce": "Yeşilyurt",
@@ -1426,6 +1556,7 @@
    "ppm": 3750
   },
   {
+   "src": "emlakjet",
    "id": "19463023",
    "t": "Çevre Yoluna Cephe Satılık Hisse",
    "ilce": "Yeşilyurt",
@@ -1438,6 +1569,7 @@
    "ppm": 37143
   },
   {
+   "src": "emlakjet",
    "id": "19460827",
    "t": "Vip Lineden Mullakasımda İmarlı Kelepir Arsa",
    "ilce": "Yeşilyurt",
@@ -1450,6 +1582,7 @@
    "ppm": 8896
   },
   {
+   "src": "emlakjet",
    "id": "19460461",
    "t": "Fourx4 Gayrimenkul Hanimincifligi Kültür Mah 333 M2 Satılık Arsa",
    "ilce": "Battalgazi",
@@ -1462,6 +1595,7 @@
    "ppm": 6727
   },
   {
+   "src": "emlakjet",
    "id": "19451646",
    "t": "Turanlardan....gündüzbeyde İmarlı Havadar Yatırımlık Arsa!!",
    "ilce": "Yeşilyurt",
@@ -1474,6 +1608,7 @@
    "ppm": 2143
   },
   {
+   "src": "emlakjet",
    "id": "19451550",
    "t": "Turanlardan...fahrikayahan Civarında Tam Yatırımlık Kupon Arsa!!",
    "ilce": "Yeşilyurt",
@@ -1486,6 +1621,7 @@
    "ppm": 6571
   },
   {
+   "src": "emlakjet",
    "id": "19451203",
    "t": "Furkan Doğandan Kale Kıyıcakda Ana Yola Yakın 1 Dönüm Arsa",
    "ilce": "Kale",
@@ -1498,6 +1634,7 @@
    "ppm": 1845
   },
   {
+   "src": "emlakjet",
    "id": "19451186",
    "t": "Furkan Doğandan Kale Kıyıcakda 1100 M2 Acil Satılık İmarlı Arsa",
    "ilce": "Kale",
@@ -1510,6 +1647,7 @@
    "ppm": 1686
   },
   {
+   "src": "emlakjet",
    "id": "19451164",
    "t": "Yeşilyurt Konakta 875 Metre Kare Bağ Yeri",
    "ilce": "Yeşilyurt",
@@ -1522,6 +1660,7 @@
    "ppm": 1943
   },
   {
+   "src": "emlakjet",
    "id": "19447657",
    "t": "Yazlı - Kışlı Kullanıma Uygun Hobi Bahçemiz Satılıktır",
    "ilce": "Battalgazi",
@@ -1534,6 +1673,7 @@
    "ppm": 8875
   },
   {
+   "src": "emlakjet",
    "id": "19446670",
    "t": "Koz Emlak'tan Cevreyoluna Yakın Mesefade Villa İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -1546,6 +1686,7 @@
    "ppm": 10085
   },
   {
+   "src": "emlakjet",
    "id": "19445632",
    "t": "Güven Emlak'tan Mollakasımda Villa İmarlı Müstakil Arsa",
    "ilce": "Yeşilyurt",
@@ -1558,6 +1699,7 @@
    "ppm": 4024
   },
   {
+   "src": "emlakjet",
    "id": "19438215",
    "t": "Satılık 12 Dönüm Arazi, İki Ev Ve Bir Müştemilat",
    "ilce": "Yeşilyurt",
@@ -1570,6 +1712,7 @@
    "ppm": 693
   },
   {
+   "src": "emlakjet",
    "id": "19437736",
    "t": "Malatya İli Akçadağ İlçesi Ancar Mahallesi Serikevir Mevkinde Satılık Tarla",
    "ilce": "Akçadağ",
@@ -1582,6 +1725,7 @@
    "ppm": 192
   },
   {
+   "src": "emlakjet",
    "id": "19435059",
    "t": "Mollakasım'da 750m2 Satılık Villa İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -1594,6 +1738,7 @@
    "ppm": 4667
   },
   {
+   "src": "emlakjet",
    "id": "19418898",
    "t": "Şahnahan Sulu Köyde Satılık Bahçe",
    "ilce": "Yeşilyurt",
@@ -1606,6 +1751,7 @@
    "ppm": 1138
   },
   {
+   "src": "emlakjet",
    "id": "19418897",
    "t": "Bozdoğandan Konak Ta Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1618,6 +1764,7 @@
    "ppm": 2046
   },
   {
+   "src": "emlakjet",
    "id": "19413177",
    "t": "Kuyulu Köy Merkezinde Harika Bahçe",
    "ilce": "Yeşilyurt",
@@ -1630,6 +1777,7 @@
    "ppm": 10346
   },
   {
+   "src": "emlakjet",
    "id": "19413084",
    "t": "Kuyulu Kuzey Çevre Yoluna Cephe Satılık Araziler",
    "ilce": "Yeşilyurt",
@@ -1642,6 +1790,7 @@
    "ppm": 2577
   },
   {
+   "src": "emlakjet",
    "id": "19413005",
    "t": "Kuşdoğanda 15 Dönüm Yatırımlık Arazi.",
    "ilce": "Yeşilyurt",
@@ -1654,6 +1803,7 @@
    "ppm": 880
   },
   {
+   "src": "emlakjet",
    "id": "19409345",
    "t": "Özgürden, Karanlıkdere De Harika Konumda Bahçe",
    "ilce": "Akçadağ",
@@ -1666,6 +1816,7 @@
    "ppm": 598
   },
   {
+   "src": "emlakjet",
    "id": "19409344",
    "t": "Özgür'den Yazıhan Kömüşhan'da Satılık 95 Dönüm Bahçe",
    "ilce": "Yazıhan",
@@ -1678,6 +1829,7 @@
    "ppm": 311
   },
   {
+   "src": "emlakjet",
    "id": "19405746",
    "t": "Bir Daire Sahibi Olmak İçin Çok Karlı Arsa.",
    "ilce": "Battalgazi",
@@ -1690,6 +1842,7 @@
    "ppm": 8312
   },
   {
+   "src": "emlakjet",
    "id": "19399587",
    "t": "Havaalanı Karşısı Ana Yol Cepheli Kayısı Bahçesi",
    "ilce": "Akçadağ",
@@ -1702,6 +1855,7 @@
    "ppm": 932
   },
   {
+   "src": "emlakjet",
    "id": "19398492",
    "t": "Havaalanı Girişinde Ticari Arsa",
    "ilce": "Akçadağ",
@@ -1714,6 +1868,7 @@
    "ppm": 5067
   },
   {
+   "src": "emlakjet",
    "id": "19398269",
    "t": "Bozdoğandan Karakaşta Satılık Bahçe",
    "ilce": "Battalgazi",
@@ -1726,6 +1881,7 @@
    "ppm": 2840
   },
   {
+   "src": "emlakjet",
    "id": "19393727",
    "t": "Esentepe Mahallesindesatılık İmarlı Arsa",
    "ilce": "Doğanşehir",
@@ -1738,6 +1894,7 @@
    "ppm": 3293
   },
   {
+   "src": "emlakjet",
    "id": "19391391",
    "t": "Topsöğüt Akpınarda Ticari + Konut İmarlı Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1750,6 +1907,7 @@
    "ppm": 7812
   },
   {
+   "src": "emlakjet",
    "id": "19378456",
    "t": "Doru'dan Malatya Merdivenlerde Doğal Yaşam Alanı",
    "ilce": "Battalgazi",
@@ -1762,6 +1920,7 @@
    "ppm": 1520
   },
   {
+   "src": "emlakjet",
    "id": "19373491",
    "t": "Bozdoğandan Konakta Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1774,6 +1933,7 @@
    "ppm": 362
   },
   {
+   "src": "emlakjet",
    "id": "19369386",
    "t": "Erkan Emlaktan Elemendik Gölü Yanında Satılık 1579 M2 Tarla",
    "ilce": "Yeşilyurt",
@@ -1786,6 +1946,7 @@
    "ppm": 1900
   },
   {
+   "src": "emlakjet",
    "id": "19369385",
    "t": "Erkan Emlaktan Elemendik Gölü Yakınında Satılık 7235 M2 Tarla",
    "ilce": "Yeşilyurt",
@@ -1798,6 +1959,7 @@
    "ppm": 1500
   },
   {
+   "src": "emlakjet",
    "id": "19368100",
    "t": "Yazıhan Kömüşhanda Acil Satılık Sulu Tarla",
    "ilce": "Yazıhan",
@@ -1810,6 +1972,7 @@
    "ppm": 257
   },
   {
+   "src": "emlakjet",
    "id": "19366915",
    "t": "Hatunsuyu Merkezde 3 Kata İmarlı Yola Cephe Fırsat Arsa!",
    "ilce": "Battalgazi",
@@ -1822,6 +1985,7 @@
    "ppm": 6034
   },
   {
+   "src": "emlakjet",
    "id": "19364312",
    "t": "Gündüz Bey De Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -1834,6 +1998,7 @@
    "ppm": 1138
   },
   {
+   "src": "emlakjet",
    "id": "19361416",
    "t": "Bahçe Başında Acil Satılık 11.245 M2 Bahçe",
    "ilce": "Battalgazi",
@@ -1846,6 +2011,7 @@
    "ppm": 2623
   },
   {
+   "src": "emlakjet",
    "id": "19355446",
    "t": "Turanlardan Cevatpaşada Yatırımlık Villa İmarlı Arsa!!!!!",
    "ilce": "Yeşilyurt",
@@ -1858,6 +2024,7 @@
    "ppm": 12468
   },
   {
+   "src": "emlakjet",
    "id": "19350533",
    "t": "İkizler Gayrimenkul'den Bahride Satılık( 37 )dönüm Bahçe....",
    "ilce": "Akçadağ",
@@ -1870,6 +2037,7 @@
    "ppm": 649
   },
   {
+   "src": "emlakjet",
    "id": "19346333",
    "t": "Dilek Topraktepede Anayol Cepheli Müstakil Tapulu Arsa",
    "ilce": "Yeşilyurt",
@@ -1882,6 +2050,7 @@
    "ppm": 2676
   },
   {
+   "src": "emlakjet",
    "id": "19346026",
    "t": "Kuşdoğan Çayırköyde Satılık Arsalar.",
    "ilce": "Yeşilyurt",
@@ -1894,6 +2063,7 @@
    "ppm": 2556
   },
   {
+   "src": "emlakjet",
    "id": "19341967",
    "t": "Hasan Akbulut'dan Göztepe'de 190m² Arsa",
    "ilce": "Battalgazi",
@@ -1906,6 +2076,7 @@
    "ppm": 9737
   },
   {
+   "src": "emlakjet",
    "id": "19341812",
    "t": "Yeşilyurt Yakıncada En Mükemmel Manzaraya Sahip Satılık Arsa.",
    "ilce": "Yeşilyurt",
@@ -1918,6 +2089,7 @@
    "ppm": 5239
   },
   {
+   "src": "emlakjet",
    "id": "19340145",
    "t": "Vip Line Gayr,menkul'den Konak Çarşida 297m2 İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -1930,6 +2102,7 @@
    "ppm": 8249
   },
   {
+   "src": "emlakjet",
    "id": "19336616",
    "t": "Üniversite Karşısı Keşolarda Harika Konumda Villa + Tarla",
    "ilce": "Battalgazi",
@@ -1942,6 +2115,7 @@
    "ppm": 3661
   },
   {
+   "src": "emlakjet",
    "id": "19326093",
    "t": "Yusuf Karadağlıdan Yeşıltepe Tektutta Satılık 280 M İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -1954,6 +2128,7 @@
    "ppm": 7654
   },
   {
+   "src": "emlakjet",
    "id": "19323119",
    "t": "Sahibinden Yatırımlık Villa İmarlı Arsa",
    "ilce": "Kale",
@@ -1966,6 +2141,7 @@
    "ppm": 3279
   },
   {
+   "src": "emlakjet",
    "id": "19319539",
    "t": "Tarlamız Aşağı Örüşkü Mah Olup Sondaj Elektirk Paneli 130 Tane 5 Yılık Kaysı Bahcesi Mevcutur",
    "ilce": "Akçadağ",
@@ -1978,6 +2154,7 @@
    "ppm": 675
   },
   {
+   "src": "emlakjet",
    "id": "19318707",
    "t": "Ysf Emlak'tan Malatya Akçadağ Yalınkaya 1514 M2 Satılık Bahçe",
    "ilce": "Akçadağ",
@@ -1990,6 +2167,7 @@
    "ppm": 760
   },
   {
+   "src": "emlakjet",
    "id": "19316787",
    "t": "Merkeze 30 Km Akçadağ Örüşkü Müstakil Tapulu İmarlı Arsa",
    "ilce": "Akçadağ",
@@ -2002,6 +2180,7 @@
    "ppm": 1146
   },
   {
+   "src": "emlakjet",
    "id": "19314497",
    "t": "Mişmiş Park Göl Kenarında 5 Adet Satılık Arsa",
    "ilce": "Battalgazi",
@@ -2014,6 +2193,7 @@
    "ppm": 7500
   },
   {
+   "src": "emlakjet",
    "id": "19313208",
    "t": "Bozdoğandan Gündüzbeyde Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -2026,6 +2206,7 @@
    "ppm": 6540
   },
   {
+   "src": "emlakjet",
    "id": "19310608",
    "t": "Sütlüce De Satılık 5.649 M2 Bahçe",
    "ilce": "Yeşilyurt",
@@ -2038,6 +2219,7 @@
    "ppm": 1567
   },
   {
+   "src": "emlakjet",
    "id": "19307363",
    "t": "İkizler Gayrimenkul'den Kırlangıçta Satılık 20 Dönüm Sulu Tarla.",
    "ilce": "Yeşilyurt",
@@ -2050,6 +2232,7 @@
    "ppm": 1700
   },
   {
+   "src": "emlakjet",
    "id": "19307358",
    "t": "İkizler Gayrimenkul'den Yakada Satılık 20 Dönüm Tarla",
    "ilce": "Yeşilyurt",
@@ -2062,6 +2245,7 @@
    "ppm": 1600
   },
   {
+   "src": "emlakjet",
    "id": "19307355",
    "t": "İkizler Gayrimenkul'den Molla Kasımda Satılık 978 M2 Arsa....",
    "ilce": "Yeşilyurt",
@@ -2074,6 +2258,7 @@
    "ppm": 4346
   },
   {
+   "src": "emlakjet",
    "id": "19295402",
    "t": "Kardelenden Satılık Fırsat Yatırımı",
    "ilce": "Yeşilyurt",
@@ -2086,6 +2271,7 @@
    "ppm": 606
   },
   {
+   "src": "emlakjet",
    "id": "19265112",
    "t": "İkizler Gayrimenkul'den Yeşilyurt Satılık 530 M2 İmarlı Arsa..",
    "ilce": "Yeşilyurt",
@@ -2098,6 +2284,7 @@
    "ppm": 10519
   },
   {
+   "src": "emlakjet",
    "id": "19255692",
    "t": "İkizler Gayrimenkul'den Ankara Asfaltına Cephe Satılık Bahçe....",
    "ilce": "Akçadağ",
@@ -2110,6 +2297,7 @@
    "ppm": 2000
   },
   {
+   "src": "emlakjet",
    "id": "19234580",
    "t": "Özgürden Tecde'de Muhteşem Manzaralı Arsa",
    "ilce": "Yeşilyurt",
@@ -2122,6 +2310,7 @@
    "ppm": 7263
   },
   {
+   "src": "emlakjet",
    "id": "19224768",
    "t": "Koz Emlak'tan Yenice(köpeksizde) Yola Sıfır Satılık Bahçe+ Villa",
    "ilce": "Battalgazi",
@@ -2134,6 +2323,7 @@
    "ppm": 1575
   },
   {
+   "src": "emlakjet",
    "id": "19224766",
    "t": "Koz Emlak'tan Kozluk Pınarbaşında Bakımlı Bahçe",
    "ilce": "Yeşilyurt",
@@ -2146,6 +2336,7 @@
    "ppm": 1693
   },
   {
+   "src": "emlakjet",
    "id": "19224755",
    "t": "Koz Emlak'tan Akçadağ Merkeze 1 Dk Uzaklıkta Satılık Bahçe+ev",
    "ilce": "Akçadağ",
@@ -2158,6 +2349,7 @@
    "ppm": 1107
   },
   {
+   "src": "emlakjet",
    "id": "19222790",
    "t": "Kardelen Gyo Dan Bir Fırsat Daha",
    "ilce": "Akçadağ",
@@ -2170,6 +2362,7 @@
    "ppm": 252
   },
   {
+   "src": "emlakjet",
    "id": "19216562",
    "t": "Tugay Kınacı'dan Battalgazi Toygar Da Satılık 1.740 M2 Bahçe",
    "ilce": "Battalgazi",
@@ -2182,6 +2375,7 @@
    "ppm": 2184
   },
   {
+   "src": "emlakjet",
    "id": "19216033",
    "t": "Arapgir Çakırsu Köyünde Satılık",
    "ilce": "Arapgir",
@@ -2194,6 +2388,7 @@
    "ppm": 74
   },
   {
+   "src": "emlakjet",
    "id": "19216032",
    "t": "Join Real Estateden Malatya Mihmanlı Da Kısmi Takaslı Bahçeli Ev",
    "ilce": "Akçadağ",
@@ -2206,6 +2401,7 @@
    "ppm": 826
   },
   {
+   "src": "emlakjet",
    "id": "19216021",
    "t": "Join Real Estate Den Eski Malatya Yoluna Sıfır Arsa",
    "ilce": "Battalgazi",
@@ -2218,6 +2414,7 @@
    "ppm": 7463
   },
   {
+   "src": "emlakjet",
    "id": "19216017",
    "t": "Arapgirde Yatırımlık Takaslı",
    "ilce": "Arapgir",
@@ -2230,6 +2427,7 @@
    "ppm": 100
   },
   {
+   "src": "emlakjet",
    "id": "19213192",
    "t": "Bozdoğandan Gündüzbeyde Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -2242,6 +2440,7 @@
    "ppm": 4355
   },
   {
+   "src": "emlakjet",
    "id": "19184655",
    "t": "Özgür'den Kuyuluda Tam Verimli Satılık Badem Bahçesi",
    "ilce": "Yeşilyurt",
@@ -2254,6 +2453,7 @@
    "ppm": 1026
   },
   {
+   "src": "emlakjet",
    "id": "19182146",
    "t": "Topsöğüt Merkezde Satılık Tarla",
    "ilce": "Yeşilyurt",
@@ -2266,6 +2466,7 @@
    "ppm": 2178
   },
   {
+   "src": "emlakjet",
    "id": "19176938",
    "t": "Vip Line Gayrimenkulden Mullakasımda 816m2 İmarlı Hazır Arsa",
    "ilce": "Yeşilyurt",
@@ -2278,6 +2479,7 @@
    "ppm": 6275
   },
   {
+   "src": "emlakjet",
    "id": "19153586",
    "t": "Arıkandan Mollakasımda Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -2290,6 +2492,7 @@
    "ppm": 5417
   },
   {
+   "src": "emlakjet",
    "id": "19138541",
    "t": "Malatya Yeşilyurt Gözene Mahallesi Dutlukaya Mevkii'nde 63.600m2 Satılık Yatırımlık Kupon Arsa-tarla",
    "ilce": "Yeşilyurt",
@@ -2302,6 +2505,7 @@
    "ppm": 350
   },
   {
+   "src": "emlakjet",
    "id": "19137206",
    "t": "Malatya Yeşilyurt Gözene Mahallesi Dutlukuyu Mevkii 39.500m2 Satılık Yatırımlık Kupon Arsa - Tarla..",
    "ilce": "Yeşilyurt",
@@ -2314,6 +2518,7 @@
    "ppm": 350
   },
   {
+   "src": "emlakjet",
    "id": "19097683",
    "t": "Özgür'den Yazıhan Karacada Satılık Tarla",
    "ilce": "Yazıhan",
@@ -2326,6 +2531,7 @@
    "ppm": 194
   },
   {
+   "src": "emlakjet",
    "id": "19097682",
    "t": "Özgür'den Yazıhan Karacada Yatırım Fırsatı Tarla",
    "ilce": "Yazıhan",
@@ -2338,6 +2544,7 @@
    "ppm": 191
   },
   {
+   "src": "emlakjet",
    "id": "19093112",
    "t": "Bozdoğandan Yazıhan Merkezde Satılık Arsa",
    "ilce": "Yazıhan",
@@ -2350,6 +2557,7 @@
    "ppm": 2679
   },
   {
+   "src": "emlakjet",
    "id": "19089093",
    "t": "Özgür'den Yeşilyurt Dilek'te 440 M² İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -2362,6 +2570,7 @@
    "ppm": 7273
   },
   {
+   "src": "emlakjet",
    "id": "19077142",
    "t": "Gündüzbeyde Harika Bir Konumda Yatırımlık Arsa",
    "ilce": "Yeşilyurt",
@@ -2374,6 +2583,7 @@
    "ppm": 1768
   },
   {
+   "src": "emlakjet",
    "id": "19073234",
    "t": "Özgür'den Yazıhan Durucasu'da 36 Dönüm Satılık Kayısı Bahçesi",
    "ilce": "Yazıhan",
@@ -2386,6 +2596,7 @@
    "ppm": 360
   },
   {
+   "src": "emlakjet",
    "id": "19070598",
    "t": "***güven Emlak'tan Gündüzbeyde Villalık Arsa",
    "ilce": "Yeşilyurt",
@@ -2398,6 +2609,7 @@
    "ppm": 9033
   },
   {
+   "src": "emlakjet",
    "id": "19070597",
    "t": "Acil!! Güven Emlak'tan Tecdede İkiz Villalık Projesi Hazır Arsa",
    "ilce": "Yeşilyurt",
@@ -2410,6 +2622,7 @@
    "ppm": 10350
   },
   {
+   "src": "emlakjet",
    "id": "19069660",
    "t": "Acil Satılık Arsa",
    "ilce": "Battalgazi",
@@ -2422,6 +2635,7 @@
    "ppm": 3104
   },
   {
+   "src": "emlakjet",
    "id": "19067351",
    "t": "Erdoğan Gayrimenkulden Satılık Bindalda 47 Dönüm Sulu Tarla",
    "ilce": "Yeşilyurt",
@@ -2434,6 +2648,7 @@
    "ppm": 362
   },
   {
+   "src": "emlakjet",
    "id": "19067346",
    "t": "Bozdoğandan Mollakasım Da Satılık Arsa",
    "ilce": "Yeşilyurt",
@@ -2446,6 +2661,7 @@
    "ppm": 12333
   },
   {
+   "src": "emlakjet",
    "id": "19066381",
    "t": "Furkan Doğan’dan Malatya Elazığ Yolu Yanın’da 15 Dönüm Acil Satılık Sulu Tarla",
    "ilce": "Battalgazi",
@@ -2458,6 +2674,7 @@
    "ppm": 643
   },
   {
+   "src": "emlakjet",
    "id": "19064111",
    "t": "Dilekte Köşe Parsel Ticari + Konut İmarlı Yatırımlık Yola Sıfır",
    "ilce": "Yeşilyurt",
@@ -2470,6 +2687,7 @@
    "ppm": 10202
   },
   {
+   "src": "emlakjet",
    "id": "19049647",
    "t": "Bozdoğandan Hatunsuyunda Satılık Tarla Besi",
    "ilce": "Battalgazi",
@@ -2482,6 +2700,7 @@
    "ppm": 1658
   },
   {
+   "src": "emlakjet",
    "id": "19045172",
    "t": "Tarlamız Havalanına Yakın Konumda Olup İçinde Sıfır Daire Yapılıdır 2+1alt Katında Deposu Mevcut",
    "ilce": "Akçadağ",
@@ -2494,6 +2713,7 @@
    "ppm": 948
   },
   {
+   "src": "emlakjet",
    "id": "19043870",
    "t": "Malatya Arapgir Çobanlı Da 2 Kat İmarlı Projesi Hazır 460m2 Arsa",
    "ilce": "Arapgir",
@@ -2506,6 +2726,7 @@
    "ppm": 3804
   },
   {
+   "src": "emlakjet",
    "id": "19036404",
    "t": "Özgür'den Yeşilyurt Duranlar Köyü'nde Satılık 16.500 M² Bahçe",
    "ilce": "Yeşilyurt",
@@ -2518,6 +2739,7 @@
    "ppm": 585
   },
   {
+   "src": "emlakjet",
    "id": "19029303",
    "t": "Yaka Girişinde 817 M2 Harika Arsa",
    "ilce": "Yeşilyurt",
@@ -2530,6 +2752,7 @@
    "ppm": 7093
   },
   {
+   "src": "emlakjet",
    "id": "19027769",
    "t": "Sütlüce De Muhteşem Konumda Satılık Bahçe",
    "ilce": "Yeşilyurt",
@@ -2542,6 +2765,7 @@
    "ppm": 1048
   },
   {
+   "src": "emlakjet",
    "id": "19014246",
    "t": "Kardelenden Satılık Fırsat Tarla",
    "ilce": "Yazıhan",
@@ -2554,6 +2778,7 @@
    "ppm": 1250
   },
   {
+   "src": "emlakjet",
    "id": "18992796",
    "t": "Satılık Sulu Arazi",
    "ilce": "Yazıhan",
@@ -2566,6 +2791,7 @@
    "ppm": 329
   },
   {
+   "src": "emlakjet",
    "id": "18986297",
    "t": "Koz Emlak'tan Akçadağ Ören Yolu Üzeri Bakımlı Bahçe",
    "ilce": "Akçadağ",
@@ -2578,6 +2804,7 @@
    "ppm": 1110
   },
   {
+   "src": "emlakjet",
    "id": "18986296",
    "t": "Koz Emlak'tan Yenice (köpeksizde) Mükemmel Konumda Bahçe",
    "ilce": "Battalgazi",
@@ -2590,6 +2817,7 @@
    "ppm": 1251
   },
   {
+   "src": "emlakjet",
    "id": "18979036",
    "t": "Tarlamız Cumhuriyet Örnekköyünde Olup Antep Yoluna Yakın Mesafede",
    "ilce": "Yeşilyurt",
@@ -2602,6 +2830,7 @@
    "ppm": 587
   },
   {
+   "src": "emlakjet",
    "id": "18937003",
    "t": "Doğanşehir Polatderede Satılık Mülkler",
    "ilce": "Doğanşehir",
@@ -2614,6 +2843,7 @@
    "ppm": 301
   },
   {
+   "src": "emlakjet",
    "id": "18928724",
    "t": "Koz Emlak'tan Mollakasım'da Satılık Bahçe+ev",
    "ilce": "Yeşilyurt",
@@ -2626,6 +2856,7 @@
    "ppm": 6100
   },
   {
+   "src": "emlakjet",
    "id": "18868883",
    "t": "Malatya Battalgazi 9000 Metrekare Kayısı Bahçesi Kuzey Marmara Yoluna Cephe",
    "ilce": "Battalgazi",
@@ -2638,6 +2869,7 @@
    "ppm": 2000
   },
   {
+   "src": "emlakjet",
    "id": "18848044",
    "t": "Villamız Cevatpaşada Olup Trplex Olup Güvenlikli Sıfır Dır",
    "ilce": "Yeşilyurt",
@@ -2650,6 +2882,7 @@
    "ppm": 44318
   },
   {
+   "src": "emlakjet",
    "id": "18814754",
    "t": "Malatya/hekimhan /yukarıselimli De Satılık Kayısı Bahçesi",
    "ilce": "Hekimhan",
@@ -2662,6 +2895,7 @@
    "ppm": 195
   },
   {
+   "src": "emlakjet",
    "id": "18802434",
    "t": "Orduzu Göletinin Yanı Başında Ticaret Turizim Konut İmarlı Satılık Harika Konumda Arsa",
    "ilce": "Battalgazi",
@@ -2674,6 +2908,7 @@
    "ppm": 9362
   },
   {
+   "src": "emlakjet",
    "id": "18769816",
    "t": "Satılık Tarla",
    "ilce": "Battalgazi",
@@ -2686,6 +2921,7 @@
    "ppm": 1678
   },
   {
+   "src": "emlakjet",
    "id": "18761360",
    "t": "Özgür'den Battalgazi'de Villa Takaslı 17 Dönüm Bahçe",
    "ilce": "Battalgazi",
@@ -2698,6 +2934,7 @@
    "ppm": 1466
   },
   {
+   "src": "emlakjet",
    "id": "18752330",
    "t": "Koz Emlak'tan Kayseri-malatya Yoluna 500metre Mesafe'de Bahçe",
    "ilce": "Akçadağ",
@@ -2710,6 +2947,7 @@
    "ppm": 508
   },
   {
+   "src": "emlakjet",
    "id": "18709053",
    "t": "Güven Emlak'tan Kırkpınar Köyünde Satılık Kayısı Bahçesi",
    "ilce": "Yeşilyurt",
@@ -2722,6 +2960,7 @@
    "ppm": 607
   },
   {
+   "src": "emlakjet",
    "id": "18664000",
    "t": "*imarlı Arsa Pazarlık Payı Var Çamurlu",
    "ilce": "Battalgazi",
@@ -2734,6 +2973,7 @@
    "ppm": 6442
   },
   {
+   "src": "emlakjet",
    "id": "18609115",
    "t": "Erkan Emlaktan Elemendikte Satılık 13428 M2 Tarla",
    "ilce": "Yeşilyurt",
@@ -2746,6 +2986,7 @@
    "ppm": 1300
   },
   {
+   "src": "emlakjet",
    "id": "18609114",
    "t": "Erkan Emlaktan Orduzuda 5 Kat İmarlı 2463 M2 Satılık Arsa",
    "ilce": "Battalgazi",
@@ -2758,6 +2999,7 @@
    "ppm": 8100
   },
   {
+   "src": "emlakjet",
    "id": "18548306",
    "t": "Acil İhtiyaçtanakçadağ Örende Satılık Bitişik Yanyana İki Bahçe",
    "ilce": "Akçadağ",
@@ -2770,6 +3012,7 @@
    "ppm": 251
   },
   {
+   "src": "emlakjet",
    "id": "18547875",
    "t": "Acilihtiyaçtan Akçadağ Dedeköyde Sulama Kanlının Yanında Satılık 18 Dönüm Sulu Tarla-bahçe",
    "ilce": "Akçadağ",
@@ -2782,6 +3025,7 @@
    "ppm": 300
   },
   {
+   "src": "emlakjet",
    "id": "18531257",
    "t": "Yeşilyurt Duranlarda Satılık Çiflik Tadında Özel Yapılmış Olan 12 Dönüm Bahçe",
    "ilce": "Yeşilyurt",
@@ -2794,6 +3038,7 @@
    "ppm": 1332
   },
   {
+   "src": "emlakjet",
    "id": "18527733",
    "t": "Kıvanç Gayrimenkul'den Karanlıkderede Satılık Bahçeli Ev",
    "ilce": "Akçadağ",
@@ -2806,6 +3051,7 @@
    "ppm": 1208
   },
   {
+   "src": "emlakjet",
    "id": "18470728",
    "t": "Akçadağ Çarşıda Cadde Üstünde Bahçe",
    "ilce": "Akçadağ",
@@ -2818,6 +3064,7 @@
    "ppm": 1558
   },
   {
+   "src": "emlakjet",
    "id": "18458825",
    "t": "Havaalanı Aksarayda Yenı Havaalanı Terminal Kapısı Karsısında 14.5 Dönum Satılık Kaysı Bahçesi",
    "ilce": "Akçadağ",
@@ -2830,6 +3077,7 @@
    "ppm": 1000
   },
   {
+   "src": "emlakjet",
    "id": "18440341",
    "t": "Malatya Akçadağ Ortaköy ‘de",
    "ilce": "Akçadağ",
@@ -2839,10 +3087,11 @@
    "d": "2025-11-17",
    "u": "https://www.emlakjet.com/ilan/18440341",
    "img": "18440341/9D977D084C63793BFCDD6EDFF8C05C7818440341.jpg",
-   "ppm": null,
-   "sus": true
+   "sus": true,
+   "ppm": null
   },
   {
+   "src": "emlakjet",
    "id": "18406285",
    "t": "Erkan Emlaktan Aksarayda Havaalanına Yakın Satılık 13681m2 Tarla",
    "ilce": "Akçadağ",
@@ -2855,6 +3104,7 @@
    "ppm": 402
   },
   {
+   "src": "emlakjet",
    "id": "18368854",
    "t": "Erkan Emlaktan Cafanada Ankara Yolu Yanı Satılık 15138 M2 Tarla",
    "ilce": "Yeşilyurt",
@@ -2867,6 +3117,7 @@
    "ppm": 1750
   },
   {
+   "src": "emlakjet",
    "id": "18252342",
    "t": "Turanlardan...hatunsuyunda Muhteşem Konumda Satılık Arsa!!!",
    "ilce": "Battalgazi",
@@ -2879,6 +3130,7 @@
    "ppm": 3316
   },
   {
+   "src": "emlakjet",
    "id": "18110576",
    "t": "Başharık Satılık İmarlı 6 Dönüm Arsa",
    "ilce": "Battalgazi",
@@ -2891,6 +3143,7 @@
    "ppm": 12500
   },
   {
+   "src": "emlakjet",
    "id": "18097302",
    "t": "Furkan Doğan’dan Malatya Elazığ Yoluna Sıfır 2.500 M2 Satılık Tarla",
    "ilce": "Kale",
@@ -2903,6 +3156,7 @@
    "ppm": 2120
   },
   {
+   "src": "emlakjet",
    "id": "18025142",
    "t": "Satılık Arsa",
    "ilce": "Battalgazi",
@@ -2915,6 +3169,7 @@
    "ppm": 4146
   },
   {
+   "src": "emlakjet",
    "id": "17944956",
    "t": "Erkan Emlaktan Cafanada Satılık 19101 M2 Tarla",
    "ilce": "Yeşilyurt",
@@ -2927,6 +3182,7 @@
    "ppm": 1500
   },
   {
+   "src": "emlakjet",
    "id": "17893830",
    "t": "Özgür'den Dolamantepe'de Satılık İmarlı Fırsat Arsalar",
    "ilce": "Battalgazi",
@@ -2939,6 +3195,7 @@
    "ppm": 3859
   },
   {
+   "src": "emlakjet",
    "id": "17731623",
    "t": "Furkan Doğan’dan Battalgazi Erenli’de 4 Dönüm Acil Satılık Sulu Tarla",
    "ilce": "Battalgazi",
@@ -2951,6 +3208,7 @@
    "ppm": 562
   },
   {
+   "src": "emlakjet",
    "id": "17721957",
    "t": "Özgür'den Battalgazi Ana Cadde Üzerinde Satılık Arsa",
    "ilce": "Battalgazi",
@@ -2963,6 +3221,7 @@
    "ppm": 6006
   },
   {
+   "src": "emlakjet",
    "id": "17690763",
    "t": "Furkan Doğan’dan Kale Bent’de Toki Yakının’da 3.900m2 Satılık Tarla",
    "ilce": "Kale",
@@ -2975,6 +3234,7 @@
    "ppm": 872
   },
   {
+   "src": "emlakjet",
    "id": "17672727",
    "t": "Satılık Arazı Çeşitli Meyve Ağaçlar",
    "ilce": "Akçadağ",
@@ -2987,6 +3247,7 @@
    "ppm": 1013
   },
   {
+   "src": "emlakjet",
    "id": "17662898",
    "t": "Hobi Bahçe Parsel",
    "ilce": "Yeşilyurt",
@@ -2999,19 +3260,21 @@
    "ppm": 1625
   },
   {
+   "src": "emlakjet",
    "id": "17636097",
    "t": "Yeşilyurt Da 1728.49 M2 Emsalaiz Manzarasıyla Bulunmaz Villa İmarlı Arsa",
    "ilce": "Yeşilyurt",
    "mah": "Hıroğlu Mahallesi",
-   "m2": 1728480,
+   "m2": 1728,
    "p": 7500000,
    "d": "2025-07-11",
    "u": "https://www.emlakjet.com/ilan/17636097",
    "img": "17636097/C2AF2FDC8CF554D5F60B9E7AA35D7F4C17636097.jpg",
-   "ppm": null,
-   "sus": true
+   "m2src": "العنوان",
+   "ppm": 4340
   },
   {
+   "src": "emlakjet",
    "id": "17588522",
    "t": "Akçadağ Karapınarda 15 Dönüm Satılık Kayısı Bahçesi Ve Üzüm Bağı",
    "ilce": "Akçadağ",
@@ -3024,6 +3287,7 @@
    "ppm": 1140
   },
   {
+   "src": "emlakjet",
    "id": "17455746",
    "t": "Malatya Merdivenler Mahallesinde 11 Dönümlük Sulu Tarla - Pazarlığa Açıktır",
    "ilce": "Battalgazi",
@@ -3036,6 +3300,7 @@
    "ppm": 727
   },
   {
+   "src": "emlakjet",
    "id": "17311308",
    "t": "Ena Group Malatya Yeşilyurt Mollakasımda 1820 M2 Villa İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -3048,6 +3313,7 @@
    "ppm": 6044
   },
   {
+   "src": "emlakjet",
    "id": "16758638",
    "t": "Sahibinden Hatunsuyu Kıraçta Satılık İmarlı Arsa",
    "ilce": "Battalgazi",
@@ -3060,6 +3326,7 @@
    "ppm": 4593
   },
   {
+   "src": "emlakjet",
    "id": "16739696",
    "t": "Hanımınçiftliği Satılık Arsa",
    "ilce": "Battalgazi",
@@ -3072,6 +3339,7 @@
    "ppm": 5159
   },
   {
+   "src": "emlakjet",
    "id": "16651700",
    "t": "Darendede Satılık Arazi",
    "ilce": "Darende",
@@ -3084,6 +3352,7 @@
    "ppm": 904
   },
   {
+   "src": "emlakjet",
    "id": "16437437",
    "t": "160 Metre Kare Satılık Imarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -3096,6 +3365,7 @@
    "ppm": 9688
   },
   {
+   "src": "emlakjet",
    "id": "11007933",
    "t": "Ena Group Malatya Akçadağ Doğu'da 21.000 M2 Satılık Tarla",
    "ilce": "Akçadağ",
@@ -3108,6 +3378,7 @@
    "ppm": 476
   },
   {
+   "src": "emlakjet",
    "id": "9751282",
    "t": "Ena Group Malatya Yeşilyurt Mullakasımda Satılık Villa Arsası",
    "ilce": "Yeşilyurt",
@@ -3120,6 +3391,7 @@
    "ppm": 5019
   },
   {
+   "src": "emlakjet",
    "id": "9751228",
    "t": "Ena Group Malatya Yeşilyurt Mullakasımda Satılık Villa Arsası",
    "ilce": "Yeşilyurt",
@@ -3132,6 +3404,7 @@
    "ppm": 5282
   },
   {
+   "src": "emlakjet",
    "id": "9124699",
    "t": "Tecde Gedikte Konumu Muhteşem Şehir Manzaralı",
    "ilce": "Yeşilyurt",
