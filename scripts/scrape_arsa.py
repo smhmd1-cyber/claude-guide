@@ -28,6 +28,7 @@ HTTP عادي (حماية آلية)، و zingat صار يحوّل إلى hepsiem
 دون كتابة الملف، فيبقى ملف الأمس كما هو.
 """
 
+import io
 import json
 import os
 import re
@@ -57,35 +58,84 @@ HEADERS = {
     "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.6",
 }
 
+# ilan.gov.tr يقدّم شهادة DigiCert/GeoTrust سليمة، لكنّ خادمه لا يرسل الشهادة
+# الوسيطة مع المصافحة. ويندوز يجلبها تلقائياً عبر AIA فينجح؛ ولينكس (عدّاء GitHub)
+# لا يفعل، فيفشل الاتصال بـSSLError. لذلك: نحاول أولاً بالتحقّق المعتاد، وعند
+# فشل TLS وحده نعيد المحاولة بحزمة = شهادات certifi + الوسيطة المصدَّرة هنا.
+# التحقّق يبقى مفعَّلاً في الحالتين — لا نُطفئه أبداً. وإن أصلح الخادم سلسلته
+# لاحقاً فالمسار الأول ينجح ولا يُستعمل الملحق.
+CHAIN_PEM = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                         "ilan-gov-tr-chain.pem")
+_BUNDLE = None
+
+
+def ca_bundle():
+    global _BUNDLE
+    if _BUNDLE is not None:
+        return _BUNDLE or None
+    if not os.path.exists(CHAIN_PEM):
+        _BUNDLE = ""
+        return None
+    try:
+        import certifi
+        import tempfile
+        fd, path = tempfile.mkstemp(suffix=".pem")
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(io.open(certifi.where(), encoding="utf-8").read())
+            f.write("\n")
+            f.write(io.open(CHAIN_PEM, encoding="utf-8").read())
+        _BUNDLE = path
+    except Exception as e:
+        print("  تعذّر تجهيز حزمة الشهادات: %s" % e, file=sys.stderr)
+        _BUNDLE = ""
+    return _BUNDLE or None
+
 
 # ───────────────────────── أدوات مشتركة ─────────────────────────
 
+def _verify_modes():
+    """التحقّق المعتاد أولاً، ثم حزمة certifi + الوسيطة عند فشل TLS وحده."""
+    modes = [True]
+    b = ca_bundle()
+    if b:
+        modes.append(b)
+    return modes
+
+
 def get(url, tries=4, **kw):
     last = None
-    for i in range(tries):
-        try:
-            r = requests.get(url, headers=HEADERS, timeout=45, **kw)
-            if r.status_code == 200:
-                return r.text
-            last = "HTTP %d" % r.status_code
-        except Exception as e:
-            last = "%s: %s" % (type(e).__name__, e)
-        time.sleep(3 * (i + 1))
+    for verify in _verify_modes():
+        for i in range(tries):
+            try:
+                r = requests.get(url, headers=HEADERS, timeout=45, verify=verify, **kw)
+                if r.status_code == 200:
+                    return r.text
+                last = "HTTP %d" % r.status_code
+            except requests.exceptions.SSLError as e:
+                last = "SSLError: %s" % e
+                break                      # لا فائدة من التكرار — جرّب الحزمة الأخرى
+            except Exception as e:
+                last = "%s: %s" % (type(e).__name__, e)
+            time.sleep(3 * (i + 1))
     raise RuntimeError("تعذّر جلب %s — %s" % (url, last))
 
 
 def post_json(url, body, tries=4):
     last = None
-    for i in range(tries):
-        try:
-            r = requests.post(url, json=body, timeout=45,
-                              headers=dict(HEADERS, **{"Content-Type": "application/json"}))
-            if r.status_code == 200:
-                return r.json()
-            last = "HTTP %d" % r.status_code
-        except Exception as e:
-            last = "%s: %s" % (type(e).__name__, e)
-        time.sleep(3 * (i + 1))
+    hdr = dict(HEADERS, **{"Content-Type": "application/json"})
+    for verify in _verify_modes():
+        for i in range(tries):
+            try:
+                r = requests.post(url, json=body, timeout=45, headers=hdr, verify=verify)
+                if r.status_code == 200:
+                    return r.json()
+                last = "HTTP %d" % r.status_code
+            except requests.exceptions.SSLError as e:
+                last = "SSLError: %s" % e
+                break
+            except Exception as e:
+                last = "%s: %s" % (type(e).__name__, e)
+            time.sleep(3 * (i + 1))
     raise RuntimeError("تعذّر استدعاء %s — %s" % (url, last))
 
 
