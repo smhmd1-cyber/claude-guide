@@ -216,8 +216,8 @@ def norm_district(name):
 # القيمة تأتي معلنة في صفحة الإعلان نفسها، لا نستنبطها للسوق.
 # «مرخّصة للبناء» تعني أن الإعلان يذكر إماراً عمرانياً — لا أنّ رخصة بناء صادرة.
 # الجواب المُلزِم يبقى وثيقة «İmar Durumu» من بلدية الإلچة.
-ZON_BUILD, ZON_AGRI, ZON_NONE, ZON_UNK = (
-    "مرخّصة للبناء", "زراعية", "بلا إمار", "غير مذكور")
+ZON_BUILD, ZON_AGRI, ZON_NONE, ZON_OTHER, ZON_UNK = (
+    "مرخّصة للبناء", "زراعية", "بلا إمار أو مقيَّدة", "تصنيف آخر", "غير مذكور")
 
 # التركية لا تُخفَّض حرفياً: «İ».lower() تُنتج i مع نقطة مركّبة، و«I».lower() تُنتج i
 # لا ı. لذلك يُطبَّع الطرفان بمفتاح لاتيني مجرَّد قبل أي مقارنة — وإلّا فشلت مطابقة
@@ -246,6 +246,11 @@ IMAR_MAP = {
     "kat imarlı": (ZON_BUILD, "طوابق"),
     "a-lejant": (ZON_BUILD, "A-Lejant"),
     "arsa": (ZON_BUILD, "أرسا — قطعة عمرانية"),
+    "konut+ticaret alanı": (ZON_BUILD, "سكني وتجاري"),
+    "ticaret+konut alanı": (ZON_BUILD, "سكني وتجاري"),
+    "konut+ticari alanı": (ZON_BUILD, "سكني وتجاري"),
+    "ticaret alanı": (ZON_BUILD, "تجاري"),
+    "konut alanı": (ZON_BUILD, "سكني"),
     "tarla": (ZON_AGRI, "حقل — تَرلا"),
     "arazi": (ZON_AGRI, "أرض زراعية"),
     "tarım": (ZON_AGRI, "أرض زراعية"),
@@ -256,8 +261,12 @@ IMAR_MAP = {
     "sera": (ZON_AGRI, "بيوت بلاستيكية"),
     "hayvancılık": (ZON_AGRI, "تربية حيوانات"),
     "imarsız": (ZON_NONE, "بلا إمار"),
+    "sit alanı": (ZON_NONE, "منطقة حماية — Sit"),
+    "sit alanı içinde": (ZON_NONE, "منطقة حماية — Sit"),
+    "yol": (ZON_NONE, "مخصَّصة طريقاً"),
+    "yeşil alan": (ZON_NONE, "مساحة خضراء"),
 }
-ZON_ORDER = [ZON_BUILD, ZON_AGRI, ZON_NONE, ZON_UNK]
+ZON_ORDER = [ZON_BUILD, ZON_AGRI, ZON_NONE, ZON_OTHER, ZON_UNK]
 
 TAPU_MAP = {
     "müstakil tapulu": "طابو مستقلّ",
@@ -266,6 +275,9 @@ TAPU_MAP = {
     "kat irtifaklı tapu": "حقّ ارتفاق طوابق",
     "kat mülkiyetli tapu": "ملكية طوابق",
     "tapu kaydı yok": "بلا قيد طابو",
+    "kooperatiften tapu": "طابو من تعاونية",
+    "bilinmiyor": "نوع الطابو غير معروف",
+    "tahsis": "تخصيص (لا طابو ملكية)",
 }
 
 # للمزادات الرسمية لا يوجد حقل إمار، فتُستنبط من فئة الإعلان ونصّه ويُوسَم ذلك.
@@ -290,7 +302,7 @@ def zon_from_imar(raw):
     for k in sorted(_IMAR_KEYS, key=len, reverse=True):
         if k and k in key:
             return _IMAR_KEYS[k]
-    return ZON_UNK, str(raw).strip()
+    return ZON_OTHER, str(raw).strip()
 
 
 def tapu_label(raw):
@@ -673,6 +685,8 @@ def main():
             if fine:
                 r["zonf"] = fine
             r["zonsrc"] = "معلَن في الإعلان" if r.get("imar") else "غير مذكور في الإعلان"
+            if not r.get("imar"):
+                r["zon"] = ZON_UNK
         else:
             z, _ = zon_from_text(r.get("t"), r.get("cat"))
             r["zon"] = z

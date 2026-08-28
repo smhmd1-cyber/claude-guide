@@ -410,7 +410,7 @@
     var box=document.getElementById('zchips');
     var base=subset(1), cnt={};
     base.forEach(function(r){ var z=r.zon||'غير مذكور'; cnt[z]=(cnt[z]||0)+1; });
-    var order=[ZB, ZA, 'بلا إمار', 'غير مذكور'].filter(function(z){ return cnt[z]; });
+    var order=[ZB, ZA, 'بلا إمار أو مقيَّدة', 'تصنيف آخر', 'غير مذكور'].filter(function(z){ return cnt[z]; });
     if(order.length<2){ box.innerHTML=''; ZON=''; return; }
     var e=[{label:'كل التصنيفات', val:'', count:base.length}];
     order.forEach(function(z){

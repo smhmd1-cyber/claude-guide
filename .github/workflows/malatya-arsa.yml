@@ -75,7 +75,7 @@ jobs:
               if r.get('ppm') is not None and r.get('src') == 'ilangovtr' and r.get('ppm') <= 0:
                   E.append('₺/م² غير صالح في %s/%s' % k)
 
-          ZONS = {"مرخّصة للبناء", "زراعية", "بلا إمار", "غير مذكور"}
+          ZONS = {"مرخّصة للبناء", "زراعية", "بلا إمار أو مقيَّدة", "تصنيف آخر", "غير مذكور"}
           for r in items:
               if r.get('zon') not in ZONS:
                   E.append('تصنيف رخصة غير معروف %r في %s/%s'
