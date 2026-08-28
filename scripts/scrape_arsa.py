@@ -432,6 +432,10 @@ def enrich_emlakjet(rows, prev_by_id):
             for k in ("imar", "tapu", "kredi", "ada", "parsel", "bel"):
                 if old.get(k) is not None:
                     r[k] = old[k]
+            # القيم المخزَّنة قد تكون من خريطة أقدم، فتُمرَّر على التطبيع ثانيةً.
+            # tapu_label لا يمسّ قيمةً عربية سلفاً، فالعملية آمنة للتكرار.
+            if r.get("tapu"):
+                r["tapu"] = tapu_label(r["tapu"])
             cached += 1
             continue
         if fetched >= EJ_DETAIL_BUDGET:
