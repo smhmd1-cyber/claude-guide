@@ -35,6 +35,7 @@ import re
 import statistics
 import sys
 import time
+import unicodedata
 from collections import defaultdict
 from datetime import datetime, timezone, timedelta
 
@@ -211,6 +212,104 @@ def norm_district(name):
     return None
 
 
+# ───────────── تصنيف رخصة الاستعمال (İmar Durumu) ─────────────
+# القيمة تأتي معلنة في صفحة الإعلان نفسها، لا نستنبطها للسوق.
+# «مرخّصة للبناء» تعني أن الإعلان يذكر إماراً عمرانياً — لا أنّ رخصة بناء صادرة.
+# الجواب المُلزِم يبقى وثيقة «İmar Durumu» من بلدية الإلچة.
+ZON_BUILD, ZON_AGRI, ZON_NONE, ZON_UNK = (
+    "مرخّصة للبناء", "زراعية", "بلا إمار", "غير مذكور")
+
+# التركية لا تُخفَّض حرفياً: «İ».lower() تُنتج i مع نقطة مركّبة، و«I».lower() تُنتج i
+# لا ı. لذلك يُطبَّع الطرفان بمفتاح لاتيني مجرَّد قبل أي مقارنة — وإلّا فشلت مطابقة
+# «Konut İmarlı» صامتةً وسقط نصف التصنيف في خانة «غير مذكور».
+def tr_key(x):
+    t = unicodedata.normalize("NFKD", str(x or "")).lower()
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    for a, b in (("ı", "i"), ("ş", "s"), ("ğ", "g"), ("ç", "c"), ("ö", "o"), ("ü", "u")):
+        t = t.replace(a, b)
+    t = t.replace("&", " & ")
+    t = re.sub(r"[^a-z0-9& ]", " ", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+IMAR_MAP = {
+    "konut imarlı": (ZON_BUILD, "سكني"),
+    "villa imarlı": (ZON_BUILD, "فيلات"),
+    "ticari imarlı": (ZON_BUILD, "تجاري"),
+    "konut + ticari imarlı": (ZON_BUILD, "سكني وتجاري"),
+    "ticari + konut imarlı": (ZON_BUILD, "سكني وتجاري"),
+    "sanayi imarlı": (ZON_BUILD, "صناعي"),
+    "turizm imarlı": (ZON_BUILD, "سياحي"),
+    "toplu konut imarlı": (ZON_BUILD, "إسكان جماعي"),
+    "eğitim imarlı": (ZON_BUILD, "تعليمي"),
+    "sağlık imarlı": (ZON_BUILD, "صحّي"),
+    "kat imarlı": (ZON_BUILD, "طوابق"),
+    "a-lejant": (ZON_BUILD, "A-Lejant"),
+    "arsa": (ZON_BUILD, "أرسا — قطعة عمرانية"),
+    "tarla": (ZON_AGRI, "حقل — تَرلا"),
+    "arazi": (ZON_AGRI, "أرض زراعية"),
+    "tarım": (ZON_AGRI, "أرض زراعية"),
+    "bağ & bahçe": (ZON_AGRI, "كرم وبستان"),
+    "bağ&bahçe": (ZON_AGRI, "كرم وبستان"),
+    "bahçe": (ZON_AGRI, "بستان"),
+    "zeytinlik": (ZON_AGRI, "زيتون"),
+    "sera": (ZON_AGRI, "بيوت بلاستيكية"),
+    "hayvancılık": (ZON_AGRI, "تربية حيوانات"),
+    "imarsız": (ZON_NONE, "بلا إمار"),
+}
+ZON_ORDER = [ZON_BUILD, ZON_AGRI, ZON_NONE, ZON_UNK]
+
+TAPU_MAP = {
+    "müstakil tapulu": "طابو مستقلّ",
+    "hisseli tapu": "طابو مشاع (حصّة)",
+    "hisseli tapulu": "طابو مشاع (حصّة)",
+    "kat irtifaklı tapu": "حقّ ارتفاق طوابق",
+    "kat mülkiyetli tapu": "ملكية طوابق",
+    "tapu kaydı yok": "بلا قيد طابو",
+}
+
+# للمزادات الرسمية لا يوجد حقل إمار، فتُستنبط من فئة الإعلان ونصّه ويُوسَم ذلك.
+RX_BUILD = re.compile(r'\bimarli\b|\barsa\b|villalik|konut imar|ticari imar')
+RX_AGRI = re.compile(r'\btarla\b|\btarim\b|bahce|\bbag\b|zeytin|findik|kayisi|badem|\bmera\b|hobi')
+
+
+_IMAR_KEYS = None
+_TAPU_KEYS = None
+
+
+def zon_from_imar(raw):
+    global _IMAR_KEYS
+    if _IMAR_KEYS is None:
+        _IMAR_KEYS = {tr_key(k): v for k, v in IMAR_MAP.items()}
+    if not raw:
+        return ZON_UNK, None
+    key = tr_key(raw)
+    if key in _IMAR_KEYS:
+        return _IMAR_KEYS[key]
+    # الأطول أولاً حتى لا تبتلع «arsa» عبارةً أدقّ منها
+    for k in sorted(_IMAR_KEYS, key=len, reverse=True):
+        if k and k in key:
+            return _IMAR_KEYS[k]
+    return ZON_UNK, str(raw).strip()
+
+
+def tapu_label(raw):
+    global _TAPU_KEYS
+    if _TAPU_KEYS is None:
+        _TAPU_KEYS = {tr_key(k): v for k, v in TAPU_MAP.items()}
+    return _TAPU_KEYS.get(tr_key(raw), str(raw).strip())
+
+
+def zon_from_text(txt, cat):
+    """استنباط للمصدر الرسمي وحده — يُوسَم دائماً بأنه استنباط لا تصريح."""
+    t = tr_key("%s %s" % (txt or "", cat or ""))
+    if RX_BUILD.search(t):
+        return ZON_BUILD, None
+    if RX_AGRI.search(t):
+        return ZON_AGRI, None
+    return ZON_UNK, None
+
+
 # ───────────────────────── المصدر ١: Emlakjet ─────────────────────────
 
 EJ_BASE = "https://www.emlakjet.com/satilik-arsa/malatya/"
@@ -270,6 +369,85 @@ def ej_parse(html):
     return rows, total, pages
 
 
+EJ_LD = re.compile(
+    r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>', re.S)
+EJ_TAPU = re.compile(r'>([^<>]{2,40})</p><p[^>]*>Tapu Durumu</p>')
+EJ_DETAIL_BUDGET = int(os.environ.get("ARSA_DETAIL_BUDGET", "400"))
+
+
+def _walk_props(o, out):
+    if isinstance(o, list):
+        for x in o:
+            _walk_props(x, out)
+        return
+    if not isinstance(o, dict):
+        return
+    ap = o.get("additionalProperty")
+    if isinstance(ap, list):
+        for p in ap:
+            if isinstance(p, dict) and p.get("name"):
+                out[p["name"]] = p.get("value")
+    for v in o.values():
+        _walk_props(v, out)
+
+
+def ej_detail(listing_id):
+    """حقول صفحة الإعلان: الإمار والطابو والقيود.
+
+    الحقول داخل JSON-LD متداخلة تحت itemOffered.additionalProperty، لذلك نمشي
+    الشجرة كاملة بدل افتراض موضع ثابت. «Tapu Durumu» ليس في JSON-LD فيُلتقط من
+    الوسم نفسه.
+    """
+    html = get("https://www.emlakjet.com/ilan/" + listing_id, tries=2)
+    props = {}
+    for m in EJ_LD.finditer(html):
+        try:
+            _walk_props(json.loads(m.group(1)), props)
+        except Exception:
+            pass
+    t = EJ_TAPU.search(html)
+    if t:
+        props["Tapu Durumu"] = t.group(1).strip()
+    return props
+
+
+def enrich_emlakjet(rows, prev_by_id):
+    """يملأ الإمار والطابو، ويعيد استعمال ما سبق جلبه بدل إعادة الطلب كل يوم."""
+    cached = fetched = failed = 0
+    for r in rows:
+        old = prev_by_id.get(r["id"])
+        if old and old.get("imar"):
+            for k in ("imar", "tapu", "kredi", "ada", "parsel", "bel"):
+                if old.get(k) is not None:
+                    r[k] = old[k]
+            cached += 1
+            continue
+        if fetched >= EJ_DETAIL_BUDGET:
+            continue
+        try:
+            p = ej_detail(r["id"])
+            fetched += 1
+        except Exception as e:
+            failed += 1
+            if failed <= 3:
+                print("  تعذّر جلب تفاصيل %s: %s" % (r["id"], str(e)[:80]), file=sys.stderr)
+            continue
+        if p.get("İmar Durumu"):
+            r["imar"] = p["İmar Durumu"]
+        if p.get("Tapu Durumu"):
+            r["tapu"] = tapu_label(p["Tapu Durumu"])
+        if p.get("Krediye Uygunluk"):
+            r["kredi"] = "صالح للتمويل" if "uygun" in p["Krediye Uygunluk"].lower() \
+                and "değil" not in p["Krediye Uygunluk"].lower() else "غير صالح للتمويل"
+        for src_key, dst in (("Ada", "ada"), ("Parsel", "parsel"),
+                             ("Bağlı Olduğu Belediye", "bel")):
+            if p.get(src_key):
+                r[dst] = str(p[src_key]).strip()
+        time.sleep(0.4)
+    print("  تفاصيل الإعلانات: %d من الذاكرة · %d جُلبت · %d فشلت" % (cached, fetched, failed))
+    return {"detail_cached": cached, "detail_fetched": fetched, "detail_failed": failed}
+
+
 def source_emlakjet():
     items, reported, pages = {}, None, None
     page = 1
@@ -293,7 +471,10 @@ def source_emlakjet():
         time.sleep(1.5)
     if not items:
         raise RuntimeError("لم يُسحب أي إعلان — يُرجَّح تغيّر بنية الصفحة أو حجب الطلب.")
-    return list(items.values()), {"site_reported_total": reported, "pages": pages}
+    rows = list(items.values())
+    meta = {"site_reported_total": reported, "pages": pages}
+    meta.update(enrich_emlakjet(rows, PREV_BY_ID.get("emlakjet", {})))
+    return rows, meta
 
 
 # ───────────────────────── المصدر ٢: ilan.gov.tr ─────────────────────────
@@ -402,6 +583,9 @@ def parse_tr_date(s):
         return None
 
 
+PREV_BY_ID = {}
+
+
 def load_previous():
     try:
         with open(OUT, encoding="utf-8") as f:
@@ -414,6 +598,8 @@ def main():
     today = datetime.now(timezone.utc)
     prev = load_previous()
     prev_items = prev.get("items") or []
+    for r in prev_items:
+        PREV_BY_ID.setdefault(r.get("src") or "emlakjet", {})[r.get("id")] = r
 
     adapters = [
         ("emlakjet", "Emlakjet", "https://www.emlakjet.com/satilik-arsa/malatya/",
@@ -479,6 +665,20 @@ def main():
     for meta in metas:
         meta["count"] = len([r for r in rows if r.get("src") == meta["key"]])
 
+    # رخصة الاستعمال: معلَنة في إعلانات السوق، ومستنبَطة في المزادات الرسمية
+    for r in rows:
+        if r.get("src") == "emlakjet":
+            z, fine = zon_from_imar(r.get("imar"))
+            r["zon"] = z
+            if fine:
+                r["zonf"] = fine
+            r["zonsrc"] = "معلَن في الإعلان" if r.get("imar") else "غير مذكور في الإعلان"
+        else:
+            z, _ = zon_from_text(r.get("t"), r.get("cat"))
+            r["zon"] = z
+            r["zonsrc"] = ("مستنبَط من نصّ الإعلان الرسمي"
+                           if z != ZON_UNK else "غير مذكور في الإعلان")
+
     # المساحة: إن كانت المعلنة غير معقولة نحاول انتشالها من نصّ العنوان
     recovered = 0
     for r in rows:
@@ -516,6 +716,19 @@ def main():
                           "ppm_max": None, "p_med": None, "note": LEGACY.get(d)})
     stats.sort(key=lambda s: -s["n"])
 
+    zon_stats = []
+    for z in ZON_ORDER:
+        rs = [r for r in rows if r.get("zon") == z]
+        pp = sorted(r["ppm"] for r in rs
+                    if r.get("ppm") and r.get("src") == "emlakjet" and r.get("land"))
+        zon_stats.append({
+            "zon": z, "n": len(rs),
+            "ppm_med": int(statistics.median(pp)) if pp else None,
+            "ppm_p10": pp[int(len(pp) * 0.10)] if pp else None,
+            "ppm_p90": pp[int(len(pp) * 0.90)] if pp else None,
+            "n_priced": len(pp),
+        })
+
     market = [r["ppm"] for r in rows if r.get("ppm") and r.get("src") == "emlakjet" and r.get("land")]
     market.sort()
     prices = [r["p"] for r in rows if r.get("p")]
@@ -543,8 +756,13 @@ def main():
             "by_cat": {c: len([r for r in rows if r.get("cat") == c])
                        for c in sorted({r.get("cat") or "عقار آخر" for r in rows})},
             "land_count": len([r for r in rows if r.get("land")]),
+            "by_zon": {z: len([r for r in rows if r.get("zon") == z]) for z in ZON_ORDER},
+            "by_tapu": {t: len([r for r in rows if r.get("tapu") == t])
+                        for t in sorted({r.get("tapu") for r in rows if r.get("tapu")})},
+            "zon_declared": len([r for r in rows if r.get("zonsrc", "").startswith("معلَن")]),
         },
         "stats": stats,
+        "zon_stats": zon_stats,
         "items": rows,
     }
 
@@ -552,6 +770,7 @@ def main():
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, indent=1)
     print("كُتب %s — %d إعلاناً %s" % (OUT, len(rows), doc["summary"]["by_source"]))
+    print("  التصنيف: %s" % doc["summary"]["by_zon"])
 
 
 if __name__ == "__main__":

@@ -75,6 +75,20 @@ jobs:
               if r.get('ppm') is not None and r.get('src') == 'ilangovtr' and r.get('ppm') <= 0:
                   E.append('₺/م² غير صالح في %s/%s' % k)
 
+          ZONS = {"مرخّصة للبناء", "زراعية", "بلا إمار", "غير مذكور"}
+          for r in items:
+              if r.get('zon') not in ZONS:
+                  E.append('تصنيف رخصة غير معروف %r في %s/%s'
+                           % (r.get('zon'), r.get('src') or 'emlakjet', r.get('id')))
+                  break
+          bz = (d.get('summary') or {}).get('by_zon') or {}
+          for z, c in bz.items():
+              n = len([r for r in items if r.get('zon') == z])
+              if c != n:
+                  E.append('عدّاد التصنيف %s (%s) لا يطابق العناصر (%d)' % (z, c, n))
+          if not d.get('zon_stats'):
+              E.append('جدول التصنيف zon_stats مفقود')
+
           srcs = d.get('sources') or []
           if not srcs:
               E.append('لا توجد قائمة مصادر')

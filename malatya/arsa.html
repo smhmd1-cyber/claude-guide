@@ -25,6 +25,12 @@
 .chip.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
 .chip .c-n{font-family:var(--font-num);font-size:11px;opacity:.75;margin-inline-start:5px}
 .chip.sofficial.on{background:var(--violet-soft);border-color:var(--violet);color:var(--violet)}
+.chip.zbuild.on{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.chip.zagri.on{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+.chips .lbl{font-size:11.5px;font-weight:800;color:var(--muted);align-self:center;
+  margin-inline-end:2px;min-width:74px}
+.lst .m.zb{color:var(--green);border-color:rgba(64,209,131,.35)}
+.lst .m.za{color:var(--amber);border-color:rgba(255,194,75,.35)}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:14px;margin-top:6px}
 .lst{border:1px solid var(--border);border-radius:var(--r);background:var(--card);
   overflow:hidden;display:flex;flex-direction:column;transition:.16s}
@@ -111,6 +117,8 @@
       <button class="btn sm" id="reset">مسح الكل</button>
     </div>
     <div class="chips" id="schips"></div>
+    <div class="chips" id="zchips"></div>
+    <div class="chips" id="tchips"></div>
     <div class="chips" id="cchips"></div>
     <div class="chips" id="chips"></div>
   </div>
@@ -119,9 +127,16 @@
   <div class="cards" id="cards"></div>
   <div class="pager" id="pager"></div>
 
+  <h2>الفارق بين المرخَّص للبناء والزراعي</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>التصنيف</th><th>إعلانات</th><th>منها بسعر ومساحة</th><th>وسيط ₺/م²</th><th>الشريحة الدنيا ١٠٪</th><th>الشريحة العليا ٩٠٪</th></tr></thead>
+    <tbody id="ztb"></tbody>
+  </table></div>
+  <p class="mut" id="znote">—</p>
+
   <h2>وسيط ₺/م² حسب الإلچة</h2>
   <div class="tbl-wrap"><table>
-    <thead><tr><th>الإلچة</th><th>كل الإعلانات</th><th>وسيط ₺/م²</th><th>أدنى ₺/م²</th><th>أعلى ₺/م²</th><th>وسيط السعر ₺</th></tr></thead>
+    <thead><tr><th>الإلچة</th><th>ظاهر الآن</th><th>وسيط ₺/م²</th><th>أدنى ₺/م²</th><th>أعلى ₺/م²</th><th>وسيط السعر ₺</th></tr></thead>
     <tbody id="stb"></tbody>
   </table></div>
   <p class="mut" id="statnote">—</p>
@@ -144,7 +159,8 @@
   'use strict';
   var AR=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
   var PER=24;
-  var DATA=null, VIEW=[], PAGE=1, DIST='', SRC='', CAT='';
+  var DATA=null, VIEW=[], PAGE=1, DIST='', SRC='', CAT='', ZON='', TAPU='';
+  var ZB='مرخّصة للبناء', ZA='زراعية';
   var SRCLABEL={emlakjet:'السوق', ilangovtr:'رسمي'};
 
   function fmtDate(s){ var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||''); return m?((+m[3])+' '+AR[+m[2]-1]+' '+m[1]):(s||'—'); }
@@ -163,6 +179,8 @@
     VIEW=DATA.items.filter(function(r){
       if(SRC && srcOf(r)!==SRC) return false;
       if(CAT && (r.cat||'أرض · أرسا')!==CAT) return false;
+      if(ZON && (r.zon||'غير مذكور')!==ZON) return false;
+      if(TAPU && r.tapu!==TAPU) return false;
       if(DIST && r.ilce!==DIST) return false;
       if(q){ var hay=((r.t||'')+' '+(r.mah||'')+' '+(r.ilce||'')+' '+(r.org||'')).toLowerCase(); if(hay.indexOf(q)<0) return false; }
       if(pmin!=null && (r.p==null||r.p<pmin)) return false;
@@ -195,6 +213,12 @@
     var meta='';
     meta+='<span class="m"'+(r.m2kind?(' title="'+esc(r.m2kind)+'"'):'')+'>'+(r.m2!=null?(n(r.m2)+' م²'+(r.m2kind&&!r.land?' مبنية':'')):'مساحة غير مذكورة')+'</span>';
     if(official && r.cat) meta+='<span class="m vi">'+esc(r.cat)+'</span>';
+    if(r.zon && r.zon!=='غير مذكور'){
+      var zc=(r.zon===ZB)?'zb':(r.zon===ZA?'za':'');
+      var zt=r.zonf?(r.zon+' · '+r.zonf):r.zon;
+      meta+='<span class="m '+zc+'" title="'+esc(r.zonsrc||'')+'">'+esc(zt)+(official?' (مستنبَط)':'')+'</span>';
+    }
+    if(r.tapu) meta+='<span class="m">'+esc(r.tapu)+'</span>';
     if(r.ppm!=null) meta+='<span class="m hi">'+n(r.ppm)+' ₺/م²</span>';
     if(r.m2src) meta+='<span class="m warn">مساحة من نصّ الإعلان</span>';
     if(r.sus) meta+='<span class="m warn">مساحة معلنة غير متّسقة</span>';
@@ -215,7 +239,8 @@
     var box=document.getElementById('cards');
     var tot=VIEW.length, pages=Math.max(1,Math.ceil(tot/PER));
     if(PAGE>pages) PAGE=pages;
-    var f=[]; if(SRC) f.push(SRCLABEL[SRC]||SRC); if(CAT) f.push(CAT); if(DIST) f.push('إلچة '+DIST);
+    var f=[]; if(SRC) f.push(SRCLABEL[SRC]||SRC); if(ZON) f.push(ZON); if(TAPU) f.push(TAPU);
+    if(CAT) f.push(CAT); if(DIST) f.push('إلچة '+DIST);
     document.getElementById('cnt').innerHTML='ظهر <b>'+n(tot)+'</b> إعلاناً من أصل <b>'+n(DATA.items.length)+'</b>'+(f.length?(' — '+esc(f.join(' · '))):'');
     if(!tot){ box.innerHTML='<p class="mut">لا يوجد إعلان يطابق هذه التصفية.</p>'; document.getElementById('pager').innerHTML=''; return; }
     box.innerHTML=VIEW.slice((PAGE-1)*PER, PAGE*PER).map(card).join('');
@@ -232,10 +257,41 @@
     mk('التالي', PAGE+1, PAGE>=pages, false);
     var sp=document.createElement('span'); sp.className='mut'; sp.style.fontSize='12px';
     sp.textContent='صفحة '+PAGE+' من '+pages; p.appendChild(sp);
+    renderDistrictTable();
   }
 
-  function chipRow(box, entries, current, onPick){
+  function med(a){ if(!a.length) return null; var b=a.slice().sort(function(x,y){return x-y;});
+    var i=Math.floor(b.length/2); return b.length%2?b[i]:Math.round((b[i-1]+b[i])/2); }
+
+  // الوسيط يُحتسب من إعلانات السوق الأرضية وحدها — البدل المحمّن تقدير قضائي لا
+  // سعر سوق، وخلطهما يفسد الرقم. والجدول يتبع التصفية الظاهرة الآن.
+  function renderDistrictTable(){
+    var by={};
+    VIEW.forEach(function(r){
+      var k=r.ilce||'—';
+      if(!by[k]) by[k]={n:0,ppm:[],p:[]};
+      by[k].n++;
+      if(r.ppm!=null && srcOf(r)==='emlakjet' && r.land!==false){ by[k].ppm.push(r.ppm); by[k].p.push(r.p); }
+    });
+    var order=DATA.stats.map(function(x){ return x.ilce; }).filter(function(d){ return by[d]; });
+    Object.keys(by).forEach(function(d){ if(order.indexOf(d)<0) order.push(d); });
+    var noteOf={}; DATA.stats.forEach(function(x){ if(x.note) noteOf[x.ilce]=x.note; });
+    var tb=document.getElementById('stb');
+    if(!order.length){ tb.innerHTML='<tr><td colspan="6" class="mut">لا شيء ضمن التصفية الحالية.</td></tr>'; return; }
+    tb.innerHTML=order.map(function(d){
+      var b=by[d], pp=b.ppm.slice().sort(function(x,y){return x-y;});
+      return '<tr><td><b>'+esc(d)+'</b>'+(noteOf[d]?('<br><span class="mut" style="font-size:11.5px;font-weight:600">'+esc(noteOf[d])+'</span>'):'')+'</td>'+
+        '<td class="num">'+n(b.n)+'</td>'+
+        '<td class="num">'+(pp.length?n(med(pp)):'—')+'</td>'+
+        '<td class="num">'+(pp.length?n(pp[0]):'—')+'</td>'+
+        '<td class="num">'+(pp.length?n(pp[pp.length-1]):'—')+'</td>'+
+        '<td class="num">'+(b.p.length?n(med(b.p)):'—')+'</td></tr>';
+    }).join('');
+  }
+
+  function chipRow(box, entries, current, onPick, label){
     box.innerHTML='';
+    if(label){ var L=document.createElement('span'); L.className='lbl'; L.textContent=label; box.appendChild(L); }
     entries.forEach(function(e,i){
       var b=document.createElement('button');
       b.className='chip'+(e.cls?(' '+e.cls):'')+((e.val===current)?' on':'');
@@ -265,21 +321,41 @@
       sEntries.push({label:(s.kind==='رسميّ'||s.kind==='رسمي')?'رسمي — قضاء ومزايدات':'سوق — إعلانات بائعين',
                      val:s.key, count:count(s.key), cls:(s.kind&&s.kind.indexOf('رسم')===0)?'sofficial':''});
     });
-    chipRow(document.getElementById('schips'), sEntries, '', function(v){ SRC=v; CAT=''; buildCats(); buildDistricts(); apply(); });
+    chipRow(document.getElementById('schips'), sEntries, '', function(v){
+      SRC=v; ZON=''; TAPU=''; CAT=''; buildZon(); buildTapu(); buildCats(); buildDistricts(); apply();
+    }, 'المصدر');
 
+    buildZon();
+    buildTapu();
     buildCats();
     buildDistricts();
 
-    document.getElementById('stb').innerHTML=d.stats.map(function(s){
-      return '<tr><td><b>'+esc(s.ilce)+'</b>'+(s.note?('<br><span class="mut" style="font-size:11.5px;font-weight:600">'+esc(s.note)+'</span>'):'')+'</td><td class="num">'+n(s.n)+'</td>'+
-        '<td class="num">'+(s.ppm_med!=null?n(s.ppm_med):'—')+'</td>'+
-        '<td class="num">'+(s.ppm_min!=null?n(s.ppm_min):'—')+'</td>'+
-        '<td class="num">'+(s.ppm_max!=null?n(s.ppm_max):'—')+'</td>'+
-        '<td class="num">'+(s.p_med!=null?n(s.p_med):'—')+'</td></tr>';
-    }).join('');
-    set('statnote','عمود «كل الإعلانات» يشمل المصدرين وكل أنواع العقار، أمّا أعمدة ₺/م² فمن إعلانات الأرض في السوق وحدها — '+
+    var zs=d.zon_stats||[];
+    var ztb=document.getElementById('ztb');
+    if(zs.length){
+      ztb.innerHTML=zs.filter(function(z){return z.n;}).map(function(z){
+        return '<tr><td><b>'+esc(z.zon)+'</b></td><td class="num">'+n(z.n)+'</td>'+
+          '<td class="num">'+n(z.n_priced)+'</td>'+
+          '<td class="num">'+(z.ppm_med!=null?n(z.ppm_med):'—')+'</td>'+
+          '<td class="num">'+(z.ppm_p10!=null?n(z.ppm_p10):'—')+'</td>'+
+          '<td class="num">'+(z.ppm_p90!=null?n(z.ppm_p90):'—')+'</td></tr>';
+      }).join('');
+      var zb=zs.filter(function(z){return z.zon===ZB;})[0]||{};
+      var za=zs.filter(function(z){return z.zon===ZA;})[0]||{};
+      var ratio=(zb.ppm_med&&za.ppm_med)?(Math.round(zb.ppm_med/za.ppm_med*10)/10):null;
+      set('znote','رخصة الاستعمال في إعلانات السوق مأخوذة من حقل «İmar Durumu» المعلَن في صفحة الإعلان نفسها، لا من تخميننا'+
+        (d.summary.zon_declared!=null?(' — '+d.summary.zon_declared+' إعلاناً يحمل الحقل'):'')+'. '+
+        'أمّا المزادات الرسمية فلا تحمل هذا الحقل، فيُستنبَط من نصّها ويُوسَم «مستنبَط» على البطاقة. '+
+        (ratio?(ratio>=1.05
+          ? ('الفارق الحالي: وسيط متر الأرض المرخَّصة للبناء أعلى بنحو '+ratio+' ضعفاً من الزراعية. ')
+          : (ratio<=0.95
+             ? ('لافت: وسيط متر الأرض الزراعية هنا أعلى من المرخَّصة للبناء بنحو '+(Math.round(10/ratio)/10)+' ضعفاً. لا يعني هذا أنّ الزراعية أثمن — قد تكون القطع الزراعية المعروضة اليوم في مواقع أغلى، أو العيّنة صغيرة. ')
+             : 'الوسيطان متقاربان في العرض الحالي. ')):'')+
+        'وهذا وسيط إعلانات لا تقييم. والجواب المُلزِم عن أي قطعة هو وثيقة «İmar Durumu» من بلدية الإلچة: الإمار يتغيّر، وما يكتبه البائع قد يسبق الواقع.');
+    } else { ztb.innerHTML='<tr><td colspan="6" class="mut">لا بيانات تصنيف في هذا الملف.</td></tr>'; set('znote','—'); }
+    set('statnote','الجدول يتبع التصفية الظاهرة الآن: عمود «ظاهر الآن» يعدّ ما تراه، وأعمدة ₺/م² تُحتسب من إعلانات الأرض في السوق ضمنه — '+
       'البدل المحمّن تقدير قضائي لا سعر سوق، وخلطهما يفسد الوسيط. '+
-      'الإلچات بلا إعلانات تظهر بـ«—»: غياب إعلان على هذه المصادر اليوم، لا غياب أراضٍ معروضة فيها. '+
+      'والإلچة التي لا يظهر لها صفّ لا إعلان لها ضمن هذه التصفية — لا أنها بلا أراضٍ معروضة. '+
       'و«Merkez» ليست إلچة: هي تسمية ما قبل ٢٠١٣ ما زالت الدوائر الرسمية تستعملها لمركز ملاطيا قبل قسمته إلى باتالغازي ويشيليورت — تُعرض كما وردت بلا تخمين. '+
       'والفارق الكبير بين الأدنى والأعلى داخل الإلچة الواحدة طبيعي: أرض عمرانية داخل المدينة وحقل زراعي بعيد يظهران في القائمة نفسها.');
 
@@ -319,17 +395,48 @@
     document.getElementById('srcnote').innerHTML=html;
   }
 
-  function pool(){
+  function subset(upto){
+    // upto: أيّ مستوى نتوقّف عنده، حتى تُحسب عدّادات كل صفّ من الصفوف الأعلى منه
     return DATA.items.filter(function(r){
       if(SRC && srcOf(r)!==SRC) return false;
-      if(CAT && (r.cat||'أرض · أرسا')!==CAT) return false;
+      if(upto>1 && ZON && (r.zon||'غير مذكور')!==ZON) return false;
+      if(upto>2 && TAPU && r.tapu!==TAPU) return false;
+      if(upto>3 && CAT && (r.cat||'أرض · أرسا')!==CAT) return false;
       return true;
     });
   }
 
+  function buildZon(){
+    var box=document.getElementById('zchips');
+    var base=subset(1), cnt={};
+    base.forEach(function(r){ var z=r.zon||'غير مذكور'; cnt[z]=(cnt[z]||0)+1; });
+    var order=[ZB, ZA, 'بلا إمار', 'غير مذكور'].filter(function(z){ return cnt[z]; });
+    if(order.length<2){ box.innerHTML=''; ZON=''; return; }
+    var e=[{label:'كل التصنيفات', val:'', count:base.length}];
+    order.forEach(function(z){
+      e.push({label:z, val:z, count:cnt[z], cls:(z===ZB?'zbuild':(z===ZA?'zagri':''))});
+    });
+    ZON='';
+    chipRow(box, e, '', function(v){ ZON=v; TAPU=''; CAT=''; buildTapu(); buildCats(); buildDistricts(); apply(); }, 'رخصة الاستعمال');
+  }
+
+  function buildTapu(){
+    var box=document.getElementById('tchips');
+    var base=subset(2), cnt={};
+    base.forEach(function(r){ if(r.tapu) cnt[r.tapu]=(cnt[r.tapu]||0)+1; });
+    var order=Object.keys(cnt).sort(function(a,b){ return cnt[b]-cnt[a]; });
+    if(!order.length){ box.innerHTML=''; TAPU=''; return; }
+    var e=[{label:'كل أنواع الطابو', val:'', count:base.length}];
+    order.forEach(function(t){ e.push({label:t, val:t, count:cnt[t]}); });
+    TAPU='';
+    chipRow(box, e, '', function(v){ TAPU=v; CAT=''; buildCats(); buildDistricts(); apply(); }, 'نوع الطابو');
+  }
+
+  function pool(){ return subset(4); }
+
   function buildCats(){
     var box=document.getElementById('cchips');
-    var base=DATA.items.filter(function(r){ return !SRC || srcOf(r)===SRC; });
+    var base=subset(3);
     var cnt={}, order=[];
     base.forEach(function(r){ var c=r.cat||'أرض · أرسا'; if(!cnt[c]) order.push(c); cnt[c]=(cnt[c]||0)+1; });
     if(order.length<2){ box.innerHTML=''; CAT=''; return; }
@@ -337,7 +444,7 @@
     var e=[{label:'كل الأنواع', val:'', count:base.length}];
     order.forEach(function(c){ e.push({label:c, val:c, count:cnt[c]}); });
     CAT='';
-    chipRow(box, e, '', function(v){ CAT=v; buildDistricts(); apply(); });
+    chipRow(box, e, '', function(v){ CAT=v; buildDistricts(); apply(); }, 'نوع العقار');
   }
 
   function buildDistricts(){
@@ -347,7 +454,7 @@
     var e=[{label:'كل الإلچات', val:'', count:p.length}];
     DATA.stats.forEach(function(s){ if(cnt[s.ilce]) e.push({label:s.ilce, val:s.ilce, count:cnt[s.ilce]}); });
     DIST='';
-    chipRow(document.getElementById('chips'), e, '', function(v){ DIST=v; apply(); });
+    chipRow(document.getElementById('chips'), e, '', function(v){ DIST=v; apply(); }, 'الإلچة');
   }
 
   fetch('data/arsa-listings.json?v='+Date.now(),{cache:'no-store'})
@@ -364,11 +471,11 @@
   document.getElementById('reset').addEventListener('click', function(){
     ['q','pmin','pmax','amin','amax','umin','umax'].forEach(function(id){ document.getElementById(id).value=''; });
     document.getElementById('sort').value='d';
-    SRC=''; CAT='';
+    SRC=''; ZON=''; TAPU=''; CAT='';
     var sb=document.getElementById('schips');
-    Array.prototype.forEach.call(sb.children,function(x,i){ x.classList.toggle('on', i===0); });
-    buildCats();
-    buildDistricts();
+    Array.prototype.forEach.call(sb.children,function(x){ x.classList.remove('on'); });
+    var first=sb.querySelector('.chip'); if(first) first.classList.add('on');
+    buildZon(); buildTapu(); buildCats(); buildDistricts();
     if(DATA) apply();
   });
 })();
