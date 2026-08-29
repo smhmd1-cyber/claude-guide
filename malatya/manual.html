@@ -50,7 +50,7 @@ table.map td:first-child{font-family:var(--font-num);direction:ltr;text-align:le
   <div class="tbl-wrap"><table>
     <thead><tr><th>الساعة (القدس)</th><th>ماذا يحدث</th><th>إن فشل</th></tr></thead>
     <tbody>
-      <tr><td>٠٧:١٠</td><td>وكيل العقارات يمسح المصادر ويكتب بيانات اليوم</td><td>تبقى بيانات الأمس، ولا يُكتب ملفّ ناقص</td></tr>
+      <tr><td>٠٧:١٠</td><td>سحّاب الشقق: كل المعروض بيعاً وإيجاراً في ملاطيا على Emlakjet، مصنَّفاً بعمر البناء ونوع الطابو، ثمّ تقرير سرديّ يُكتب من البيانات نفسها</td><td>السحب والتقرير مفصولان: لو تعطّل التقرير تُحدَّث البيانات على أي حال. ولو تعطّل السحب تبقى بيانات الأمس ولا يُكتب ملفّ ناقص</td></tr>
       <tr><td>٠٨:١٠</td><td>وكيل الأراضي يرصد القطع ويكتب تقريره</td><td>كما سبق</td></tr>
       <tr><td>٠٨:٢٥</td><td>سحّاب أراضي البناء: السوق + المصدر الرسمي + تعديلاتك اليدوية</td><td>مصدر يفشل لا يُسقط الآخر، والفشل يُكتب في الملفّ ويظهر على الصفحة</td></tr>
       <tr><td>٠٩:١٠</td><td>وكيل النشرة يحرّر الدليل</td><td>كما سبق</td></tr>
@@ -60,6 +60,14 @@ table.map td:first-child{font-family:var(--font-num);direction:ltr;text-align:le
   <p class="mut">كل هذا يظهر في <a href="admin.html">لوحة الإدارة ← الحالة والتشغيل</a>، ومنها تشغّل أيّاً منها الآن دون انتظار.</p>
 
   <h2 id="edit">تعديل الإعلانات</h2>
+  <div class="note info">
+    <b>لوحتان تُداران من المكان نفسه.</b> في <a href="admin.html">لوحة الإدارة ← الإعلانات</a>
+    قائمةٌ أولى تختار بين <b>لوحة أراضي البناء</b> و<b>لوحة الشقق</b>. كل ما يلي يعمل في الاثنتين،
+    ويختلف حقل التصنيف وحده: الأرض تُصنَّف <b>برخصة الاستعمال</b> (İmar Durumu)، والشقة
+    <b>بعمر البناء</b> (Bina Yaşı). ولكلٍّ ملفّ تعديلات مستقلّ
+    (<span dir="ltr">arsa-overrides.json</span> · <span dir="ltr">aqar-overrides.json</span>)،
+    فتعديلاتك في لوحةٍ لا تلمس الأخرى، والرفع يشغّل سير عمل تلك اللوحة وحدها.
+  </div>
   <details class="q" open><summary>أضف إعلاناً ليس على الإنترنت</summary><div class="body">
     <ol>
       <li>لوحة الإدارة ← <b>الإعلانات</b> ← <b>أضف إعلاناً يدوياً</b>.</li>
@@ -168,10 +176,15 @@ table.map td:first-child{font-family:var(--font-num);direction:ltr;text-align:le
       <tr><td>malatya/admin.html</td><td>لوحة الإدارة</td><td>أنت</td></tr>
       <tr><td>malatya/data/arsa-listings.json</td><td>الإعلانات الجاهزة للعرض</td><td><b>الآلة</b> — لا تعدّله يدوياً</td></tr>
       <tr><td>malatya/data/arsa-overrides.json</td><td>تعديلاتك: إضافة وتصحيح وإخفاء</td><td><b>أنت</b> عبر اللوحة</td></tr>
+      <tr><td>malatya/aqar.html</td><td>لوحة الشقق — محرّك البحث</td><td>أنت</td></tr>
+      <tr><td>malatya/data/aqar-listings.json</td><td>الشقق الجاهزة للعرض، بيعاً وإيجاراً</td><td><b>الآلة</b> — لا تعدّله يدوياً</td></tr>
+      <tr><td>malatya/data/aqar-overrides.json</td><td>تعديلاتك على لوحة الشقق</td><td><b>أنت</b> عبر اللوحة</td></tr>
+      <tr><td>malatya/data/aqar-reports.json</td><td>سلسلة السجلّ اليومي للشقق</td><td><b>الآلة</b></td></tr>
       <tr><td>malatya/assets/malatya.css</td><td>التنسيق لكل الصفحات</td><td>أنت</td></tr>
       <tr><td>malatya/assets/nav.js</td><td>القائمة + تشغيل التطبيق</td><td>أنت</td></tr>
       <tr><td>malatya/sw.js</td><td>محرّك العمل بلا شبكة</td><td>أنت (بحذر)</td></tr>
       <tr><td>scripts/scrape_arsa.py</td><td>سحّاب الأراضي</td><td>أنت</td></tr>
+      <tr><td>scripts/scrape_aqar.py</td><td>سحّاب الشقق</td><td>أنت</td></tr>
       <tr><td>.github/workflows/*.yml</td><td>الأتمتة والنشر</td><td>أنت</td></tr>
     </tbody>
   </table></div>
@@ -179,7 +192,7 @@ table.map td:first-child{font-family:var(--font-num);direction:ltr;text-align:le
   <h2 id="rules">قواعد لا تُكسر</h2>
   <div class="note warn">
     <ol style="margin:0;padding-inline-start:20px;line-height:2">
-      <li><b>لا تعدّل <span class="kbd">arsa-listings.json</span> يدوياً.</b> يُعاد بناؤه كل يوم فيُمحى تعديلك. استعمل تبويب الإعلانات.</li>
+      <li><b>لا تعدّل <span class="kbd">arsa-listings.json</span> ولا <span class="kbd">aqar-listings.json</span> يدوياً.</b> كلاهما يُعاد بناؤه كل يوم فيُمحى تعديلك. استعمل تبويب الإعلانات — ومنه تختار اللوحة.</li>
       <li><b>لا تلمس <span class="kbd">guide.html</span> في جذر الموقع</b> — هو دليل المغرب، مشروع آخر. المنظومة كلّها داخل <span class="kbd">/malatya/</span>.</li>
       <li><b>لا تنشر رقماً بلا مصدر.</b> كل رقم على الصفحات مسحوب أو مُدخَل بيدك وموسوم بذلك. الرقم الذي لا يُعرف مصدره أسوأ من غيابه.</li>
       <li><b>لا توسّع صلاحية الرمز.</b> مستودع واحد وصلاحيتان. الرمز الواسع خسارته أفدح.</li>
