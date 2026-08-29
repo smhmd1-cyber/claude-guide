@@ -146,11 +146,15 @@
     <div class="note info" style="margin-top:14px">
       <b>لماذا تعديلاتك لا تضيع:</b> ملفّ الإعلانات يُعاد بناؤه كل يوم من المصادر، فلو كتبنا فيه
       مباشرةً لمُحيت تعديلاتك في اليوم التالي. لذلك تُحفظ تعديلاتك في ملفّ منفصل
-      (<span dir="ltr">data/arsa-overrides.json</span>) يقرؤه السحّاب ويطبّقه <b>بعد</b> كل سحب.
+      (<span dir="ltr" id="ovpath">data/arsa-overrides.json</span>) يقرؤه السحّاب ويطبّقه <b>بعد</b> كل سحب.
       النتيجة: تعديلك دائم، والتحديث اليومي مستمرّ، ولا يدهس أحدهما الآخر.
     </div>
 
     <div class="bar">
+      <select id="fds" class="btn">
+        <option value="arsa">لوحة أراضي البناء</option>
+        <option value="aqar">لوحة الشقق</option>
+      </select>
       <input type="text" id="q" placeholder="ابحث بالعنوان أو الحيّ أو رقم الإعلان…">
       <select id="fsrc" class="btn"><option value="">كل المصادر</option></select>
       <select id="fzon" class="btn"><option value="">كل التصنيفات</option></select>
@@ -158,7 +162,7 @@
     </div>
     <p class="mut" id="icount">…</p>
     <div class="tbl-wrap"><table>
-      <thead><tr><th>العنوان</th><th>الإلچة</th><th>م²</th><th>₺</th><th>التصنيف</th><th>الحالة</th><th></th></tr></thead>
+      <thead><tr><th>العنوان</th><th>الإلچة</th><th>م²</th><th>₺</th><th id="thcat">التصنيف</th><th>الحالة</th><th></th></tr></thead>
       <tbody id="itb"></tbody>
     </table></div>
     <div class="bar" id="ipager"></div>
@@ -172,7 +176,7 @@
         </div>
         <div class="row2">
           <div class="fld"><label>الحيّ (اختياري)</label><input type="text" id="e_mah"></div>
-          <div class="fld"><label>التصنيف</label><select id="e_zon"></select></div>
+          <div class="fld"><label id="lblcat">التصنيف</label><select id="e_zon"></select></div>
         </div>
         <div class="row2">
           <div class="fld"><label>المساحة م²</label><input type="number" id="e_m2" min="1"></div>
@@ -282,11 +286,26 @@
 
   /* ═══════════ إعدادات ثابتة ═══════════ */
   var OWNER='smhmd1-cyber', REPO='claude-guide', BRANCH='main';
-  var DATA='malatya/data/arsa-listings.json';
-  var OVER='malatya/data/arsa-overrides.json';
+  // مجموعتا البيانات تتقاسمان البنية نفسها: وثيقة فيها items[]، وملفّ تعديلات
+  // فيه patch/hidden/items بمفتاح «src:id». يختلفان في الحقل المُصنِّف وحده:
+  // الأرض تُصنَّف برخصة الاستعمال، والشقة بعمر البناء.
+  var DATASETS={
+    arsa:{ label:'أراضي البناء',
+      data:'malatya/data/arsa-listings.json', over:'malatya/data/arsa-overrides.json',
+      wf:'malatya-arsa.yml', script:'scripts/scrape_arsa.py', live:'data/arsa-listings.json',
+      field:'zon', catLabel:'رخصة الاستعمال', page:'arsa.html',
+      cats:['مرخّصة للبناء','زراعية','بلا إمار أو مقيَّدة','تصنيف آخر','غير مذكور'] },
+    aqar:{ label:'الشقق',
+      data:'malatya/data/aqar-listings.json', over:'malatya/data/aqar-overrides.json',
+      wf:'malatya-aqar.yml', script:'scripts/scrape_aqar.py', live:'data/aqar-listings.json',
+      field:'age', catLabel:'عمر البناء', page:'aqar.html',
+      cats:['صفر · جاهز للسكن','قيد الإنشاء','١–٣ سنوات','٤–٥ سنوات','٦–١٠ سنوات',
+            'أكثر من ١٠ سنوات','غير مذكور'] }
+  };
+  var DS='arsa';
+  function ds(){ return DATASETS[DS]; }
   var DISTRICTS=['Battalgazi','Yeşilyurt','Akçadağ','Arapgir','Arguvan','Darende','Doğanşehir',
                  'Doğanyol','Hekimhan','Kale','Kuluncak','Pütürge','Yazıhan','Merkez'];
-  var ZONS=['مرخّصة للبناء','زراعية','بلا إمار أو مقيَّدة','تصنيف آخر','غير مذكور'];
   var PER=25;
 
   /* ═══════════ أدوات ═══════════ */
@@ -422,7 +441,7 @@
   /* ═══════════ الحالة ═══════════ */
   async function loadHealth(){
     try{
-      var r=await fetch('data/arsa-listings.json?v='+Date.now(), {cache:'no-store'});
+      var r=await fetch(ds().live+'?v='+Date.now(), {cache:'no-store'});
       var d=await r.json();
       $('h1').textContent=n(d.total);
       $('h1s').textContent=Object.keys(d.summary.by_source||{}).map(function(k){
@@ -515,11 +534,11 @@
   }
   async function loadItems(){
     try{
-      var f=await GH.getFile(DATA);
+      var f=await GH.getFile(ds().data);
       ITEMS=JSON.parse(f.text).items||[];
     }catch(e){ ITEMS=[]; toast('تعذّر قراءة ملفّ الإعلانات: '+e.message,'bad'); }
     try{
-      var g=await GH.getFile(OVER);
+      var g=await GH.getFile(ds().over);
       OVR=JSON.parse(g.text); OVR_SHA=g.sha;
     }catch(e){ OVR={items:[],patch:{},hidden:[]}; OVR_SHA=null; }
     OVR.items=OVR.items||[]; OVR.patch=OVR.patch||{}; OVR.hidden=OVR.hidden||[];
@@ -527,8 +546,11 @@
     $('fsrc').innerHTML='<option value="">كل المصادر</option>'+Object.keys(srcs).concat(['manual'])
       .filter(function(v,i,a){ return a.indexOf(v)===i; })
       .map(function(s){ return '<option value="'+esc(s)+'">'+esc(s)+'</option>'; }).join('');
-    $('fzon').innerHTML='<option value="">كل التصنيفات</option>'+ZONS.map(function(z){
+    $('fzon').innerHTML='<option value="">كل '+esc(ds().catLabel)+'</option>'+ds().cats.map(function(z){
       return '<option value="'+esc(z)+'">'+esc(z)+'</option>'; }).join('');
+    $('thcat').textContent=ds().catLabel;
+    $('lblcat').textContent=ds().catLabel;
+    $('ovpath').textContent=ds().over.replace('malatya/','');
     renderItems();
   }
   function currentRows(){
@@ -536,7 +558,7 @@
     var fs=$('fsrc').value, fz=$('fzon').value;
     return applyOverrides(ITEMS, OVR).filter(function(r){
       if(fs && (r.src||'emlakjet')!==fs) return false;
-      if(fz && (r.zon||'غير مذكور')!==fz) return false;
+      if(fz && (r[ds().field]||'غير مذكور')!==fz) return false;
       if(q){
         var hay=((r.t||'')+' '+(r.mah||'')+' '+(r.ilce||'')+' '+(r.id||'')).toLowerCase();
         if(hay.indexOf(q)<0) return false;
@@ -555,7 +577,7 @@
                 : (r.edited ? '<span class="pill warn">معدَّل</span>' : '<span class="mini">آليّ</span>');
       return '<tr><td>'+esc((r.t||'').slice(0,70))+'<br><span class="mini" dir="ltr">'+esc(k)+'</span></td>'+
         '<td>'+esc(r.ilce||'—')+'</td><td class="num">'+n(r.m2)+'</td><td class="num">'+n(r.p)+'</td>'+
-        '<td>'+esc(r.zon||'—')+'</td><td>'+badge+'</td>'+
+        '<td>'+esc(r[ds().field]||'—')+'</td><td>'+badge+'</td>'+
         '<td><button class="btn sm" data-ed="'+esc(k)+'">تعديل</button> '+
             '<button class="btn sm" data-del="'+esc(k)+'">حذف</button></td></tr>';
     }).join('') || '<tr><td colspan="7" class="mut">لا شيء يطابق البحث.</td></tr>';
@@ -578,6 +600,17 @@
   ['q','fsrc','fzon'].forEach(function(id){
     $(id).addEventListener('input', function(){ PAGE=1; renderItems(); });
   });
+  // تبديل اللوحة يعيد تحميل الملفّين معاً. لو كان ثمّة تعديل لم يُرفَع فلا
+  // نبدّل صامتين — تعديلات لوحةٍ لا تُكتب في ملفّ لوحةٍ أخرى.
+  $('fds').addEventListener('change', function(){
+    if(DIRTY && !confirm('لديك تعديلات لم تُرفَع في لوحة '+ds().label+'. التبديل يُلغيها. أأتابع؟')){
+      this.value=DS; return;
+    }
+    DS=this.value; DIRTY=false; PAGE=1; EDIT_KEY=null;
+    $('editor').hidden=true;
+    loadItems(); loadHealth();
+    toast('انتقلت إلى لوحة '+ds().label);
+  });
 
   function fillSelect(el, arr, val){
     el.innerHTML=arr.map(function(v){ return '<option'+(v===val?' selected':'')+'>'+esc(v)+'</option>'; }).join('');
@@ -591,7 +624,7 @@
     $('e_p').value=r.p||''; $('e_d').value=r.d||''; $('e_u').value=r.u||'';
     $('e_tapu').value=r.tapu||''; $('e_note').value=r.note||'';
     fillSelect($('e_ilce'), DISTRICTS, r.ilce);
-    fillSelect($('e_zon'), ZONS, r.zon||'غير مذكور');
+    fillSelect($('e_zon'), ds().cats, r[ds().field]||'غير مذكور');
     $('ederr').innerHTML=''; $('editor').hidden=false;
     $('editor').scrollIntoView({behavior:'smooth', block:'start'});
   }
@@ -601,7 +634,7 @@
     ['e_t','e_mah','e_m2','e_p','e_u','e_tapu','e_note'].forEach(function(i){ $(i).value=''; });
     $('e_d').value=today();
     fillSelect($('e_ilce'), DISTRICTS, 'Battalgazi');
-    fillSelect($('e_zon'), ZONS, 'غير مذكور');
+    fillSelect($('e_zon'), ds().cats, 'غير مذكور');
     $('ederr').innerHTML=''; $('editor').hidden=false;
     $('editor').scrollIntoView({behavior:'smooth', block:'start'});
   });
@@ -628,18 +661,24 @@
       p:$('e_p').value===''?null:Number($('e_p').value),
       d:$('e_d').value||today(),
       u:($('e_u').value||'').trim(),
-      zon:$('e_zon').value,
+      _cat:$('e_zon').value,
       tapu:($('e_tapu').value||'').trim()||undefined,
       note:($('e_note').value||'').trim()||undefined
     };
+    o[ds().field]=o._cat; delete o._cat;
     var isManual = !EDIT_KEY || EDIT_KEY.indexOf('manual:')===0;
     var errs=validate(o, isManual);
     if(errs.length){ $('ederr').innerHTML='<div class="note warn">'+errs.map(esc).join('<br>')+'</div>'; return; }
     if(o.p!=null && o.m2) o.ppm=Math.round(o.p/o.m2);
     if(!EDIT_KEY){
       o.src='manual'; o.id='m'+Date.now().toString(36);
-      o.land = (o.zon!=='زراعية');
-      o.cat='مُدخَل يدوياً'; o.zonsrc='أدخلتَه بنفسك';
+      if(DS==='arsa'){
+        o.land = (o.zon!=='زراعية');
+        o.cat='مُدخَل يدوياً'; o.zonsrc='أدخلتَه بنفسك';
+      } else {
+        o.deal='sale'; o.agesrc='أدخلتَه بنفسك';
+        o.fresh = ['صفر · جاهز للسكن','قيد الإنشاء','١–٣ سنوات'].indexOf(o.age)>=0;
+      }
       OVR.items.push(o);
       logAdd('إضافة إعلان يدوي: '+o.t.slice(0,50));
     } else if(EDIT_KEY.indexOf('manual:')===0){
@@ -677,18 +716,18 @@
     var b=this; b.disabled=true; var old=b.textContent; b.textContent='جارٍ الرفع…';
     try{
       var payload={
-        note:'ملفّ التعديلات اليدوية. يقرؤه scripts/scrape_arsa.py ويطبّقه بعد كل سحب: '+
+        note:'ملفّ التعديلات اليدوية. يقرؤه '+ds().script+' ويطبّقه بعد كل سحب: '+
              'patch يعدّل حقول إعلان قائم · hidden يخفيه · items تضيف إعلانات ليست في المصادر.',
         updated: today(),
         patch: OVR.patch, hidden: OVR.hidden, items: OVR.items
       };
-      var res=await GH.putFile(OVER, JSON.stringify(payload, null, 1), OVR_SHA,
+      var res=await GH.putFile(ds().over, JSON.stringify(payload, null, 1), OVR_SHA,
         'تعديلات يدوية من لوحة الإدارة — '+today());
       OVR_SHA=res.content?res.content.sha:OVR_SHA;
       DIRTY=false; renderItems();
       logAdd('رفع ملفّ التعديلات');
       toast('رُفعت التعديلات','ok');
-      try{ await GH.dispatch('malatya-arsa.yml'); toast('شُغّل التحديث — يظهر الأثر خلال دقائق','ok'); }
+      try{ await GH.dispatch(ds().wf); toast('شُغّل تحديث '+ds().label+' — يظهر الأثر خلال دقائق','ok'); }
       catch(e){ toast('رُفعت، لكن تعذّر تشغيل التحديث: '+e.message,'bad'); }
     }catch(e){ toast('تعذّر الرفع: '+e.message,'bad'); }
     b.disabled=false; b.textContent=old;
