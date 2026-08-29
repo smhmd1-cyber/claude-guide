@@ -638,20 +638,21 @@ def write_report(rec):
 
 
 def main():
+    global BOOTSTRAP
     today = datetime.now(timezone.utc)
     iso = today.date().isoformat()
     prev_items = load_previous()
 
     collected, metas = [], []
     for deal, label, base in FEEDS:
-        print("→ Emlakjet — شقق %s" % label)
+        print("→ Emlakjet — %s" % label)
         try:
             rows, meta = collect_feed(deal, base)
             if not rows:
                 raise RuntimeError("لم يُسحب أي إعلان — يُرجَّح تغيّر بنية الصفحة.")
             collected += rows
             metas.append(dict(key="emlakjet-" + deal,
-                              name="Emlakjet — شقق للـ%s" % label,
+                              name="Emlakjet — %s" % label,
                               url=base, kind="سوق", deal=deal, status="ok",
                               count=len(rows), **meta))
         except Exception as e:
@@ -659,7 +660,7 @@ def main():
             kept = [r for r in prev_items if r.get("deal") == deal]
             collected += kept
             metas.append(dict(key="emlakjet-" + deal,
-                              name="Emlakjet — شقق للـ%s" % label,
+                              name="Emlakjet — %s" % label,
                               url=base, kind="سوق", deal=deal, status="failed",
                               error=str(e)[:200], count=len(kept),
                               note="عُرضت بيانات آخر سحب ناجح لهذا المصدر"))
@@ -698,6 +699,15 @@ def main():
             PREV_BY_ID.get(r["id"], {}).get("first_seen")) or iso
         r["last_seen"] = iso
         r["new_today"] = (not BOOTSTRAP) and r["first_seen"] == iso
+
+    # حارس التأسيس: لو بدا أنّ «كل» السوق ظهر اليوم فهذه تشغيلة تأسيس لا يومٌ
+    # استثنائي. حدث ذلك عند الانتقال من الملفّ القديم: صار لكل إعلان لم يُرحَّل
+    # تاريخُ اليوم، فأعلن الملفّ ٤٤١ إعلاناً جديداً في يوم واحد — رقمٌ لا معنى له.
+    if rows and len([r for r in rows if r["first_seen"] == iso]) / len(rows) > 0.7:
+        BOOTSTRAP = True
+        for r in rows:
+            r["new_today"] = False
+        print("  تشغيلة تأسيس: لا سابقةَ يُقاس عليها «الجديد اليوم» — لم يُوسَم شيء")
 
     rows, ov_stats = apply_overrides(rows)
     for meta in metas:
