@@ -1,8 +1,8 @@
 {
- "updated": "2026-08-28",
+ "updated": "2026-08-29",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
- "total": 309,
+ "total": 311,
  "sources": [
   {
    "key": "emlakjet",
@@ -11,10 +11,10 @@
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
    "status": "ok",
-   "count": 252,
-   "site_reported_total": 252,
+   "count": 254,
+   "site_reported_total": 254,
    "pages": 9,
-   "detail_cached": 250,
+   "detail_cached": 252,
    "detail_fetched": 2,
    "detail_failed": 0
   },
@@ -35,8 +35,8 @@
  "summary": {
   "districts_with_listings": 12,
   "districts_total": 13,
-  "ppm_median": 1748,
-  "ppm_p10": 350,
+  "ppm_median": 1735,
+  "ppm_p10": 340,
   "ppm_p90": 9583,
   "price_min": 410000,
   "price_max": 403180132,
@@ -44,7 +44,7 @@
   "m2_recovered": 1,
   "dropped_outside_province": 0,
   "by_source": {
-   "emlakjet": 252,
+   "emlakjet": 254,
    "ilangovtr": 57
   },
   "overrides": {
@@ -53,27 +53,27 @@
    "manual": 0
   },
   "by_cat": {
-   "أرض · أرسا": 259,
+   "أرض · أرسا": 261,
    "أرض زراعية وبساتين": 22,
    "سكن": 22,
    "عقار آخر": 6
   },
-  "land_count": 281,
+  "land_count": 283,
   "by_zon": {
    "مرخّصة للبناء": 106,
-   "زراعية": 167,
+   "زراعية": 169,
    "بلا إمار أو مقيَّدة": 1,
    "تصنيف آخر": 2,
    "غير مذكور": 33
   },
   "by_tapu": {
    "بلا قيد طابو": 6,
-   "طابو مستقلّ": 211,
+   "طابو مستقلّ": 213,
    "طابو مشاع (حصّة)": 30,
    "طابو من تعاونية": 4,
    "نوع الطابو غير معروف": 1
   },
-  "zon_declared": 252
+  "zon_declared": 254
  },
  "stats": [
   {
@@ -113,6 +113,15 @@
    "note": null
   },
   {
+   "ilce": "Doğanşehir",
+   "n": 8,
+   "ppm_med": 356,
+   "ppm_min": 140,
+   "ppm_max": 3757,
+   "p_med": 3112500,
+   "note": null
+  },
+  {
    "ilce": "Kale",
    "n": 8,
    "ppm_med": 1710,
@@ -122,21 +131,12 @@
    "note": null
   },
   {
-   "ilce": "Doğanşehir",
-   "n": 7,
-   "ppm_med": 379,
-   "ppm_min": 140,
-   "ppm_max": 3757,
-   "p_med": 1525000,
-   "note": null
-  },
-  {
    "ilce": "Darende",
-   "n": 6,
-   "ppm_med": 1490,
+   "n": 7,
+   "ppm_med": 904,
    "ppm_min": 409,
    "ppm_max": 7417,
-   "p_med": 1740000,
+   "p_med": 2400000,
    "note": null
   },
   {
@@ -214,11 +214,11 @@
   },
   {
    "zon": "زراعية",
-   "n": 167,
-   "ppm_med": 895,
-   "ppm_p10": 251,
+   "n": 169,
+   "ppm_med": 879,
+   "ppm_p10": 252,
    "ppm_p90": 2440,
-   "n_priced": 148
+   "n_priced": 150
   },
   {
    "zon": "بلا إمار أو مقيَّدة",
@@ -246,6 +246,49 @@
   }
  ],
  "items": [
+  {
+   "src": "emlakjet",
+   "id": "19782350",
+   "t": "Merkez Darende Satılık Arsa",
+   "ilce": "Darende",
+   "mah": "Yeniköy Mahallesi",
+   "m2": 4558,
+   "p": 2400000,
+   "d": "2026-08-29",
+   "u": "https://www.emlakjet.com/ilan/19782350",
+   "img": "19782350/33B8335404D8FB2E1708AA14C6E3BA7119782350.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مستقلّ",
+   "kredi": "غير صالح للتمويل",
+   "parsel": "56",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 527
+  },
+  {
+   "src": "emlakjet",
+   "id": "19782230",
+   "t": "Erkenek Gedikağzı Bölgesinde Satılık 14.829m2 Sulu Tarla",
+   "ilce": "Doğanşehir",
+   "mah": "Erkenek Mahallesi",
+   "m2": 14829,
+   "p": 4950000,
+   "d": "2026-08-29",
+   "u": "https://www.emlakjet.com/ilan/19782230",
+   "img": "19782230/6BBC54547F3341031C2AE57E29585F8C19782230.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Tarla",
+   "tapu": "طابو مستقلّ",
+   "kredi": "غير صالح للتمويل",
+   "zon": "زراعية",
+   "zonf": "حقل — تَرلا",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 334
+  },
   {
    "src": "ilangovtr",
    "id": "2205058",
