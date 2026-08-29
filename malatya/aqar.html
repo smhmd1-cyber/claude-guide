@@ -1,167 +1,500 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ملاطيا العقارية — محرّك البحث</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏢%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0b1020">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
 <style>
-:root{--navy:#1F3864;--blue:#2E5496;--gold:#B07A00;--green:#2E7D32;--red:#B00020;--bg:#eef0f4;--card:#fff;--ink:#1a1a1a;--mut:#6a6a6a;--line:#e1e4ea}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Tahoma,sans-serif;line-height:1.55}
-header{background:linear-gradient(135deg,#1F3864,#2E5496);color:#fff;padding:14px 18px;position:sticky;top:0;z-index:20;box-shadow:0 2px 10px rgba(0,0,0,.15)}
-.hd{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.logo{font-size:20px;font-weight:bold;white-space:nowrap}.logo small{display:block;font-size:11px;opacity:.85;font-weight:normal}
-.search{flex:1;min-width:200px;display:flex;gap:8px}
-.search input{flex:1;padding:11px 14px;border:0;border-radius:10px;font-size:15px;font-family:inherit}
-.seg{display:flex;background:#ffffff22;border-radius:10px;overflow:hidden}
-.seg button{background:none;border:0;color:#fff;padding:10px 14px;font-weight:bold;cursor:pointer;font-family:inherit;font-size:14px}
-.seg button.on{background:#fff;color:var(--navy)}
-.wrap{max-width:1200px;margin:0 auto;padding:16px;display:grid;grid-template-columns:260px 1fr;gap:16px}
-@media(max-width:820px){.wrap{grid-template-columns:1fr}.filters{position:static!important}}
-.filters{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;align-self:start;position:sticky;top:84px}
-.filters h3{margin:0 0 8px;color:var(--navy);font-size:14px;border-bottom:2px solid #eee;padding-bottom:5px}
-.fl{margin:12px 0}.fl label{display:block;font-size:12px;font-weight:bold;color:var(--navy);margin-bottom:5px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{cursor:pointer;border:1px solid #cfd4dc;background:#f7f8fa;border-radius:18px;padding:5px 10px;font-size:12.5px;user-select:none}
-.chip.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:bold}
-.rng{display:flex;gap:6px}.rng input{width:100%;padding:7px;border:1px solid #cfd4dc;border-radius:8px;font-size:13px}
-select{width:100%;padding:8px;border:1px solid #cfd4dc;border-radius:8px;font-size:13px;font-family:inherit;background:#fff}
-.radio{display:block;font-size:13px;margin:4px 0;cursor:pointer;font-weight:normal;color:#333}
-.results{min-height:300px}
-.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}
-.count{font-size:14px;color:var(--navy);font-weight:bold}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-direction:column;transition:.15s}
-.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-2px)}
-.phwrap{position:relative;height:160px;background:linear-gradient(135deg,#2E5496,#1F3864)}
-.ph{width:100%;height:160px;object-fit:cover;display:block}
-.phwrap .ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#ffffff66;font-size:40px}
-.tags{position:absolute;top:8px;right:8px;display:flex;gap:5px;flex-wrap:wrap}
-.tag{font-size:11px;font-weight:bold;border-radius:6px;padding:2px 7px;color:#fff}
-.t-sale{background:#2E7D32}.t-rent{background:#2E5496}.t-new{background:#0a7d2c}.t-cand{background:#B07A00}.t-mkt{background:#777}
-.cb{padding:11px;display:flex;flex-direction:column;gap:5px;flex:1}
-.price{font-size:18px;font-weight:bold;color:var(--navy)}
-.addr{font-size:13px;color:#333;font-weight:bold}.spec{font-size:12.5px;color:var(--mut)}
-.off{font-size:11.5px;color:var(--mut);margin-top:auto}
-.eids{color:var(--green);font-weight:bold}
-.btns{display:flex;gap:6px;padding:0 11px 11px}
-.btns a,.btns button{flex:1;text-align:center;text-decoration:none;font-size:12px;font-weight:bold;border-radius:8px;padding:7px 4px;border:1px solid var(--line);background:#f7f8fa;color:var(--navy);cursor:pointer;font-family:inherit}
-.btns .pri{background:var(--navy);color:#fff;border-color:var(--navy)}
-.empty{background:#fff;border:1px dashed #cfd4dc;border-radius:14px;padding:30px;text-align:center;color:var(--mut)}
-.modal{position:fixed;inset:0;background:#0006;display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
-.modal .box{background:#fff;border-radius:14px;max-width:560px;width:100%;max-height:90vh;overflow:auto;padding:16px}
-.modal h2{color:var(--navy);font-size:17px;margin:0 0 8px}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13px;margin:8px 0}.kv b{color:var(--navy)}
-.note{background:#fbf3dd;border-right:4px solid var(--gold);padding:9px 11px;border-radius:8px;font-size:12.5px;margin:10px 0}
-footer{max-width:1200px;margin:10px auto;padding:14px;color:var(--mut);font-size:12px}
-.x{float:left;cursor:pointer;font-size:22px;color:#999;border:0;background:none}
-</style></head><body>
-<header><div class="hd">
-  <div class="logo">🏙️ ملاطيا العقارية<small>محرّك بحث ذكي — جديد/≤3 سنوات</small></div>
-  <div class="search"><input id="q" placeholder="ابحث بالحي أو الكلمة… (مثال: Bostanbaşı أو sıfır)" oninput="render()"></div>
-  <div class="seg" id="dealSeg"><button data-d="" class="on" onclick="setDeal('')">الكل</button><button data-d="satilik" onclick="setDeal('satilik')">بيع</button><button data-d="kiralik" onclick="setDeal('kiralik')">إيجار</button></div>
-</div></header>
+.filters{border:1px solid var(--border);border-radius:var(--r);background:var(--card);
+  padding:16px 18px;margin:14px 0 6px;display:grid;gap:12px}
+.frow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.frow label{font-size:12px;font-weight:800;color:var(--muted)}
+.filters input[type=text],.filters input[type=number],.filters select{
+  background:var(--bg2);color:var(--text);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:9px 12px;font-family:var(--font);font-size:14px;outline:none}
+.filters input[type=text]{min-width:230px;flex:1}
+.filters input[type=number]{width:120px;font-family:var(--font-num)}
+.filters input:focus,.filters select:focus{border-color:var(--accent-line)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{border:1px solid var(--border);background:var(--card2);color:var(--text2);
+  border-radius:999px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;
+  font-family:var(--font);transition:.15s}
+.chip:hover{border-color:var(--accent-line);color:#fff}
+.chip.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.chip .c-n{font-family:var(--font-num);font-size:11px;opacity:.75;margin-inline-start:5px}
+.chip.dsale.on{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.chip.drent.on{background:var(--violet-soft);border-color:var(--violet);color:var(--violet)}
+.chip.afresh.on{background:var(--teal-soft,rgba(63,208,199,.14));border-color:var(--teal);color:var(--teal)}
+.chip.aold.on{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+.chips .lbl{font-size:11.5px;font-weight:800;color:var(--muted);align-self:center;
+  margin-inline-end:2px;min-width:74px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:14px;margin-top:6px}
+.lst{border:1px solid var(--border);border-radius:var(--r);background:var(--card);
+  overflow:hidden;display:flex;flex-direction:column;transition:.16s}
+.lst:hover{border-color:var(--accent-line);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.lst.rent{border-color:rgba(169,139,255,.32)}
+.lst .ph{height:150px;background:var(--bg2) center/cover no-repeat;position:relative}
+.lst .ph.noimg{display:grid;place-items:center;font-size:34px;opacity:.5;height:96px}
+.lst .ph .pp{position:absolute;inset-inline-end:9px;bottom:9px;background:rgba(4,7,18,.82);
+  border:1px solid var(--border);border-radius:var(--r-sm);padding:4px 9px;
+  font-family:var(--font-num);font-weight:800;font-size:13px;color:var(--accent)}
+.lst .src{position:absolute;inset-inline-start:9px;top:9px;background:rgba(4,7,18,.85);
+  border:1px solid var(--border);border-radius:8px;padding:3px 8px;font-size:11px;font-weight:800}
+.lst .src.r{color:var(--violet);border-color:rgba(169,139,255,.45)}
+.lst .src.m{color:var(--teal);border-color:rgba(63,208,199,.4)}
+.lst .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
+.lst .ti{font-size:14px;font-weight:800;line-height:1.5;color:#fff;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lst .lo{font-size:12.5px;color:var(--muted);font-weight:700}
+.lst .mt{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.lst .m{font-family:var(--font-num);font-size:12px;font-weight:700;color:var(--text2);
+  background:var(--bg2);border:1px solid var(--border-soft);border-radius:8px;padding:3px 8px}
+.lst .m.hi{color:var(--teal);border-color:rgba(63,208,199,.35)}
+.lst .m.new{color:var(--green);border-color:rgba(64,209,131,.35)}
+.lst .m.warn{color:var(--amber);border-color:rgba(255,194,75,.35)}
+.lst .m.vi{color:var(--violet);border-color:rgba(169,139,255,.35)}
+.lst .rec{font-size:12px;color:var(--muted);line-height:1.6;font-weight:600}
+.lst .go{display:block;text-align:center;border-top:1px solid var(--border);
+  padding:9px;font-size:12.5px;font-weight:800;color:var(--text2)}
+.lst .go:hover{background:var(--card2);color:var(--accent)}
+.pager{display:flex;gap:8px;justify-content:center;align-items:center;margin:18px 0 6px;flex-wrap:wrap}
+.cnt{font-size:13px;color:var(--muted);font-weight:700;margin-top:10px}
+.cnt b{color:var(--accent);font-family:var(--font-num)}
+.srctable td:first-child{font-weight:800}
+@media(max-width:640px){.filters input[type=text]{min-width:100%}}
+</style>
+</head>
+<body>
 <div class="wrap">
-  <aside class="filters">
-    <h3>الفلاتر</h3>
-    <div class="fl"><label>عمر البناء: 0–3 سنوات (مؤكّد فقط ✓)</label>
-      <label class="radio"><input type="radio" name="age" value="newcand" checked onchange="render()"> الكل (0–3 مؤكّد)</label>
-      <label class="radio"><input type="radio" name="age" value="new0" onchange="render()"> جديد 0 سنة فقط</label>
-      
+  <div class="page-head">
+    <div class="logo">🏢</div>
+    <div><h1>ملاطيا العقارية — محرّك البحث</h1>
+      <div class="sub">شقق ولاية ملاطيا المعروضة للبيع وللإيجار — تُسحَب يومياً من Emlakjet وتُصنَّف بعمر البناء ونوع الطابو</div></div>
+    <div class="spacer"></div>
+    <span class="stamp">آخر تحديث: <b id="stamp">—</b></span>
+    <a class="btn" href="aqar-board.html">← التقارير اليومية</a>
+  </div>
+
+  <div class="grid g4" style="margin-top:6px">
+    <div class="kpi teal"><span class="k-ico">🗂️</span><div class="k-label">إعلانات مرصودة</div><div class="k-value num" id="k1">—</div><div class="k-sub" id="k1s">داخل ولاية ملاطيا</div></div>
+    <div class="kpi green"><span class="k-ico">📐</span><div class="k-label">وسيط ₺/م² — بيع</div><div class="k-value num" id="k2">—</div><div class="k-sub" id="k2s">من إعلانات البيع وحدها</div></div>
+    <div class="kpi"><span class="k-ico">🔑</span><div class="k-label">العائد الإيجاري الإجمالي</div><div class="k-value num" id="k3">—</div><div class="k-sub">وسيط الإيجار ÷ وسيط البيع × ١٢</div></div>
+    <div class="kpi red"><span class="k-ico">🏗️</span><div class="k-label">جديد أو ≤٣ سنوات</div><div class="k-value num" id="k4">—</div><div class="k-sub" id="k4s">من الإعلانات التي تُصرّح بعمر البناء</div></div>
+  </div>
+
+  <div class="note info" style="margin-top:14px">
+    <b>ما هذه الأرقام وما ليست:</b>
+    السعر هنا ما <em>يطلبه</em> البائع أو المكتب في الإعلان — ليس تقييماً ولا سعر بيع مُتحقَّقاً.
+    و«عمر البناء» و«نوع الطابو» منقولان حرفياً عمّا صرّح به الإعلان، والجواب المُلزِم هو
+    قيد الطابو ورخصة الإسكان (<span dir="ltr">İskân</span>) من بلدية الإلچة.
+    الإعلان الذي لا يذكر عمر البناء يظهر في خانة «غير مذكور» ولا يُعامَل معاملة الجديد.
+    والعائد الإيجاري هنا <b>إجماليّ</b>: قبل الضريبة والإدارة والصيانة وفترات الشغور،
+    ومحسوب من وسيطَي سوقٍ مختلفَين لا من عقار واحد.
+  </div>
+
+  <h2>تصفية</h2>
+  <div class="filters">
+    <div class="frow">
+      <input type="text" id="q" placeholder="ابحث في العنوان أو الحيّ (مثال: Tecde · sıfır · asansörlü)…">
+      <select id="sort">
+        <option value="d">الأحدث أولاً</option>
+        <option value="sc">الأعلى ترتيباً أولاً</option>
+        <option value="pa">السعر: الأقل أولاً</option>
+        <option value="pd">السعر: الأعلى أولاً</option>
+        <option value="ua">₺/م²: الأقل أولاً</option>
+        <option value="ud">₺/م²: الأعلى أولاً</option>
+        <option value="ma">المساحة: الأصغر أولاً</option>
+        <option value="md">المساحة: الأكبر أولاً</option>
+      </select>
     </div>
-    <div class="fl"><label>الغرف</label><div class="chips" id="rooms"></div></div>
-    <div class="fl"><label>المنطقة</label><div class="chips" id="regs"></div></div>
-    <div class="fl"><label>السعر (₺)</label><div class="rng"><input id="pmin" type="number" placeholder="من" oninput="render()"><input id="pmax" type="number" placeholder="إلى" oninput="render()"></div></div>
-    <div class="fl"><label>المساحة (م²)</label><div class="rng"><input id="amin" type="number" placeholder="من" oninput="render()"><input id="amax" type="number" placeholder="إلى" oninput="render()"></div></div>
-    <div class="fl"><label class="radio"><input type="checkbox" id="siteOnly" onchange="render()"> داخل مجمّع فقط</label></div>
-    <div class="fl"><label>الترتيب</label><select id="sort" onchange="render()">
-      <option value="best">الأنسب (جديد ثم درجة)</option><option value="cheap">الأرخص</option><option value="exp">الأغلى</option><option value="area">الأكبر مساحة</option></select></div>
-    <button onclick="resetF()" style="width:100%;margin-top:6px;padding:9px;border:1px solid var(--line);background:#f7f8fa;border-radius:9px;font-weight:bold;cursor:pointer;color:var(--navy);font-family:inherit">♻️ مسح الفلاتر</button>
-  </aside>
-  <main class="results">
-    <div class="bar"><div class="count" id="count">—</div><div class="spec" id="ageinfo"></div></div>
-    <div style="background:#eaf6ec;border-right:4px solid #2E7D32;padding:8px 11px;border-radius:8px;font-size:12.5px;margin-bottom:10px">✅ كل النتائج جديدة (≤3 سنوات فقط) — لا يُعرض أي عقار أقدم إطلاقاً (قانون حديدي). من <b>مصدرين</b> (emlakjet + hepsiemlak). أعمارها ≤3 سنوات (Sıfır/1/2)، وكُشف التكرار عبر المصدرين تلقائياً.</div><div class="grid" id="grid"></div>
-    <div class="empty" id="empty" style="display:none">لا نتائج مطابِقة ضمن «الجديد ≤3 سنوات». قلّل القيود (الغرف/المنطقة/السعر) أو امسح البحث.</div>
-  </main>
+    <div class="frow">
+      <label>السعر ₺</label>
+      <input type="number" id="pmin" placeholder="من"><input type="number" id="pmax" placeholder="إلى">
+      <label>المساحة م²</label>
+      <input type="number" id="amin" placeholder="من"><input type="number" id="amax" placeholder="إلى">
+      <label>₺/م²</label>
+      <input type="number" id="umin" placeholder="من"><input type="number" id="umax" placeholder="إلى">
+      <button class="btn sm" id="reset">مسح الكل</button>
+    </div>
+    <div class="chips" id="dchips"></div>
+    <div class="chips" id="achips"></div>
+    <div class="chips" id="tchips"></div>
+    <div class="chips" id="rchips"></div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="cnt" id="cnt">…</div>
+  <div class="cards" id="cards"></div>
+  <div class="pager" id="pager"></div>
+
+  <h2>سعر المتر حسب عمر البناء</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>عمر البناء</th><th>إعلانات</th><th>منها للبيع بسعر ومساحة</th><th>وسيط ₺/م²</th><th>الشريحة الدنيا ١٠٪</th><th>الشريحة العليا ٩٠٪</th></tr></thead>
+    <tbody id="atb"></tbody>
+  </table></div>
+  <p class="mut" id="anote">—</p>
+
+  <h2>الإلچات: سعر البيع والإيجار والعائد</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>الإلچة</th><th>ظاهر الآن</th><th>بيع</th><th>إيجار</th><th>وسيط ₺/م² بيع</th><th>وسيط ₺/م² إيجار شهري</th><th>عائد إجمالي</th></tr></thead>
+    <tbody id="stb"></tbody>
+  </table></div>
+  <p class="mut" id="statnote">—</p>
+
+  <h2>المصادر</h2>
+  <div class="tbl-wrap"><table class="srctable">
+    <thead><tr><th>المصدر</th><th>النوع</th><th>إعلانات</th><th>الحالة</th></tr></thead>
+    <tbody id="srctb"></tbody>
+  </table></div>
+  <div class="note" id="srcnote">—</div>
+
+  <footer class="site">
+    <span>🌰 منظومة ملاطيا</span><span>·</span>
+    <a href="aqar-board.html">التقارير اليومية</a><a href="arsa.html">أراضي البناء</a><a href="index.html">مركز التحكّم</a>
+  </footer>
 </div>
-<div class="modal" id="modal" onclick="if(event.target.id=='modal')close_()"><div class="box" id="mbox"></div></div>
-<footer>
-المصدر: emlakjet (مكاتب EIDS) + مصادر حكومية (بلدية يشيليورت/TOKİ). <b>آخر مزامنة:</b> 2026-06-22 (الإثنين) — 0 وحدة جديدة ≤3س اليوم (ثالث يوم)؛ المخزون المعروض مُعاد التحقق. <b>القانون الحديدي:</b> يُعرض افتراضياً الجديد/المرشّح (≤3 سنوات)فقط — لا يُعرض أي عقار أقدم من 3 سنوات إطلاقاً (قانون حديدي). مصدر ثانٍ مُختبَر: yeniemlak (مشاريع/مطوّرون). الدرجات فرز أوّلي؛ عاين وتحقّق من Bina Yaşı/كود الزلازل 2018/الطابو قبل أي عربون. sahibinden/التواصل غير قابلة للجلب الآلي.
-</footer>
+<script src="assets/nav.js?v=10" defer></script>
 <script>
-var DATA=[{"id":"19452488","deal":"satilik","district":"Yeşilyurt","mah":"Bostanbaşı","mahar":"بوستان باشي","rooms":"4+1","m2":230,"kat":"8","price":5400000,"ppm":23478,"age":"new0","site":1,"title":"Güven Emlak'tan Bostanbaşında Site İçi Sıfır 4+1 Arakat Daire","url":"https://www.emlakjet.com/ilan/guven-emlak-tan-bostanbasinda-site-ici-sifir-41-arakat-daire-19452488","thumb":"https://imaj.emlakjet.com/resize/640/0/listing/19452488/B0549E46B108900012E635990E64A69A19452488.jpg","office":"Güven Emlak","lic":"4400182","eids":1,"heat":"مركزية","otopark":"?","asan":"?","tapu":"Kat İrtifakı","kredi":1,"pga":"0.329g","sc":84,"note":"جديد · داخل مجمّع عائلي · قابل لقرض","source":"emlakjet + hepsiemlak","dup":1,"binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"19439939","deal":"kiralik","district":"Yeşilyurt","mah":"Bostanbaşı","mahar":"بوستان باشي","rooms":"3+1","m2":165,"kat":"5","price":30000,"ppm":0,"age":"new0","site":1,"title":"Turyap Metropol'den 35'lik Yolda Yeni Yapı Kiralık 3+1 Daire","url":"https://www.emlakjet.com/ilan/turyap-metropol-den-35-lik-yolda-yeni-yapi-kiralik-31-daire-19439939","thumb":"https://imaj.emlakjet.com/resize/640/0/listing/19439939/6E0F914F24A625ABECFDEBFA4577BA5819439939.jpg","office":"Metropol/Turyap","lic":"4400128","eids":1,"heat":"مركزية","otopark":"لا","asan":"?","tapu":"Kat İrtifakı","pga":"0.329g","sc":80,"note":"جديد · داخل مجمّع","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet"},{"id":"19451446","deal":"satilik","district":"Yeşilyurt","mah":"Tecde","mahar":"تجده","rooms":"3+1","m2":168,"kat":"5","price":4550000,"ppm":27083,"age":"new0","site":0,"title":"Özgür'den Tecde'de Satılık 3+1 Net 145 M² Sıfır Ara Kat Daire","url":"https://www.emlakjet.com/ilan/ozgur-den-tecde-de-satilik-31-net-145-m-sifir-ara-kat-daire-19451446","thumb":"https://imaj.emlakjet.com/resize/640/0/listing/19451446/38F1519520C4173467F778682F2C5A0B19451446.jpg","office":"Özgür Gayrimenkul","lic":"4400241","eids":1,"heat":"مركزية","tapu":"Kat İrtifakı","kredi":1,"pga":"0.329g","sc":79,"note":"جديد (إنشاء 2022) · مطابق لكود الزلازل 2018 · 500م من حديقة Yüzüncü Yıl · ليس داخل مجمّع","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet"},{"id":"he-146635-152","deal":"satilik","district":"Yeşilyurt","mah":"İkizce","mahar":"إكيزجة","rooms":"3+1","m2":125,"kat":"2","price":2650000,"ppm":21200,"age":"new0","site":0,"office":"—","eids":0,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-ikizce-satilik/daire/146635-152","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"he-152399-110","deal":"satilik","district":"Yeşilyurt","mah":"Bostanbaşı","mahar":"بوستان باشي","rooms":"4+1","m2":200,"kat":"4","price":3850000,"ppm":19250,"age":"new0","site":0,"office":"Güven Emlak","eids":1,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-bostanbasi-satilik/daire/152399-110","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"he-152399-189","deal":"satilik","district":"Yeşilyurt","mah":"Yakınca","mahar":"ياقنجا","rooms":"3+1","m2":170,"kat":"8","price":4100000,"ppm":24118,"age":"new0","site":0,"office":"Güven Emlak","eids":1,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-yakinca-satilik/daire/152399-189","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"he-0-46580952","deal":"satilik","district":"Yeşilyurt","mah":"Zaviye","mahar":"زاوية","rooms":"3+1","m2":115,"kat":"2","price":4690000,"ppm":40783,"age":"new0","site":0,"office":"Sahibinden","eids":0,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-zaviye-satilik/daire/0-46580952","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"he-149862-172","deal":"satilik","district":"Battalgazi","mah":"Tandoğan","mahar":"طاندوغان","rooms":"3+1","m2":155,"kat":"8","price":5115000,"ppm":33000,"age":"new0","site":0,"office":"Enes Işık","eids":1,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-battalgazi-tandogan-satilik/daire/149862-172","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"he-149862-177","deal":"satilik","district":"Yeşilyurt","mah":"Bostanbaşı","mahar":"بوستان باشي","rooms":"3+1","m2":195,"kat":"7","price":5200000,"ppm":26667,"age":"new0","site":0,"office":"Enes Işık","eids":1,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-bostanbasi-satilik/daire/149862-177","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"he-152399-192","deal":"satilik","district":"Yeşilyurt","mah":"Yakınca","mahar":"ياقنجا","rooms":"3+1","m2":175,"kat":"6","price":5250000,"ppm":30000,"age":"new0","site":0,"office":"Güven Emlak","eids":1,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-yakinca-satilik/daire/152399-192","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"he-152399-156","deal":"satilik","district":"Battalgazi","mah":"Tandoğan","mahar":"طاندوغان","rooms":"4+1","m2":240,"kat":"11","price":5500000,"ppm":22917,"age":"new0","site":0,"office":"Güven Emlak","eids":1,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-battalgazi-tandogan-satilik/daire/152399-156","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"he-152399-112","deal":"satilik","district":"Yeşilyurt","mah":"Tecde","mahar":"تجده","rooms":"4+1","m2":225,"kat":"8","price":7500000,"ppm":33333,"age":"new0","site":0,"office":"Güven Emlak","eids":1,"lic":"","pga":"0.329g","sc":78,"thumb":"","source":"hepsiemlak","note":"عمر البناء Sıfır (0) — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-tecde-satilik/daire/152399-112","binaYasi":0,"conf":"بطاقة hepsiemlak"},{"id":"19476721","deal":"satilik","district":"Yeşilyurt","mah":"Bostanbaşı","mahar":"بوستان باشي","rooms":"3+1","m2":135,"kat":"3","price":5900000,"ppm":43704,"age":"new0","site":1,"title":"Bostanbaşında Yapım Aşamasında 3+1 Satılık Daire","url":"https://www.emlakjet.com/ilan/bostanbasinda-yapim-asamasinda-31-satilik-daire-19476721","thumb":"https://imaj.emlakjet.com/resize/640/0/listing/19476721/5AE85757259AE18B09372A0503FA8B8319476721.jpg","office":"Yusuf Karadağlı","lic":"4400396","eids":1,"heat":"كومبي","tapu":"Kat İrtifakı","kredi":1,"pga":"0.329g","sc":77,"note":"قيد الإنشاء (تسليم ~شهرين) · Yapı Durumu: Sıfır · داخل مجمّع · شهادة طاقة B","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet"},{"id":"he-152399-168","deal":"satilik","district":"Yeşilyurt","mah":"Abdulgaffar","mahar":"عبد الغفّار","rooms":"2+1","m2":120,"kat":"5","price":4400000,"ppm":36667,"age":"new0","site":0,"office":"Güven Emlak","eids":1,"lic":"","pga":"0.329g","sc":74,"thumb":"","source":"hepsiemlak","note":"عمر البناء 1 سنة — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-abdulgaffar-satilik/daire/152399-168","binaYasi":1,"conf":"بطاقة hepsiemlak"},{"id":"he-152399-151","deal":"satilik","district":"Yeşilyurt","mah":"Tecde","mahar":"تجده","rooms":"4+1","m2":210,"kat":"7","price":6850000,"ppm":32619,"age":"new0","site":0,"office":"Güven Emlak","eids":1,"lic":"","pga":"0.329g","sc":74,"thumb":"","source":"hepsiemlak","note":"عمر البناء 2 سنة — مؤكّد من hepsiemlak","url":"https://www.hepsiemlak.com/malatya-yesilyurt-tecde-satilik/daire/152399-151","binaYasi":2,"conf":"بطاقة hepsiemlak"},{"id":"eg-18713097","deal":"satilik","district":"Battalgazi","mah":"Zafer","mahar":"زافر","rooms":"2+1","m2":75,"kat":"","price":2650000,"ppm":35333,"age":"new0","site":0,"office":"Batur Gayrimenkul","eids":0,"lic":"","pga":"0.329g","sc":72,"thumb":"https://imaj.emlakjet.com/listing/18713097/5EE383532DD1FE5C76AE7868D7B5D51F18713097.jpg","source":"emlakgo","binaYasi":0,"conf":"عنوان Sıfır + emlakgo","note":"عمر Sıfır (0) — عنوان Sıfır + emlakgo","url":"https://emlakgo.net/ilan/batur-gayrimenkul-den-zafer-mahallesin-de-satilik-sifir-daire-18713097"},{"id":"cb-353305","deal":"satilik","district":"Yeşilyurt","mah":"Bostanbaşı","mahar":"بوستان باشي","rooms":"3+1","m2":196,"kat":"","price":3950000,"ppm":20153,"age":"new0","site":0,"office":"CB Safir","eids":1,"lic":"","pga":"0.329g","sc":72,"thumb":"","source":"Coldwell Banker","binaYasi":0,"conf":"عنوان Sıfır + EIDS (Coldwell Banker)","note":"عمر Sıfır (0) — عنوان Sıfır + EIDS (Coldwell Banker)","url":"https://www.cb.com.tr/malatya-yesilyurt-bostanbasi-satilik/daire/353305"},{"id":"cb-351246","deal":"satilik","district":"Battalgazi","mah":"Karagöz","mahar":"كاراغوز","rooms":"3+1","m2":145,"kat":"","price":5200000,"ppm":35862,"age":"new0","site":0,"office":"CB Safir","eids":1,"lic":"","pga":"0.329g","sc":72,"thumb":"","source":"Coldwell Banker","binaYasi":0,"conf":"عنوان Sıfır + EIDS (Coldwell Banker)","note":"عمر Sıfır (0) — عنوان Sıfır + EIDS (Coldwell Banker)","url":"https://www.cb.com.tr/malatya-battalgazi-merkez-beydagi-satilik/daire/351246"},{"id":"cb-353168","deal":"satilik","district":"Yeşilyurt","mah":"Yakınca","mahar":"ياقنجا","rooms":"3+1","m2":150,"kat":"","price":5500000,"ppm":36667,"age":"new0","site":0,"office":"CB Safir","eids":1,"lic":"","pga":"0.329g","sc":72,"thumb":"","source":"Coldwell Banker","binaYasi":0,"conf":"عنوان Sıfır + EIDS (Coldwell Banker)","note":"عمر Sıfır (0) — عنوان Sıfır + EIDS (Coldwell Banker)","url":"https://www.cb.com.tr/malatya-yesilyurt-yakinca-satilik/daire/353168"},{"id":"eg-18839402","deal":"satilik","district":"Yeşilyurt","mah":"Bostanbaşı","mahar":"بوستان باشي","rooms":"3+1","m2":150,"kat":"2","price":4550000,"ppm":30333,"age":"new0","site":0,"office":"Batur Gayrimenkul","eids":0,"lic":"","pga":"0.329g","sc":68,"thumb":"https://imaj.emlakjet.com/listing/18839402/10FB7E6B8E84BCD3EF7FF200AA62C50718839402.jpg","source":"emlakgo","binaYasi":1,"conf":"عنوان «2025 Yapımı Sıfır» + emlakgo","note":"عمر 1 سنة — عنوان «2025 Yapımı Sıfır» + emlakgo","url":"https://emlakgo.net/ilan/batur-gayrimenkul-den-2025-yapimi-sifir-daire-18839402"},{"id":"rm-P61363478","deal":"satilik","district":"Yeşilyurt","mah":"Tecde","mahar":"تجده","rooms":"4+1","m2":220,"kat":"3","price":4900000,"ppm":22273,"age":"new0","site":0,"office":"RE/MAX","eids":0,"lic":"","pga":"0.329g","sc":68,"thumb":"","source":"RE/MAX","binaYasi":3,"conf":"عنوان «3 Yaşında» + RE/MAX","note":"عمر 3 سنة — عنوان «3 Yaşında» + RE/MAX","url":"https://remax.com.tr/tr/portfoy/P61363478"},{"id":"19389095","deal":"kiralik","district":"Yeşilyurt","mah":"İnönü","mahar":"إينونو","rooms":"1+1","m2":70,"kat":"5","price":25000,"ppm":0,"age":"new0","site":0,"title":"İnönü Mah Kiralık 1+1 Lüx Sıfır Daire","url":"https://www.emlakjet.com/ilan/inonu-mah-kiralik-11-lux-sifir-daire-19389095","thumb":"https://imaj.emlakjet.com/resize/640/0/listing/19389095/D43B235D5E81160F5C21E164DD80DD4819389095.jpeg","office":"Atakan Emlak","lic":"4400167","eids":1,"heat":"كومبي","otopark":"لا","asan":"لا","tapu":"مستقل","pga":"0.329g","sc":62,"note":"جديد · صغير 1+1","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet"},{"id":"19450273","deal":"satilik","district":"Yeşilyurt","mah":"Tecde","mahar":"","rooms":"2+1","m2":80,"kat":"4/11","price":3990000,"ppm":49875,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/bozdogan-dan-tecdede-satilik-sifir-21-daire-19450273","thumb":"","office":"BOZDOĞAN İNŞAAT","lic":"4400317","eids":1,"heat":"Kombi","otopark":"","asan":true,"tapu":"Kat İrtifakı","kredi":1,"pga":"0.329g","sc":78,"note":"أرخص دخول جديد من المُنشئ، قابل لقرض — عاين (استثمار صغير)","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"},{"id":"19482325","deal":"satilik","district":"Yeşilyurt","mah":"Bostanbaşı","mahar":"","rooms":"3+1","m2":155,"kat":"9/12","price":5200000,"ppm":33548,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/ozgur-den-bostanbasi-nda-31-sifir-155-m-net-satilik-luks-daire-19482325","thumb":"","office":"ÖZGÜR GAYRİMENKUL","lic":"4400241","eids":1,"heat":"Kombi","otopark":"","asan":true,"tapu":"Kat Mülkiyeti","kredi":0,"pga":"0.329g","sc":80,"note":"طابو ملكية طابق كاملة ⭐، لكن نقدي — عاين/تفاوض","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"},{"id":"19465400","deal":"satilik","district":"Yeşilyurt","mah":"Zaviye","mahar":"","rooms":"3+1","m2":110,"kat":"","price":4690000,"ppm":42636,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/zaviye-mah-toki-bolgesinde-kacirilmayacak-2-kat-31-sifir-daire-19465400","thumb":"","office":"CSKA GAYRİMENKUL","lic":"4400372","eids":1,"heat":"Merkezi (Pay Ölçer)","otopark":"","asan":"","tapu":"Kat Mülkiyeti","kredi":0,"pga":"0.329g","sc":68,"note":"⭐جديد: TOKİ ملكية طابق كاملة⭐ + بناء قوي (radye temel/tünel kalıp، كود زلزال) — عاين (علم: نقدي/بلا مصعد)","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"},{"id":"19472369","deal":"satilik","district":"Yeşilyurt","mah":"Şeyh Bayram","mahar":"","rooms":"3+1","m2":120,"kat":"","price":4450000,"ppm":37083,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/temellide-kacirilmayacak-fiyata-31-sifir-daire-19472369","thumb":"","office":"ALYAŞAM İNŞAAT GM","lic":"4400139-005","eids":1,"heat":"Kombi","otopark":"","asan":"","tapu":"Kat İrtifakı","kredi":1,"pga":"0.329g","sc":74,"note":"⭐جديد: السعر عند Endeksa تماماً، شركة إنشاء + كود 2018، عائد ~6.5% — عاين (علم: ط1، بلا مصعد/مجمّع)","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"},{"id":"19456088","deal":"satilik","district":"Battalgazi","mah":"Başharık","mahar":"","rooms":"3+1","m2":150,"kat":"","price":5000000,"ppm":33333,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/turyap-metropol-den-basharik-ta-satilik-31-yeni-yapi-daire-19456088","thumb":"","office":"Metropol Gayrimenkul (Turyap)","lic":"","eids":1,"heat":"","otopark":"","asan":"","tapu":"Kat İrtifakı","kredi":0,"pga":"0.329g","sc":71.5,"note":"عاين/تفاوض 🔍","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"},{"id":"19474399","deal":"satilik","district":"Battalgazi","mah":"Zafer","mahar":"","rooms":"3+1","m2":107,"kat":"3/5","price":5450000,"ppm":50935,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/satilik-31-daire-merkezi-konumda-yeni-yapim-19474399","thumb":"","office":"Sahibinden (مالك)","lic":"—","eids":0,"heat":"Kombi","otopark":"","asan":true,"tapu":"Kat Mülkiyeti","kredi":1,"pga":"0.353g","sc":74,"note":"جديد 2026 + طابو ملكية كامل، لكن من المالك ونقطة فوق السوق — عاين/تفاوض ⚠️","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"},{"id":"19402149","deal":"satilik","district":"Yeşilyurt","mah":"Turgut Özal","mahar":"","rooms":"3+1","m2":95,"kat":"","price":4925000,"ppm":51842,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/turyap-metropol-den-turgut-ozal-mah-sifir-31-daire-19402149","thumb":"","office":"Metropol/Turyap","lic":"4400128","eids":1,"heat":"Merkezi (Pay Ölçer)","otopark":"","asan":"تعارض (الحقل Yok/الوصف çift asansör)","tapu":"Kat İrtifakı","kredi":0,"pga":"0.329g","sc":62,"note":"⭐جديد: مكتب موثوق (Turyap)، لكن +12% فوق Endeksa + نقدي + تعارض حقل/وصف المصعد — عاين/تفاوض","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"},{"id":"19377071","deal":"satilik","district":"Yeşilyurt","mah":"Çilesiz","mahar":"","rooms":"3+1","m2":110,"kat":"","price":4550000,"ppm":41364,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/vip-lineden-fahrikayahan-tokide-satilik-daire-19377071","thumb":"","office":"VİP LİNE GAYRİMENKUL","lic":"4400295","eids":0,"heat":"Kombi","otopark":"","asan":"","tapu":"Tapu Kaydı Yok","kredi":1,"pga":"0.329g","sc":45,"note":"🚩علم أحمر: «Tapu Kaydı Yok» (لا سجل طابو) + طابق أخير 5/5 بلا مصعد — تحقّق من الطابو رسمياً قبل أي خطوة / تجاوز","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"},{"id":"19453096","deal":"satilik","district":"Battalgazi","mah":"Battalgazi (Merkez)","mahar":"","rooms":"2+1","m2":90,"kat":"","price":3500000,"ppm":38889,"age":"new0","site":0,"title":"","url":"https://www.emlakjet.com/ilan/batur-gayrimenkul-den-satilik-21-ara-kat-daire-19453096","thumb":"","office":"BTR (Batur) Gayrimenkul","lic":"4400130","eids":1,"heat":"Kombi Doğalgaz","otopark":"Yok","asan":"تعارض","tapu":"Kat Mülkiyeti","kredi":1,"pga":"0.353g","sc":75,"note":"عاين/تفاوض — سِفر (Bina Yaşı 0) + Kat Mülkiyeti⭐ + كود 2018 + قابل لقرض. علم: تعارض المصعد (الحقل=Yok / الوصف=mevcut). السعر بأعلى نطاق 2+1 ببطلغازي —","source":"emlakjet","binaYasi":0,"conf":"صفحة تفاصيل emlakjet (الوكيل اليومي 18–21/06)"}];
-var deal="";
-function setDeal(d){deal=d;document.querySelectorAll('#dealSeg button').forEach(function(b){b.classList.toggle('on',b.dataset.d===d);});render();}
-function mkchips(id,arr){var b=document.getElementById(id);arr.forEach(function(v){var s=document.createElement('span');s.className='chip';s.textContent=v;s.onclick=function(){s.classList.toggle('on');render();};b.appendChild(s);});}
-mkchips('rooms',['1+1','2+1','3+1','3+2','4+1','4+2','5+1']);
-var regList=Array.from(new Set(DATA.map(function(r){return r.mah;}))).filter(function(x){return x&&x!=='—';}).sort();
-mkchips('regs',['Yeşilyurt','Battalgazi'].concat(regList.slice(0,12)));
-function onChips(id){return Array.prototype.filter.call(document.querySelectorAll('#'+id+' .chip'),function(c){return c.classList.contains('on');}).map(function(c){return c.textContent;});}
-function fmt(n){return (n||0).toLocaleString('tr-TR');}
-function srcLabel(s){return s==='emlakjet + hepsiemlak'?'مصدران ✓':(s||'emlakjet');}
-function ageBadge(a){return a==='new0'?'<span class="tag t-new">جديد 0</span>':a==='cand'?'<span class="tag t-cand">مرشّح ≤3</span>':'<span class="tag t-mkt">سوق</span>';}
-function trk(s){return s||'';}
-function render(){
- var q=(document.getElementById('q').value||'').toLowerCase().trim();
- var ageMode=document.querySelector('input[name=age]:checked').value;
- var rooms=onChips('rooms'), regs=onChips('regs');
- var pmin=+document.getElementById('pmin').value||0, pmax=+document.getElementById('pmax').value||0;
- var amin=+document.getElementById('amin').value||0, amax=+document.getElementById('amax').value||0;
- var siteOnly=document.getElementById('siteOnly').checked;
- var out=DATA.filter(function(r){
-   if(deal&&r.deal!==deal)return false;
-   if(ageMode==='new0'&&r.age!=='new0')return false;
-   if(ageMode==='newcand'&&!(r.age==='new0'||r.age==='cand'))return false;
-   if(rooms.length&&rooms.indexOf(r.rooms)<0)return false;
-   if(regs.length&&regs.indexOf(r.mah)<0&&regs.indexOf(r.district)<0)return false;
-   if(pmin&&r.price<pmin)return false; if(pmax&&r.price>pmax)return false;
-   if(amin&&r.m2<amin)return false; if(amax&&r.m2>amax)return false;
-   if(siteOnly&&!r.site)return false;
-   if(q){var hay=((r.mah||'')+' '+(r.mahar||'')+' '+(r.district||'')+' '+(r.title||'')).toLowerCase();if(hay.indexOf(q)<0)return false;}
-   return true;
- });
- var s=document.getElementById('sort').value;
- var ord={new0:0,cand:1,market:2};
- out.sort(function(a,b){
-   if(s==='cheap')return a.price-b.price; if(s==='exp')return b.price-a.price; if(s==='area')return b.m2-a.m2;
-   return (ord[a.age]-ord[b.age])||((b.sc||0)-(a.sc||0))||(b.m2-a.m2);
- });
- document.getElementById('count').textContent=out.length+' نتيجة';
- var info={newcand:'الافتراضي: جديد + مرشّحون (≤3 سنوات)',new0:'جديد 0 سنة فقط',all:''}[ageMode];
- document.getElementById('ageinfo').textContent=info;
- var g=document.getElementById('grid'); g.innerHTML='';
- document.getElementById('empty').style.display=out.length?'none':'block';
- out.forEach(function(r,i){
-   var unit=r.deal==='kiralik'?' ₺/شهر':' ₺';
-   var ph=r.thumb?('<img class="ph" src="'+r.thumb+'" loading="lazy" onerror="this.style.display=\'none\'">'):'';
-   var ico=r.thumb?'':'<div class="ico">🏢</div>';
-   var off='<div class="off">'+(r.office&&r.office!=='—'?r.office+(r.eids?' · <span class="eids">EIDS✓</span>':''):'')+' · <span style="color:#2E7D32">عمر مؤكّد: '+(r.conf||'')+'</span></div>';
-   var d=document.createElement('div');d.className='card';
-   d.innerHTML='<div class="phwrap">'+ph+ico+'<div class="tags"><span class="tag '+(r.deal==='satilik'?'t-sale':'t-rent')+'">'+(r.deal==='satilik'?'بيع':'إيجار')+'</span>'+'<span class="tag t-new">'+(r.binaYasi!=null?r.binaYasi:0)+' سنة ✓</span>'+(r.site?'<span class="tag" style="background:#555">مجمّع</span>':'')+'<span class="tag" style="background:#1F3864">'+srcLabel(r.source)+'</span></div></div>'+
-     '<div class="cb"><div class="price">'+fmt(r.price)+unit+'</div>'+
-     '<div class="addr">'+(r.mahar||r.mah)+' ('+r.mah+') · '+r.district+'</div>'+
-     '<div class="spec">'+r.rooms+' · '+fmt(r.m2)+' م²'+(r.kat&&r.kat!=='—'?(' · ط'+r.kat):'')+(r.ppm?(' · '+fmt(r.ppm)+' ₺/م²'):'')+'</div>'+off+'</div>'+
-     '<div class="btns"><button class="pri">تفاصيل</button><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent((r.mah||'')+' Mahallesi '+r.district+' Malatya')+'" target="_blank">📍</a><a href="'+r.url+'" target="_blank">الإعلان</a></div>';
-   g.appendChild(d);
-   // store ref
-   d.querySelector('.pri').onclick=function(){detail(r.id);};
- });
-}
-function detail(id){
- var r=DATA.filter(function(x){return x.id===id;})[0]; if(!r)return;
- var rows=[['الصفقة',r.deal==='satilik'?'بيع':'إيجار'],['المنطقة',(r.mahar||r.mah)+' ('+r.mah+') · '+r.district],['الغرف',r.rooms],['المساحة',r.m2+' م²'],['الطابق',r.kat||'—'],['السعر',(r.price||0).toLocaleString('tr-TR')+(r.deal==='kiralik'?' ₺/شهر':' ₺')]];
- if(r.ppm)rows.push(['₺/م²',(r.ppm).toLocaleString('tr-TR')]);
- rows.push(['عمر البناء', r.age==='new0'?'0 — جديد (مؤكّد)':r.age==='cand'?'≤3؟ مرشّح (يتطلّب فتح الإعلان)':'غير مؤكّد — قد يكون أقدم من 3 سنوات']);
- if(r.site!=null)rows.push(['داخل مجمّع', r.site?'نعم':'—']);
- if(r.heat)rows.push(['التدفئة',r.heat]); if(r.otopark)rows.push(['مواقف',r.otopark]); if(r.asan)rows.push(['مصعد',r.asan]);
- if(r.tapu)rows.push(['الطابو',r.tapu]); if(r.kredi)rows.push(['قابل لقرض','نعم']); if(r.pga)rows.push(['خطر زلزالي PGA',r.pga]);
- if(r.office)rows.push(['المكتب',r.office+(r.eids?' (EIDS✓)':'')+(r.lic?(' · ترخيص '+r.lic):'')]);
- var warn = r.age!=='new0' ? '<div class="note">⚠️ العمر غير مؤكّد من القائمة — يلزم فتح الإعلان للتحقق من Bina Yaşı قبل اعتماده ضمن «≤3 سنوات». تحقّق أيضاً من كود الزلازل 2018/الطابو والمعاينة.</div>' : '<div class="note">✅ Bina Yaşı=0 مؤكّد من صفحة التفاصيل. يبقى التحقّق من الطابو والمعاينة قبل أي عربون.</div>';
- document.getElementById('mbox').innerHTML='<button class="x" onclick="close_()">×</button><h2>'+(r.mahar||r.mah)+' · '+r.rooms+'</h2>'+(r.thumb?'<img src="'+r.thumb+'" style="width:100%;border-radius:10px;margin-bottom:8px" onerror="this.style.display=\'none\'">':'')+'<div class="kv">'+rows.map(function(x){return '<b>'+x[0]+'</b><span>'+x[1]+'</span>';}).join('')+'</div>'+warn+'<div class="btns" style="padding:0"><a class="pri" href="'+r.url+'" target="_blank">فتح الإعلان على emlakjet</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent((r.mah||'')+' Mahallesi '+r.district+' Malatya')+'" target="_blank">📍 الخريطة</a></div>';
- document.getElementById('modal').style.display='flex';
-}
-function close_(){document.getElementById('modal').style.display='none';}
-function resetF(){document.getElementById('q').value='';document.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});['pmin','pmax','amin','amax'].forEach(function(k){document.getElementById(k).value='';});document.getElementById('siteOnly').checked=false;document.querySelector('input[name=age][value=newcand]').checked=true;document.getElementById('sort').value='best';render();}
-render();
-</script><script src="assets/nav.js?v=10" defer></script>
-</body></html>
+(function(){
+  'use strict';
+  var AR=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  var PER=24;
+  var DATA=null, VIEW=[], PAGE=1, DIST='', DEAL='', AGE='', TAPU='', ROOMS='';
+  var AGE_ORDER=['صفر · جاهز للسكن','قيد الإنشاء','١–٣ سنوات','٤–٥ سنوات','٦–١٠ سنوات','أكثر من ١٠ سنوات','غير مذكور'];
+  var FRESH={'صفر · جاهز للسكن':1,'قيد الإنشاء':1,'١–٣ سنوات':1};
+  // نقل صوتيّ لأسماء الأحياء كما وردت في اللوحة اليدوية السابقة — تقريبٌ للنطق
+  // لا ترجمة، والاسم الرسمي يبقى التركيّ المكتوب بجانبه.
+  var MAHAR={"Abdulgaffar":"عبد الغفّار","Bostanbaşı":"بوستان باشي","Karagöz":"كاراغوز",
+    "Tandoğan":"طاندوغان","Tecde":"تجده","Yakınca":"ياقنجا","Zafer":"زافر","Zaviye":"زاوية",
+    "İkizce":"إكيزجة","İnönü":"إينونو"};
+
+  function fmtDate(s){ var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||''); return m?((+m[3])+' '+AR[+m[2]-1]+' '+m[1]):(s||'—'); }
+  function n(x){ return (x==null||x===''||isNaN(x))?'—':Number(x).toLocaleString('en-US'); }
+  function short(v){ if(v==null) return '—'; if(v>=1e6) return (v/1e6).toFixed(v>=1e7?0:1)+'M'; if(v>=1e3) return Math.round(v/1e3)+'K'; return String(v); }
+  function set(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+  function num(id){ var e=document.getElementById(id); var v=e?parseFloat(e.value):NaN; return isNaN(v)?null:v; }
+  function ageOf(r){ return r.age||'غير مذكور'; }
+  function mahLabel(r){ var a=MAHAR[r.mah]; return r.mah?(esc(r.mah)+(a?(' — '+a):'')):''; }
+
+  function apply(){
+    var q=(document.getElementById('q').value||'').trim().toLowerCase();
+    var pmin=num('pmin'), pmax=num('pmax'), amin=num('amin'), amax=num('amax'), umin=num('umin'), umax=num('umax');
+    var s=document.getElementById('sort').value;
+    VIEW=DATA.items.filter(function(r){
+      if(DEAL && r.deal!==DEAL) return false;
+      if(AGE && ageOf(r)!==AGE) return false;
+      if(TAPU && r.tapu!==TAPU) return false;
+      if(ROOMS && r.rooms!==ROOMS) return false;
+      if(DIST && r.ilce!==DIST) return false;
+      if(q){ var hay=((r.t||'')+' '+(r.mah||'')+' '+(r.ilce||'')+' '+(MAHAR[r.mah]||'')).toLowerCase(); if(hay.indexOf(q)<0) return false; }
+      if(pmin!=null && (r.p==null||r.p<pmin)) return false;
+      if(pmax!=null && (r.p==null||r.p>pmax)) return false;
+      if(amin!=null && (r.m2==null||r.m2<amin)) return false;
+      if(amax!=null && (r.m2==null||r.m2>amax)) return false;
+      if(umin!=null && (r.ppm==null||r.ppm<umin)) return false;
+      if(umax!=null && (r.ppm==null||r.ppm>umax)) return false;
+      return true;
+    });
+    var big=1e18;
+    VIEW.sort(function(a,b){
+      if(s==='sc') return (b.score==null?-1:b.score)-(a.score==null?-1:a.score);
+      if(s==='pa') return (a.p==null?big:a.p)-(b.p==null?big:b.p);
+      if(s==='pd') return (b.p==null?-1:b.p)-(a.p==null?-1:a.p);
+      if(s==='ua') return (a.ppm==null?big:a.ppm)-(b.ppm==null?big:b.ppm);
+      if(s==='ud') return (b.ppm==null?-1:b.ppm)-(a.ppm==null?-1:a.ppm);
+      if(s==='ma') return (a.m2==null?big:a.m2)-(b.m2==null?big:b.m2);
+      if(s==='md') return (b.m2==null?-1:b.m2)-(a.m2==null?-1:a.m2);
+      return (b.d||'').localeCompare(a.d||'');
+    });
+    PAGE=1; render();
+  }
+
+  function card(r){
+    var rent = r.deal==='rent';
+    var manual = r.src==='manual';
+    var unit = rent ? ' ₺/شهر' : ' ₺';
+    var badge = manual ? '<span class="src m">أدخلتَه بنفسك</span>'
+                       : (rent ? '<span class="src r">إيجار</span>' : '<span class="src">بيع</span>');
+    var head = r.img
+      ? '<div class="ph" style="background-image:url(\''+esc(r.img)+'\')">'+badge+'<span class="pp">'+n(r.p)+unit+'</span></div>'
+      : '<div class="ph noimg">🏢'+badge+'<span class="pp">'+n(r.p)+unit+'</span></div>';
+    var meta='';
+    if(r.rooms) meta+='<span class="m">'+esc(r.rooms)+'</span>';
+    meta+='<span class="m">'+(r.m2!=null?(n(r.m2)+' م² إجمالي'):'مساحة غير مذكورة')+'</span>';
+    if(r.m2net) meta+='<span class="m">'+n(r.m2net)+' م² صافٍ</span>';
+    if(r.age && r.age!=='غير مذكور'){
+      meta+='<span class="m '+(FRESH[r.age]?'new':'warn')+'" title="'+esc(r.agesrc||'')+'">'+esc(r.age)+'</span>';
+    } else {
+      meta+='<span class="m warn">عمر البناء غير مذكور</span>';
+    }
+    if(r.tapu) meta+='<span class="m">'+esc(r.tapu)+'</span>';
+    if(r.floor) meta+='<span class="m">طابق '+esc(r.floor)+(r.floors?(' من '+n(r.floors)):'')+'</span>';
+    if(r.ppm!=null) meta+='<span class="m hi">'+n(r.ppm)+' ₺/م²'+(rent?' شهرياً':'')+'</span>';
+    if(r.yield_!=null) meta+='<span class="m vi">عائد معلَن '+r.yield_+'٪</span>';
+    if(r.krediye==='صالح للتمويل') meta+='<span class="m">قابل للتمويل</span>';
+    if(r.asansor) meta+='<span class="m">مصعد</span>';
+    if(r.new_today) meta+='<span class="m new">ظهر اليوم</span>';
+    if(r.edited) meta+='<span class="m warn">عُدّل يدوياً</span>';
+    if(r.sus) meta+='<span class="m warn">مساحة معلنة غير متّسقة</span>';
+    meta+='<span class="m">'+fmtDate(r.d)+'</span>';
+    return '<article class="lst'+(rent?' rent':'')+'">'+head+
+      '<div class="bd">'+
+        '<div class="ti">'+esc(r.t)+'</div>'+
+        '<div class="lo">'+esc(r.ilce)+(r.mah?(' · '+mahLabel(r)):'')+'</div>'+
+        '<div class="mt">'+meta+'</div>'+
+        (r.rec?('<div class="rec">'+esc(r.rec)+'</div>'):'')+
+      '</div>'+
+      '<a class="go" href="'+esc(r.u)+'" target="_blank" rel="noopener nofollow">فتح الإعلان على المصدر ↗</a>'+
+    '</article>';
+  }
+
+  function render(){
+    var box=document.getElementById('cards');
+    var tot=VIEW.length, pages=Math.max(1,Math.ceil(tot/PER));
+    if(PAGE>pages) PAGE=pages;
+    var f=[]; if(DEAL) f.push(DEAL==='sale'?'بيع':'إيجار'); if(AGE) f.push(AGE);
+    if(TAPU) f.push(TAPU); if(ROOMS) f.push(ROOMS); if(DIST) f.push('إلچة '+DIST);
+    document.getElementById('cnt').innerHTML='ظهر <b>'+n(tot)+'</b> إعلاناً من أصل <b>'+n(DATA.items.length)+'</b>'+(f.length?(' — '+esc(f.join(' · '))):'');
+    if(!tot){ box.innerHTML='<p class="mut">لا يوجد إعلان يطابق هذه التصفية.</p>'; document.getElementById('pager').innerHTML=''; renderDistrictTable(); return; }
+    box.innerHTML=VIEW.slice((PAGE-1)*PER, PAGE*PER).map(card).join('');
+    var p=document.getElementById('pager'); p.innerHTML='';
+    function mk(lbl,to,dis,on){
+      var b=document.createElement('button');
+      b.className='btn sm'+(on?' primary':''); b.textContent=lbl; b.disabled=!!dis;
+      if(!dis) b.onclick=function(){ PAGE=to; render(); window.scrollTo({top:document.getElementById('cnt').offsetTop-90,behavior:'smooth'}); };
+      p.appendChild(b);
+    }
+    mk('السابق', PAGE-1, PAGE<=1, false);
+    var from=Math.max(1,PAGE-2), to=Math.min(pages,from+4); from=Math.max(1,to-4);
+    for(var i=from;i<=to;i++) mk(String(i), i, false, i===PAGE);
+    mk('التالي', PAGE+1, PAGE>=pages, false);
+    var sp=document.createElement('span'); sp.className='mut'; sp.style.fontSize='12px';
+    sp.textContent='صفحة '+PAGE+' من '+pages; p.appendChild(sp);
+    renderDistrictTable();
+  }
+
+  function med(a){ if(!a.length) return null; var b=a.slice().sort(function(x,y){return x-y;});
+    var i=Math.floor(b.length/2); return b.length%2?b[i]:Math.round((b[i-1]+b[i])/2); }
+
+  // الجدول يتبع التصفية الظاهرة الآن. العائد يُحتسب داخل الإلچة الواحدة فقط،
+  // وحين يوجد فيها بيعٌ وإيجار معاً — وإلّا فلا رقم، لا رقمٌ مُقدَّر.
+  function renderDistrictTable(){
+    var by={};
+    VIEW.forEach(function(r){
+      var k=r.ilce||'—';
+      if(!by[k]) by[k]={n:0,s:0,r:0,sppm:[],rppm:[]};
+      by[k].n++;
+      if(r.deal==='rent'){ by[k].r++; if(r.ppm!=null) by[k].rppm.push(r.ppm); }
+      else { by[k].s++; if(r.ppm!=null) by[k].sppm.push(r.ppm); }
+    });
+    var order=DATA.stats.map(function(x){ return x.ilce; }).filter(function(d){ return by[d]; });
+    Object.keys(by).forEach(function(d){ if(order.indexOf(d)<0) order.push(d); });
+    var noteOf={}; DATA.stats.forEach(function(x){ if(x.note) noteOf[x.ilce]=x.note; });
+    var tb=document.getElementById('stb');
+    if(!order.length){ tb.innerHTML='<tr><td colspan="7" class="mut">لا شيء ضمن التصفية الحالية.</td></tr>'; return; }
+    tb.innerHTML=order.map(function(d){
+      var b=by[d], ms=med(b.sppm), mr=med(b.rppm);
+      var y=(ms&&mr)?(Math.round(mr*12/ms*1000)/10):null;
+      return '<tr><td><b>'+esc(d)+'</b>'+(noteOf[d]?('<br><span class="mut" style="font-size:11.5px;font-weight:600">'+esc(noteOf[d])+'</span>'):'')+'</td>'+
+        '<td class="num">'+n(b.n)+'</td>'+
+        '<td class="num">'+n(b.s)+'</td>'+
+        '<td class="num">'+n(b.r)+'</td>'+
+        '<td class="num">'+(ms!=null?n(ms):'—')+'</td>'+
+        '<td class="num">'+(mr!=null?n(mr):'—')+'</td>'+
+        '<td class="num">'+(y!=null?(y+'٪'):'—')+'</td></tr>';
+    }).join('');
+  }
+
+  function chipRow(box, entries, current, onPick, label){
+    box.innerHTML='';
+    if(label){ var L=document.createElement('span'); L.className='lbl'; L.textContent=label; box.appendChild(L); }
+    entries.forEach(function(e){
+      var b=document.createElement('button');
+      b.className='chip'+(e.cls?(' '+e.cls):'')+((e.val===current)?' on':'');
+      b.innerHTML=esc(e.label)+(e.count!=null?(' <span class="c-n">'+e.count+'</span>'):'');
+      b.onclick=function(){
+        Array.prototype.forEach.call(box.children,function(x){ x.classList.remove('on'); });
+        b.classList.add('on'); onPick(e.val);
+      };
+      box.appendChild(b);
+    });
+  }
+
+  // upto: المستوى الذي نتوقّف عنده، حتى يُحسب عدّاد كل صفّ من الصفوف الأعلى منه
+  function subset(upto){
+    return DATA.items.filter(function(r){
+      if(DEAL && r.deal!==DEAL) return false;
+      if(upto>1 && AGE && ageOf(r)!==AGE) return false;
+      if(upto>2 && TAPU && r.tapu!==TAPU) return false;
+      if(upto>3 && ROOMS && r.rooms!==ROOMS) return false;
+      return true;
+    });
+  }
+
+  function buildDeal(){
+    var it=DATA.items;
+    var s=it.filter(function(r){return r.deal==='sale';}).length;
+    var v=it.filter(function(r){return r.deal==='rent';}).length;
+    var e=[{label:'الكل', val:'', count:it.length}];
+    if(s) e.push({label:'للبيع', val:'sale', count:s, cls:'dsale'});
+    if(v) e.push({label:'للإيجار', val:'rent', count:v, cls:'drent'});
+    DEAL='';
+    chipRow(document.getElementById('dchips'), e, '', function(x){
+      DEAL=x; AGE=''; TAPU=''; ROOMS='';
+      buildAge(); buildTapu(); buildRooms(); buildDistricts(); apply();
+    }, 'الصفقة');
+  }
+
+  function buildAge(){
+    var box=document.getElementById('achips');
+    var base=subset(1), cnt={};
+    base.forEach(function(r){ var a=ageOf(r); cnt[a]=(cnt[a]||0)+1; });
+    var order=AGE_ORDER.filter(function(a){ return cnt[a]; });
+    if(order.length<2){ box.innerHTML=''; AGE=''; return; }
+    var e=[{label:'كل الأعمار', val:'', count:base.length}];
+    order.forEach(function(a){
+      e.push({label:a, val:a, count:cnt[a], cls:FRESH[a]?'afresh':(a==='غير مذكور'?'':'aold')});
+    });
+    AGE='';
+    chipRow(box, e, '', function(x){ AGE=x; TAPU=''; ROOMS=''; buildTapu(); buildRooms(); buildDistricts(); apply(); }, 'عمر البناء');
+  }
+
+  function buildTapu(){
+    var box=document.getElementById('tchips');
+    var base=subset(2), cnt={};
+    base.forEach(function(r){ if(r.tapu) cnt[r.tapu]=(cnt[r.tapu]||0)+1; });
+    var order=Object.keys(cnt).sort(function(a,b){ return cnt[b]-cnt[a]; });
+    if(!order.length){ box.innerHTML=''; TAPU=''; return; }
+    var e=[{label:'كل أنواع الطابو', val:'', count:base.length}];
+    order.forEach(function(t){ e.push({label:t, val:t, count:cnt[t]}); });
+    TAPU='';
+    chipRow(box, e, '', function(x){ TAPU=x; ROOMS=''; buildRooms(); buildDistricts(); apply(); }, 'نوع الطابو');
+  }
+
+  function buildRooms(){
+    var box=document.getElementById('rchips');
+    var base=subset(3), cnt={};
+    base.forEach(function(r){ if(r.rooms) cnt[r.rooms]=(cnt[r.rooms]||0)+1; });
+    var order=Object.keys(cnt).sort(function(a,b){ return cnt[b]-cnt[a]; }).slice(0,10);
+    if(order.length<2){ box.innerHTML=''; ROOMS=''; return; }
+    var e=[{label:'كل الأحجام', val:'', count:base.length}];
+    order.forEach(function(t){ e.push({label:t, val:t, count:cnt[t]}); });
+    ROOMS='';
+    chipRow(box, e, '', function(x){ ROOMS=x; buildDistricts(); apply(); }, 'عدد الغرف');
+  }
+
+  function buildDistricts(){
+    var p=subset(4), cnt={};
+    p.forEach(function(r){ cnt[r.ilce]=(cnt[r.ilce]||0)+1; });
+    var e=[{label:'كل الإلچات', val:'', count:p.length}];
+    DATA.stats.forEach(function(s){ if(cnt[s.ilce]) e.push({label:s.ilce, val:s.ilce, count:cnt[s.ilce]}); });
+    DIST='';
+    chipRow(document.getElementById('chips'), e, '', function(x){ DIST=x; apply(); }, 'الإلچة');
+  }
+
+  function boot(d){
+    DATA=d;
+    var s=d.summary||{};
+    set('stamp', fmtDate(d.updated));
+    set('k1', n(d.total));
+    set('k1s', n(s.n_sale)+' بيع · '+n(s.n_rent)+' إيجار');
+    set('k2', n(s.ppm_median));
+    set('k2s', (s.ppm_p10!=null&&s.ppm_p90!=null)?(n(s.ppm_p10)+' — '+n(s.ppm_p90)+' بين الشريحتين'):'من إعلانات البيع وحدها');
+    set('k3', s.yield_median!=null?(s.yield_median+'٪'):'—');
+    set('k4', n(s.n_fresh));
+    set('k4s', n(s.age_declared)+' إعلاناً يصرّح بعمر البناء من أصل '+n(d.total));
+
+    buildDeal(); buildAge(); buildTapu(); buildRooms(); buildDistricts();
+
+    var as=d.age_stats||[];
+    var atb=document.getElementById('atb');
+    if(as.length){
+      atb.innerHTML=as.filter(function(a){return a.n;}).map(function(a){
+        return '<tr><td><b>'+esc(a.age)+'</b></td><td class="num">'+n(a.n)+'</td>'+
+          '<td class="num">'+n(a.n_priced)+'</td>'+
+          '<td class="num">'+(a.ppm_med!=null?n(a.ppm_med):'—')+'</td>'+
+          '<td class="num">'+(a.ppm_p10!=null?n(a.ppm_p10):'—')+'</td>'+
+          '<td class="num">'+(a.ppm_p90!=null?n(a.ppm_p90):'—')+'</td></tr>';
+      }).join('');
+      var z=as.filter(function(a){return a.age==='صفر · جاهز للسكن';})[0]||{};
+      var o=as.filter(function(a){return a.age==='أكثر من ١٠ سنوات';})[0]||{};
+      var ratio=(z.ppm_med&&o.ppm_med)?(Math.round(z.ppm_med/o.ppm_med*10)/10):null;
+      set('anote','عمر البناء مأخوذ من حقل «Bina Yaşı» المعلَن في صفحة الإعلان نفسها، لا من تخميننا — '+
+        n(s.age_declared)+' إعلاناً يحمل الحقل من أصل '+n(d.total)+'. '+
+        (ratio?('الفارق الحالي: وسيط متر الشقة الصفر أعلى بنحو '+ratio+' ضعفاً من الشقة التي تجاوزت العشر سنوات. '):'')+
+        'صفّ «غير مذكور» ليس فئة عمرية: هو إعلانات لم تصرّح، ووسيطها يخلط الجديد بالقديم فلا يُقارَن بالصفوف الأخرى. '+
+        'وزلزال ٦ شباط ٢٠٢٣ يجعل سنة البناء ومستوى المطابقة للائحة الزلازل سؤالاً جوهرياً في ملاطيا تحديداً — '+
+        'ولا يجيب عنه إعلانٌ، بل تقرير فنّي ورخصة إسكان.');
+    } else { atb.innerHTML='<tr><td colspan="6" class="mut">لا بيانات أعمار في هذا الملف.</td></tr>'; set('anote','—'); }
+
+    set('statnote','الجدول يتبع التصفية الظاهرة الآن: «ظاهر الآن» يعدّ ما تراه، وأعمدة ₺/م² تُحتسب ضمنه. '+
+      'العائد يظهر فقط في إلچة فيها إعلانات بيع وإيجار معاً ضمن التصفية الحالية — وهو نسبة بين وسيطَين، '+
+      'لا عائد عقار بعينه، وإجماليّ قبل الضريبة والصيانة والشغور. '+
+      'والإلچة التي لا يظهر لها صفّ لا إعلان لها ضمن هذه التصفية — لا أنها بلا شقق معروضة. '+
+      'و«Merkez» ليست إلچة: هي تسمية ما قبل ٢٠١٣ لمركز ملاطيا قبل قسمته إلى باتالغازي ويشيليورت، '+
+      'تُعرض كما وردت بلا تخمين.');
+
+    var srcs=d.sources||[];
+    document.getElementById('srctb').innerHTML=srcs.filter(function(x){return x.key!=='_detail';}).map(function(x){
+      var ok=x.status!=='failed';
+      return '<tr><td>'+(x.url?('<a href="'+esc(x.url)+'" target="_blank" rel="noopener nofollow">'+esc(x.name)+'</a>'):esc(x.name))+'</td>'+
+        '<td>'+esc(x.kind||'—')+'</td><td class="num">'+n(x.count)+'</td>'+
+        '<td><span class="badge '+(ok?'ok':'bad')+'">'+(ok?'سُحب اليوم':'فشل — عُرضت بيانات آخر سحب ناجح')+'</span></td></tr>';
+    }).join('');
+
+    var html='';
+    srcs.filter(function(x){return x.site_reported_total!=null;}).forEach(function(x){
+      var gap=x.site_reported_total-x.count;
+      html+='<b>'+esc(x.name)+':</b> المصدر أعلن <b class="num">'+n(x.site_reported_total)+
+        '</b> إعلاناً وسُحب <b class="num">'+n(x.count)+'</b> — '+
+        (gap===0?'تطابق تامّ':('فارق <b class="num">'+n(Math.abs(gap))+
+         '</b>؛ يُرجَّح إعلاناً خارج حدود الولاية أو تكراراً أُزيل أو إعلاناً سُحب أثناء المسح'))+'.<br>';
+    });
+    var det=srcs.filter(function(x){return x.key==='_detail';})[0];
+    if(det) html+='<b>تفاصيل صفحات الإعلانات:</b> <span class="num">'+n(det.detail_cached)+
+      '</span> من ذاكرة الأمس · <span class="num">'+n(det.detail_fetched)+'</span> جُلبت اليوم · <span class="num">'+
+      n(det.detail_failed)+'</span> تعذّرت. عمر البناء والطابو والتدفئة تأتي من هذه الصفحات، '+
+      'فما لم تُجلَب صفحته يبقى «غير مذكور» — وهذا ما يفسّر تغيّر أعداد الفئات بين يوم وآخر.<br>';
+    if(s.bootstrap) html+='<span style="color:var(--amber)">هذه أول تشغيلة بالبنية الجديدة: لا سابقةَ يُقاس عليها «ظهر اليوم»، فلم يُوسَم أي إعلان بذلك. يبدأ الرصد اليومي من الغد.</span><br>';
+    if(s.new_today) html+='<b class="num">'+n(s.new_today)+'</b> إعلاناً ظهر اليوم لأول مرّة.<br>';
+    if(s.flagged) html+='<span style="color:var(--amber)">'+n(s.flagged)+' إعلان بمساحة معلنة غير متّسقة — عُرض موسوماً واستُبعد من حساب ₺/م².</span><br>';
+    if(s.dropped_outside_province) html+='<span class="mut">'+n(s.dropped_outside_province)+' إعلاناً وقع خارج حدود الولاية فاستُبعد.</span><br>';
+    html+='<b>ما ليس هنا:</b> sahibinden و hepsiemlak و hürriyetemlak و Coldwell Banker تردّ 403 على أي عميل آليّ، '+
+      'فلا يمكن سحبها من خادم التحديث، ولا نتظاهر بغير ذلك. وما يُعرض شفهياً أو عبر مكاتب محلّية دون نشر لا يظهر على أي منصّة.<br>';
+    html+=esc(d.note||'');
+    document.getElementById('srcnote').innerHTML=html;
+  }
+
+  fetch('data/aqar-listings.json?v='+Date.now(),{cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(d){
+      if(!d || !Array.isArray(d.items)) throw new Error('بنية الملف غير متوقَّعة');
+      boot(d); apply();
+    })
+    .catch(function(e){
+      document.getElementById('cnt').innerHTML='<span style="color:var(--red)">تعذّر تحميل البيانات: '+esc(e.message)+'</span>';
+    });
+
+  ['q','pmin','pmax','amin','amax','umin','umax'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', function(){ if(DATA) apply(); });
+  });
+  document.getElementById('sort').addEventListener('change', function(){ if(DATA) apply(); });
+  document.getElementById('reset').addEventListener('click', function(){
+    ['q','pmin','pmax','amin','amax','umin','umax'].forEach(function(id){ document.getElementById(id).value=''; });
+    document.getElementById('sort').value='d';
+    DEAL=''; AGE=''; TAPU=''; ROOMS='';
+    buildDeal(); buildAge(); buildTapu(); buildRooms(); buildDistricts();
+    if(DATA) apply();
+  });
+})();
+</script>
+</body>
+</html>
