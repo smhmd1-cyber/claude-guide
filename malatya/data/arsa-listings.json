@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-29",
+ "updated": "2026-08-30",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
  "total": 311,
@@ -14,8 +14,8 @@
    "count": 254,
    "site_reported_total": 254,
    "pages": 9,
-   "detail_cached": 252,
-   "detail_fetched": 2,
+   "detail_cached": 254,
+   "detail_fetched": 0,
    "detail_failed": 0
   },
   {
@@ -151,10 +151,10 @@
   {
    "ilce": "Hekimhan",
    "n": 3,
-   "ppm_med": 541,
+   "ppm_med": 518,
    "ppm_min": 195,
-   "ppm_max": 887,
-   "p_med": 4925000,
+   "ppm_max": 841,
+   "p_med": 4850000,
    "note": null
   },
   {
@@ -215,7 +215,7 @@
   {
    "zon": "زراعية",
    "n": 169,
-   "ppm_med": 879,
+   "ppm_med": 870,
    "ppm_p10": 252,
    "ppm_p90": 2440,
    "n_priced": 150
@@ -1125,7 +1125,7 @@
    "ilce": "Hekimhan",
    "mah": "Girmana Mahallesi",
    "m2": 3212,
-   "p": 2850000,
+   "p": 2700000,
    "d": "2026-08-13",
    "u": "https://www.emlakjet.com/ilan/19723061",
    "img": "19723061/A8DA34A4A23E017FBD5F044BBA3F37EF19723061.jpg",
@@ -1138,7 +1138,7 @@
    "zon": "زراعية",
    "zonf": "كرم وبستان",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 887
+   "ppm": 841
   },
   {
    "src": "emlakjet",
