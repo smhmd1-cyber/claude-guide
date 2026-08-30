@@ -1,8 +1,8 @@
 {
- "updated": "2026-08-29",
+ "updated": "2026-08-30",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — شقق معروضة للبيع وللإيجار على Emlakjet",
- "total": 557,
+ "total": 555,
  "sources": [
   {
    "key": "emlakjet-sale",
@@ -11,8 +11,8 @@
    "kind": "سوق",
    "deal": "sale",
    "status": "ok",
-   "count": 350,
-   "site_reported_total": 350,
+   "count": 349,
+   "site_reported_total": 349,
    "pages": 12
   },
   {
@@ -22,7 +22,7 @@
    "kind": "سوق",
    "deal": "rent",
    "status": "ok",
-   "count": 207,
+   "count": 206,
    "site_reported_total": 208,
    "pages": 7
   },
@@ -31,8 +31,8 @@
    "name": "تفاصيل صفحات الإعلانات",
    "kind": "داخليّ",
    "status": "ok",
-   "detail_cached": 557,
-   "detail_fetched": 0,
+   "detail_cached": 551,
+   "detail_fetched": 4,
    "detail_failed": 0
   }
  ],
@@ -40,16 +40,16 @@
  "summary": {
   "districts_with_listings": 4,
   "districts_total": 13,
-  "n_sale": 350,
-  "n_rent": 207,
-  "n_fresh": 198,
-  "new_today": 0,
-  "bootstrap": true,
-  "ppm_median": 20811,
+  "n_sale": 349,
+  "n_rent": 206,
+  "n_fresh": 200,
+  "new_today": 4,
+  "bootstrap": false,
+  "ppm_median": 20833,
   "ppm_p10": 14000,
   "ppm_p90": 38235,
-  "rpm_median": 132,
-  "yield_median": 7.6,
+  "rpm_median": 133,
+  "yield_median": 7.7,
   "price_min": 950000,
   "price_max": 19500000,
   "flagged": 0,
@@ -60,22 +60,22 @@
    "manual": 0
   },
   "by_age": {
-   "صفر · جاهز للسكن": 148,
+   "صفر · جاهز للسكن": 150,
    "قيد الإنشاء": 24,
    "١–٣ سنوات": 26,
-   "٤–٥ سنوات": 20,
+   "٤–٥ سنوات": 18,
    "٦–١٠ سنوات": 106,
-   "أكثر من ١٠ سنوات": 233,
+   "أكثر من ١٠ سنوات": 231,
    "غير مذكور": 0
   },
   "by_rooms": {
    "1+1": 25,
    "2+0": 4,
-   "2+1": 115,
+   "2+1": 114,
    "3+1": 317,
    "3+2": 1,
    "3.5+1": 1,
-   "4+1": 78,
+   "4+1": 77,
    "4.5+1": 4,
    "5+1": 5,
    "5+2": 1,
@@ -84,38 +84,38 @@
    "Stüdyo": 2
   },
   "by_tapu": {
-   "بلا قيد طابو": 108,
-   "حقّ ارتفاق طوابق (Kat İrtifakı)": 167,
+   "بلا قيد طابو": 109,
+   "حقّ ارتفاق طوابق (Kat İrtifakı)": 168,
    "طابو أرض (لا إفراز طوابق)": 5,
-   "طابو مستقلّ": 27,
+   "طابو مستقلّ": 26,
    "طابو مشاع (حصّة)": 2,
    "طابو من تعاونية": 4,
-   "ملكية طوابق (Kat Mülkiyeti)": 243,
+   "ملكية طوابق (Kat Mülkiyeti)": 240,
    "نوع الطابو غير معروف": 1
   },
-  "age_declared": 557
+  "age_declared": 555
  },
  "stats": [
   {
    "ilce": "Yeşilyurt",
-   "n": 308,
-   "n_sale": 219,
-   "n_rent": 89,
-   "n_fresh": 115,
-   "ppm_med": 22581,
+   "n": 305,
+   "n_sale": 218,
+   "n_rent": 87,
+   "n_fresh": 116,
+   "ppm_med": 22603,
    "ppm_min": 7685,
    "ppm_max": 51000,
-   "rpm_med": 129,
-   "p_med": 3800000,
+   "rpm_med": 130,
+   "p_med": 3825000,
    "yield_": 6.9,
    "note": null
   },
   {
    "ilce": "Battalgazi",
-   "n": 247,
+   "n": 248,
    "n_sale": 130,
-   "n_rent": 117,
-   "n_fresh": 83,
+   "n_rent": 118,
+   "n_fresh": 84,
    "ppm_med": 18894,
    "ppm_min": 9500,
    "ppm_max": 44211,
@@ -296,7 +296,7 @@
  "age_stats": [
   {
    "age": "صفر · جاهز للسكن",
-   "n": 148,
+   "n": 150,
    "n_sale": 86,
    "ppm_med": 31800,
    "ppm_p10": 21429,
@@ -323,7 +323,7 @@
   },
   {
    "age": "٤–٥ سنوات",
-   "n": 20,
+   "n": 18,
    "n_sale": 13,
    "ppm_med": 24000,
    "ppm_p10": 17438,
@@ -341,12 +341,12 @@
   },
   {
    "age": "أكثر من ١٠ سنوات",
-   "n": 233,
-   "n_sale": 141,
-   "ppm_med": 16458,
+   "n": 231,
+   "n_sale": 140,
+   "ppm_med": 16470,
    "ppm_p10": 12000,
-   "ppm_p90": 21933,
-   "n_priced": 141
+   "ppm_p90": 22121,
+   "n_priced": 140
   },
   {
    "age": "غير مذكور",
@@ -359,6 +359,52 @@
   }
  ],
  "items": [
+  {
+   "src": "emlakjet",
+   "id": "19785092",
+   "deal": "rent",
+   "t": "Yusuf Karadaglidan Bahçebasinda Kiralik3+1 Ara Kat",
+   "ilce": "Battalgazi",
+   "mah": "Orduzu",
+   "rooms": "3+1",
+   "m2": 110,
+   "kat": "4. Kat",
+   "p": 14000,
+   "d": "2026-08-29",
+   "u": "https://www.emlakjet.com/ilan/yusuf-karadaglidan-bahcebasinda-kiralik31-ara-kat-19785092",
+   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19785092/3894A38E4FB01A721910207BA10521EB19785092.jpg",
+   "age_raw": "0 (Oturuma Hazır)",
+   "tapu": "بلا قيد طابو",
+   "isitma": "Merkezi (Pay Ölçer)",
+   "otopark": "Açık Otopark",
+   "kullanim": "Boş",
+   "krediye": null,
+   "site": true,
+   "asansor": true,
+   "balkon": true,
+   "esya": "Boş",
+   "mutfak": "Kapalı",
+   "m2net": 100,
+   "floor": "4.Kat",
+   "floors": 5,
+   "banyo": 1,
+   "kira": null,
+   "val_min": null,
+   "val_max": null,
+   "val_rent": null,
+   "val_pb": null,
+   "age": "صفر · جاهز للسكن",
+   "age_min": 0,
+   "agesrc": "معلَن في الإعلان",
+   "fresh": true,
+   "ppm": 127,
+   "yield_": null,
+   "first_seen": "2026-08-30",
+   "last_seen": "2026-08-30",
+   "new_today": true,
+   "score": null,
+   "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
+  },
   {
    "src": "emlakjet",
    "id": "19784674",
@@ -394,7 +440,7 @@
    "ppm": 113,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 113 ₺ للمتر شهرياً — دون وسيط الإلچة بـ17٪"
@@ -434,7 +480,7 @@
    "ppm": 113,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 113 ₺ للمتر شهرياً — دون وسيط الإلچة بـ17٪"
@@ -474,7 +520,7 @@
    "ppm": 104,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 104 ₺ للمتر شهرياً — دون وسيط الإلچة بـ24٪"
@@ -514,7 +560,7 @@
    "ppm": 104,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 104 ₺ للمتر شهرياً — دون وسيط الإلچة بـ24٪"
@@ -554,10 +600,10 @@
    "ppm": 100,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ22٪"
+   "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ23٪"
   },
   {
    "src": "emlakjet",
@@ -594,10 +640,10 @@
    "ppm": 138,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 138 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ7٪"
+   "rec": "إيجار: 138 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ6٪"
   },
   {
    "src": "emlakjet",
@@ -634,10 +680,10 @@
    "ppm": 200,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 200 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ55٪"
+   "rec": "إيجار: 200 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ54٪"
   },
   {
    "src": "emlakjet",
@@ -674,7 +720,7 @@
    "ppm": 136,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 136 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ5٪"
@@ -716,10 +762,10 @@
    "ppm": 208,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 208 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ61٪"
+   "rec": "إيجار: 208 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ60٪"
   },
   {
    "src": "emlakjet",
@@ -757,7 +803,7 @@
    "ppm": 17500,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -797,10 +843,56 @@
    "ppm": 71,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 71 ₺ للمتر شهرياً — دون وسيط الإلچة بـ48٪"
+  },
+  {
+   "src": "emlakjet",
+   "id": "19782074",
+   "deal": "rent",
+   "t": "Kınacı Gayrimenkul'den Yakınca Da Kiralık 3+1 Ara Kat",
+   "ilce": "Yeşilyurt",
+   "mah": "Yakınca",
+   "rooms": "3+1",
+   "m2": 160,
+   "kat": "2. Kat",
+   "p": 25000,
+   "d": "2026-08-29",
+   "u": "https://www.emlakjet.com/ilan/kinaci-gayrimenkul-den-yakinca-da-kiralik-31-ara-kat-19782074",
+   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19782074/3141A8F136E682485D65A0ACAC70BABF19782074.jpg",
+   "age_raw": "0 (Oturuma Hazır)",
+   "tapu": "حقّ ارتفاق طوابق (Kat İrtifakı)",
+   "isitma": "Merkezi (Pay Ölçer)",
+   "otopark": "Açık Otopark",
+   "kullanim": "Boş",
+   "krediye": null,
+   "site": false,
+   "asansor": true,
+   "balkon": true,
+   "esya": "Boş",
+   "mutfak": "Kapalı",
+   "m2net": 135,
+   "floor": "2.Kat",
+   "floors": 7,
+   "banyo": 2,
+   "kira": null,
+   "val_min": null,
+   "val_max": null,
+   "val_rent": null,
+   "val_pb": null,
+   "age": "صفر · جاهز للسكن",
+   "age_min": 0,
+   "agesrc": "معلَن في الإعلان",
+   "fresh": true,
+   "ppm": 156,
+   "yield_": null,
+   "first_seen": "2026-08-30",
+   "last_seen": "2026-08-30",
+   "new_today": true,
+   "score": null,
+   "rec": "إيجار: 156 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ20٪"
   },
   {
    "src": "emlakjet",
@@ -839,7 +931,7 @@
    "ppm": 148,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 148 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ9٪"
@@ -879,7 +971,7 @@
    "ppm": 171,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 171 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ26٪"
@@ -919,10 +1011,10 @@
    "ppm": 154,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 154 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ19٪"
+   "rec": "إيجار: 154 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ18٪"
   },
   {
    "src": "emlakjet",
@@ -960,7 +1052,7 @@
    "ppm": 38710,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ71٪، قابل للتمويل المصرفي"
@@ -1002,10 +1094,10 @@
    "ppm": 167,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 167 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ29٪"
+   "rec": "إيجار: 167 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ28٪"
   },
   {
    "src": "emlakjet",
@@ -1042,7 +1134,7 @@
    "ppm": 118,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 118 ₺ للمتر شهرياً — دون وسيط الإلچة بـ13٪"
@@ -1082,52 +1174,10 @@
    "ppm": 118,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 118 ₺ للمتر شهرياً — دون وسيط الإلچة بـ13٪"
-  },
-  {
-   "src": "emlakjet",
-   "id": "19779437",
-   "deal": "rent",
-   "t": "Bostanbaşı Mahallesi 4+1kiralık Daire",
-   "ilce": "Yeşilyurt",
-   "mah": "Bostanbaşı",
-   "rooms": "4+1",
-   "m2": 210,
-   "kat": "1. Kat",
-   "p": 21000,
-   "d": "2026-08-28",
-   "u": "https://www.emlakjet.com/ilan/bostanbasi-mahallesi-41kiralik-daire-19779437",
-   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19779437/8BCC9368FBA4D624178819A3430F8CEF19779437.jpg",
-   "age_raw": "4",
-   "tapu": "ملكية طوابق (Kat Mülkiyeti)",
-   "isitma": "Merkezi (Pay Ölçer)",
-   "otopark": "Açık Otopark",
-   "kullanim": "Boş",
-   "site": true,
-   "asansor": true,
-   "balkon": true,
-   "esya": "Boş",
-   "mutfak": "Kapalı",
-   "ada": "309",
-   "parsel": "1",
-   "m2net": 180,
-   "floor": "1.Kat",
-   "floors": 11,
-   "banyo": 2,
-   "age": "٤–٥ سنوات",
-   "age_min": 4,
-   "agesrc": "معلَن في الإعلان",
-   "fresh": false,
-   "ppm": 100,
-   "yield_": null,
-   "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
-   "new_today": false,
-   "score": null,
-   "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ22٪"
   },
   {
    "src": "emlakjet",
@@ -1165,7 +1215,7 @@
    "ppm": 28824,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 14,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ28٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -1206,7 +1256,7 @@
    "ppm": 51000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ126٪، طابو ملكية طوابق"
@@ -1246,10 +1296,10 @@
    "ppm": 130,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 130 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ1٪"
+   "rec": "إيجار: 130 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
   },
   {
    "src": "emlakjet",
@@ -1290,7 +1340,7 @@
    "ppm": 35075,
    "yield_": 9.2,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ55٪، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 9.2٪"
@@ -1330,10 +1380,10 @@
    "ppm": 140,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 140 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ9٪"
+   "rec": "إيجار: 140 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ8٪"
   },
   {
    "src": "emlakjet",
@@ -1370,7 +1420,7 @@
    "ppm": 121,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 121 ₺ للمتر شهرياً — دون وسيط الإلچة بـ11٪"
@@ -1411,7 +1461,7 @@
    "ppm": 18667,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -1452,7 +1502,7 @@
    "ppm": 25429,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 24,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -1493,7 +1543,7 @@
    "ppm": 39091,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ107٪، قابل للتمويل المصرفي"
@@ -1533,10 +1583,10 @@
    "ppm": 244,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 244 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ89٪"
+   "rec": "إيجار: 244 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ88٪"
   },
   {
    "src": "emlakjet",
@@ -1573,7 +1623,7 @@
    "ppm": 182,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 182 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ34٪"
@@ -1613,7 +1663,7 @@
    "ppm": 173,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 173 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ27٪"
@@ -1654,7 +1704,7 @@
    "ppm": 22121,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -1695,7 +1745,7 @@
    "ppm": 30417,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ35٪"
@@ -1735,10 +1785,10 @@
    "ppm": 113,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 113 ₺ للمتر شهرياً — دون وسيط الإلچة بـ12٪"
+   "rec": "إيجار: 113 ₺ للمتر شهرياً — دون وسيط الإلچة بـ13٪"
   },
   {
    "src": "emlakjet",
@@ -1775,7 +1825,7 @@
    "ppm": 110,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 110 ₺ للمتر شهرياً — دون وسيط الإلچة بـ15٪"
@@ -1819,7 +1869,7 @@
    "ppm": 48947,
    "yield_": 0.0,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ117٪، قابل للتمويل المصرفي"
@@ -1859,7 +1909,7 @@
    "ppm": 174,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 174 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ28٪"
@@ -1903,7 +1953,7 @@
    "ppm": 34774,
    "yield_": 5.6,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 58,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ54٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -1945,10 +1995,10 @@
    "ppm": 129,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 129 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
+   "rec": "إيجار: 129 ₺ للمتر شهرياً — دون وسيط الإلچة بـ1٪"
   },
   {
    "src": "emlakjet",
@@ -1985,7 +2035,7 @@
    "ppm": 256,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 256 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ88٪"
@@ -2025,7 +2075,7 @@
    "ppm": 159,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 159 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ17٪"
@@ -2065,7 +2115,7 @@
    "ppm": 74,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 74 ₺ للمتر شهرياً — دون وسيط الإلچة بـ46٪"
@@ -2105,10 +2155,10 @@
    "ppm": 194,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 194 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ50٪"
+   "rec": "إيجار: 194 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ49٪"
   },
   {
    "src": "emlakjet",
@@ -2145,7 +2195,7 @@
    "ppm": 111,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 111 ₺ للمتر شهرياً — دون وسيط الإلچة بـ18٪"
@@ -2185,10 +2235,10 @@
    "ppm": 129,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 129 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
+   "rec": "إيجار: 129 ₺ للمتر شهرياً — دون وسيط الإلچة بـ1٪"
   },
   {
    "src": "emlakjet",
@@ -2226,7 +2276,7 @@
    "ppm": 41818,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ85٪"
@@ -2266,10 +2316,10 @@
    "ppm": 200,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 200 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ55٪"
+   "rec": "إيجار: 200 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ54٪"
   },
   {
    "src": "emlakjet",
@@ -2307,7 +2357,7 @@
    "ppm": 31814,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ41٪، قابل للتمويل المصرفي"
@@ -2347,10 +2397,10 @@
    "ppm": 200,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 200 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ55٪"
+   "rec": "إيجار: 200 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ54٪"
   },
   {
    "src": "emlakjet",
@@ -2387,7 +2437,7 @@
    "ppm": 195,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 195 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ43٪"
@@ -2427,10 +2477,10 @@
    "ppm": 227,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 227 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ76٪"
+   "rec": "إيجار: 227 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ75٪"
   },
   {
    "src": "emlakjet",
@@ -2466,7 +2516,7 @@
    "ppm": 127,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
@@ -2506,10 +2556,10 @@
    "ppm": 120,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 120 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
+   "rec": "إيجار: 120 ₺ للمتر شهرياً — دون وسيط الإلچة بـ8٪"
   },
   {
    "src": "emlakjet",
@@ -2546,7 +2596,7 @@
    "ppm": 244,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 244 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ79٪"
@@ -2590,7 +2640,7 @@
    "ppm": 21111,
    "yield_": 7.9,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.9٪"
@@ -2632,50 +2682,10 @@
    "ppm": 111,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 111 ₺ للمتر شهرياً — دون وسيط الإلچة بـ18٪"
-  },
-  {
-   "src": "emlakjet",
-   "id": "19757329",
-   "deal": "rent",
-   "t": "🏠 Yusuf Karadağlı’dan Kiralık📍 Bahçebaşı 6. Etap’ta🏡 3+1 Giriş Kat Kiralık Daire",
-   "ilce": "Battalgazi",
-   "mah": "Bahçelievler",
-   "rooms": "3+1",
-   "m2": 110,
-   "kat": "Düz Giriş (Zemin)",
-   "p": 11000,
-   "d": "2026-08-22",
-   "u": "https://www.emlakjet.com/ilan/yusuf-karadagli-dan-kiralik-bahcebasi-6-etap-ta-31-giris-kat-kiralik-daire-19757329",
-   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19757329/3FD14FC1169648048BE157F9FC39122F19757329.jpg",
-   "age_raw": "0 (Oturuma Hazır)",
-   "tapu": "بلا قيد طابو",
-   "isitma": "Merkezi (Pay Ölçer)",
-   "otopark": "Açık Otopark",
-   "kullanim": "Boş",
-   "site": true,
-   "asansor": true,
-   "balkon": true,
-   "esya": "Boş",
-   "mutfak": "Kapalı",
-   "m2net": 100,
-   "floor": "Düz Giriş (Zemin)",
-   "floors": 5,
-   "banyo": 1,
-   "age": "صفر · جاهز للسكن",
-   "age_min": 0,
-   "agesrc": "معلَن في الإعلان",
-   "fresh": true,
-   "ppm": 100,
-   "yield_": null,
-   "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
-   "new_today": false,
-   "score": null,
-   "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ26٪"
   },
   {
    "src": "emlakjet",
@@ -2712,7 +2722,7 @@
    "ppm": 127,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ2٪"
@@ -2754,7 +2764,7 @@
    "ppm": 132,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 132 ₺ للمتر شهرياً — دون وسيط الإلچة بـ3٪"
@@ -2794,7 +2804,7 @@
    "ppm": 132,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 132 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ2٪"
@@ -2834,7 +2844,7 @@
    "ppm": 167,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 167 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ23٪"
@@ -2874,50 +2884,10 @@
    "ppm": 109,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 109 ₺ للمتر شهرياً — دون وسيط الإلچة بـ16٪"
-  },
-  {
-   "src": "emlakjet",
-   "id": "19752562",
-   "deal": "rent",
-   "t": "Yusuf Karadaglidan Çamurlu Tokide 3+1 Kiralik Daire",
-   "ilce": "Battalgazi",
-   "mah": "Çamurlu",
-   "rooms": "3+1",
-   "m2": 110,
-   "kat": "4. Kat",
-   "p": 14000,
-   "d": "2026-08-21",
-   "u": "https://www.emlakjet.com/ilan/yusuf-karadaglidan-camurlu-tokide-31-kiralik-daire-19752562",
-   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19752562/B92F4FA94FB5ADC0E40AF980FBC047D719752562.jpg",
-   "age_raw": "0 (Oturuma Hazır)",
-   "tapu": "بلا قيد طابو",
-   "isitma": "Merkezi (Pay Ölçer)",
-   "otopark": "Açık Otopark",
-   "kullanim": "Boş",
-   "site": false,
-   "asansor": true,
-   "balkon": true,
-   "esya": "Boş",
-   "mutfak": "Kapalı",
-   "m2net": 100,
-   "floor": "4.Kat",
-   "floors": 5,
-   "banyo": 1,
-   "age": "صفر · جاهز للسكن",
-   "age_min": 0,
-   "agesrc": "معلَن في الإعلان",
-   "fresh": true,
-   "ppm": 127,
-   "yield_": null,
-   "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
-   "new_today": false,
-   "score": null,
-   "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
   },
   {
    "src": "emlakjet",
@@ -2958,7 +2928,7 @@
    "ppm": 19250,
    "yield_": 9.4,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 9.4٪"
@@ -2998,7 +2968,7 @@
    "ppm": 64,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 64 ₺ للمتر شهرياً — دون وسيط الإلچة بـ53٪"
@@ -3038,7 +3008,7 @@
    "ppm": 108,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 108 ₺ للمتر شهرياً — دون وسيط الإلچة بـ21٪"
@@ -3078,7 +3048,7 @@
    "ppm": 127,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
@@ -3118,10 +3088,10 @@
    "ppm": 153,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 153 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ19٪"
+   "rec": "إيجار: 153 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ18٪"
   },
   {
    "src": "emlakjet",
@@ -3158,7 +3128,7 @@
    "ppm": 150,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 150 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ10٪"
@@ -3202,7 +3172,7 @@
    "ppm": 20179,
    "yield_": 3.2,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -3243,7 +3213,7 @@
    "ppm": 17500,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 66,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -3283,7 +3253,7 @@
    "ppm": 206,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 206 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ51٪"
@@ -3323,7 +3293,7 @@
    "ppm": 106,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 106 ₺ للمتر شهرياً — دون وسيط الإلچة بـ22٪"
@@ -3363,10 +3333,10 @@
    "ppm": 138,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 138 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ7٪"
+   "rec": "إيجار: 138 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ6٪"
   },
   {
    "src": "emlakjet",
@@ -3403,7 +3373,7 @@
    "ppm": 114,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 114 ₺ للمتر شهرياً — دون وسيط الإلچة بـ12٪"
@@ -3445,7 +3415,7 @@
    "ppm": 127,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
@@ -3485,10 +3455,10 @@
    "ppm": 133,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 133 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ3٪"
+   "rec": "إيجار: 133 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ2٪"
   },
   {
    "src": "emlakjet",
@@ -3525,10 +3495,10 @@
    "ppm": 155,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 155 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ20٪"
+   "rec": "إيجار: 155 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ19٪"
   },
   {
    "src": "emlakjet",
@@ -3565,7 +3535,7 @@
    "ppm": 208,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 208 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ53٪"
@@ -3605,7 +3575,7 @@
    "ppm": 127,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
@@ -3646,7 +3616,7 @@
    "ppm": 17241,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -3686,7 +3656,7 @@
    "ppm": 190,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 190 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ40٪"
@@ -3728,7 +3698,7 @@
    "ppm": 238,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 238 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ75٪"
@@ -3770,7 +3740,7 @@
    "ppm": 229,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 229 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ68٪"
@@ -3810,7 +3780,7 @@
    "ppm": 183,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 183 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ35٪"
@@ -3850,7 +3820,7 @@
    "ppm": 115,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 115 ₺ للمتر شهرياً — دون وسيط الإلچة بـ15٪"
@@ -3890,7 +3860,7 @@
    "ppm": 185,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 185 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ36٪"
@@ -3930,10 +3900,10 @@
    "ppm": 103,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 103 ₺ للمتر شهرياً — دون وسيط الإلچة بـ20٪"
+   "rec": "إيجار: 103 ₺ للمتر شهرياً — دون وسيط الإلچة بـ21٪"
   },
   {
    "src": "emlakjet",
@@ -3970,7 +3940,7 @@
    "ppm": 107,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 107 ₺ للمتر شهرياً — دون وسيط الإلچة بـ21٪"
@@ -4011,7 +3981,7 @@
    "ppm": 38125,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ69٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -4052,7 +4022,7 @@
    "ppm": 19652,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -4092,7 +4062,7 @@
    "ppm": 114,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 114 ₺ للمتر شهرياً — دون وسيط الإلچة بـ12٪"
@@ -4132,7 +4102,7 @@
    "ppm": 129,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 129 ₺ للمتر شهرياً — دون وسيط الإلچة بـ5٪"
@@ -4172,7 +4142,7 @@
    "ppm": 189,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 189 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ39٪"
@@ -4212,7 +4182,7 @@
    "ppm": 107,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 107 ₺ للمتر شهرياً — دون وسيط الإلچة بـ21٪"
@@ -4256,7 +4226,7 @@
    "ppm": 26222,
    "yield_": 15.3,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 22,
    "rec": "مرصود: طابو ملكية طوابق، عائد إيجاري إجمالي معلَن 15.3٪"
@@ -4296,7 +4266,7 @@
    "ppm": 130,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 130 ₺ للمتر شهرياً — دون وسيط الإلچة بـ4٪"
@@ -4337,7 +4307,7 @@
    "ppm": 24545,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 28,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -4377,7 +4347,7 @@
    "ppm": 100,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ26٪"
@@ -4417,10 +4387,10 @@
    "ppm": 150,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 150 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ16٪"
+   "rec": "إيجار: 150 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ15٪"
   },
   {
    "src": "emlakjet",
@@ -4458,10 +4428,10 @@
    "ppm": 33769,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
-   "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ50٪، قابل للتمويل المصرفي"
+   "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ49٪، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -4502,10 +4472,10 @@
    "ppm": 41250,
    "yield_": 5.8,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 46,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ83٪، قابل للتمويل المصرفي"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ82٪، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -4544,7 +4514,7 @@
    "ppm": 103,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 103 ₺ للمتر شهرياً — دون وسيط الإلچة بـ24٪"
@@ -4588,7 +4558,7 @@
    "ppm": 19545,
    "yield_": 13.4,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 13.4٪"
@@ -4629,52 +4599,10 @@
    "ppm": 11167,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ41٪، قابل للتمويل المصرفي"
-  },
-  {
-   "src": "emlakjet",
-   "id": "19728115",
-   "deal": "rent",
-   "t": "Dairemiz Zaviye Mahallesi Olup 2 Arakat 3+1",
-   "ilce": "Yeşilyurt",
-   "mah": "Zaviye",
-   "rooms": "3+1",
-   "m2": 155,
-   "kat": "2. Kat",
-   "p": 20000,
-   "d": "2026-08-15",
-   "u": "https://www.emlakjet.com/ilan/dairemiz-zaviye-mahallesi-olup-2-arakat-31-19728115",
-   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19728115/15565B7E481C4FF4C82BF2934611EBA419728115.jpg",
-   "age_raw": "11-15",
-   "tapu": "ملكية طوابق (Kat Mülkiyeti)",
-   "isitma": "Kombi Doğalgaz",
-   "otopark": "Açık Otopark",
-   "kullanim": "Boş",
-   "site": true,
-   "asansor": false,
-   "balkon": true,
-   "esya": "Boş",
-   "mutfak": "Kapalı",
-   "ada": "682",
-   "parsel": "348",
-   "m2net": 140,
-   "floor": "2.Kat",
-   "floors": 4,
-   "banyo": 1,
-   "age": "أكثر من ١٠ سنوات",
-   "age_min": 11,
-   "agesrc": "معلَن في الإعلان",
-   "fresh": false,
-   "ppm": 129,
-   "yield_": null,
-   "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
-   "new_today": false,
-   "score": null,
-   "rec": "إيجار: 129 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
   },
   {
    "src": "emlakjet",
@@ -4713,7 +4641,7 @@
    "ppm": 29130,
    "yield_": 5.4,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 46,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ29٪، قابل للتمويل المصرفي"
@@ -4754,7 +4682,7 @@
    "ppm": 27568,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -4794,7 +4722,7 @@
    "ppm": 71,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 71 ₺ للمتر شهرياً — دون وسيط الإلچة بـ48٪"
@@ -4834,10 +4762,10 @@
    "ppm": 102,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 102 ₺ للمتر شهرياً — دون وسيط الإلچة بـ21٪"
+   "rec": "إيجار: 102 ₺ للمتر شهرياً — دون وسيط الإلچة بـ22٪"
   },
   {
    "src": "emlakjet",
@@ -4874,7 +4802,7 @@
    "ppm": 138,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 138 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ1٪"
@@ -4914,10 +4842,10 @@
    "ppm": 133,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 133 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ3٪"
+   "rec": "إيجار: 133 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ2٪"
   },
   {
    "src": "emlakjet",
@@ -4955,7 +4883,7 @@
    "ppm": 29294,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ55٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -4996,7 +4924,7 @@
    "ppm": 20000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 43,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -5036,7 +4964,7 @@
    "ppm": 261,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 261 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ92٪"
@@ -5077,7 +5005,7 @@
    "ppm": 23421,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -5118,7 +5046,7 @@
    "ppm": 15625,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ31٪، طابو ملكية طوابق"
@@ -5159,7 +5087,7 @@
    "ppm": 14154,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ25٪، قابل للتمويل المصرفي"
@@ -5200,7 +5128,7 @@
    "ppm": 31548,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ40٪، قابل للتمويل المصرفي"
@@ -5241,7 +5169,7 @@
    "ppm": 41954,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ86٪"
@@ -5282,7 +5210,7 @@
    "ppm": 13259,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ30٪، طابو ملكية طوابق"
@@ -5323,7 +5251,7 @@
    "ppm": 11778,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ38٪، طابو ملكية طوابق"
@@ -5364,7 +5292,7 @@
    "ppm": 11556,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 13,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ39٪، طابو مشاع — يحتاج فرزاً"
@@ -5405,7 +5333,7 @@
    "ppm": 33929,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ50٪، قابل للتمويل المصرفي"
@@ -5446,7 +5374,7 @@
    "ppm": 130,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 130 ₺ للمتر شهرياً — دون وسيط الإلچة بـ4٪"
@@ -5490,7 +5418,7 @@
    "ppm": 18919,
    "yield_": 6.9,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 40,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق"
@@ -5531,7 +5459,7 @@
    "ppm": 34048,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 6,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ51٪، طابو ملكية طوابق"
@@ -5571,10 +5499,10 @@
    "ppm": 244,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 244 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ89٪"
+   "rec": "إيجار: 244 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ88٪"
   },
   {
    "src": "emlakjet",
@@ -5612,7 +5540,7 @@
    "ppm": 19167,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 20,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -5653,7 +5581,7 @@
    "ppm": 18571,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 24,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -5695,7 +5623,7 @@
    "ppm": 118,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 118 ₺ للمتر شهرياً — دون وسيط الإلچة بـ13٪"
@@ -5736,7 +5664,7 @@
    "ppm": 33929,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ80٪"
@@ -5776,7 +5704,7 @@
    "ppm": 145,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 145 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ7٪"
@@ -5816,7 +5744,7 @@
    "ppm": 122,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 122 ₺ للمتر شهرياً — دون وسيط الإلچة بـ10٪"
@@ -5858,10 +5786,10 @@
    "ppm": 129,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 129 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
+   "rec": "إيجار: 129 ₺ للمتر شهرياً — دون وسيط الإلچة بـ1٪"
   },
   {
    "src": "emlakjet",
@@ -5901,10 +5829,56 @@
    "ppm": 38333,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 14,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ70٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
+  },
+  {
+   "src": "emlakjet",
+   "id": "19711727",
+   "deal": "rent",
+   "t": "Özhan'dan Şehit Fevzi Toki'de 3+1 Kiralık Daire",
+   "ilce": "Battalgazi",
+   "mah": "Şehitfevzi",
+   "rooms": "3+1",
+   "m2": 130,
+   "kat": "2. Kat",
+   "p": 20000,
+   "d": "2026-08-10",
+   "u": "https://www.emlakjet.com/ilan/ozhan-dan-sehit-fevzi-toki-de-31-kiralik-daire-19711727",
+   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19711727/08C6CDD59AFB434832C8FDCCC8B32D9019711727.jpg",
+   "age_raw": "0 (Oturuma Hazır)",
+   "tapu": "بلا قيد طابو",
+   "isitma": "Kombi Doğalgaz",
+   "otopark": "Açık Otopark",
+   "kullanim": "Boş",
+   "krediye": null,
+   "site": false,
+   "asansor": true,
+   "balkon": true,
+   "esya": "Boş",
+   "mutfak": "Kapalı",
+   "m2net": 120,
+   "floor": "2.Kat",
+   "floors": 5,
+   "banyo": 1,
+   "kira": null,
+   "val_min": null,
+   "val_max": null,
+   "val_rent": null,
+   "val_pb": null,
+   "age": "صفر · جاهز للسكن",
+   "age_min": 0,
+   "agesrc": "معلَن في الإعلان",
+   "fresh": true,
+   "ppm": 154,
+   "yield_": null,
+   "first_seen": "2026-08-30",
+   "last_seen": "2026-08-30",
+   "new_today": true,
+   "score": null,
+   "rec": "إيجار: 154 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ13٪"
   },
   {
    "src": "emlakjet",
@@ -5942,7 +5916,7 @@
    "ppm": 24565,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 28,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -5983,7 +5957,7 @@
    "ppm": 27812,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -6024,7 +5998,7 @@
    "ppm": 35417,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 6,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ57٪، طابو ملكية طوابق"
@@ -6064,10 +6038,10 @@
    "ppm": 131,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 131 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ2٪"
+   "rec": "إيجار: 131 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ1٪"
   },
   {
    "src": "emlakjet",
@@ -6105,7 +6079,7 @@
    "ppm": 25476,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -6146,7 +6120,7 @@
    "ppm": 26412,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 6,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ40٪، طابو ملكية طوابق"
@@ -6186,7 +6160,7 @@
    "ppm": 136,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 136 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
@@ -6229,10 +6203,10 @@
    "ppm": 28571,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 6,
-   "rec": "مرصود: سعر المتر أعلى من الوسيط بـ27٪، قابل للتمويل المصرفي"
+   "rec": "مرصود: سعر المتر أعلى من الوسيط بـ26٪، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -6269,7 +6243,7 @@
    "ppm": 116,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 116 ₺ للمتر شهرياً — دون وسيط الإلچة بـ15٪"
@@ -6309,10 +6283,10 @@
    "ppm": 89,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 89 ₺ للمتر شهرياً — دون وسيط الإلچة بـ31٪"
+   "rec": "إيجار: 89 ₺ للمتر شهرياً — دون وسيط الإلچة بـ32٪"
   },
   {
    "src": "emlakjet",
@@ -6349,10 +6323,10 @@
    "ppm": 169,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 169 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ31٪"
+   "rec": "إيجار: 169 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ30٪"
   },
   {
    "src": "emlakjet",
@@ -6389,7 +6363,7 @@
    "ppm": 94,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 94 ₺ للمتر شهرياً — دون وسيط الإلچة بـ31٪"
@@ -6429,10 +6403,10 @@
    "ppm": 146,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 146 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ13٪"
+   "rec": "إيجار: 146 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ12٪"
   },
   {
    "src": "emlakjet",
@@ -6471,10 +6445,10 @@
    "ppm": 72,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 72 ₺ للمتر شهرياً — دون وسيط الإلچة بـ44٪"
+   "rec": "إيجار: 72 ₺ للمتر شهرياً — دون وسيط الإلچة بـ45٪"
   },
   {
    "src": "emlakjet",
@@ -6512,10 +6486,10 @@
    "ppm": 46660,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
-   "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ107٪"
+   "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ106٪"
   },
   {
    "src": "emlakjet",
@@ -6552,7 +6526,7 @@
    "ppm": 214,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 214 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ57٪"
@@ -6593,7 +6567,7 @@
    "ppm": 17091,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -6634,7 +6608,7 @@
    "ppm": 32500,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 6,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ44٪، قابل للتمويل المصرفي"
@@ -6675,7 +6649,7 @@
    "ppm": 17500,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -6715,7 +6689,7 @@
    "ppm": 152,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 152 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ12٪"
@@ -6755,7 +6729,7 @@
    "ppm": 155,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 155 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ14٪"
@@ -6795,7 +6769,7 @@
    "ppm": 136,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 136 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
@@ -6836,7 +6810,7 @@
    "ppm": 21933,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -6880,7 +6854,7 @@
    "ppm": 19375,
    "yield_": 7.7,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 26,
    "rec": "مرصود: قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.7٪"
@@ -6920,10 +6894,10 @@
    "ppm": 141,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 141 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ9٪"
+   "rec": "إيجار: 141 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ8٪"
   },
   {
    "src": "emlakjet",
@@ -6960,7 +6934,7 @@
    "ppm": 123,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 123 ₺ للمتر شهرياً — دون وسيط الإلچة بـ5٪"
@@ -7000,10 +6974,10 @@
    "ppm": 120,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 120 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
+   "rec": "إيجار: 120 ₺ للمتر شهرياً — دون وسيط الإلچة بـ8٪"
   },
   {
    "src": "emlakjet",
@@ -7043,10 +7017,10 @@
    "ppm": 38966,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ73٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ72٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -7083,10 +7057,10 @@
    "ppm": 268,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 268 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ108٪"
+   "rec": "إيجار: 268 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ106٪"
   },
   {
    "src": "emlakjet",
@@ -7124,7 +7098,7 @@
    "ppm": 19655,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 62,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -7165,7 +7139,7 @@
    "ppm": 19565,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -7206,7 +7180,7 @@
    "ppm": 19043,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 54,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر دون وسيط الإلچة"
@@ -7247,7 +7221,7 @@
    "ppm": 16579,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ27٪، قابل للتمويل المصرفي"
@@ -7288,7 +7262,7 @@
    "ppm": 11583,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ39٪، قابل للتمويل المصرفي"
@@ -7328,10 +7302,10 @@
    "ppm": 176,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 176 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ36٪"
+   "rec": "إيجار: 176 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ35٪"
   },
   {
    "src": "emlakjet",
@@ -7369,7 +7343,7 @@
    "ppm": 31250,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ38٪، قابل للتمويل المصرفي"
@@ -7409,7 +7383,7 @@
    "ppm": 126,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 126 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
@@ -7450,7 +7424,7 @@
    "ppm": 24118,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 51,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، قابل للتمويل المصرفي"
@@ -7494,7 +7468,7 @@
    "ppm": 18167,
    "yield_": 8.8,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 8.8٪"
@@ -7534,7 +7508,7 @@
    "ppm": 164,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 164 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ21٪"
@@ -7574,7 +7548,7 @@
    "ppm": 94,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 94 ₺ للمتر شهرياً — دون وسيط الإلچة بـ31٪"
@@ -7615,7 +7589,7 @@
    "ppm": 11765,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ38٪، قابل للتمويل المصرفي"
@@ -7656,7 +7630,7 @@
    "ppm": 19091,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -7696,7 +7670,7 @@
    "ppm": 300,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 300 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ121٪"
@@ -7737,7 +7711,7 @@
    "ppm": 16452,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ27٪، قابل للتمويل المصرفي"
@@ -7777,7 +7751,7 @@
    "ppm": 121,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 121 ₺ للمتر شهرياً — دون وسيط الإلچة بـ11٪"
@@ -7817,7 +7791,7 @@
    "ppm": 133,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 133 ₺ للمتر شهرياً — دون وسيط الإلچة بـ2٪"
@@ -7857,10 +7831,10 @@
    "ppm": 139,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 139 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ8٪"
+   "rec": "إيجار: 139 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ7٪"
   },
   {
    "src": "emlakjet",
@@ -7898,7 +7872,7 @@
    "ppm": 20295,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -7938,7 +7912,7 @@
    "ppm": 122,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 122 ₺ للمتر شهرياً — دون وسيط الإلچة بـ10٪"
@@ -7978,10 +7952,56 @@
    "ppm": 150,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 150 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ16٪"
+   "rec": "إيجار: 150 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ15٪"
+  },
+  {
+   "src": "emlakjet",
+   "id": "19686401",
+   "deal": "rent",
+   "t": "Yusuf Karadaglidan İl Jandarma Akoguz Toki 3+1 Kiralik Ara Kat",
+   "ilce": "Battalgazi",
+   "mah": "Çamurlu",
+   "rooms": "3+1",
+   "m2": 110,
+   "kat": "4. Kat",
+   "p": 14000,
+   "d": "2026-08-05",
+   "u": "https://www.emlakjet.com/ilan/yusuf-karadaglidan-il-jandarma-akoguz-toki-31-kiralik-ara-kat-19686401",
+   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19686401/63FC928A89AE75149B2A9EBFFD5B804919686401.jpg",
+   "age_raw": "0 (Oturuma Hazır)",
+   "tapu": "بلا قيد طابو",
+   "isitma": "Merkezi (Pay Ölçer)",
+   "otopark": "Açık Otopark",
+   "kullanim": "Boş",
+   "krediye": null,
+   "site": false,
+   "asansor": true,
+   "balkon": true,
+   "esya": "Boş",
+   "mutfak": "Kapalı",
+   "m2net": 100,
+   "floor": "4.Kat",
+   "floors": 5,
+   "banyo": 1,
+   "kira": null,
+   "val_min": null,
+   "val_max": null,
+   "val_rent": null,
+   "val_pb": null,
+   "age": "صفر · جاهز للسكن",
+   "age_min": 0,
+   "agesrc": "معلَن في الإعلان",
+   "fresh": true,
+   "ppm": 127,
+   "yield_": null,
+   "first_seen": "2026-08-30",
+   "last_seen": "2026-08-30",
+   "new_today": true,
+   "score": null,
+   "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
   },
   {
    "src": "emlakjet",
@@ -8019,7 +8039,7 @@
    "ppm": 37727,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ100٪، قابل للتمويل المصرفي"
@@ -8061,10 +8081,10 @@
    "ppm": 124,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 124 ₺ للمتر شهرياً — دون وسيط الإلچة بـ4٪"
+   "rec": "إيجار: 124 ₺ للمتر شهرياً — دون وسيط الإلچة بـ5٪"
   },
   {
    "src": "emlakjet",
@@ -8102,7 +8122,7 @@
    "ppm": 20909,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -8143,7 +8163,7 @@
    "ppm": 36562,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 6,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ94٪، طابو ملكية طوابق"
@@ -8186,7 +8206,7 @@
    "ppm": 15926,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -8226,7 +8246,7 @@
    "ppm": 109,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 109 ₺ للمتر شهرياً — دون وسيط الإلچة بـ20٪"
@@ -8267,7 +8287,7 @@
    "ppm": 19875,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -8308,7 +8328,7 @@
    "ppm": 14333,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ37٪، طابو ملكية طوابق"
@@ -8348,7 +8368,7 @@
    "ppm": 182,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 182 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ34٪"
@@ -8389,7 +8409,7 @@
    "ppm": 22955,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 59,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -8430,7 +8450,7 @@
    "ppm": 33273,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ76٪، قابل للتمويل المصرفي"
@@ -8471,7 +8491,7 @@
    "ppm": 23056,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 59,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -8512,7 +8532,7 @@
    "ppm": 20134,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -8552,10 +8572,10 @@
    "ppm": 185,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 185 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ43٪"
+   "rec": "إيجار: 185 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ42٪"
   },
   {
    "src": "emlakjet",
@@ -8592,10 +8612,10 @@
    "ppm": 104,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 104 ₺ للمتر شهرياً — دون وسيط الإلچة بـ19٪"
+   "rec": "إيجار: 104 ₺ للمتر شهرياً — دون وسيط الإلچة بـ20٪"
   },
   {
    "src": "emlakjet",
@@ -8632,7 +8652,7 @@
    "ppm": 140,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 140 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ3٪"
@@ -8673,7 +8693,7 @@
    "ppm": 13914,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 53,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ38٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -8714,7 +8734,7 @@
    "ppm": 15833,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ30٪، طابو ملكية طوابق"
@@ -8754,7 +8774,7 @@
    "ppm": 147,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 147 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ8٪"
@@ -8795,7 +8815,7 @@
    "ppm": 25238,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -8836,10 +8856,10 @@
    "ppm": 41250,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ83٪"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ82٪"
   },
   {
    "src": "emlakjet",
@@ -8881,7 +8901,7 @@
    "ppm": 15174,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ33٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -8921,7 +8941,7 @@
    "ppm": 307,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 307 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ126٪"
@@ -8962,7 +8982,7 @@
    "ppm": 38235,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ69٪"
@@ -9003,7 +9023,7 @@
    "ppm": 17000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -9044,7 +9064,7 @@
    "ppm": 20000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 19,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة"
@@ -9084,7 +9104,7 @@
    "ppm": 83,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 83 ₺ للمتر شهرياً — دون وسيط الإلچة بـ39٪"
@@ -9124,10 +9144,10 @@
    "ppm": 77,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 77 ₺ للمتر شهرياً — دون وسيط الإلچة بـ40٪"
+   "rec": "إيجار: 77 ₺ للمتر شهرياً — دون وسيط الإلچة بـ41٪"
   },
   {
    "src": "emlakjet",
@@ -9164,7 +9184,7 @@
    "ppm": 100,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ26٪"
@@ -9205,7 +9225,7 @@
    "ppm": 24500,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ30٪، طابو مشاع — يحتاج فرزاً، قابل للتمويل المصرفي"
@@ -9246,7 +9266,7 @@
    "ppm": 15067,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 31,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق"
@@ -9286,10 +9306,10 @@
    "ppm": 191,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 191 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ48٪"
+   "rec": "إيجار: 191 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ47٪"
   },
   {
    "src": "emlakjet",
@@ -9326,10 +9346,10 @@
    "ppm": 112,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 112 ₺ للمتر شهرياً — دون وسيط الإلچة بـ13٪"
+   "rec": "إيجار: 112 ₺ للمتر شهرياً — دون وسيط الإلچة بـ14٪"
   },
   {
    "src": "emlakjet",
@@ -9368,7 +9388,7 @@
    "ppm": 16250,
    "yield_": 9.2,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ28٪، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 9.2٪"
@@ -9409,7 +9429,7 @@
    "ppm": 15625,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ31٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -9453,7 +9473,7 @@
    "ppm": 42500,
    "yield_": 0.0,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ88٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -9493,7 +9513,7 @@
    "ppm": 135,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 135 ₺ للمتر شهرياً — دون وسيط الإلچة بـ1٪"
@@ -9536,7 +9556,7 @@
    "ppm": 18621,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 20,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -9576,50 +9596,10 @@
    "ppm": 177,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 177 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ30٪"
-  },
-  {
-   "src": "emlakjet",
-   "id": "19638832",
-   "deal": "rent",
-   "t": "İlyas Mahallesinde Kiralık 2+1 Eşyalı Daire",
-   "ilce": "Yeşilyurt",
-   "mah": "Bentbaşı",
-   "rooms": "2+1",
-   "m2": 135,
-   "kat": "3. Kat",
-   "p": 22500,
-   "d": "2026-07-23",
-   "u": "https://www.emlakjet.com/ilan/ilyas-mahallesinde-kiralik-21-esyali-daire-19638832",
-   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19638832/DC97AF86ECDD10BDD0CDBA40270EB2F219638832.jpg",
-   "age_raw": "5",
-   "tapu": "ملكية طوابق (Kat Mülkiyeti)",
-   "isitma": "Kombi Doğalgaz",
-   "otopark": "Açık Otopark",
-   "kullanim": "Boş",
-   "site": false,
-   "asansor": true,
-   "balkon": true,
-   "esya": "Eşyalı",
-   "mutfak": "Kapalı",
-   "m2net": 130,
-   "floor": "3.Kat",
-   "floors": 4,
-   "banyo": 1,
-   "age": "٤–٥ سنوات",
-   "age_min": 5,
-   "agesrc": "معلَن في الإعلان",
-   "fresh": false,
-   "ppm": 167,
-   "yield_": null,
-   "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
-   "new_today": false,
-   "score": null,
-   "rec": "إيجار: 167 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ29٪"
   },
   {
    "src": "emlakjet",
@@ -9660,7 +9640,7 @@
    "ppm": 17045,
    "yield_": 6.4,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 48,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -9702,10 +9682,10 @@
    "ppm": 85,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 85 ₺ للمتر شهرياً — دون وسيط الإلچة بـ34٪"
+   "rec": "إيجار: 85 ₺ للمتر شهرياً — دون وسيط الإلچة بـ35٪"
   },
   {
    "src": "emlakjet",
@@ -9743,7 +9723,7 @@
    "ppm": 44211,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ134٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -9784,7 +9764,7 @@
    "ppm": 12000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ36٪"
@@ -9825,7 +9805,7 @@
    "ppm": 14167,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ37٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -9865,10 +9845,10 @@
    "ppm": 270,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 270 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ109٪"
+   "rec": "إيجار: 270 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ108٪"
   },
   {
    "src": "emlakjet",
@@ -9908,7 +9888,7 @@
    "ppm": 21250,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 31,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -9948,7 +9928,7 @@
    "ppm": 182,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 182 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ34٪"
@@ -9988,7 +9968,7 @@
    "ppm": 109,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 109 ₺ للمتر شهرياً — دون وسيط الإلچة بـ16٪"
@@ -10029,7 +10009,7 @@
    "ppm": 40000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ77٪، قابل للتمويل المصرفي"
@@ -10069,7 +10049,7 @@
    "ppm": 103,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 103 ₺ للمتر شهرياً — دون وسيط الإلچة بـ24٪"
@@ -10078,7 +10058,7 @@
    "src": "emlakjet",
    "id": "19626735",
    "deal": "sale",
-   "t": "Yusuf Karadağlıdan İkizce 1. Bölge 1. Etap Satılık 3+1",
+   "t": "İkizce Maski Tüik Arkası, 1. Bölge 1. Etap Satılık 3+1 Ara Kat",
    "ilce": "Yeşilyurt",
    "mah": "İkizce",
    "rooms": "3+1",
@@ -10086,7 +10066,7 @@
    "kat": "2. Kat",
    "p": 2190000,
    "d": "2026-07-20",
-   "u": "https://www.emlakjet.com/ilan/yusuf-karadaglidan-ikizce-1-bolge-1-etap-satilik-31-19626735",
+   "u": "https://www.emlakjet.com/ilan/ikizce-maski-tuik-arkasi-1-bolge-1-etap-satilik-31-ara-kat-19626735",
    "img": "https://imaj.emlakjet.com/resize/640/0/listing/19626735/6EC90551F67F0E13B6D9AE4E077077A519626735.jpg",
    "age_raw": "0 (Oturuma Hazır)",
    "tapu": "بلا قيد طابو",
@@ -10110,7 +10090,7 @@
    "ppm": 19043,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 54,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة"
@@ -10154,7 +10134,7 @@
    "ppm": 17273,
    "yield_": 6.3,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 48,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -10195,7 +10175,7 @@
    "ppm": 21485,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 28,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -10236,7 +10216,7 @@
    "ppm": 29900,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 0,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ32٪، قابل للتمويل المصرفي"
@@ -10276,10 +10256,10 @@
    "ppm": 124,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 124 ₺ للمتر شهرياً — دون وسيط الإلچة بـ4٪"
+   "rec": "إيجار: 124 ₺ للمتر شهرياً — دون وسيط الإلچة بـ5٪"
   },
   {
    "src": "emlakjet",
@@ -10317,7 +10297,7 @@
    "ppm": 40476,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ79٪، قابل للتمويل المصرفي"
@@ -10358,7 +10338,7 @@
    "ppm": 26154,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، قابل للتمويل المصرفي"
@@ -10399,7 +10379,7 @@
    "ppm": 45818,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ103٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -10439,7 +10419,7 @@
    "ppm": 174,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 174 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ28٪"
@@ -10479,7 +10459,7 @@
    "ppm": 136,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 136 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ5٪"
@@ -10519,7 +10499,7 @@
    "ppm": 308,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 308 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ126٪"
@@ -10559,7 +10539,7 @@
    "ppm": 200,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 200 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ47٪"
@@ -10599,7 +10579,7 @@
    "ppm": 117,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 117 ₺ للمتر شهرياً — دون وسيط الإلچة بـ14٪"
@@ -10640,7 +10620,7 @@
    "ppm": 13250,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ30٪"
@@ -10681,7 +10661,7 @@
    "ppm": 27524,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ46٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -10722,7 +10702,7 @@
    "ppm": 13750,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ39٪، طابو ملكية طوابق"
@@ -10763,7 +10743,7 @@
    "ppm": 39091,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ107٪، قابل للتمويل المصرفي"
@@ -10803,7 +10783,7 @@
    "ppm": 145,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 145 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ12٪"
@@ -10843,7 +10823,7 @@
    "ppm": 160,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 160 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ18٪"
@@ -10884,10 +10864,10 @@
    "ppm": 30833,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ37٪"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ36٪"
   },
   {
    "src": "emlakjet",
@@ -10924,7 +10904,7 @@
    "ppm": 100,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ26٪"
@@ -10964,7 +10944,7 @@
    "ppm": 139,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 139 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ2٪"
@@ -11004,10 +10984,10 @@
    "ppm": 113,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 113 ₺ للمتر شهرياً — دون وسيط الإلچة بـ12٪"
+   "rec": "إيجار: 113 ₺ للمتر شهرياً — دون وسيط الإلچة بـ13٪"
   },
   {
    "src": "emlakjet",
@@ -11044,7 +11024,7 @@
    "ppm": 118,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 118 ₺ للمتر شهرياً — دون وسيط الإلچة بـ13٪"
@@ -11085,7 +11065,7 @@
    "ppm": 17348,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 54,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة"
@@ -11125,10 +11105,10 @@
    "ppm": 157,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 157 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ22٪"
+   "rec": "إيجار: 157 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ21٪"
   },
   {
    "src": "emlakjet",
@@ -11166,7 +11146,7 @@
    "ppm": 11586,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ49٪، قابل للتمويل المصرفي"
@@ -11206,7 +11186,7 @@
    "ppm": 136,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 136 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ5٪"
@@ -11247,7 +11227,7 @@
    "ppm": 23536,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 24,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -11288,7 +11268,7 @@
    "ppm": 12400,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ45٪، طابو ملكية طوابق"
@@ -11328,10 +11308,10 @@
    "ppm": 125,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 125 ₺ للمتر شهرياً — دون وسيط الإلچة بـ3٪"
+   "rec": "إيجار: 125 ₺ للمتر شهرياً — دون وسيط الإلچة بـ4٪"
   },
   {
    "src": "emlakjet",
@@ -11368,7 +11348,7 @@
    "ppm": 175,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 175 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ29٪"
@@ -11409,7 +11389,7 @@
    "ppm": 13704,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ39٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -11451,10 +11431,10 @@
    "ppm": 121,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 121 ₺ للمتر شهرياً — دون وسيط الإلچة بـ6٪"
+   "rec": "إيجار: 121 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
   },
   {
    "src": "emlakjet",
@@ -11495,7 +11475,7 @@
    "ppm": 25278,
    "yield_": 7.9,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 26,
    "rec": "مرصود: قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.9٪"
@@ -11536,7 +11516,7 @@
    "ppm": 18333,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 62,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -11577,7 +11557,7 @@
    "ppm": 33579,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ78٪، قابل للتمويل المصرفي"
@@ -11618,7 +11598,7 @@
    "ppm": 21739,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، قابل للتمويل المصرفي"
@@ -11658,10 +11638,10 @@
    "ppm": 144,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 144 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ12٪"
+   "rec": "إيجار: 144 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ11٪"
   },
   {
    "src": "emlakjet",
@@ -11699,7 +11679,7 @@
    "ppm": 25000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ32٪، قابل للتمويل المصرفي"
@@ -11742,7 +11722,7 @@
    "ppm": 26848,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -11782,10 +11762,10 @@
    "ppm": 90,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 90 ₺ للمتر شهرياً — دون وسيط الإلچة بـ30٪"
+   "rec": "إيجار: 90 ₺ للمتر شهرياً — دون وسيط الإلچة بـ31٪"
   },
   {
    "src": "emlakjet",
@@ -11823,7 +11803,7 @@
    "ppm": 12500,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ45٪، طابو ملكية طوابق"
@@ -11864,7 +11844,7 @@
    "ppm": 18119,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -11905,7 +11885,7 @@
    "ppm": 15862,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -11945,7 +11925,7 @@
    "ppm": 88,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 88 ₺ للمتر شهرياً — دون وسيط الإلچة بـ35٪"
@@ -11986,7 +11966,7 @@
    "ppm": 34615,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ53٪، قابل للتمويل المصرفي"
@@ -12027,7 +12007,7 @@
    "ppm": 14048,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ38٪، قابل للتمويل المصرفي"
@@ -12068,7 +12048,7 @@
    "ppm": 40833,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ116٪، قابل للتمويل المصرفي"
@@ -12110,7 +12090,7 @@
    "ppm": 17037,
    "yield_": 0.0,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 54,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة"
@@ -12151,7 +12131,7 @@
    "ppm": 15139,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ33٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -12192,7 +12172,7 @@
    "ppm": 35000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ85٪، قابل للتمويل المصرفي"
@@ -12233,7 +12213,7 @@
    "ppm": 13214,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ30٪، قابل للتمويل المصرفي"
@@ -12273,7 +12253,7 @@
    "ppm": 125,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 125 ₺ للمتر شهرياً — دون وسيط الإلچة بـ8٪"
@@ -12313,7 +12293,7 @@
    "ppm": 214,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 214 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ57٪"
@@ -12353,10 +12333,10 @@
    "ppm": 98,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 98 ₺ للمتر شهرياً — دون وسيط الإلچة بـ24٪"
+   "rec": "إيجار: 98 ₺ للمتر شهرياً — دون وسيط الإلچة بـ25٪"
   },
   {
    "src": "emlakjet",
@@ -12394,7 +12374,7 @@
    "ppm": 23958,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ27٪"
@@ -12436,7 +12416,7 @@
    "ppm": 227,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 227 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ67٪"
@@ -12476,7 +12456,7 @@
    "ppm": 294,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 294 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ116٪"
@@ -12516,7 +12496,7 @@
    "ppm": 127,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ2٪"
@@ -12556,10 +12536,10 @@
    "ppm": 160,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 160 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ24٪"
+   "rec": "إيجار: 160 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ23٪"
   },
   {
    "src": "emlakjet",
@@ -12597,7 +12577,7 @@
    "ppm": 16429,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -12637,10 +12617,10 @@
    "ppm": 121,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 121 ₺ للمتر شهرياً — دون وسيط الإلچة بـ6٪"
+   "rec": "إيجار: 121 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
   },
   {
    "src": "emlakjet",
@@ -12677,10 +12657,10 @@
    "ppm": 222,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 222 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ72٪"
+   "rec": "إيجار: 222 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ71٪"
   },
   {
    "src": "emlakjet",
@@ -12718,7 +12698,7 @@
    "ppm": 22143,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: عمر البناء قيد الإنشاء، قابل للتمويل المصرفي"
@@ -12759,7 +12739,7 @@
    "ppm": 20950,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -12799,7 +12779,7 @@
    "ppm": 106,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 106 ₺ للمتر شهرياً — دون وسيط الإلچة بـ18٪"
@@ -12839,7 +12819,7 @@
    "ppm": 182,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 182 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ34٪"
@@ -12879,10 +12859,10 @@
    "ppm": 129,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 129 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
+   "rec": "إيجار: 129 ₺ للمتر شهرياً — دون وسيط الإلچة بـ1٪"
   },
   {
    "src": "emlakjet",
@@ -12920,7 +12900,7 @@
    "ppm": 30952,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ64٪، قابل للتمويل المصرفي"
@@ -12962,7 +12942,7 @@
    "ppm": 16483,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 43,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -13003,7 +12983,7 @@
    "ppm": 16526,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ27٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -13043,10 +13023,10 @@
    "ppm": 107,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 107 ₺ للمتر شهرياً — دون وسيط الإلچة بـ17٪"
+   "rec": "إيجار: 107 ₺ للمتر شهرياً — دون وسيط الإلچة بـ18٪"
   },
   {
    "src": "emlakjet",
@@ -13084,7 +13064,7 @@
    "ppm": 16389,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -13124,10 +13104,10 @@
    "ppm": 98,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 98 ₺ للمتر شهرياً — دون وسيط الإلچة بـ24٪"
+   "rec": "إيجار: 98 ₺ للمتر شهرياً — دون وسيط الإلچة بـ25٪"
   },
   {
    "src": "emlakjet",
@@ -13164,10 +13144,10 @@
    "ppm": 129,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 129 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
+   "rec": "إيجار: 129 ₺ للمتر شهرياً — دون وسيط الإلچة بـ1٪"
   },
   {
    "src": "emlakjet",
@@ -13205,7 +13185,7 @@
    "ppm": 15143,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 31,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -13246,7 +13226,7 @@
    "ppm": 27273,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 51,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، قابل للتمويل المصرفي"
@@ -13288,53 +13268,10 @@
    "ppm": 127,
    "yield_": null,
    "first_seen": "2026-06-30",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
-  },
-  {
-   "src": "emlakjet",
-   "id": "19525461",
-   "deal": "sale",
-   "t": "Battalgazi Karagöz Mahallesi Satılık 3+1 Ferah Daire",
-   "ilce": "Yeşilyurt",
-   "mah": "Yavuz Selim",
-   "rooms": "3+1",
-   "m2": 130,
-   "kat": "Yüksek giriş",
-   "p": 1850000,
-   "d": "2026-06-26",
-   "u": "https://www.emlakjet.com/ilan/battalgazi-karagoz-mahallesi-satilik-31-ferah-daire-19525461",
-   "img": "https://imaj.emlakjet.com/resize/640/0/listing/19525461/156005C5BAF40FF51A327F1C34F2975B19525461.jpg",
-   "age_raw": "11-15",
-   "tapu": "طابو مستقلّ",
-   "isitma": "Kombi Doğalgaz",
-   "otopark": "Açık Otopark",
-   "kullanim": "Boş",
-   "krediye": "صالح للتمويل",
-   "site": true,
-   "asansor": true,
-   "balkon": true,
-   "esya": "Boş",
-   "mutfak": "Kapalı",
-   "ada": "6067",
-   "parsel": "1",
-   "m2net": 110,
-   "floor": "Yüksek Giriş",
-   "floors": 6,
-   "banyo": 1,
-   "age": "أكثر من ١٠ سنوات",
-   "age_min": 11,
-   "agesrc": "معلَن في الإعلان",
-   "fresh": false,
-   "ppm": 14231,
-   "yield_": null,
-   "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
-   "new_today": false,
-   "score": 41,
-   "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ37٪، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -13372,7 +13309,7 @@
    "ppm": 29545,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ31٪، قابل للتمويل المصرفي"
@@ -13413,7 +13350,7 @@
    "ppm": 38636,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ71٪"
@@ -13454,7 +13391,7 @@
    "ppm": 20556,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 28,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -13494,7 +13431,7 @@
    "ppm": 167,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 167 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ23٪"
@@ -13535,7 +13472,7 @@
    "ppm": 22222,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -13576,10 +13513,10 @@
    "ppm": 41667,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
-   "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ85٪"
+   "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ84٪"
   },
   {
    "src": "emlakjet",
@@ -13617,7 +13554,7 @@
    "ppm": 30000,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ33٪"
@@ -13658,7 +13595,7 @@
    "ppm": 15536,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -13699,7 +13636,7 @@
    "ppm": 14233,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ37٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -13740,7 +13677,7 @@
    "ppm": 19545,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -13781,7 +13718,7 @@
    "ppm": 24118,
    "yield_": null,
    "first_seen": "2026-06-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، قابل للتمويل المصرفي"
@@ -13822,7 +13759,7 @@
    "ppm": 27222,
    "yield_": null,
    "first_seen": "2026-06-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 24,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -13862,7 +13799,7 @@
    "ppm": 205,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 205 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ51٪"
@@ -13903,7 +13840,7 @@
    "ppm": 30000,
    "yield_": null,
    "first_seen": "2026-06-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 2,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ33٪، قابل للتمويل المصرفي"
@@ -13943,7 +13880,7 @@
    "ppm": 141,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 141 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ4٪"
@@ -13983,7 +13920,7 @@
    "ppm": 119,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 119 ₺ للمتر شهرياً — دون وسيط الإلچة بـ8٪"
@@ -14024,7 +13961,7 @@
    "ppm": 30000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ33٪، قابل للتمويل المصرفي"
@@ -14068,7 +14005,7 @@
    "ppm": 16316,
    "yield_": 7.0,
    "first_seen": "2026-06-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ28٪، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.0٪"
@@ -14108,7 +14045,7 @@
    "ppm": 100,
    "yield_": null,
    "first_seen": "2026-06-26",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ26٪"
@@ -14148,7 +14085,7 @@
    "ppm": 47,
    "yield_": null,
    "first_seen": "2026-06-30",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 47 ₺ للمتر شهرياً — دون وسيط الإلچة بـ65٪"
@@ -14188,10 +14125,10 @@
    "ppm": 120,
    "yield_": null,
    "first_seen": "2026-07-01",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 120 ₺ للمتر شهرياً — دون وسيط الإلچة بـ7٪"
+   "rec": "إيجار: 120 ₺ للمتر شهرياً — دون وسيط الإلچة بـ8٪"
   },
   {
    "src": "emlakjet",
@@ -14228,10 +14165,10 @@
    "ppm": 107,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 107 ₺ للمتر شهرياً — دون وسيط الإلچة بـ17٪"
+   "rec": "إيجار: 107 ₺ للمتر شهرياً — دون وسيط الإلچة بـ18٪"
   },
   {
    "src": "emlakjet",
@@ -14269,7 +14206,7 @@
    "ppm": 20833,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 31,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق"
@@ -14310,7 +14247,7 @@
    "ppm": 45000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ99٪، قابل للتمويل المصرفي"
@@ -14351,7 +14288,7 @@
    "ppm": 16250,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ28٪، طابو ملكية طوابق"
@@ -14394,7 +14331,7 @@
    "ppm": 16174,
    "yield_": null,
    "first_seen": "2026-07-06",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ28٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -14436,7 +14373,7 @@
    "ppm": 60,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 60 ₺ للمتر شهرياً — دون وسيط الإلچة بـ56٪"
@@ -14478,7 +14415,7 @@
    "ppm": 190,
    "yield_": null,
    "first_seen": "2026-06-30",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 190 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ40٪"
@@ -14518,7 +14455,7 @@
    "ppm": 28889,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ28٪، طابو ملكية طوابق"
@@ -14562,7 +14499,7 @@
    "ppm": 16458,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ27٪، طابو ملكية طوابق"
@@ -14605,7 +14542,7 @@
    "ppm": 16053,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ29٪"
@@ -14649,7 +14586,7 @@
    "ppm": 20455,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -14693,7 +14630,7 @@
    "ppm": 18750,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -14732,10 +14669,10 @@
    "ppm": 218,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 218 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ69٪"
+   "rec": "إيجار: 218 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ68٪"
   },
   {
    "src": "emlakjet",
@@ -14771,7 +14708,7 @@
    "ppm": 122,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 122 ₺ للمتر شهرياً — دون وسيط الإلچة بـ10٪"
@@ -14810,10 +14747,10 @@
    "ppm": 100,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ22٪"
+   "rec": "إيجار: 100 ₺ للمتر شهرياً — دون وسيط الإلچة بـ23٪"
   },
   {
    "src": "emlakjet",
@@ -14850,7 +14787,7 @@
    "ppm": 17273,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق"
@@ -14889,7 +14826,7 @@
    "ppm": 33333,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ76٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -14933,7 +14870,7 @@
    "ppm": 19167,
    "yield_": 7.8,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 34,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.8٪"
@@ -14973,7 +14910,7 @@
    "ppm": 16758,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -15017,7 +14954,7 @@
    "ppm": 31786,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ41٪، قابل للتمويل المصرفي"
@@ -15056,7 +14993,7 @@
    "ppm": 27391,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ45٪"
@@ -15097,7 +15034,7 @@
    "ppm": 9773,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ48٪، طابو ملكية طوابق"
@@ -15141,7 +15078,7 @@
    "ppm": 16571,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق"
@@ -15185,7 +15122,7 @@
    "ppm": 21667,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 20,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -15225,7 +15162,7 @@
    "ppm": 300,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 300 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ121٪"
@@ -15265,7 +15202,7 @@
    "ppm": 109,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 109 ₺ للمتر شهرياً — دون وسيط الإلچة بـ20٪"
@@ -15306,7 +15243,7 @@
    "ppm": 27045,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 24,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -15347,7 +15284,7 @@
    "ppm": 18465,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 4,
    "rec": "مرصود: لا حقول مميِّزة معلنة"
@@ -15392,7 +15329,7 @@
    "ppm": 32609,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ44٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -15432,7 +15369,7 @@
    "ppm": 182,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 182 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ34٪"
@@ -15473,7 +15410,7 @@
    "ppm": 353,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 353 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ160٪"
@@ -15512,7 +15449,7 @@
    "ppm": 127,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 127 ₺ للمتر شهرياً — دون وسيط الإلچة بـ2٪"
@@ -15556,7 +15493,7 @@
    "ppm": 15192,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -15601,7 +15538,7 @@
    "ppm": 15000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ34٪، قابل للتمويل المصرفي"
@@ -15648,7 +15585,7 @@
    "ppm": 17000,
    "yield_": 7.1,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.1٪"
@@ -15687,7 +15624,7 @@
    "ppm": 121,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 121 ₺ للمتر شهرياً — دون وسيط الإلچة بـ11٪"
@@ -15728,7 +15665,7 @@
    "ppm": 23478,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، قابل للتمويل المصرفي"
@@ -15767,7 +15704,7 @@
    "ppm": 42000,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ86٪، قابل للتمويل المصرفي"
@@ -15809,7 +15746,7 @@
    "ppm": 89,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 89 ₺ للمتر شهرياً — دون وسيط الإلچة بـ35٪"
@@ -15849,7 +15786,7 @@
    "ppm": 36897,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ63٪، قابل للتمويل المصرفي"
@@ -15888,7 +15825,7 @@
    "ppm": 240,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 240 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ76٪"
@@ -15932,7 +15869,7 @@
    "ppm": 20385,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 43,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، قابل للتمويل المصرفي"
@@ -15972,7 +15909,7 @@
    "ppm": 18750,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -16011,10 +15948,10 @@
    "ppm": 147,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 147 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ14٪"
+   "rec": "إيجار: 147 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ13٪"
   },
   {
    "src": "emlakjet",
@@ -16055,7 +15992,7 @@
    "ppm": 10964,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ42٪، قابل للتمويل المصرفي"
@@ -16093,7 +16030,7 @@
    "ppm": 195,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 195 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ43٪"
@@ -16133,7 +16070,7 @@
    "ppm": 32950,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ46٪، قابل للتمويل المصرفي"
@@ -16173,7 +16110,7 @@
    "ppm": 32917,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ74٪"
@@ -16216,7 +16153,7 @@
    "ppm": 17368,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 43,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -16259,7 +16196,7 @@
    "ppm": 16000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ29٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -16300,7 +16237,7 @@
    "ppm": 30435,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ35٪"
@@ -16340,10 +16277,10 @@
    "ppm": 112,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 112 ₺ للمتر شهرياً — دون وسيط الإلچة بـ13٪"
+   "rec": "إيجار: 112 ₺ للمتر شهرياً — دون وسيط الإلچة بـ14٪"
   },
   {
    "src": "emlakjet",
@@ -16381,10 +16318,10 @@
    "ppm": 15923,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
-   "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ29٪، طابو ملكية طوابق"
+   "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ30٪، طابو ملكية طوابق"
   },
   {
    "src": "emlakjet",
@@ -16422,7 +16359,7 @@
    "ppm": 16500,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -16463,7 +16400,7 @@
    "ppm": 13871,
    "yield_": null,
    "first_seen": "2026-07-06",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 53,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ39٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -16504,7 +16441,7 @@
    "ppm": 21250,
    "yield_": null,
    "first_seen": "2026-06-21",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -16547,7 +16484,7 @@
    "ppm": 20312,
    "yield_": null,
    "first_seen": "2026-06-21",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: لا حقول مميِّزة معلنة"
@@ -16587,7 +16524,7 @@
    "ppm": 17556,
    "yield_": null,
    "first_seen": "2026-06-21",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق"
@@ -16631,7 +16568,7 @@
    "ppm": 16389,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -16675,7 +16612,7 @@
    "ppm": 20571,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -16715,7 +16652,7 @@
    "ppm": 20155,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 20,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -16755,10 +16692,10 @@
    "ppm": 169,
    "yield_": null,
    "first_seen": "2026-06-18",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 169 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ31٪"
+   "rec": "إيجار: 169 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ30٪"
   },
   {
    "src": "emlakjet",
@@ -16795,7 +16732,7 @@
    "ppm": 33478,
    "yield_": null,
    "first_seen": "2026-06-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ77٪، قابل للتمويل المصرفي"
@@ -16839,7 +16776,7 @@
    "ppm": 16538,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق"
@@ -16880,7 +16817,7 @@
    "ppm": 42069,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ86٪، قابل للتمويل المصرفي"
@@ -16923,7 +16860,7 @@
    "ppm": 14993,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -16967,7 +16904,7 @@
    "ppm": 15455,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17011,7 +16948,7 @@
    "ppm": 21429,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17055,7 +16992,7 @@
    "ppm": 23846,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 0,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ26٪، قابل للتمويل المصرفي"
@@ -17095,7 +17032,7 @@
    "ppm": 36579,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ62٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17139,7 +17076,7 @@
    "ppm": 14566,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17180,7 +17117,7 @@
    "ppm": 25714,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 2,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ36٪، طابو ملكية طوابق"
@@ -17221,7 +17158,7 @@
    "ppm": 23576,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، قابل للتمويل المصرفي"
@@ -17261,7 +17198,7 @@
    "ppm": 40076,
    "yield_": null,
    "first_seen": "2026-06-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ112٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17305,7 +17242,7 @@
    "ppm": 13933,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ26٪، طابو ملكية طوابق"
@@ -17349,7 +17286,7 @@
    "ppm": 31727,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ68٪، قابل للتمويل المصرفي"
@@ -17390,7 +17327,7 @@
    "ppm": 26250,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ39٪، قابل للتمويل المصرفي"
@@ -17435,7 +17372,7 @@
    "ppm": 22609,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: عمر البناء ١–٣ سنوات"
@@ -17475,7 +17412,7 @@
    "ppm": 20000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 0,
    "rec": "مرصود: لا حقول مميِّزة معلنة"
@@ -17516,7 +17453,7 @@
    "ppm": 39688,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ76٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17556,7 +17493,7 @@
    "ppm": 24318,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ29٪، قابل للتمويل المصرفي"
@@ -17597,7 +17534,7 @@
    "ppm": 50000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ121٪"
@@ -17641,7 +17578,7 @@
    "ppm": 20789,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17685,7 +17622,7 @@
    "ppm": 20000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17725,7 +17662,7 @@
    "ppm": 25714,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ36٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17770,7 +17707,7 @@
    "ppm": 17438,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -17814,7 +17751,7 @@
    "ppm": 14541,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -17854,7 +17791,7 @@
    "ppm": 40625,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ80٪"
@@ -17895,7 +17832,7 @@
    "ppm": 17328,
    "yield_": null,
    "first_seen": "2026-06-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 54,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة"
@@ -17936,7 +17873,7 @@
    "ppm": 31857,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ41٪، قابل للتمويل المصرفي"
@@ -17980,7 +17917,7 @@
    "ppm": 18788,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18020,7 +17957,7 @@
    "ppm": 20303,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18061,7 +17998,7 @@
    "ppm": 17174,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18101,7 +18038,7 @@
    "ppm": 34375,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 10,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ52٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18141,7 +18078,7 @@
    "ppm": 16591,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18185,7 +18122,7 @@
    "ppm": 17000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18229,7 +18166,7 @@
    "ppm": 28333,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ25٪"
@@ -18270,7 +18207,7 @@
    "ppm": 20385,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -18314,7 +18251,7 @@
    "ppm": 16857,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18358,7 +18295,7 @@
    "ppm": 21429,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 70,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18402,7 +18339,7 @@
    "ppm": 25000,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 43,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، قابل للتمويل المصرفي"
@@ -18442,7 +18379,7 @@
    "ppm": 20682,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18486,7 +18423,7 @@
    "ppm": 31814,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ41٪، قابل للتمويل المصرفي"
@@ -18530,10 +18467,10 @@
    "ppm": 13448,
    "yield_": 9.2,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 55,
-   "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ40٪، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 9.2٪"
+   "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ41٪، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 9.2٪"
   },
   {
    "src": "emlakjet",
@@ -18574,7 +18511,7 @@
    "ppm": 34615,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ83٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18616,7 +18553,7 @@
    "ppm": 30645,
    "yield_": 6.3,
    "first_seen": "2026-06-23",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 46,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ36٪، قابل للتمويل المصرفي"
@@ -18657,7 +18594,7 @@
    "ppm": 9500,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ58٪"
@@ -18697,10 +18634,10 @@
    "ppm": 44857,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ99٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ98٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -18737,7 +18674,7 @@
    "ppm": 15167,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18781,7 +18718,7 @@
    "ppm": 28889,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 0,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ53٪"
@@ -18825,7 +18762,7 @@
    "ppm": 16667,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18864,7 +18801,7 @@
    "ppm": 17812,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18904,7 +18841,7 @@
    "ppm": 17396,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18944,7 +18881,7 @@
    "ppm": 26750,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 20,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -18984,7 +18921,7 @@
    "ppm": 22727,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 20,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -19032,7 +18969,7 @@
    "ppm": 16842,
    "yield_": 7.5,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، عائد إيجاري إجمالي معلَن 7.5٪"
@@ -19075,7 +19012,7 @@
    "ppm": 13621,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ40٪"
@@ -19115,7 +19052,7 @@
    "ppm": 106,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 106 ₺ للمتر شهرياً — دون وسيط الإلچة بـ18٪"
@@ -19155,10 +19092,10 @@
    "ppm": 33333,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 10,
-   "rec": "مرصود: سعر المتر أعلى من الوسيط بـ48٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
+   "rec": "مرصود: سعر المتر أعلى من الوسيط بـ47٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -19199,7 +19136,7 @@
    "ppm": 12963,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ31٪، طابو ملكية طوابق"
@@ -19239,7 +19176,7 @@
    "ppm": 24107,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 10,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ28٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -19282,7 +19219,7 @@
    "ppm": 19091,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق"
@@ -19321,7 +19258,7 @@
    "ppm": 22581,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -19360,7 +19297,7 @@
    "ppm": 34167,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ81٪، طابو ملكية طوابق"
@@ -19400,10 +19337,10 @@
    "ppm": 32857,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ46٪، قابل للتمويل المصرفي"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ45٪، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -19444,7 +19381,7 @@
    "ppm": 16757,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ26٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -19488,7 +19425,7 @@
    "ppm": 29545,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ31٪، قابل للتمويل المصرفي"
@@ -19532,7 +19469,7 @@
    "ppm": 19881,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -19572,7 +19509,7 @@
    "ppm": 23438,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن"
@@ -19612,7 +19549,7 @@
    "ppm": 30992,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ37٪"
@@ -19653,7 +19590,7 @@
    "ppm": 30682,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ36٪"
@@ -19694,7 +19631,7 @@
    "ppm": 18104,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -19735,7 +19672,7 @@
    "ppm": 36842,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ95٪، قابل للتمويل المصرفي"
@@ -19776,7 +19713,7 @@
    "ppm": 154,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 154 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ0٪"
@@ -19818,7 +19755,7 @@
    "ppm": 271,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 271 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ99٪"
@@ -19859,7 +19796,7 @@
    "ppm": 19474,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 16,
    "rec": "مرصود: طابو ملكية طوابق"
@@ -19904,7 +19841,7 @@
    "ppm": 14000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ38٪، قابل للتمويل المصرفي"
@@ -19945,7 +19882,7 @@
    "ppm": 43333,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ92٪"
@@ -19985,7 +19922,7 @@
    "ppm": 33611,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ49٪، قابل للتمويل المصرفي"
@@ -20029,7 +19966,7 @@
    "ppm": 13037,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ31٪، طابو ملكية طوابق"
@@ -20069,7 +20006,7 @@
    "ppm": 9872,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ56٪"
@@ -20110,7 +20047,7 @@
    "ppm": 8971,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ60٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -20154,7 +20091,7 @@
    "ppm": 22625,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -20194,7 +20131,7 @@
    "ppm": 15682,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ31٪، قابل للتمويل المصرفي"
@@ -20234,7 +20171,7 @@
    "ppm": 45833,
    "yield_": null,
    "first_seen": "2026-08-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ103٪، قابل للتمويل المصرفي"
@@ -20278,7 +20215,7 @@
    "ppm": 17304,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -20317,7 +20254,7 @@
    "ppm": 285,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 285 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ110٪"
@@ -20361,7 +20298,7 @@
    "ppm": 21250,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -20401,7 +20338,7 @@
    "ppm": 14760,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ35٪، قابل للتمويل المصرفي"
@@ -20442,7 +20379,7 @@
    "ppm": 18649,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 27,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -20482,7 +20419,7 @@
    "ppm": 39388,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ74٪، قابل للتمويل المصرفي"
@@ -20526,10 +20463,10 @@
    "ppm": 30846,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ37٪، قابل للتمويل المصرفي"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ36٪، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -20570,7 +20507,7 @@
    "ppm": 35000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ55٪، قابل للتمويل المصرفي"
@@ -20614,7 +20551,7 @@
    "ppm": 31677,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ40٪"
@@ -20654,7 +20591,7 @@
    "ppm": 37300,
    "yield_": null,
    "first_seen": "2026-06-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ65٪"
@@ -20698,7 +20635,7 @@
    "ppm": 31724,
    "yield_": null,
    "first_seen": "2026-08-24",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ40٪، قابل للتمويل المصرفي"
@@ -20739,7 +20676,7 @@
    "ppm": 15714,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ30٪، قابل للتمويل المصرفي"
@@ -20780,7 +20717,7 @@
    "ppm": 11923,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ37٪، طابو ملكية طوابق"
@@ -20820,7 +20757,7 @@
    "ppm": 43182,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ91٪، قابل للتمويل المصرفي"
@@ -20864,7 +20801,7 @@
    "ppm": 15862,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -20903,7 +20840,7 @@
    "ppm": 28000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ48٪، قابل للتمويل المصرفي"
@@ -20943,7 +20880,7 @@
    "ppm": 14815,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -20987,7 +20924,7 @@
    "ppm": 25172,
    "yield_": null,
    "first_seen": "2026-06-25",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ33٪، قابل للتمويل المصرفي"
@@ -21028,7 +20965,7 @@
    "ppm": 21714,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 12,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -21068,7 +21005,7 @@
    "ppm": 108,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 108 ₺ للمتر شهرياً — دون وسيط الإلچة بـ21٪"
@@ -21112,7 +21049,7 @@
    "ppm": 7685,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ66٪"
@@ -21153,7 +21090,7 @@
    "ppm": 16167,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -21197,7 +21134,7 @@
    "ppm": 21515,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -21238,7 +21175,7 @@
    "ppm": 14773,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ35٪، طابو ملكية طوابق"
@@ -21281,7 +21218,7 @@
    "ppm": 22148,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 43,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، قابل للتمويل المصرفي"
@@ -21329,7 +21266,7 @@
    "ppm": 15135,
    "yield_": 7.7,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 43,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ33٪، عائد إيجاري إجمالي معلَن 7.7٪"
@@ -21373,7 +21310,7 @@
    "ppm": 19000,
    "yield_": 9.5,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 29,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، عائد إيجاري إجمالي معلَن 9.5٪"
@@ -21419,7 +21356,7 @@
    "ppm": 19917,
    "yield_": 7.5,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 30,
    "rec": "مرصود: طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.5٪"
@@ -21460,7 +21397,7 @@
    "ppm": 31111,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 49,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ65٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -21504,7 +21441,7 @@
    "ppm": 15714,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ30٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -21548,7 +21485,7 @@
    "ppm": 20573,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 39,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -21592,7 +21529,7 @@
    "ppm": 25000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -21636,7 +21573,7 @@
    "ppm": 9852,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ48٪، قابل للتمويل المصرفي"
@@ -21677,7 +21614,7 @@
    "ppm": 11455,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ39٪، قابل للتمويل المصرفي"
@@ -21717,7 +21654,7 @@
    "ppm": 24000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 2,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ27٪، قابل للتمويل المصرفي"
@@ -21763,10 +21700,10 @@
    "ppm": 31515,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ40٪، قابل للتمويل المصرفي"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ39٪، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -21803,7 +21740,7 @@
    "ppm": 13750,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ27٪، قابل للتمويل المصرفي"
@@ -21845,7 +21782,7 @@
    "ppm": 291,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 291 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ114٪"
@@ -21887,7 +21824,7 @@
    "ppm": 271,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 271 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ99٪"
@@ -21927,7 +21864,7 @@
    "ppm": 14192,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ37٪، قابل للتمويل المصرفي"
@@ -21971,7 +21908,7 @@
    "ppm": 17079,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -22017,7 +21954,7 @@
    "ppm": 31081,
    "yield_": 5.2,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 42,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ38٪، قابل للتمويل المصرفي"
@@ -22063,7 +22000,7 @@
    "ppm": 33750,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ49٪"
@@ -22106,7 +22043,7 @@
    "ppm": 20625,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 23,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -22150,7 +22087,7 @@
    "ppm": 42308,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 25,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ124٪"
@@ -22194,7 +22131,7 @@
    "ppm": 29667,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ57٪، قابل للتمويل المصرفي"
@@ -22238,7 +22175,7 @@
    "ppm": 18015,
    "yield_": 7.3,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 22,
    "rec": "مرصود: قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.3٪"
@@ -22284,7 +22221,7 @@
    "ppm": 26190,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 43,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، قابل للتمويل المصرفي"
@@ -22325,10 +22262,10 @@
    "ppm": 291,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
-   "rec": "إيجار: 291 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ126٪"
+   "rec": "إيجار: 291 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ124٪"
   },
   {
    "src": "emlakjet",
@@ -22373,7 +22310,7 @@
    "ppm": 16667,
    "yield_": 8.2,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 41,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 8.2٪"
@@ -22415,7 +22352,7 @@
    "ppm": 31600,
    "yield_": 6.1,
    "first_seen": "2026-06-26",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 42,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ67٪، قابل للتمويل المصرفي"
@@ -22457,7 +22394,7 @@
    "ppm": 31364,
    "yield_": 6.3,
    "first_seen": "2026-06-26",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 42,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ66٪، قابل للتمويل المصرفي"
@@ -22505,7 +22442,7 @@
    "ppm": 9500,
    "yield_": 7.9,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ50٪، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.9٪"
@@ -22547,7 +22484,7 @@
    "ppm": 18500,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 58,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي"
@@ -22589,10 +22526,10 @@
    "ppm": 33333,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
-   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ48٪، قابل للتمويل المصرفي"
+   "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ47٪، قابل للتمويل المصرفي"
   },
   {
    "src": "emlakjet",
@@ -22633,7 +22570,7 @@
    "ppm": 17909,
    "yield_": 7.3,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 7.3٪"
@@ -22676,7 +22613,7 @@
    "ppm": 12941,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ32٪، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -22716,7 +22653,7 @@
    "ppm": 24318,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 8,
    "rec": "مرصود: قابل للتمويل المصرفي"
@@ -22760,7 +22697,7 @@
    "ppm": 16071,
    "yield_": 8.0,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 8.0٪"
@@ -22800,7 +22737,7 @@
    "ppm": 12600,
    "yield_": 9.5,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 47,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ44٪، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 9.5٪"
@@ -22840,7 +22777,7 @@
    "ppm": 17639,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 19,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة"
@@ -22885,7 +22822,7 @@
    "ppm": 31600,
    "yield_": 4.6,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 2,
    "rec": "مرصود: سعر المتر أعلى من الوسيط بـ40٪، قابل للتمويل المصرفي"
@@ -22929,7 +22866,7 @@
    "ppm": 23143,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 55,
    "rec": "مرصود: عمر البناء صفر · جاهز للسكن، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -22970,7 +22907,7 @@
    "ppm": 47222,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 33,
    "rec": "مرصود: عمر البناء قيد الإنشاء، سعر المتر أعلى من الوسيط بـ109٪، قابل للتمويل المصرفي"
@@ -23010,7 +22947,7 @@
    "ppm": 18091,
    "yield_": 12.1,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 45,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 12.1٪"
@@ -23053,7 +22990,7 @@
    "ppm": 14545,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 35,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي"
@@ -23092,7 +23029,7 @@
    "ppm": 14000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ38٪، قابل للتمويل المصرفي"
@@ -23133,7 +23070,7 @@
    "ppm": 31000,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: عمر البناء ١–٣ سنوات، سعر المتر أعلى من الوسيط بـ37٪، قابل للتمويل المصرفي"
@@ -23175,7 +23112,7 @@
    "ppm": 148,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": null,
    "rec": "إيجار: 148 ₺ للمتر شهرياً — فوق وسيط الإلچة بـ9٪"
@@ -23219,7 +23156,7 @@
    "ppm": 24760,
    "yield_": 7.0,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 26,
    "rec": "مرصود: طابو ملكية طوابق، عائد إيجاري إجمالي معلَن 7.0٪"
@@ -23266,7 +23203,7 @@
    "ppm": 15667,
    "yield_": 8.7,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 37,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 8.7٪"
@@ -23308,7 +23245,7 @@
    "ppm": 17778,
    "yield_": 11.0,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 53,
    "rec": "مرصود: سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 11.0٪"
@@ -23351,10 +23288,10 @@
    "ppm": 34211,
    "yield_": null,
    "first_seen": "2026-08-29",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-08-30",
    "new_today": false,
    "score": 0,
-   "rec": "مرصود: سعر المتر أعلى من الوسيط بـ52٪، قابل للتمويل المصرفي"
+   "rec": "مرصود: سعر المتر أعلى من الوسيط بـ51٪، قابل للتمويل المصرفي"
   }
  ]
 }
