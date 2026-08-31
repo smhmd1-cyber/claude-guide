@@ -2069,13 +2069,25 @@
   "date": "2026-08-31",
   "il": "Malatya",
   "ilce": "النواة الحضرية (Yeşilyurt+Battalgazi)",
-  "n_sale": 347,
-  "n_rent": 208,
-  "hi": 130,
-  "med_ppm": 21111,
-  "med_rpm": 132,
+  "n_sale": 345,
+  "n_rent": 205,
+  "hi": 131,
+  "med_ppm": 21250,
+  "med_rpm": 133,
   "yield_": 7.5,
   "top": [
+   {
+    "mah": "Bostanbaşı",
+    "deal": "satilik",
+    "rooms": "3+1",
+    "m2": 242,
+    "price": 3350000,
+    "ppm": 13843,
+    "rpm": 0,
+    "sc": 88,
+    "rec": "ظهر اليوم: عمر البناء ١–٣ سنوات، سعر المتر أدنى من وسيط الإلچة بـ39٪، طابو ملكية طوابق، قابل للتمويل المصرفي",
+    "url": "https://www.emlakjet.com/ilan/yusuf-karadaglidan-tasinmaya-hazir-satilik-ultraluks-31-daire-19790686"
+   },
    {
     "mah": "Çarmuzu",
     "deal": "satilik",
@@ -2159,18 +2171,6 @@
     "sc": 58,
     "rec": "مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ54٪، طابو ملكية طوابق، قابل للتمويل المصرفي",
     "url": "https://www.emlakjet.com/ilan/dairemiz-merkezi-konumda-olup-deprem-sonrasi-31full-yapili-asansorlu-19772256"
-   },
-   {
-    "mah": "Koyunoğlu",
-    "deal": "satilik",
-    "rooms": "3+1",
-    "m2": 145,
-    "price": 1950000,
-    "ppm": 13448,
-    "rpm": 0,
-    "sc": 55,
-    "rec": "مرصود: سعر المتر أدنى من وسيط الإلچة بـ41٪، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 9.2٪",
-    "url": "https://www.emlakjet.com/ilan/eviniz-koyunoglunda-rahatiniz-yerinde-31-yuksek-giris-19290305"
    }
   ],
   "source": "Emlakjet — سحب آليّ حتميّ"
