@@ -129,23 +129,39 @@ jobs:
           # output to destination»، ومع pipefail يبدو الموقعُ السليم مفقوداً.
           # حدث فعلاً في ريّة 26/08/2026: «تعذّر تأكيد المرآة» والمرآة سليمة.
           # هنا الخطر أكبر: إنذار كاذب يرفع FAIL=1 ويُفشل النشر كلّه.
+          # /mytask/ قد يكون مفتوحاً أو محميّاً بكلمة مرور. الحالتان سليمتان:
+          #   200 + العلامة = مفتوح ويعمل · 401 = محميّ والخادم يردّ.
+          # ما عداهما عطل. نقرأ الرمز أوّلاً ثم المحتوى، فلا نخلط «محميّ» بـ«ساقط».
           echo "— نظام إدارة المهامّ (/mytask/)؟"
-          if curl -fsSL --max-time 45 -o /tmp/mytask.html "https://jmahery.com/mytask/?c=$T" \
-             && grep -q "ניהול משימות" /tmp/mytask.html; then
-            echo "  ✅ سليم"
-          else
-            echo "  🚨 غير معروف — افحص فوراً"; FAIL=1
-          fi
+          MT=$(curl -s -o /tmp/mytask.html -w "%{http_code}" --max-time 45 "https://jmahery.com/mytask/?c=$T")
+          case "$MT" in
+            401) echo "  🔒 محميّ بكلمة مرور — الخادم يردّ (401)" ;;
+            200) if grep -q "ניהול משימות" /tmp/mytask.html; then
+                   echo "  ✅ سليم ومفتوح"
+                 else
+                   echo "  🚨 يردّ 200 بلا علامة النظام — افحص فوراً"; FAIL=1
+                 fi ;;
+            *)   echo "  🚨 /mytask/ → $MT — افحص فوراً"; FAIL=1 ;;
+          esac
           # الجذر لم يعد يخدم نظام المهامّ منذ 28/08/2026 (يحوّل إلى jmahery.co.il،
           # و/index.html يردّ 404). حالته تُطبَع للعلم ولا تُفشل النشر: النظام نفسه
           # سليم في /mytask/ وهو ما يفحصه الشرط أعلاه.
           RC=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "https://jmahery.com/?c=$T")
           echo "  ℹ️  جذر النطاق → $RC (تحويل خارجي — ليس بوّابة فشل)"
-          for u in "https://jmahery.com/guide.html" "https://guideclaude.jmahery.com/" \
-                   "https://jmahery.com/%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%97%D7%9B%D7%9D-%D7%90%D7%99%D7%A0%D7%98%D7%A8%D7%90%D7%A7%D7%98%D7%99%D7%91%D7%99.html"; do
+          # ما زال يجب أن يبقى مفتوحاً للعموم
+          for u in "https://jmahery.com/guide.html" "https://guideclaude.jmahery.com/"; do
             C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "$u?c=$T")
             [ "$C" = "200" ] && echo "  ✅ $u → 200" || { echo "  🚨 $u → $C"; FAIL=1; }
           done
+          # الدليل التفاعلي انتقل في 31/08/2026 من جذر النطاق إلى /private/ وحُمي
+          # بكلمة مرور. هنا 401 هو النجاح: الملف موجود والحماية قائمة. و200 هو
+          # الإنذار — يعني أنّ الحماية سقطت والدليل صار مكشوفاً للعموم.
+          PC=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "https://jmahery.com/private/?c=$T")
+          case "$PC" in
+            401) echo "  🔒 /private/ → 401 (الدليل محميّ كما يجب)" ;;
+            200) echo "  🚨 /private/ → 200 — الحماية سقطت والدليل مكشوف!"; FAIL=1 ;;
+            *)   echo "  🚨 /private/ → $PC (المتوقَّع 401)"; FAIL=1 ;;
+          esac
           echo "— مكتبة المستندات: مفتوحة للمستخدم، ومغلقة أمام التصفّح كقائمة —"
           C=$(curl -s -o /dev/null -w "%{http_code}" --max-time 45 "${PORTAL_URL}docs/?c=$T")
           case "$C" in
@@ -162,18 +178,23 @@ jobs:
           T=$(date +%s)
           # ننزّل إلى ملف ثم نقرأ — لا أنبوب من curl (انظر شرح SIGPIPE أعلاه).
           echo "— مركز التحكّم —"
-          if curl -fsSL --max-time 45 -o /tmp/hub.html "${PORTAL_URL}?n=$T" \
-             && grep -q "منظومة ملاطيا" /tmp/hub.html; then
+          HC=$(curl -s -o /tmp/hub.html -w "%{http_code}" --max-time 45 "${PORTAL_URL}?n=$T")
+          if [ "$HC" = "401" ]; then
+            echo "  🔒 محميّ بكلمة مرور — لا يمكن قراءة المحتوى من هنا، وهذا متوقَّع"
+          elif [ "$HC" = "200" ] && grep -q "منظومة ملاطيا" /tmp/hub.html; then
             echo "  ✅ حيّ"
           else
-            echo "  ⚠️  تعذّر تأكيد مركز التحكّم"
+            echo "  ⚠️  تعذّر تأكيد مركز التحكّم (→ $HC)"
           fi
           echo "— الدليل والنشرة —"
-          if curl -fsSL --max-time 45 -o /tmp/live-daleel.html "${PORTAL_URL}daleel.html?n=$T"; then
+          DC=$(curl -s -o /tmp/live-daleel.html -w "%{http_code}" --max-time 45 "${PORTAL_URL}daleel.html?n=$T")
+          if [ "$DC" = "401" ]; then
+            echo "  🔒 محميّ بكلمة مرور — ختم التاريخ يُقرأ من المرآة أدناه"
+          elif [ "$DC" = "200" ]; then
             grep -m1 -o 'id="daily-date"[^>]*>[^<]*' /tmp/live-daleel.html \
               || echo "  ⚠️  لم يُعثر على ختم التاريخ في الصفحة الحيّة"
           else
-            echo "  ⚠️  تعذّرت القراءة"
+            echo "  ⚠️  تعذّرت القراءة (→ $DC)"
           fi
           echo "— مرآة GitHub Pages —"
           if curl -fsSL --max-time 45 -o /tmp/mirror.html "https://smhmd1-cyber.github.io/claude-guide/malatya/?n=$T" \

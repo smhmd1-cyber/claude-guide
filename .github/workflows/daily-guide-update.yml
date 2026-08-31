@@ -312,9 +312,12 @@ jobs:
           # curl מת ב-SIGPIPE ומחזיר «curl: (23) Failure writing output to
           # destination», ועם pipefail אתר תקין נראה כאילו נמחק — אזעקת שווא
           # שמפילה את כל הפרסום. קרה בפועל ב-26/08/2026 בפרסום מלטיה.
+          # 401 = מוגנת בסיסמה, השרת חי — זו בריאות ולא תקלה.
           echo "— מערכת ניהול המשימות (/mytask/) עדיין חיה?"
-          if curl -fsSL --max-time 45 -o /tmp/mytask.html "https://jmahery.com/mytask/?c=$(date +%s)" \
-             && grep -q "ניהול משימות" /tmp/mytask.html; then
+          MT=$(curl -s -o /tmp/mytask.html -w "%{http_code}" --max-time 45 "https://jmahery.com/mytask/?c=$(date +%s)")
+          if [ "$MT" = "401" ]; then
+            echo "  🔒 מוגנת בסיסמה — השרת עונה (401)"
+          elif [ "$MT" = "200" ] && grep -q "ניהול משימות" /tmp/mytask.html; then
             echo "  ✅ המערכת במקומה"
           else
             echo "  🚨 מערכת הניהול לא מזוהה ב-/mytask/ — בדוק מיד!"; FAIL=1
