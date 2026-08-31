@@ -2,7 +2,7 @@
  "updated": "2026-08-31",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
- "total": 307,
+ "total": 308,
  "sources": [
   {
    "key": "emlakjet",
@@ -11,11 +11,11 @@
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
    "status": "ok",
-   "count": 249,
+   "count": 250,
    "site_reported_total": 250,
    "pages": 9,
-   "detail_cached": 246,
-   "detail_fetched": 3,
+   "detail_cached": 249,
+   "detail_fetched": 1,
    "detail_failed": 0
   },
   {
@@ -35,7 +35,7 @@
  "summary": {
   "districts_with_listings": 12,
   "districts_total": 13,
-  "ppm_median": 1741,
+  "ppm_median": 1748,
   "ppm_p10": 350,
   "ppm_p90": 9545,
   "price_min": 410000,
@@ -44,7 +44,7 @@
   "m2_recovered": 1,
   "dropped_outside_province": 0,
   "by_source": {
-   "emlakjet": 249,
+   "emlakjet": 250,
    "ilangovtr": 58
   },
   "overrides": {
@@ -53,14 +53,14 @@
    "manual": 0
   },
   "by_cat": {
-   "أرض · أرسا": 256,
+   "أرض · أرسا": 257,
    "أرض زراعية وبساتين": 22,
    "سكن": 23,
    "عقار آخر": 6
   },
-  "land_count": 278,
+  "land_count": 279,
   "by_zon": {
-   "مرخّصة للبناء": 104,
+   "مرخّصة للبناء": 105,
    "زراعية": 165,
    "بلا إمار أو مقيَّدة": 1,
    "تصنيف آخر": 3,
@@ -68,21 +68,21 @@
   },
   "by_tapu": {
    "بلا قيد طابو": 6,
-   "طابو مستقلّ": 211,
+   "طابو مستقلّ": 212,
    "طابو مشاع (حصّة)": 27,
    "طابو من تعاونية": 4,
    "نوع الطابو غير معروف": 1
   },
-  "zon_declared": 249
+  "zon_declared": 250
  },
  "stats": [
   {
    "ilce": "Yeşilyurt",
-   "n": 135,
-   "ppm_med": 4174,
+   "n": 136,
+   "ppm_med": 4257,
    "ppm_min": 10,
    "ppm_max": 44318,
-   "p_med": 6600000,
+   "p_med": 6675000,
    "note": null
   },
   {
@@ -206,11 +206,11 @@
  "zon_stats": [
   {
    "zon": "مرخّصة للبناء",
-   "n": 104,
-   "ppm_med": 6649,
+   "n": 105,
+   "ppm_med": 6727,
    "ppm_p10": 2679,
    "ppm_p90": 11538,
-   "n_priced": 98
+   "n_priced": 99
   },
   {
    "zon": "زراعية",
@@ -449,29 +449,6 @@
    "ppm": null
   },
   {
-   "src": "ilangovtr",
-   "id": "2203620",
-   "t": "Malatya Yeşilyurt Yakınca Mahallesi'nde 3+1 125 m² daire icradan satılıktır",
-   "ilce": "Yeşilyurt",
-   "mah": "",
-   "m2": 125,
-   "p": 2456268,
-   "d": "2026-08-26",
-   "u": "https://www.ilan.gov.tr/ilan/2203620/emlak-konut-malatya-yesilyurt-yakinca-mahallesinde-3-1-125-m2-daire-icradan-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "سكن",
-   "land": false,
-   "m2kind": "مساحة مبنية معلنة",
-   "org": "MALATYA İCRA DAİRESİ",
-   "sale1": "23.09.2026",
-   "sale2": null,
-   "dosya": "2025/37453 ESAS",
-   "zon": "غير مذكور",
-   "zonsrc": "غير مذكور في الإعلان",
-   "ppm": 19650
-  },
-  {
    "src": "emlakjet",
    "id": "19773772",
    "t": "Battalgazi Kadıçayırı Mahallesi'nde Satılık Müstakil Tapulu Arsa",
@@ -519,26 +496,26 @@
   },
   {
    "src": "ilangovtr",
-   "id": "2202741",
-   "t": "Malatya Akçadağ Heküge Deresi Mevkii'nde 17.630 m² tarla icradan satılıktır (1/3 pay satışı)",
-   "ilce": "Akçadağ",
+   "id": "2203620",
+   "t": "Malatya Yeşilyurt Yakınca Mahallesi'nde 3+1 125 m² daire icradan satılıktır",
+   "ilce": "Yeşilyurt",
    "mah": "",
-   "m2": 17630,
-   "p": 2350697,
+   "m2": 125,
+   "p": 2456268,
    "d": "2026-08-25",
-   "u": "https://www.ilan.gov.tr/ilan/2202741/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-akcadag-hekuge-deresi-mevkiinde-17-630-m2-tarla-icradan-satiliktir-1-3-pay-satisi-",
+   "u": "https://www.ilan.gov.tr/ilan/2203620/emlak-konut-malatya-yesilyurt-yakinca-mahallesinde-3-1-125-m2-daire-icradan-satiliktir",
    "img": "",
    "kind": "بيع قضائي (İCRA)",
-   "cat": "أرض زراعية وبساتين",
-   "land": true,
-   "m2kind": "مساحة الأرض",
-   "org": "AKÇADAĞ İCRA DAİRESİ MÜDÜRLÜĞÜ",
-   "sale1": "24.09.2026",
+   "cat": "سكن",
+   "land": false,
+   "m2kind": "مساحة مبنية معلنة",
+   "org": "MALATYA İCRA DAİRESİ",
+   "sale1": "23.09.2026",
    "sale2": null,
-   "dosya": "2025/145 TLMT.",
-   "zon": "زراعية",
-   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي",
-   "ppm": 133
+   "dosya": "2025/37453 ESAS",
+   "zon": "غير مذكور",
+   "zonsrc": "غير مذكور في الإعلان",
+   "ppm": 19650
   },
   {
    "src": "emlakjet",
@@ -560,6 +537,29 @@
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 1528
+  },
+  {
+   "src": "ilangovtr",
+   "id": "2202741",
+   "t": "Malatya Akçadağ Heküge Deresi Mevkii'nde 17.630 m² tarla icradan satılıktır (1/3 pay satışı)",
+   "ilce": "Akçadağ",
+   "mah": "",
+   "m2": 17630,
+   "p": 2350697,
+   "d": "2026-08-24",
+   "u": "https://www.ilan.gov.tr/ilan/2202741/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-akcadag-hekuge-deresi-mevkiinde-17-630-m2-tarla-icradan-satiliktir-1-3-pay-satisi-",
+   "img": "",
+   "kind": "بيع قضائي (İCRA)",
+   "cat": "أرض زراعية وبساتين",
+   "land": true,
+   "m2kind": "مساحة الأرض",
+   "org": "AKÇADAĞ İCRA DAİRESİ MÜDÜRLÜĞÜ",
+   "sale1": "24.09.2026",
+   "sale2": null,
+   "dosya": "2025/145 TLMT.",
+   "zon": "زراعية",
+   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي",
+   "ppm": 133
   },
   {
    "src": "ilangovtr",
@@ -1101,7 +1101,7 @@
   {
    "src": "emlakjet",
    "id": "19724765",
-   "t": "Organize San.bitimi Cihadiyede 8435 M2 Satılık Arazi",
+   "t": "Organize San.bitimi Cihadiyede 8435 M2 Satılık Ev Ve Arazi",
    "ilce": "Yeşilyurt",
    "mah": "Özal Mahallesi",
    "m2": 8435,
@@ -1765,6 +1765,27 @@
    "zonf": "تجاري",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 8367
+  },
+  {
+   "src": "emlakjet",
+   "id": "19676472",
+   "t": "Vip Lineden Mullakasımda 2.167 M2 Arsa İçinde Villa",
+   "ilce": "Yeşilyurt",
+   "mah": "Mullakasım Mahallesi",
+   "m2": 2167,
+   "p": 19700000,
+   "d": "2026-08-02",
+   "u": "https://www.emlakjet.com/ilan/19676472",
+   "img": "19676472/CB33C254FA37A2AA511B26B76CED2DF719676472.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Villa İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "zon": "مرخّصة للبناء",
+   "zonf": "فيلات",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 9091
   },
   {
    "src": "emlakjet",
