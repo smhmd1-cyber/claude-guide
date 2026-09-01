@@ -118,6 +118,7 @@ jobs:
 
       - name: حصر التعديلات في ملف البيانات وحده
         run: |
+          set -euo pipefail
           CHANGED=$(git status --porcelain | awk '{print $2}')
           echo "$CHANGED"
           for f in $CHANGED; do
@@ -130,19 +131,39 @@ jobs:
       - name: حفظ ودفع
         id: commit
         run: |
+          # ═══════════════════════════════════════════════════════════════
+          # كان هذا البلوك بلا `set -e` وبلا فحصٍ لنتيجة حلقة الدفع: لو فشلت
+          # المحاولات الخمس كلّها، تنتهي الحلقة بهدوء ويُكتب changed=true،
+          # فتخرج الخطوة ناجحة ويُستدعى النشر على شجرةٍ لم يصلها شيء. أي:
+          # ريّة خضراء فوق بيانات لم تُحفَظ. الأخضر الكاذب أخطر من الأحمر.
+          # ═══════════════════════════════════════════════════════════════
+          set -euo pipefail
+          echo "changed=false" >> "$GITHUB_OUTPUT"
           git config user.name  "malatya-arsa-bot"
           git config user.email "actions@github.com"
           if git diff --quiet -- malatya/data/arsa-listings.json; then
             echo "لا تغيير في البيانات اليوم."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git add malatya/data/arsa-listings.json
-          git commit -m "أراضي البناء — تحديث $(date -u +%F)"
+          git commit -m "أراضي البناء — تحديث $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+
+          PUSHED=0
           for i in 1 2 3 4 5; do
-            git fetch origin main && git rebase origin/main && git push origin HEAD:main && break
-            echo "محاولة الدفع $i فشلت — إعادة المحاولة"; sleep 6
+            if git push origin HEAD:main; then PUSHED=1; echo "✅ دُفع (محاولة $i)"; break; fi
+            echo "↻ main تقدّم أثناء عملنا — أُعيد الأساس وأحاول ثانيةً (محاولة $i)"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort 2>/dev/null || true
+              echo "❌ تعارض حقيقي أثناء إعادة الأساس — يحتاج يداً بشرية، ولن نفرض شيئاً"
+              exit 1
+            fi
+            sleep $((i * 5))
           done
+          if [ "$PUSHED" != "1" ]; then
+            echo "❌ تعذّر الدفع بعد خمس محاولات — لا نُعلن نجاحاً ولا نستدعي النشر"
+            exit 1
+          fi
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
   publish:

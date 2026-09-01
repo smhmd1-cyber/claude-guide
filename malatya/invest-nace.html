@@ -41,6 +41,9 @@
 .kv .r{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.8}
 .kv .r b{flex:0 0 auto;color:#fff;font-weight:700;min-width:150px}
 .kv .r span{color:var(--text2)}
+/* على شاشة 320px لا يتّسع عمودان: min-width:150px على عنصر مرونةٍ لا ينكمش
+   كان يدفع 20px خارج الشاشة. تحت 420px يُكدَّس الصفّ عمودياً بدل أن يُقصّ. */
+@media(max-width:420px){.kv .r{flex-direction:column;gap:2px}.kv .r b{min-width:0}}
 .blk{border-inline-start:3px solid var(--red);background:rgba(255,107,122,.06);padding:10px 13px;
   border-radius:0 9px 9px 0;font-size:13px;color:var(--text2);line-height:1.85;margin-bottom:7px}
 .vd{margin-top:14px;padding:13px 16px;border-radius:11px;font-size:14px;line-height:1.85}

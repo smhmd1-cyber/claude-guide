@@ -406,36 +406,71 @@ def apply_detail(r, p):
     return r
 
 
+# قاطع الدائرة: كم إخفاقاً متتالياً قبل التوقّف عن محاولة صفحات التفاصيل،
+# وكم ثانية على الأكثر تُنفَق في هذه المرحلة كلّها.
+DETAIL_FAIL_STREAK = int(os.environ.get("AQAR_DETAIL_FAIL_STREAK", "12"))
+DETAIL_TIME_BUDGET = int(os.environ.get("AQAR_DETAIL_TIME_BUDGET", "1500"))
+
+
 def enrich(rows, prev_by_id):
-    """يملأ حقول صفحة الإعلان، ويعيد استعمال ما سبق جلبه بدل الطلب كل يوم."""
+    """يملأ حقول صفحة الإعلان، ويعيد استعمال ما سبق جلبه بدل الطلب كل يوم.
+
+    ═══════════════════════════════════════════════════════════════════
+    قاطع دائرة — أُضيف بعد مراجعة 01/09/2026
+    ═══════════════════════════════════════════════════════════════════
+    كل صفحة تفاصيل فاشلة تكلّف حتى ~18 ثانية (محاولتان × وضعَي تحقّق SSL،
+    بمهلٍ متصاعدة). لو حجب الموقع صفحات التفاصيل — وهذا بالضبط ما فعلته
+    hepsiemlak و sahibinden و Coldwell Banker في 25/08/2026 — لصار السقف
+    600 × 18 ثانية = ثلاث ساعات، بينما مهلة الوظيفة ستّون دقيقة. النتيجة:
+    تُقتل الريّة **قبل الكتابة**، فيضيع سحبُ القوائم الناجح كلّه معها.
+    هنا نتوقّف عن التفاصيل بعد سلسلة إخفاقات أو بعد ميزانية زمنية، ونكمل
+    بما جُمع. التفاصيل تحسينٌ للسجلّ؛ القوائم هي السجلّ.
+    """
     cached = fetched = failed = 0
+    streak = 0
+    aborted = None
+    t0 = time.time()
     for r in rows:
-        old = prev_by_id.get(r["id"])
-        if old and old.get("age_raw"):
+        prev = prev_by_id.get(r["id"])
+        if prev and prev.get("age_raw"):
             for k in DETAIL_KEYS:
-                if old.get(k) is not None:
-                    r[k] = old[k]
+                if prev.get(k) is not None:
+                    r[k] = prev[k]
             if r.get("tapu"):
                 r["tapu"] = tapu_label(r["tapu"])
             cached += 1
             continue
-        if fetched >= DETAIL_BUDGET:
+        if aborted or fetched >= DETAIL_BUDGET:
+            continue
+        if time.time() - t0 > DETAIL_TIME_BUDGET:
+            aborted = "الميزانية الزمنية (%ds) نفدت" % DETAIL_TIME_BUDGET
+            print("  ⏱️  %s — نكمل بما جُمع" % aborted, file=sys.stderr)
             continue
         try:
-            p = detail(r["id"])
+            props = detail(r["id"])
             fetched += 1
+            streak = 0
         except Exception as e:
             failed += 1
+            streak += 1
             if failed <= 3:
                 print("  تعذّر جلب تفاصيل %s: %s" % (r["id"], str(e)[:80]),
                       file=sys.stderr)
+            if streak >= DETAIL_FAIL_STREAK:
+                aborted = "%d إخفاقاً متتالياً — يُرجَّح حجبٌ لا عطلٌ عارض" % streak
+                print("  🔌 قاطع الدائرة: %s. نتوقّف عن التفاصيل ونكمل بالقوائم."
+                      % aborted, file=sys.stderr)
             continue
-        apply_detail(r, p)
+        apply_detail(r, props)
         time.sleep(0.35)
-    print("  تفاصيل الإعلانات: %d من الذاكرة · %d جُلبت · %d فشلت"
-          % (cached, fetched, failed))
-    return {"detail_cached": cached, "detail_fetched": fetched,
+    print("  تفاصيل الإعلانات: %d من الذاكرة · %d جُلبت · %d فشلت%s"
+          % (cached, fetched, failed, (" · تُوقّف: " + aborted) if aborted else ""))
+    meta = {"detail_cached": cached, "detail_fetched": fetched,
             "detail_failed": failed}
+    if aborted:
+        meta["detail_aborted"] = aborted
+        meta["status"] = "degraded"
+    return meta
 
 
 # ───────────────────────── الذاكرة والتعديلات ─────────────────────────

@@ -30,6 +30,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      # انظر التعليق نفسه في malatya-aqar.yml: التاريخ يُحقن ولا يُستنتج.
+      - name: تاريخ اليوم
+        id: d
+        run: echo "today=$(TZ=Asia/Jerusalem date '+%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+
       - name: تشغيل Claude — رصد سوق الأراضي
         uses: anthropics/claude-code-action@v1
         with:
@@ -45,10 +50,11 @@ jobs:
             ═══════════════════════════════
             **الخطوة ١ — التاريخ والحالة**
             ═══════════════════════════════
-            نفّذ: `TZ=Asia/Jerusalem date '+%Y-%m-%d'` → هذا `TODAY`.
+            تاريخ اليوم هو **${{ steps.d.outputs.today }}** — استعمله كما هو ولا تستنتجه.
             اقرأ `malatya/data/land-listings.json` (تراكمي، المفتاح = رابط الإعلان، يحفظ درجة كل قطعة)
             و`malatya/data/land-reports.json` (سجلّ يومي، مصفوفة).
-            ⚠️ آخر رصد مسجّل 2026-07-18 — السجل توقّف فترة؛ اذكر ذلك بصراحة في ملاحظة اليوم.
+            آخِر سجلّ فعليّ هو آخر عنصر في `land-reports.json` — **اقرأه ولا تفترضه**.
+            إن وجدت فجوة بين تاريخه واليوم فاذكرها بصراحة في ملاحظة اليوم.
             **مهم:** احتفظ بالدرجات المخزّنة للقطع المعروفة؛ لا تُعِد تقييم إلا الجديد فعلاً.
 
             ═══════════════════════════════
@@ -80,14 +86,14 @@ jobs:
 
             **(ب) `malatya/data/land-reports.json`** — مصفوفة. أضِف سجلّ اليوم في **نهايتها** بهذا الشكل بالضبط:
             ```json
-            {"date":"TODAY","n":0,"hi":0,"avg":0.0,
+            {"date":"${{ steps.d.outputs.today }}","n":0,"hi":0,"avg":0.0,
              "top":[{"nb":"اسم الحي","ppm":0,"sc":0.0,"url":"https://…"}],
              "note":"خلاصة سطرين"}
             ```
             `n` = عدد القطع المرصودة اليوم · `hi` = عدد القطع بدرجة ≥٧٠ · `avg` = متوسّط الدرجة.
             `top` = أعلى ٣ قطع. احتفظ بآخر **٤٥** سجلاً كحدّ أقصى.
 
-            **(ج) `agents/src/land-TODAY.md`** — تقرير اليوم بصيغة ماركداون (أنشئ المجلّد إن لزم):
+            **(ج) `agents/src/land-${{ steps.d.outputs.today }}.md`** — تقرير اليوم بصيغة ماركداون (أنشئ المجلّد إن لزم):
             عنوان · لقطة السوق · جدول أعلى القطع (المساحة · ₺/م² · الدرجة · الأعلام · رابط الإعلان ·
             رابط خرائط جوجل بالاسم التركي) · ما الجديد مقابل أمس · المنهجية والقيود · تنويه أنّ هذا ليس نصيحة استثمارية.
             **يوم بلا جديد؟** اكتب التقرير على أي حال وقل ذلك صراحةً (السوق راكد أحياناً لأسابيع — هذه معلومة لا فشل).
@@ -96,7 +102,7 @@ jobs:
             **الخطوة ٥ — فحص ذاتي قبل الإنهاء**
             ═══════════════════════════════
             - الملفّان JSON صالحان (`python3 -m json.tool`)
-            - `land-reports.json` مصفوفة، وسجلّ اليوم موجود مرّة واحدة بتاريخ TODAY
+            - `land-reports.json` مصفوفة، وسجلّ اليوم موجود مرّة واحدة بتاريخ ${{ steps.d.outputs.today }}
             - `n` و`hi` و`avg` أرقام معقولة (`hi ≤ n`، و`avg` بين 0 و100)
             - `land-listings.json` لم ينكمش
             - كل رابط في `top[]` يبدأ بـ https
@@ -107,7 +113,10 @@ jobs:
             --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Agent"
             --permission-mode acceptEdits
 
+      # كما في وكيل العقارات: تعثّر التقرير السرديّ لا يجوز أن يمنع حفظ
+      # البيانات. الخطوة تُعلَّم فاشلة وتظهر في الواجهة، والريّة تكمل.
       - name: توليد صفحة التقرير وتحديث الفهرس
+        continue-on-error: true
         run: |
           set -euo pipefail
           python3 .github/scripts/build_report.py land
@@ -122,8 +131,12 @@ jobs:
                                  env={**os.environ,'TZ':'Asia/Jerusalem'}).stdout.strip()
 
           def old(path):
+              # ملفٌّ تالف في HEAD لا يجوز أن يُسقط البوّابة بأثر رجعي.
               r = subprocess.run(['git','show','HEAD:'+path],capture_output=True,text=True)
-              return json.loads(r.stdout) if r.returncode==0 and r.stdout.strip() else None
+              try:
+                  return json.loads(r.stdout) if r.returncode==0 and r.stdout.strip() else None
+              except Exception:
+                  return None
 
           rep = json.load(open('malatya/data/land-reports.json',encoding='utf-8'))
           lst = json.load(open('malatya/data/land-listings.json',encoding='utf-8'))
@@ -158,6 +171,21 @@ jobs:
               print('❌ فشل التحقّق:'); [print('  -',e) for e in errs]; sys.exit(1)
           print('✅ نجح التحقّق — ' + ' · '.join(notes))
           PY
+
+      # وكيل الأراضي كان الوحيد بلا حارس نطاق، رغم أنّ أدواته أوسع الجميع
+      # (Bash و WebFetch و Agent). التوجيه يطلب منه ألّا يمسّ غير ملفّاته —
+      # والطلب ليس ضماناً. هنا يصير ضماناً.
+      - name: حارس النطاق — لا نلمس ما ليس لنا
+        run: |
+          set -euo pipefail
+          BAD=$(git status --porcelain \
+                | awk '{print $2}' \
+                | grep -Ev '^(malatya/data/land-|malatya/reports/land-|malatya/data/reports-index\.json|agents/src/land-)' \
+                || true)
+          if [ -n "$BAD" ]; then
+            echo "❌ تعديل خارج نطاق وكيل الأراضي:"; echo "$BAD"; exit 1
+          fi
+          echo "✅ كل التعديلات داخل نطاق الوكيل"
 
       - name: Commit ودفع إلى main
         id: commit

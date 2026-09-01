@@ -84,6 +84,9 @@ jobs:
           for f in status.json index.html daleel.html aqar.html reports.html library.html \
                    land-board.html aqar-board.html land-agent.html \
                    arsa.html data/arsa-listings.json \
+                   data/aqar-listings.json data/aqar-reports.json data/aqar-overrides.json \
+                   data/land-listings.json data/land-reports.json \
+                   data/library.json data/search-spec.json \
                    admin.html install.html manual.html offline.html sw.js manifest.webmanifest data/arsa-overrides.json \
                    invest.html invest-legal.html invest-risk.html \
                    invest-paths.html invest-ops.html invest-sources.html invest-plan.html \
@@ -174,7 +177,9 @@ jobs:
       - name: التحقّق من النشر الحيّ
         run: |
           set -euo pipefail
-          echo "بانتظار GitHub Pages…"; sleep 90
+          # لا ننتظر مرآة Pages: هي مُعطَّلة على هذا المستودع أصلاً (has_pages=false).
+          # ما ننتظره هو أن يستقرّ ما رُفع عبر FTP، وعشرون ثانية تكفي لذلك.
+          echo "مهلة قصيرة لاستقرار ما رُفع…"; sleep 20
           T=$(date +%s)
           # ننزّل إلى ملف ثم نقرأ — لا أنبوب من curl (انظر شرح SIGPIPE أعلاه).
           echo "— مركز التحكّم —"

@@ -428,30 +428,53 @@ def ej_detail(listing_id):
     return props
 
 
+# قاطع الدائرة — انظر الشرح المفصَّل في scripts/scrape_aqar.py:
+# صفحات تفاصيل محجوبة تلتهم مهلة الوظيفة قبل أن يُكتب شيء، فيضيع سحبٌ ناجح.
+EJ_FAIL_STREAK = int(os.environ.get("ARSA_DETAIL_FAIL_STREAK", "12"))
+EJ_TIME_BUDGET = int(os.environ.get("ARSA_DETAIL_TIME_BUDGET", "1500"))
+
+
 def enrich_emlakjet(rows, prev_by_id):
-    """يملأ الإمار والطابو، ويعيد استعمال ما سبق جلبه بدل إعادة الطلب كل يوم."""
+    """يملأ الإمار والطابو، ويعيد استعمال ما سبق جلبه بدل إعادة الطلب كل يوم.
+
+    التفاصيل تحسينٌ للسجلّ لا السجلّ نفسه: عند سلسلة إخفاقات أو نفاد الميزانية
+    الزمنية نتوقّف عن جلبها ونكمل بما جُمع، بدل أن تُقتل الريّة على مهلتها.
+    """
     cached = fetched = failed = 0
+    streak = 0
+    aborted = None
+    t0 = time.time()
     for r in rows:
-        old = prev_by_id.get(r["id"])
-        if old and old.get("imar"):
+        prev = prev_by_id.get(r["id"])
+        if prev and prev.get("imar"):
             for k in ("imar", "tapu", "kredi", "ada", "parsel", "bel"):
-                if old.get(k) is not None:
-                    r[k] = old[k]
+                if prev.get(k) is not None:
+                    r[k] = prev[k]
             # القيم المخزَّنة قد تكون من خريطة أقدم، فتُمرَّر على التطبيع ثانيةً.
             # tapu_label لا يمسّ قيمةً عربية سلفاً، فالعملية آمنة للتكرار.
             if r.get("tapu"):
                 r["tapu"] = tapu_label(r["tapu"])
             cached += 1
             continue
-        if fetched >= EJ_DETAIL_BUDGET:
+        if aborted or fetched >= EJ_DETAIL_BUDGET:
+            continue
+        if time.time() - t0 > EJ_TIME_BUDGET:
+            aborted = "الميزانية الزمنية (%ds) نفدت" % EJ_TIME_BUDGET
+            print("  ⏱️  %s — نكمل بما جُمع" % aborted, file=sys.stderr)
             continue
         try:
             p = ej_detail(r["id"])
             fetched += 1
+            streak = 0
         except Exception as e:
             failed += 1
+            streak += 1
             if failed <= 3:
                 print("  تعذّر جلب تفاصيل %s: %s" % (r["id"], str(e)[:80]), file=sys.stderr)
+            if streak >= EJ_FAIL_STREAK:
+                aborted = "%d إخفاقاً متتالياً — يُرجَّح حجبٌ لا عطلٌ عارض" % streak
+                print("  🔌 قاطع الدائرة: %s. نتوقّف عن التفاصيل ونكمل بالقوائم."
+                      % aborted, file=sys.stderr)
             continue
         if p.get("İmar Durumu"):
             r["imar"] = p["İmar Durumu"]
@@ -465,8 +488,12 @@ def enrich_emlakjet(rows, prev_by_id):
             if p.get(src_key):
                 r[dst] = str(p[src_key]).strip()
         time.sleep(0.4)
-    print("  تفاصيل الإعلانات: %d من الذاكرة · %d جُلبت · %d فشلت" % (cached, fetched, failed))
-    return {"detail_cached": cached, "detail_fetched": fetched, "detail_failed": failed}
+    print("  تفاصيل الإعلانات: %d من الذاكرة · %d جُلبت · %d فشلت%s"
+          % (cached, fetched, failed, (" · تُوقّف: " + aborted) if aborted else ""))
+    meta = {"detail_cached": cached, "detail_fetched": fetched, "detail_failed": failed}
+    if aborted:
+        meta["detail_aborted"] = aborted
+    return meta
 
 
 def source_emlakjet():

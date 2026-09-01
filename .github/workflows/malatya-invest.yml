@@ -55,7 +55,7 @@ jobs:
             لديك موافقة قائمة؛ **لا تطرح أسئلة**، ولا تنتظر ردّاً.
             **مهمتك: الرصد وتحديث ملفات البيانات فقط.** لا commit ولا push — سير العمل يتولّاهما بعدك.
 
-            التاريخ: `${{ steps.depth.outputs.today }}` — سمِّه `TODAY`.
+            تاريخ اليوم هو **${{ steps.depth.outputs.today }}** — استعمله كما هو ولا تستنتجه.
             عمق المسح اليوم: **${{ steps.depth.outputs.mode }}** (${{ steps.depth.outputs.kind }}).
 
             ═══════════════════════════════
@@ -104,7 +104,7 @@ jobs:
             ═══════════════════════════════
             **(أ) `malatya/data/invest-watch.json`** — مصفوفة. أضِف سجلّ اليوم في **نهايتها**:
             ```json
-            {"date":"TODAY","kind":"${{ steps.depth.outputs.mode }}","n":0,
+            {"date":"${{ steps.depth.outputs.today }}","kind":"${{ steps.depth.outputs.mode }}","n":0,
              "note":"سطران عمّا رُصد أو عن خلوّ اليوم من جديد",
              "items":[{"t":"عنوان البند","d":"ماذا تغيّر ومَن يتأثّر من هياكل الملف",
                        "u":"https://…","src":"T3","confirm":true}]}
@@ -116,7 +116,7 @@ jobs:
             (L·W·T·B·I·E)، وحدّث `count` و`accessed`. **لا تحذف مصدراً قائماً**، ولو مات رابطه —
             سجّل موته بنداً في `invest-watch.json` بدل حذفه.
 
-            **(ج) `agents/src/invest-TODAY.md`** — يُكتب **فقط** إن كان المسح أسبوعياً أو شهرياً،
+            **(ج) `agents/src/invest-${{ steps.depth.outputs.today }}.md`** — يُكتب **فقط** إن كان المسح أسبوعياً أو شهرياً،
             أو إن رُصد بند واحد على الأقل. اتبع الصيغة الموحَّدة ذات السبعة عشر قسماً المنشورة في
             `malatya/invest-ops.html` — الأقسام التي لا جديد فيها تُكتب «لا تغيير» ولا تُحذف.
             اختم بجدول **«بيانات مطلوبة من المستثمر»** — **لا تضع أسئلة في نهاية التقرير**.
@@ -125,7 +125,7 @@ jobs:
             **فحص ذاتي قبل الإنهاء**
             ═══════════════════════════════
             - كل ملفات JSON صالحة (`python3 -m json.tool`).
-            - `invest-watch.json` مصفوفة، وسجلّ TODAY موجود **مرّة واحدة**.
+            - `invest-watch.json` مصفوفة، وسجلّ ${{ steps.depth.outputs.today }} موجود **مرّة واحدة**.
             - عدد عناصر `invest-sources.json` لم ينقص، و`count` يطابق طول `items`.
             - عدد عناصر `invest-risks.json` و`invest-paths.json` لم ينقص.
             - كل `u` في البنود يبدأ بـ `https://`، وكل `src` رمز موجود فعلاً في ملف المصادر.
@@ -136,6 +136,23 @@ jobs:
           claude_args: |
             --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Agent"
             --permission-mode acceptEdits
+
+      # نفس عطب الاسم النائب الذي أصاب وكيلَي العقارات والأراضي: `TODAY` في
+      # التوجيه متغيّر، ومسار الملفّ كان مكتوباً به حرفياً، فكُتب
+      # `agents/src/invest-TODAY.md` — ويُدهس في كل ريّة تالية. التوجيه صار
+      # يحمل التاريخ جاهزاً، وهذه شبكة الأمان إن عاد النموذج إلى الاسم النائب.
+      - name: إنقاذ الاسم النائب إن وُجد
+        env:
+          TODAY: ${{ steps.depth.outputs.today }}
+        run: |
+          set -euo pipefail
+          for stray in agents/src/invest-TODAY.md 'agents/src/invest-$TODAY.md'; do
+            [ -f "$stray" ] || continue
+            dst="agents/src/invest-${TODAY}.md"
+            if [ -f "$dst" ] && [ ! -s "$stray" ]; then rm -f "$stray"; continue; fi
+            mv -f "$stray" "$dst"
+            echo "::warning::اسم نائب: $(basename "$stray") ← أُعيدت تسميته إلى $(basename "$dst")"
+          done
 
       - name: ضمان سجلّ اليوم — لا تُقطع السلسلة بصمت
         env:

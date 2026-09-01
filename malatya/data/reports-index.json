@@ -1,6 +1,11 @@
 [
  {
   "track": "land",
+  "date": "2026-09-01",
+  "file": "land-2026-09-01.html"
+ },
+ {
+  "track": "land",
   "date": "2026-08-29",
   "file": "land-2026-08-29.html"
  },
@@ -153,6 +158,11 @@
   "track": "land",
   "date": "2026-06-17",
   "file": "land-2026-06-17.html"
+ },
+ {
+  "track": "aqar",
+  "date": "2026-09-01",
+  "file": "aqar-2026-09-01.html"
  },
  {
   "track": "aqar",
