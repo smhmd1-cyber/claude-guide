@@ -66,20 +66,37 @@ jobs:
           # بـSIGPIPE فتعود القيمة فارغة ويبدو الموقع السليم منحرفاً.
           REPO_STAMP=$(grep -m1 -o 'id="daily-date"[^>]*>[^<]*' "$F" 2>/dev/null | sed 's/.*>//' || echo "")
 
-          # ── الموقع الحيّ — ننزّل إلى ملف ثم نقرأ، بلا أنابيب من curl
+          # ── الموقع الحيّ — ننزّل إلى ملف ثم نقرأ، بلا أنابيب من curl.
+          # منذ 31/08/2026 صار /malatya/ محميّاً بكلمة مرور (cPanel Directory
+          # Privacy)، فلم يعد الحارس يقرأ محتواه من الخارج. 401 هنا **دليل صحّة**:
+          # الخادم يردّ والحماية قائمة. والخطر ليس في العمى بل في تفسيره: لو قُرئ
+          # الصمت على أنّه انحراف مرآة لطلب الحارس إعادة نشر كل ساعة بلا سبب،
+          # ولصعّد كل ساعة على عطل لا وجود له.
+          LIVE_PROTECTED=no
           LIVE_DATE=""
-          if curl -fsSL --max-time 30 -o /tmp/live.json "https://jmahery.com/malatya/status.json?n=$T" 2>/dev/null; then
+          SC=$(curl -s -o /tmp/live.json -w "%{http_code}" --max-time 30 "https://jmahery.com/malatya/status.json?n=$T" 2>/dev/null || echo "000")
+          if [ "$SC" = "200" ]; then
             LIVE_DATE=$(python3 -c "import json;print(json.load(open('/tmp/live.json')).get('date',''))" 2>/dev/null || echo "")
+          elif [ "$SC" = "401" ]; then
+            LIVE_PROTECTED=yes
           fi
 
           LIVE_STAMP=""
-          if curl -fsSL --max-time 30 -o /tmp/live.html "https://jmahery.com/malatya/daleel.html?n=$T" 2>/dev/null; then
+          DC=$(curl -s -o /tmp/live.html -w "%{http_code}" --max-time 30 "https://jmahery.com/malatya/daleel.html?n=$T" 2>/dev/null || echo "000")
+          if [ "$DC" = "200" ]; then
             LIVE_STAMP=$(grep -m1 -o 'id="daily-date"[^>]*>[^<]*' /tmp/live.html | sed 's/.*>//' || echo "")
+          elif [ "$DC" = "401" ]; then
+            LIVE_PROTECTED=yes
           fi
 
           HUB_OK=no
-          if curl -fsSL --max-time 30 -o /tmp/hub.html "https://jmahery.com/malatya/?n=$T" 2>/dev/null; then
+          HC=$(curl -s -o /tmp/hub.html -w "%{http_code}" --max-time 30 "https://jmahery.com/malatya/?n=$T" 2>/dev/null || echo "000")
+          if [ "$HC" = "200" ]; then
             grep -q "منظومة ملاطيا" /tmp/hub.html && HUB_OK=yes
+          elif [ "$HC" = "401" ]; then
+            HUB_OK=yes
+            LIVE_PROTECTED=yes
+            echo "🔒 /malatya/ محميّ بكلمة مرور — الخادم يردّ 401، وهذه صحّة لا عطل"
           fi
 
           echo "اليوم=$TODAY الساعة=$HM"
@@ -117,7 +134,12 @@ jobs:
 
           # انحراف المرآة: المستودع محدَّث والموقع الحيّ يحمل ختماً مختلفاً
           if [ "$NEED_DAILY" = "false" ]; then
-            if [ -n "$LIVE_DATE" ]; then
+            if [ "$LIVE_PROTECTED" = "yes" ]; then
+              # لا نرى المحتوى، فلا ندّعي معرفةً به في الاتجاهين: لا «سليم» ولا
+              # «منحرف». بوّابة النشر في malatya-publish.yml هي التي تتحقّق من
+              # وصول الحزمة، ولها وصولٌ لا يمرّ عبر الويب.
+              echo "🔒 المرآة غير مقروءة من الخارج بعد الحماية — لا انحراف يُستنتج ولا نشر يُطلب"
+            elif [ -n "$LIVE_DATE" ]; then
               [ "$LIVE_DATE" != "$TODAY" ] && NEED_DEPLOY=true
             elif [ -n "$LIVE_STAMP" ] && [ "$LIVE_STAMP" != "$REPO_STAMP" ]; then
               NEED_DEPLOY=true

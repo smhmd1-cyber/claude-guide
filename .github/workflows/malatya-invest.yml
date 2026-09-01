@@ -137,6 +137,44 @@ jobs:
             --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Agent"
             --permission-mode acceptEdits
 
+      - name: ضمان سجلّ اليوم — لا تُقطع السلسلة بصمت
+        env:
+          TODAY: ${{ steps.depth.outputs.today }}
+          MODE: ${{ steps.depth.outputs.mode }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import io, json, os
+          # الوكيل مطالَب صراحةً بكتابة سجلّ اليوم ولو كان فارغاً («يوم بلا جديد
+          # ⇐ سجّله بـitems: []»). في 01/09/2026 لم يفعل — سبع عشرة دورة، بلا
+          # خطأ — فأسقطت البوّابة الريّة كلّها وضاع معها كل ما أنجزه الوكيل.
+          # هذه الخطوة تفصل بين الأمرين: السلسلة تبقى متّصلة، والإخفاق يُسجَّل
+          # في الملفّ نفسه بدل أن يختفي مع الريّة.
+          P = 'malatya/data/invest-watch.json'
+          TODAY = os.environ['TODAY']
+          MODE = os.environ.get('MODE') or 'يومي'
+          try:
+              w = json.load(open(P, encoding='utf-8'))
+              if not isinstance(w, list):
+                  raise ValueError('ليس مصفوفة')
+          except Exception as e:
+              print('تعذّرت قراءة %s (%s) — لا يُلمس الملفّ، والبوّابة ستقول كلمتها' % (P, e))
+              raise SystemExit(0)
+          if [r for r in w if r.get('date') == TODAY]:
+              print('✅ الوكيل كتب سجلّ اليوم — لا حاجة لتدخّل')
+              raise SystemExit(0)
+          w.append({
+              'date': TODAY, 'kind': MODE, 'n': 0, 'items': [],
+              'auto': ('لم يكتب الوكيل سجلّ هذا اليوم، فأُضيف آلياً لإبقاء السلسلة متّصلة. '
+                       'صفر بنود هنا تعني «لم يُسجَّل شيء»، لا «لا تغييرات في التشريع». '
+                       'الفرق جوهري ولا يُطوى: هذا اليوم غير مرصود، لا هادئ.'),
+          })
+          w = w[-60:]
+          io.open(P, 'w', encoding='utf-8', newline='\n').write(
+              json.dumps(w, ensure_ascii=False, indent=1))
+          print('⚠️ الوكيل لم يكتب سجلّ اليوم — أُضيف سجلّ فارغ موسوم بذلك')
+          PY
+
       - name: التحقّق — لا ننشر بيانات معطوبة
         run: |
           set -euo pipefail

@@ -93,7 +93,13 @@ jobs:
 
           ESCALATE=false
           if [ "$HM" -ge 1600 ] && [ "$NEED_RUN" = "true" ]; then ESCALATE=true; fi
-          [ "$PAGES_OK" != "yes" ] && ESCALATE=true
+          # GitHub Pages מכובה במאגר הזה (has_pages=false, והמאגר פרטי) —
+          # המראה שהשומר חיפש מעולם לא פורסמה. הוא הסלים על היעדרה כל יום,
+          # ואזעקה שחוזרת בלי סיבה מאמנת להתעלם מאזעקות. נרשם לידיעה, לא מסלים.
+          # אם Pages יופעל בעתיד, החזר את השורה: [ "$PAGES_OK" != "yes" ] && ESCALATE=true
+          if [ "$PAGES_OK" != "yes" ]; then
+            echo "ℹ️ Pages לא מגיש (מכובה במאגר) — לידיעה בלבד, לא שער כשל"
+          fi
           # פחות מ-100 פרקים = המדריך נחתך. סף שמרני; היום יש 132.
           if [ "${CHAPTERS:-0}" -lt 100 ]; then ESCALATE=true; fi
 
