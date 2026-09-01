@@ -196,10 +196,13 @@ jobs:
           else
             echo "  ⚠️  تعذّرت القراءة (→ $DC)"
           fi
+          # مرآة GitHub Pages مُعطَّلة على هذا المستودع (has_pages=false، والمستودع
+          # خاصّ). الاحتياطي الحقيقي هو المستودع نفسه: كل صفحة وكل ملفّ بيانات في
+          # تاريخه ويُرجَع بضغطة. نذكر الحالة للعلم ولا نُحذّر من غياب شيء لم يُنشَر.
           echo "— مرآة GitHub Pages —"
-          if curl -fsSL --max-time 45 -o /tmp/mirror.html "https://smhmd1-cyber.github.io/claude-guide/malatya/?n=$T" \
-             && grep -q "منظومة ملاطيا" /tmp/mirror.html; then
+          MC=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "https://smhmd1-cyber.github.io/claude-guide/malatya/?n=$T" || echo "000")
+          if [ "$MC" = "200" ]; then
             echo "  ✅ حيّة"
           else
-            echo "  ⚠️  تعذّر تأكيد المرآة"
+            echo "  ℹ️  المرآة غير مُفعَّلة ($MC) — الاحتياطي هو تاريخ المستودع"
           fi

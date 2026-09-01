@@ -335,11 +335,15 @@ jobs:
         if: steps.commit.outputs.changed == 'true'
         run: |
           set -euo pipefail
-          echo "ממתין ל-GitHub Pages…"; sleep 90
+          # GitHub Pages מכובה במאגר — לא היה מה לחכות לו, וההמתנה של 90 שניות
+          # והבדיקה שאחריה תמיד נכשלה בשקט. 20 שניות מספיקות להתייצבות ה-FTP.
+          echo "ממתין להתייצבות ההעלאה…"; sleep 20
           STAMP=$(date +%s)
-          URLS="https://smhmd1-cyber.github.io/claude-guide/?nocache=$STAMP"
+          URLS=""
           if [ "${{ steps.ftp.outputs.enabled }}" = "true" ]; then
-            URLS="$URLS https://${GUIDE_SUBDOMAIN}/?nocache=$STAMP"
+            URLS="https://${GUIDE_SUBDOMAIN}/?nocache=$STAMP"
+          else
+            echo "ℹ️ אין FTP מוגדר — אין גרסה חיה לבדוק"
           fi
           for url in $URLS; do
             echo "בודק $url"
