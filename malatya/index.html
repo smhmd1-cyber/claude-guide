@@ -275,6 +275,10 @@
     box.innerHTML=h;
   }).catch(function(){ set('last-aqar','تعذّر تحميل بيانات العقارات.'); });
 
+/* العتبة تُقرأ من السجلّ نفسه: سجلّات ما قبل 01/09/2026 كُتبت بعتبة ٧٠،
+   وما بعدها بـ٦٥. الرقم القديم يُعرض بعتبته هو، لا بعتبة اليوم. */
+  function ar(x){ return String(x).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
+  function thr(r){ return ar((r&&r.hi_thr)||70); }
   /* ---- بيانات الأراضي ---- */
   getJSON('data/land-reports.json').then(function(a){
     if(!Array.isArray(a)||!a.length) throw 0;
@@ -283,7 +287,7 @@
     var box=document.getElementById('last-land'); if(!box) return;
     var h='<p style="margin-top:0">رصد <b class="num">'+fmtDate(L.date)+'</b> — '+
           '<span class="num">'+n(L.n)+'</span> قطعة · '+
-          '<span class="num">'+n(L.hi)+'</span> بدرجة ≥٧٠ · متوسط الدرجة <span class="num">'+(L.avg||'—')+'</span></p>';
+          '<span class="num">'+n(L.hi)+'</span> بدرجة ≥'+thr(L)+' · متوسط الدرجة <span class="num">'+(L.avg||'—')+'</span></p>';
     (L.top||[]).slice(0,3).forEach(function(t){
       h+='<div class="rep-row"><span class="dt">'+(t.sc||'')+'</span><span><b>'+(t.nb||'')+
          '</b> · <span class="num">'+n(t.ppm)+'</span> ₺/م²'+

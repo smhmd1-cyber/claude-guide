@@ -36,7 +36,7 @@
 
   <div class="grid g4" style="margin-top:6px">
     <div class="kpi teal"><span class="k-ico">🧾</span><div class="k-label">قطع مرصودة اليوم</div><div class="k-value num" id="k1">—</div><div class="k-sub">تَرلا / أرسا</div></div>
-    <div class="kpi green"><span class="k-ico">⭐</span><div class="k-label">قطع بدرجة ≥٧٠</div><div class="k-value num" id="k2">—</div><div class="k-sub">تستحقّ فحصاً</div></div>
+    <div class="kpi green"><span class="k-ico">⭐</span><div class="k-label">قطع بدرجة ≥<span id="thr1">٦٥</span></div><div class="k-value num" id="k2">—</div><div class="k-sub">تستحقّ فحصاً</div></div>
     <div class="kpi amber"><span class="k-ico">📊</span><div class="k-label">متوسّط الدرجة</div><div class="k-value num" id="k3">—</div><div class="k-sub">من ١٠٠</div></div>
     <div class="kpi violet"><span class="k-ico">📅</span><div class="k-label">أيام الرصد</div><div class="k-value num" id="k4">—</div><div class="k-sub">منذ الانطلاق</div></div>
   </div>
@@ -61,7 +61,7 @@
 
   <h2>سجلّ الرصد اليومي</h2>
   <div class="tbl-wrap"><table>
-    <thead><tr><th>التاريخ</th><th>القطع</th><th>≥٧٠</th><th>متوسّط الدرجة</th><th>الخلاصة</th></tr></thead>
+    <thead><tr><th>التاريخ</th><th>القطع</th><th>≥<span id="thr2">٦٥</span></th><th>متوسّط الدرجة</th><th>الخلاصة</th></tr></thead>
     <tbody id="tb"></tbody>
   </table></div>
 
@@ -85,12 +85,17 @@
       b.style.height=Math.max(3,Math.round((v/mx)*56))+'px'; b.title=v; box.appendChild(b);});
   }
 
+/* العتبة تُقرأ من السجلّ نفسه: سجلّات ما قبل 01/09/2026 كُتبت بعتبة ٧٠،
+   وما بعدها بـ٦٥. الرقم القديم يُعرض بعتبته هو، لا بعتبة اليوم. */
+  function ar(x){ return String(x).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
+  function thr(r){ return ar((r&&r.hi_thr)||70); }
   fetch('data/land-reports.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(a){
     if(!Array.isArray(a)||!a.length) throw 0;
     a.sort(function(x,y){return x.date<y.date?-1:1;});
     var L=a[a.length-1];
     set('stamp',fmt(L.date));
     set('k1',n(L.n)); set('k2',n(L.hi)); set('k3',(L.avg!=null?L.avg:'—')); set('k4',n(a.length));
+    set('thr1',thr(L)); set('thr2',thr(L));
 
     var cnt=a.map(function(r){return +r.n||0;}), avg=a.map(function(r){return +r.avg||0;});
     set('t1',n(cnt[cnt.length-1])); set('t2',avg[avg.length-1]||'—');
@@ -112,7 +117,7 @@
     var tb=document.getElementById('tb'); tb.innerHTML='';
     a.slice().reverse().forEach(function(r){
       var tr=document.createElement('tr');
-      tr.innerHTML='<td class="num">'+r.date+'</td><td class="num">'+n(r.n)+'</td><td class="num">'+n(r.hi)+
+      tr.innerHTML='<td class="num">'+r.date+'</td><td class="num">'+n(r.n)+'</td><td class="num" title="العتبة ≥'+thr(r)+'">'+n(r.hi)+
         '</td><td class="num">'+(r.avg!=null?r.avg:'—')+'</td><td>'+(r.note||'—')+'</td>';
       tb.appendChild(tr);
     });

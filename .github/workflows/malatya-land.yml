@@ -86,11 +86,18 @@ jobs:
 
             **(ب) `malatya/data/land-reports.json`** — مصفوفة. أضِف سجلّ اليوم في **نهايتها** بهذا الشكل بالضبط:
             ```json
-            {"date":"${{ steps.d.outputs.today }}","n":0,"hi":0,"avg":0.0,
+            {"date":"${{ steps.d.outputs.today }}","n":0,"hi":0,"hi_thr":65,"avg":0.0,
              "top":[{"nb":"اسم الحي","ppm":0,"sc":0.0,"url":"https://…"}],
              "note":"خلاصة سطرين"}
             ```
-            `n` = عدد القطع المرصودة اليوم · `hi` = عدد القطع بدرجة ≥٧٠ · `avg` = متوسّط الدرجة.
+            `n` = عدد القطع المرصودة اليوم · `hi` = عدد القطع بدرجة **≥٦٥** · `avg` = متوسّط الدرجة.
+            `hi_thr` = العتبة نفسها (٦٥) — تُكتب مع القيمة دائماً حتى يُقرأ الرقم القديم بعتبته لا بعتبة اليوم.
+
+            > **لماذا ٦٥ لا ٧٠ (تغيّرت في 01/09/2026):** السقوف الإلزامية أعلاه تجعل ٧٠
+            > غير قابلة للبلوغ عملياً — `hisseli` أو `sulu` ⇐ سقف ٦٥، وبلا طريق ⇐ ٦٠.
+            > على مدى ٣٤ سجلّاً كان `hi` صفراً في كل يوم، وأعلى درجة سُجّلت قطّ هي ٦٩٫٤.
+            > مؤشّرٌ لا يتحرّك أبداً لا يُخبر بشيء. العتبة الآن عند سقف `hisseli/sulu` نفسه:
+            > «قطعة بلغت أقصى ما تسمح به قيودها المعلَنة» — وهذا حدٌّ له معنى.
             `top` = أعلى ٣ قطع. احتفظ بآخر **٤٥** سجلاً كحدّ أقصى.
 
             **(ج) `agents/src/land-${{ steps.d.outputs.today }}.md`** — تقرير اليوم بصيغة ماركداون (أنشئ المجلّد إن لزم):
@@ -103,7 +110,7 @@ jobs:
             ═══════════════════════════════
             - الملفّان JSON صالحان (`python3 -m json.tool`)
             - `land-reports.json` مصفوفة، وسجلّ اليوم موجود مرّة واحدة بتاريخ ${{ steps.d.outputs.today }}
-            - `n` و`hi` و`avg` أرقام معقولة (`hi ≤ n`، و`avg` بين 0 و100)
+            - `n` و`hi` و`avg` أرقام معقولة (`hi ≤ n`، و`avg` بين 0 و100)، و`hi_thr` = 65
             - `land-listings.json` لم ينكمش
             - كل رابط في `top[]` يبدأ بـ https
             - **لا تلمس** أي ملف آخر: لا `daleel.html`، ولا `index.html`، ولا ملفات العقارات.
@@ -147,8 +154,11 @@ jobs:
           if len(rows)!=1: errs.append(f'سجلّات اليوم {len(rows)} (المطلوب ١)')
           else:
               t=rows[0]
-              for k in ('n','hi','avg','top'):
+              for k in ('n','hi','hi_thr','avg','top'):
                   if k not in t: errs.append(f'حقل ناقص في سجلّ اليوم: {k}')
+              # العتبة تُخزَّن مع القيمة: رقمٌ بلا عتبته يُقرأ غداً بعتبة غير عتبته.
+              if t.get('hi_thr') != 65:
+                  errs.append(f"hi_thr = {t.get('hi_thr')} والمتوقَّع 65")
               if isinstance(t.get('hi'),(int,float)) and isinstance(t.get('n'),(int,float)) and t['hi']>t['n']:
                   errs.append(f"hi ({t['hi']}) أكبر من n ({t['n']})")
               a=t.get('avg')
@@ -156,7 +166,7 @@ jobs:
               for x in t.get('top',[]):
                   if not str(x.get('url','')).startswith('https://'):
                       errs.append(f"رابط غير صالح في top: {str(x.get('url'))[:50]}")
-              notes.append(f"سجلّ اليوم: {t.get('n')} قطعة · ≥٧٠: {t.get('hi')} · متوسّط {t.get('avg')}")
+              notes.append(f"سجلّ اليوم: {t.get('n')} قطعة · ≥{t.get('hi_thr')}: {t.get('hi')} · متوسّط {t.get('avg')}")
 
           o=old('malatya/data/land-listings.json')
           if o and len(lst)<len(o): errs.append(f'تراجع السجل التراكمي {len(o)} → {len(lst)}')
