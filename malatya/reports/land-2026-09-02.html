@@ -1,0 +1,51 @@
+<h2>تقرير رصد أراضي ملاطيا — فجوة التحويل الزراعي↔العمراني (٢ سبتمبر ٢٠٢٦)</h2>
+<p><strong>النطاق:</strong> قطع <code>tarla</code> / <code>arsa</code> / <code>bag</code> في قضائي باتالغازي (Battalgazi) ويشيليورت (Yeşilyurt)، مصدرها emlakjet (أربع صفحات: satilik-tarla و satilik-arsa لكلٍّ من القضائين).</p>
+<p><strong>الأطروحة:</strong> قطع زراعية أو شبه مفرزة تحمل فجوة سعر بين قيمتها الخام وقيمة الأرض المطوَّرة المرجعية في نفس الممر.</p>
+<p>آخر سجلّ فعلي في <code>land-reports.json</code> قبل هذا التقرير كان بتاريخ ٢٠٢٦-٠٩-٠١ — فجوة يوم واحد فقط، لا مشكلة استمرارية اليوم.</p>
+<hr class="soft">
+<h3>لقطة السوق</h3>
+<div class="tbl-wrap"><table><thead><tr><th>المؤشر</th><th>القيمة</th></tr></thead><tbody>
+<tr><td>قطع رُصدت اليوم (عبر الصفحات الأربع)</td><td><strong>70</strong></td></tr>
+<tr><td>قطع جديدة صافية على السجلّ</td><td><strong>1</strong></td></tr>
+<tr><td>قطع معروفة سلفاً حُدِّثت أسعارها وتاريخ ظهورها</td><td><strong>69</strong></td></tr>
+<tr><td>قطع قديمة أُكمل تقييمها اليوم (كانت بلا درجة)</td><td><strong>4</strong></td></tr>
+<tr><td>بدرجة ≥ ٦٥ (العتبة الحالية، انظر الملاحظة أدناه)</td><td><strong>1</strong></td></tr>
+<tr><td>متوسط الدرجة اليوم</td><td><strong>46.3 / 100</strong></td></tr>
+<tr><td>إجمالي القطع المتراكمة في قاعدة البيانات</td><td><strong>170</strong> (+1)</td></tr>
+</tbody></table></div>
+<div class="note"><strong>لماذا العتبة ٦٥ لا ٧٠:</strong> السقوف الإلزامية في منهجية الدرجة (حصة مشاع/Hisseli أو أرض مروية/Sulu ⇐ سقف ٦٥، وبلا طريق ⇐ سقف ٦٠) تجعل ٧٠ غير قابلة للبلوغ عملياً لغالبية القطع القروية المرصودة. على مدى ٣٥ سجلّاً تاريخياً كانت ≥٧٠ صفراً في كل يوم تقريباً، وأعلى درجة سُجّلت قطّ هي ٦٩.٤. العتبة الآن ٦٥ — سقف Hisseli/Sulu نفسه.</div>
+<p>رُصد اليوم ٧٠ إعلاناً فريداً عبر الصفحات الأربع (18 تارلا/باتالغازي + 10 أرسا/باتالغازي متداخلة جزئياً مع صفحة التارلا + 20 تارلا/يشيليورت + 30 أرسا/يشيليورت — هذه الأخيرة أول صفحة فقط من أصل 107 إعلان معلَن إجمالاً في الفئة). قطعة واحدة فقط جديدة فعلياً على القاعدة؛ الـ69 الباقية جرى التحقّق من كل رقم إعلان (ID) فردياً مقابل <code>land-listings.json</code> وتحديث السعر و<code>last_seen</code>. بالإضافة إلى ذلك، اكتُشفت أثناء المراجعة 4 قطع كانت موجودة في القاعدة من جولات سابقة لكن بلا درجة مسجّلة أصلاً (فجوة بيانات قديمة لا علاقة لها باليوم) — استُكمل تقييمها اليوم بنفس محرّك الركائز الخمس، وهذا يفسّر ارتفاع متوسط الدرجة قليلاً عن أمس دون تحسّن حقيقي في السوق.</p>
+<hr class="soft">
+<h3>القطعة الجديدة اليوم</h3>
+<div class="tbl-wrap"><table><thead><tr><th>الحي</th><th>النوع</th><th>المساحة م²</th><th>₺/م²</th><th>الدرجة</th><th>الحكم</th></tr></thead><tbody>
+<tr><td>Hatunsuyu (Battalgazi)</td><td>arsa+ev (أرض عليها منزل)</td><td>2,076</td><td>3,300</td><td>42.0</td><td>تجنّب</td></tr>
+</tbody></table></div>
+<p><strong>Özhan&#x27;dan Hatunsuyunda 2 Dönüm Arsa Üzeri Satılık Müstakil Ev:</strong> <a href="https://www.emlakjet.com/ilan/ozhan-dan-hatunsuyunda-2-donum-arsa-uzeri-satilik-mustakil-ev-19793906" target="_blank" rel="noopener">رابط الإعلان</a>. قطعة 2,076م² بسعر إجمالي 6,850,000₺ (3,300₺/م²). الإعلان يصف الأرض بأنها &quot;Konut İmarlı&quot; (مخطَّطة سكنياً بالفعل) ويوجد عليها منزل قائم من طابقين مع أقبية تخزين (&quot;2 katlı altı depo ev&quot;)، والطابو مستقل (Müstakil, Tek Tapu) لا مشاع. هذا يعني أن <strong>فجوة التحويل مغلقة أصلاً</strong> — لا يوجد ربح تحويل من زراعي إلى عمراني لأن التحويل تمّ فعلياً وبُني عليها. الكهرباء والماء متوفران والطريق مفتوح حسب الإعلان، لكن لغياب أي فجوة تحويل حقيقية (الركيزة الأثقل وزناً، ٣٠٪) خرجت الدرجة منخفضة نسبياً (42.0) رغم نظافة الوضع القانوني الظاهرة، والحكم &quot;تجنّب&quot; اتساقاً مع نظائر سابقة في القاعدة تحمل نفس الخاصية (بناء قائم = لا صفقة تحويل).</p>
+<hr class="soft">
+<h3>أعلى القطع اليوم — أعلى ٥</h3>
+<div class="tbl-wrap"><table><thead><tr><th>الحي</th><th>المساحة م²</th><th>₺/م²</th><th>الدرجة</th><th>النوع/الحالة</th><th>رابط الإعلان</th><th>خرائط جوجل</th></tr></thead><tbody>
+<tr><td>Boran (Battalgazi)</td><td>5,421</td><td>959</td><td>65.0</td><td>tarla (سُقيا/Sulu، سقف ٦٥ مُطبَّق) — مؤكَّد اليوم</td><td><a href="https://www.emlakjet.com/ilan/battalgazi-boranda-5-422-m-sulu-tarla-yatirimlik-firsat-19622472" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/Boran%20Mahallesi%2C%20Battalgazi%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+<tr><td>Hıroğlu (Yeşilyurt)</td><td>14,861</td><td>606</td><td>63.9</td><td>tarla — مؤكَّد اليوم</td><td><a href="https://www.emlakjet.com/ilan/kardelenden-satilik-firsat-yatirimi-19295402" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/H%C4%B1ro%C4%9Flu%20Mahallesi%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+<tr><td>Bahri/Erenli (Battalgazi)</td><td>4,000</td><td>562</td><td>61.5</td><td>tarla (سُقيا/Sulu) — أُكمل تقييمها اليوم</td><td><a href="https://www.emlakjet.com/ilan/furkan-dogan-dan-battalgazi-erenli-de-4-donum-acil-satilik-sulu-tarla-17731623" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/Erenli%2C%20Battalgazi%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+<tr><td>Bindal (Yeşilyurt)</td><td>11,900</td><td>693</td><td>61.3</td><td>arsa (بيتان ومشتملات) — مؤكَّد اليوم</td><td><a href="https://www.emlakjet.com/ilan/satilik-12-donum-arazi-iki-ev-ve-bir-mustemilat-19438215" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/Bindal%20Mahallesi%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+<tr><td>Duranlar (Yeşilyurt)</td><td>16,573</td><td>585</td><td>60.8</td><td>tarla (بحچة) — مؤكَّد اليوم</td><td><a href="https://www.emlakjet.com/ilan/ozgur-den-yesilyurt-duranlar-koyu-nde-satilik-16-500-m-bahce-19036404" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/Duranlar%20K%C3%B6y%C3%BC%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+</tbody></table></div>
+<p>بوران وهيروغلو بقيتا في الصدارة كالمعتاد منذ أسابيع بلا تغيّر. الجديد اليوم في القائمة الموسّعة: Bahri/Erenli وBindal، وكلاهما ظهر بسبب استكمال تقييم قطع كانت مرصودة سابقاً بلا درجة — وليسا قطعاً جديدة على emlakjet.</p>
+<hr class="soft">
+<h3>ما الجديد مقابل آخر جولة (٢٠٢٦-٠٩-٠١)</h3>
+<ul>
+<li><strong>قطعة جديدة صافية واحدة:</strong> Hatunsuyu/Battalgazi (id 19793906) — أرض مخططة سكنياً عليها منزل قائم، درجة 42.0، تجنّب. انظر التفاصيل أعلاه.</li>
+<li><strong>استكمال تقييم 4 قطع قديمة كانت بلا درجة مسجّلة أصلاً:</strong> Bahri×2 مروية/Sulu (id 19066381 → 60.3، id 17731623 → 61.5)، Karabağlar (id 18761360 → 53.8)، Hanımınçiftliği (id 18769816 → 55.5). هذه فجوة بيانات من جولات سابقة لا علاقة لها بأداء السوق اليوم.</li>
+<li>متوسط الدرجة اليوم 46.3، أعلى قليلاً من أمس (45.4) — الارتفاع يعود بالكامل لاستكمال تقييم القطع الأربع أعلاه (كل درجاتها فوق المتوسط القديم)، لا لتحسّن فعلي في عروض السوق.</li>
+<li>لا قطعة تجاوزت عتبة ٦٥ اليوم عدا بوران المستقرة عندها بالضبط (سقف الري نفسه).</li>
+<li>لا أعلام حمراء جديدة (رهن/حجز) على أي قطعة اليوم.</li>
+</ul>
+<hr class="soft">
+<h3>المنهجية والقيود</h3>
+<ul>
+<li>المصدر: emlakjet.com، أربع صفحات (satilik-tarla + satilik-arsa لكلٍّ من Battalgazi وYeşilyurt)، عبر أداة جلب ويب تلخيصية. تحقّق فردي لكل رقم إعلان (ID) مقابل <code>land-listings.json</code> لتمييز الجديد من المعروف؛ صفحة أرسا/يشيليورت تضمّ 107 إعلاناً على عدّة صفحات فرعية — رُصدت الصفحة الأولى فقط (30 إعلاناً).</li>
+<li>الدرجة = التحويل ٣٠٪ + السعر ٢٥٪ + القانوني ٢٠٪ + التقني ١٥٪ + السيولة ١٠٪، مع سقوف إلزامية: حصة مشاع (Hisseli) أو أرض مروية (Sulu) ⇐ سقف ٦٥؛ بلا طريق مذكور صراحة (yok) ⇐ سقف ٦٠؛ رهن/حجز ⇐ سقف ٤٠. الطريق غير المذكور أصلاً يُعامَل كمجهول بلا سقف، وليس كـ&quot;بلا طريق&quot;.</li>
+<li>درجات القطع المعروفة ومقيَّمة سلفاً (65 من أصل 70 اليوم) <strong>لم تُعَد تقييمها</strong> — أُبقيت كما كانت مخزَّنة، تحديثاً فقط للسعر و<code>last_seen</code>. القطعة الجديدة (Hatunsuyu 19793906) وأربع قطع قديمة كانت بلا درجة (انظر أعلاه) قُيِّمت للمرة الأولى اليوم.</li>
+<li>كل رقم ورابط في هذا التقرير مأخوذ حرفياً من صفحة جُلبت فعلياً اليوم أو من <code>land-listings.json</code> المحدَّث؛ ما لم يُذكر في الإعلان (نوع التربة، نوع الطابو، حالة الري، الطريق) يُسجَّل &quot;غير معروف&quot; ولا يُفترض له قيمة إيجابية أو سلبية.</li>
+<li>هذا الرصد أداة بحث معلوماتي فقط، وليس نصيحة استثمارية أو قانونية. أي قرار شراء يتطلب تحقّقاً ميدانياً وقانونياً كاملاً (نوع الطابو، حالة الري، حالة الطريق، الرهون، مطابقة المخطط العمراني الفعلي).</li>
+</ul>
