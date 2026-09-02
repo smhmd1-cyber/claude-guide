@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-01",
+ "updated": "2026-09-02",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
  "total": 304,
@@ -11,11 +11,11 @@
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
    "status": "ok",
-   "count": 246,
-   "site_reported_total": 246,
+   "count": 242,
+   "site_reported_total": 244,
    "pages": 9,
-   "detail_cached": 244,
-   "detail_fetched": 2,
+   "detail_cached": 241,
+   "detail_fetched": 1,
    "detail_failed": 0
   },
   {
@@ -25,7 +25,7 @@
    "kind": "رسميّ",
    "price_note": "بدل محمّن: تقدير رسمي معتمَد وحدٌّ أدنى للمزايدة",
    "status": "ok",
-   "count": 58,
+   "count": 62,
    "scanned": 1600,
    "full_scan": false,
    "expired_dropped": 0
@@ -35,17 +35,17 @@
  "summary": {
   "districts_with_listings": 12,
   "districts_total": 13,
-  "ppm_median": 1734,
+  "ppm_median": 1693,
   "ppm_p10": 350,
-  "ppm_p90": 9362,
+  "ppm_p90": 9343,
   "price_min": 410000,
   "price_max": 403180132,
   "flagged": 1,
   "m2_recovered": 1,
   "dropped_outside_province": 0,
   "by_source": {
-   "emlakjet": 246,
-   "ilangovtr": 58
+   "emlakjet": 242,
+   "ilangovtr": 62
   },
   "overrides": {
    "hidden": 0,
@@ -53,8 +53,8 @@
    "manual": 0
   },
   "by_cat": {
-   "أرض · أرسا": 253,
-   "أرض زراعية وبساتين": 22,
+   "أرض · أرسا": 252,
+   "أرض زراعية وبساتين": 23,
    "سكن": 23,
    "عقار آخر": 6
   },
@@ -68,30 +68,30 @@
   },
   "by_tapu": {
    "بلا قيد طابو": 6,
-   "طابو مستقلّ": 208,
+   "طابو مستقلّ": 204,
    "طابو مشاع (حصّة)": 27,
    "طابو من تعاونية": 4,
    "نوع الطابو غير معروف": 1
   },
-  "zon_declared": 246
+  "zon_declared": 242
  },
  "stats": [
   {
    "ilce": "Yeşilyurt",
-   "n": 133,
-   "ppm_med": 4024,
+   "n": 130,
+   "ppm_med": 4018,
    "ppm_min": 10,
    "ppm_max": 44318,
-   "p_med": 7400000,
+   "p_med": 7450000,
    "note": null
   },
   {
    "ilce": "Battalgazi",
-   "n": 71,
-   "ppm_med": 3351,
+   "n": 70,
+   "ppm_med": 3308,
    "ppm_min": 562,
    "ppm_max": 24390,
-   "p_med": 4900000,
+   "p_med": 4950000,
    "note": null
   },
   {
@@ -110,6 +110,15 @@
    "ppm_min": 124,
    "ppm_max": 2679,
    "p_med": 4750000,
+   "note": null
+  },
+  {
+   "ilce": "Arapgir",
+   "n": 9,
+   "ppm_med": 100,
+   "ppm_min": 74,
+   "ppm_max": 3804,
+   "p_med": 1750000,
    "note": null
   },
   {
@@ -137,15 +146,6 @@
    "ppm_min": 409,
    "ppm_max": 7417,
    "p_med": 1740000,
-   "note": null
-  },
-  {
-   "ilce": "Arapgir",
-   "n": 5,
-   "ppm_med": 100,
-   "ppm_min": 74,
-   "ppm_max": 3804,
-   "p_med": 1750000,
    "note": null
   },
   {
@@ -207,18 +207,18 @@
   {
    "zon": "مرخّصة للبناء",
    "n": 101,
-   "ppm_med": 6901,
+   "ppm_med": 6910,
    "ppm_p10": 3104,
    "ppm_p90": 10993,
-   "n_priced": 95
+   "n_priced": 92
   },
   {
    "zon": "زراعية",
    "n": 165,
-   "ppm_med": 916,
+   "ppm_med": 904,
    "ppm_p10": 252,
    "ppm_p90": 2184,
-   "n_priced": 146
+   "n_priced": 145
   },
   {
    "zon": "بلا إمار أو مقيَّدة",
@@ -246,6 +246,120 @@
   }
  ],
  "items": [
+  {
+   "src": "ilangovtr",
+   "id": "2209528",
+   "t": "Malatya Arapgir'de 17.838 m² arsa icradan satılıktır",
+   "ilce": "Arapgir",
+   "mah": "",
+   "m2": 17838,
+   "p": 14610200,
+   "d": "2026-09-01",
+   "u": "https://www.ilan.gov.tr/ilan/2209528/emlak-arsa-malatya-arapgirde-17-838-m2-arsa-icradan-satiliktir",
+   "img": "",
+   "kind": "بيع قضائي (İCRA)",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "m2kind": "مساحة الأرض",
+   "org": "ARAPGİR İCRA DAİRESİ MÜDÜRLÜĞÜ",
+   "sale1": "06.10.2026",
+   "sale2": null,
+   "dosya": "2023/5 TLMT.",
+   "zon": "مرخّصة للبناء",
+   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي",
+   "ppm": 819
+  },
+  {
+   "src": "ilangovtr",
+   "id": "2209526",
+   "t": "Malatya Arapgir'de 1.366 m² arsa icradan satılıktır",
+   "ilce": "Arapgir",
+   "mah": "",
+   "m2": 1366,
+   "p": 1392000,
+   "d": "2026-09-01",
+   "u": "https://www.ilan.gov.tr/ilan/2209526/emlak-arsa-malatya-arapgirde-1-366-m2-arsa-icradan-satiliktir",
+   "img": "",
+   "kind": "بيع قضائي (İCRA)",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "m2kind": "مساحة الأرض",
+   "org": "ARAPGİR İCRA DAİRESİ MÜDÜRLÜĞÜ",
+   "sale1": "07.10.2026",
+   "sale2": null,
+   "dosya": "2023/5 TLMT.",
+   "zon": "مرخّصة للبناء",
+   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي",
+   "ppm": 1019
+  },
+  {
+   "src": "ilangovtr",
+   "id": "2209483",
+   "t": "Malatya Arapgir'de 17.096 m² arsa icradan satılıktır",
+   "ilce": "Arapgir",
+   "mah": "",
+   "m2": 17096,
+   "p": 13676800,
+   "d": "2026-09-01",
+   "u": "https://www.ilan.gov.tr/ilan/2209483/emlak-arsa-malatya-arapgirde-17-096-m2-arsa-icradan-satiliktir",
+   "img": "",
+   "kind": "بيع قضائي (İCRA)",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "m2kind": "مساحة الأرض",
+   "org": "ARAPGİR İCRA DAİRESİ MÜDÜRLÜĞÜ",
+   "sale1": "05.10.2026",
+   "sale2": null,
+   "dosya": "2023/5 TLMT.",
+   "zon": "مرخّصة للبناء",
+   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي",
+   "ppm": 800
+  },
+  {
+   "src": "ilangovtr",
+   "id": "2209482",
+   "t": "Malatya Arapgir'de 65.496 m² sulu tarım arazisi icradan satılıktır",
+   "ilce": "Arapgir",
+   "mah": "",
+   "m2": 65496,
+   "p": 18437157,
+   "d": "2026-09-01",
+   "u": "https://www.ilan.gov.tr/ilan/2209482/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-arapgirde-65-496-m2-sulu-tarim-arazisi-icradan-satiliktir",
+   "img": "",
+   "kind": "بيع قضائي (İCRA)",
+   "cat": "أرض زراعية وبساتين",
+   "land": true,
+   "m2kind": "مساحة الأرض",
+   "org": "ARAPGİR İCRA DAİRESİ MÜDÜRLÜĞÜ",
+   "sale1": "08.10.2026",
+   "sale2": null,
+   "dosya": "2023/5 TLMT.",
+   "zon": "زراعية",
+   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي",
+   "ppm": 282
+  },
+  {
+   "src": "emlakjet",
+   "id": "19793906",
+   "t": "Özhan'dan Hatunsuyunda 2 Dönüm Arsa Üzeri Satılık Müstakil Ev",
+   "ilce": "Battalgazi",
+   "mah": "Hatunsuyu Mahallesi",
+   "m2": 2076,
+   "p": 6850000,
+   "d": "2026-09-01",
+   "u": "https://www.emlakjet.com/ilan/19793906",
+   "img": "19793906/BF109ED9004F0F171AF0045E3534795119793906.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Konut İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "parsel": "1499",
+   "zon": "مرخّصة للبناء",
+   "zonf": "سكني",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 3300
+  },
   {
    "src": "emlakjet",
    "id": "19788508",
@@ -1209,28 +1323,6 @@
    "ppm": 591
   },
   {
-   "src": "emlakjet",
-   "id": "19723047",
-   "t": "Özgür'den Dolamantepe'de Satılık İmarlı Fırsat Arsalar",
-   "ilce": "Battalgazi",
-   "mah": "Dolamantepe Mahallesi",
-   "m2": 596,
-   "p": 2975000,
-   "d": "2026-08-13",
-   "u": "https://www.emlakjet.com/ilan/19723047",
-   "img": "19723047/647DF76259D8EB2F836D6E42539089FD19723047.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Konut İmarlı",
-   "tapu": "طابو مستقلّ",
-   "kredi": "صالح للتمويل",
-   "parsel": "4325",
-   "zon": "مرخّصة للبناء",
-   "zonf": "سكني",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 4992
-  },
-  {
    "src": "ilangovtr",
    "id": "2192440",
    "t": "Malatya Yeşilyurt Çilesiz Mahallesi'nde 3+1 daire icradan satılıktır",
@@ -2095,27 +2187,6 @@
    "zonf": "فيلات",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 6901
-  },
-  {
-   "src": "emlakjet",
-   "id": "19645511",
-   "t": "Güven Emlak'tan Yeşilyurt Merkeze Yakın İmarlı Arsa",
-   "ilce": "Yeşilyurt",
-   "mah": "Hıroğlu Mahallesi",
-   "m2": 1132,
-   "p": 11500000,
-   "d": "2026-07-24",
-   "u": "https://www.emlakjet.com/ilan/19645511",
-   "img": "19645511/E2A9E2F95AC827C8C9A93112468545A619645511.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Villa İmarlı",
-   "tapu": "طابو مستقلّ",
-   "kredi": "غير صالح للتمويل",
-   "zon": "مرخّصة للبناء",
-   "zonf": "فيلات",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 10159
   },
   {
    "src": "ilangovtr",
@@ -4056,28 +4127,6 @@
   },
   {
    "src": "emlakjet",
-   "id": "19451164",
-   "t": "Yeşilyurt Konakta 875 Metre Kare Bağ Yeri",
-   "ilce": "Yeşilyurt",
-   "mah": "Bahçebaşı Mahallesi",
-   "m2": 875,
-   "p": 1700000,
-   "d": "2026-06-07",
-   "u": "https://www.emlakjet.com/ilan/19451164",
-   "img": "19451164/BCC38DC39516FAC1FF7C5A953BABE38619451164.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Bağ & Bahçe",
-   "tapu": "طابو مستقلّ",
-   "kredi": "غير صالح للتمويل",
-   "parsel": "1241",
-   "zon": "زراعية",
-   "zonf": "كرم وبستان",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 1943
-  },
-  {
-   "src": "emlakjet",
    "id": "19447657",
    "t": "Yazlı - Kışlı Kullanıma Uygun Hobi Bahçemiz Satılıktır",
    "ilce": "Battalgazi",
@@ -4184,28 +4233,6 @@
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 192
-  },
-  {
-   "src": "emlakjet",
-   "id": "19435059",
-   "t": "Mollakasım'da 750m2 Satılık Villa İmarlı Arsa",
-   "ilce": "Yeşilyurt",
-   "mah": "Mullakasım Mahallesi",
-   "m2": 750,
-   "p": 3500000,
-   "d": "2026-06-03",
-   "u": "https://www.emlakjet.com/ilan/19435059",
-   "img": "19435059/509AE3CB00462316671A79ECEDD8E89519435059.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Villa İmarlı",
-   "tapu": "طابو مستقلّ",
-   "kredi": "غير صالح للتمويل",
-   "parsel": "12",
-   "zon": "مرخّصة للبناء",
-   "zonf": "فيلات",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 4667
   },
   {
    "src": "emlakjet",
@@ -6584,27 +6611,6 @@
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 562
-  },
-  {
-   "src": "emlakjet",
-   "id": "17721957",
-   "t": "Özgür'den Battalgazi Ana Cadde Üzerinde Satılık Arsa",
-   "ilce": "Battalgazi",
-   "mah": "Hanımınçiftliği Mahallesi",
-   "m2": 1282,
-   "p": 7700000,
-   "d": "2025-07-27",
-   "u": "https://www.emlakjet.com/ilan/17721957",
-   "img": "17721957/92232DE2CA725B1C1C2E5CDC1D9C9B2517721957.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Konut İmarlı",
-   "tapu": "طابو مستقلّ",
-   "kredi": "صالح للتمويل",
-   "zon": "مرخّصة للبناء",
-   "zonf": "سكني",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 6006
   },
   {
    "src": "emlakjet",
