@@ -1,0 +1,47 @@
+<h2>تقرير رصد أراضي ملاطيا — فجوة التحويل الزراعي↔العمراني (٥ سبتمبر ٢٠٢٦)</h2>
+<p><strong>النطاق:</strong> قطع <code>tarla</code> / <code>arsa</code> / <code>bag</code> في قضائي باتالغازي (Battalgazi) ويشيليورت (Yeşilyurt)، مصدرها emlakjet (أربع صفحات: satilik-tarla و satilik-arsa لكلٍّ من القضائين).</p>
+<p><strong>الأطروحة:</strong> قطع زراعية أو شبه مفرزة تحمل فجوة سعر بين قيمتها الخام وقيمة الأرض المطوَّرة المرجعية في نفس الممر.</p>
+<p>آخر سجلّ فعلي في <code>land-reports.json</code> قبل هذا التقرير كان بتاريخ ٢٠٢٦-٠٩-٠٤ — فجوة يوم واحد فقط، لا مشكلة استمرارية اليوم.</p>
+<hr class="soft">
+<h3>لقطة السوق</h3>
+<div class="tbl-wrap"><table><thead><tr><th>المؤشر</th><th>القيمة</th></tr></thead><tbody>
+<tr><td>قطع رُصدت اليوم (عبر الصفحات الأربع)</td><td><strong>84</strong></td></tr>
+<tr><td>قطع جديدة صافية على السجلّ</td><td><strong>0</strong></td></tr>
+<tr><td>قطع معروفة سلفاً حُدِّثت أسعارها وتاريخ ظهورها</td><td><strong>84</strong></td></tr>
+<tr><td>تغيّر سعري فعلي بين القطع المعروفة</td><td><strong>0</strong> (فحص مقارن كامل على كل الروابط الـ84)</td></tr>
+<tr><td>بدرجة ≥ ٦٥ (العتبة الحالية، انظر الملاحظة أدناه)</td><td><strong>1</strong></td></tr>
+<tr><td>متوسط الدرجة اليوم</td><td><strong>46.2 / 100</strong></td></tr>
+<tr><td>إجمالي القطع المتراكمة في قاعدة البيانات</td><td><strong>173</strong> (بلا تغيّر)</td></tr>
+</tbody></table></div>
+<div class="note"><strong>لماذا العتبة ٦٥ لا ٧٠:</strong> السقوف الإلزامية في منهجية الدرجة (حصة مشاع/Hisseli أو أرض مروية/Sulu ⇐ سقف ٦٥، وبلا طريق ⇐ سقف ٦٠) تجعل ٧٠ غير قابلة للبلوغ عملياً لغالبية القطع القروية المرصودة. العتبة الآن ٦٥ — سقف Hisseli/Sulu نفسه.</div>
+<p><strong>يوم بلا جديد إطلاقاً — ثاني يوم متتالٍ.</strong> رُصد اليوم 84 إعلاناً فريداً عبر الصفحات الأربع (18 تارلا/باتالغازي + 30 أرسا/باتالغازي + 21 تارلا/يشيليورت + 30 أرسا/يشيليورت، بعد إزالة 15 تكراراً بين صفحتي تارلا/أرسا لنفس القضاء — نفس الرابط بالضبط). ثلاثة روابط بدت للوهلة الأولى جديدة أثناء الفحص الأولي (Özhan/Hatunsuyu، HS Life/Orduzu، HS Life/Gedik) تبيّن بعد تحقّق فردي بمعرّف الإعلان (ID) أنها مرصودة سلفاً في <code>land-listings.json</code> بنفس المعرّف تحت روابط مطابقة تماماً — أي رابط ظهر اليوم كان معروفاً سلفاً، تحقّق شامل على الـ84 دون استثناء. تغيّر طفيف واحد لا يُعتد به: بحري/أرنلي (17731623) — السعر لكل م² محسوب اليوم 563₺ مقابل 562₺ المخزَّن، وهو فارق تقريب حسابي بحت (نفس السعر الإجمالي 2,250,000₺ ونفس المساحة 4,000م²)، تم تجاهله ولم يُعدَّل. جرى تحديث <code>last_seen</code> لكل القطع الـ84 إلى تاريخ اليوم.</p>
+<hr class="soft">
+<h3>أعلى القطع اليوم — أعلى ٥ (من كامل القطع المرصودة)</h3>
+<div class="tbl-wrap"><table><thead><tr><th>الحي</th><th>المساحة م²</th><th>₺/م²</th><th>الدرجة</th><th>النوع/الحالة</th><th>رابط الإعلان</th><th>خرائط جوجل</th></tr></thead><tbody>
+<tr><td>Boran (Battalgazi)</td><td>5,421</td><td>959</td><td>65.0</td><td>tarla (سُقيا/Sulu، سقف ٦٥ مُطبَّق)</td><td><a href="https://www.emlakjet.com/ilan/battalgazi-boranda-5-422-m-sulu-tarla-yatirimlik-firsat-19622472" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/Boran%20Mahallesi%2C%20Battalgazi%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+<tr><td>Hıroğlu (Yeşilyurt)</td><td>14,861</td><td>606</td><td>63.9</td><td>tarla</td><td><a href="https://www.emlakjet.com/ilan/kardelenden-satilik-firsat-yatirimi-19295402" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/H%C4%B1ro%C4%9Flu%20Mahallesi%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+<tr><td>Bahri/Erenli (Battalgazi)</td><td>4,000</td><td>562</td><td>61.5</td><td>tarla (سُقيا/Sulu)</td><td><a href="https://www.emlakjet.com/ilan/furkan-dogan-dan-battalgazi-erenli-de-4-donum-acil-satilik-sulu-tarla-17731623" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/Erenli%2C%20Battalgazi%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+<tr><td>Bindal (Yeşilyurt)</td><td>11,900</td><td>693</td><td>61.3</td><td>arsa (بيتان ومشتملات)</td><td><a href="https://www.emlakjet.com/ilan/satilik-12-donum-arazi-iki-ev-ve-bir-mustemilat-19438215" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/Bindal%20Mahallesi%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+<tr><td>Duranlar (Yeşilyurt)</td><td>16,573</td><td>585</td><td>60.8</td><td>tarla (بحچة)</td><td><a href="https://www.emlakjet.com/ilan/ozgur-den-yesilyurt-duranlar-koyu-nde-satilik-16-500-m-bahce-19036404" target="_blank" rel="noopener">رابط</a></td><td><a href="https://www.google.com/maps/search/Duranlar%20K%C3%B6y%C3%BC%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خريطة</a></td></tr>
+</tbody></table></div>
+<p>الصدارة مطابقة تماماً لأمس — لا تغيّر في الترتيب ولا في الأسعار ولا في الدرجات لأي من أعلى ٥.</p>
+<hr class="soft">
+<h3>ما الجديد مقابل آخر جولة (٢٠٢٦-٠٩-٠٤)</h3>
+<ul>
+<li><strong>لا قطعة جديدة على الإطلاق</strong> — ثاني يوم متتالٍ بلا أي إضافة. جميع الـ84 رابطاً المرصودة اليوم موجودة سلفاً في <code>land-listings.json</code>.</li>
+<li>ثلاث بطاقات بدت جديدة ظاهرياً في الفحص الأولي (عناوين لم تُقرأ من قبل) لكن تحقّق معرّف الإعلان (ID) أثبت أنها القطع نفسها المرصودة سابقاً (Özhan/Hatunsuyu — 19793906، HS Life/Orduzu — 19788508، HS Life/Gedik — 19788247) — درس تذكيري بأهمية المطابقة بالمعرّف الرقمي لا بالعنوان النصي وحده.</li>
+<li><strong>لا تغيّر سعري فعلي على أي قطعة معروفة</strong> — فحص مقارن شامل (سعر × مساحة) على كل رابط رُصد اليوم مقابل القيمة المخزَّنة؛ الفرق الوحيد كان تقريب حسابي ضئيل (563 مقابل 562₺/م² لقطعة واحدة) بلا أثر على الدرجة أو الترتيب.</li>
+<li>لا قطعة تجاوزت عتبة ٦٥ اليوم عدا بوران المستقرة عندها بالضبط (سقف الري نفسه)، بلا تغيّر عن أمس.</li>
+<li>متوسط الدرجة اليوم 46.2، قريب جداً من أمس (46.1) وضمن نطاق الأسابيع الماضية (44.3-46.9) — لا اتجاه واضح.</li>
+<li>لا أعلام حمراء جديدة (رهن/حجز) على أي قطعة اليوم.</li>
+<li><strong>خلاصة:</strong> السوق راكد تماماً — لا عروض جديدة ولا حركة أسعار في أربع صفحات كاملة على مدى يومين متتاليين. هذه معلومة قائمة بذاتها، وليست فشلاً في الرصد.</li>
+</ul>
+<hr class="soft">
+<h3>المنهجية والقيود</h3>
+<ul>
+<li>المصدر: emlakjet.com، أربع صفحات (satilik-tarla + satilik-arsa لكلٍّ من Battalgazi وYeşilyurt)، عبر أداة جلب ويب تلخيصية، مع فحص تكميلي لعناوين الروابط الكاملة (بلا اختصار) لضمان تغطية كل الصفحة. تحقّق فردي لكل رقم إعلان (ID) مقابل <code>land-listings.json</code> لتمييز الجديد من المعروف.</li>
+<li>الدرجة = التحويل ٣٠٪ + السعر ٢٥٪ + القانوني ٢٠٪ + التقني ١٥٪ + السيولة ١٠٪، مع سقوف إلزامية: حصة مشاع (Hisseli) أو أرض مروية (Sulu) ⇐ سقف ٦٥؛ بلا طريق مذكور صراحة (yok) ⇐ سقف ٦٠؛ رهن/حجز ⇐ سقف ٤٠. الطريق غير المذكور أصلاً يُعامَل كمجهول بلا سقف، وليس كـ&quot;بلا طريق&quot;.</li>
+<li>لا قطعة قُيِّمت اليوم لأول مرة، ولذلك لم يُستدعَ محرّك الركائز الخمس على أي قطعة جديدة — كل الدرجات المعروضة هنا محفوظة كما كانت مخزَّنة سابقاً، فقط <code>last_seen</code> تحدَّث.</li>
+<li>كل رقم ورابط في هذا التقرير مأخوذ حرفياً من صفحة جُلبت فعلياً اليوم أو من <code>land-listings.json</code> المحدَّث؛ ما لم يُذكر في الإعلان يُسجَّل &quot;غير معروف&quot; ولا يُفترض له قيمة إيجابية أو سلبية. صفحتا أرسا (باتالغازي 53 إعلاناً، يشيليورت 105 إعلانات) عُرضتا جزئياً فقط (٣٠ بطاقة أولى من كلٍّ منهما بحسب ترتيب الموقع الافتراضي) — البطاقات غير المعروضة اليوم لم تُفحص، ولا يُفترض أنها خالية من الجديد.</li>
+<li>هذا الرصد أداة بحث معلوماتي فقط، وليس نصيحة استثمارية أو قانونية. أي قرار شراء يتطلب تحقّقاً ميدانياً وقانونياً كاملاً (نوع الطابو، حالة الري، حالة الطريق، الرهون، مطابقة المخطط العمراني الفعلي).</li>
+</ul>
