@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-05",
+ "updated": "2026-09-06",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
  "total": 303,
@@ -14,8 +14,8 @@
    "count": 236,
    "site_reported_total": 237,
    "pages": 8,
-   "detail_cached": 234,
-   "detail_fetched": 2,
+   "detail_cached": 233,
+   "detail_fetched": 3,
    "detail_failed": 0
   },
   {
@@ -36,8 +36,8 @@
   "districts_with_listings": 12,
   "districts_total": 13,
   "ppm_median": 1686,
-  "ppm_p10": 340,
-  "ppm_p90": 9343,
+  "ppm_p10": 350,
+  "ppm_p90": 9091,
   "price_min": 286400,
   "price_max": 403180132,
   "flagged": 1,
@@ -60,18 +60,17 @@
   },
   "land_count": 271,
   "by_zon": {
-   "مرخّصة للبناء": 97,
-   "زراعية": 166,
+   "مرخّصة للبناء": 96,
+   "زراعية": 167,
    "بلا إمار أو مقيَّدة": 1,
    "تصنيف آخر": 3,
    "غير مذكور": 36
   },
   "by_tapu": {
    "بلا قيد طابو": 6,
-   "طابو مستقلّ": 198,
-   "طابو مشاع (حصّة)": 27,
-   "طابو من تعاونية": 4,
-   "نوع الطابو غير معروف": 1
+   "طابو مستقلّ": 197,
+   "طابو مشاع (حصّة)": 29,
+   "طابو من تعاونية": 4
   },
   "zon_declared": 236
  },
@@ -79,28 +78,28 @@
   {
    "ilce": "Yeşilyurt",
    "n": 129,
-   "ppm_med": 4099,
+   "ppm_med": 4018,
    "ppm_min": 10,
    "ppm_max": 44318,
-   "p_med": 7625000,
+   "p_med": 8000000,
    "note": null
   },
   {
    "ilce": "Battalgazi",
-   "n": 71,
-   "ppm_med": 3144,
+   "n": 70,
+   "ppm_med": 3222,
    "ppm_min": 562,
    "ppm_max": 24390,
-   "p_med": 5350000,
+   "p_med": 5275000,
    "note": null
   },
   {
    "ilce": "Akçadağ",
-   "n": 45,
-   "ppm_med": 640,
+   "n": 46,
+   "ppm_med": 631,
    "ppm_min": 155,
    "ppm_max": 5067,
-   "p_med": 9250000,
+   "p_med": 8500000,
    "note": null
   },
   {
@@ -125,9 +124,9 @@
    "ilce": "Doğanşehir",
    "n": 8,
    "ppm_med": 356,
-   "ppm_min": 140,
+   "ppm_min": 119,
    "ppm_max": 3757,
-   "p_med": 3112500,
+   "p_med": 2995000,
    "note": null
   },
   {
@@ -206,19 +205,19 @@
  "zon_stats": [
   {
    "zon": "مرخّصة للبناء",
-   "n": 97,
-   "ppm_med": 7006,
+   "n": 96,
+   "ppm_med": 6919,
    "ppm_p10": 3104,
    "ppm_p90": 12333,
-   "n_priced": 88
+   "n_priced": 87
   },
   {
    "zon": "زراعية",
-   "n": 166,
-   "ppm_med": 872,
-   "ppm_p10": 252,
+   "n": 167,
+   "ppm_med": 888,
+   "ppm_p10": 256,
    "ppm_p90": 2262,
-   "n_priced": 143
+   "n_priced": 144
   },
   {
    "zon": "بلا إمار أو مقيَّدة",
@@ -246,6 +245,51 @@
   }
  ],
  "items": [
+  {
+   "src": "emlakjet",
+   "id": "19811814",
+   "t": "Erdoğan Gayrimenkulden Akçadağ Altunluda Yeni Yapılan Tokilere Yakın Satılık Bahçe Tarla Hissesi",
+   "ilce": "Akçadağ",
+   "mah": "Gölpınar Mahallesi",
+   "m2": 5500,
+   "p": 2150000,
+   "d": "2026-09-06",
+   "u": "https://www.emlakjet.com/ilan/19811814",
+   "img": "19811814/7D108DB512F6A6A929CD0D0AD3B593E819811814.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مشاع (حصّة)",
+   "kredi": "غير صالح للتمويل",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 391
+  },
+  {
+   "src": "emlakjet",
+   "id": "19811154",
+   "t": "Malatya Akçadağ Havalimanı Yakını 10.900 M² | 75 Kayısı Ağacı | 2,5–3 Ton Verim | Yol-su-elektrik",
+   "ilce": "Akçadağ",
+   "mah": "Şeyhler Mahallesi",
+   "m2": 10900,
+   "p": 4500000,
+   "d": "2026-09-05",
+   "u": "https://www.emlakjet.com/ilan/19811154",
+   "img": "19811154/E22C8198ADAACD7E622C9BCBAE6EC89019811154.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Tarla",
+   "tapu": "طابو مشاع (حصّة)",
+   "kredi": "صالح للتمويل",
+   "ada": "127",
+   "parsel": "43",
+   "bel": "Akçadağ Belediyesi",
+   "zon": "زراعية",
+   "zonf": "حقل — تَرلا",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 413
+  },
   {
    "src": "emlakjet",
    "id": "19807482",
@@ -3001,7 +3045,7 @@
    "ilce": "Doğanşehir",
    "mah": "Fındık Mahallesi",
    "m2": 10860,
-   "p": 1525000,
+   "p": 1290000,
    "d": "2026-07-15",
    "u": "https://www.emlakjet.com/ilan/19608099",
    "img": "19608099/7594C79DD1A7EDA68486B7525D2949B119608099.jpg",
@@ -3014,7 +3058,7 @@
    "zon": "زراعية",
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 140
+   "ppm": 119
   },
   {
    "src": "emlakjet",
@@ -5229,28 +5273,6 @@
   },
   {
    "src": "emlakjet",
-   "id": "19222790",
-   "t": "Kardelen Gyo Dan Bir Fırsat Daha",
-   "ilce": "Akçadağ",
-   "mah": "İkinciler Mahallesi",
-   "m2": 12300,
-   "p": 3100000,
-   "d": "2026-04-10",
-   "u": "https://www.emlakjet.com/ilan/19222790",
-   "img": "19222790/0F85B446A1655EA750F517413B726E1419222790.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Bağ & Bahçe",
-   "tapu": "طابو مستقلّ",
-   "kredi": "غير صالح للتمويل",
-   "parsel": "38",
-   "zon": "زراعية",
-   "zonf": "كرم وبستان",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 252
-  },
-  {
-   "src": "emlakjet",
    "id": "19216562",
    "t": "Tugay Kınacı'dan Battalgazi Toygar Da Satılık 1.740 M2 Bahçe",
    "ilce": "Battalgazi",
@@ -5545,6 +5567,28 @@
   },
   {
    "src": "emlakjet",
+   "id": "19077142",
+   "t": "Gündüzbeyde Harika Bir Konumda Yatırımlık Arsa",
+   "ilce": "Yeşilyurt",
+   "mah": "Gündüzbey Mahallesi",
+   "m2": 6675,
+   "p": 11800000,
+   "d": "2026-03-02",
+   "u": "https://www.emlakjet.com/ilan/19077142",
+   "img": "19077142/0A6B0E5B6E33ABA98913466F01E4321119077142.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "parsel": "1617",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 1768
+  },
+  {
+   "src": "emlakjet",
    "id": "19073234",
    "t": "Özgür'den Yazıhan Durucasu'da 36 Dönüm Satılık Kayısı Bahçesi",
    "ilce": "Yazıhan",
@@ -5584,29 +5628,6 @@
    "zonf": "فيلات",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 9033
-  },
-  {
-   "src": "emlakjet",
-   "id": "19070597",
-   "t": "Acil!! Güven Emlak'tan Tecdede İkiz Villalık Projesi Hazır Arsa",
-   "ilce": "Yeşilyurt",
-   "mah": "Çarmuzu Mahallesi",
-   "m2": 628,
-   "p": 6500000,
-   "d": "2026-02-28",
-   "u": "https://www.emlakjet.com/ilan/19070597",
-   "img": "19070597/D85879C7A5FD07895FEE1E3974509F1919070597.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Villa İmarlı",
-   "tapu": "طابو مستقلّ",
-   "kredi": "صالح للتمويل",
-   "ada": "4909",
-   "parsel": "1",
-   "zon": "مرخّصة للبناء",
-   "zonf": "فيلات",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 10350
   },
   {
    "src": "emlakjet",
@@ -6708,28 +6729,6 @@
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 1140
-  },
-  {
-   "src": "emlakjet",
-   "id": "17455746",
-   "t": "Malatya Merdivenler Mahallesinde 11 Dönümlük Sulu Tarla - Pazarlığa Açıktır",
-   "ilce": "Battalgazi",
-   "mah": "Merdivenler Mahallesi",
-   "m2": 11000,
-   "p": 8000000,
-   "d": "2025-06-05",
-   "u": "https://www.emlakjet.com/ilan/17455746",
-   "img": "17455746/22BB1D24672DC2D9394E058B6A45F21217455746.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Tarla",
-   "tapu": "نوع الطابو غير معروف",
-   "kredi": "غير صالح للتمويل",
-   "parsel": "172",
-   "zon": "زراعية",
-   "zonf": "حقل — تَرلا",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 727
   },
   {
    "src": "emlakjet",
