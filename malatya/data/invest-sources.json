@@ -1,6 +1,6 @@
 {
- "accessed": "2026-09-01",
- "count": 96,
+ "accessed": "2026-09-07",
+ "count": 100,
  "items": [
   {
    "code": "L1",
@@ -961,6 +961,46 @@
    "lang": "tr",
    "why": "سقف تمويل 20–30 مليون ₺ (دعم 20 نقطة بلا سداد)، لكن الأهلية تشترط شركة KOBİ قائمة ومسجَّلة فعلياً لدى KOSGEB — لا يخصّ مرحلة التأسيس الحالية؛ تواريخ الدورة الجارية غير متّسقة بين مصادر ثانوية (فُحص 1/9/2026)",
    "cat": "حوافز"
+  },
+  {
+   "code": "I28",
+   "org": "KOSGEB",
+   "title": "Kapasite Geliştirme Destek Programı — الدورة الثالثة 2026 (تواريخ محسومة رسمياً)",
+   "url": "https://www.kosgeb.gov.tr/site/tr/genel/detay/9467/kobilerin-buyumesine-guclu-destek-yeni-basvuru-donemi-basladi",
+   "date": "2026-08-22",
+   "lang": "tr",
+   "why": "يحسم رسمياً تواريخ الدورة الثالثة (22/8–15/9/2026) التي كانت متضاربة بين مصادر ثانوية وقت رصد I27 — لا يخصّ مرحلة التأسيس الحالية إذ يشترط شركة KOBİ قائمة ومسجَّلة فعلياً",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I29",
+   "org": "KOSGEB",
+   "title": "Küresel Rekabetçilik Destek Programı — دعم قروض حتى 50 مليون ₺ للمنشآت المصدِّرة سريعة النمو",
+   "url": "https://www.kosgeb.gov.tr/site/tr/genel/detay/9476/kobilerin-kuresel-rekabet-gucunu-artiracak-destek-programina-basvurular-basladi",
+   "date": "2026-09-07",
+   "lang": "tr",
+   "why": "نافذة تقديم جديدة 7–30/9/2026 — سقف قرض 20–50 مليون ₺ ودعم 20 نقطة بلا سداد، لكن يستهدف منشآت KOBİ قائمة مصدِّرة أو سريعة النمو — لا يخصّ مرحلة التأسيس الحالية",
+   "cat": "حوافز"
+  },
+  {
+   "code": "I30",
+   "org": "TKDK",
+   "title": "IPARD III — تأجيل موعد إعلان دعوة تدبير M7 (تنويع الأنشطة الزراعية وتطوير الأعمال) من يوليو إلى سبتمبر",
+   "url": "https://www.tkdk.gov.tr/Duyuru/ipard-iii-m7-ciftlik-faaliyetlerinin-cesitlendirilmesi-ve-is-gelistirme-tedbiri-cagri-ilani-tarihinde-degisiklik-yapilmasina-iliskin-duyuru-13139",
+   "date": "2026-07-31",
+   "lang": "tr",
+   "why": "دعوة مستقبلية (ليست مفتوحة الآن) لتدبير تنويع الأنشطة الزراعية غير المتعلّق بالإنتاج النباتي المكشوف أو تربية النحل أو السياحة الريفية — التقديم عبر المنسّقيات الإقليمية لاحقاً في أكتوبر–نوفمبر 2026",
+   "cat": "حوافز"
+  },
+  {
+   "code": "E14",
+   "org": "Malatya Merkez 1. Organize Sanayi Bölge Müdürlüğü (MALORSA)",
+   "title": "إعلان تخصيص أراضٍ — تحديث تشرين الشهر (نافذة سبتمبر): نفس القطع الخمس بحيّي الفاتح وجهادية",
+   "url": "https://malorsa.org.tr/malatya-merkez-1-organize-sanayi-bolge-mudurlugu-arsa-tahsisi-hakkinda-duyuru-10/",
+   "date": "2026-09-07",
+   "lang": "tr",
+   "why": "إعادة نشر شهرية إلزامية (أول اثنين من كل شهر) لنفس القطع الخمس غير المخصَّصة في E13 بنفس السعر 2250 ₺/م² — نافذة تقديم جديدة 7–27/9/2026؛ يؤكّد استمرار عدم تخصيصها منذ أغسطس",
+   "cat": "اقتصاد"
   }
  ]
 }
