@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-06",
+ "updated": "2026-09-07",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
  "total": 303,
@@ -11,11 +11,11 @@
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
    "status": "ok",
-   "count": 236,
-   "site_reported_total": 237,
+   "count": 238,
+   "site_reported_total": 238,
    "pages": 8,
-   "detail_cached": 233,
-   "detail_fetched": 3,
+   "detail_cached": 234,
+   "detail_fetched": 4,
    "detail_failed": 0
   },
   {
@@ -25,27 +25,27 @@
    "kind": "رسميّ",
    "price_note": "بدل محمّن: تقدير رسمي معتمَد وحدٌّ أدنى للمزايدة",
    "status": "ok",
-   "count": 67,
+   "count": 65,
    "scanned": 1600,
    "full_scan": false,
-   "expired_dropped": 0
+   "expired_dropped": 2
   }
  ],
  "note": "أسعار المصدر السوقيّ كما يعلنها البائع أو المكتب — ليست تقييماً. وأسعار المصدر الرسميّ بدلٌ محمّن: تقدير معتمَد وحدٌّ أدنى للمزايدة، لا سعر بيع. تحقّق من الطابو والإفراز والحالة العمرانية قبل أي التزام.",
  "summary": {
   "districts_with_listings": 12,
   "districts_total": 13,
-  "ppm_median": 1686,
-  "ppm_p10": 350,
-  "ppm_p90": 9091,
+  "ppm_median": 1693,
+  "ppm_p10": 340,
+  "ppm_p90": 9343,
   "price_min": 286400,
   "price_max": 403180132,
   "flagged": 1,
   "m2_recovered": 1,
   "dropped_outside_province": 0,
   "by_source": {
-   "emlakjet": 236,
-   "ilangovtr": 67
+   "emlakjet": 238,
+   "ilangovtr": 65
   },
   "overrides": {
    "hidden": 0,
@@ -53,32 +53,32 @@
    "manual": 0
   },
   "by_cat": {
-   "أرض · أرسا": 246,
-   "أرض زراعية وبساتين": 25,
-   "سكن": 26,
+   "أرض · أرسا": 248,
+   "أرض زراعية وبساتين": 24,
+   "سكن": 25,
    "عقار آخر": 6
   },
-  "land_count": 271,
+  "land_count": 272,
   "by_zon": {
-   "مرخّصة للبناء": 96,
+   "مرخّصة للبناء": 98,
    "زراعية": 167,
    "بلا إمار أو مقيَّدة": 1,
-   "تصنيف آخر": 3,
-   "غير مذكور": 36
+   "تصنيف آخر": 2,
+   "غير مذكور": 35
   },
   "by_tapu": {
-   "بلا قيد طابو": 6,
-   "طابو مستقلّ": 197,
-   "طابو مشاع (حصّة)": 29,
+   "بلا قيد طابو": 5,
+   "طابو مستقلّ": 199,
+   "طابو مشاع (حصّة)": 30,
    "طابو من تعاونية": 4
   },
-  "zon_declared": 236
+  "zon_declared": 238
  },
  "stats": [
   {
    "ilce": "Yeşilyurt",
    "n": 129,
-   "ppm_med": 4018,
+   "ppm_med": 4099,
    "ppm_min": 10,
    "ppm_max": 44318,
    "p_med": 8000000,
@@ -86,7 +86,7 @@
   },
   {
    "ilce": "Battalgazi",
-   "n": 70,
+   "n": 69,
    "ppm_med": 3222,
    "ppm_min": 562,
    "ppm_max": 24390,
@@ -96,10 +96,10 @@
   {
    "ilce": "Akçadağ",
    "n": 46,
-   "ppm_med": 631,
+   "ppm_med": 634,
    "ppm_min": 155,
    "ppm_max": 5067,
-   "p_med": 8500000,
+   "p_med": 8875000,
    "note": null
   },
   {
@@ -140,11 +140,11 @@
   },
   {
    "ilce": "Darende",
-   "n": 6,
-   "ppm_med": 1490,
+   "n": 7,
+   "ppm_med": 2076,
    "ppm_min": 409,
-   "ppm_max": 7417,
-   "p_med": 1740000,
+   "ppm_max": 10000,
+   "p_med": 2590000,
    "note": null
   },
   {
@@ -205,19 +205,19 @@
  "zon_stats": [
   {
    "zon": "مرخّصة للبناء",
-   "n": 96,
-   "ppm_med": 6919,
+   "n": 98,
+   "ppm_med": 6957,
    "ppm_p10": 3104,
    "ppm_p90": 12333,
-   "n_priced": 87
+   "n_priced": 89
   },
   {
    "zon": "زراعية",
    "n": 167,
-   "ppm_med": 888,
-   "ppm_p10": 256,
+   "ppm_med": 872,
+   "ppm_p10": 251,
    "ppm_p90": 2262,
-   "n_priced": 144
+   "n_priced": 145
   },
   {
    "zon": "بلا إمار أو مقيَّدة",
@@ -229,15 +229,15 @@
   },
   {
    "zon": "تصنيف آخر",
-   "n": 3,
-   "ppm_med": 3964,
-   "ppm_p10": 1625,
+   "n": 2,
+   "ppm_med": 24141,
+   "ppm_p10": 3964,
    "ppm_p90": 44318,
-   "n_priced": 3
+   "n_priced": 2
   },
   {
    "zon": "غير مذكور",
-   "n": 36,
+   "n": 35,
    "ppm_med": null,
    "ppm_p10": null,
    "ppm_p90": null,
@@ -245,6 +245,49 @@
   }
  ],
  "items": [
+  {
+   "src": "emlakjet",
+   "id": "19813629",
+   "t": "Yıldırım Emlak'tan Darende Merkezde Satılık Tek Tapu 365 M2 Arsa",
+   "ilce": "Darende",
+   "mah": "Sungur Mahallesi",
+   "m2": 365,
+   "p": 3650000,
+   "d": "2026-09-07",
+   "u": "https://www.emlakjet.com/ilan/19813629",
+   "img": "19813629/407942E0F5DD2902F428D60B7F70805419813629.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Konut İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "غير صالح للتمويل",
+   "zon": "مرخّصة للبناء",
+   "zonf": "سكني",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 10000
+  },
+  {
+   "src": "emlakjet",
+   "id": "19813295",
+   "t": "Havalimanı Civarı Asfalta Cephe Satılık Sulu Kayısı Bahçesi",
+   "ilce": "Akçadağ",
+   "mah": "Esenli Mahallesi",
+   "m2": 14500,
+   "p": 9250000,
+   "d": "2026-09-06",
+   "u": "https://www.emlakjet.com/ilan/19813295",
+   "img": "19813295/24FA6C46A28BA5C8B5707F0C1FBC243319813295.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مشاع (حصّة)",
+   "kredi": "غير صالح للتمويل",
+   "parsel": "4",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 638
+  },
   {
    "src": "emlakjet",
    "id": "19811814",
@@ -583,6 +626,28 @@
    "zonf": "سكني",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 3300
+  },
+  {
+   "src": "emlakjet",
+   "id": "19791194",
+   "t": "Özgürden Tecde'de Muhteşem Manzaralı Arsa",
+   "ilce": "Yeşilyurt",
+   "mah": "Tecde Mahallesi",
+   "m2": 654,
+   "p": 4550000,
+   "d": "2026-09-01",
+   "u": "https://www.emlakjet.com/ilan/19791194",
+   "img": "19791194/9B61BCE60EE3AFF0492ADF6669606AD519791194.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Villa İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "parsel": "7",
+   "zon": "مرخّصة للبناء",
+   "zonf": "فيلات",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 6957
   },
   {
    "src": "emlakjet",
@@ -1730,7 +1795,7 @@
    "ilce": "Yazıhan",
    "mah": "Erecek Mahallesi",
    "m2": 39000,
-   "p": 10000000,
+   "p": 9800000,
    "d": "2026-08-07",
    "u": "https://www.emlakjet.com/ilan/19699886",
    "img": "19699886/57F49E0682D94D2D12B71321C6A21B3819699886.jpg",
@@ -1743,7 +1808,7 @@
    "zon": "زراعية",
    "zonf": "كرم وبستان",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 256
+   "ppm": 251
   },
   {
    "src": "emlakjet",
@@ -1924,29 +1989,6 @@
    "zonf": "فيلات",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 2268
-  },
-  {
-   "src": "ilangovtr",
-   "id": "2186283",
-   "t": "Malatya Akçadağ'da 12.576 m² sulu tarla mahkemeden satılıktır",
-   "ilce": "Akçadağ",
-   "mah": "",
-   "m2": 12576,
-   "p": 7545000,
-   "d": "2026-08-03",
-   "u": "https://www.ilan.gov.tr/ilan/2186283/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-akcadagda-12-576-m2-sulu-tarla-mahkemeden-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "أرض زراعية وبساتين",
-   "land": true,
-   "m2kind": "مساحة الأرض",
-   "org": "AKÇADAĞ SULH HUKUK MAHKEMESİ",
-   "sale1": "31.08.2026",
-   "sale2": null,
-   "dosya": "2022/12 SATIŞ",
-   "ppm": 600,
-   "zon": "زراعية",
-   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي"
   },
   {
    "src": "ilangovtr",
@@ -2458,29 +2500,6 @@
    "sale2": null,
    "dosya": "2025/39 TLMT.",
    "ppm": 191,
-   "zon": "غير مذكور",
-   "zonsrc": "غير مذكور في الإعلان"
-  },
-  {
-   "src": "ilangovtr",
-   "id": "2173613",
-   "t": "Malatya Battalgazi'de 170 m² 3+1 daire icradan satılıktır",
-   "ilce": "Battalgazi",
-   "mah": "",
-   "m2": 170,
-   "p": 4150000,
-   "d": "2026-07-22",
-   "u": "https://www.ilan.gov.tr/ilan/2173613/emlak-konut-malatya-battalgazide-170-m2-3-1-daire-icradan-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "سكن",
-   "land": false,
-   "m2kind": "مساحة مبنية معلنة",
-   "org": "MALATYA İCRA DAİRESİ",
-   "sale1": "31.08.2026",
-   "sale2": null,
-   "dosya": "2025/33165 ESAS",
-   "ppm": 24412,
    "zon": "غير مذكور",
    "zonsrc": "غير مذكور في الإعلان"
   },
@@ -4086,28 +4105,6 @@
   },
   {
    "src": "emlakjet",
-   "id": "19471099",
-   "t": "Akcadağ Havaalanı Civarı Satılık Sulu Ve Fıskiyeli Arazi.",
-   "ilce": "Akçadağ",
-   "mah": "Bahri Mahallesi",
-   "m2": 15359,
-   "p": 6375000,
-   "d": "2026-06-12",
-   "u": "https://www.emlakjet.com/ilan/19471099",
-   "img": "19471099/6B22E00FC30056A6F6FDB33433C7A9BA19471099.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Tarla",
-   "tapu": "طابو مستقلّ",
-   "kredi": "غير صالح للتمويل",
-   "parsel": "3",
-   "zon": "زراعية",
-   "zonf": "حقل — تَرلا",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 415
-  },
-  {
-   "src": "emlakjet",
    "id": "19470655",
    "t": "Koz Emlak'tan Akçadağ Eğin Mah. 19dönüm Sulu Bahçe",
    "ilce": "Akçadağ",
@@ -5270,6 +5267,28 @@
    "zonf": "كرم وبستان",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 1107
+  },
+  {
+   "src": "emlakjet",
+   "id": "19222790",
+   "t": "Kardelen Gyo Dan Bir Fırsat Daha",
+   "ilce": "Akçadağ",
+   "mah": "İkinciler Mahallesi",
+   "m2": 12300,
+   "p": 3100000,
+   "d": "2026-04-10",
+   "u": "https://www.emlakjet.com/ilan/19222790",
+   "img": "19222790/0F85B446A1655EA750F517413B726E1419222790.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مستقلّ",
+   "kredi": "غير صالح للتمويل",
+   "parsel": "38",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 252
   },
   {
    "src": "emlakjet",
@@ -6663,28 +6682,6 @@
   },
   {
    "src": "emlakjet",
-   "id": "17662898",
-   "t": "Hobi Bahçe Parsel",
-   "ilce": "Yeşilyurt",
-   "mah": "Bahçebaşı Mahallesi",
-   "m2": 400,
-   "p": 650000,
-   "d": "2025-07-16",
-   "u": "https://www.emlakjet.com/ilan/17662898",
-   "img": "17662898/F07D73D176FB5BB3DFC8B2BDA21EDAB817662898.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Özel Kullanım",
-   "tapu": "بلا قيد طابو",
-   "kredi": "غير صالح للتمويل",
-   "bel": "Yeşilyurt",
-   "zon": "تصنيف آخر",
-   "zonf": "Özel Kullanım",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 1625
-  },
-  {
-   "src": "emlakjet",
    "id": "17636097",
    "t": "Yeşilyurt Da 1728.49 M2 Emsalaiz Manzarasıyla Bulunmaz Villa İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -6758,7 +6755,7 @@
    "ilce": "Battalgazi",
    "mah": "Kıraç Mahallesi",
    "m2": 958,
-   "p": 4400000,
+   "p": 4500000,
    "d": "2025-01-31",
    "u": "https://www.emlakjet.com/ilan/16758638",
    "img": "16758638/42BD0306E674A494A35E22D8FE3FC32416758638.jpg",
@@ -6772,7 +6769,7 @@
    "zon": "مرخّصة للبناء",
    "zonf": "سكني",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 4593
+   "ppm": 4697
   },
   {
    "src": "emlakjet",
