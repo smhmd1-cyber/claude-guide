@@ -1,0 +1,111 @@
+<h2>رصد سوق الشقق في ملاطيا — 2026-09-08</h2>
+<p>مصدر البيانات: <code>malatya/data/aqar-listings.json</code> (تحديث 2026-09-08) و<code>malatya/data/aqar-reports.json</code> (سجلّ يومي تاريخي). هذا رصدٌ وصفيّ للمعروض المُعلَن، لا تحليل استثماري ولا توصية شراء.</p>
+<h3>١. لقطة السوق</h3>
+<div class="tbl-wrap"><table><thead><tr><th>المؤشر</th><th>اليوم (2026-09-08)</th><th>الأمس (2026-09-07)</th><th>التغيّر</th></tr></thead><tbody>
+<tr><td>إعلانات بيع نشطة</td><td>334</td><td>334</td><td>0</td></tr>
+<tr><td>إعلانات إيجار نشطة</td><td>223</td><td>220</td><td>+3</td></tr>
+<tr><td>وسيط ₺/م² بيعاً</td><td>20,955</td><td>20,955</td><td>0</td></tr>
+<tr><td>وسيط ₺/م² إيجاراً</td><td>133</td><td>133</td><td>0</td></tr>
+<tr><td>العائد الإجمالي الوسيط</td><td>7.6٪</td><td>7.6٪</td><td>0</td></tr>
+<tr><td>ظهر لأول مرة اليوم</td><td>6 إعلانات (<code>summary.new_today</code>)</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<ul>
+<li>إجمالي السجلّ المُخزَّن: 557 إعلاناً (334 بيع + 223 إيجار)، منها 203 «طازجة» (<code>n_fresh</code>).</li>
+<li>نطاق ₺/م² للبيع: من المئين العاشر 13,914 إلى المئين التسعين 38,125 — تشتت واسع بين الإلچات وفئات العمر.</li>
+<li>نطاق الأسعار: من 950,000 إلى 19,500,000 ₺.</li>
+<li>العائد الإجمالي معلَن قبل الضريبة والإدارة والشواغر (كما ورد في ملاحظة الملف نفسه)، وهو مبنيّ على مقارنة وسيطَي البيع والإيجار لا على وحدة بعينها مؤجَّرة فعلاً.</li>
+<li><strong>ملاحظة منهجية:</strong> يحمل <code>malatya/data/aqar-reports.json</code> أيضاً سجلّاً بتاريخ 2026-09-08 بأرقام مختلفة قليلاً (331 بيع، 219 إيجار، وسيط ₺/م² 20,961) عن ملخّص <code>aqar-listings.json</code> (334 بيع، 223 إيجار، 20,955). التقرير الحالي يعتمد <code>aqar-listings.json</code> بصفته المصدر الأشمل (يحوي <code>items[]</code> كاملة)، والفارق نفسه مؤشّر على أن السحبين ضمن اليوم نفسه لم يلتقيا زمنياً تماماً — قيدٌ إضافي على دقّة المقارنة اليومية.</li>
+</ul>
+<h3>٢. عمر البناء</h3>
+<p>القيم في العمود التالي منقولة <strong>حرفياً</strong> عن حقل «Bina Yaşı» كما صرّح به المعلِن في الإعلان (<code>agesrc: &quot;معلَن في الإعلان&quot;</code>)، وليست معاينة ميدانية ولا تقييماً هندسياً.</p>
+<div class="tbl-wrap"><table><thead><tr><th>فئة العمر</th><th>عدد الإعلانات</th><th>منها للبيع</th><th>وسيط ₺/م² (بيع)</th><th>المئين١٠</th><th>المئين٩٠</th></tr></thead><tbody>
+<tr><td>صفر · جاهز للسكن</td><td>149</td><td>80</td><td>32,733</td><td>22,727</td><td>43,182</td></tr>
+<tr><td>قيد الإنشاء</td><td>21</td><td>21</td><td>33,769</td><td>25,000</td><td>41,954</td></tr>
+<tr><td>١–٣ سنوات</td><td>33</td><td>18</td><td>27,598</td><td>19,043</td><td>42,500</td></tr>
+<tr><td>٤–٥ سنوات</td><td>19</td><td>12</td><td>25,644</td><td>18,649</td><td>30,000</td></tr>
+<tr><td>٦–١٠ سنوات</td><td>109</td><td>67</td><td>20,573</td><td>15,067</td><td>31,600</td></tr>
+<tr><td>أكثر من ١٠ سنوات</td><td>226</td><td>136</td><td>16,491</td><td>12,308</td><td>22,121</td></tr>
+<tr><td>غير مذكور</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p><strong>ملاحظة جوهرية لملاطيا تحديداً:</strong> زلزال ٦ شباط ٢٠٢٣ يجعل سنة البناء الفعلية ومدى مطابقتها لكود الزلازل المحدَّث (وحالة الوحدة إن كانت ضمن مناطق متضرّرة أو &quot;يرينده دونوشوم&quot; إعادة إعمار) سؤالاً جوهرياً لا يجيب عنه حقل عمر معلَن من طرف واحد (البائع/المكتب). العمر المعلَن لا يميّز بين مبنى جديد فعلاً ومبنى أُعيد تشطيبه (&quot;Full Yapılı&quot;) بعد أضرار سابقة — وهذا يظهر صراحة في وصف أحد إعلانات القائمة رقم ٤ أدناه (Koyunoğlu) الذي يذكر &quot;deprem sonrası&quot; (ما بعد الزلزال) رغم تصنيفه &quot;صفر&quot;.</p>
+<h3>٣. الإلچات</h3>
+<div class="tbl-wrap"><table><thead><tr><th>الإلچة</th><th>عدد بيع</th><th>عدد إيجار</th><th>وسيط ₺/م² بيع</th><th>وسيط ₺/م² إيجار</th><th>العائد</th><th>ملاحظة</th></tr></thead><tbody>
+<tr><td>Yeşilyurt</td><td>207</td><td>94</td><td>22,368</td><td>131</td><td>7.0٪</td><td>—</td></tr>
+<tr><td>Battalgazi</td><td>124</td><td>125</td><td>19,424</td><td>136</td><td>8.4٪</td><td>—</td></tr>
+<tr><td>Doğanşehir</td><td>1</td><td>2</td><td>16,038</td><td>94</td><td>7.0٪</td><td>—</td></tr>
+<tr><td>Arapgir</td><td>0</td><td>1</td><td>—</td><td>154</td><td>—</td><td>لا بيع مسجَّل → لا عائد قابل للحساب</td></tr>
+<tr><td>Darende</td><td>1</td><td>0</td><td>31,548</td><td>—</td><td>—</td><td>لا إيجار مسجَّل → لا عائد قابل للحساب</td></tr>
+<tr><td>Kale</td><td>0</td><td>1</td><td>—</td><td>89</td><td>—</td><td>لا بيع مسجَّل → لا عائد قابل للحساب</td></tr>
+<tr><td>Pütürge</td><td>1</td><td>0</td><td>20,134</td><td>—</td><td>—</td><td>لا إيجار مسجَّل → لا عائد قابل للحساب</td></tr>
+<tr><td>Akçadağ / Arguvan / Doğanyol / Hekimhan / Kuluncak / Yazıhan</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td><td>لا معروض على المنصّة اليوم</td></tr>
+<tr><td>Merkez</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td><td>تسمية إدارية قديمة ما قبل ٢٠١٣، لم تُفصَّل إلچة (بحسب ملاحظة الملف نفسها)</td></tr>
+</tbody></table></div>
+<p>غياب العائد في Arapgir وDarende وKale وPütürge نقصُ <strong>طرفٍ واحد من المعادلة</strong> (بيع أو إيجار غير مسجَّل على المنصّة اليوم) لا نقص جدوى استثمارية في تلك الإلچات؛ 7 من أصل 13 إلچة فقط لديها معروض مسجَّل اليوم (<code>summary.districts_with_listings</code>).</p>
+<h3>٤. عشرة إعلانات تستحقّ النظر (ترتيب قراءة، بيعاً فقط)</h3>
+<p><strong>كيف حُسب <code>score</code>:</strong> هو رقم مُشتقّ آلياً من حقول الإعلان نفسه (انحراف ₺/م² عن وسيط الإلچة، فئة العمر، نوع الطابو، وصلاحية التمويل) لترتيب القراءة فقط — <strong>وليس توصية شراء ولا تقييماً قانونياً أو هندسياً</strong>.</p>
+<div class="tbl-wrap"><table><thead><tr><th>#</th><th>الحيّ</th><th>الغرف</th><th>المساحة</th><th>السعر</th><th>₺/م²</th><th>عمر البناء</th><th>نوع الطابو</th><th>رابط الإعلان</th><th>خرائط جوجل</th></tr></thead><tbody>
+<tr><td>1</td><td>Bostanbaşı (Yeşilyurt)</td><td>3+1</td><td>242 م²</td><td>3,350,000 ₺</td><td>13,843</td><td>١–٣ سنوات</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td><a href="https://www.emlakjet.com/ilan/yusuf-karadaglidan-tasinmaya-hazir-satilik-ultraluks-31-daire-19790686" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bostanba%C5%9F%C4%B1%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>2</td><td>İkizce (Yeşilyurt)</td><td>3+1</td><td>110 م²</td><td>1,925,000 ₺</td><td>17,500</td><td>صفر · جاهز للسكن</td><td>بلا قيد طابو</td><td><a href="https://www.emlakjet.com/ilan/ikizce-tokide-borcu-icinde-yatirimlik-19748960" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=%C4%B0kizce%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>3</td><td>Battalgazi (Battalgazi)</td><td>3+1</td><td>180 م²</td><td>4,150,000 ₺</td><td>23,056</td><td>١–٣ سنوات</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td><a href="https://www.emlakjet.com/ilan/acibadem-hospital-projesi-yani-kuzey-cevreyolunda-satilik-daire-19670679" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=Battalgazi%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>4</td><td>Koyunoğlu (Yeşilyurt)</td><td>3+1</td><td>155 م²</td><td>5,390,000 ₺</td><td>34,774</td><td>صفر · جاهز للسكن</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td><a href="https://www.emlakjet.com/ilan/dairemiz-merkezi-konumda-olup-deprem-sonrasi-31full-yapili-asansorlu-19772256" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=Koyuno%C4%9Flu%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>5</td><td>Bostanbaşı (Yeşilyurt)</td><td>4+1</td><td>200 م²</td><td>3,700,000 ₺</td><td>18,500</td><td>صفر · جاهز للسكن</td><td>حقّ ارتفاق طوابق (Kat İrtifakı)</td><td><a href="https://www.emlakjet.com/ilan/35-lik-yola-cephe-18676859" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bostanba%C5%9F%C4%B1%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>6</td><td>Çukurdere (Yeşilyurt)</td><td>3+1</td><td>140 م²</td><td>1,690,000 ₺</td><td>12,071</td><td>أكثر من ١٠ سنوات</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td><a href="https://www.emlakjet.com/ilan/dairemiz-merkezi-konumda-cukurdere-olup-4-son-kat-31-19799651" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=%C3%87ukurdere%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>7</td><td>Çarmuzu (Yeşilyurt)</td><td>3+1</td><td>175 م²</td><td>3,750,000 ₺</td><td>21,429</td><td>صفر · جاهز للسكن</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td><a href="https://www.emlakjet.com/ilan/ikizler-gayrimenkul-den-carmuzu-tarafinda-satilik-31-daire-19293483" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=%C3%87armuzu%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>8</td><td>Koyunoğlu (Yeşilyurt)</td><td>3+1</td><td>145 م²</td><td>1,950,000 ₺</td><td>13,448</td><td>أكثر من ١٠ سنوات</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td><a href="https://www.emlakjet.com/ilan/eviniz-koyunoglunda-rahatiniz-yerinde-31-yuksek-giris-19290305" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=Koyuno%C4%9Flu%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>9</td><td>Karakavak (Yeşilyurt)</td><td>3+1</td><td>175 م²</td><td>4,050,000 ₺</td><td>23,143</td><td>صفر · جاهز للسكن</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td><a href="https://www.emlakjet.com/ilan/bozdogandan-karakavakta-satilik-hsarsiz-31-daire-18301443" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=Karakavak%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+<tr><td>10</td><td>İkizce (Yeşilyurt)</td><td>3+1</td><td>110 م²</td><td>1,990,000 ₺</td><td>18,091</td><td>صفر · جاهز للسكن</td><td>بلا قيد طابو</td><td><a href="https://www.emlakjet.com/ilan/ikizce-1-nci-bolge-1-nci-etap-esenlik-yani-satilik-daire-19799659" target="_blank" rel="noopener">الإعلان</a></td><td><a href="https://www.google.com/maps/search/?api=1&amp;query=%C4%B0kizce%20Mahallesi%20Malatya" target="_blank" rel="noopener">خرائط</a></td></tr>
+</tbody></table></div>
+<p>نصّ <code>rec</code> كما ورد حرفياً في الملف لكل إعلان:</p>
+<ol>
+<li>«مرصود: عمر البناء ١–٣ سنوات، سعر المتر أدنى من وسيط الإلچة بـ38٪، طابو ملكية طوابق، قابل للتمويل المصرفي»</li>
+<li>«مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي»</li>
+<li>«مرصود: عمر البناء ١–٣ سنوات، طابو ملكية طوابق، قابل للتمويل المصرفي»</li>
+<li>«مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ55٪، طابو ملكية طوابق، قابل للتمويل المصرفي»</li>
+<li>«مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي»</li>
+<li>«مرصود: سعر المتر أدنى من وسيط الإلچة بـ46٪، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 10.7٪»</li>
+<li>«مرصود: عمر البناء صفر · جاهز للسكن، طابو ملكية طوابق، قابل للتمويل المصرفي»</li>
+<li>«مرصود: سعر المتر أدنى من وسيط الإلچة بـ40٪، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 9.2٪»</li>
+<li>«مرصود: عمر البناء صفر · جاهز للسكن، طابو ملكية طوابق، قابل للتمويل المصرفي»</li>
+<li>«مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة»</li>
+</ol>
+<p>ملاحظة على المرتبة #4: نص <code>rec</code> نفسه يذكر أن سعر المتر أعلى من الوسيط بـ55٪ رغم دخولها ضمن العشرة الأعلى — أي أن <code>score</code> لا يعاقب الغلاء وحده، بل يوازنه مع عوامل أخرى (عمر، طابو، تمويل)؛ سبب إضافي لعدم قراءة الترتيب كتوصية شراء مباشرة.</p>
+<p><strong>ثبات القائمة:</strong> العشرة إعلانات وترتيبها ودرجاتها مطابقة تماماً لقائمة الأمس (2026-09-07) — لا إعلان جديد دخل القائمة ولا إعلان غادرها اليوم، رغم ظهور 6 إعلانات جديدة في السوق عموماً (لم تدخل أيّ منها ضمن الأعلى <code>score</code>).</p>
+<h3>٥. أعلام تستوجب الحذر</h3>
+<ul>
+<li><strong>طابو مشاع (حصّة) — 2 إعلاناً بيع:</strong></li>
+<li>Hacı Abdi (Battalgazi)، 3+1، 135م²، 1,560,000₺، 11,556₺/م² — <a href="https://www.emlakjet.com/ilan/ozgurden-hasanbey-de-31-satilik-ara-kat-daire-19723052" target="_blank" rel="noopener">الإعلان</a></li>
+<li>Göztepe (Battalgazi)، 2+1، 100م²، 2,450,000₺، 24,500₺/م² — <a href="https://www.emlakjet.com/ilan/yusuf-karadaglidan-catyolda-dprm-sonrasi-satilik-21-19651216" target="_blank" rel="noopener">الإعلان</a></li>
+<li><strong>بلا قيد طابو — 36 إعلان بيع</strong> من أصل 334 (نحو 11٪ من المعروض للبيع)؛ أعلى الأمثلة سعراً للمتر:</li>
+<li>Çilesiz (Yeşilyurt)، 1+1، 45,833₺/م² — <a href="https://www.emlakjet.com/ilan/vip-line-gayrimenkulden-satilik-11-daire-sifir-fahri-kayahan-19176934" target="_blank" rel="noopener">الإعلان</a></li>
+<li>Karakavak (Yeşilyurt)، 3+1، 42,069₺/م² — <a href="https://www.emlakjet.com/ilan/yuzakinda-alcak-katli-sifir-daire-19397605" target="_blank" rel="noopener">الإعلان</a></li>
+<li>Bostanbaşı (Yeşilyurt)، 2+1، 41,954₺/م² — <a href="https://www.emlakjet.com/ilan/ozgurden-bostanbasinda-yerinden-donusum-21-daire-19723072" target="_blank" rel="noopener">الإعلان</a></li>
+<li><strong>غير صالح للتمويل (<code>krediye</code>) — 33 إعلان بيع</strong>، منها بأعلى سعر متر:</li>
+<li>Bostanbaşı (Yeşilyurt)، 2+1، 51,000₺/م² — <a href="https://www.emlakjet.com/ilan/cska-gayrimenkul-den-akkent-tokide-satilik-21-daire-19778041" target="_blank" rel="noopener">الإعلان</a></li>
+<li>Bostanbaşı (Yeşilyurt)، 3+1، 46,660₺/م² — <a href="https://www.emlakjet.com/ilan/guven-emlak-tan-bostanbasinda-site-ici-yerinde-donusum-daireler-19702857" target="_blank" rel="noopener">الإعلان</a></li>
+<li>Bulgurlu (Battalgazi)، 1+1، 42,308₺/م² — <a href="https://www.emlakjet.com/ilan/erdinc-gayrimenkul-insaat-guvencesi-ile-super-lux-daireler-18930758" target="_blank" rel="noopener">الإعلان</a></li>
+<li>إضافة إلى 51 إعلاناً حالة تمويلها «غير معروفة» (<code>Bilinmiyor</code>) في الملف.</li>
+<li><strong>شذوذ سعر المتر عن وسيط الإلچة بأكثر من 50٪ — 71 إعلان بيع</strong> (68 أعلى من الوسيط، 3 أدنى منه بأكثر من 50٪). الأعلى انحرافاً:</li>
+<li>Bostanbaşı (Yeşilyurt)، 2+1: +128٪ عن وسيط الإلچة (51,000 مقابل 22,368₺/م²) وغير صالح للتمويل أيضاً — <a href="https://www.emlakjet.com/ilan/cska-gayrimenkul-den-akkent-tokide-satilik-21-daire-19778041" target="_blank" rel="noopener">الإعلان</a></li>
+<li>B.mustafa Paşa (Battalgazi)، 2+1: +128٪ (44,211 مقابل 19,424₺/م²) — <a href="https://www.emlakjet.com/ilan/kretase-emlak-tan-yerinde-donusum-sifir-daire-19637931" target="_blank" rel="noopener">الإعلان</a></li>
+<li>الأدنى انحرافاً (تحت الوسيط بأكثر من 50٪): Koyunoğlu (Yeşilyurt) -57٪، Gündüzbey (Yeşilyurt) -56٪، Tandoğan (Battalgazi) -51٪ — سعر منخفض جداً عن الوسيط علمٌ بحد ذاته يستوجب تحقّقاً من سبب الرخص (حالة الوحدة، نزاع، ضغط بيع) لا افتراض «صفقة».</li>
+</ul>
+<h3>٦. المنهجية والقيود</h3>
+<ul>
+<li><strong>المصدر الوحيد: Emlakjet.</strong> قوائم البيع أظهرت 334 إعلاناً مقابل إجمالي معلَن على الموقع نفسه 336 (<code>site_reported_total</code>) — فارق إعلانين لم يُلتقطا في هذا السحب. قوائم الإيجار أظهرت 223 مقابل إجمالي الموقع 225 — فارق إعلانين أيضاً.</li>
+<li><strong>بوابات محجوبة عن العملاء الآليّين ولا تدخل هذه اللوحة إطلاقاً:</strong> sahibinden وhepsiemlak وhürriyetemlak وColdwell Banker. أي معروض حصري على هذه المنصّات غير مرصود هنا.</li>
+<li><strong>معروض المكاتب المحلية دون نشر رقمي</strong> (تسويق شفهي أو عبر شبكات علاقات) لا يظهر على أي منصّة إلكترونية، وبالتالي غير مرصود هنا بالضرورة.</li>
+<li><strong>صفحات تفاصيل الإعلانات:</strong> المفتاح الداخلي <code>_detail</code> يسجّل 551 صفحة مُخزَّنة سابقاً و6 صفحات جُلبت اليوم، <strong>صفراً فشل</strong> في الجلب (<code>detail_failed: 0</code>).</li>
+<li>جميع الأرقام (السعر، ₺/م²، العمر، الطابو) هي كما أعلنها البائع أو المكتب على المنصّة — «ليست تقييماً ولا عرضاً ملزماً» (نص ملاحظة الملف نفسه).</li>
+</ul>
+<h3>٧. تنويه</h3>
+<p>هذا رصد سوق وصفي مبنيّ على إعلانات عامة، <strong>وليس نصيحة استثمارية أو قانونية</strong>. الوثيقة المُلزِمة الوحيدة هي قيد الطابو (Tapu) الصادر عن مديرية السجل العقاري ورخصة الإسكان (İskân) الصادرة عن بلدية الإلچة المختصة — وأي قرار شراء يجب أن يُبنى على معاينة ميدانية وتحقّق مباشر من هذين المستندين، لا على بيانات هذا الملف.</p>
+<h3>بيانات مطلوبة من المستثمر</h3>
+<div class="tbl-wrap"><table><thead><tr><th>البيان الناقص</th><th>لماذا هو ضروري ولا يظهر في الملف</th></tr></thead><tbody>
+<tr><td>مطابقة سنة البناء الفعلية مع كود الزلازل بعد ٦ شباط ٢٠٢٣</td><td>حقل العمر معلَن من طرف واحد (البائع)، لا تقرير هندسي مستقل</td></tr>
+<tr><td>حالة الوحدات المصنَّفة «صفر» لكنها مذكورة كـ«ما بعد الزلزال / Full Yapılı» (مثال: Koyunoğlu #4)</td><td>الوصف النصي في الإعلان يتناقض أحياناً مع تصنيف العمر الرقمي</td></tr>
+<tr><td>سبب تسجيل 36 إعلاناً بلا قيد طابو وهل القيد قيد الاستخراج أو غير قابل للتسوية</td><td>الملف ينقل حالة الطابو المعلَنة فقط دون تفسير السبب</td></tr>
+<tr><td>القيمة التقديرية المصرفية (Ekspertiz) لأي وحدة قبل التفاوض</td><td>غير متوفرة على منصّات الإعلانات، تصدر من بنك أو خبير معتمد</td></tr>
+<tr><td>معروض sahibinden وhepsiemlak وhürriyetemlak وColdwell Banker والمكاتب غير المُعلِنة رقمياً</td><td>محجوبة عن الجلب الآلي بالكامل، تتطلب تصفحاً يدوياً</td></tr>
+<tr><td>سبب الفارق بين ملخّص <code>aqar-listings.json</code> وسجلّ اليوم في <code>aqar-reports.json</code> (334/223 مقابل 331/219)</td><td>كلاهما من نفس خط الأنابيب لكن بتوقيتَي سحب مختلفين ضمن اليوم نفسه</td></tr>
+<tr><td>فحص ميداني لعامل المصعد/الموقف/حالة البناء الإنشائية لكل وحدة في القائمة رقم ٤</td><td>الملف يسجّل الحقول المعلَنة فقط (<code>asansor</code>, <code>otopark</code>) دون تحقّق مادي</td></tr>
+</tbody></table></div>
