@@ -1,7 +1,7 @@
 {
-  "date": "2026-09-08",
-  "stamp": "الثلاثاء 8 سبتمبر 2026 — 16:11 (بتوقيت القدس)",
-  "generated_at": "2026-09-08T16:13:28+03:00",
+  "date": "2026-09-09",
+  "stamp": "الأربعاء 9 سبتمبر 2026 — 14:55 (بتوقيت القدس)",
+  "generated_at": "2026-09-09T14:57:19+03:00",
   "items": 396,
   "sections": 7,
   "oldest_data_date": "2026-04-30",
@@ -13,6 +13,6 @@
   "cards_written": 0,
   "cards_added": 0,
   "daily_file": "malatya/daleel.html",
-  "commit": "3886b14e6d89",
-  "run_url": "https://github.com/smhmd1-cyber/claude-guide/actions/runs/34230400627"
+  "commit": "bbef670cbad5",
+  "run_url": "https://github.com/smhmd1-cyber/claude-guide/actions/runs/34348022704"
 }
