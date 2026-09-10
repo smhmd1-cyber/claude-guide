@@ -1,8 +1,8 @@
 {
- "updated": "2026-09-09",
+ "updated": "2026-09-10",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
- "total": 302,
+ "total": 304,
  "sources": [
   {
    "key": "emlakjet",
@@ -11,11 +11,11 @@
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
    "status": "ok",
-   "count": 238,
-   "site_reported_total": 240,
-   "pages": 8,
+   "count": 241,
+   "site_reported_total": 241,
+   "pages": 9,
    "detail_cached": 236,
-   "detail_fetched": 2,
+   "detail_fetched": 5,
    "detail_failed": 0
   },
   {
@@ -25,27 +25,27 @@
    "kind": "رسميّ",
    "price_note": "بدل محمّن: تقدير رسمي معتمَد وحدٌّ أدنى للمزايدة",
    "status": "ok",
-   "count": 64,
+   "count": 63,
    "scanned": 1600,
    "full_scan": false,
-   "expired_dropped": 0
+   "expired_dropped": 1
   }
  ],
  "note": "أسعار المصدر السوقيّ كما يعلنها البائع أو المكتب — ليست تقييماً. وأسعار المصدر الرسميّ بدلٌ محمّن: تقدير معتمَد وحدٌّ أدنى للمزايدة، لا سعر بيع. تحقّق من الطابو والإفراز والحالة العمرانية قبل أي التزام.",
  "summary": {
   "districts_with_listings": 12,
   "districts_total": 13,
-  "ppm_median": 1700,
-  "ppm_p10": 340,
-  "ppm_p90": 9343,
+  "ppm_median": 1696,
+  "ppm_p10": 350,
+  "ppm_p90": 9545,
   "price_min": 286400,
   "price_max": 403180132,
   "flagged": 1,
   "m2_recovered": 1,
   "dropped_outside_province": 0,
   "by_source": {
-   "emlakjet": 238,
-   "ilangovtr": 64
+   "emlakjet": 241,
+   "ilangovtr": 63
   },
   "overrides": {
    "hidden": 0,
@@ -53,53 +53,53 @@
    "manual": 0
   },
   "by_cat": {
-   "أرض · أرسا": 248,
+   "أرض · أرسا": 251,
    "أرض زراعية وبساتين": 23,
-   "سكن": 25,
+   "سكن": 24,
    "عقار آخر": 6
   },
-  "land_count": 271,
+  "land_count": 274,
   "by_zon": {
-   "مرخّصة للبناء": 99,
-   "زراعية": 165,
-   "بلا إمار أو مقيَّدة": 1,
+   "مرخّصة للبناء": 101,
+   "زراعية": 167,
+   "بلا إمار أو مقيَّدة": 0,
    "تصنيف آخر": 2,
-   "غير مذكور": 35
+   "غير مذكور": 34
   },
   "by_tapu": {
    "بلا قيد طابو": 5,
-   "طابو مستقلّ": 198,
+   "طابو مستقلّ": 201,
    "طابو مشاع (حصّة)": 31,
    "طابو من تعاونية": 4
   },
-  "zon_declared": 238
+  "zon_declared": 241
  },
  "stats": [
   {
    "ilce": "Yeşilyurt",
    "n": 127,
-   "ppm_med": 4024,
+   "ppm_med": 4018,
    "ppm_min": 10,
    "ppm_max": 44318,
-   "p_med": 8250000,
+   "p_med": 8375000,
    "note": null
   },
   {
    "ilce": "Battalgazi",
-   "n": 72,
-   "ppm_med": 3276,
+   "n": 73,
+   "ppm_med": 3210,
    "ppm_min": 562,
    "ppm_max": 24390,
-   "p_med": 5200000,
+   "p_med": 5275000,
    "note": null
   },
   {
    "ilce": "Akçadağ",
-   "n": 45,
-   "ppm_med": 631,
+   "n": 46,
+   "ppm_med": 634,
    "ppm_min": 155,
    "ppm_max": 5067,
-   "p_med": 9250000,
+   "p_med": 8875000,
    "note": null
   },
   {
@@ -205,27 +205,27 @@
  "zon_stats": [
   {
    "zon": "مرخّصة للبناء",
-   "n": 99,
-   "ppm_med": 7025,
-   "ppm_p10": 3144,
+   "n": 101,
+   "ppm_med": 7178,
+   "ppm_p10": 3104,
    "ppm_p90": 12333,
-   "n_priced": 90
+   "n_priced": 92
   },
   {
    "zon": "زراعية",
-   "n": 165,
+   "n": 167,
    "ppm_med": 916,
    "ppm_p10": 251,
    "ppm_p90": 2262,
-   "n_priced": 144
+   "n_priced": 146
   },
   {
    "zon": "بلا إمار أو مقيَّدة",
-   "n": 1,
-   "ppm_med": 4476,
-   "ppm_p10": 4476,
-   "ppm_p90": 4476,
-   "n_priced": 1
+   "n": 0,
+   "ppm_med": null,
+   "ppm_p10": null,
+   "ppm_p90": null,
+   "n_priced": 0
   },
   {
    "zon": "تصنيف آخر",
@@ -237,7 +237,7 @@
   },
   {
    "zon": "غير مذكور",
-   "n": 35,
+   "n": 34,
    "ppm_med": null,
    "ppm_p10": null,
    "ppm_p90": null,
@@ -245,6 +245,27 @@
   }
  ],
  "items": [
+  {
+   "src": "emlakjet",
+   "id": "19826592",
+   "t": "Malatya Battalgazi'de 1511m² Satılık Arsa - Yatırım Fırsatı",
+   "ilce": "Battalgazi",
+   "mah": "Çamurlu Mahallesi",
+   "m2": 1511,
+   "p": 17500000,
+   "d": "2026-09-10",
+   "u": "https://www.emlakjet.com/ilan/19826592",
+   "img": "19826592/A31D36335E7E4494A07EF2361554812219826592.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Konut İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "zon": "مرخّصة للبناء",
+   "zonf": "سكني",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 11582
+  },
   {
    "src": "emlakjet",
    "id": "19819789",
@@ -286,6 +307,27 @@
    "zonf": "سكني",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 8562
+  },
+  {
+   "src": "emlakjet",
+   "id": "19818975",
+   "t": "Yeşilyurt Samanköy'de Kaçırılmayacak 3 Kat Ticari İmarlı Arsa",
+   "ilce": "Yeşilyurt",
+   "mah": "Hoca Ahmet Yesevi Mahallesi",
+   "m2": 133,
+   "p": 1700000,
+   "d": "2026-09-08",
+   "u": "https://www.emlakjet.com/ilan/19818975",
+   "img": "19818975/AA4A76E2F33BFC83C0667266527BB18219818975.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Konut+Ticaret Alanı",
+   "tapu": "طابو مشاع (حصّة)",
+   "kredi": "غير صالح للتمويل",
+   "zon": "مرخّصة للبناء",
+   "zonf": "سكني وتجاري",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 12782
   },
   {
    "src": "emlakjet",
@@ -331,6 +373,28 @@
    "zonf": "سكني",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 11582
+  },
+  {
+   "src": "emlakjet",
+   "id": "19815635",
+   "t": "Organize Sanayii Bitimi Cihadiyede 8435 M2 Satılık Ev Ve Arazi.",
+   "ilce": "Yeşilyurt",
+   "mah": "Özal Mahallesi",
+   "m2": 8435,
+   "p": 13950000,
+   "d": "2026-09-07",
+   "u": "https://www.emlakjet.com/ilan/19815635",
+   "img": "19815635/4D2CEE791048F7F8BD4A46A30FCB68FA19815635.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Tarla",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "parsel": "9",
+   "zon": "زراعية",
+   "zonf": "حقل — تَرلا",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 1654
   },
   {
    "src": "emlakjet",
@@ -1568,6 +1632,28 @@
   },
   {
    "src": "emlakjet",
+   "id": "19723106",
+   "t": "Özgür'den Hatunsuyu'nda 780 M² Satılık Fırsat Arsa",
+   "ilce": "Battalgazi",
+   "mah": "Kıraç Mahallesi",
+   "m2": 780,
+   "p": 2350000,
+   "d": "2026-08-13",
+   "u": "https://www.emlakjet.com/ilan/19723106",
+   "img": "19723106/87C9FBB9A87463CE81F9E6E0E85CEF9319723106.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Konut İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "parsel": "11",
+   "zon": "مرخّصة للبناء",
+   "zonf": "سكني",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 3013
+  },
+  {
+   "src": "emlakjet",
    "id": "19723099",
    "t": "Özgür'den Battalgazi Yarımcahan'da 5 Dönüm Satılık Bakımlı Bahçe",
    "ilce": "Battalgazi",
@@ -1698,28 +1784,6 @@
    "ppm": null,
    "zon": "غير مذكور",
    "zonsrc": "غير مذكور في الإعلان"
-  },
-  {
-   "src": "emlakjet",
-   "id": "19709242",
-   "t": "Hasan Akbulut'dan Tecde'de 383m² Arsa Yola Sıfır",
-   "ilce": "Yeşilyurt",
-   "mah": "Tecde Mahallesi",
-   "m2": 383,
-   "p": 2650000,
-   "d": "2026-08-10",
-   "u": "https://www.emlakjet.com/ilan/19709242",
-   "img": "19709242/1172FB0E396D2733E5ED34DA27320DCC19709242.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Villa İmarlı",
-   "tapu": "طابو مستقلّ",
-   "kredi": "صالح للتمويل",
-   "parsel": "10",
-   "zon": "مرخّصة للبناء",
-   "zonf": "فيلات",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 6919
   },
   {
    "src": "ilangovtr",
@@ -2391,28 +2455,6 @@
   },
   {
    "src": "emlakjet",
-   "id": "19654121",
-   "t": "Çamurlu Mahallesinde Satılık Arsa",
-   "ilce": "Battalgazi",
-   "mah": "Çamurlu Mahallesi",
-   "m2": 458,
-   "p": 2050000,
-   "d": "2026-07-27",
-   "u": "https://www.emlakjet.com/ilan/19654121",
-   "img": "19654121/2C9CF371852C28E9096C3CF84D607FB519654121.jpg",
-   "cat": "أرض · أرسا",
-   "land": true,
-   "imar": "Sit Alanı",
-   "tapu": "طابو مشاع (حصّة)",
-   "kredi": "غير صالح للتمويل",
-   "parsel": "4",
-   "zon": "بلا إمار أو مقيَّدة",
-   "zonf": "منطقة حماية — Sit",
-   "zonsrc": "معلَن في الإعلان",
-   "ppm": 4476
-  },
-  {
-   "src": "emlakjet",
    "id": "19646397",
    "t": "Koz Emlak'tan Satılık Bahçe Ve Sıfır Ev",
    "ilce": "Battalgazi",
@@ -2655,29 +2697,6 @@
    "zonf": "كرم وبستان",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 2545
-  },
-  {
-   "src": "ilangovtr",
-   "id": "2172942",
-   "t": "Malatya Yeşilyurt'ta 3+1 daire mahkemeden satılıktır",
-   "ilce": "Yeşilyurt",
-   "mah": "",
-   "m2": null,
-   "p": 4000000,
-   "d": "2026-07-21",
-   "u": "https://www.ilan.gov.tr/ilan/2172942/emlak-konut-malatya-yesilyurtta-3-1-daire-mahkemeden-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "سكن",
-   "land": false,
-   "m2kind": "مساحة مبنية معلنة",
-   "org": "MALATYA 4. SULH HUKUK MAHEMESİ SATIŞ MEMURLUĞU",
-   "sale1": "03.09.2026",
-   "sale2": null,
-   "dosya": "2026/4 SATIŞ",
-   "ppm": null,
-   "zon": "غير مذكور",
-   "zonsrc": "غير مذكور في الإعلان"
   },
   {
    "src": "ilangovtr",
@@ -4991,6 +5010,29 @@
    "zonf": "أرض زراعية",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 3279
+  },
+  {
+   "src": "emlakjet",
+   "id": "19319539",
+   "t": "Tarlamız Aşağı Örüşkü Mah Olup Sondaj Elektirk Paneli 130 Tane 5 Yılık Kaysı Bahcesi Mevcutur",
+   "ilce": "Akçadağ",
+   "mah": "Aşağıörükçü Mahallesi",
+   "m2": 10000,
+   "p": 6750000,
+   "d": "2026-05-02",
+   "u": "https://www.emlakjet.com/ilan/19319539",
+   "img": "19319539/25025A22BC57D5F208A7D80F4C9905F719319539.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Tarla",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "ada": "103",
+   "parsel": "111",
+   "zon": "زراعية",
+   "zonf": "حقل — تَرلا",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 675
   },
   {
    "src": "emlakjet",
