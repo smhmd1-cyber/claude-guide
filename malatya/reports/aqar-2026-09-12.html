@@ -1,0 +1,138 @@
+<h2>رصد سوق الشقق في ملاطيا — 2026-09-12</h2>
+<p>مصدر البيانات: <code>malatya/data/aqar-listings.json</code> (لقطة اليوم) و<code>malatya/data/aqar-reports.json</code> (السلسلة اليومية). كل رقم أدناه مأخوذ من هذين الملفّين حرفيًا؛ ما لا يرد فيهما يظهر كـ«غير معروف».</p>
+<h3>١. لقطة السوق</h3>
+<div class="tbl-wrap"><table><thead><tr><th>المؤشر</th><th>القيمة اليوم</th></tr></thead><tbody>
+<tr><td>إجمالي المعروض</td><td>559 إعلانًا</td></tr>
+<tr><td>للبيع</td><td>338</td></tr>
+<tr><td>للإيجار</td><td>221</td></tr>
+<tr><td>وسيط سعر البيع (₺/م²)</td><td>21,500</td></tr>
+<tr><td>وسيط سعر الإيجار (₺/م²)</td><td>132</td></tr>
+<tr><td>العائد الإجمالي الوسيط</td><td>7.4٪</td></tr>
+<tr><td>نطاق سعر البيع (٪10–٪90)</td><td>14,048–38,636 ₺/م²</td></tr>
+<tr><td>ظهر اليوم لأول مرّة</td><td>85 إعلانًا</td></tr>
+<tr><td>معروضات «طازجة» (<code>fresh</code>)</td><td>220</td></tr>
+</tbody></table></div>
+<p><strong>المقارنة بالأمس:</strong> السجلّ اليومي في <code>aqar-reports.json</code> يغطّي النواة الحضرية فقط (Yeşilyurt+Battalgazi)، وليس كامل المحافظة، فالمقارنة هنا على نفس الأساس (لا على إجمالي 559):</p>
+<div class="tbl-wrap"><table><thead><tr><th>التاريخ</th><th>بيع (نواة حضرية)</th><th>إيجار (نواة حضرية)</th><th>وسيط ₺/م² بيع</th><th>العائد</th></tr></thead><tbody>
+<tr><td>2026-09-11</td><td>278</td><td>224</td><td>21,629</td><td>7.3٪</td></tr>
+<tr><td>2026-09-12</td><td>335</td><td>218</td><td>21,515</td><td>7.4٪</td></tr>
+<tr><td><strong>التغيّر</strong></td><td><strong>+57</strong></td><td><strong>−6</strong></td><td><strong>−114 (−0.5٪)</strong></td><td><strong>+0.1 نقطة مئوية</strong></td></tr>
+</tbody></table></div>
+<p>القفزة في عدد إعلانات البيع (278 → 335) أكبر من الوارد كـ«ظهر اليوم» (85 لكامل المحافظة)، ما يعني أنّ جزءًا من الفرق ناتج عن عودة إعلانات كانت قد اختفت من الصفحات المفهرَسة يوم أمس لا عن عرض جديد فعليًا؛ لا يمكن حسم ذلك من الحقول المتاحة.</p>
+<h3>٢. عمر البناء</h3>
+<div class="tbl-wrap"><table><thead><tr><th>الفئة</th><th>عدد الإعلانات</th><th>منها للبيع</th><th>وسيط ₺/م² (بيع)</th><th>٪10</th><th>٪90</th></tr></thead><tbody>
+<tr><td>صفر · جاهز للسكن</td><td>157</td><td>84</td><td>32,733</td><td>22,609</td><td>42,000</td></tr>
+<tr><td>قيد الإنشاء</td><td>23</td><td>23</td><td>38,235</td><td>25,000</td><td>42,188</td></tr>
+<tr><td>١–٣ سنوات</td><td>40</td><td>21</td><td>27,222</td><td>19,043</td><td>33,333</td></tr>
+<tr><td>٤–٥ سنوات</td><td>19</td><td>13</td><td>26,667</td><td>18,649</td><td>30,000</td></tr>
+<tr><td>٦–١٠ سنوات</td><td>108</td><td>70</td><td>20,627</td><td>15,625</td><td>28,571</td></tr>
+<tr><td>أكثر من ١٠ سنوات</td><td>212</td><td>127</td><td>16,458</td><td>12,400</td><td>22,121</td></tr>
+<tr><td>غير مذكور</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p>جميع الإعلانات الـ559 تحمل عمرًا معلَنًا (<code>age_declared: 559</code>)، وحقل مصدر العمر (<code>agesrc</code>) يسجّل «معلَن في الإعلان» للمجموعة كاملة — أي أنّ عمر البناء هنا <strong>منقول عن حقل «Bina Yaşı» الذي يكتبه المعلِن نفسه، لا مستنبَطًا من رخصة أو سجلّ رسمي</strong>. لا رقابة تدقّق هذا الادّعاء.</p>
+<p>هذه النقطة جوهرية في ملاطيا تحديدًا: بعد زلزال ٦ شباط ٢٠٢٣ الذي ضرب المحافظة، تصبح سنة البناء الفعلية ومدى مطابقة العقار للائحة مقاومة الزلازل النافذة سؤالًا حاسمًا لا يمكن لأي إعلان عقاري الإجابة عنه — لا سيّما مع وجود إعلانات في العيّنة تصف نفسها بعبارات مثل «يرينده دونوشوم» (تحويل في الموقع)، وهو مصطلح يشير عادة إلى إعادة إعمار بعد الزلزال ويستحقّ تحقّقًا مستقلًا لا اعتمادًا على النص الدعائي.</p>
+<h3>٣. الإلچات (الأقضية)</h3>
+<div class="tbl-wrap"><table><thead><tr><th>الإلچة</th><th>بيع</th><th>إيجار</th><th>وسيط ₺/م² بيع</th><th>وسيط ₺/م² إيجار</th><th>العائد</th></tr></thead><tbody>
+<tr><td>Yeşilyurt</td><td>215</td><td>93</td><td>22,857</td><td>130</td><td>6.8٪</td></tr>
+<tr><td>Battalgazi</td><td>120</td><td>125</td><td>19,424</td><td>135</td><td>8.3٪</td></tr>
+<tr><td>Doğanşehir</td><td>1</td><td>2</td><td>16,038</td><td>85</td><td>6.4٪</td></tr>
+<tr><td>Darende</td><td>1</td><td>0</td><td>31,548</td><td>—</td><td>غير معروف</td></tr>
+<tr><td>Kale</td><td>0</td><td>1</td><td>—</td><td>89</td><td>غير معروف</td></tr>
+<tr><td>Pütürge</td><td>1</td><td>0</td><td>20,134</td><td>—</td><td>غير معروف</td></tr>
+<tr><td>Akçadağ / Arapgir / Arguvan / Doğanyol / Hekimhan / Kuluncak / Yazıhan</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Merkez (تسمية ما قبل ٢٠١٣)</td><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p>الإلچات بلا عائد محسوب (Darende، Kale، Pütürge) ليست بلا جدوى استثمارية — السبب أنّ العائد يحتاج طرفَي بيع وإيجار معًا في نفس الإلچة لتقدير نسبة الإيجار إلى السعر، وهذه الإلچات لديها إعلان واحد على جانب واحد فقط. سبع إلچات (Akçadağ، Arapgir، Arguvan، Doğanyol، Hekimhan، Kuluncak، Yazıhan) بلا أي إعلان مفهرَس اليوم على الإطلاق، وهذا انعدام تغطية لا انعدام سوق. حصّة السوق فعليًا مركّزة في Yeşilyurt وBattalgazi: 335 من 338 إعلان بيع (٪99).</p>
+<h3>٤. عشرة إعلانات تستحقّ النظر (بيعًا فقط، مرتّبة بحسب <code>score</code> تنازليًا)</h3>
+<p><code>score</code> مؤشّر ترتيب داخل هذه اللوحة يُقرأ من عناصر ظاهرة أيضًا في نصّ <code>rec</code> لكلّ إعلان: قرب عمر البناء من الجديد، مدى انخفاض سعر المتر عن وسيط إلچته، نوع سند الطابو، القابلية للتمويل المصرفي، وظهور الإعلان اليوم. <strong>هو ترتيب قراءة للبيانات المتاحة، وليس توصية شراء ولا تقييمًا معتمَدًا.</strong></p>
+<div class="tbl-wrap"><table><thead><tr><th>#</th><th>الحيّ (الإلچة)</th><th>الغرف</th><th>م²</th><th>السعر (₺)</th><th>₺/م²</th><th>عمر البناء</th><th>نوع الطابو</th><th>score</th></tr></thead><tbody>
+<tr><td>1</td><td>Bostanbaşı (Yeşilyurt)</td><td>3+1</td><td>242</td><td>3,495,000</td><td>14,442</td><td>١–٣ سنوات</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td>88</td></tr>
+<tr><td>2</td><td>Bostanbaşı (Yeşilyurt)</td><td>3+1</td><td>190</td><td>3,600,000</td><td>18,947</td><td>١–٣ سنوات</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td>70</td></tr>
+<tr><td>3</td><td>Çarmuzu (Yeşilyurt)</td><td>3+1</td><td>175</td><td>3,750,000</td><td>21,429</td><td>صفر · جاهز للسكن</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td>70</td></tr>
+<tr><td>4</td><td>İkizce (Yeşilyurt)</td><td>3+1</td><td>110</td><td>1,925,000</td><td>17,500</td><td>صفر · جاهز للسكن</td><td>بلا قيد طابو</td><td>66</td></tr>
+<tr><td>5</td><td>Koyunoğlu (Yeşilyurt)</td><td>3+1</td><td>145</td><td>2,850,000</td><td>19,655</td><td>صفر · جاهز للسكن</td><td>حقّ ارتفاق طوابق (Kat İrtifakı)</td><td>66</td></tr>
+<tr><td>6</td><td>Battalgazi (Battalgazi)</td><td>3+1</td><td>180</td><td>4,150,000</td><td>23,056</td><td>١–٣ سنوات</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td>59</td></tr>
+<tr><td>7</td><td>Koyunoğlu (Yeşilyurt)</td><td>3+1</td><td>155</td><td>5,390,000</td><td>34,774</td><td>صفر · جاهز للسكن</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td>58</td></tr>
+<tr><td>8</td><td>Bostanbaşı (Yeşilyurt)</td><td>4+1</td><td>220</td><td>3,750,000</td><td>17,045</td><td>٦–١٠ سنوات</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td>58</td></tr>
+<tr><td>9</td><td>Bostanbaşı (Yeşilyurt)</td><td>4+1</td><td>200</td><td>3,700,000</td><td>18,500</td><td>صفر · جاهز للسكن</td><td>حقّ ارتفاق طوابق (Kat İrtifakı)</td><td>58</td></tr>
+<tr><td>10</td><td>Çukurdere (Yeşilyurt)</td><td>3+1</td><td>140</td><td>1,690,000</td><td>12,071</td><td>أكثر من ١٠ سنوات (21-25)</td><td>ملكية طوابق (Kat Mülkiyeti)</td><td>55</td></tr>
+</tbody></table></div>
+<p>الروابط ونصّ <code>rec</code> كما وردا في البيانات دون تعديل:</p>
+<ol>
+<li><strong>Bostanbaşı</strong> — <a href="https://www.emlakjet.com/ilan/yusuf-karadaglidan-tasinmaya-hazir-satilik-ultraluks-31-daire-19790686" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Bostanba%C5%9F%C4%B1%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: مرصود: عمر البناء ١–٣ سنوات، سعر المتر أدنى من وسيط الإلچة بـ37٪، طابو ملكية طوابق، قابل للتمويل المصرفي</p>
+<ol>
+<li><strong>Bostanbaşı</strong> — <a href="https://www.emlakjet.com/ilan/yusuf-karadaglidan-bostanbasinda-satilik-31-ara-kat-19830652" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Bostanba%C5%9F%C4%B1%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: ظهر اليوم: عمر البناء ١–٣ سنوات، سعر المتر دون وسيط الإلچة، طابو ملكية طوابق</p>
+<ol>
+<li><strong>Çarmuzu</strong> — <a href="https://www.emlakjet.com/ilan/ikizler-gayrimenkul-den-carmuzu-tarafinda-satilik-31-daire-19293483" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%C3%87armuzu%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، طابو ملكية طوابق، قابل للتمويل المصرفي</p>
+<ol>
+<li><strong>İkizce</strong> — <a href="https://www.emlakjet.com/ilan/ikizce-tokide-borcu-icinde-yatirimlik-19748960" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%C4%B0kizce%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي</p>
+<ol>
+<li><strong>Koyunoğlu</strong> — <a href="https://www.emlakjet.com/ilan/turanlardan-koyunoglunda-persembe-pazari-civarinda-31-daire-19696309" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Koyuno%C4%9Flu%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: ظهر اليوم: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي</p>
+<ol>
+<li><strong>Battalgazi</strong> — <a href="https://www.emlakjet.com/ilan/acibadem-hospital-projesi-yani-kuzey-cevreyolunda-satilik-daire-19670679" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Battalgazi%2C%20Battalgazi%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: ظهر اليوم: عمر البناء ١–٣ سنوات، طابو ملكية طوابق، قابل للتمويل المصرفي</p>
+<ol>
+<li><strong>Koyunoğlu</strong> — <a href="https://www.emlakjet.com/ilan/dairemiz-merkezi-konumda-olup-deprem-sonrasi-31full-yapili-asansorlu-19772256" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Koyuno%C4%9Flu%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر أعلى من الوسيط بـ52٪، طابو ملكية طوابق، قابل للتمويل المصرفي</p>
+<ol>
+<li><strong>Bostanbaşı</strong> — <a href="https://www.emlakjet.com/ilan/arikandan-bostanbasinda-satilik-41-daire-19638323" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Bostanba%C5%9F%C4%B1%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: ظهر اليوم: سعر المتر أدنى من وسيط الإلچة بـ25٪، طابو ملكية طوابق، قابل للتمويل المصرفي</p>
+<ol>
+<li><strong>Bostanbaşı</strong> — <a href="https://www.emlakjet.com/ilan/35-lik-yola-cephe-18676859" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Bostanba%C5%9F%C4%B1%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: مرصود: عمر البناء صفر · جاهز للسكن، سعر المتر دون وسيط الإلچة، قابل للتمويل المصرفي</p>
+<ol>
+<li><strong>Çukurdere</strong> — <a href="https://www.emlakjet.com/ilan/dairemiz-merkezi-konumda-cukurdere-olup-4-son-kat-31-19799651" target="_blank" rel="noopener">الإعلان</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%C3%87ukurdere%2C%20Ye%C5%9Filyurt%2C%20Malatya" target="_blank" rel="noopener">خرائط جوجل</a></li>
+</ol>
+<p><code>rec</code>: مرصود: سعر المتر أدنى من وسيط الإلچة بـ47٪، طابو ملكية طوابق، قابل للتمويل المصرفي، عائد إيجاري إجمالي معلَن 10.7٪</p>
+<p>ملاحظة: سبعة من العشرة في Bostanbaşı/Koyunoğlu (Yeşilyurt) — تركّز جغرافي في نفس الحيّين، لا تنويع عبر المدينة.</p>
+<h3>٥. أعلام تستوجب الحذر</h3>
+<ul>
+<li><strong>طابو مشاع (حصّة)</strong> — إعلانا بيع فقط من أصل 338: Battalgazi/Hacı Abdi (135م²، 1,560,000₺، تمويل «Bilinmiyor») وBattalgazi/Göztepe (100م²، 2,450,000₺، «صالح للتمويل» رغم كون الطابو حصّة — تناقض ظاهري يستحقّ تحققًا مباشرًا من صك الملكية).</li>
+<li><strong>بلا قيد طابو</strong> — 38 إعلان بيع (من 338، أي ٪11 من عروض البيع). لا سند ملكية مسجَّل رسميًا بحسب الحقل المعلَن.</li>
+<li><strong>طابو أرض (لا إفراز طوابق)</strong> — 5 إعلانات بيع؛ <strong>نوع الطابو غير معروف</strong> — إعلان واحد (وهو للإيجار في Battalgazi/Çamurlu، لا للبيع).</li>
+<li><strong>غير صالح للتمويل المصرفي</strong> (<code>krediye</code>) — 28 إعلان بيع لا يمكن تمويلها عبر قرض عقاري بحسب الحقل المعلَن؛ إضافة إلى ذلك حالات <code>krediye: &quot;Bilinmiyor&quot;</code> (غير معروف) لم تُحتسب هنا لأنها ليست نفيًا صريحًا.</li>
+<li><strong>شذوذ سعر المتر عن وسيط الإلچة (أعلى أو أدنى من ٪50)</strong> — 68 إعلان بيع من أصل 338 (٪20). أبرز الحالات:</li>
+<li>أعلى شذوذًا صعودًا: B.mustafa Paşa/Battalgazi (44,211₺/م²، ٪228 من وسيط 19,424)، وBostanbaşı/Yeşilyurt (51,000₺/م²، ٪223 من وسيط 22,857)، وBulgurlu/Battalgazi (42,308₺/م²، ٪218).</li>
+<li>أعلى شذوذًا هبوطًا: Koyunoğlu/Yeşilyurt وTandoğan/Battalgazi (كلاهما 9,500₺/م²، أي ٪42 و٪49 فقط من وسيط إلچته على التوالي)، وGündüzbey/Yeşilyurt (9,872₺/م²، ٪43).</li>
+</ul>
+<p>الانحراف قد يعكس فرقًا حقيقيًا في الموقع أو التشطيب أو حالة طارئة (سعر ضائقة)، لا خطأ بالضرورة — لكنه يستحقّ تحقّقًا ميدانيًا قبل أي قرار.</p>
+<h3>٦. المنهجية والقيود</h3>
+<ul>
+<li><strong>المصدر الوحيد: Emlakjet.</strong> جدول المطابقة بين ما جُمع وما يُعلنه الموقع نفسه:</li>
+</ul>
+<div class="tbl-wrap"><table><thead><tr><th>القسم</th><th>مجموع (<code>count</code>)</th><th>المُعلَن على الموقع (<code>site_reported_total</code>)</th><th>صفحات</th></tr></thead><tbody>
+<tr><td>بيع</td><td>338</td><td>341</td><td>12</td></tr>
+<tr><td>إيجار</td><td>221</td><td>224</td><td>8</td></tr>
+</tbody></table></div>
+<p>الفارق (3 إعلانات في كلّ قسم) قد يعود لتحديث لحظي في الموقع بين تحميل الصفحات أو لإعلانات مكرَّرة استُبعدت.</p>
+<ul>
+<li><strong>منصّات محجوبة عن الجلب الآلي بالكامل ولا تدخل هذه اللوحة إطلاقًا:</strong> sahibinden وhepsiemlak وhürriyetemlak وColdwell Banker. أي عرض حصري على هذه المنصّات — وهو شائع في السوق التركي — غير مرئي هنا.</li>
+<li><strong>عروض المكاتب المحلّية غير المنشورة على أي منصّة</strong> لا تظهر بالتعريف على أي لوحة آلية، بما فيها هذه.</li>
+<li><strong>تفاصيل صفحات الإعلانات:</strong> من أصل الإعلانات، 474 مأخوذة من ذاكرة مخزَّنة (<code>detail_cached</code>) و85 جُلبت تفصيليًا اليوم (<code>detail_fetched</code>)، وعدد الإعلانات التي تعذّر جلب تفاصيلها = <strong>0</strong> (<code>detail_failed</code>).</li>
+<li>لا إعلانات مستبعَدة اليوم لأسباب جغرافية (<code>dropped_outside_province: 0</code>) ولا معلَّمة يدويًا (<code>flagged: 0</code>, <code>overrides</code> كلّها صفر).</li>
+</ul>
+<h3>٧. تنويه</h3>
+<p>هذا رصد سوق آليّ يصف أرقامًا ظاهرة في إعلانات منصّة واحدة (Emlakjet) في تاريخ واحد، وليس نصيحة استثمارية ولا تقييمًا عقاريًا معتمَدًا. الوثيقة الملزمة قانونًا هي قيد الطابو (Tapu Sicili) المسجَّل لدى مديرية التسجيل العقاري، ورخصة الإسكان (İskân/Yapı Kullanma İzni) الصادرة عن بلدية الإلچة المختصّة — وليس أيًّا مما ورد في نص الإعلان أو هذا التقرير.</p>
+<h3>بيانات مطلوبة من المستثمر</h3>
+<div class="tbl-wrap"><table><thead><tr><th>البند</th><th>لماذا هو ناقص هنا</th></tr></thead><tbody>
+<tr><td>سنة البناء الفعلية وتاريخ الترخيص</td><td>الحقل المتاح (<code>age</code>, <code>age_raw</code>) معلَن من صاحب الإعلان، غير موثَّق رسميًا</td></tr>
+<tr><td>مطابقة المبنى للائحة مقاومة الزلازل بعد 2023</td><td>لا يوجد حقل لذلك في البيانات؛ يتطلّب تقرير خبرة إنشائي مستقل</td></tr>
+<tr><td>نوع سند الملكية الدقيق للإعلانات الـ38 «بلا قيد طابو» والإعلانين «طابو مشاع»</td><td>يحتاج فحص صكّ الطابو نفسه، لا نص الإعلان</td></tr>
+<tr><td>سبب رفض التمويل المصرفي في الإعلانات الـ28 المعلَّمة كذلك</td><td>الحقل يذكر الحالة لا السبب</td></tr>
+<tr><td>توفّر عروض مماثلة على sahibinden/hepsiemlak/hürriyetemlak/Coldwell Banker</td><td>هذه المنصّات محجوبة عن الجلب الآلي بالكامل</td></tr>
+<tr><td>العائد الإيجاري في Darende وKale وPütürge</td><td>يتطلّب وجود إعلان بيع وإيجار في نفس الإلچة، وغير متوفّر حاليًا لهذه الإلچات</td></tr>
+</tbody></table></div>
