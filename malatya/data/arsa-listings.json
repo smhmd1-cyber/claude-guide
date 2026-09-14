@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-13",
+ "updated": "2026-09-14",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
  "total": 321,
@@ -11,11 +11,11 @@
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
    "status": "ok",
-   "count": 257,
-   "site_reported_total": 256,
+   "count": 260,
+   "site_reported_total": 260,
    "pages": 9,
-   "detail_cached": 246,
-   "detail_fetched": 11,
+   "detail_cached": 257,
+   "detail_fetched": 3,
    "detail_failed": 0
   },
   {
@@ -25,18 +25,18 @@
    "kind": "رسميّ",
    "price_note": "بدل محمّن: تقدير رسمي معتمَد وحدٌّ أدنى للمزايدة",
    "status": "ok",
-   "count": 64,
+   "count": 61,
    "scanned": 1600,
    "full_scan": false,
-   "expired_dropped": 0
+   "expired_dropped": 3
   }
  ],
  "note": "أسعار المصدر السوقيّ كما يعلنها البائع أو المكتب — ليست تقييماً. وأسعار المصدر الرسميّ بدلٌ محمّن: تقدير معتمَد وحدٌّ أدنى للمزايدة، لا سعر بيع. تحقّق من الطابو والإفراز والحالة العمرانية قبل أي التزام.",
  "summary": {
   "districts_with_listings": 12,
   "districts_total": 13,
-  "ppm_median": 1734,
-  "ppm_p10": 350,
+  "ppm_median": 1735,
+  "ppm_p10": 334,
   "ppm_p90": 9343,
   "price_min": 286400,
   "price_max": 403180132,
@@ -44,8 +44,8 @@
   "m2_recovered": 1,
   "dropped_outside_province": 0,
   "by_source": {
-   "emlakjet": 257,
-   "ilangovtr": 64
+   "emlakjet": 260,
+   "ilangovtr": 61
   },
   "overrides": {
    "hidden": 0,
@@ -53,26 +53,26 @@
    "manual": 0
   },
   "by_cat": {
-   "أرض · أرسا": 267,
-   "أرض زراعية وبساتين": 23,
+   "أرض · أرسا": 270,
+   "أرض زراعية وبساتين": 20,
    "سكن": 24,
    "عقار آخر": 7
   },
   "land_count": 290,
   "by_zon": {
-   "مرخّصة للبناء": 110,
+   "مرخّصة للبناء": 111,
    "زراعية": 174,
    "بلا إمار أو مقيَّدة": 0,
    "تصنيف آخر": 2,
-   "غير مذكور": 35
+   "غير مذكور": 34
   },
   "by_tapu": {
    "بلا قيد طابو": 5,
-   "طابو مستقلّ": 214,
-   "طابو مشاع (حصّة)": 34,
+   "طابو مستقلّ": 216,
+   "طابو مشاع (حصّة)": 35,
    "طابو من تعاونية": 4
   },
-  "zon_declared": 257
+  "zon_declared": 260
  },
  "stats": [
   {
@@ -81,7 +81,7 @@
    "ppm_med": 3616,
    "ppm_min": 10,
    "ppm_max": 44318,
-   "p_med": 8250000,
+   "p_med": 7750000,
    "note": null
   },
   {
@@ -95,11 +95,11 @@
   },
   {
    "ilce": "Akçadağ",
-   "n": 50,
-   "ppm_med": 594,
+   "n": 51,
+   "ppm_med": 591,
    "ppm_min": 155,
    "ppm_max": 5067,
-   "p_med": 8875000,
+   "p_med": 8500000,
    "note": null
   },
   {
@@ -121,15 +121,6 @@
    "note": null
   },
   {
-   "ilce": "Doğanşehir",
-   "n": 8,
-   "ppm_med": 356,
-   "ppm_min": 119,
-   "ppm_max": 3597,
-   "p_med": 2895000,
-   "note": null
-  },
-  {
    "ilce": "Kale",
    "n": 8,
    "ppm_med": 1710,
@@ -145,6 +136,15 @@
    "ppm_min": 409,
    "ppm_max": 10000,
    "p_med": 2590000,
+   "note": null
+  },
+  {
+   "ilce": "Doğanşehir",
+   "n": 7,
+   "ppm_med": 356,
+   "ppm_min": 119,
+   "ppm_max": 3597,
+   "p_med": 2895000,
    "note": null
   },
   {
@@ -205,11 +205,11 @@
  "zon_stats": [
   {
    "zon": "مرخّصة للبناء",
-   "n": 110,
-   "ppm_med": 6957,
+   "n": 111,
+   "ppm_med": 6842,
    "ppm_p10": 3104,
    "ppm_p90": 11600,
-   "n_priced": 101
+   "n_priced": 102
   },
   {
    "zon": "زراعية",
@@ -217,7 +217,7 @@
    "ppm_med": 868,
    "ppm_p10": 252,
    "ppm_p90": 2184,
-   "n_priced": 153
+   "n_priced": 155
   },
   {
    "zon": "بلا إمار أو مقيَّدة",
@@ -237,7 +237,7 @@
   },
   {
    "zon": "غير مذكور",
-   "n": 35,
+   "n": 34,
    "ppm_med": null,
    "ppm_p10": null,
    "ppm_p90": null,
@@ -245,6 +245,50 @@
   }
  ],
  "items": [
+  {
+   "src": "emlakjet",
+   "id": "19844210",
+   "t": "Canbay Yapı'dan Yaylımlı Köyünde 18.800m2 Satılık Çiftlik Arsası",
+   "ilce": "Akçadağ",
+   "mah": "Yaylımlı Mahallesi",
+   "m2": 18800,
+   "p": 5400000,
+   "d": "2026-09-14",
+   "u": "https://www.emlakjet.com/ilan/19844210",
+   "img": "19844210/8CD46DE860EC26FA40BDBA46FD3CE8C219844210.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "parsel": "5",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 287
+  },
+  {
+   "src": "emlakjet",
+   "id": "19844206",
+   "t": "Canbay Yapı&gayrimenkulden Konak Kökbaşında 2850m2 Satılık Tarla",
+   "ilce": "Yeşilyurt",
+   "mah": "Bahçebaşı Mahallesi",
+   "m2": 2850,
+   "p": 5750000,
+   "d": "2026-09-14",
+   "u": "https://www.emlakjet.com/ilan/19844206",
+   "img": "19844206/F69EBFAE29D1F307BF966CEF784A1FCF19844206.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Tarla",
+   "tapu": "طابو مشاع (حصّة)",
+   "kredi": "غير صالح للتمويل",
+   "parsel": "81",
+   "zon": "زراعية",
+   "zonf": "حقل — تَرلا",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 2018
+  },
   {
    "src": "emlakjet",
    "id": "19840465",
@@ -1798,7 +1842,7 @@
    "p": 4650000,
    "d": "2026-08-17",
    "u": "https://www.emlakjet.com/ilan/19733693",
-   "img": "19733693/8315F9FF7BF4E3D5678E26E8A706E23A19733693.jpg",
+   "img": "19733693/3916BC2A9A69A1E1CF8D12C73C5156E719733693.jpg",
    "cat": "أرض · أرسا",
    "land": true,
    "imar": "Villa İmarlı",
@@ -1989,6 +2033,28 @@
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 1250
+  },
+  {
+   "src": "emlakjet",
+   "id": "19724150",
+   "t": "Özgür'den Yeşilyurt Dilek'te 440 M² İmarlı Arsa",
+   "ilce": "Yeşilyurt",
+   "mah": "Dilek Mahallesi",
+   "m2": 440,
+   "p": 2790000,
+   "d": "2026-08-13",
+   "u": "https://www.emlakjet.com/ilan/19724150",
+   "img": "19724150/EACBDD94C3A415EC65C0260C3F31430C19724150.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Konut İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "parsel": "14",
+   "zon": "مرخّصة للبناء",
+   "zonf": "سكني",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 6341
   },
   {
    "src": "emlakjet",
@@ -2481,29 +2547,6 @@
   },
   {
    "src": "ilangovtr",
-   "id": "2185449",
-   "t": "Malatya Yeşilyurt'ta 5.881 m² kayısı bahçesi icradan satılıktır",
-   "ilce": "Yeşilyurt",
-   "mah": "",
-   "m2": 5881,
-   "p": 6650250,
-   "d": "2026-08-03",
-   "u": "https://www.ilan.gov.tr/ilan/2185449/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-yesilyurtta-5-881-m2-kayisi-bahcesi-icradan-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "أرض زراعية وبساتين",
-   "land": true,
-   "m2kind": "مساحة الأرض",
-   "org": "MALATYA İCRA DAİRESİ",
-   "sale1": "07.09.2026",
-   "sale2": null,
-   "dosya": "2026/4408 ESAS",
-   "ppm": 1131,
-   "zon": "زراعية",
-   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي"
-  },
-  {
-   "src": "ilangovtr",
    "id": "2182923",
    "t": "Malatya Battalgazi'de kerpiç ev ve arsa mahkemeden satılıktır",
    "ilce": "Battalgazi",
@@ -2718,29 +2761,6 @@
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 846
-  },
-  {
-   "src": "ilangovtr",
-   "id": "2181114",
-   "t": "Malatya Yeşilyurt'ta 46.391 m² sulu tarla mahkemeden satılıktır",
-   "ilce": "Yeşilyurt",
-   "mah": "",
-   "m2": 46391,
-   "p": 11581089,
-   "d": "2026-07-29",
-   "u": "https://www.ilan.gov.tr/ilan/2181114/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-yesilyurtta-46-391-m2-sulu-tarla-mahkemeden-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "أرض زراعية وبساتين",
-   "land": true,
-   "m2kind": "مساحة الأرض",
-   "org": "MALATYA 3. SULH HUKUK MAH. SATIŞ MEMURLUĞU",
-   "sale1": "07.09.2026",
-   "sale2": null,
-   "dosya": "2026/1 SATIŞ",
-   "ppm": 250,
-   "zon": "زراعية",
-   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي"
   },
   {
    "src": "emlakjet",
@@ -3866,7 +3886,7 @@
    "p": 24600000,
    "d": "2026-07-05",
    "u": "https://www.emlakjet.com/ilan/19564206",
-   "img": "19564206/BF05FF0E5FEC1F491ADD444FCF8A9FBF19564206.jpg",
+   "img": "19564206/6793261DFFCF7A81D7F608BE8E79F2FF19564206.jpg",
    "cat": "أرض · أرسا",
    "land": true,
    "imar": "Bağ & Bahçe",
@@ -4134,29 +4154,6 @@
    "sale2": null,
    "dosya": "2024/5 SATIŞ",
    "ppm": 50,
-   "zon": "غير مذكور",
-   "zonsrc": "غير مذكور في الإعلان"
-  },
-  {
-   "src": "ilangovtr",
-   "id": "2150274",
-   "t": "Malatya Doğanşehir'de 6.469,19 m² taşınmaz mahkemeden satılıktır",
-   "ilce": "Doğanşehir",
-   "mah": "",
-   "m2": 6469,
-   "p": 3567370,
-   "d": "2026-06-29",
-   "u": "https://www.ilan.gov.tr/ilan/2150274/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-dogansehirde-6-469-19-m2-tasinmaz-mahkemeden-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "أرض زراعية وبساتين",
-   "land": true,
-   "m2kind": "مساحة الأرض",
-   "org": "DOĞANŞEHİR SULH HUKUK MAHKEMESİ",
-   "sale1": "07.09.2026",
-   "sale2": null,
-   "dosya": "2026/4 Satış",
-   "ppm": 551,
    "zon": "غير مذكور",
    "zonsrc": "غير مذكور في الإعلان"
   },
@@ -4799,7 +4796,7 @@
    "p": 7400000,
    "d": "2026-05-27",
    "u": "https://www.emlakjet.com/ilan/19418898",
-   "img": "19418898/8AF0555EC086BA4CA319469914A738D619418898.jpg",
+   "img": "19418898/93C140906DCF3C9C0FE89C1C71437D5C19418898.jpg",
    "cat": "أرض · أرسا",
    "land": true,
    "imar": "Bağ & Bahçe",
@@ -5183,10 +5180,10 @@
    "ilce": "Battalgazi",
    "mah": "Hatunsuyu Mahallesi",
    "m2": 638,
-   "p": 3850000,
+   "p": 3500000,
    "d": "2026-05-14",
    "u": "https://www.emlakjet.com/ilan/19366915",
-   "img": "19366915/1DD5D6BF4A73F071B94425D8ACA3E1C319366915.jpg",
+   "img": "19366915/EB739E128ECC479C8E13EF7C821D151C19366915.jpg",
    "cat": "أرض · أرسا",
    "land": true,
    "imar": "Konut İmarlı",
@@ -5197,7 +5194,7 @@
    "zon": "مرخّصة للبناء",
    "zonf": "سكني",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 6034
+   "ppm": 5486
   },
   {
    "src": "emlakjet",
