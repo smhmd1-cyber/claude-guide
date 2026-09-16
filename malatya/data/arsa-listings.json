@@ -1,8 +1,8 @@
 {
- "updated": "2026-09-15",
+ "updated": "2026-09-16",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
- "total": 320,
+ "total": 317,
  "sources": [
   {
    "key": "emlakjet",
@@ -10,13 +10,10 @@
    "url": "https://www.emlakjet.com/satilik-arsa/malatya/",
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
-   "status": "ok",
+   "status": "failed",
+   "error": "تعذّر جلب https://www.emlakjet.com/satilik-arsa/malatya/ — HTTP 403",
    "count": 261,
-   "site_reported_total": 263,
-   "pages": 9,
-   "detail_cached": 258,
-   "detail_fetched": 3,
-   "detail_failed": 0
+   "note": "عُرضت بيانات آخر سحب ناجح لهذا المصدر"
   },
   {
    "key": "ilangovtr",
@@ -25,10 +22,10 @@
    "kind": "رسميّ",
    "price_note": "بدل محمّن: تقدير رسمي معتمَد وحدٌّ أدنى للمزايدة",
    "status": "ok",
-   "count": 59,
+   "count": 56,
    "scanned": 1600,
    "full_scan": false,
-   "expired_dropped": 2
+   "expired_dropped": 5
   }
  ],
  "note": "أسعار المصدر السوقيّ كما يعلنها البائع أو المكتب — ليست تقييماً. وأسعار المصدر الرسميّ بدلٌ محمّن: تقدير معتمَد وحدٌّ أدنى للمزايدة، لا سعر بيع. تحقّق من الطابو والإفراز والحالة العمرانية قبل أي التزام.",
@@ -41,11 +38,11 @@
   "price_min": 286400,
   "price_max": 403180132,
   "flagged": 1,
-  "m2_recovered": 1,
+  "m2_recovered": 0,
   "dropped_outside_province": 0,
   "by_source": {
    "emlakjet": 261,
-   "ilangovtr": 59
+   "ilangovtr": 56
   },
   "overrides": {
    "hidden": 0,
@@ -53,18 +50,18 @@
    "manual": 0
   },
   "by_cat": {
-   "أرض · أرسا": 270,
-   "أرض زراعية وبساتين": 19,
-   "سكن": 24,
+   "أرض · أرسا": 271,
+   "أرض زراعية وبساتين": 17,
+   "سكن": 22,
    "عقار آخر": 7
   },
-  "land_count": 289,
+  "land_count": 288,
   "by_zon": {
    "مرخّصة للبناء": 111,
-   "زراعية": 174,
+   "زراعية": 173,
    "بلا إمار أو مقيَّدة": 0,
    "تصنيف آخر": 2,
-   "غير مذكور": 33
+   "غير مذكور": 31
   },
   "by_tapu": {
    "بلا قيد طابو": 5,
@@ -86,7 +83,7 @@
   },
   {
    "ilce": "Battalgazi",
-   "n": 80,
+   "n": 78,
    "ppm_med": 3283,
    "ppm_min": 562,
    "ppm_max": 24390,
@@ -121,21 +118,21 @@
    "note": null
   },
   {
+   "ilce": "Doğanşehir",
+   "n": 8,
+   "ppm_med": 356,
+   "ppm_min": 119,
+   "ppm_max": 3597,
+   "p_med": 2895000,
+   "note": null
+  },
+  {
    "ilce": "Kale",
    "n": 8,
    "ppm_med": 1710,
    "ppm_min": 868,
    "ppm_max": 3279,
    "p_med": 1890000,
-   "note": null
-  },
-  {
-   "ilce": "Doğanşehir",
-   "n": 7,
-   "ppm_med": 356,
-   "ppm_min": 119,
-   "ppm_max": 3597,
-   "p_med": 2895000,
    "note": null
   },
   {
@@ -166,15 +163,6 @@
    "note": null
   },
   {
-   "ilce": "Hekimhan",
-   "n": 2,
-   "ppm_med": 195,
-   "ppm_min": 195,
-   "ppm_max": 195,
-   "p_med": 7000000,
-   "note": null
-  },
-  {
    "ilce": "Kuluncak",
    "n": 2,
    "ppm_med": 245,
@@ -184,8 +172,17 @@
    "note": null
   },
   {
+   "ilce": "Hekimhan",
+   "n": 1,
+   "ppm_med": 195,
+   "ppm_min": 195,
+   "ppm_max": 195,
+   "p_med": 7000000,
+   "note": null
+  },
+  {
    "ilce": "Pütürge",
-   "n": 2,
+   "n": 1,
    "ppm_med": 422,
    "ppm_min": 422,
    "ppm_max": 422,
@@ -213,7 +210,7 @@
   },
   {
    "zon": "زراعية",
-   "n": 174,
+   "n": 173,
    "ppm_med": 872,
    "ppm_p10": 252,
    "ppm_p90": 2184,
@@ -237,7 +234,7 @@
   },
   {
    "zon": "غير مذكور",
-   "n": 33,
+   "n": 31,
    "ppm_med": null,
    "ppm_p10": null,
    "ppm_p90": null,
@@ -245,6 +242,52 @@
   }
  ],
  "items": [
+  {
+   "src": "ilangovtr",
+   "id": "2223089",
+   "t": "Malatya Doğanşehir Kırkpınar Mevkii'nde 13.425 m² sulu tarla mahkeme kararıyla satılacaktır (Çoklu satış)",
+   "ilce": "Doğanşehir",
+   "mah": "",
+   "m2": 13425,
+   "p": 2078068,
+   "d": "2026-09-15",
+   "u": "https://www.ilan.gov.tr/ilan/2223089/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-dogansehir-kirkpinar-mevkiinde-13-425-m2-sulu-tarla-mahkeme-karariyla-satilacaktir-coklu-satis-",
+   "img": "",
+   "kind": "بيع قضائي (İCRA)",
+   "cat": "أرض زراعية وبساتين",
+   "land": true,
+   "m2kind": "مساحة الأرض",
+   "org": "DOĞANŞEHİR SULH HUKUK MAHKEMESİ",
+   "sale1": "28.10.2026",
+   "sale2": null,
+   "dosya": "2025/5 SATIŞ",
+   "zon": "زراعية",
+   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي",
+   "ppm": 155
+  },
+  {
+   "src": "ilangovtr",
+   "id": "2223026",
+   "t": "Malatya Büyükşehir Belediyesi'ne ait taşınmazların satışı yapılacaktır",
+   "ilce": "Yeşilyurt",
+   "mah": "",
+   "m2": null,
+   "p": null,
+   "d": "2026-09-15",
+   "u": "https://www.ilan.gov.tr/ilan/2223026/emlak-arsa-malatya-buyuksehir-belediyesine-ait-tasinmazlarin-satisi-yapilacaktir",
+   "img": "",
+   "kind": "مزايدة عامة (İHALE)",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "m2kind": "مساحة الأرض",
+   "org": "MALATYA SU VE KANALİZASYON İDARESİ GENEL MÜDÜRLÜĞÜ",
+   "sale1": "28.09.2026",
+   "sale2": null,
+   "dosya": null,
+   "zon": "غير مذكور",
+   "zonsrc": "غير مذكور في الإعلان",
+   "ppm": null
+  },
   {
    "src": "emlakjet",
    "id": "19844210",
@@ -2456,29 +2499,6 @@
   },
   {
    "src": "ilangovtr",
-   "id": "2187909",
-   "t": "Malatya Hekimhan'da 29.824 m² tarla icradan satılıktır (çoklu satış)",
-   "ilce": "Hekimhan",
-   "mah": "",
-   "m2": 29824,
-   "p": 4523708,
-   "d": "2026-08-05",
-   "u": "https://www.ilan.gov.tr/ilan/2187909/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-hekimhanda-29-824-m2-tarla-icradan-satiliktir-coklu-satis-",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "أرض زراعية وبساتين",
-   "land": true,
-   "m2kind": "مساحة الأرض",
-   "org": "HEKİMHAN İCRA DAİRESİ MÜDÜRLÜĞÜ",
-   "sale1": "09.09.2026",
-   "sale2": null,
-   "dosya": "2024/43 TLMT.",
-   "ppm": 152,
-   "zon": "زراعية",
-   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي"
-  },
-  {
-   "src": "ilangovtr",
    "id": "2186579",
    "t": "Malatya Doğanşehir'de 5.903 m² taşınmaz mahkemeden satılıktır",
    "ilce": "Doğanşehir",
@@ -2919,52 +2939,6 @@
    "ppm": 175,
    "zon": "زراعية",
    "zonsrc": "مستنبَط من نصّ الإعلان الرسمي"
-  },
-  {
-   "src": "ilangovtr",
-   "id": "2174818",
-   "t": "Malatya Yeşilyurt'ta 2+1 90 m² daire icradan satılıktır",
-   "ilce": "Yeşilyurt",
-   "mah": "",
-   "m2": 90,
-   "p": 2014800,
-   "d": "2026-07-23",
-   "u": "https://www.ilan.gov.tr/ilan/2174818/emlak-konut-malatya-yesilyurtta-2-1-90-m2-daire-icradan-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "سكن",
-   "land": false,
-   "m2kind": "مساحة مبنية معلنة",
-   "org": "MALATYA İCRA DAİRESİ",
-   "sale1": "09.09.2026",
-   "sale2": null,
-   "dosya": "2026/7591 Esas",
-   "ppm": 22387,
-   "zon": "غير مذكور",
-   "zonsrc": "غير مذكور في الإعلان"
-  },
-  {
-   "src": "ilangovtr",
-   "id": "2174340",
-   "t": "Malatya Pütürge'de 20.957 m² taşınmaz icradan satılıktır",
-   "ilce": "Pütürge",
-   "mah": "",
-   "m2": 20957,
-   "p": 3992916,
-   "d": "2026-07-23",
-   "u": "https://www.ilan.gov.tr/ilan/2174340/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-puturgede-20-957-m2-tasinmaz-icradan-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "أرض زراعية وبساتين",
-   "land": true,
-   "m2kind": "مساحة الأرض",
-   "org": "PÜTÜRGE İCRA DAİRESİ MÜDÜRLÜĞÜ",
-   "sale1": "09.09.2026",
-   "sale2": null,
-   "dosya": "2025/39 TLMT.",
-   "ppm": 191,
-   "zon": "غير مذكور",
-   "zonsrc": "غير مذكور في الإعلان"
   },
   {
    "src": "ilangovtr",
@@ -3565,29 +3539,6 @@
   },
   {
    "src": "ilangovtr",
-   "id": "2166055",
-   "t": "Malatya Battalgazi'de 30.284 m² tarla vasıflı taşınmaz icradan satılıktır",
-   "ilce": "Battalgazi",
-   "mah": "",
-   "m2": 30284,
-   "p": 36373797,
-   "d": "2026-07-14",
-   "u": "https://www.ilan.gov.tr/ilan/2166055/emlak-tarla-tarim-arazisi-bag-bahce-zeytinlik-malatya-battalgazide-30-284-m2-tarla-vasifli-tasinmaz-icradan-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "أرض زراعية وبساتين",
-   "land": true,
-   "m2kind": "مساحة الأرض",
-   "org": "MALATYA İCRA DAİRESİ",
-   "sale1": "09.09.2026",
-   "sale2": null,
-   "dosya": "2025/28154 ESAS",
-   "ppm": 1201,
-   "zon": "زراعية",
-   "zonsrc": "مستنبَط من نصّ الإعلان الرسمي"
-  },
-  {
-   "src": "ilangovtr",
    "id": "2165902",
    "t": "Malatya Yeşilyurt'ta üzerinde 2 katlı mesken bulunan 4.780 m² tarla icradan satılıktır",
    "ilce": "Yeşilyurt",
@@ -3653,29 +3604,6 @@
    "zonf": "فيلات",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 12966
-  },
-  {
-   "src": "ilangovtr",
-   "id": "2165036",
-   "t": "Malatya Battalgazi'de 1. katta bulunan daire daire icradan satılıktır",
-   "ilce": "Battalgazi",
-   "mah": "",
-   "m2": null,
-   "p": 5000000,
-   "d": "2026-07-13",
-   "u": "https://www.ilan.gov.tr/ilan/2165036/emlak-konut-malatya-battalgazide-1-katta-bulunan-daire-daire-icradan-satiliktir",
-   "img": "",
-   "kind": "بيع قضائي (İCRA)",
-   "cat": "سكن",
-   "land": false,
-   "m2kind": "مساحة مبنية معلنة",
-   "org": "MALATYA İCRA DAİRESİ",
-   "sale1": "09.09.2026",
-   "sale2": null,
-   "dosya": "2026/556 TLMT.",
-   "ppm": null,
-   "zon": "غير مذكور",
-   "zonsrc": "غير مذكور في الإعلان"
   },
   {
    "src": "emlakjet",
