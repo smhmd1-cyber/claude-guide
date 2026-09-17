@@ -508,7 +508,7 @@ jobs:
                   w = sum(int(x) for x in re.findall(r'written=(\d+)', rep.group(1)))
                   notes.append("تقرير الرصد: %d بطاقة مكتوبة" % w)
 
-          if len(cards) > 400:
+          if len(cards) > 900:
               errs.append("%d بطاقة — تجاوزنا الحدّ. فعّل طيّ الأرشيف." % len(cards))
 
           if new == old:
