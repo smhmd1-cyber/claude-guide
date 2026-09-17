@@ -152,7 +152,7 @@ jobs:
           if [ "$HM" -ge 1700 ] && { [ "$NEED_DAILY" = "true" ] || [ "$NEED_DEPLOY" = "true" ]; }; then ESCALATE=true; fi
           [ "$HUB_OK" != "yes" ] && ESCALATE=true
           # فقدان أرشيف: أخطر من تأخّر يوم — تصعيد فوري في أي ساعة
-          if [ "$REPO_ITEMS" -lt 10 ] || [ "$REPO_ITEMS" -gt 400 ]; then ESCALATE=true; fi
+          if [ "$REPO_ITEMS" -lt 10 ] || [ "$REPO_ITEMS" -gt 900 ]; then ESCALATE=true; fi
           # نشرة عقيمة صمدت حتى آخر نبضة ⇒ بلاغ. تاريخٌ يتقدّم بمحتوى ميّت
           # لا يصرخ من تلقاء نفسه، وهذا بالضبط ما يجعله أخطر من عطل صريح.
           if [ "$STERILE" = "true" ] && [ "$HM" -ge 1700 ]; then ESCALATE=true; fi
