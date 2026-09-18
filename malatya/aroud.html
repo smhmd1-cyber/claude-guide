@@ -29,6 +29,9 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
 .item{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);
   border-inline-start:4px solid var(--green);border-radius:var(--r-sm);padding:14px 17px;margin:10px 0}
 .item h3{font-size:15px;font-weight:700;color:#fff;margin:0 0 5px;line-height:1.45}
+.item h3 a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(247,165,43,.45)}
+.item h3 a:hover,.item h3 a:focus{color:var(--accent);border-bottom-color:var(--accent)}
+.item h3 a::after{content:" ↗";font-size:11px;color:var(--accent);vertical-align:2px}
 .item p{color:var(--text2);font-size:14px;margin:4px 0}
 .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;align-items:center}
 .badge.b-disc{background:var(--red-soft);color:var(--red);border:1px solid rgba(255,107,122,.35);font-family:var(--font-num)}
@@ -67,7 +70,7 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
 
   <section class="lede">
     <span class="eyebrow">🏷️ خانة العروض</span>
-    <p class="lead">هنا التخفيضات وحدها: حملات محدودة بمدّة، وأسعار كتالوج معلَنة، وعروض ٢+١،
+    <p class="lead">هنا التخفيضات وحدها: حملات محدودة بمدّة، وأسعار كتالوج معلَنة، وعروض 2+1،
       وأسعار السوق الأسبوعي اللافتة. ما لا يوفّر مالاً فعلاً لا يدخل هذه الصفحة —
       ولا خبر ولا إعلان ولا سعر عادي. كل مبلغ بالعملات الثلاث بسعر صرف يوم الرصد.</p>
     <div class="rule">
@@ -83,7 +86,7 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
 
   <div class="chips" id="offers-chips">
     <span class="chip">🏷️ <b><span class="num" id="n-live">0</span></b> عرض سارٍ</span>
-    <span class="chip">⏳ <b><span class="num" id="n-soon">0</span></b> ينتهي خلال ٣ أيام</span>
+    <span class="chip">⏳ <b><span class="num" id="n-soon">0</span></b> ينتهي خلال 3 أيام</span>
     <span class="chip">🗂️ <b><span class="num" id="n-all">0</span></b> بطاقة في الأرشيف</span>
   </div>
 
@@ -150,13 +153,15 @@ note=أول ريّة للصفحة — لا أرشيف سابق. أقسام ال�
 <p class="empty">لا جديد بارز اليوم في هذا القسم</p>
 <h2><span class="sec-ico">🥩</span> الأغذية الطازجة والبلدية <span class="count">0</span></h2>
 <p class="empty">لا جديد بارز اليوم في هذا القسم</p>
-<h2><span class="sec-ico">🔌</span> غير غذائي — إلكترونيات وأثاث وملابس ومحروقات <span class="count">0</span></h2>
+<h2><span class="sec-ico">🔌</span> غير غذائي — إلكترونيات وأثاث ومحروقات <span class="count">0</span></h2>
 <div class="item" data-date="2026-09-18" data-until="2026-09-22" data-store="Teknosa"><h3>Teknosa — حملة "Anında İndirim" (خصم فوري متدرّج)</h3><p>خصم ₺400 عند شراء بقيمة ₺5.000 فأكثر، ويرتفع حتى ₺5.000 خصم عند شراء بقيمة ₺50.000 فأكثر — يشمل فرع Teknosa في Malatya Park AVM.</p><div class="meta"><span class="badge b-price">حتى ₺5.000 ($102 · ₪310)</span><span class="badge b-until">حتى 22/09</span><span class="badge b-store">Teknosa</span><a class="src" href="https://www.hardwarelab.net/2026/09/18/elektronik-alisverisinde-5-bin-tlye-kadar-indirim-yapacak/" target="_blank" rel="noopener">المصدر ↗</a></div></div>
 <div class="item" data-date="2026-09-17" data-until="2026-09-30" data-store="Profilo"><h3>Profilo — خصم عند شراء غسالة وناشفة ملابس معاً</h3><p>موديلات مختارة، عبر الموزّعين المعتمدين في ملاطيا.</p><div class="meta"><span class="badge b-price">خصم ₺10.000 ($205 · ₪621)</span><span class="badge b-until">حتى 30/09</span><span class="badge b-store">Profilo</span><a class="src" href="https://www.profilo.com/tr/tr/c/spotlight/blte6c27dcdc6f99df6/kampanyalar" target="_blank" rel="noopener">المصدر ↗</a></div></div>
 <div class="item" data-date="2026-09-17" data-until="2026-09-30" data-store="Profilo"><h3>Profilo — خصم عند شراء جهازين أبيضين مختارين معاً</h3><p>ثلاجة / غسالة صحون / غسالة ملابس / ناشفة / فريزر — عبر الموزّعين المعتمدين.</p><div class="meta"><span class="badge b-price">خصم ₺5.000 ($102 · ₪310)</span><span class="badge b-until">حتى 30/09</span><span class="badge b-store">Profilo</span><a class="src" href="https://www.profilo.com/tr/tr/c/spotlight/blte6c27dcdc6f99df6/kampanyalar" target="_blank" rel="noopener">المصدر ↗</a></div></div>
 <div class="item" data-date="2026-09-17" data-until="2026-09-30" data-store="Profilo"><h3>Profilo — خصم على مجموعة أنظمة خزائن مطبخ مدمجة (Ankastre Set)</h3><p>عبر الموزّعين المعتمدين.</p><div class="meta"><span class="badge b-price">خصم ₺4.000 ($82.00 · ₪248)</span><span class="badge b-until">حتى 30/09</span><span class="badge b-store">Profilo</span><a class="src" href="https://www.profilo.com/tr/tr/c/spotlight/blte6c27dcdc6f99df6/kampanyalar" target="_blank" rel="noopener">المصدر ↗</a></div></div>
 <div class="item" data-date="2026-09-17" data-until="2026-09-30" data-store="Siemens"><h3>Siemens — خصم عند شراء غسالة وناشفة ملابس معاً</h3><p>موديلات مختارة، عبر الموزّعين المعتمدين في ملاطيا.</p><div class="meta"><span class="badge b-price">خصم ₺10.000 ($205 · ₪621)</span><span class="badge b-until">حتى 30/09</span><span class="badge b-store">Siemens</span><a class="src" href="https://www.siemens-home.bsh-group.com/tr/tr/c/spotlight/blt4025bafc443f9b3d/kampanyalar" target="_blank" rel="noopener">المصدر ↗</a></div></div>
 <div class="item" data-date="2026-09-17" data-until="2026-09-30" data-store="Siemens"><h3>Siemens — خصم عند شراء جهازين أبيضين مختارين معاً</h3><p>عبر الموزّعين المعتمدين.</p><div class="meta"><span class="badge b-price">خصم ₺5.000 ($102 · ₪310)</span><span class="badge b-until">حتى 30/09</span><span class="badge b-store">Siemens</span><a class="src" href="https://www.siemens-home.bsh-group.com/tr/tr/c/spotlight/blt4025bafc443f9b3d/kampanyalar" target="_blank" rel="noopener">المصدر ↗</a></div></div>
+<h2><span class="sec-ico">👔</span> ملابس الرجال وأحذيتهم وحقائبهم <span class="count">0</span></h2>
+<p class="empty">لا جديد بارز اليوم في هذا القسم</p>
 <!--OFFERS-CONTENT-END-->
   </section>
 
@@ -178,6 +183,34 @@ note=أول ريّة للصفحة — لا أرشيف سابق. أقسام ال�
   var soonLimit = plus(today, 3);
 
   var items = Array.prototype.slice.call(sec.querySelectorAll('.item'));
+
+  /* ── توحيد الأرقام وربط العنوان بصفحة الحملة ──────────────
+     الأسعار تأتي من المصدر التركي بخانات لاتينية، والنِسَب تُكتب أحياناً
+     بخانات عربية-هندية، فيختلط الشكلان في البطاقة الواحدة. والعنوان يُمدّ إلى
+     رابط «المصدر ↗» نفسه لا إلى رابط ثانٍ يُكتب مرّتين. كلاهما في العرض لا في
+     الملف، فيسريان على الأرشيف المكتوب سلفاً ويبقيان صحيحين لو سها الوكيل. ── */
+  var AR = '٠١٢٣٤٥٦٧٨٩';
+  function toLatin(s) {
+    return s.replace(/[٠-٩]/g, function (d) { return String(AR.indexOf(d)); })
+            .replace(/٪/g, '%').replace(/٫/g, '.').replace(/٬/g, ',');
+  }
+  (function () {
+    var w = document.createTreeWalker(sec, NodeFilter.SHOW_TEXT, null), node, all = [];
+    while ((node = w.nextNode())) all.push(node);
+    all.forEach(function (n) { var v = toLatin(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; });
+  })();
+  items.forEach(function (n) {
+    var h = n.querySelector('h3'), a = n.querySelector('a.src');
+    if (!h || !a || !a.getAttribute('href') || h.querySelector('a')) return;
+    var link = document.createElement('a');
+    link.href = a.getAttribute('href');
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.title = 'افتح صفحة الحملة';
+    link.textContent = h.textContent;
+    h.textContent = '';
+    h.appendChild(link);
+  });
   var live = 0, soon = 0;
   items.forEach(function (n) {
     var until = n.getAttribute('data-until') || '';
