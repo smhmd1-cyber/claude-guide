@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>الموجز القراري — ملاطيا</title>
+<meta name="description" content="ما تغيّر اليوم ممّا يمسّ القرار، والخطوة الوحيدة المتاحة، وما الذي لو حدث لغيّر الرأي — مع مؤشّر السعر الحقيقي بالليرة والدولار والشيكل.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🧭%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
+<style>
+/* ==== خاص بالموجز القراري ==== */
+.verdict{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);
+  border-inline-start:4px solid var(--accent);border-radius:var(--r-sm);padding:16px 19px;margin:12px 0}
+.verdict h2{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;margin:0 0 8px;border:0;padding:0}
+.verdict .sec-ico{width:30px;height:30px;border-radius:9px;background:var(--accent-soft);
+  border:1px solid var(--accent-line);display:grid;place-items:center;font-size:15px;flex:0 0 auto}
+.verdict p{color:var(--text2);font-size:14.5px;margin:6px 0;line-height:1.85}
+.verdict ul{margin:6px 22px 2px;color:var(--text2);font-size:14.5px;line-height:1.9}
+.verdict.act{border-inline-start-color:var(--green)}
+.verdict.act .sec-ico{background:var(--green-soft);border-color:rgba(64,209,131,.35)}
+.verdict.fals{border-inline-start-color:var(--red)}
+.verdict.fals .sec-ico{background:var(--red-soft);border-color:rgba(255,107,122,.35)}
+.verdict.quiet{border-inline-start-color:var(--muted);opacity:.92}
+.verdict.quiet .sec-ico{background:rgba(139,152,191,.14);border-color:rgba(139,152,191,.3)}
+.empty{color:var(--muted);font-style:italic;font-size:13.5px}
+
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:12px;margin:14px 0 4px}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 16px}
+.metric .lbl{font-size:12.5px;color:var(--muted);font-weight:700}
+.metric .big{font-family:var(--font-num);font-size:23px;font-weight:700;color:#fff;margin:6px 0 2px;direction:ltr;text-align:right}
+.metric .alt{font-family:var(--font-num);font-size:13px;color:var(--text2);direction:ltr;text-align:right}
+.metric .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px;align-items:center}
+.dlt{font-family:var(--font-num);font-size:12px;font-weight:700;padding:2px 9px;border-radius:100px;direction:ltr}
+.dlt.up{background:var(--green-soft);color:var(--green);border:1px solid rgba(64,209,131,.3)}
+.dlt.dn{background:var(--red-soft);color:var(--red);border:1px solid rgba(255,107,122,.3)}
+.dlt.flat{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+.spark{display:block;margin-top:10px}
+.prov{margin-top:9px;padding-top:8px;border-top:1px dashed var(--border);font-size:11px;color:var(--muted);line-height:1.7}
+.prov b{color:var(--text2);font-weight:700}
+.legend{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:10px}
+.foot-credit{margin:44px 0 10px;padding-top:18px;border-top:1px solid var(--border-soft);
+  color:var(--muted);font-size:12px;line-height:1.9;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="logo">🧭</div>
+    <div>
+      <h1>الموجز القراري</h1>
+      <div class="sub">ما يمسّ القرار اليوم — لا كل ما جرى اليوم</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="stamp">آخر موجز: <b><span id="brief-date">لم يُشغَّل بعد</span></b></div>
+  </div>
+
+  <section id="brief">
+<!--BRIEF-CONTENT-START-->
+<!--BRIEF-REPORT
+run=— | sources=—
+note=الصفحة أُنشئت ولم تُشغَّل أوّل ريّة بعد.
+-->
+<div class="verdict" id="v-changed"><h2><span class="sec-ico">🔔</span> ما تغيّر ويمسّ قرارك</h2>
+<p class="empty">لم تُشغَّل أوّل ريّة بعد</p></div>
+<div class="verdict act" id="v-action"><h2><span class="sec-ico">🎯</span> الخطوة الوحيدة المتاحة اليوم</h2>
+<p class="empty">لم تُشغَّل أوّل ريّة بعد</p></div>
+<div class="verdict fals" id="v-falsify"><h2><span class="sec-ico">🧨</span> ما الذي لو حدث لغيّر رأيك</h2>
+<p class="empty">لم تُشغَّل أوّل ريّة بعد</p></div>
+<div class="verdict quiet" id="v-quiet"><h2><span class="sec-ico">🌙</span> ما لم يتغيّر — وهذا خبر أيضاً</h2>
+<p class="empty">لم تُشغَّل أوّل ريّة بعد</p></div>
+<!--BRIEF-CONTENT-END-->
+  </section>
+
+  <h2 style="display:flex;align-items:center;gap:11px;font-size:19px;font-weight:800;margin:30px 0 4px;padding-bottom:10px;border-bottom:1px solid var(--border-soft)">
+    <span class="sec-ico" style="width:32px;height:32px;border-radius:9px;background:var(--accent-soft);border:1px solid var(--accent-line);display:grid;place-items:center;font-size:16px">📈</span>
+    السعر الحقيقي — لا الاسميّ
+  </h2>
+  <p class="lead" style="font-size:14px">في تركيا كل سعر اسميّ يصعد، فيبدو كلّ شيء فرصة. السؤال الوحيد الجادّ:
+    هل يصعد أسرع من هبوط الليرة؟ الخطّان أدناه يجيبان — نفس المتر، مرّةً بالليرة ومرّةً بعملتك.</p>
+
+  <div class="mgrid" id="metrics"></div>
+  <div class="legend" id="legend"></div>
+
+  <div class="foot-credit">
+    © جميع الحقوق محفوظة لـ: محمد صالح اغبارية - 2026
+  </div>
+
+</div>
+
+<script>
+/* الأرقام كلّها من data/indices.json — يحسبها سير العمل حساباً، ولا يكتبها وكيل.
+   الوكيل يكتب الحكم والنصّ فقط، فلا يدخل رقمٌ إلى هذه الصفحة بلا مصدرٍ محسوب. */
+(function () {
+  var N = function (x, d) { return (x == null || isNaN(x)) ? '—' : Number(x).toLocaleString('en-US', {minimumFractionDigits: d || 0, maximumFractionDigits: d || 0}); };
+  function dlt(v) {
+    if (v == null) return '<span class="dlt flat">—</span>';
+    var c = v > 0.05 ? 'up' : (v < -0.05 ? 'dn' : 'flat');
+    var s = v > 0 ? '+' : '';
+    return '<span class="dlt ' + c + '">' + s + v.toFixed(1) + '%</span>';
+  }
+  function spark(series, key, w, h) {
+    var v = series.map(function (r) { return r[key]; }).filter(function (x) { return x != null; });
+    if (v.length < 2) return '';
+    var mn = Math.min.apply(null, v), mx = Math.max.apply(null, v), sp = (mx - mn) || 1;
+    var pts = v.map(function (y, i) {
+      return (w - (i / (v.length - 1)) * w).toFixed(1) + ',' + (h - 3 - ((y - mn) / sp) * (h - 6)).toFixed(1);
+    }).join(' ');
+    var last = v[v.length - 1], lx = 0, ly = (h - 3 - ((last - mn) / sp) * (h - 6)).toFixed(1);
+    return '<svg class="spark" width="100%" viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" aria-hidden="true">'
+      + '<polyline points="' + pts + '" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>'
+      + '<circle cx="' + lx + '" cy="' + ly + '" r="2.4" fill="var(--accent)"/></svg>';
+  }
+  function card(o) {
+    var d = o.deltas || {};
+    var chips = Object.keys(d).map(function (k) {
+      var lbl = k === 'd7' ? '7 أيام' : (k === 'd30' ? '30 يوماً' : 'كل السلسلة');
+      return '<span title="' + d[k].from + ' ← ' + d[k].to + '">' + lbl + ' ' + dlt(d[k][o.deltaKey]) + '</span>';
+    }).join('');
+    return '<div class="metric"><div class="lbl">' + o.label + '</div>'
+      + '<div class="big">' + o.big + '</div>'
+      + (o.alt ? '<div class="alt">' + o.alt + '</div>' : '')
+      + '<div class="row">' + chips + '</div>'
+      + spark(o.series, o.sparkKey, 100, 34)
+      + '<div class="prov">المصدر: <b>' + o.src + '</b> · آخر قياس <b>' + o.lastDate + '</b>'
+      + (o.sample ? ' · عيّنة <b>' + o.sample + '</b> إعلاناً' : '') + '</div></div>';
+  }
+  fetch('data/indices.json?v=' + Date.now(), {cache: 'no-store'})
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (D) {
+      var st = document.getElementById('brief-date');
+      var ap = D.apartments || {}, ln = D.land || {}, S = ap.series || [], L = ln.series || [];
+      var last = S.length ? S[S.length - 1] : null, lastL = L.length ? L[L.length - 1] : null;
+      var out = [];
+      if (last) {
+        out.push(card({label: 'وسيط سعر المتر — شقق للبيع', big: '₺' + N(last.try), alt: '$' + N(last.usd) + ' · ₪' + N(last.ils),
+          deltas: ap.deltas, deltaKey: 'try', series: S, sparkKey: 'try', src: ap.source, lastDate: last.d, sample: N(last.n)}));
+        out.push(card({label: 'نفس المتر — بالدولار (الحقيقي لك)', big: '$' + N(last.usd), alt: 'بسعر صرف يوم كل قياس',
+          deltas: ap.deltas, deltaKey: 'usd', series: S, sparkKey: 'usd', src: ap.source, lastDate: last.d, sample: N(last.n)}));
+        out.push(card({label: 'العائد الإيجاري السنوي', big: (last.y != null ? last.y + '%' : '—'), alt: 'إيجار ₺' + N(last.rent) + '/م² شهرياً',
+          deltas: ap.deltas, deltaKey: 'y', series: S, sparkKey: 'y', src: ap.source, lastDate: last.d, sample: N(last.n)}));
+      }
+      if (lastL) {
+        out.push(card({label: ln.label, big: '₺' + N(lastL.try), alt: '$' + N(lastL.usd, 2) + ' · ₪' + N(lastL.ils, 2),
+          deltas: ln.deltas, deltaKey: 'try', series: L, sparkKey: 'try', src: ln.source, lastDate: lastL.d}));
+      }
+      if (D.fx && D.fx.try_per_usd) {
+        out.push('<div class="metric"><div class="lbl">سعر الصرف المستعمل</div>'
+          + '<div class="big">₺' + N(D.fx.try_per_usd, 2) + ' <span style="font-size:14px;color:var(--muted)">/ $1</span></div>'
+          + '<div class="alt">₺' + N(D.fx.try_per_ils, 2) + ' / ₪1</div>'
+          + '<div class="prov">المصدر: <b>' + (D.fx.src || '—') + '</b> · تاريخ <b>' + (D.fx.date || '—') + '</b>'
+          + ' · السلسلة التاريخية: <b>' + (D.fx.series_src || '—') + '</b> (' + N(D.fx.series_days) + ' يوماً)</div></div>');
+      }
+      document.getElementById('metrics').innerHTML = out.join('');
+      document.getElementById('legend').innerHTML =
+        (D.notes || []).map(function (n) { return '• ' + n; }).join('<br>')
+        + '<br>• حُسبت هذه الأرقام آلياً في <b>' + (D.generated_at || '—') + '</b> — لم يكتبها وكيل.';
+      if (st && D.date) st.textContent = D.date;
+    })
+    .catch(function (e) {
+      document.getElementById('metrics').innerHTML =
+        '<span style="color:var(--red)">تعذّر تحميل المؤشّرات: ' + e.message + '</span>';
+    });
+})();
+</script>
+<script src="assets/nav.js?v=10" defer></script>
+</body>
+</html>
