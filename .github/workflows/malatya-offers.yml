@@ -1,0 +1,695 @@
+name: العروض والحملات — ملاطيا
+
+# 03:40 UTC = 06:40 بتوقيت القدس (صيفاً) / 05:40 (شتاءً) — قبل كل الوكلاء.
+# لماذا أوّلاً: نشرات BİM/A101/ŞOK تُرفع ليلاً، والسوق الأسبوعي يبدأ باكراً،
+# والعرض يفيد من أوّل النهار لا بعد الظهر. وأيضاً لا يزاحم أحداً على الدفع إلى main.
+# workflow_call: يسمح لحارس المنظومة بإعادة تشغيله ذاتياً دون PAT.
+on:
+  schedule:
+    - cron: "40 3 * * *"
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: malatya-offers
+  cancel-in-progress: false
+
+env:
+  # ⛔ مصدر الحقيقة الوحيد للمسارات. لا تكتب مساراً حرفياً في أي خطوة.
+  OFFERS_FILE: malatya/aroud.html
+  HUB_FILE: malatya/index.html
+  HUB_MARK: منظومة ملاطيا
+  # عتبة الدخول: خصم معلَن بهذه النسبة فأكثر، أو سعر حملة معلَن (كتالوج · ٢+١ · محدود بمدّة).
+  # تغييرها هنا وحدها يغيّر سلوك الوكيل — لا تكرّرها في التوجيه.
+  MIN_DISCOUNT: "15"
+  # بطاقة انتهت صلاحيتها قبل هذا العدد من الأيام تُحذف؛ ما دونها يبقى باهتاً في الأرشيف.
+  PRUNE_AFTER_DAYS: "45"
+
+jobs:
+  update:
+    name: رصد العروض · تحرير الصفحة · نشر
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+      id-token: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      # ═══════════════════════════════════════════════════════════
+      # فحص قبلي: يوقف الريّة في الثانية الأولى إن تغيّرت البنية،
+      # بدل أن تفشل بصمت بعد نصف ساعة (درس 25/08/2026 من النشرة).
+      # ═══════════════════════════════════════════════════════════
+      - name: 🧪 فحص قبلي — هل البنية كما نتوقّعها؟
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os, sys, re, datetime
+
+          def bad_dates(text, attr):
+              out = []
+              for v in re.findall(r'%s="([^"]*)"' % attr, text):
+                  try:
+                      datetime.date.fromisoformat(v)
+                  except ValueError:
+                      out.append(v)
+              return sorted(set(out))
+
+          d = os.environ['OFFERS_FILE']; h = os.environ['HUB_FILE']; mark = os.environ['HUB_MARK']
+          errs = []
+          if not os.path.exists(d):
+              errs.append("صفحة العروض %s غير موجودة — هل أُعيدت تسميتها؟ صحّح OFFERS_FILE في رأس سير العمل." % d)
+          if not os.path.exists(h):
+              errs.append("مركز التحكّم %s غير موجود." % h)
+          if os.path.exists(d):
+              t = open(d, encoding='utf-8').read()
+              for m in ('OFFERS-CONTENT-START', 'OFFERS-CONTENT-END'):
+                  if t.count(m) != 1:
+                      errs.append("%s: العلامة %s ظهرت %d مرّة (المطلوب ١)" % (d, m, t.count(m)))
+              if t.count('id="offers-date"') != 1:
+                  errs.append('%s: id="offers-date" ظهر %d مرّة (المطلوب ١)' % (d, t.count('id="offers-date"')))
+              # تاريخ مستحيل تقويمياً يعبر الـregex ثم يُفجّر حساب النافذة غداً — نسمّيه هنا بالاسم.
+              for attr in ('data-date', 'data-until'):
+                  bad = bad_dates(t, attr)
+                  if bad:
+                      errs.append("%s: تواريخ مستحيلة تقويمياً في %s: %s — صحّحها يدوياً" % (d, attr, bad[:5]))
+          if os.path.exists(h):
+              g = open(h, encoding='utf-8').read()
+              if mark not in g:
+                  errs.append("%s لا يحوي «%s» — مركز التحكّم مدهوس؟" % (h, mark))
+              if 'id="offers-date"' in g:
+                  errs.append("%s يحوي id=offers-date — صفحة العروض دهست مركز التحكّم." % h)
+          if errs:
+              print("❌ الفحص القبلي فشل — لن نشغّل الوكيل على بنية خاطئة:")
+              for e in errs: print("  -", e)
+              sys.exit(1)
+          print("✅ الفحص القبلي: %s هي صفحة العروض، %s مركز تحكّم سليم" % (d, h))
+          PY
+
+      - name: 📐 حساب نافذة التغطية
+        id: cov
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import re, datetime, os
+          h = open(os.environ['OFFERS_FILE'], encoding='utf-8').read()
+          today = datetime.date.fromisoformat(
+              os.popen("TZ=Asia/Jerusalem date +%F").read().strip())
+          # متسامحون هنا عمداً: القارئ لا ينهار على بيانات فاسدة بل يتخطّاها.
+          # الرفض مكانه بوّابتا «الفحص القبلي» و«التحقّق» — لا هنا.
+          def _d(v):
+              try:
+                  return datetime.date.fromisoformat(v)
+              except ValueError:
+                  return None
+          dates = sorted({v for v in re.findall(r'data-date="(\d{4}-\d{2}-\d{2})"', h) if _d(v)})
+          past = [d for d in dates if _d(d) <= today]
+          last = _d(past[-1]) if past else today - datetime.timedelta(7)
+          gaps = [ (last + datetime.timedelta(n)).isoformat()
+                   for n in range((today - last).days + 1)
+                   if (last + datetime.timedelta(n)).isoformat() not in past ]
+          cards = re.findall(r'<div class="item"[^>]*>', h)
+          untils = [v for v in re.findall(r'data-until="(\d{4}-\d{2}-\d{2})"', h) if _d(v)]
+          print("last_covered=%s" % (past[-1] if past else 'none'))
+          print("search_from=%s" % last.isoformat())
+          print("today=%s" % today.isoformat())
+          print("gaps=%s" % (','.join(gaps) if gaps else 'none'))
+          print("cards=%d" % len(cards))
+          print("live=%d" % len([u for u in untils if u >= today.isoformat()]))
+          print("expired=%d" % len([u for u in untils if u < today.isoformat()]))
+          PY
+          echo "— نافذة البحث —"; tail -7 "$GITHUB_OUTPUT"
+
+      # ═══════════════════════════════════════════════════════════
+      # 💱 سعر الصرف — يُجلب هنا مرّة واحدة ويُمرَّر إلى الوكيل جاهزاً.
+      # قاعدة المنظومة: كل سعر يُعرض بالليرة والدولار والشيكل معاً، بسعر
+      # صرف يوم التقرير نفسه. الوكيل لا يجلب سعراً ولا يستعيده من ذاكرته.
+      # فشل الجلب لا يُسقط الريّة: ok=false، والوكيل يكتب بالليرة وحدها.
+      # ═══════════════════════════════════════════════════════════
+      - name: 💱 سعر صرف اليوم — ليرة · دولار · شيكل
+        id: fx
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, sys, urllib.request
+          SRC = [
+              ("open.er-api.com", "https://open.er-api.com/v6/latest/TRY",
+               lambda d: (d["rates"]["USD"], d["rates"]["ILS"], d.get("time_last_update_utc", ""))),
+              ("frankfurter.dev", "https://api.frankfurter.dev/v1/latest?from=TRY&to=USD,ILS",
+               lambda d: (d["rates"]["USD"], d["rates"]["ILS"], d.get("date", ""))),
+          ]
+          usd = ils = None
+          src = "none"
+          asof = ""
+          for name, url, pick in SRC:
+              try:
+                  with urllib.request.urlopen(url, timeout=20) as r:
+                      u, i, a = pick(json.load(r))
+                  if u and i:
+                      usd, ils, src, asof = float(u), float(i), name, str(a)
+                      break
+              except Exception as e:
+                  print("تعذّر %s: %s" % (name, e), file=sys.stderr)
+          if usd and ils:
+              print("ok=true")
+              print("usd=%.4f" % usd)
+              print("ils=%.4f" % ils)
+              print("try_per_usd=%.2f" % (1 / usd))
+              print("try_per_ils=%.2f" % (1 / ils))
+              print("src=%s" % src)
+              print("asof=%s" % asof)
+              print("line=1 ₺ = $%.4f = ₪%.4f | $1 = ₺%.2f | ₪1 = ₺%.2f | src=%s"
+                    % (usd, ils, 1 / usd, 1 / ils, src))
+          else:
+              print("ok=false")
+              print("usd=0")
+              print("ils=0")
+              print("try_per_usd=0")
+              print("try_per_ils=0")
+              print("src=none")
+              print("asof=")
+              print("line=تعذّر جلب سعر الصرف اليوم — الأسعار بالليرة وحدها")
+          PY
+          echo "— سعر الصرف —"; tail -9 "$GITHUB_OUTPUT"
+
+      - name: تشغيل Claude — رصد العروض والحملات
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            أنت **«صيّاد العروض في ملاطيا»**. مهمتك اليوم: تحديث `${{ env.OFFERS_FILE }}` وحده.
+
+            تعمل داخل GitHub Actions. لديك موافقة قائمة؛ **لا تطرح أسئلة**.
+            لا commit ولا push ولا FTP — سير العمل يتولّى ذلك بعدك.
+
+            ═══════════════════════════════
+            ⛔ **قاعدة المسار — اقرأها قبل كل شيء**
+            ═══════════════════════════════
+            **الملف الذي تحرّره: `${{ env.OFFERS_FILE }}`** — هو وحده صفحة العروض.
+            **ممنوع منعاً باتاً** فتح أو تعديل `${{ env.HUB_FILE }}` (مركز التحكّم)
+            ولا `daleel.html` (النشرة اليومية) ولا `aqar*.html` ولا `land-*.html`
+            ولا `arsa.html` ولا `invest*.html` ولا `reports*` ولا `library.html`
+            ولا `docs/` ولا `assets/` ولا `data/`.
+            سير العمل يفحص هذا بعدك ويُفشل الريّة إن مُسَّ أي ملف آخر.
+
+            ═══════════════════════════════
+            ⛔ **قاعدة الجولة الواحدة**
+            ═══════════════════════════════
+            أنت في **ريّة دفعة واحدة غير تفاعلية**. لا جولة تالية، ولا إشعارات،
+            ولا استيقاظ لاحق. حين تُنهي ردّك تموت العملية وكلّ ما لم تكتبه يضيع.
+            **ممنوع** `ScheduleWakeup` وأي جدولة أو تأجيل، وممنوع أن تقول «سأنتظر
+            نتائج الوكلاء». استدعاء الوكيل يُعيد نتيجته إليك في النداء نفسه —
+            انتظرها في مكانك ثم اكتبها في الملف فوراً.
+
+            ═══════════════════════════════
+            🎯 **ما يدخل هذه الصفحة وما لا يدخل — أهمّ قاعدة**
+            ═══════════════════════════════
+            الصفحة **للتوفير الجدّي وحده**. يدخل البند إن تحقّق أحد هذه:
+            - **خصم معلَن ≥ ${{ env.MIN_DISCOUNT }}٪** عن السعر المعتاد (النسبة معلَنة أو محسوبة من سعرين معلَنين).
+            - **سعر حملة معلَن** في كتالوج أو نشرة أسبوعية (BİM aktüel · A101 «Aldın Aldın» · ŞOK «Fırsat»).
+            - **عرض كمّي**: ٢+١ · ١+١ · «اشترِ اثنين ادفع ثمن واحد» · باقة بسعر أقلّ من مجموع أفرادها.
+            - **حملة محدودة بمدّة** أو بكمّية (يوم واحد · نهاية أسبوع · حتى نفاد الكمّية).
+            - **سعر سوق أسبوعي لافت** أرخص بوضوح من سعر السوبرماركت المعتاد لنفس الصنف.
+
+            **لا يدخل:** خبرٌ عن متجر، افتتاح فرع، إعلان بلا سعر، «أسعار مناسبة»،
+            سعرٌ عاديّ بلا خصم، تخفيضٌ لا رقم له، ولا أي شيء لم تقرأه من مصدر فعلاً.
+            **ممنوع الاختلاق منعاً باتاً**: كل نسبة وكل سعر وكل تاريخ انتهاء من صفحة جُلبت.
+            ما لم تجده = «غير معروف»، ولا تكتب البطاقة أصلاً إن لم يكن فيها رقم.
+
+            **يومٌ بلا عروض تستحقّ نتيجةٌ صحيحة** — قُلها في تقرير الرصد ولا تملأ الصفحة بالحشو.
+
+            ═══════════════════════════════
+            💱 **قاعدة العملات الثلاث — كل سعر، بلا استثناء**
+            ═══════════════════════════════
+            سعر صرف اليوم **محسوبٌ لك في سير العمل** — لا تجلبه، ولا تحسبه، ولا تستعِده من ذاكرتك:
+            **١ ₺ = $${{ steps.fx.outputs.usd }} = ₪${{ steps.fx.outputs.ils }}**
+            (أي: $١ = ₺${{ steps.fx.outputs.try_per_usd }} · ₪١ = ₺${{ steps.fx.outputs.try_per_ils }}
+            · المصدر `${{ steps.fx.outputs.src }}` · حالة الجلب `${{ steps.fx.outputs.ok }}`)
+
+            كل مبلغ نقدي تكتبه اليوم — في شارة `b-price`، وفي الملخّص، وفي العنوان —
+            يُكتب بالعملات الثلاث معاً بهذا الشكل بالضبط:
+
+            `₺1.250 ($30 · ₪110)` · وللكيلو: `₺89,90/كغ ($1.85 · ₪5.60)`
+
+            - الليرة أوّلاً كما وردت في المصدر، والمقابلان بين قوسين بعدها.
+            - فاصل الآلاف نقطة على الطريقة التركية؛ بلا كسور فوق ١٠٠، وبخانتين تحتها.
+            - النِسَب والكمّيات (٪ · كغ · لتر · عدد) تبقى كما هي بلا تحويل.
+            - **الأرشيف لا يُعاد كتابته**: القاعدة تسري على البطاقات التي تكتبها اليوم وحدها.
+            - إن كان `${{ steps.fx.outputs.ok }}` = `false`: اكتب الليرة وحدها وأضِف في التقرير
+              سطر `fx=تعذّر الجلب`. **لا تخترع سعر صرف.**
+
+            ═══════════════════════════════
+            **الخطوة ١ — التاريخ، ثم حدّث الختم فوراً**
+            ═══════════════════════════════
+            ١. نفّذ: `TZ=Asia/Jerusalem date '+%A %-d %B %Y — %H:%M'` (بالعربية).
+            ٢. ⛔ **افعل هذا الآن، قبل أي بحث:** افتح `${{ env.OFFERS_FILE }}` وبدّل نصّ
+            `<span id="offers-date">…</span>` بالتاريخ الذي حصلت عليه للتوّ، ثم احفظ.
+            ريّة تنتهي دون أي تعديل يرفضها التحقّق وتُعدّ عُطلاً.
+
+            ═══════════════════════════════
+            **الخطوة ٢ — نافذة البحث (محسوبة آلياً — لا تُخمّنها)**
+            ═══════════════════════════════
+            - **آخر يوم مغطّى:** `${{ steps.cov.outputs.last_covered }}`
+            - **ابحث ابتداءً من:** `${{ steps.cov.outputs.search_from }}` وحتى `${{ steps.cov.outputs.today }}`
+            - **أيام بلا تغطية:** `${{ steps.cov.outputs.gaps }}`
+            - البطاقات الحالية: `${{ steps.cov.outputs.cards }}` (سارية `${{ steps.cov.outputs.live }}` · منتهية `${{ steps.cov.outputs.expired }}`)
+
+            ═══════════════════════════════
+            **الخطوة ٣ — ستة وكلاء بحث بالتوازي**
+            ═══════════════════════════════
+            **إن توفّرت أداة الوكلاء** (Task أو Agent): شغّل **٦ وكلاء** بالتوازي
+            (subagent_type: general-purpose، في رسالة واحدة).
+            **وإن لم تتوفّر — لا تتوقّف**: نفّذ المحاور الستّة بنفسك عبر WebSearch وWebFetch.
+
+            كل وكيل: يبحث **بالتركية أوّلاً** (`indirim` · `kampanya` · `aktüel` · `kataloğ` ·
+            `fırsat` · `Malatya`)، ثم بالإنجليزية والعربية؛ يركّز على آخر **٧ أيام**؛ يترجم
+            للعربية؛ ويعيد ٥–١٢ عرضاً فقط ممّا يجتاز عتبة الدخول أعلاه. لكل عرض:
+            **اسم الصنف · السعر بالليرة · نسبة الخصم أو السعر السابق · السلسلة/المكان ·
+            تاريخ بدء العرض · تاريخ انتهائه · الحيّ أو القضاء · المصدر + الرابط.**
+            كل وكيل يصرّح صراحةً إن لم يجد جديداً.
+
+            ١. **BİM** — `bim.com.tr` نشرة `aktüel ürünler` (تنزل الثلاثاء والجمعة) + حملاتها في ملاطيا.
+            ٢. **A101 و ŞOK** — `a101.com.tr` («Aldın Aldın»، الخميس) و`sokmarket.com.tr` («Fırsat Ürünleri»، الأربعاء).
+            ٣. **Migros · CarrefourSA · Hakmar · File · Onur** — الكتالوجات والحملات السارية في ملاطيا.
+            ٤. **الأسواق الأسبوعية (pazar)** — أيام السوق وأحياؤه في Battalgazi و Yeşilyurt وبقيّة الأقضية،
+               والأسعار اللافتة للخضار والفاكهة، ومتاجر البلدية (Esenlik · halk market) وأسعارها المدعومة.
+            ٥. **المجمّعات والبازارات** — Malatya Park AVM · سوق الشيرة · البازارات الموسمية · تنزيلات المتاجر الكبرى.
+            ٦. **غير غذائي** — إلكترونيات (Teknosa · MediaMarkt · Vatan) · أثاث · ملابس · محروقات ·
+               وأي حملة **حصرية بملاطيا** من تاجر محلّي أو غرفة تجارة أو بلدية.
+
+            انتظر الوكلاء الستّة جميعاً **داخل هذه الجولة**. لا تجدول، ولا تنتظر إشعاراً.
+
+            ═══════════════════════════════
+            **الخطوة ٤ — التحرير (اكتب أوّلاً بأوّل!)**
+            ═══════════════════════════════
+            فور انتهاء وكيل من محوره **اكتب بطاقاته في الملف فوراً** عبر Edit، ثم انتقل للتالي.
+            سبع كتابات صغيرة، لا كتابة واحدة كبيرة.
+
+            - احذف المكرّر (العرض نفسه من مصدرين = بطاقة واحدة بأقوى مصدر).
+            - اختر **«أبرز ٥ اليوم»**: الأعلى توفيراً بالليرة الصافية لا بالنسبة وحدها.
+            - **لا تحذف الأرشيف**: البطاقة المنتهية تبقى (الصفحة تُبهتها آلياً في المتصفّح).
+            - **استثناء الحذف الوحيد:** بطاقة مضى على `data-until` فيها أكثر من
+              `${{ env.PRUNE_AFTER_DAYS }}` يوماً — احذفها، فقد صارت نفاية لا أرشيفاً.
+            - قسمٌ بلا جديد ⇐ أبقِ `<p class="empty">لا جديد بارز اليوم في هذا القسم</p>`.
+
+            ═══════════════════════════════
+            **الخطوة ٥ — بناء HTML**
+            ═══════════════════════════════
+            استبدل ما بين `<!--OFFERS-CONTENT-START-->` و `<!--OFFERS-CONTENT-END-->` فقط.
+            **أبقِ العلامتين.**
+
+            - لكل قسم: `<h2><span class="sec-ico">أيقونة</span> العنوان <span class="count">عدد</span></h2>`
+            - «أبرز اليوم» داخل `<div class="highlights">…</div>`
+            - كل عرض:
+            ```
+            <div class="item" data-date="YYYY-MM-DD" data-until="YYYY-MM-DD" data-store="BİM"><h3>العنوان</h3><p>الملخّص</p><div class="meta"><span class="badge b-disc">-٣٥٪</span><span class="badge b-price">₺1.250 ($30 · ₪110)</span><span class="badge b-until">حتى 25/09</span><span class="badge b-store">BİM</span><span class="badge b-area">بطّالغازي</span><a class="src" href="URL" target="_blank" rel="noopener">المصدر ↗</a></div></div>
+            ```
+            ⚠️ **`data-date` إلزامي في كل بطاقة** بصيغة `YYYY-MM-DD` بالضبط (يوم إعلان العرض).
+            ⚠️ **`data-until` إلزامي متى عُرف تاريخ الانتهاء**، بالصيغة نفسها. لا تخترعه —
+            اتركه غائباً إن لم يُعلَن، ولا تكتب `data-until=""`.
+            ⚠️ `data-store` = اسم السلسلة أو السوق كما يُعرف (`BİM` · `A101` · `ŞOK` · `Migros` ·
+            `السوق الأسبوعي` …) — منه يُبنى مرشّح الصفحة، فوحّد التسمية ولا تنوّعها.
+            ⚠️ شارة `b-disc` للنسبة، و`b-price` للسعر بالعملات الثلاث. بطاقة بلا واحدة منهما
+            لا مكان لها في هذه الصفحة.
+
+            **الأقسام السبعة بالترتيب:**
+            ⭐ أبرز عروض اليوم · 🏪 سلاسل السوبرماركت · 📒 نشرات الأسبوع والكتالوجات ·
+            🧺 الأسواق الأسبوعية (pazar) · 🏬 المجمّعات والبازارات والمتاجر الكبرى ·
+            🥩 الأغذية الطازجة والبلدية · 🔌 غير غذائي — إلكترونيات وأثاث وملابس ومحروقات
+
+            ═══════════════════════════════
+            **الخطوة ٦ — فحص ذاتي قبل الإنهاء**
+            ═══════════════════════════════
+            - `git diff --stat -- ${{ env.OFFERS_FILE }}` — سطرٌ واحد متغيّر = لم تكتب إلا الختم: ارجع واكتب.
+            - `git status --porcelain` لا يُظهر إلا `${{ env.OFFERS_FILE }}`
+            - `OFFERS-CONTENT-START` و`OFFERS-CONTENT-END` — مرّة واحدة لكلٍّ · `id="offers-date"` مرّة واحدة
+            - كل `<div class="item"` لديه `data-date` صالح، و`data-until` إن وُجد صالح أيضاً
+            - كل بطاقة فيها `b-disc` أو `b-price`، وكل `b-price` فيها `₺` و`$` و`₪` معاً
+            - توازن `<div>`، لا مُعرِّفات مكرّرة، الأقسام السبعة موجودة
+
+            ═══════════════════════════════
+            **الخطوة ٧ — تقرير الرصد داخل الملف (إلزامي)**
+            ═══════════════════════════════
+            استبدل بلوك `<!--OFFERS-REPORT ... -->` (أو أضِفه بعد `<!--OFFERS-CONTENT-START-->`):
+
+            ```
+            <!--OFFERS-REPORT
+            run=YYYY-MM-DD HH:MM | window=<search_from>..<today>
+            fx=${{ steps.fx.outputs.line }}
+            🏪 found=N passed=N written=N
+            … (كل المحاور الستّة)
+            pruned=N  (بطاقات حُذفت لتجاوزها ${{ env.PRUNE_AFTER_DAYS }} يوماً بعد الانتهاء)
+            note=<سطر واحد: لماذا كانت الحصيلة صفراً إن كانت كذلك>
+            -->
+            ```
+            `found` = ما رأيته · `passed` = ما اجتاز عتبة ${{ env.MIN_DISCOUNT }}٪ · `written` = ما كتبته.
+            صفر مقبول — صفر بلا تفسير ليس مقبولاً.
+
+            **تقرير ختامي بالعربية:** ما أُضيف لكل قسم · أبرز ٥ بتوفيرها بالليرة ·
+            ما لم يُعثر عليه ولماذا · المصادر بروابطها.
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Task,Agent"
+            --disallowedTools "ScheduleWakeup,CronCreate,CronList,CronDelete,Monitor,SendMessage,PushNotification"
+            --permission-mode acceptEdits
+            --max-turns 110
+
+      - name: 🔍 ماذا فعل Claude فعلاً؟
+        if: always()
+        run: |
+          set +e
+          F=/home/runner/work/_temp/claude-execution-output.json
+          echo "── حالة الملف ──"
+          git diff --stat -- "$OFFERS_FILE" || true
+          git diff --quiet -- "$OFFERS_FILE" && echo "⚠️ الملف لم يُمسّ إطلاقاً" || echo "✅ الملف عُدِّل"
+          echo
+          echo "── ردّ Claude النصّي ──"
+          if [ -f "$F" ]; then
+            python3 - "$F" <<'PY'
+          import json, sys
+          try:
+              d = json.load(open(sys.argv[1], encoding='utf-8'))
+          except Exception as e:
+              print("تعذّر تحليل JSON:", e); sys.exit(0)
+          items = d if isinstance(d, list) else [d]
+          for it in items:
+              if not isinstance(it, dict): continue
+              if it.get('type') == 'result':
+                  print("subtype:", it.get('subtype'), "| is_error:", it.get('is_error'))
+                  print("turns:", it.get('num_turns'))
+                  r = it.get('result')
+                  if r: print("\n--- النصّ ---\n", str(r)[:3000])
+              msg = (it.get('message') or {})
+              for c in (msg.get('content') or []):
+                  if isinstance(c, dict):
+                      if c.get('type') == 'text' and c.get('text', '').strip():
+                          print("[نصّ]", c['text'][:900])
+                      elif c.get('type') == 'tool_use':
+                          print("[أداة]", c.get('name'))
+          PY
+          else
+            echo "لا يوجد ملف مخرجات في $F"
+          fi
+          exit 0
+
+      # ═══════════════════════════════════════════════════════════
+      # التطويق: لا يخرج قلم Claude خارج صفحة العروض.
+      # ═══════════════════════════════════════════════════════════
+      - name: 🚧 تطويق — لم يُمسّ إلا ملف العروض
+        run: |
+          set -euo pipefail
+          CH=$(git status --porcelain --untracked-files=all | sed 's/^...//')
+          echo "الملفات المتغيّرة:"; echo "${CH:-(لا شيء)}"
+          BAD=$(printf '%s\n' "$CH" | grep -v -x "$OFFERS_FILE" | grep -v -x '' || true)
+          if [ -n "$BAD" ]; then
+            echo "❌ عُدِّلت ملفات ممنوعة — أُلغيت الريّة حمايةً للمنظومة:"
+            echo "$BAD"
+            exit 1
+          fi
+          echo "✅ التطويق سليم"
+
+      # ═══════════════════════════════════════════════════════════
+      # ختم تقرير الرصد — بياناتٌ آليّة يملكها سير العمل لا الوكيل.
+      # القاعدة (من درس النشرة 26/08): لا تُهدَر ريّة صالحة بسبب سطر
+      # بيانات وصفية. نختم نحن ونرفع راية degraded ليقرأها الحارس.
+      # ═══════════════════════════════════════════════════════════
+      - name: 🖋️ ختم تقرير الرصد
+        id: report
+        env:
+          SEARCH_FROM: ${{ steps.cov.outputs.search_from }}
+          FX_LINE: ${{ steps.fx.outputs.line }}
+        run: |
+          set -euo pipefail
+          git show "HEAD:$OFFERS_FILE" > /tmp/before-offers.html 2>/dev/null || : > /tmp/before-offers.html
+          git diff -U0 -- "$OFFERS_FILE" > /tmp/offers.diff 2>/dev/null || : > /tmp/offers.diff
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import re, os
+          p = os.environ['OFFERS_FILE']
+          h = open(p, encoding='utf-8').read()
+          before = open('/tmp/before-offers.html', encoding='utf-8').read()
+          # cards_written = بطاقات ظهرت في أسطر مُضافة فعلاً في هذه الريّة.
+          # الفرق الصافي وحده يخدع: يوم يُقلَّم فيه الأرشيف تنقص البطاقات صافيةً
+          # بينما الوكيل كتب جديداً، وريّة ثانية في اليوم نفسه تبدو سليمة بلا عمل.
+          added = [l[1:] for l in open('/tmp/offers.diff', encoding='utf-8', errors='replace')
+                   if l.startswith('+') and not l.startswith('+++')]
+          cards_written = sum(x.count('<div class="item"') for x in added)
+          cards_added = len(re.findall(r'<div class="item"', h)) - \
+                        len(re.findall(r'<div class="item"', before))
+          today = os.popen("TZ=Asia/Jerusalem date +%F").read().strip()
+          hm = os.popen("TZ=Asia/Jerusalem date +%H:%M").read().strip()
+          win = "%s..%s" % (os.environ.get('SEARCH_FROM') or today, today)
+          runln = "run=%s %s | window=%s | source=workflow-stamp" % (today, hm, win)
+          fxln = "fx=%s" % (os.environ.get('FX_LINE') or "غير معروف")
+          m = re.search(r'<!--OFFERS-REPORT(.*?)-->', h, re.S)
+          degraded = "false"
+          if not m:
+              block = ("<!--OFFERS-REPORT\n" + runln + "\n" + fxln +
+                       "\nnote=الوكيل لم يكتب تقرير رصد — حصيلة هذه الريّة غير موثّقة.\n-->")
+              anchor = "<!--OFFERS-CONTENT-START-->"
+              h = h.replace(anchor, anchor + "\n" + block, 1)
+              degraded = "true"
+          elif today not in m.group(1):
+              body = m.group(1)
+              nb, n = re.subn(r'(?m)^run=.*$', runln, body, count=1)
+              if n == 0:
+                  nb = "\n" + runln + body
+              if not re.search(r'(?m)^fx=', nb):
+                  nb = nb.rstrip("\n") + "\n" + fxln + "\n"
+              if 'stamped_by=workflow' not in nb:
+                  nb = nb.rstrip("\n") + "\nstamped_by=workflow — الوكيل لم يجدّد تقريره؛ الأرقام أعلاه قد تكون من ريّة سابقة.\n"
+              h = h[:m.start()] + "<!--OFFERS-REPORT" + nb + "-->" + h[m.end():]
+              degraded = "true"
+          # رايتان مختلفتان عمداً: barren = لم تُكتب بطاقة (قد يكون يوماً بلا عروض،
+          # وهذا مشروع في صفحة عروض)، degraded = نقص توثيق. لا نُفشل الريّة بأيّهما.
+          barren = "true" if cards_written <= 0 else "false"
+          open(p, 'w', encoding='utf-8').write(h)
+          print("degraded=" + degraded)
+          print("barren=" + barren)
+          print("cards_written=%d" % cards_written)
+          print("cards_added=%d" % cards_added)
+          PY
+          CW=$(grep -m1 '^cards_written=' "$GITHUB_OUTPUT" | cut -d= -f2)
+          CA=$(grep -m1 '^cards_added=' "$GITHUB_OUTPUT" | cut -d= -f2)
+          echo "عروض كتبها الوكيل هذه الريّة: ${CW:-؟} (الفرق الصافي: ${CA:-؟})"
+          if grep -qx 'barren=true' "$GITHUB_OUTPUT"; then
+            echo "🕳️ لم تُكتب بطاقة واحدة — قد يكون يوماً بلا عروض تستحقّ. اقرأ note في التقرير."
+            echo "🕳️ barren=true — لا عروض جديدة اليوم (صافي: ${CA:-؟}). راجع «🔍 ماذا فعل Claude فعلاً؟»." >> "$GITHUB_STEP_SUMMARY"
+          elif grep -qx 'degraded=true' "$GITHUB_OUTPUT"; then
+            echo "⚠️ ${CW} عرضاً مكتوباً، لكنّ التقرير خُتم آلياً — نقص توثيق لا أكثر"
+            echo "⚠️ report_degraded=true — ${CW} عرضاً مكتوباً، والتقرير خُتم آلياً." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "✅ ريّة سليمة — التقرير من الوكيل و${CW} عرضاً مكتوباً"
+          fi
+
+      - name: التحقّق — لا ننشر ملفاً معطوباً
+        run: |
+          set -euo pipefail
+          git show "HEAD:$OFFERS_FILE" > /tmp/prev-offers.html 2>/dev/null || : > /tmp/prev-offers.html
+          python3 - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import re, sys, os, datetime
+
+          path = os.environ['OFFERS_FILE']
+          new = open(path, encoding='utf-8').read()
+          old = open('/tmp/prev-offers.html', encoding='utf-8').read()
+          hub = open(os.environ['HUB_FILE'], encoding='utf-8').read()
+          errs, notes = [], []
+
+          for a in ['OFFERS-CONTENT-START', 'OFFERS-CONTENT-END']:
+              if new.count(a) != 1:
+                  errs.append("العلامة %s ظهرت %d مرّة (المطلوب ١)" % (a, new.count(a)))
+          if new.count('id="offers-date"') != 1:
+              errs.append('id="offers-date" ظهر %d مرّة (المطلوب ١)' % new.count('id="offers-date"'))
+          if os.environ['HUB_MARK'] not in hub:
+              errs.append("مركز التحكّم فقد عنوانه")
+          if 'id="offers-date"' in hub:
+              errs.append("مركز التحكّم صار يحوي offers-date — دهس!")
+          if new.count('<div') != new.count('</div>'):
+              errs.append("اختلال <div>: %d مفتوح مقابل %d مغلق" % (new.count('<div'), new.count('</div>')))
+          ids = re.findall(r'\sid="([^"]+)"', new)
+          dups = sorted({i for i in ids if ids.count(i) > 1})
+          if dups:
+              errs.append("مُعرِّفات مكرّرة: %s" % dups[:5])
+
+          secs = re.findall(r'<h2[^>]*>\s*<span class="sec-ico">', new)
+          if len(secs) < 7:
+              errs.append("عدد الأقسام %d (المطلوب ٧)" % len(secs))
+          else:
+              notes.append("الأقسام %d" % len(secs))
+
+          def _cal_ok(v):
+              if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', v):
+                  return False
+              try:
+                  datetime.date.fromisoformat(v); return True
+              except ValueError:
+                  return False
+
+          cards = re.findall(r'<div class="item"([^>]*)>', new)
+          missing = [c for c in cards if 'data-date=' not in c]
+          dates = re.findall(r'<div class="item"[^>]*data-date="([^"]*)"', new)
+          untils = re.findall(r'data-until="([^"]*)"', new)
+          bad = [d for d in dates + untils if not _cal_ok(d)]
+          if missing:
+              errs.append("%d بطاقة بلا data-date" % len(missing))
+          if bad:
+              errs.append("تاريخ غير صالح (صيغة خاطئة أو مستحيل تقويمياً): %s" % bad[:5])
+
+          # بطاقة بلا نسبة خصم وبلا سعر ليست عرضاً — هذا جوهر الصفحة لا شكلها.
+          blocks = re.findall(r'<div class="item".*?</div>\s*</div>', new, re.S)
+          noprice = [b for b in blocks if 'b-disc' not in b and 'b-price' not in b]
+          if noprice:
+              errs.append("%d بطاقة بلا نسبة خصم وبلا سعر — ليست عرضاً" % len(noprice))
+          # قاعدة العملات الثلاث — تُفحَص آلياً لا على الثقة.
+          prices = re.findall(r'<span class="badge b-price">(.*?)</span>', new)
+          onecur = [p for p in prices if not ('₺' in p and '$' in p and '₪' in p)]
+          if onecur:
+              errs.append("%d شارة سعر بلا العملات الثلاث: %s" % (len(onecur), onecur[:3]))
+          if cards and not missing and not bad:
+              notes.append("البطاقات %d (%s→%s)" % (len(cards), min(dates), max(dates)))
+
+          if old:
+              old_cards = len(re.findall(r'<div class="item"', old))
+              # التقليم مسموح في صفحة عروض، والانهيار لا. النصف حدٌّ فاصل.
+              if old_cards >= 20 and len(cards) < old_cards * 0.5:
+                  errs.append("انهيار البطاقات %d → %d — أكثر من تقليم" % (old_cards, len(cards)))
+              else:
+                  notes.append("البطاقات %d → %d" % (old_cards, len(cards)))
+
+          rep = re.search(r'<!--OFFERS-REPORT(.*?)-->', new, re.S)
+          if not rep:
+              errs.append("بلوك <!--OFFERS-REPORT--> مفقود")
+          else:
+              tod = os.popen("TZ=Asia/Jerusalem date +%F").read().strip()
+              if tod not in rep.group(1):
+                  errs.append("تقرير الرصد قديم — لا يحمل تاريخ اليوم (%s)" % tod)
+              else:
+                  w = sum(int(x) for x in re.findall(r'written=(\d+)', rep.group(1)))
+                  notes.append("تقرير الرصد: %d عرضاً مكتوباً" % w)
+
+          if len(cards) > 900:
+              errs.append("%d بطاقة — تجاوزنا الحدّ. قلّم الأرشيف." % len(cards))
+
+          if new == old:
+              errs.append("الملف لم يتغيّر إطلاقاً — عُطل صامت، لا يوم هادئ.")
+          else:
+              def _dd(t):
+                  m = re.search(r'id="offers-date"[^>]*>([^<]*)', t)
+                  return m.group(1).strip() if m else ""
+              if old and _dd(new) == _dd(old):
+                  errs.append("ختم التاريخ لم يتغيّر (%s) رغم تعديل الملف" % _dd(old))
+              else:
+                  notes.append("الختم %s → %s" % (_dd(old) or "—", _dd(new)))
+
+          if errs:
+              print("❌ فشل التحقّق:")
+              for e in errs: print("  -", e)
+              sys.exit(1)
+          print("✅ نجح التحقّق — " + " · ".join(notes))
+          PY
+
+      - name: 🧾 توليد malatya/offers-status.json
+        env:
+          REPORT_DEGRADED: ${{ steps.report.outputs.degraded }}
+          CARDS_ADDED: ${{ steps.report.outputs.cards_added }}
+          CARDS_WRITTEN: ${{ steps.report.outputs.cards_written }}
+          BARREN: ${{ steps.report.outputs.barren }}
+          FX_LINE: ${{ steps.fx.outputs.line }}
+          FX_OK: ${{ steps.fx.outputs.ok }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re, json, os
+          p = os.environ['OFFERS_FILE']
+          h = open(p, encoding='utf-8').read()
+          today = os.popen("TZ=Asia/Jerusalem date +%F").read().strip()
+          nowiso = os.popen("TZ=Asia/Jerusalem date -Iseconds").read().strip()
+          stamp = re.search(r'id="offers-date"[^>]*>([^<]*)', h)
+          dates = re.findall(r'<div class="item"[^>]*data-date="([^"]*)"', h)
+          untils = re.findall(r'data-until="([^"]*)"', h)
+          rep = re.search(r'<!--OFFERS-REPORT(.*?)-->', h, re.S)
+          written = sum(int(x) for x in re.findall(r'written=(\d+)', rep.group(1))) if rep else None
+          data = {
+              "date": today,
+              "stamp": stamp.group(1).strip() if stamp else None,
+              "generated_at": nowiso,
+              "items": len(re.findall(r'<div class="item"', h)),
+              "sections": len(re.findall(r'<h2[^>]*>\s*<span class="sec-ico">', h)),
+              "live": len([u for u in untils if u >= today]),
+              "expired": len([u for u in untils if u < today]),
+              "oldest_data_date": min(dates) if dates else None,
+              "newest_data_date": max(dates) if dates else None,
+              "written_today": written,
+              "chars": len(h),
+              "fx_ok": os.environ.get('FX_OK') == 'true',
+              "fx_line": os.environ.get('FX_LINE') or None,
+              "report_degraded": os.environ.get('REPORT_DEGRADED') == 'true',
+              "barren": os.environ.get('BARREN') == 'true',
+              "cards_written": int(os.environ.get('CARDS_WRITTEN') or 0),
+              "cards_added": int(os.environ.get('CARDS_ADDED') or 0),
+              "offers_file": p,
+              "commit": os.environ.get('GITHUB_SHA', '')[:12],
+              "run_url": "%s/%s/actions/runs/%s" % (os.environ.get('GITHUB_SERVER_URL', ''),
+                                                    os.environ.get('GITHUB_REPOSITORY', ''),
+                                                    os.environ.get('GITHUB_RUN_ID', '')),
+          }
+          json.dump(data, open('malatya/offers-status.json', 'w', encoding='utf-8'),
+                    ensure_ascii=False, indent=2)
+          print(json.dumps(data, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Commit ودفع إلى main
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name "malatya-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OFFERS_FILE" malatya/offers-status.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "لا تغيير — تخطّي النشر"
+            exit 0
+          fi
+          git commit -m "العروض والحملات — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+          # دفعٌ مقاوم للتسابق — ستّة سيور عمل تدفع إلى main وجدولة GitHub تتأخّر ساعةً أحياناً.
+          for i in 1 2 3 4 5; do
+            if git push; then echo "✅ دُفع إلى main (محاولة $i)"; break; fi
+            if [ "$i" = "5" ]; then
+              echo "❌ تعذّر الدفع بعد خمس محاولات — main يتغيّر أسرع من قدرتنا"; exit 1
+            fi
+            echo "↻ main تقدّم أثناء عملنا — أُعيد الأساس وأحاول ثانيةً (محاولة $i)"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort 2>/dev/null || true
+              RESCUE="rescue/offers-$(TZ=Asia/Jerusalem date +%Y%m%d-%H%M%S)"
+              if git push origin "HEAD:refs/heads/$RESCUE" 2>/dev/null; then
+                echo "🛟 تعارض مع main — لم يضِع شيء: عمل هذه الريّة محفوظ في الفرع $RESCUE"
+                {
+                  echo "## 🛟 تعارض دفع — العمل محفوظ"
+                  echo "ريّة أخرى حرّرت \`$OFFERS_FILE\` أثناء بحثنا، فتعذّر الدمج الآلي."
+                  echo "عروض هذه الريّة محفوظة في الفرع: \`$RESCUE\`"
+                } >> "$GITHUB_STEP_SUMMARY"
+              else
+                echo "❌ تعارض مع main وتعذّر حتى حفظ فرع الإنقاذ"
+              fi
+              exit 1
+            fi
+            sleep $((i * 5))
+          done
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  # ⛔ الدفع بـGITHUB_TOKEN لا يُشعل سير عمل آخر — لذلك ننادي النشر صراحةً
+  # كما تفعل النشرة اليومية، وإلّا بقيت الصفحة في المستودع ولم تصل الخادم.
+  publish:
+    name: نشر المجلّد كاملاً
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit

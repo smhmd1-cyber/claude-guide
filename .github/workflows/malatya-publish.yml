@@ -82,6 +82,7 @@ jobs:
           # لو سقط من الحزمة لبقي الحيّ يحمل نبضة أمس بصمت، وبدا الأمر
           # «انحراف مرآة» بينما السبب أنّ الملف لم يُرفع أصلاً.
           for f in status.json index.html daleel.html aqar.html reports.html library.html \
+                   aroud.html offers-status.json \
                    land-board.html aqar-board.html land-agent.html \
                    arsa.html data/arsa-listings.json \
                    data/aqar-listings.json data/aqar-reports.json data/aqar-overrides.json \
