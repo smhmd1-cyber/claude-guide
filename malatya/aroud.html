@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>العروض والحملات — ملاطيا</title>
+<meta name="description" content="تخفيضات سلاسل السوبرماركت والأسواق الأسبوعية في ملاطيا — العروض الحصرية والحملات محدودة المدّة التي توفّر المال فعلاً، تُرصد كل صباح.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🛒%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
+<style>
+/* ==== خاص بصفحة العروض — أصناف البطاقات التي يكتبها الوكيل ==== */
+.lede{background:linear-gradient(135deg,rgba(64,209,131,.10),rgba(247,165,43,.07)),linear-gradient(180deg,var(--card),var(--bg2));
+  border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:22px}
+.lede .rule{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.lede .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+h2{display:flex;align-items:center;gap:11px;font-size:19px;font-weight:800;margin:30px 0 12px;
+  padding-bottom:10px;border-bottom:1px solid var(--border-soft)}
+.sec-ico{width:32px;height:32px;border-radius:9px;background:var(--accent-soft);border:1px solid var(--accent-line);
+  display:grid;place-items:center;font-size:16px;flex:0 0 auto}
+h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight:600;font-family:var(--font-num)}
+.item{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);
+  border-inline-start:4px solid var(--green);border-radius:var(--r-sm);padding:14px 17px;margin:10px 0}
+.item h3{font-size:15px;font-weight:700;color:#fff;margin:0 0 5px;line-height:1.45}
+.item p{color:var(--text2);font-size:14px;margin:4px 0}
+.meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;align-items:center}
+.badge.b-disc{background:var(--red-soft);color:var(--red);border:1px solid rgba(255,107,122,.35);font-family:var(--font-num)}
+.badge.b-price{background:var(--green-soft);color:var(--green);border:1px solid rgba(64,209,131,.3);font-family:var(--font-num);direction:ltr}
+.badge.b-until{background:var(--amber-soft);color:var(--amber);border:1px solid rgba(255,194,75,.3)}
+.badge.b-date{background:var(--blue-soft);color:var(--blue);border:1px solid rgba(91,157,255,.3)}
+.badge.b-area{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line)}
+.badge.b-store{background:var(--violet-soft);color:#d9caff;border:1px solid rgba(169,139,255,.35);font-weight:800}
+.src{font-size:12px;color:var(--muted);margin-inline-start:auto;font-weight:600;text-decoration:none}
+.src:hover{color:var(--accent)}
+.highlights .item{border-inline-start-color:var(--amber);background:linear-gradient(180deg,rgba(255,194,75,.07),var(--bg2))}
+.highlights .item h3::before{content:"⭐ "}
+.empty{color:var(--muted);font-style:italic;padding:6px 4px;font-size:13.5px}
+.item.expired{opacity:.42;border-inline-start-color:var(--muted)}
+.item.expired h3::after{content:" — انتهى";color:var(--red);font-size:12px;font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+.filters button{font-family:var(--font);font-size:12.5px;font-weight:700;cursor:pointer;color:var(--text2);
+  background:var(--card);border:1px solid var(--border);border-radius:100px;padding:6px 14px}
+.filters button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.foot-credit{margin:44px 0 10px;padding-top:18px;border-top:1px solid var(--border-soft);
+  color:var(--muted);font-size:12px;line-height:1.9;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="logo">🛒</div>
+    <div>
+      <h1>العروض والحملات</h1>
+      <div class="sub">سلاسل السوبرماركت والأسواق الأسبوعية في ملاطيا — التوفير الجدّي وحده</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="stamp">آخر رصد: <b><span id="offers-date">لم تُشغَّل أول ريّة بعد</span></b></div>
+  </div>
+
+  <section class="lede">
+    <span class="eyebrow">🏷️ خانة العروض</span>
+    <p class="lead">هنا التخفيضات وحدها: حملات محدودة بمدّة، وأسعار كتالوج معلَنة، وعروض ٢+١،
+      وأسعار السوق الأسبوعي اللافتة. ما لا يوفّر مالاً فعلاً لا يدخل هذه الصفحة —
+      ولا خبر ولا إعلان ولا سعر عادي. كل مبلغ بالعملات الثلاث بسعر صرف يوم الرصد.</p>
+    <div class="rule">
+      <span class="chip">🛒 سلاسل: BİM · A101 · ŞOK · Migros · CarrefourSA · Hakmar · File · Onur</span>
+      <span class="chip">🧺 أسواق أسبوعية حسب اليوم والحيّ</span>
+      <span class="chip">⏳ العرض المنتهي يبهت ولا يُحذف</span>
+    </div>
+    <div class="cta">
+      <a class="btn" href="index.html">🎛️ مركز التحكّم</a>
+      <a class="btn" href="daleel.html">📖 الدليل والنشرة اليومية</a>
+    </div>
+  </section>
+
+  <div class="chips" id="offers-chips">
+    <span class="chip">🏷️ <b><span class="num" id="n-live">0</span></b> عرض سارٍ</span>
+    <span class="chip">⏳ <b><span class="num" id="n-soon">0</span></b> ينتهي خلال ٣ أيام</span>
+    <span class="chip">🗂️ <b><span class="num" id="n-all">0</span></b> بطاقة في الأرشيف</span>
+  </div>
+
+  <div class="filters" id="offers-filters"></div>
+
+  <section id="offers">
+<!--OFFERS-CONTENT-START-->
+<!--OFFERS-REPORT
+run=— | window=—
+note=الصفحة أُنشئت ولم تُشغَّل أول ريّة للوكيل بعد.
+-->
+<h2><span class="sec-ico">⭐</span> أبرز عروض اليوم <span class="count">0</span></h2>
+<div class="highlights"><p class="empty">لم تُشغَّل أول ريّة بعد</p></div>
+<h2><span class="sec-ico">🏪</span> سلاسل السوبرماركت <span class="count">0</span></h2>
+<p class="empty">لا جديد بارز اليوم في هذا القسم</p>
+<h2><span class="sec-ico">📒</span> نشرات الأسبوع والكتالوجات <span class="count">0</span></h2>
+<p class="empty">لا جديد بارز اليوم في هذا القسم</p>
+<h2><span class="sec-ico">🧺</span> الأسواق الأسبوعية (pazar) <span class="count">0</span></h2>
+<p class="empty">لا جديد بارز اليوم في هذا القسم</p>
+<h2><span class="sec-ico">🏬</span> المجمّعات والبازارات والمتاجر الكبرى <span class="count">0</span></h2>
+<p class="empty">لا جديد بارز اليوم في هذا القسم</p>
+<h2><span class="sec-ico">🥩</span> الأغذية الطازجة والبلدية <span class="count">0</span></h2>
+<p class="empty">لا جديد بارز اليوم في هذا القسم</p>
+<h2><span class="sec-ico">🔌</span> غير غذائي — إلكترونيات وأثاث وملابس ومحروقات <span class="count">0</span></h2>
+<p class="empty">لا جديد بارز اليوم في هذا القسم</p>
+<!--OFFERS-CONTENT-END-->
+  </section>
+
+  <div class="foot-credit">
+    © جميع الحقوق محفوظة لـ: المركز الجماهيري بلدية أم الفحم — فكرة، تصميم، تطوير وإدارة: محمد صالح اغبارية — مؤسس ومدير المركز الجماهيري 2026<br>
+    © כל הזכויות שמורות ל: המרכז הקהילתי עיריית אום אל-פחם — רעיון, עיצוב, ניהול ופיתוח: אגבאריה מוחמד סאלח — מייסד ומנהל המרכז הקהילתי 2026
+  </div>
+
+</div>
+
+<script>
+/* ترتيب · انتهاء الصلاحية · مرشّح السلاسل — كلّه في المتصفّح، لا يلمس ما يكتبه الوكيل */
+(function () {
+  var sec = document.getElementById('offers');
+  if (!sec) return;
+  var today = new Date().toISOString().slice(0, 10);
+
+  function plus(d, n) { var t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() + n); return t.toISOString().slice(0, 10); }
+  var soonLimit = plus(today, 3);
+
+  var items = Array.prototype.slice.call(sec.querySelectorAll('.item'));
+  var live = 0, soon = 0;
+  items.forEach(function (n) {
+    var until = n.getAttribute('data-until') || '';
+    if (until && until < today) { n.classList.add('expired'); }
+    else { live++; if (until && until <= soonLimit) soon++; }
+  });
+  function setNum(id, v) { var e = document.getElementById(id); if (e) e.textContent = v; }
+  setNum('n-live', live); setNum('n-soon', soon); setNum('n-all', items.length);
+
+  /* الأحدث أوّلاً داخل كل قسم، والمنتهي إلى الذيل */
+  function bydate(a, b) {
+    var ea = a.classList.contains('expired') ? 1 : 0, eb = b.classList.contains('expired') ? 1 : 0;
+    if (ea !== eb) return ea - eb;
+    return (b.getAttribute('data-date') || '').localeCompare(a.getAttribute('data-date') || '');
+  }
+  var hl = sec.querySelector('.highlights');
+  if (hl) { Array.prototype.slice.call(hl.querySelectorAll('.item')).sort(bydate).forEach(function (n) { hl.appendChild(n); }); }
+  var kids = Array.prototype.slice.call(sec.children), k = 0;
+  while (k < kids.length) {
+    if (kids[k].tagName === 'H2') {
+      var g = [], j = k + 1;
+      while (j < kids.length && kids[j].classList && kids[j].classList.contains('item')) { g.push(kids[j]); j++; }
+      if (g.length > 1) { var before = kids[j] || null; g.sort(bydate).forEach(function (n) { sec.insertBefore(n, before); }); }
+      k = j;
+    } else { k++; }
+  }
+
+  /* عدّاد كل قسم */
+  Array.prototype.slice.call(sec.querySelectorAll('h2')).forEach(function (h) {
+    var c = h.querySelector('.count'); if (!c) return;
+    var n = 0, x = h.nextElementSibling;
+    if (x && x.classList.contains('highlights')) { n = x.querySelectorAll('.item').length; }
+    else { while (x && x.classList && x.classList.contains('item')) { n++; x = x.nextElementSibling; } }
+    c.textContent = n;
+  });
+
+  /* مرشّح حسب السلسلة — يُبنى من data-store الموجود فعلاً */
+  var bar = document.getElementById('offers-filters');
+  if (bar) {
+    var stores = {};
+    items.forEach(function (n) { var s = (n.getAttribute('data-store') || '').trim(); if (s) stores[s] = (stores[s] || 0) + 1; });
+    var names = Object.keys(stores).sort(function (a, b) { return stores[b] - stores[a]; });
+    if (names.length) {
+      names.unshift('الكل');
+      names.forEach(function (s, i) {
+        var b = document.createElement('button');
+        b.textContent = s === 'الكل' ? 'الكل' : s + ' (' + stores[s] + ')';
+        if (i === 0) b.className = 'on';
+        b.onclick = function () {
+          Array.prototype.slice.call(bar.children).forEach(function (x) { x.className = ''; });
+          b.className = 'on';
+          items.forEach(function (n) {
+            n.style.display = (s === 'الكل' || (n.getAttribute('data-store') || '') === s) ? '' : 'none';
+          });
+        };
+        bar.appendChild(b);
+      });
+    }
+  }
+})();
+</script>
+<script src="assets/nav.js?v=10" defer></script>
+</body>
+</html>

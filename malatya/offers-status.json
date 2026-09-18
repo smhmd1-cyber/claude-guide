@@ -1,0 +1,23 @@
+{
+  "date": null,
+  "stamp": null,
+  "generated_at": null,
+  "items": 0,
+  "sections": 7,
+  "live": 0,
+  "expired": 0,
+  "oldest_data_date": null,
+  "newest_data_date": null,
+  "written_today": null,
+  "chars": 0,
+  "fx_ok": false,
+  "fx_line": null,
+  "report_degraded": false,
+  "barren": true,
+  "cards_written": 0,
+  "cards_added": 0,
+  "offers_file": "malatya/aroud.html",
+  "commit": "",
+  "run_url": "",
+  "note": "ملف بذرة — أُنشئ مع الصفحة قبل أوّل ريّة للوكيل؛ تكتبه خطوة «🧾 توليد offers-status.json» في كل ريّة."
+}
