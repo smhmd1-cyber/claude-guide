@@ -409,7 +409,7 @@ jobs:
               if it.get('type') == 'result':
                   print("subtype:", it.get('subtype'), "| is_error:", it.get('is_error'), "| turns:", it.get('num_turns'))
                   r = it.get('result')
-                  if r: print("\\n--- النصّ ---\\n", str(r)[:2500])
+                  if r: print("\n--- النصّ ---\n", str(r)[:2500])
           PY
           else
             echo "لا يوجد ملف مخرجات في $F"
@@ -421,7 +421,7 @@ jobs:
           set -euo pipefail
           CH=$(git status --porcelain --untracked-files=all | sed 's/^...//')
           echo "الملفات المتغيّرة:"; echo "${CH:-(لا شيء)}"
-          BAD=$(printf '%s\\n' "$CH" | grep -v -x "$BRIEF_FILE" | grep -v -x 'malatya/data/indices.json' | grep -v -x '' || true)
+          BAD=$(printf '%s\n' "$CH" | grep -v -x "$BRIEF_FILE" | grep -v -x 'malatya/data/indices.json' | grep -v -x '' || true)
           if [ -n "$BAD" ]; then
             echo "❌ عُدِّلت ملفات ممنوعة — أُلغيت الريّة:"; echo "$BAD"; exit 1
           fi
@@ -447,11 +447,11 @@ jobs:
                   errs.append('الكتلة %s ظهرت %d مرّة (المطلوب 1)' % (vid, new.count('id="%s"' % vid)))
           if new.count('<div') != new.count('</div>'):
               errs.append("اختلال <div>: %d مقابل %d" % (new.count('<div'), new.count('</div>')))
-          ids = re.findall(r'\\sid="([^"]+)"', new)
+          ids = re.findall(r'\sid="([^"]+)"', new)
           dups = sorted({i for i in ids if ids.count(i) > 1})
           if dups: errs.append("مُعرِّفات مكرّرة: %s" % dups[:5])
           body = new.split('<!--BRIEF-CONTENT-START-->')[-1].split('<!--BRIEF-CONTENT-END-->')[0]
-          ar = re.findall(r'[\\u0660-\\u0669]', body)
+          ar = re.findall(r'[\u0660-\u0669]', body)
           if ar: errs.append("%d رقماً عربياً-هندياً في الموجز — الأرقام لاتينية" % len(ar))
           try:
               idx = json.load(open('malatya/data/indices.json', encoding='utf-8'))
