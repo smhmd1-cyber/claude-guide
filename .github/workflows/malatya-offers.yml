@@ -320,6 +320,9 @@ jobs:
             `السوق الأسبوعي` …) — منه يُبنى مرشّح الصفحة، فوحّد التسمية ولا تنوّعها.
             ⚠️ شارة `b-disc` للنسبة، و`b-price` للسعر بالعملات الثلاث. بطاقة بلا واحدة منهما
             لا مكان لها في هذه الصفحة.
+            ⚠️ **رابط `a.src` هو صفحة الحملة نفسها** — الكتالوج أو صفحة العرض أو النشرة،
+            لا الصفحة الرئيسية للسلسلة ولا نتيجة بحث. الصفحة تجعل **عنوان البطاقة نفسه**
+            يفتح هذا الرابط، فرابطٌ عامّ يعني قارئاً يضغط العنوان فيصل إلى لا شيء.
 
             **الأقسام السبعة بالترتيب:**
             ⭐ أبرز عروض اليوم · 🏪 سلاسل السوبرماركت · 📒 نشرات الأسبوع والكتالوجات ·
@@ -645,13 +648,52 @@ jobs:
           print(json.dumps(data, ensure_ascii=False, indent=2))
           PY
 
+      # ═══════════════════════════════════════════════════════════
+      # 💱 سعر الصرف لبقيّة المنظومة. صفحات مثل arsa.html تُرسَم في
+      # المتصفّح من JSON خام بالليرة — فلولا رقمٌ موقَّت تقرأه، لظلّت
+      # بالليرة وحدها أو حوّلت بسعرٍ مجهول. هذا الوكيل أوّل من يستيقظ
+      # (06:40) فهو صاحب الكتابة الوحيد لهذا الملف — كاتبان يعنيان تعارض دفع.
+      # ⚠️ لا نكتب عند فشل الجلب: سعر الأمس أصدق من صفر.
+      # ═══════════════════════════════════════════════════════════
+      - name: 💱 نشر سعر الصرف لبقيّة الصفحات — data/fx.json
+        if: steps.fx.outputs.ok == 'true'
+        env:
+          FX_USD: ${{ steps.fx.outputs.usd }}
+          FX_ILS: ${{ steps.fx.outputs.ils }}
+          FX_SRC: ${{ steps.fx.outputs.src }}
+          FX_ASOF: ${{ steps.fx.outputs.asof }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os
+          today = os.popen("TZ=Asia/Jerusalem date +%F").read().strip()
+          nowiso = os.popen("TZ=Asia/Jerusalem date -Iseconds").read().strip()
+          usd, ils = float(os.environ['FX_USD']), float(os.environ['FX_ILS'])
+          data = {
+              "base": "TRY",
+              "date": today,
+              "generated_at": nowiso,
+              "usd": usd,
+              "ils": ils,
+              "try_per_usd": round(1 / usd, 2),
+              "try_per_ils": round(1 / ils, 2),
+              "src": os.environ.get('FX_SRC') or None,
+              "asof": os.environ.get('FX_ASOF') or None,
+              "note": "١ ليرة = usd دولار = ils شيكل. تكتبه ريّة العروض كل صباح؛ تقرأه صفحات المنظومة لعرض كل سعر بالعملات الثلاث."
+          }
+          os.makedirs('malatya/data', exist_ok=True)
+          json.dump(data, open('malatya/data/fx.json', 'w', encoding='utf-8'),
+                    ensure_ascii=False, indent=2)
+          print(json.dumps(data, ensure_ascii=False, indent=2))
+          PY
+
       - name: Commit ودفع إلى main
         id: commit
         run: |
           set -euo pipefail
           git config user.name "malatya-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$OFFERS_FILE" malatya/offers-status.json
+          git add "$OFFERS_FILE" malatya/offers-status.json malatya/data/fx.json
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "لا تغيير — تخطّي النشر"
