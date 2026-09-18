@@ -78,6 +78,60 @@ jobs:
         id: d
         run: echo "today=$(TZ=Asia/Jerusalem date '+%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
+      # ═══════════════════════════════════════════════════════════
+      # 💱 سعر الصرف — يُجلب هنا مرّة واحدة ويُمرَّر إلى الوكيل جاهزاً.
+      # قاعدة المنظومة: كل سعر يُعرض بالليرة والدولار والشيكل معاً، بسعر
+      # صرف يوم التقرير نفسه. الوكيل لا يجلب سعراً ولا يستعيده من ذاكرته —
+      # سعرٌ واحد لكل الريّة يجعل أرقام التقرير متّسقة وقابلة للمراجعة.
+      # فشل الجلب لا يُسقط الريّة: ok=false، والوكيل يكتب بالليرة وحدها
+      # ويقول ذلك صراحةً بدل أن يخترع سعراً.
+      # ═══════════════════════════════════════════════════════════
+      - name: 💱 سعر صرف اليوم — ليرة · دولار · شيكل
+        id: fx
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, sys, urllib.request
+          SRC = [
+              ("open.er-api.com", "https://open.er-api.com/v6/latest/TRY",
+               lambda d: (d["rates"]["USD"], d["rates"]["ILS"], d.get("time_last_update_utc", ""))),
+              ("frankfurter.app", "https://api.frankfurter.dev/v1/latest?from=TRY&to=USD,ILS",
+               lambda d: (d["rates"]["USD"], d["rates"]["ILS"], d.get("date", ""))),
+          ]
+          usd = ils = None
+          src = "none"
+          asof = ""
+          for name, url, pick in SRC:
+              try:
+                  with urllib.request.urlopen(url, timeout=20) as r:
+                      u, i, a = pick(json.load(r))
+                  if u and i:
+                      usd, ils, src, asof = float(u), float(i), name, str(a)
+                      break
+              except Exception as e:
+                  print("تعذّر %s: %s" % (name, e), file=sys.stderr)
+          if usd and ils:
+              print("ok=true")
+              print("usd=%.4f" % usd)
+              print("ils=%.4f" % ils)
+              print("try_per_usd=%.2f" % (1 / usd))
+              print("try_per_ils=%.2f" % (1 / ils))
+              print("src=%s" % src)
+              print("asof=%s" % asof)
+              print("line=1 ₺ = $%.4f = ₪%.4f | $1 = ₺%.2f | ₪1 = ₺%.2f | src=%s"
+                    % (usd, ils, 1 / usd, 1 / ils, src))
+          else:
+              print("ok=false")
+              print("usd=0")
+              print("ils=0")
+              print("try_per_usd=0")
+              print("try_per_ils=0")
+              print("src=none")
+              print("asof=")
+              print("line=تعذّر جلب سعر الصرف اليوم — الأسعار بالليرة وحدها")
+          PY
+          echo "— سعر الصرف —"; tail -9 "$GITHUB_OUTPUT"
+
       - name: تشغيل Claude — التقرير السرديّ من البيانات المجموعة
         if: ${{ inputs.skip_narrative != true }}
         continue-on-error: true
@@ -100,6 +154,28 @@ jobs:
               لا تخترع اسم مكتب ولا رابطاً ولا رقم مادّة قانونية.
             - **ممنوع لغة الترويج**: لا «الربح مضمون» ولا «العائد مؤكَّد» ولا «فرصة لا تُعوَّض».
               وصفٌ للأرقام لا دعوةٌ للشراء.
+
+            ═══════════════════════════════
+            💱 **قاعدة العملات الثلاث — كل سعر، بلا استثناء**
+            ═══════════════════════════════
+            سعر صرف اليوم **محسوبٌ لك في سير العمل** — لا تجلبه، ولا تحسبه، ولا تستعِده من ذاكرتك:
+            **١ ₺ = $${{ steps.fx.outputs.usd }} = ₪${{ steps.fx.outputs.ils }}**
+            (أي: $١ = ₺${{ steps.fx.outputs.try_per_usd }} · ₪١ = ₺${{ steps.fx.outputs.try_per_ils }}
+            · المصدر `${{ steps.fx.outputs.src }}` · حالة الجلب `${{ steps.fx.outputs.ok }}`)
+
+            كل مبلغ نقدي في تقريرك — في المتن والجداول ولقطة السوق وقائمة العشرة —
+            يُكتب بالعملات الثلاث معاً بهذا الشكل بالضبط:
+
+            `₺1.250 ($30 · ₪110)` · وللمتر: `₺18.500/م² ($440 · ₪1.630)`
+
+            - الليرة أوّلاً كما وردت في المصدر (هي السعر الأصل)، والمقابلان بين قوسين بعدها.
+            - فاصل الآلاف نقطة على الطريقة التركية (`18.500`)؛ بلا كسور فوق ١٠٠، وبخانتين تحتها.
+            - نطاق سعري: القاعدة على الطرفين — `₺900–1.200 ($22–29 · ₪80–106)`.
+            - ما ليس نقوداً (مساحات · أعداد · نِسَب · درجات · عائد ٪) يبقى كما هو بلا تحويل.
+            - **لا تمسّ الأرقام الخام**: `p` و`ppm` و`kira` في `malatya/data/*.json` تبقى ليرةً
+              مجرّدة كما هي. التحويل للنصّ المقروء وحده، لا لملفّات البيانات.
+            - إن كان `${{ steps.fx.outputs.ok }}` = `false`: اكتب الليرة وحدها وقل في «المنهجية
+              والقيود» إنّ سعر الصرف تعذّر جلبه اليوم. **لا تخترع سعر صرف.**
 
             ═══════════════════════════════
             **الخطوة ١ — اقرأ**
@@ -153,6 +229,7 @@ jobs:
             - `git status --short` لا يُظهر تعديلاً على أي ملفّ داخل `malatya/data/`
             - الملفّ الوحيد الجديد هو `agents/src/aqar-${{ steps.d.outputs.today }}.md`
             - كل رابط في التقرير يبدأ بـ https ومأخوذ من `items[].u`
+            - كل مبلغ في التقرير بالعملات الثلاث `₺… ($… · ₪…)`، وأرقام `data/` الخام لم تُمسّ
 
             **تقرير ختامي بالعربية:** ماذا كتبت، وأبرز ثلاثة أرقام، وما لم تجده في البيانات.
           claude_args: |
