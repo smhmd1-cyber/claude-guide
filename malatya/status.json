@@ -1,18 +1,18 @@
 {
   "date": "2026-09-18",
-  "stamp": "الجمعة 18 سبتمبر 2026 — 01:19 (بتوقيت القدس)",
-  "generated_at": "2026-09-18T01:35:03+03:00",
-  "items": 429,
+  "stamp": "الجمعة 18 سبتمبر 2026 — 14:07 (بتوقيت القدس)",
+  "generated_at": "2026-09-18T14:15:14+03:00",
+  "items": 447,
   "sections": 7,
   "oldest_data_date": "2026-04-30",
   "newest_data_date": "2026-09-18",
-  "written_today": 28,
-  "chars": 409773,
+  "written_today": 13,
+  "chars": 421763,
   "report_degraded": false,
   "sterile": false,
-  "cards_written": 33,
-  "cards_added": 33,
+  "cards_written": 18,
+  "cards_added": 18,
   "daily_file": "malatya/daleel.html",
-  "commit": "c83eaf22add7",
-  "run_url": "https://github.com/smhmd1-cyber/claude-guide/actions/runs/35281394540"
+  "commit": "af80149ef3f2",
+  "run_url": "https://github.com/smhmd1-cyber/claude-guide/actions/runs/35338041976"
 }
