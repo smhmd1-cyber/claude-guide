@@ -1,0 +1,519 @@
+name: الموجز القراري — ملاطيا
+
+# 08:10 UTC = 11:10 بتوقيت القدس (صيفاً) — بعد آخر وكلاء الصباح (الاستثمار 10:10).
+# آخر من يستيقظ عمداً: هو الوحيد الذي يقرأ حصاد البقيّة ولا يجمع شيئاً بنفسه.
+on:
+  schedule:
+    - cron: "10 8 * * *"
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: malatya-brief
+  cancel-in-progress: false
+
+env:
+  BRIEF_FILE: malatya/mujaz.html
+  HUB_FILE: malatya/index.html
+  HUB_MARK: منظومة ملاطيا
+  # عتبة العيّنة لدخول مؤشّر الشقق. السبب مقروء من البيانات: سجلّات ما قبل
+  # 29/08/2026 بُنيت على 0-32 إعلاناً فتأرجح وسيطها ±58% بين يوم ويوم.
+  MIN_SAMPLE: "100"
+
+jobs:
+  update:
+    name: حساب المؤشّرات · تحرير الموجز · نشر
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+      id-token: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: 🧪 فحص قبلي — هل البنية كما نتوقّعها؟
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os, sys
+          d = os.environ['BRIEF_FILE']; h = os.environ['HUB_FILE']; mark = os.environ['HUB_MARK']
+          errs = []
+          if not os.path.exists(d):
+              errs.append("صفحة الموجز %s غير موجودة — صحّح BRIEF_FILE في رأس سير العمل." % d)
+          if not os.path.exists(h):
+              errs.append("مركز التحكّم %s غير موجود." % h)
+          if os.path.exists(d):
+              t = open(d, encoding='utf-8').read()
+              for m in ('BRIEF-CONTENT-START', 'BRIEF-CONTENT-END'):
+                  if t.count(m) != 1:
+                      errs.append("%s: العلامة %s ظهرت %d مرّة (المطلوب 1)" % (d, m, t.count(m)))
+              if t.count('id="brief-date"') != 1:
+                  errs.append('%s: id="brief-date" ظهر %d مرّة (المطلوب 1)' % (d, t.count('id="brief-date"')))
+          if os.path.exists(h):
+              g = open(h, encoding='utf-8').read()
+              if mark not in g:
+                  errs.append("%s لا يحوي «%s» — مركز التحكّم مدهوس؟" % (h, mark))
+          for need in ('malatya/status.json', 'malatya/data/aqar-reports.json'):
+              if not os.path.exists(need):
+                  errs.append("نبضة مفقودة: %s — الموجز يقرأ ولا يجمع، فبلا نبضات لا موجز." % need)
+          if errs:
+              print("❌ الفحص القبلي فشل:")
+              for e in errs: print("  -", e)
+              sys.exit(1)
+          print("✅ الفحص القبلي سليم")
+          PY
+
+      # ═══════════════════════════════════════════════════════════
+      # 📈 المؤشّرات تُحسب هنا حساباً، ولا يكتبها وكيل. هذا هو الفرق
+      # بين لوحةٍ يُوثق بها ولوحةٍ تُجمّل: الوكيل يكتب الحكم، والآلة
+      # تكتب الرقم. ولو سها الوكيل يوماً بقي الرقم صحيحاً.
+      # ═══════════════════════════════════════════════════════════
+      - name: 📈 حساب المؤشّرات — indices.json
+        id: idx
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          # -*- coding: utf-8 -*-
+          """يبني malatya/data/indices.json — أرقامٌ محسوبة، لا مكتوبة.
+
+          القاعدة الحاكمة: نقطة لا تدخل السلسلة إلا إذا بلغت عيّنتها MIN_SAMPLE.
+          سبب القاعدة مقروء من البيانات لا مفترَض: سجلّات ما قبل 29/08/2026 بُنيت
+          على عيّنات من 0 إلى 32 إعلاناً، فتأرجح وسيطها ±58٪ بين يوم ويوم — وذلك
+          تشتّتُ عيّنةٍ لا حركةُ سوق. رسمُ خطٍّ عبرها يكذب بثقة. والعتبة تحمي المستقبل
+          أيضاً: يومٌ يعود فيه السحّاب بعشرة إعلانات يسقط من المؤشّر بدل أن يسمّمه.
+          """
+          import json, os, sys, datetime, urllib.request
+
+          MIN_SAMPLE = int(os.environ.get('MIN_SAMPLE', '100'))
+          ROOT = os.environ.get('MALATYA_DIR', 'malatya')
+
+
+          def read_json(rel, default=None):
+              p = os.path.join(ROOT, rel)
+              try:
+                  with open(p, encoding='utf-8') as f:
+                      return json.load(f)
+              except Exception as e:
+                  print("تعذّر قراءة %s: %s" % (rel, e), file=sys.stderr)
+                  return default
+
+
+          def fx_series(start):
+              """سلسلة صرف يومية من frankfurter (بيانات البنك المركزي الأوروبي)."""
+              url = "https://api.frankfurter.dev/v1/%s..?from=TRY&to=USD,ILS" % start
+              try:
+                  with urllib.request.urlopen(url, timeout=25) as r:
+                      d = json.load(r)
+                  return {k: (v.get('USD'), v.get('ILS')) for k, v in (d.get('rates') or {}).items()}
+              except Exception as e:
+                  print("تعذّر جلب سلسلة الصرف: %s" % e, file=sys.stderr)
+                  return {}
+
+
+          def rate_on(fx, d):
+              """أقرب يوم عمل سابق: أسواق الصرف تُغلق في العطل، وسوق العقار لا يُغلق."""
+              try:
+                  x = datetime.date.fromisoformat(d)
+              except ValueError:
+                  return None
+              for _ in range(8):
+                  k = x.isoformat()
+                  if k in fx and fx[k][0] and fx[k][1]:
+                      return fx[k]
+                  x -= datetime.timedelta(1)
+              return None
+
+
+          def pct(a, b):
+              return round((b - a) / a * 100, 1) if a else None
+
+
+          def deltas(rows, keys):
+              """تغيّرات 7 و30 يوماً ومنذ بداية السلسلة النظيفة — بالأيام لا بعدد النقاط."""
+              if not rows:
+                  return {}
+              last = rows[-1]
+              out = {}
+              for label, days in (("d7", 7), ("d30", 30), ("all", None)):
+                  if days is None:
+                      base = rows[0]
+                  else:
+                      target = datetime.date.fromisoformat(last['d']) - datetime.timedelta(days)
+                      older = [r for r in rows if datetime.date.fromisoformat(r['d']) <= target]
+                      if not older:
+                          continue
+                      base = older[-1]
+                      # ثقب في السلسلة يجعل «قبل ٣٠ يوماً» يقع على نقطةٍ عمرها ٦٢ يوماً،
+                      # فيُعرض تغيّرُ شهرين باسم شهر. إن لم توجد نقطة قريبة من الهدف
+                      # (±٧ أيام) فالفترة غير مقيسة — والصمت أصدق من رقمٍ بعنوانٍ خاطئ.
+                      if abs((datetime.date.fromisoformat(base['d']) - target).days) > 7:
+                          continue
+                  out[label] = {"from": base['d'], "to": last['d']}
+                  for k in keys:
+                      if base.get(k) is not None and last.get(k) is not None:
+                          out[label][k] = pct(base[k], last[k])
+              return out
+
+
+          def median(v):
+              v = sorted(x for x in v if x)
+              if not v:
+                  return None
+              i = len(v) // 2
+              return v[i] if len(v) % 2 else round((v[i - 1] + v[i]) / 2)
+
+
+          def main():
+              today = os.popen("TZ=Asia/Jerusalem date +%F").read().strip()
+              nowiso = os.popen("TZ=Asia/Jerusalem date -Iseconds").read().strip()
+
+              aqar = read_json('data/aqar-reports.json', []) or []
+              land = read_json('data/land-reports.json', []) or []
+              fxnow = read_json('data/fx.json', {}) or {}
+
+              dates = [r.get('date') for r in (aqar + land) if r.get('date')]
+              start = min(dates) if dates else today
+              fx = fx_series(start)
+
+              # ── الشقق: وسيط ₺/م² اليومي، بعد عتبة العيّنة ─────────────────────
+              apt, dropped = [], 0
+              for r in aqar:
+                  d, ppm, n = r.get('date'), r.get('med_ppm'), r.get('n_sale') or 0
+                  if not d or not ppm:
+                      continue
+                  if n < MIN_SAMPLE:
+                      dropped += 1
+                      continue
+                  fr = rate_on(fx, d)
+                  if not fr:
+                      continue
+                  apt.append({"d": d, "try": ppm, "usd": round(ppm * fr[0], 2), "ils": round(ppm * fr[1], 2),
+                              "n": n, "rent": r.get('med_rpm'), "y": r.get('yield_')})
+
+              # ── الأراضي: وسيط ₺/م² لأعلى القطع — ليس وسيط سوق، ويُسمّى باسمه ──
+              lnd = []
+              for r in land:
+                  d = r.get('date')
+                  tops = [t.get('ppm') for t in (r.get('top') or []) if isinstance(t, dict)]
+                  m = median(tops)
+                  if not d or not m:
+                      continue
+                  fr = rate_on(fx, d)
+                  if not fr:
+                      continue
+                  lnd.append({"d": d, "try": m, "usd": round(m * fr[0], 2), "ils": round(m * fr[1], 2),
+                              "n": r.get('n'), "avg": r.get('avg'), "hi": r.get('hi')})
+
+              # وسيط أعلى القطع يقفز بتغيّر القطع نفسها لا بتغيّر السوق — فنُنعّمه
+              # بوسيط متحرّك سبعة أيام. الخام يبقى محفوظاً، والدلتا تُقرأ من المُنعَّم.
+              for i, r in enumerate(lnd):
+                  win = [x['try'] for x in lnd[max(0, i - 6):i + 1]]
+                  r['smooth'] = median(win)
+              lnd_s = [{"d": r['d'], "try": r['smooth'],
+                        "usd": round(r['smooth'] * (rate_on(fx, r['d']) or (0, 0))[0], 2),
+                        "ils": round(r['smooth'] * (rate_on(fx, r['d']) or (0, 0))[1], 2)}
+                       for r in lnd if r.get('smooth')]
+
+              data = {
+                  "generated_at": nowiso,
+                  "date": today,
+                  "min_sample": MIN_SAMPLE,
+                  "fx": {
+                      "date": fxnow.get('date'),
+                      "usd": fxnow.get('usd'), "ils": fxnow.get('ils'),
+                      "try_per_usd": fxnow.get('try_per_usd'), "try_per_ils": fxnow.get('try_per_ils'),
+                      "src": fxnow.get('src'),
+                      "series_src": "api.frankfurter.dev (ECB)", "series_days": len(fx),
+                  },
+                  "apartments": {
+                      "label": "وسيط ₺/م² — شقق للبيع، النواة الحضرية",
+                      "source": "malatya/data/aqar-reports.json",
+                      "points": len(apt), "dropped_low_sample": dropped,
+                      "series": apt,
+                      "deltas": deltas(apt, ("try", "usd", "ils", "rent", "y")),
+                  },
+                  "land": {
+                      "label": "وسيط ₺/م² — أعلى القطع المرصودة (ليس وسيط السوق)",
+                      "source": "malatya/data/land-reports.json",
+                      "points": len(lnd),
+                      "series": lnd,
+                      "deltas": deltas(lnd_s, ("try", "usd", "ils")),
+                  },
+                  "notes": [
+                      "نقطة لا تدخل مؤشّر الشقق إلا إذا بلغت عيّنتها %d إعلاناً؛ استُبعد %d يوماً لهذا السبب."
+                      % (MIN_SAMPLE, dropped),
+                      "سعر الصرف لكل نقطة هو سعر يومها هي، لا سعر اليوم — وإلا صار الفرق فرقَ صرفٍ لا فرقَ سوق.",
+                      "مؤشّر الأراضي وسيط أعلى القطع المرصودة، لا وسيط السوق: اقرأه اتجاهاً لا سعراً.",
+                      "وأعلى القطع تتبدّل يومياً، فالدلتا تُحسب من وسيط متحرّك سبعة أيام (الحقل smooth) لا من الخام.",
+                  ],
+              }
+              out = os.path.join(ROOT, 'data', 'indices.json')
+              os.makedirs(os.path.dirname(out), exist_ok=True)
+              with open(out, 'w', encoding='utf-8') as f:
+                  json.dump(data, f, ensure_ascii=False, indent=1)
+              a = data['apartments']['deltas'].get('d30') or data['apartments']['deltas'].get('all') or {}
+              print("✅ indices.json — شقق %d نقطة (استُبعد %d) · أراضٍ %d نقطة · صرف %d يوماً"
+                    % (len(apt), dropped, len(lnd), len(fx)))
+              if apt:
+                  print("   آخر قراءة: ₺%s/م² · $%s · ₪%s · عائد %s%%"
+                        % (apt[-1]['try'], apt[-1]['usd'], apt[-1]['ils'], apt[-1]['y']))
+                  print("   تغيّر ~30 يوماً: ₺%s%% · $%s%%" % (a.get('try'), a.get('usd')))
+
+
+          main()
+          PY
+          echo "— حجم الملف —"; wc -c malatya/data/indices.json
+
+      - name: تشغيل Claude — تحرير الموجز القراري
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            أنت **«محرّر الموجز القراري»** في منظومة ملاطيا. مهمتك اليوم: تحديث `${{ env.BRIEF_FILE }}` وحده.
+
+            تعمل داخل GitHub Actions. لديك موافقة قائمة؛ **لا تطرح أسئلة**.
+            لا commit ولا push — سير العمل يتولّاهما بعدك.
+
+            ═══════════════════════════════
+            ⛔ **ما يجعل هذه الصفحة مختلفة عن كل ما سبقها**
+            ═══════════════════════════════
+            بقيّة وكلاء المنظومة **تجمع**: النشرة والعروض والعقارات والأراضي والاستثمار.
+            أنت لا تجمع شيئاً. **لا شبكة لديك أصلاً** — لا WebSearch ولا WebFetch.
+            مهمّتك الوحيدة أن تقرأ ما جمعوه وتجيب ثلاثة أسئلة لا رابع لها:
+            **ما الذي تغيّر ويمسّ قراره؟** · **ما الخطوة الوحيدة المتاحة اليوم؟** · **ما الذي لو حدث لغيّر رأيه؟**
+
+            صاحب القرار: أبٌ **غير مقيم** في تركيا يستثمر مع ابنته المواطنة التركية وزوجها،
+            سقف المرحلة الأولى ٣ ملايين ليرة. اقرأ كل شيء بعينه هو: ما الذي يقرّبه من قرارٍ
+            موثَّق أو يبعده عنه؟ خبرٌ لا أثر له على قراره **لا يدخل هذا الموجز** مهما كان مثيراً.
+
+            ═══════════════════════════════
+            ⛔ **الأرقام ليست لك**
+            ═══════════════════════════════
+            المؤشّرات تحت الموجز **تُرسَم آلياً** من `malatya/data/indices.json` الذي حسبه سير
+            العمل قبلك حساباً. فلا تكرّرها ولا تعد صياغتها ولا تُقرّبها. إن احتجت رقماً داخل
+            جملتك فانسخه **حرفياً** من ملفٍّ قرأته، واذكر اسم الملف بين قوسين.
+            **ممنوع الاختلاق منعاً باتاً**، وممنوع الاستنتاج الرقمي: لا تحسب نسبة بنفسك،
+            ولا تقل «ارتفع كثيراً» — `indices.json` فيه الدلتا محسوبة، فاقرأها.
+
+            ⚠️ **الأرقام لاتينية دائماً** — `0-9` لا `٠-٩`، و`%` لا `٪`.
+
+            ═══════════════════════════════
+            **الخطوة ١ — التاريخ، ثم حدّث الختم فوراً**
+            ═══════════════════════════════
+            نفّذ `TZ=Asia/Jerusalem date '+%A %-d %B %Y — %H:%M'` (بالعربية)، ثم افتح
+            `${{ env.BRIEF_FILE }}` وبدّل نصّ `<span id="brief-date">…</span>` به واحفظ **قبل أي قراءة أخرى**.
+            ريّة تنتهي دون تعديل يرفضها التحقّق وتُعدّ عُطلاً.
+
+            ═══════════════════════════════
+            **الخطوة ٢ — اقرأ النبضات (كلّها، ولا تتجاوز واحدة)**
+            ═══════════════════════════════
+            - `malatya/data/indices.json` — المؤشّرات والدلتا المحسوبة. **ابدأ منه.**
+            - `malatya/status.json` — نبضة النشرة اليومية.
+            - `malatya/offers-status.json` — نبضة وكيل العروض.
+            - `malatya/data/aqar-reports.json` — **آخر ثلاثة سجلّات فقط** (الملف كبير).
+            - `malatya/data/land-reports.json` — آخر ثلاثة سجلّات، واقرأ حقل `note` فيها.
+            - `malatya/data/invest-watch.json` — **آخر سبعة سجلّات**، وانتبه لبنود `confirm: true`.
+            - `malatya/data/arsa-listings.json` — حقل `summary` وحده.
+
+            استعمل `python3 -c` لاستخراج آخر السجلّات بدل قراءة الملفات كاملةً.
+
+            ═══════════════════════════════
+            **الخطوة ٣ — اكتب الموجز**
+            ═══════════════════════════════
+            استبدل ما بين `<!--BRIEF-CONTENT-START-->` و `<!--BRIEF-CONTENT-END-->` فقط.
+            **أبقِ العلامتين.** أربع كتل بهذه المُعرِّفات بالضبط وبهذا الترتيب:
+
+            ```
+            <div class="verdict" id="v-changed"><h2><span class="sec-ico">🔔</span> ما تغيّر ويمسّ قرارك</h2>
+            <ul><li>…</li></ul></div>
+            <div class="verdict act" id="v-action"><h2><span class="sec-ico">🎯</span> الخطوة الوحيدة المتاحة اليوم</h2>
+            <p>…</p></div>
+            <div class="verdict fals" id="v-falsify"><h2><span class="sec-ico">🧨</span> ما الذي لو حدث لغيّر رأيك</h2>
+            <ul><li>…</li></ul></div>
+            <div class="verdict quiet" id="v-quiet"><h2><span class="sec-ico">🌙</span> ما لم يتغيّر — وهذا خبر أيضاً</h2>
+            <p>…</p></div>
+            ```
+
+            **🔔 ما تغيّر:** ثلاثة بنود على الأكثر. كل بند: ماذا تغيّر · **لماذا يمسّه هو** · من أي ملف.
+            بندٌ لا تستطيع أن تكتب له سطر «لماذا يمسّه» احذفه. يومٌ بلا تغيّر ذي أثر ⇐ قُل ذلك بصراحة.
+
+            **🎯 الخطوة الوحيدة:** فعلٌ واحد **قابل للإنجاز اليوم**، ويقرّب القرار خطوة تحقّق.
+            اذكر **من يملكه** (هو · ابنته · محامٍ · محاسب · البلدية) و**ما المستند أو الجواب المطلوب**.
+            ⛔ **ليست توصية بمسار ولا بشراء** — قاعدة المنظومة أنّ الوكيل يرصد ولا يقرّر.
+            خطوةُ تحقّقٍ لا خطوةُ التزام. ولا خطوة اليوم؟ قُل «لا خطوة تستحقّ اليوم» ولا تخترع واحدة.
+
+            **🧨 ما يغيّر رأيك:** شرطان أو ثلاثة **بعتبة رقمية أو حدثٍ مسمّى** — «لو نزل العائد
+            الإيجاري تحت ٦٪»، «لو صدر قرار في الجريدة الرسمية يمسّ القرار ٣٢»، «لو تجاوز
+            وسيط المتر بالدولار كذا». هذا القسم هو ما يميّز موجزاً عن نشرة: اكتب ما **ينقض**
+            الأطروحة لا ما يدعمها.
+
+            **🌙 ما لم يتغيّر:** سطران: ماذا بقي ساكناً، ومنذ متى. السكون معلومة لا فراغ —
+            سوقٌ راكد أسبوعين حقيقةٌ تُقال، لا صفحةٌ تُملأ.
+
+            ═══════════════════════════════
+            **الخطوة ٤ — بلوك التقرير (إلزامي)**
+            ═══════════════════════════════
+            استبدل `<!--BRIEF-REPORT ... -->` (أو أضِفه بعد `<!--BRIEF-CONTENT-START-->`):
+
+            ```
+            <!--BRIEF-REPORT
+            run=YYYY-MM-DD HH:MM | sources=<الملفات التي قرأتها فعلاً، مفصولة بفواصل>
+            changed=N | action=yes|no | falsify=N
+            note=<سطر واحد: لماذا كان الموجز خالياً إن كان كذلك>
+            -->
+            ```
+
+            ═══════════════════════════════
+            **الخطوة ٥ — فحص ذاتي**
+            ═══════════════════════════════
+            - `git status --porcelain` لا يُظهر إلا `${{ env.BRIEF_FILE }}`
+            - العلامتان مرّة واحدة لكلٍّ · `id="brief-date"` مرّة واحدة
+            - المُعرِّفات الأربعة `v-changed` و`v-action` و`v-falsify` و`v-quiet` موجودة مرّة واحدة لكلٍّ
+            - توازن `<div>` · لا رقم عربي-هندي · لا رقم لم تقرأه من ملف
+
+            **تقرير ختامي بالعربية:** ما الذي تغيّر · ما الخطوة · ما الذي يهدم الأطروحة · الملفات التي قرأتها.
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Glob,Grep,Bash(date:*),Bash(python3 -c:*),Bash(git status:*),Bash(git diff:*)"
+            --disallowedTools "WebSearch,WebFetch,Task,Agent,ScheduleWakeup,CronCreate,CronList,CronDelete,Monitor,SendMessage,PushNotification"
+            --permission-mode acceptEdits
+            --max-turns 40
+
+      - name: 🔍 ماذا فعل Claude فعلاً؟
+        if: always()
+        run: |
+          set +e
+          F=/home/runner/work/_temp/claude-execution-output.json
+          echo "── حالة الملف ──"
+          git diff --stat -- "$BRIEF_FILE" || true
+          git diff --quiet -- "$BRIEF_FILE" && echo "⚠️ الملف لم يُمسّ إطلاقاً" || echo "✅ الملف عُدِّل"
+          echo
+          if [ -f "$F" ]; then
+            python3 - "$F" <<'PY'
+          import json, sys
+          try:
+              d = json.load(open(sys.argv[1], encoding='utf-8'))
+          except Exception as e:
+              print("تعذّر تحليل JSON:", e); sys.exit(0)
+          items = d if isinstance(d, list) else [d]
+          for it in items:
+              if not isinstance(it, dict): continue
+              if it.get('type') == 'result':
+                  print("subtype:", it.get('subtype'), "| is_error:", it.get('is_error'), "| turns:", it.get('num_turns'))
+                  r = it.get('result')
+                  if r: print("\\n--- النصّ ---\\n", str(r)[:2500])
+          PY
+          else
+            echo "لا يوجد ملف مخرجات في $F"
+          fi
+          exit 0
+
+      - name: 🚧 تطويق — الموجز والمؤشّرات وحدهما
+        run: |
+          set -euo pipefail
+          CH=$(git status --porcelain --untracked-files=all | sed 's/^...//')
+          echo "الملفات المتغيّرة:"; echo "${CH:-(لا شيء)}"
+          BAD=$(printf '%s\\n' "$CH" | grep -v -x "$BRIEF_FILE" | grep -v -x 'malatya/data/indices.json' | grep -v -x '' || true)
+          if [ -n "$BAD" ]; then
+            echo "❌ عُدِّلت ملفات ممنوعة — أُلغيت الريّة:"; echo "$BAD"; exit 1
+          fi
+          echo "✅ التطويق سليم"
+
+      - name: التحقّق — لا ننشر موجزاً معطوباً
+        run: |
+          set -euo pipefail
+          git show "HEAD:$BRIEF_FILE" > /tmp/prev-brief.html 2>/dev/null || : > /tmp/prev-brief.html
+          python3 - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import re, sys, os, json, datetime
+          path = os.environ['BRIEF_FILE']
+          new = open(path, encoding='utf-8').read()
+          old = open('/tmp/prev-brief.html', encoding='utf-8').read()
+          errs, notes = [], []
+          for a in ['BRIEF-CONTENT-START', 'BRIEF-CONTENT-END']:
+              if new.count(a) != 1:
+                  errs.append("العلامة %s ظهرت %d مرّة (المطلوب 1)" % (a, new.count(a)))
+          if new.count('id="brief-date"') != 1:
+              errs.append('id="brief-date" ظهر %d مرّة' % new.count('id="brief-date"'))
+          for vid in ('v-changed', 'v-action', 'v-falsify', 'v-quiet'):
+              if new.count('id="%s"' % vid) != 1:
+                  errs.append('الكتلة %s ظهرت %d مرّة (المطلوب 1)' % (vid, new.count('id="%s"' % vid)))
+          if new.count('<div') != new.count('</div>'):
+              errs.append("اختلال <div>: %d مقابل %d" % (new.count('<div'), new.count('</div>')))
+          ids = re.findall(r'\\sid="([^"]+)"', new)
+          dups = sorted({i for i in ids if ids.count(i) > 1})
+          if dups: errs.append("مُعرِّفات مكرّرة: %s" % dups[:5])
+          body = new.split('<!--BRIEF-CONTENT-START-->')[-1].split('<!--BRIEF-CONTENT-END-->')[0]
+          ar = re.findall(r'[\\u0660-\\u0669]', body)
+          if ar: errs.append("%d رقماً عربياً-هندياً في الموجز — الأرقام لاتينية" % len(ar))
+          try:
+              idx = json.load(open('malatya/data/indices.json', encoding='utf-8'))
+              if not (idx.get('apartments') or {}).get('series'):
+                  errs.append("indices.json بلا سلسلة شقق — المؤشّرات لن تُرسَم")
+              else:
+                  notes.append("المؤشّر %d نقطة" % len(idx['apartments']['series']))
+          except Exception as e:
+              errs.append("indices.json غير صالح: %s" % e)
+          rep = re.search(r'<!--BRIEF-REPORT(.*?)-->', new, re.S)
+          if not rep:
+              errs.append("بلوك <!--BRIEF-REPORT--> مفقود")
+          else:
+              tod = os.popen("TZ=Asia/Jerusalem date +%F").read().strip()
+              if tod not in rep.group(1):
+                  errs.append("تقرير الموجز قديم — لا يحمل تاريخ اليوم (%s)" % tod)
+          if new == old:
+              errs.append("الملف لم يتغيّر إطلاقاً — عُطل صامت، لا يوم هادئ.")
+          else:
+              def _dd(t):
+                  m = re.search(r'id="brief-date"[^>]*>([^<]*)', t)
+                  return m.group(1).strip() if m else ""
+              if old and _dd(new) == _dd(old):
+                  errs.append("ختم التاريخ لم يتغيّر (%s) رغم تعديل الملف" % _dd(old))
+              else:
+                  notes.append("الختم %s → %s" % (_dd(old) or "—", _dd(new)))
+          if errs:
+              print("❌ فشل التحقّق:")
+              for e in errs: print("  -", e)
+              sys.exit(1)
+          print("✅ نجح التحقّق — " + " · ".join(notes))
+          PY
+
+      - name: Commit ودفع إلى main
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name "malatya-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$BRIEF_FILE" malatya/data/indices.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"; echo "لا تغيير"; exit 0
+          fi
+          git commit -m "الموجز القراري — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+          for i in 1 2 3 4 5; do
+            if git push; then echo "✅ دُفع إلى main (محاولة $i)"; break; fi
+            if [ "$i" = "5" ]; then echo "❌ تعذّر الدفع بعد خمس محاولات"; exit 1; fi
+            echo "↻ main تقدّم — أُعيد الأساس وأحاول ثانيةً"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort 2>/dev/null || true
+              RESCUE="rescue/brief-$(TZ=Asia/Jerusalem date +%Y%m%d-%H%M%S)"
+              git push origin "HEAD:refs/heads/$RESCUE" 2>/dev/null && echo "🛟 محفوظ في $RESCUE"
+              exit 1
+            fi
+            sleep $((i * 5))
+          done
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  publish:
+    name: نشر المجلّد كاملاً
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit
