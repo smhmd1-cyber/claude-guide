@@ -95,6 +95,7 @@ jobs:
 
           MIN_SAMPLE = int(os.environ.get('MIN_SAMPLE', '100'))
           ROOT = os.environ.get('MALATYA_DIR', 'malatya')
+          FX_META = {'net': 'لم تُحاوَل', 'days': 0}
 
 
           def read_json(rel, default=None):
@@ -108,15 +109,62 @@ jobs:
 
 
           def fx_series(start):
-              """سلسلة صرف يومية من frankfurter (بيانات البنك المركزي الأوروبي)."""
+              """سلسلة الصرف اليومية — ذاكرةٌ في المستودع أوّلاً، والشبكة إضافةٌ لا شرط.
+
+              في 19/09 ردّت frankfurter على عدّاء GitHub بـ«403 Forbidden»، فعادت
+              السلسلة فارغة، فسقطت كل نقطة من المؤشّر (شقق 0 · أراضٍ 0) وفشل التحقّق.
+              مصدرٌ خارجيّ يسقط يوماً واحداً يُسقِط التاريخ كلّه معه — فصار التاريخ
+              محفوظاً عندنا: تُقرأ السلسلة من malatya/data/fx-series.json، ويُضاف
+              إليها سعر اليوم الذي كتبته ريّة العروض في data/fx.json، ثم تُحاول
+              الشبكة سدّ ما نقص. إن رُفضت الشبكة لا يضيع شيء، والمؤشّر يُرسَم.
+              """
+              cache = read_json('data/fx-series.json', {}) or {}
+              fx = {}
+              for k, v in (cache.get('rates') or {}).items():
+                  if isinstance(v, (list, tuple)) and len(v) == 2 and v[0] and v[1]:
+                      fx[k] = (v[0], v[1])
+              before = len(fx)
+
+              # سعر اليوم الذي جلبته ريّة العروض: كل يومٍ يصير تاريخاً غداً.
+              day = read_json('data/fx.json', {}) or {}
+              if day.get('date') and day.get('usd') and day.get('ils'):
+                  fx[day['date']] = (day['usd'], day['ils'])
+
+              # الشبكة: محاولة واحدة بترويسة وكيل صريحة — وفشلها ليس فشل الخطوة.
               url = "https://api.frankfurter.dev/v1/%s..?from=TRY&to=USD,ILS" % start
               try:
-                  with urllib.request.urlopen(url, timeout=25) as r:
+                  req = urllib.request.Request(url, headers={
+                      'User-Agent': 'malatya-indices/1.0 (+https://jmahery.com/malatya)',
+                      'Accept': 'application/json'})
+                  with urllib.request.urlopen(req, timeout=25) as r:
                       d = json.load(r)
-                  return {k: (v.get('USD'), v.get('ILS')) for k, v in (d.get('rates') or {}).items()}
+                  got = 0
+                  for k, v in (d.get('rates') or {}).items():
+                      if v.get('USD') and v.get('ILS'):
+                          fx[k] = (v['USD'], v['ILS'])
+                          got += 1
+                  FX_META['net'] = "نجحت — %d يوماً من ECB" % got
               except Exception as e:
-                  print("تعذّر جلب سلسلة الصرف: %s" % e, file=sys.stderr)
-                  return {}
+                  FX_META['net'] = "تعذّرت (%s) — أُكمل من الذاكرة المحلّية" % e
+                  print("تعذّر جلب سلسلة الصرف: %s — نُكمل من ذاكرة المستودع" % e, file=sys.stderr)
+
+              if len(fx) > before:
+                  cache['base'] = 'TRY'
+                  cache['updated'] = os.popen("TZ=Asia/Jerusalem date -Iseconds").read().strip()
+                  cache['note'] = ("ذاكرة أسعار الصرف: ١ ليرة = usd دولار = ils شيكل في يوم التداول. "
+                                   "تُقرأ منها مؤشّرات الموجز، وتُغذّى يومياً من data/fx.json "
+                                   "ومن ECB عبر api.frankfurter.dev عند توفّرها.")
+                  cache['rates'] = {k: [v[0], v[1]] for k, v in sorted(fx.items())}
+                  try:
+                      with open(os.path.join(ROOT, 'data', 'fx-series.json'), 'w', encoding='utf-8') as f:
+                          json.dump(cache, f, ensure_ascii=False, indent=1)
+                  except Exception as e:
+                      print("تعذّر حفظ ذاكرة الصرف: %s" % e, file=sys.stderr)
+
+              FX_META['days'] = len(fx)
+              print("سلسلة الصرف: %d يوماً في الذاكرة ← %d بعد التحديث · الشبكة %s"
+                    % (before, len(fx), FX_META['net']), file=sys.stderr)
+              return fx
 
 
           def rate_on(fx, d):
@@ -232,7 +280,8 @@ jobs:
                       "usd": fxnow.get('usd'), "ils": fxnow.get('ils'),
                       "try_per_usd": fxnow.get('try_per_usd'), "try_per_ils": fxnow.get('try_per_ils'),
                       "src": fxnow.get('src'),
-                      "series_src": "api.frankfurter.dev (ECB)", "series_days": len(fx),
+                      "series_src": "ذاكرة المستودع data/fx-series.json + ECB عبر api.frankfurter.dev",
+                      "series_net": FX_META.get('net'), "series_days": len(fx),
                   },
                   "apartments": {
                       "label": "وسيط ₺/م² — شقق للبيع، النواة الحضرية",
@@ -252,6 +301,7 @@ jobs:
                       "نقطة لا تدخل مؤشّر الشقق إلا إذا بلغت عيّنتها %d إعلاناً؛ استُبعد %d يوماً لهذا السبب."
                       % (MIN_SAMPLE, dropped),
                       "سعر الصرف لكل نقطة هو سعر يومها هي، لا سعر اليوم — وإلا صار الفرق فرقَ صرفٍ لا فرقَ سوق.",
+                      "وسلسلة الصرف محفوظة في malatya/data/fx-series.json: مصدرٌ خارجيّ يسقط يوماً لا يمحو التاريخ.",
                       "مؤشّر الأراضي وسيط أعلى القطع المرصودة، لا وسيط السوق: اقرأه اتجاهاً لا سعراً.",
                       "وأعلى القطع تتبدّل يومياً، فالدلتا تُحسب من وسيط متحرّك سبعة أيام (الحقل smooth) لا من الخام.",
                   ],
@@ -421,7 +471,7 @@ jobs:
           set -euo pipefail
           CH=$(git status --porcelain --untracked-files=all | sed 's/^...//')
           echo "الملفات المتغيّرة:"; echo "${CH:-(لا شيء)}"
-          BAD=$(printf '%s\n' "$CH" | grep -v -x "$BRIEF_FILE" | grep -v -x 'malatya/data/indices.json' | grep -v -x '' || true)
+          BAD=$(printf '%s\n' "$CH" | grep -v -x "$BRIEF_FILE" | grep -v -x 'malatya/data/indices.json' | grep -v -x 'malatya/data/fx-series.json' | grep -v -x '' || true)
           if [ -n "$BAD" ]; then
             echo "❌ عُدِّلت ملفات ممنوعة — أُلغيت الريّة:"; echo "$BAD"; exit 1
           fi
@@ -491,7 +541,7 @@ jobs:
           set -euo pipefail
           git config user.name "malatya-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$BRIEF_FILE" malatya/data/indices.json
+          git add "$BRIEF_FILE" malatya/data/indices.json malatya/data/fx-series.json
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"; echo "لا تغيير"; exit 0
           fi
