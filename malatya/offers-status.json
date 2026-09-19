@@ -1,7 +1,7 @@
 {
   "date": "2026-09-19",
-  "stamp": "السبت 19 سبتمبر 2026 — 11:16",
-  "generated_at": "2026-09-19T11:26:43+03:00",
+  "stamp": "السبت 19 سبتمبر 2026 — 17:40",
+  "generated_at": "2026-09-19T17:42:06+03:00",
   "items": 69,
   "sections": 8,
   "live": 47,
@@ -13,10 +13,10 @@
   "fx_ok": true,
   "fx_line": "1 ₺ = $0.0205 = ₪0.0622 | $1 = ₺48.78 | ₪1 = ₺16.08 | src=open.er-api.com",
   "report_degraded": false,
-  "barren": false,
-  "cards_written": 20,
-  "cards_added": 16,
+  "barren": true,
+  "cards_written": 0,
+  "cards_added": 0,
   "offers_file": "malatya/aroud.html",
-  "commit": "97867f49a36f",
-  "run_url": "https://github.com/smhmd1-cyber/claude-guide/actions/runs/35431551018"
+  "commit": "3a008378f17b",
+  "run_url": "https://github.com/smhmd1-cyber/claude-guide/actions/runs/35449433820"
 }
