@@ -77,12 +77,20 @@ jobs:
           # docs/ = مكتبة المستندات المحميّة بكلمة مرور — تعيش على الخادم فقط
           # (في .gitignore)، ولا تدخل النشر الآلي إطلاقاً.
           rsync -a --exclude 'docs/' --exclude '.git*' malatya/ _deploy/
-          echo "— محتويات النشر —"; find _deploy -maxdepth 2 | sort | head -40
+          # ⚠️ لا أنبوب من sort إلى head: head يغلق الأنبوب عند السطر الأربعين
+          # فيموت sort بـ«Broken pipe» ويُسقط الخطوة كلّها تحت pipefail — وهذا
+          # بالضبط ما أسقط نشر 19/09 (ريّة أراضي البناء #32) بعد أن تجاوزت
+          # الحزمة أربعين مدخلاً. نكتب القائمة إلى ملفّ ثم نقرأ منه.
+          echo "— محتويات النشر —"
+          find _deploy -maxdepth 2 | sort > "$RUNNER_TEMP/deploy-list.txt"
+          head -40 "$RUNNER_TEMP/deploy-list.txt"
+          echo "… الإجمالي $(wc -l < "$RUNNER_TEMP/deploy-list.txt") مدخلاً على عمق ٢"
           # status.json = نبضة المنظومة: منه يقرأ الحارس والمراقب الخارجي.
           # لو سقط من الحزمة لبقي الحيّ يحمل نبضة أمس بصمت، وبدا الأمر
           # «انحراف مرآة» بينما السبب أنّ الملف لم يُرفع أصلاً.
           for f in status.json index.html daleel.html aqar.html reports.html library.html \
                    aroud.html offers-status.json \
+                   mujaz.html data/indices.json data/fx.json data/fx-series.json \
                    land-board.html aqar-board.html land-agent.html \
                    arsa.html data/arsa-listings.json \
                    data/aqar-listings.json data/aqar-reports.json data/aqar-overrides.json \
