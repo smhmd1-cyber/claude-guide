@@ -1,0 +1,151 @@
+{
+ "_note": "قائمة العلامات والمصادر التي يقرأها وكيل العروض (malatya-offers.yml) في محور ملابس الرجال ومحور المجمّعات. أُخرجت من نصّ التوجيه إلى هنا في 19/09/2026 لأنّ GitHub يحدّ طول تعبير الخطوة بـ21000 بايت — ولأنّ تعديل قائمةٍ يجب ألّا يتطلّب تعديل سير العمل.",
+ "updated": "2026-09-19",
+ "avm": {
+  "name": "Malatya Park AVM",
+  "note": "المجمّع الكبير الوحيد في ملاطيا بحسب أدلّة المجمّعات الوطنية (فُحص 19/09/2026).",
+  "address": "Merkez İnönü, İnönü Cd. No:192, 44100 Yeşilyurt/Malatya",
+  "hours": "يومياً 10:00–22:00",
+  "site": "https://www.malatyapark.com.tr/",
+  "site_warning": "صفحتا «KAMPANYALAR» والمتاجر في موقع المجمّع فارغتان تماماً — فُحصتا في المتصفّح 19/09/2026. لا تُنفِق الجولة على الموقع.",
+  "campaign_sources": [
+   "https://www.instagram.com/malatyapark/",
+   "https://www.facebook.com/malatyapark",
+   "https://www.avmgezgini.com/malatya-park-avm-magazalari-95.html",
+   "https://www.eleman.net/avm/malatya-park-avm/magazalar",
+   "http://www.alisverisrehberi.com/avm/malatya_park_avm-234-magazalari.html",
+   "https://www.malatyasoz.com/"
+  ]
+ },
+ "men_brands_in_malatya": {
+  "_note": "لها متجر فعليّ في Malatya Park AVM — أولويّة مطلقة، القارئ يستطيع الشراء اليوم.",
+  "clothing": [
+   "Pierre Cardin",
+   "U.S. Polo Assn.",
+   "Altınyıldız Classics",
+   "D'S Damat",
+   "Süvari",
+   "Avva",
+   "Hatemoğlu",
+   "Kiğılı (Outlet)",
+   "Mudo",
+   "Loft",
+   "Levi's",
+   "Mavi",
+   "Colin's",
+   "LC Waikiki",
+   "DeFacto",
+   "Koton",
+   "Boyner / YKM",
+   "adL",
+   "imza",
+   "Sette",
+   "Adidas",
+   "Nike",
+   "Lescon",
+   "Hummel"
+  ],
+  "footwear_bags": [
+   "FLO",
+   "Deichmann",
+   "Greyder",
+   "Kemal Tanca",
+   "Bambi",
+   "Crispino",
+   "Panço"
+  ]
+ },
+ "men_brands_online_only": {
+  "_note": "معروفة وفاخرة وتُباع في تركيا، ولم يُعثر لها على فرع في ملاطيا. تُقبل بشرط كتابة «أونلاين فقط — لا فرع في ملاطيا» في البطاقة.",
+  "clothing": [
+   "GANT",
+   "Lacoste",
+   "Beymen",
+   "Vakko",
+   "Network",
+   "Ramsey",
+   "Sarar",
+   "Tudors",
+   "İpekyol",
+   "Cacharel",
+   "Nautica",
+   "Tommy Hilfiger",
+   "Jack & Jones",
+   "Lufian",
+   "Karaca"
+  ],
+  "leather_footwear": [
+   "Hotiç",
+   "Derimod",
+   "Desa",
+   "Matraş",
+   "İnci",
+   "Jump",
+   "Kinetix",
+   "Twigy"
+  ],
+  "underwear_socks": [
+   "Dagi",
+   "Tutku",
+   "Öztaş",
+   "Uzman"
+  ]
+ },
+ "campaign_url_patterns": [
+  "/kampanyalar",
+  "/kampanya",
+  "/indirim",
+  "/indirimler",
+  "/firsatlar",
+  "/outlet",
+  "/sezon-sonu-indirimi",
+  "/en/pages/campaigns"
+ ],
+ "store_locator_patterns": [
+  "/magazalar",
+  "/magazalarimiz",
+  "/en/pages/stores",
+  "/magaza-bul"
+ ],
+ "turkish_terms": [
+  "kampanya",
+  "indirim",
+  "sezon sonu indirimi",
+  "sepette ekstra indirim",
+  "2 al 1 öde",
+  "3 al 2 öde",
+  "%40'a varan indirim",
+  "net fiyat",
+  "çek kodu",
+  "stoklarla sınırlıdır",
+  "son gün",
+  "outlet",
+  "mağazalarda ve online",
+  "sadece online"
+ ],
+ "categories": {
+  "gömlek": "قميص",
+  "pantolon": "بنطلون",
+  "kot / jean": "جينز",
+  "takım elbise": "بدلة",
+  "ceket": "جاكيت",
+  "mont / kaban / palto": "معطف وبالطو",
+  "kazak": "تريكو",
+  "sweatshirt": "سويت شيرت",
+  "tişört / polo yaka": "تي-شيرت وبولو",
+  "iç çamaşırı / boxer / atlet": "ملابس داخلية",
+  "çorap": "جوارب",
+  "ayakkabı / bot / klasik ayakkabı": "حذاء وبوط",
+  "çanta": "حقيبة",
+  "kemer": "حزام",
+  "cüzdan": "محفظة",
+  "kravat": "ربطة عنق"
+ },
+ "sources_read_2026_09_19": [
+  "https://www.avmgezgini.com/malatya-park-avm-magazalari-95.html",
+  "https://www.malatyapark.com.tr/kampanyalar",
+  "https://www.malatyapark.com.tr/magazalar",
+  "https://www.kigili.com/en/pages/stores",
+  "https://www.pierrecardin.com.tr/kampanyalar/"
+ ]
+}
