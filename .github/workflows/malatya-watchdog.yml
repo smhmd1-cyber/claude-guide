@@ -1,16 +1,22 @@
 name: حارس منظومة ملاطيا (إصلاح ذاتي)
 
 # جدولة GitHub «أفضل جهد» لا ضمان: قد تتأخّر ساعات أو تُسقَط ريّة كاملة،
-# وقد تفشل الريّة لأي سبب. هذا الحارس يفحص أربع مرّات يومياً، ويعيد
-# التشغيل بنفسه (عبر workflow_call — بلا PAT وبلا تدخّل بشري)،
-# وفي آخر موعد إن بقي الخلل يفتح بلاغاً فيصلك بريد من GitHub.
+# وقد تفشل الريّة لأي سبب. هذا الحارس يفحص مرّة واحدة يومياً (24/09/2026:
+# خُفّض من أربع مرّات — كل ريّة تُحتسب دقيقة كاملة حتى لو استغرقت ثوانٍ،
+# وأربع ريّات يومياً كانت تستهلك حصّة الدقائق المجانية قبل نهاية الشهر)،
+# ويعيد التشغيل بنفسه (عبر workflow_call — بلا PAT وبلا تدخّل بشري)،
+# وإن بقي الخلل يفتح بلاغاً فيصلك بريد من GitHub.
+# دُمج هنا أيضاً (24/09/2026) إنذار «فشلان متتاليان» من malatya-alarm.yml
+# السابق — نفس الاسم والغرض، ملفّ واحد بدل اثنين. الوظيفة alarm_streak في
+# آخر هذا الملف تعمل فقط عند اكتمال النشرة اليومية (workflow_run)، منفصلة
+# تماماً عن وظائف الجدولة أعلاه.
 on:
   schedule:
-    - cron: "45 6 * * *"    # 09:45 بتوقيت القدس (صيفاً) — بعد الموعد الأصلي بنصف ساعة
-    - cron: "0 9 * * *"     # 12:00
-    - cron: "0 12 * * *"    # 15:00
-    - cron: "0 15 * * *"    # 18:00 — آخر محاولة، وبعدها بلاغ
+    - cron: "0 15 * * *"    # 18:00 بتوقيت القدس (صيفاً) — آخر محاولة، وبعدها بلاغ
   workflow_dispatch:
+  workflow_run:
+    workflows: ["النشرة اليومية — بوابة ملاطيا"]
+    types: [completed]
 
 permissions:
   contents: write
@@ -18,15 +24,15 @@ permissions:
   id-token: write
   actions: read
 
-concurrency:
-  group: malatya-watchdog
-  cancel-in-progress: false
-
 jobs:
   check:
     name: فحص المواضع الثلاثة
+    if: github.event_name != 'workflow_run'
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    concurrency:
+      group: malatya-watchdog
+      cancel-in-progress: false
     outputs:
       need_daily:  ${{ steps.probe.outputs.need_daily }}
       need_deploy: ${{ steps.probe.outputs.need_deploy }}
@@ -230,4 +236,89 @@ jobs:
             gh issue comment "$NUM" --body "$BODY"
           else
             gh issue create --title "$TITLE" --body "$BODY"
+          fi
+
+  # ═══════════════════════════════════════════════════════════════
+  # دُمج من malatya-alarm.yml (24/09/2026). يعمل فقط عند اكتمال النشرة
+  # اليومية — منفصل كلّياً عن سيرورة الجدولة/الفحص أعلاه.
+  # رץ אוטומטית בכל פעם שהעדכון היומי מסיים. פותח Issue (ששולח לך מייל)
+  # רק אם נכשל פעמיים ברצף — כשל בודד לא מטריד אותך.
+  # ═══════════════════════════════════════════════════════════════
+  alarm_streak:
+    name: إنذار — فشلان متتاليان
+    if: github.event_name == 'workflow_run'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: malatya-watchdog-alarm
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      actions: read
+      issues: write
+    steps:
+      - name: בדיקת שתי הריצות האחרונות
+        id: streak
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          # שתי הריצות המושלמות האחרונות של העדכון היומי
+          CONCLUSIONS=$(gh api \
+            "repos/$REPO/actions/workflows/malatya-daily.yml/runs?status=completed&per_page=2" \
+            --jq '.workflow_runs[].conclusion' | tr '\n' ' ')
+
+          echo "שתי הריצות האחרונות: $CONCLUSIONS"
+          COUNT=$(echo "$CONCLUSIONS" | tr ' ' '\n' | grep -c '^failure$' || true)
+          TOTAL=$(echo "$CONCLUSIONS" | wc -w)
+
+          # אזעקה רק כששתיהן נכשלו
+          if [ "$TOTAL" -ge 2 ] && [ "$COUNT" -ge 2 ]; then
+            echo "alarm=true" >> "$GITHUB_OUTPUT"
+            echo "🚨 שני כשלים ברצף — מפעיל אזעקה"
+          else
+            echo "alarm=false" >> "$GITHUB_OUTPUT"
+            echo "✅ אין רצף כשלים — שקט"
+          fi
+
+      - name: פתיחת Issue (שולח מייל אוטומטית)
+        if: steps.streak.outputs.alarm == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          set -euo pipefail
+          TITLE="🚨 نشرة ملاطيا فشلت مرّتين متتاليتين"
+
+          # אם כבר יש Issue פתוח כזה — רק מוסיפים תגובה, לא מציפים
+          EXISTING=$(gh issue list --repo "$REPO" --state open \
+            --search "in:title 🚨 نشرة ملاطيا فشلت" --json number --jq '.[0].number // empty')
+
+          BODY=$(cat <<EOF
+          فشلت النشرة اليومية لبوابة ملاطيا في **آخر ريّتين**. البوابة الحيّة بقيت على النسخة السابقة — لم يُتلف شيء.
+
+          **الريّة الفاشلة:** $RUN_URL
+
+          **ما يجب فحصه، حسب الاحتمال:**
+
+          1. **انتهاء صلاحية الرمز** — السرّ \`CLAUDE_CODE_OAUTH_TOKEN\` هو السبب الأشيع. نفّذ \`claude setup-token\` وحدّثه في Settings → Secrets.
+          2. **خطأ FTP** — ابحث عن \`530\` في السجلّ. إن وُجد: بدّل \`protocol: ftps\` + \`port: 21\` إلى \`ftps-legacy\` + \`990\`.
+          3. **فشل التحقّق** — خطوة «لا ننشر ملفاً معطوباً» أوقفت النشر عمداً. السجلّ يذكر أي فحص سقط (غالباً \`data-date\` ناقص أو أرشيف محذوف).
+          4. **تغيّر مصدر** — إن غيّر موقع تركي بنيته قد يتعثّر الوكيل. يُحلّ عادةً من تلقاء نفسه في اليوم التالي.
+
+          ---
+          _يُغلق يدوياً بعد الإصلاح._
+          EOF
+          )
+
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "$REPO" --body "$BODY"
+            echo "נוספה תגובה ל-Issue #$EXISTING"
+          else
+            gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY" --label "bug" 2>/dev/null \
+              || gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
+            echo "נפתח Issue חדש"
           fi

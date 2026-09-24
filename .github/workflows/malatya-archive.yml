@@ -1,0 +1,156 @@
+name: طيّ أرشيف النشرة — بوابة ملاطيا
+
+# النشرة اليومية (malatya-daily.yml) تلتزم عمداً بألّا تحذف بطاقة قديمة —
+# "لا تحذف الأرشيف: العناصر القديمة تبقى" — فالملف ينمو بلا نهاية بخلاف
+# ما يقوله نصّها لنفسها ("تغطية آخر ~10 أيام"). بحلول 24/09/2026 حمل
+# malatya/daleel.html 531 بطاقة وأقدمها من 30/04/2026 — أكثر من 4 أشهر
+# داخل صفحة واحدة (~600KB). لا يوجد أي ملف malatya-archive.yml ولا صفحة
+# archive-*.html قبل هذا التاريخ — الطيّ لم يكن معطوباً، بل لم يكن مبنياً
+# قط. هذا الملف يبنيه: أسبوعياً، ينقل كل بطاقة أقدم من ARCHIVE_AFTER_DAYS
+# يوماً من داخل <!--DAILY-CONTENT-START/END--> فقط (لا يمسّ فصول الدليل
+# الثابتة) إلى malatya/archive-YYYY-MM.html — بلا حذف، فقط نقل.
+#
+# لماذا لا يتعارض مع فحص «تراجع البطاقات» في malatya-daily.yml (بند
+# التحقّق، سطر ~569): تلك المقارنة تقرأ HEAD *داخل نفس ريّة النشرة*، أي
+# النسخة التي دفعها هذا الملف في ريّة سابقة منفصلة. لا تصادُف زمني بين
+# الريّتين (هذه تعمل الأحد 03:30، النشرة كل يوم 09:10) — لا خطر "فقدان
+# أرشيف" وهمي.
+on:
+  schedule:
+    - cron: "30 0 * * 0"    # 03:30 بتوقيت القدس (صيفاً) الأحد — قبل كل وكلاء الصباح بساعات
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "عدد الأيام قبل الطيّ (تجاوز مؤقّت لـ 21)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: malatya-archive
+  cancel-in-progress: false
+
+env:
+  DAILY_FILE: malatya/daleel.html
+  ARCHIVE_AFTER_DAYS: "21"
+
+jobs:
+  fold:
+    name: طيّ البطاقات القديمة إلى ملفّات شهرية
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: 📦 طيّ ما تجاوز الحدّ
+        id: fold
+        env:
+          ARCHIVE_AFTER_DAYS: ${{ github.event.inputs.days != '' && github.event.inputs.days || env.ARCHIVE_AFTER_DAYS }}
+        run: |
+          set -euo pipefail
+          export TODAY=$(TZ=Asia/Jerusalem date +%F)
+          echo "اليوم=$TODAY · الحدّ=$ARCHIVE_AFTER_DAYS يوماً"
+          python3 .github/scripts/archive_daleel.py
+
+      - name: 🧪 التحقّق — الملف سليم ولا بطاقة ضاعت
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re, sys, glob
+
+          html = open("malatya/daleel.html", encoding="utf-8").read()
+          errs = []
+
+          if "<!--DAILY-CONTENT-START-->" not in html or "<!--DAILY-CONTENT-END-->" not in html:
+              errs.append("علامتا DAILY-CONTENT مفقودتان بعد الطيّ")
+
+          opens = len(re.findall(r'<div\b', html))
+          closes = len(re.findall(r'</div>', html))
+          if opens != closes:
+              errs.append("وسوم <div> غير متوازنة: فتح=%d إغلاق=%d" % (opens, closes))
+
+          if "chapter-overview" not in html:
+              errs.append("فصل chapter-overview اختفى — الطيّ لامس ما لا يجب")
+
+          s = html.index("<!--DAILY-CONTENT-START-->")
+          e = html.index("<!--DAILY-CONTENT-END-->")
+          region = html[s:e]
+          for m in re.finditer(r'<h2><span class="sec-ico">([^<]*)</span>\s*([^<]+?)\s*<span class="count">(\d+)</span></h2>', region):
+              icon, label, count = m.groups()
+              start = m.end()
+              nxt = region.find("<h2>", start)
+              chunk = region[start: nxt if nxt != -1 else len(region)]
+              actual = len(re.findall(r'<div class="item" data-date=', chunk))
+              if actual != int(count):
+                  errs.append("%s %s: شارة=%s فعلي=%d" % (icon, label, count, actual))
+
+          for path in sorted(glob.glob("malatya/archive-*.html")):
+              t = open(path, encoding="utf-8").read()
+              o = len(re.findall(r'<div\b', t))
+              c = len(re.findall(r'</div>', t))
+              if o != c:
+                  errs.append("%s: وسوم <div> غير متوازنة (%d/%d)" % (path, o, c))
+
+          if errs:
+              print("❌ فشل التحقّق بعد الطيّ:")
+              for x in errs:
+                  print("  -", x)
+              sys.exit(1)
+          print("✅ نجح التحقّق — الملف متوازن والشارات مطابقة")
+          PY
+
+      - name: 📝 التزام ودفع
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name "malatya-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add malatya/daleel.html malatya/archive-*.html
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "لا بطاقات تجاوزت الحدّ اليوم — لا تغيير"
+            exit 0
+          fi
+          git commit -m "طيّ أرشيف النشرة — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+          # دفعٌ مقاوم للتسابق — نفس نمط بقيّة سيور المنظومة.
+          for i in 1 2 3 4 5; do
+            if git push; then echo "✅ دُفع إلى main (محاولة $i)"; break; fi
+            if [ "$i" = "5" ]; then
+              echo "❌ تعذّر الدفع بعد خمس محاولات — main يتغيّر أسرع من قدرتنا"; exit 1
+            fi
+            echo "↻ main تقدّم أثناء عملنا — أُعيد الأساس وأحاول ثانيةً (محاولة $i)"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort 2>/dev/null || true
+              RESCUE="rescue/archive-$(TZ=Asia/Jerusalem date +%Y%m%d-%H%M%S)"
+              if git push origin "HEAD:refs/heads/$RESCUE" 2>/dev/null; then
+                echo "🛟 تعارض مع main — لم يضِع شيء: عمل هذه الريّة محفوظ في الفرع $RESCUE"
+                {
+                  echo "## 🛟 تعارض دفع — العمل محفوظ"
+                  echo "ريّة أخرى حرّرت ملفّات ملاطيا أثناء الطيّ، فتعذّر الدمج الآلي."
+                  echo "طيّ هذه الريّة محفوظ في الفرع: \`$RESCUE\`"
+                } >> "$GITHUB_STEP_SUMMARY"
+              else
+                echo "❌ تعارض مع main وتعذّر حتى حفظ فرع الإنقاذ"
+              fi
+              exit 1
+            fi
+            sleep $((i * 5))
+          done
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  # ⛔ الدفع بـGITHUB_TOKEN لا يُشعل سير عمل آخر — لذلك ننادي النشر صراحةً.
+  publish:
+    name: نشر المجلّد كاملاً
+    needs: fold
+    if: needs.fold.outputs.changed == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit
