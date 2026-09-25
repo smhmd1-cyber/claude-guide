@@ -51,6 +51,9 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
 .filters button{font-family:var(--font);font-size:12.5px;font-weight:700;cursor:pointer;color:var(--text2);
   background:var(--card);border:1px solid var(--border);border-radius:100px;padding:6px 14px}
 .filters button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.filters.cats.top{margin:16px 0 22px}
+.filters.cats.top button{font-size:14px;font-weight:800;padding:10px 18px;background:linear-gradient(180deg,var(--card),var(--bg2))}
+.filters.cats.top button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
 .foot-credit{margin:44px 0 10px;padding-top:18px;border-top:1px solid var(--border-soft);
   color:var(--muted);font-size:12px;line-height:1.9;text-align:center}
 </style>
@@ -67,6 +70,8 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
     <div class="spacer"></div>
     <div class="stamp">آخر رصد: <b><span id="offers-date">الأربعاء 23 سبتمبر 2026 — 11:49</span></b></div>
   </div>
+
+  <div class="filters cats top" id="offers-cats"></div>
 
   <section class="lede">
     <span class="eyebrow">🏷️ خانة العروض</span>
@@ -89,8 +94,6 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
     <span class="chip">⏳ <b><span class="num" id="n-soon">0</span></b> ينتهي خلال 3 أيام</span>
     <span class="chip">🗂️ <b><span class="num" id="n-all">0</span></b> بطاقة في الأرشيف</span>
   </div>
-
-  <div class="filters cats" id="offers-cats"></div>
   <div class="filters" id="offers-filters"></div>
 
   <section id="offers">
@@ -402,6 +405,7 @@ stamped_by=workflow — الوكيل لم يجدّد تقريره؛ الأرقا
           b.className = 'on';
           renderStoreBar();
           applyFilter();
+          if (label !== 'الكل') { sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         };
         catsBar.appendChild(b);
       });

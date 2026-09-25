@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>المكتبة الكاملة — منظومة ملاطيا</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="محتوى كامل لملفات الركائز الثمانية (دراسات جدوى، نماذج مالية، تقارير متابعة) نصّاً مباشراً في الصفحة، بلا حاجة لتنزيل كل ملف على حدة.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E📚%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
+<style>
+/* ==== خاص بصفحة المكتبة الكاملة ==== */
+nav.tabs{display:flex;gap:8px;overflow-x:auto;margin:18px 0 4px;padding-bottom:6px;
+  border-bottom:1px solid var(--border-soft);scrollbar-width:thin}
+nav.tabs button{font-family:var(--font);font-weight:700;font-size:13.5px;white-space:nowrap;
+  background:var(--card);border:1px solid var(--border);color:var(--text2);
+  padding:10px 16px;border-radius:100px;cursor:pointer}
+nav.tabs button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.pillar-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:24px 0 14px}
+.pillar-head h2{font-size:19px;font-weight:800;color:#fff;margin:0}
+.pillar-count{font-size:12px;color:var(--muted);font-family:var(--font-num)}
+details.doc{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);
+  border-radius:var(--r-sm);margin-bottom:10px}
+details.doc>summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;align-items:center;gap:10px;
+  font-weight:700;font-size:14.5px;color:#fff}
+details.doc>summary::-webkit-details-marker{display:none}
+details.doc>summary::before{content:"›";display:inline-block;color:var(--accent);font-size:18px;font-weight:900;
+  transition:transform .15s ease}
+details.doc[open]>summary::before{transform:rotate(90deg)}
+.doc-tag{font-size:10.5px;color:var(--muted);font-weight:600;background:var(--card2);padding:2px 9px;
+  border-radius:999px;margin-inline-start:auto}
+.doc-body{padding:2px 20px 18px;border-top:1px solid var(--border-soft);font-size:14px;line-height:1.85;color:var(--text2)}
+.doc-body p{margin:.85em 0}
+.doc-body h1,.doc-body h2,.doc-body h3,.doc-body h4{color:#fff;font-weight:800;margin:1.2em 0 .5em}
+.doc-body table{border-collapse:collapse;width:100%;margin:1em 0;font-size:13px}
+.doc-body table td,.doc-body table th{border:1px solid var(--border-soft);padding:7px 10px;text-align:right;vertical-align:top}
+.doc-body ul,.doc-body ol{padding-inline-start:1.4em}
+.doc-table-wrap{overflow-x:auto}
+.timeline-bar{display:flex;align-items:center;gap:10px;margin:26px 0 12px}
+.timeline-bar h3{font-size:14.5px;font-weight:800;color:var(--muted);margin:0}
+.timeline-bar button{font-weight:700;font-size:12px;color:var(--accent);background:none;
+  border:1px solid var(--accent-line);border-radius:999px;padding:5px 13px;cursor:pointer}
+details.tl{background:var(--card);border:1px solid var(--border-soft);border-radius:var(--r-sm);margin-bottom:8px}
+details.tl>summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;gap:10px;align-items:baseline;
+  font-size:13.5px;color:var(--text2)}
+details.tl>summary::-webkit-details-marker{display:none}
+details.tl>summary::before{content:"›";color:var(--accent);font-weight:900;transition:transform .15s ease}
+details.tl[open]>summary::before{transform:rotate(90deg)}
+.tl-date{font-family:var(--font-num);font-weight:700;color:var(--accent)}
+.empty{color:var(--muted);font-style:italic;padding:16px 4px;font-size:13.5px}
+.loading{color:var(--muted);text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <div class="logo">📚</div>
+    <div><h1>المكتبة الكاملة</h1><div class="sub">الركائز الثمانية — بمحتواها الكامل نصّاً هنا، بلا تنزيل ملف تلو الآخر</div></div>
+    <div class="spacer"></div>
+    <a class="btn" href="library.html">📁 الملفات للتنزيل</a>
+  </div>
+
+  <div class="note info">
+    📖 نفس ملفات <a href="library.html">مكتبة المشاريع</a> (Word وExcel وMarkdown الأصلية) — محوَّلة هنا إلى نصّ مقروء مباشرة
+    في الصفحة، بلا حاجة لفتح كل ملف على حدة. المحتوى غير مفهرَس في محرّكات البحث.
+  </div>
+
+  <nav class="tabs" id="tabs"></nav>
+  <main id="main"><div class="loading">… يُحمّل المحتوى</div></main>
+
+  <footer class="site">
+    <span>🌰 منظومة ملاطيا</span><span>·</span>
+    <a href="index.html">مركز التحكّم</a><a href="library.html">تنزيل الملفات</a><a href="daleel.html">الدليل</a>
+  </footer>
+</div>
+<script src="assets/nav.js?v=10" defer></script>
+<script>
+(function(){
+  'use strict';
+  var tabsEl = document.getElementById('tabs');
+  var mainEl = document.getElementById('main');
+  var DATA = null, order = [];
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  }); }
+
+  fetch('data/library-full.json?v=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(data){
+    DATA = data;
+    order = Object.keys(data);
+    order.forEach(function(key, i){
+      var btn = document.createElement('button');
+      var num = key.slice(0,2);
+      btn.textContent = num + ' · ' + data[key].title;
+      btn.className = i === 0 ? 'on' : '';
+      btn.addEventListener('click', function(){ selectPillar(key); });
+      tabsEl.appendChild(btn);
+    });
+    var initial = (location.hash || '').replace('#','');
+    selectPillar(order.indexOf(initial) !== -1 ? initial : order[0]);
+  }).catch(function(err){
+    mainEl.innerHTML = '<div class="empty">تعذّر تحميل المحتوى: ' + esc(String(err)) + '</div>';
+  });
+
+  function selectPillar(key){
+    location.hash = key;
+    Array.prototype.slice.call(tabsEl.children).forEach(function(b, i){
+      b.className = order[i] === key ? 'on' : '';
+    });
+    var p = DATA[key];
+    var html = '<div class="pillar-head"><h2>' + esc(p.title) + '</h2><span class="pillar-count">' +
+      p.core_docs.length + ' مستند' + (p.timeline.length ? ' · ' + p.timeline.length + ' تقرير متابعة' : '') + '</span></div>';
+
+    if (p.core_docs.length === 0) {
+      html += '<div class="empty">لا مستندات أساسية في هذا القسم.</div>';
+    } else {
+      p.core_docs.forEach(function(doc, i){
+        html += '<details class="doc"' + (i === 0 ? ' open' : '') + '><summary>' + esc(doc.name) +
+          (doc.is_table ? '<span class="doc-tag">جدول بيانات</span>' : '') + '</summary>' +
+          '<div class="doc-body' + (doc.is_table ? ' doc-table-wrap' : '') + '">' + doc.html + '</div></details>';
+      });
+    }
+
+    if (p.timeline.length) {
+      html += '<div class="timeline-bar"><h3>سجلّ المتابعة اليوميّ (' + p.timeline.length + ' تقرير، الأحدث أولاً)</h3>' +
+        '<button id="toggleAll">فتح الكل</button></div>';
+      var sorted = p.timeline.slice().sort(function(a, b){ return b.date.localeCompare(a.date); });
+      sorted.forEach(function(item){
+        html += '<details class="tl"><summary><span class="tl-date">' + esc(item.date) + '</span> ' + esc(item.name) +
+          '</summary><div class="doc-body">' + item.html + '</div></details>';
+      });
+    }
+
+    mainEl.innerHTML = html;
+    var toggleBtn = document.getElementById('toggleAll');
+    if (toggleBtn) {
+      var allOpen = false;
+      toggleBtn.addEventListener('click', function(){
+        allOpen = !allOpen;
+        mainEl.querySelectorAll('details.tl').forEach(function(d){ d.open = allOpen; });
+        toggleBtn.textContent = allOpen ? 'إغلاق الكل' : 'فتح الكل';
+      });
+    }
+  }
+})();
+</script>
+</body>
+</html>
