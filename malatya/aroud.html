@@ -90,6 +90,7 @@ h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight
     <span class="chip">🗂️ <b><span class="num" id="n-all">0</span></b> بطاقة في الأرشيف</span>
   </div>
 
+  <div class="filters cats" id="offers-cats"></div>
   <div class="filters" id="offers-filters"></div>
 
   <section id="offers">
@@ -322,28 +323,90 @@ stamped_by=workflow — الوكيل لم يجدّد تقريره؛ الأرقا
     c.textContent = n;
   });
 
-  /* مرشّح حسب السلسلة — يُبنى من data-store الموجود فعلاً */
+  /* مرشّح حسب الفئة ثم السلسلة — الفئات ثابتة، والسلاسل تُبنى من data-store الموجود فعلاً */
+  var CATS = [
+    { label: '🛒 سوبرماركت وأسواق', m: ['bim', 'a101', 'sok', 'migros', 'carrefoursa', 'hakmar', 'file', 'onur'] },
+    { label: '🔌 إلكترونيات وأجهزة منزلية', m: ['siemens', 'profilo', 'mediamarkt', 'arcelik', 'teknosa'] },
+    { label: '👞 أحذية وحقائب', m: ['greyder', 'deichmann', 'bambi', 'kemal tanca', 'desa'] },
+    { label: '👔 ملابس وأزياء', m: ['suvari', 'hatemoglu', 'ramsey', 'derimod', 'defacto', 'damat tween',
+        "d's damat", 'dagi', "colin's", 'kigili', 'us polo assn', 'tudors', 'hummel', 'jack & jones',
+        'gant', 'sarar', 'altinyildiz classics', 'mudo', 'panco'] },
+    { label: '🏷️ أخرى', m: [] }
+  ];
+  function norm(s) {
+    return (s || '').toLowerCase()
+      .replace(/i̇/g, 'i').replace(/ı/g, 'i')
+      .replace(/ş/g, 's').replace(/ğ/g, 'g').replace(/ç/g, 'c')
+      .replace(/ö/g, 'o').replace(/ü/g, 'u')
+      .replace(/[''’]/g, '').replace(/\s+/g, ' ').trim();
+  }
+  function catOf(store) {
+    var n = norm(store);
+    for (var i = 0; i < CATS.length - 1; i++) { if (CATS[i].m.indexOf(n) !== -1) return CATS[i].label; }
+    return CATS[CATS.length - 1].label;
+  }
+
+  var catsBar = document.getElementById('offers-cats');
   var bar = document.getElementById('offers-filters');
   if (bar) {
-    var stores = {};
-    items.forEach(function (n) { var s = (n.getAttribute('data-store') || '').trim(); if (s) stores[s] = (stores[s] || 0) + 1; });
-    var names = Object.keys(stores).sort(function (a, b) { return stores[b] - stores[a]; });
-    if (names.length) {
+    var stores = {}, storeCat = {};
+    items.forEach(function (n) {
+      var s = (n.getAttribute('data-store') || '').trim();
+      if (!s) return;
+      stores[s] = (stores[s] || 0) + 1;
+      storeCat[s] = catOf(s);
+    });
+    var storeNames = Object.keys(stores);
+    var catCounts = {};
+    storeNames.forEach(function (s) { var c = storeCat[s]; catCounts[c] = (catCounts[c] || 0) + stores[s]; });
+    var catLabels = CATS.map(function (c) { return c.label; }).filter(function (l) { return catCounts[l]; });
+    var totalCount = storeNames.reduce(function (t, s) { return t + stores[s]; }, 0);
+    var activeCat = 'الكل', activeStore = 'الكل';
+
+    function applyFilter() {
+      items.forEach(function (n) {
+        var s = (n.getAttribute('data-store') || '').trim();
+        var okCat = activeCat === 'الكل' || storeCat[s] === activeCat;
+        var okStore = activeStore === 'الكل' || s === activeStore;
+        n.style.display = (okCat && okStore) ? '' : 'none';
+      });
+    }
+    function renderStoreBar() {
+      bar.innerHTML = '';
+      var names = storeNames.filter(function (s) { return activeCat === 'الكل' || storeCat[s] === activeCat; });
+      names.sort(function (a, b) { return stores[b] - stores[a]; });
       names.unshift('الكل');
       names.forEach(function (s, i) {
         var b = document.createElement('button');
         b.textContent = s === 'الكل' ? 'الكل' : s + ' (' + stores[s] + ')';
-        if (i === 0) b.className = 'on';
+        if (s === activeStore) b.className = 'on';
         b.onclick = function () {
+          activeStore = s;
           Array.prototype.slice.call(bar.children).forEach(function (x) { x.className = ''; });
           b.className = 'on';
-          items.forEach(function (n) {
-            n.style.display = (s === 'الكل' || (n.getAttribute('data-store') || '') === s) ? '' : 'none';
-          });
+          applyFilter();
         };
         bar.appendChild(b);
       });
     }
+
+    if (catsBar && catLabels.length > 1) {
+      var allLabels = ['الكل'].concat(catLabels);
+      allLabels.forEach(function (label, i) {
+        var b = document.createElement('button');
+        b.textContent = label === 'الكل' ? 'الكل (' + totalCount + ')' : label + ' (' + catCounts[label] + ')';
+        if (i === 0) b.className = 'on';
+        b.onclick = function () {
+          activeCat = label; activeStore = 'الكل';
+          Array.prototype.slice.call(catsBar.children).forEach(function (x) { x.className = ''; });
+          b.className = 'on';
+          renderStoreBar();
+          applyFilter();
+        };
+        catsBar.appendChild(b);
+      });
+    }
+    renderStoreBar();
   }
 })();
 </script>
