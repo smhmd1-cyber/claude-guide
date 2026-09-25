@@ -90,7 +90,42 @@
     '#mly-drawer a.it b{font-size:14px;font-weight:700;display:block;line-height:1.4}',
     '#mly-drawer a.it small{font-size:11.5px;color:#8b98bf;display:block;line-height:1.5;margin-top:1px}',
     '#mly-drawer .ft{padding:18px;margin-top:10px;border-top:1px solid #222c56;font-size:11.5px;color:#8b98bf;line-height:1.8}',
-    '@media print{#mly-fab,#mly-scrim,#mly-drawer{display:none!important}}'
+    '@media print{#mly-fab,#mly-scrim,#mly-drawer{display:none!important}}',
+
+    /* ── أدوات عائمة إضافية: الصفحة الرئيسية · تمرير لأعلى/لأسفل · بحث ذكي (٢٦/٠٩) ── */
+    '#mly-tools{position:fixed;inset-inline-end:18px;bottom:18px;z-index:9998;display:flex;flex-direction:column;gap:10px}',
+    '#mly-tools button{width:46px;height:46px;border-radius:14px;border:1px solid #28345f;',
+      'background:linear-gradient(180deg,#151e44,#0d1430);color:#c2cdec;font-size:19px;cursor:pointer;',
+      'box-shadow:0 6px 18px rgba(0,0,0,.35);display:grid;place-items:center;',
+      "font-family:'Cairo',system-ui,sans-serif;transition:transform .15s ease,color .15s ease,border-color .15s ease}",
+    '#mly-tools button:hover{transform:translateY(-2px);color:#fff;border-color:#f7a52b}',
+    '@media print{#mly-tools,#mly-search-scrim{display:none!important}}',
+
+    '#mly-search-scrim{position:fixed;inset:0;z-index:10000;background:rgba(4,7,18,.72);backdrop-filter:blur(3px);',
+      'opacity:0;pointer-events:none;transition:opacity .18s ease;display:flex;align-items:flex-start;',
+      'justify-content:center;padding-top:12vh}',
+    '#mly-search-scrim.on{opacity:1;pointer-events:auto}',
+    '#mly-search-box{width:min(560px,92vw);background:linear-gradient(180deg,#121a3a,#0b1020);border:1px solid #28345f;',
+      'border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.55);overflow:hidden;transform:translateY(-10px);',
+      "transition:transform .18s ease;font-family:'Cairo',system-ui,sans-serif;direction:rtl;text-align:right;color:#eef3ff}",
+    '#mly-search-scrim.on #mly-search-box{transform:translateY(0)}',
+    '#mly-search-box .row{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #222c56}',
+    '#mly-search-box .row span.ic{font-size:19px;flex:0 0 auto}',
+    '#mly-search-box input{flex:1;background:transparent;border:none;outline:none;color:#eef3ff;font-size:16px;font-family:inherit}',
+    '#mly-search-box input::placeholder{color:#8b98bf}',
+    '#mly-search-box .x{background:#151e44;border:1px solid #28345f;color:#c2cdec;width:30px;height:30px;border-radius:9px;',
+      'font-size:15px;cursor:pointer;flex:0 0 auto}',
+    '#mly-search-results{max-height:52vh;overflow-y:auto}',
+    '#mly-search-results a{display:flex;gap:11px;align-items:flex-start;padding:11px 16px;color:#c2cdec;',
+      'text-decoration:none;transition:.12s}',
+    '#mly-search-results a:hover,#mly-search-results a.sel{background:#151e44;color:#fff}',
+    '#mly-search-results a .ic{width:32px;height:32px;flex:0 0 auto;border-radius:10px;background:#151e44;',
+      'border:1px solid #222c56;display:grid;place-items:center;font-size:15px}',
+    '#mly-search-results a b{font-size:14px;font-weight:700;display:block;line-height:1.4}',
+    '#mly-search-results a small{font-size:11.5px;color:#8b98bf;display:block;line-height:1.5;margin-top:1px}',
+    '#mly-search-results .grp{font-size:10px;letter-spacing:1px;color:#8b98bf;font-weight:800;padding:12px 16px 4px;',
+      'text-transform:uppercase}',
+    '#mly-search-empty{padding:22px 16px;text-align:center;color:#8b98bf;font-size:13.5px}'
   ].join('');
 
   function build() {
@@ -140,6 +175,136 @@
     scrim.addEventListener('click', close);
     dr.querySelector('.x').addEventListener('click', close);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+    buildToolsAndSearch(here);
+  }
+
+  /* ═══ الصفحة الرئيسية · تمرير لأعلى/لأسفل · بحث ذكي لكل المنظومة (٢٦/٠٩) ═══
+   * زرّ الرئيسية والسهمان أدوات تنقّل بسيطة على كل صفحة. البحث يطابق اسم كل
+   * صفحة ووصفها ومجموعتها من SECTIONS نفسها (٢٥ صفحة) — لا فهرسة لمحتوى كل
+   * صفحة، فقط دليل المنظومة نفسه — بمطابقة عربية متسامحة (تسقط التشكيل
+   * وتوحّد أ/إ/آ وة/ه وى/ي) بحيث "الدليل" أو "aldليل" أو "aroud" كلّها تصل. */
+  function normAr(s) {
+    return (s || '').toString().toLowerCase()
+      .replace(/[ً-ٰٟ]/g, '')
+      .replace(/[إأآا]/g, 'ا')
+      .replace(/ى/g, 'ي')
+      .replace(/ة/g, 'ه')
+      .replace(/ؤ/g, 'و')
+      .replace(/ئ/g, 'ي')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function buildToolsAndSearch(here) {
+    var ALL = [];
+    SECTIONS.forEach(function (sec) {
+      sec.items.forEach(function (it) { ALL.push({ g: sec.g, h: it.h, i: it.i, n: it.n, d: it.d }); });
+    });
+
+    /* ── شريط الأدوات العائم ── */
+    var tools = document.createElement('div');
+    tools.id = 'mly-tools';
+
+    var bSearch = document.createElement('button');
+    bSearch.type = 'button'; bSearch.setAttribute('aria-label', 'بحث ذكي في كل المنظومة');
+    bSearch.innerHTML = '<span>🔍</span>';
+
+    var bHome = document.createElement('button');
+    bHome.type = 'button'; bHome.setAttribute('aria-label', 'الصفحة الرئيسية');
+    bHome.innerHTML = '<span>🏠</span>';
+    bHome.addEventListener('click', function () { location.href = BASE + 'index.html'; });
+
+    var bUp = document.createElement('button');
+    bUp.type = 'button'; bUp.setAttribute('aria-label', 'التمرير لأعلى الصفحة');
+    bUp.innerHTML = '<span>▲</span>';
+    bUp.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    var bDown = document.createElement('button');
+    bDown.type = 'button'; bDown.setAttribute('aria-label', 'التمرير لأسفل الصفحة');
+    bDown.innerHTML = '<span>▼</span>';
+    bDown.addEventListener('click', function () {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+
+    tools.appendChild(bSearch);
+    tools.appendChild(bHome);
+    tools.appendChild(bUp);
+    tools.appendChild(bDown);
+    document.body.appendChild(tools);
+
+    /* ── مربّع البحث الذكي ── */
+    var sScrim = document.createElement('div'); sScrim.id = 'mly-search-scrim';
+    var sBox = document.createElement('div'); sBox.id = 'mly-search-box'; sBox.setAttribute('dir', 'rtl');
+    sBox.innerHTML =
+      '<div class="row"><span class="ic">🔍</span>' +
+      '<input type="text" id="mly-search-input" placeholder="ابحث في كل صفحات المنظومة… (الدليل، العروض، الأراضي، العقارات…)" autocomplete="off">' +
+      '<button class="x" type="button" aria-label="إغلاق">✕</button></div>' +
+      '<div id="mly-search-results"></div>';
+    sScrim.appendChild(sBox);
+    document.body.appendChild(sScrim);
+
+    var input = sBox.querySelector('#mly-search-input');
+    var resultsEl = sBox.querySelector('#mly-search-results');
+
+    function render(list) {
+      if (!list.length) {
+        resultsEl.innerHTML = '<div id="mly-search-empty">لا نتائج مطابقة — جرّب كلمة أخرى</div>';
+        return;
+      }
+      var html = '';
+      var lastGrp = null;
+      list.forEach(function (it) {
+        if (it.g !== lastGrp) { html += '<div class="grp">' + it.g + '</div>'; lastGrp = it.g; }
+        var cur = (it.h.toLowerCase() === here) ? ' cur' : '';
+        html += '<a class="' + cur + '" href="' + BASE + it.h + '">' +
+                  '<span class="ic">' + it.i + '</span>' +
+                  '<span><b>' + it.n + '</b><small>' + it.d + '</small></span>' +
+                '</a>';
+      });
+      resultsEl.innerHTML = html;
+    }
+
+    function search(q) {
+      var nq = normAr(q);
+      if (!nq) { render(ALL); return; }
+      var scored = [];
+      ALL.forEach(function (it) {
+        var nn = normAr(it.n), nd = normAr(it.d), ng = normAr(it.g), nh = it.h.toLowerCase();
+        var score = 0;
+        if (nn.indexOf(nq) === 0) score = 4;
+        else if (nn.indexOf(nq) !== -1) score = 3;
+        else if (nh.indexOf(nq.replace(/\s+/g, '')) !== -1) score = 2;
+        else if (nd.indexOf(nq) !== -1 || ng.indexOf(nq) !== -1) score = 1;
+        if (score > 0) scored.push({ it: it, score: score });
+      });
+      scored.sort(function (a, b) { return b.score - a.score; });
+      render(scored.map(function (s) { return s.it; }).slice(0, 18));
+    }
+
+    function openSearch() {
+      render(ALL);
+      sScrim.classList.add('on');
+      setTimeout(function () { input.focus(); }, 30);
+    }
+    function closeSearch() { sScrim.classList.remove('on'); input.value = ''; }
+
+    bSearch.addEventListener('click', openSearch);
+    sScrim.addEventListener('click', function (e) { if (e.target === sScrim) closeSearch(); });
+    sBox.querySelector('.x').addEventListener('click', closeSearch);
+    input.addEventListener('input', function () { search(input.value); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { closeSearch(); return; }
+      if (e.key === 'Enter') {
+        var first = resultsEl.querySelector('a');
+        if (first) location.href = first.getAttribute('href');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && sScrim.classList.contains('on')) closeSearch();
+      /* اختصار: Ctrl/Cmd+K يفتح البحث من أي مكان في المنظومة */
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openSearch(); }
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
