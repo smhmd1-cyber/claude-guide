@@ -221,5 +221,5 @@ function saveKey(){var g=document.getElementById('gkey'),m=document.getElementBy
 function loadKey(){var m=localStorage.getItem('gmn_model'),s=document.getElementById('gstat'),mm=document.getElementById('gmodel');if(m&&mm)mm.value=m;if(s){var g=localStorage.getItem('gmn_key')?'Gemini: مفعّل ✓':'Gemini: غير مُعَدّ';var c=hasClaude()?'Claude: متاح ✓':'Claude: يتوفّر داخل شريط Cowork';s.innerHTML='<span class="aist">'+g+' • '+c+'</span>';}}
 function askQ(){var qel=document.getElementById('q');if(!qel||!qel.value.trim())return;var el=document.getElementById('qa');el.style.display='block';callAI('qa','أنت خبير أراضٍ في ملاطيا. أجب باختصار ودقّة بالعربية عن سؤال المستثمر بناءً على بيانات القطعة وتحليلها، واذكر تحذيراً عند اللزوم. السؤال: '+qel.value.trim(),lastSummary||{});}
 loadKey();
-</script><script src="assets/nav.js?v=10" defer></script>
+</script><script src="assets/nav.js?v=11" defer></script>
 </body></html>
