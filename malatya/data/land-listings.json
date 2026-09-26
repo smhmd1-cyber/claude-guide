@@ -69,8 +69,8 @@
     "ilce": "Battalgazi",
     "type": "tarla",
     "m2": 16890,
-    "ppm": 1658,
-    "total": 28000000,
+    "ppm": 1569,
+    "total": 26500000,
     "specs": [],
     "score": 53.3,
     "flags": [
@@ -80,7 +80,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-06-17",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "22.02.2026"
   },
   "https://www.emlakjet.com/ilan/batur-gayrimenkul-den-satilik-bahce-19411752": {
@@ -118,7 +118,7 @@
       "su"
     ],
     "first_seen": "2026-06-17",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "27.02.2026",
     "score": 60.3,
     "flags": [
@@ -211,7 +211,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-06-17",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/yusuf-karadagli-dan-hatunsuyunda-720m2-satilik-arsa-19277987": {
     "id": "19277987",
@@ -834,7 +834,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-06-19",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/enes-isik-tan-kuzey-kusak-cevre-yolu-nda-satilik-arsa-4651-m-19299164": {
     "id": "19299164",
@@ -878,7 +878,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-06-19",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "15.06.2026"
   },
   "https://www.emlakjet.com/ilan/dilek-merkeze-yakin-konumda-verimli-ve-yatirimlik-20-donum-bahce-19421746": {
@@ -898,7 +898,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-06-19",
-    "last_seen": "2026-09-21"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/turyap-metropol-den-dilek-merkez-de-satilik-6279-m-arsa-19240679": {
     "id": "19240679",
@@ -983,7 +983,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-06-20",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "10.04.2026"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-battalgazi-de-villa-takasli-17-donum-bahce-18761360": {
@@ -1001,7 +1001,7 @@
       "yol_acik"
     ],
     "first_seen": "2026-06-20",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "04.01.2026",
     "score": 53.8,
     "flags": [
@@ -1066,7 +1066,7 @@
       "su"
     ],
     "first_seen": "2026-06-20",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "05.01.2026",
     "score": 55.5,
     "flags": [
@@ -1420,7 +1420,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/erkan-emlaktan-cafanada-satilik-19101-m2-tarla-17944956": {
     "id": "17944956",
@@ -1439,7 +1439,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/erkan-emlaktan-elemendik-golu-yakininda-satilik-7235-m2-tarla-19369385": {
     "id": "19369385",
@@ -1460,7 +1460,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/erkan-emlaktan-elemendik-golu-yaninda-satilik-1579-m2-tarla-19369386": {
     "id": "19369386",
@@ -1482,7 +1482,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/erkan-emlaktan-elemendikte-satilik-13428-m2-tarla-18609115": {
     "id": "18609115",
@@ -1501,7 +1501,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/fourx4-gayrimenkul-hanimincifligi-kultur-mah-333-m2-satilik-arsa-19460461": {
     "id": "19460461",
@@ -1928,7 +1928,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/malatya-yesilyurt-gozene-dutlukuyu-da-39-500m2-satilik-arsa-19488916": {
     "id": "19488916",
@@ -1947,7 +1947,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/malatya-yesilyurt-gozene-mahallesi-dutlukaya-mevkii-nde-63-600m2-satilik-yatirimlik-kupon-arsa-tarla-19138541": {
     "id": "19138541",
@@ -1966,7 +1966,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/malatya-yesilyurt-gozene-mahallesi-dutlukuyu-mevkii-39-500m2-satilik-yatirimlik-kupon-arsa-tarla-19137206": {
     "id": "19137206",
@@ -1985,7 +1985,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/mismis-park-gol-kenarinda-5-adet-satilik-arsa-19314497": {
     "id": "19314497",
@@ -2028,7 +2028,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-06-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-yildiztepe-de-475-m-villa-imarli-satilik-arsa-19482321": {
     "id": "19482321",
@@ -2525,7 +2525,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "30.07.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/battalgazi-boranda-5-422-m-sulu-tarla-yatirimlik-firsat-19622472": {
     "id": "19622472",
@@ -2549,7 +2549,7 @@
     "verdict": "مشروط — أكمل الفحص (سقف الري)",
     "listed": "19.07.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/guven-emlak-tan-battalgazi-serintepe-mevkii-kayisi-bahcesi-19596681": {
     "id": "19596681",
@@ -2570,7 +2570,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "13.07.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/yusuf-karadagli-dan-colakoglu-nda-1585m2-satilik-hobi-bahcesi-19593775": {
     "id": "19593775",
@@ -2590,7 +2590,7 @@
     "verdict": "تجنّب",
     "listed": "12.07.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/erkan-emlaktan-hatunsuyunda-imarli-970-m2-satilik-arsa-19753447": {
     "id": "19753447",
@@ -2613,7 +2613,7 @@
     "verdict": "تجنّب",
     "listed": "21.08.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/eskialatya-ulu-camii-yani-320-m2-kose-arsa-19747351": {
     "id": "19747351",
@@ -2633,7 +2633,7 @@
     "verdict": "تجنّب",
     "listed": "20.08.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-20"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/battalgazi-toygar-da-1032m-imarli-arsa-19733693": {
     "id": "19733693",
@@ -2656,7 +2656,7 @@
     "verdict": "تجنّب",
     "listed": "17.08.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/hatun-suyu-kirac-mahallesi-970-metrekare-satilik-arsa-19727958": {
     "id": "19727958",
@@ -2677,7 +2677,7 @@
     "verdict": "تجنّب",
     "listed": "14.08.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-dolamantepe-de-satilik-imarli-firsat-arsalar-19723047": {
     "id": "19723047",
@@ -2725,7 +2725,7 @@
     "verdict": "تجنّب",
     "listed": "08.08.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/size-ozel-villalik-arsaniz-hazir-19699308": {
     "id": "19699308",
@@ -2768,7 +2768,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "29.07.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/camurlu-mahallesinde-satilik-arsa-19654121": {
     "id": "19654121",
@@ -2809,7 +2809,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "14.08.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-20"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/fourx4-gayrimenkulden-konak-ana-yola-yakin-satilik-bag-4075-m2-19696240": {
     "id": "19696240",
@@ -2828,7 +2828,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "06.08.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/satilik-47-donum-arsa-19604103": {
     "id": "19604103",
@@ -2852,7 +2852,7 @@
     "verdict": "مشروط — تحقّق يدوي من السعر",
     "listed": "14.07.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/erkan-emlaktan-kuyuluda-satilik-10548-m2-tarla-19559130": {
     "id": "19559130",
@@ -2872,7 +2872,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "04.07.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-yesilyurt-sutluce-de-13-600-m-satilik-bakimli-bahce-19499874": {
     "id": "19499874",
@@ -2893,7 +2893,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "19.06.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/dilek-istasyon-da-417-m-mustakil-tek-tapu-2-katli-arsa-31-ev-19757208": {
     "id": "19757208",
@@ -2915,7 +2915,7 @@
     "verdict": "تجنّب",
     "listed": "22.08.2026",
     "first_seen": "2026-08-24",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-kuyulu-da-tam-verimli-satilik-badem-bahcesi-19723068": {
     "id": "19723068",
@@ -3290,7 +3290,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-08-25",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/acil-guven-emlak-tan-camurlu-da-yatirimlik-imarli-arsa-19630314": {
     "id": "19630314",
@@ -3312,7 +3312,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-08-25",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/acil-satilik-arsa-19069660": {
     "id": "19069660",
@@ -3455,7 +3455,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-08-25",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/yusuf-karadaglidan-dilek-merkezde-satilik-imarli-arsa-19751622": {
     "id": "19751622",
@@ -3498,7 +3498,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-08-26",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/yusuf-karadagli-dan-cavusoglunda-198m2-imarli-arsa-19681981": {
     "id": "19681981",
@@ -3569,7 +3569,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-08-27",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "YENİ"
   },
   "https://www.emlakjet.com/ilan/villa-imarli-675-m2-tek-tapu-onu-acik-toki-karsisi-firsat-arsa-19646160": {
@@ -3617,7 +3617,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-08-27",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "YENİ"
   },
   "https://www.emlakjet.com/ilan/hasan-akbulut-dan-tecde-de-383m-arsa-yola-sifir-19709242": {
@@ -3660,7 +3660,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-08-31",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "YENİ"
   },
   "https://www.emlakjet.com/ilan/sahibinden-satilik-arsa-19786592": {
@@ -3700,7 +3700,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-08-31",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "YENİ"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-battalgazi-yarimcahan-da-5-donum-satilik-bakimli-bahce-19723099": {
@@ -3721,7 +3721,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-09-01",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ozhan-dan-hatunsuyunda-2-donum-arsa-uzeri-satilik-mustakil-ev-19793906": {
     "id": "19793906",
@@ -3745,7 +3745,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-09-02",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "01.09.2026"
   },
   "https://www.emlakjet.com/ilan/eski-malatya-ulu-camii-yani-320-m2-kose-arsa-19747351": {
@@ -3789,7 +3789,7 @@
     ],
     "verdict": "ضعيف — سعر مرتفع دون فجوة تحويل واضحة",
     "first_seen": "2026-09-03",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/organize-san-bitimi-cihadiyede-8435-m2-satilik-ev-ve-arazi-19724765": {
     "id": "19724765",
@@ -3833,7 +3833,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-09-08",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/kardelenden-satilik-firsat-arsa-19815723": {
     "id": "19815723",
@@ -3852,7 +3852,7 @@
     ],
     "verdict": "ضعيف — سعر يعكس أرضاً مطوَّرة أصلاً",
     "first_seen": "2026-09-08",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/organize-sanayii-bitimi-cihadiyede-8435-m2-satilik-ev-ve-arazi-19815635": {
     "id": "19815635",
@@ -3871,7 +3871,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-09-08",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/cevherizadede-merkezi-konum-3-ada-77-parsel-1-4-arsa-payi-19819392": {
     "id": "19819392",
@@ -3898,7 +3898,7 @@
     ],
     "verdict": "ضعيف — سعر مرتفع دون فجوة تحويل واضحة",
     "first_seen": "2026-09-09",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/malatya-battalgazi-de-1511m-satilik-arsa-yatirim-firsati-19826592": {
     "id": "19826592",
@@ -3920,7 +3920,7 @@
     ],
     "verdict": "ضعيف — سعر يعكس أرضاً مطوَّرة أصلاً",
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-hatunsuyu-nda-780-m-satilik-firsat-arsa-19723106": {
     "id": "19723106",
@@ -3938,7 +3938,7 @@
     ],
     "verdict": "متوسط — فجوة تحويل جزئية دون تفاصيل قانونية/تقنية كافية",
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/yesilyurt-samankoy-de-kacirilmayacak-3-kat-ticari-imarli-arsa-19818975": {
     "id": "19818975",
@@ -3960,7 +3960,7 @@
     ],
     "verdict": "ضعيف بالنسبة لأطروحة التحويل — قطعة مُحوَّلة أصلاً وليست فجوة",
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/kirac-mah-600-mtrkre-4-katavticari-konut-imarli-466-21-19830655": {
     "id": "19830655",
@@ -3989,7 +3989,7 @@
     "ilce": "Battalgazi",
     "type": "arsa",
     "m2": 1077,
-    "ppm": 5293,
+    "ppm": 5292,
     "total": 5700000,
     "specs": [],
     "score": 34.0,
@@ -4000,7 +4000,7 @@
     ],
     "verdict": "ضعيف — سعر يفوق مراجع الأرض المطوَّرة",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/satilik-ticarikonut-imarli-arsa-ana-yol-cepheli-19610616": {
     "id": "19610616",
@@ -4021,7 +4021,7 @@
     ],
     "verdict": "ضعيف جداً — خارج أطروحة الرصد أصلاً",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/koz-emlak-2-den-battalgazi-haniminciftliginde-satilik-arsa-19604571": {
     "id": "19604571",
@@ -4042,7 +4042,7 @@
     ],
     "verdict": "ضعيف — سعر يعكس أرضاً سكنية مُجزّأة أصلاً",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/bozdogandan-bulgurluda-satilik-bag-bahce-19564206": {
     "id": "19564206",
@@ -4090,8 +4090,8 @@
     "ilce": "Yeşilyurt",
     "type": "bahce",
     "m2": 30000,
-    "ppm": 567,
-    "total": 17000000,
+    "ppm": 517,
+    "total": 15500000,
     "specs": [],
     "score": 50.0,
     "flags": [
@@ -4101,7 +4101,7 @@
     ],
     "verdict": "متوسط — تكرار لإعلان آخر بنفس القطعة، انظر الرابط الشقيق",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/yagizbey-den-tecde-mahallesin-de-714m-villa-imarli-arsa-19831790": {
     "id": "19831790",
@@ -4122,7 +4122,7 @@
     ],
     "verdict": "ضعيف بالنسبة لأطروحة التحويل — قطعة مُخطَّطة أصلاً",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/enes-isik-tan-tecde-de-satilik-villa-imarli-arsa-19828190": {
     "id": "19828190",
@@ -4143,7 +4143,7 @@
     ],
     "verdict": "ضعيف بالنسبة لأطروحة التحويل — قطعة مُخطَّطة أصلاً",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/kivanc-gayrimenkul-den-kirkpinar-da-satilik-bahce-ve-ev-19819789": {
     "id": "19819789",
@@ -4162,7 +4162,7 @@
     ],
     "verdict": "متوسط — فجوة سعرية محتملة لكن وجود بناء قائم يُضعف نقاء أطروحة الأرض الخام",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ozgurden-tecde-de-muhtesem-manzarali-arsa-19791194": {
     "id": "19791194",
@@ -4183,7 +4183,7 @@
     ],
     "verdict": "ضعيف — سعر يعكس أرضاً شبه مُحوَّلة",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/gunduzbey-kozluk-ta-havadar-ruhsatli-evi-olan-bag-19746803": {
     "id": "19746803",
@@ -4204,7 +4204,7 @@
     ],
     "verdict": "جيد نسبياً — أفضل قطعة جديدة اليوم؛ فجوة سعرية معقولة مع طريق مؤكَّد ووضع قانوني أوضح من المعتاد",
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/kivanc-gayrimenkul-den-yakada-satilik-firsat-arsa-19676502": {
     "id": "19676502",
@@ -4352,7 +4352,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-09-12",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/hatunsuyu-kiracta-satilik-kose-parsel-guven-emlak-tan-19839539": {
     "id": "19839539",
@@ -4374,7 +4374,7 @@
     "verdict": "متوسط — فجوة تحويل جزئية دون تفاصيل قانونية/تقنية كافية",
     "listed": "12.09.2026",
     "first_seen": "2026-09-13",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/koz-emlak-2-den-bahcelievler-de-satilik-imarli-arsa-19838726": {
     "id": "19838726",
@@ -4396,7 +4396,7 @@
     "verdict": "ضعيف بالنسبة لأطروحة التحويل — قطعة مُحوَّلة أصلاً",
     "listed": "12.09.2026",
     "first_seen": "2026-09-13",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/guven-emlak-tan-hatunsuyu-merkezde-3-kata-imarli-arsa-19596437": {
     "id": "19596437",
@@ -4443,7 +4443,7 @@
     "verdict": "مشروط — أكمل الفحص (مطابق للقطعة الأصل)",
     "listed": "12.09.2026",
     "first_seen": "2026-09-13",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-yesilyurt-sutluce-de-satilik-6-465-m-bakimli-bahce-19839377": {
     "id": "19839377",
@@ -4483,7 +4483,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "12.09.2026",
     "first_seen": "2026-09-13",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ikizler-gayrimenkul-den-gedikte-mukemmel-konumda-satilik-arsa-19838621": {
     "id": "19838621",
@@ -4532,8 +4532,8 @@
     "ilce": "Yeşilyurt",
     "type": "tarla",
     "m2": 2850,
-    "ppm": 2018,
-    "total": 5750000,
+    "ppm": 1982,
+    "total": 5650000,
     "specs": [],
     "score": 34.5,
     "flags": [
@@ -4545,7 +4545,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-09-14",
-    "last_seen": "2026-09-23",
+    "last_seen": "2026-09-26",
     "listed": "14.09.2026"
   },
   "https://www.emlakjet.com/ilan/ozgur-den-yesilyurt-dilek-te-440-m-imarli-arsa-19724150": {
@@ -4568,7 +4568,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-09-14",
-    "last_seen": "2026-09-21",
+    "last_seen": "2026-09-26",
     "listed": "13.08.2026"
   },
   "https://www.emlakjet.com/ilan/malatya-battalgazi-boran-mahallesi-yatirimlik-arsa-19243536": {
@@ -4591,7 +4591,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "13.04.2026",
     "first_seen": "2026-09-15",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/kemerkopru-merkezde-5-donum-19857080": {
     "id": "19857080",
@@ -4611,7 +4611,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-09-17",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/zafer-mahallesinde-dort-kata-imarli-satilik-arsa-19837048": {
     "id": "19837048",
@@ -4633,7 +4633,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-09-18",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/kale-yolunda-satilik-dogal-yasam-alani-19833259": {
     "id": "19833259",
@@ -4675,7 +4675,7 @@
     ],
     "verdict": "ضعيف بالنسبة لأطروحة التحويل — قطعة مُحوَّلة أصلاً",
     "first_seen": "2026-09-18",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/canbay-yapi-dan-yesilcam-caddesi-arkasinda-villa-imarli-2-arsa-19867901": {
     "id": "19867901",
@@ -4697,7 +4697,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-09-19",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/sahibinden-satilik-fahri-kayahan-bulvarinda-mustakil-tapu-19870101": {
     "id": "19870101",
@@ -4718,7 +4718,7 @@
     ],
     "verdict": "تجنّب",
     "first_seen": "2026-09-19",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/yusuf-karadaglidab-kaynarcada-3-kata-imarli-satilik-firsat-arsa-19876043": {
     "id": "19876043",
@@ -4742,7 +4742,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "20.09.2026",
     "first_seen": "2026-09-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/dilek-carsiya-200-mt-491-m-degerli-mustakil-arsa-19875624": {
     "id": "19875624",
@@ -4750,7 +4750,7 @@
     "ilce": "Yeşilyurt",
     "type": "arsa",
     "m2": 491,
-    "ppm": 9166,
+    "ppm": 9165,
     "total": 4500000,
     "specs": [
       "Konut İmarlı",
@@ -4765,7 +4765,7 @@
     "verdict": "تجنّب",
     "listed": "20.09.2026",
     "first_seen": "2026-09-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/kadioglu-gayrimenkul-den-yatarim-lik-arsa-19875248": {
     "id": "19875248",
@@ -4789,7 +4789,7 @@
     "verdict": "تجنّب",
     "listed": "20.09.2026",
     "first_seen": "2026-09-21",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/battalgazi-kadicayirinda-ciftlik-19881627": {
     "id": "19881627",
@@ -4816,7 +4816,7 @@
     "verdict": "تجنّب",
     "listed": "22.09.2026",
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/turanlardan-kuyuluda-koy-yerlesimi-icerisinde-yatirimlik-tarla-19741144": {
     "id": "19741144",
@@ -4836,7 +4836,7 @@
     ],
     "verdict": "مشروط — أكمل الفحص",
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/dilek-merkeze-yakin-verimli-ve-yatirimlik-20-donum-bahce-19421746": {
     "id": "19421746",
@@ -4877,7 +4877,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "22.09.2026",
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/dilek-kullumagarada-yola-cepheli-ev-yapimina-uygun-bahce-19880575": {
     "id": "19880575",
@@ -4902,7 +4902,7 @@
     "verdict": "مشروط — أكمل الفحص",
     "listed": "22.09.2026",
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-23"
+    "last_seen": "2026-09-26"
   },
   "https://www.emlakjet.com/ilan/ikizler-gayrimenkul-den-carmuzu-tarafinda-satilik-2971-m2-arsa-19879435": {
     "id": "19879435",
@@ -4944,5 +4944,69 @@
     "verdict": "تجنّب",
     "first_seen": "2026-09-22",
     "last_seen": "2026-09-23"
+  },
+  "https://www.emlakjet.com/ilan/kivanc-gayrimenkul-den-yildiztepe-satilik-villalik-arsa-19880865": {
+    "id": "19880865",
+    "nb": "Yıldıztepe",
+    "ilce": "Battalgazi",
+    "type": "arsa",
+    "m2": 699,
+    "ppm": 6724,
+    "total": 4700000,
+    "specs": [
+      "Villalık Arsa"
+    ],
+    "score": 32.0,
+    "flags": [
+      "قطعة مُصنَّفة «Villalık Arsa» (أرض للفلل) — إشارة إلى تحويل/تصنيف مسبق، خارج أطروحة فجوة التحويل الزراعي↔عمراني",
+      "السعر (6.724₺/م²) أعلى من أعلى مرجع أرض مطوَّرة معروف (هاتونصويو 4.146₺) — هامش تحويل ضعيف أو معدوم",
+      "التربة/الري ونوع الطابو والطريق غير مذكورة"
+    ],
+    "verdict": "تجنّب",
+    "first_seen": "2026-09-26",
+    "last_seen": "2026-09-26"
+  },
+  "https://www.emlakjet.com/ilan/enes-isik-tan-yesilyurt-un-en-guzel-yerinde-imarli-arsalar-19896239": {
+    "id": "19896239",
+    "nb": "Mullakasım",
+    "ilce": "Yeşilyurt",
+    "type": "arsa",
+    "m2": 1439,
+    "ppm": 3822,
+    "total": 5500000,
+    "specs": [
+      "İmarlı",
+      "YENİ"
+    ],
+    "score": 30.0,
+    "flags": [
+      "قطعة إمارية (İmarlı) مُحوَّلة أصلاً حسب العنوان — خارج أطروحة فجوة التحويل الزراعي↔عمراني",
+      "السعر (3.822₺/م²) أعلى من مرجع ملّاقاسم المطوَّر (2.800₺) — هامش ضعيف أو معدوم",
+      "التربة/الري ونوع الطابو والطريق غير مذكورة"
+    ],
+    "verdict": "تجنّب",
+    "first_seen": "2026-09-26",
+    "last_seen": "2026-09-26"
+  },
+  "https://www.emlakjet.com/ilan/karakavak-makro-arkasi-satilik-arsa-19895821": {
+    "id": "19895821",
+    "nb": "Cevatpaşa",
+    "ilce": "Yeşilyurt",
+    "type": "arsa",
+    "m2": 326,
+    "ppm": 9509,
+    "total": 3100000,
+    "specs": [
+      "YENİ"
+    ],
+    "score": 25.0,
+    "flags": [
+      "الحيّ (Cevatpaşa) حضري قائم أصلاً — لا يحمل فجوة تحويل زراعي↔عمراني واضحة",
+      "السعر (9.509₺/م²) أعلى من أعلى مرجع أرض مطوَّرة معروف (هاتونصويو 4.146₺) بنحو 2.3 ضعف — بلا هامش تحويل",
+      "التربة/الري ونوع الطابو والطريق غير مذكورة"
+    ],
+    "verdict": "تجنّب",
+    "first_seen": "2026-09-26",
+    "last_seen": "2026-09-26"
   }
 }
