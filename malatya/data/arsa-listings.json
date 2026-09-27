@@ -1,8 +1,8 @@
 {
- "updated": "2026-09-26",
+ "updated": "2026-09-27",
  "province": "Malatya",
  "scope": "ولاية ملاطيا فقط — أراضٍ من السوق، وكل عقارات ملاطيا المعروضة رسمياً (قضاءً ومزايدةً)",
- "total": 321,
+ "total": 327,
  "sources": [
   {
    "key": "emlakjet",
@@ -11,11 +11,11 @@
    "kind": "سوق",
    "price_note": "سعر يطلبه البائع أو المكتب",
    "status": "ok",
-   "count": 266,
-   "site_reported_total": 266,
-   "pages": 9,
-   "detail_cached": 250,
-   "detail_fetched": 16,
+   "count": 272,
+   "site_reported_total": 272,
+   "pages": 10,
+   "detail_cached": 266,
+   "detail_fetched": 6,
    "detail_failed": 0
   },
   {
@@ -34,16 +34,16 @@
  "summary": {
   "districts_with_listings": 13,
   "districts_total": 13,
-  "ppm_median": 1750,
-  "ppm_p10": 334,
-  "ppm_p90": 9583,
+  "ppm_median": 1768,
+  "ppm_p10": 347,
+  "ppm_p90": 9545,
   "price_min": 16900,
   "price_max": 403180132,
   "flagged": 1,
   "m2_recovered": 1,
   "dropped_outside_province": 0,
   "by_source": {
-   "emlakjet": 266,
+   "emlakjet": 272,
    "ilangovtr": 55
   },
   "overrides": {
@@ -52,31 +52,31 @@
    "manual": 0
   },
   "by_cat": {
-   "أرض · أرسا": 274,
+   "أرض · أرسا": 280,
    "أرض زراعية وبساتين": 21,
    "سكن": 22,
    "عقار آخر": 4
   },
-  "land_count": 295,
+  "land_count": 301,
   "by_zon": {
-   "مرخّصة للبناء": 120,
-   "زراعية": 171,
+   "مرخّصة للبناء": 124,
+   "زراعية": 173,
    "بلا إمار أو مقيَّدة": 0,
    "تصنيف آخر": 3,
    "غير مذكور": 27
   },
   "by_tapu": {
    "بلا قيد طابو": 5,
-   "طابو مستقلّ": 218,
+   "طابو مستقلّ": 224,
    "طابو مشاع (حصّة)": 39,
    "طابو من تعاونية": 4
   },
-  "zon_declared": 266
+  "zon_declared": 272
  },
  "stats": [
   {
    "ilce": "Yeşilyurt",
-   "n": 133,
+   "n": 135,
    "ppm_med": 4134,
    "ppm_min": 10,
    "ppm_max": 44318,
@@ -85,18 +85,18 @@
   },
   {
    "ilce": "Battalgazi",
-   "n": 76,
-   "ppm_med": 3316,
+   "n": 79,
+   "ppm_med": 3333,
    "ppm_min": 643,
    "ppm_max": 800000,
-   "p_med": 4800000,
+   "p_med": 4900000,
    "note": null
   },
   {
    "ilce": "Akçadağ",
    "n": 52,
    "ppm_med": 555,
-   "ppm_min": 250,
+   "ppm_min": 226,
    "ppm_max": 5067,
    "p_med": 6750000,
    "note": null
@@ -112,11 +112,11 @@
   },
   {
    "ilce": "Doğanşehir",
-   "n": 11,
-   "ppm_med": 334,
+   "n": 12,
+   "ppm_med": 340,
    "ppm_min": 1,
-   "ppm_max": 3597,
-   "p_med": 1290000,
+   "ppm_max": 3887,
+   "p_med": 1220000,
    "note": null
   },
   {
@@ -204,19 +204,19 @@
  "zon_stats": [
   {
    "zon": "مرخّصة للبناء",
-   "n": 120,
-   "ppm_med": 7025,
+   "n": 124,
+   "ppm_med": 6710,
    "ppm_p10": 3013,
    "ppm_p90": 11669,
-   "n_priced": 112
+   "n_priced": 116
   },
   {
    "zon": "زراعية",
-   "n": 171,
+   "n": 173,
    "ppm_med": 836,
    "ppm_p10": 257,
-   "ppm_p90": 2119,
-   "n_priced": 150
+   "ppm_p90": 2046,
+   "n_priced": 152
   },
   {
    "zon": "بلا إمار أو مقيَّدة",
@@ -244,6 +244,97 @@
   }
  ],
  "items": [
+  {
+   "src": "emlakjet",
+   "id": "19908207",
+   "t": "Vadi Maldia'dan Çolakoğlu'nda Bulunmaz Fırsat Arsalar",
+   "ilce": "Battalgazi",
+   "mah": "Bahçelievler Mahallesi",
+   "m2": 19569,
+   "p": 19950000,
+   "d": "2026-09-27",
+   "u": "https://www.emlakjet.com/ilan/19908207",
+   "img": "19908207/2BB9B198AE6FB8C054B65BCDE3AEEA7119908207.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "ada": "177",
+   "parsel": "2",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 1019
+  },
+  {
+   "src": "emlakjet",
+   "id": "19906944",
+   "t": "Doru'dan Doğanşehir Merkezde Satılık İmarlı Arsa",
+   "ilce": "Doğanşehir",
+   "mah": "Esentepe Mahallesi",
+   "m2": 283,
+   "p": 1100000,
+   "d": "2026-09-27",
+   "u": "https://www.emlakjet.com/ilan/19906944",
+   "img": "19906944/B8FF25BF3BE74A1DC7CD89F469BE41D619906944.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Konut İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "ada": "415",
+   "parsel": "9",
+   "zon": "مرخّصة للبناء",
+   "zonf": "سكني",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 3887
+  },
+  {
+   "src": "emlakjet",
+   "id": "19905505",
+   "t": "Canbay Yapı'dan Üniversite Yanı 1311 M2 Tek Tapu Satılık Arsa",
+   "ilce": "Battalgazi",
+   "mah": "Çamurlu Mahallesi",
+   "m2": 1311,
+   "p": 7500000,
+   "d": "2026-09-26",
+   "u": "https://www.emlakjet.com/ilan/19905505",
+   "img": "19905505/4AF550B96EEC4D35878759A6AC87B4FA19905505.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Konut İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "parsel": "3",
+   "zon": "مرخّصة للبناء",
+   "zonf": "سكني",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 5721
+  },
+  {
+   "src": "emlakjet",
+   "id": "19903675",
+   "t": "Kıvanç Gayrimenkul'den Yeşilyurt Mollakasımda Satılık Arsa",
+   "ilce": "Yeşilyurt",
+   "mah": "Mullakasım Mahallesi",
+   "m2": 788,
+   "p": 3500000,
+   "d": "2026-09-26",
+   "u": "https://www.emlakjet.com/ilan/19903675",
+   "img": "19903675/9F4154BD3782A9EACDF3A456E58E800D19903675.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Villa İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "ada": "356",
+   "parsel": "15",
+   "zon": "مرخّصة للبناء",
+   "zonf": "فيلات",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 4442
+  },
   {
    "src": "emlakjet",
    "id": "19903273",
@@ -1228,7 +1319,7 @@
    "p": 1250000,
    "d": "2026-09-12",
    "u": "https://www.emlakjet.com/ilan/19838726",
-   "img": "19838726/F3A34A4D8AE43E469868112028EAD80C19838726.jpg",
+   "img": "19838726/9437813817C5DBB69C59ED3F9AE8785E19838726.jpg",
    "cat": "أرض · أرسا",
    "land": true,
    "imar": "Konut İmarlı",
@@ -1251,7 +1342,7 @@
    "p": 2400000,
    "d": "2026-09-12",
    "u": "https://www.emlakjet.com/ilan/19837355",
-   "img": "19837355/79484C42BD145A8FFB917DCDED039E7519837355.jpg",
+   "img": "19837355/15885817293BE5E36802D1B851974FB219837355.jpg",
    "cat": "أرض · أرسا",
    "land": true,
    "imar": "Tarla",
@@ -1356,6 +1447,29 @@
   },
   {
    "src": "emlakjet",
+   "id": "19832027",
+   "t": "Güven Emlak'tan Özal Köyü İlerisinde Satılık Kayısı Bahçesi",
+   "ilce": "Yeşilyurt",
+   "mah": "Çayırköy Mahallesi",
+   "m2": 30000,
+   "p": 18000000,
+   "d": "2026-09-11",
+   "u": "https://www.emlakjet.com/ilan/19832027",
+   "img": "19832027/F9AAE188B85E21DC9A960AB75E3F978B19832027.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Bağ & Bahçe",
+   "tapu": "طابو مستقلّ",
+   "kredi": "غير صالح للتمويل",
+   "ada": "269",
+   "parsel": "4",
+   "zon": "زراعية",
+   "zonf": "كرم وبستان",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 600
+  },
+  {
+   "src": "emlakjet",
    "id": "19831790",
    "t": "Yağızbey'den Tecde Mahallesin'de 714m² Villa İmarlı Arsa",
    "ilce": "Yeşilyurt",
@@ -1406,7 +1520,7 @@
    "ilce": "Akçadağ",
    "mah": "Gölpınar Mahallesi",
    "m2": 72000,
-   "p": 18000000,
+   "p": 16250000,
    "d": "2026-09-10",
    "u": "https://www.emlakjet.com/ilan/19830288",
    "img": "19830288/5A35A5286F2EB734123396FED82C6A6D19830288.jpg",
@@ -1419,7 +1533,7 @@
    "zon": "زراعية",
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 250
+   "ppm": 226
   },
   {
    "src": "emlakjet",
@@ -1450,7 +1564,7 @@
    "ilce": "Battalgazi",
    "mah": "Kıraç Mahallesi",
    "m2": 1077,
-   "p": 5700000,
+   "p": 5400000,
    "d": "2026-09-10",
    "u": "https://www.emlakjet.com/ilan/19829627",
    "img": "19829627/3701AB52EDA98FCA0DE107FDC721E09919829627.jpg",
@@ -1462,7 +1576,7 @@
    "zon": "مرخّصة للبناء",
    "zonf": "سكني",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 5292
+   "ppm": 5014
   },
   {
    "src": "emlakjet",
@@ -3492,7 +3606,7 @@
    "p": 12200000,
    "d": "2026-07-25",
    "u": "https://www.emlakjet.com/ilan/19646397",
-   "img": "19646397/149AC121E36792EBCE072F9DB7D1D56419646397.jpg",
+   "img": "19646397/6E870DC5ACEB954F314C93B20C023EBE19646397.jpg",
    "cat": "أرض · أرسا",
    "land": true,
    "imar": "Bağ & Bahçe",
@@ -3502,6 +3616,29 @@
    "zonf": "كرم وبستان",
    "zonsrc": "معلَن في الإعلان",
    "ppm": 2440
+  },
+  {
+   "src": "emlakjet",
+   "id": "19646160",
+   "t": "Villa İmarlı 675 M2 Tek Tapu Önü Açık Toki Karşısı Fırsat Arsa..",
+   "ilce": "Battalgazi",
+   "mah": "Orduzu Mahallesi",
+   "m2": 675,
+   "p": 4250000,
+   "d": "2026-07-25",
+   "u": "https://www.emlakjet.com/ilan/19646160",
+   "img": "19646160/B7F9E4011C0662C9F3334CF9EB6F3FC619646160.jpg",
+   "cat": "أرض · أرسا",
+   "land": true,
+   "imar": "Villa İmarlı",
+   "tapu": "طابو مستقلّ",
+   "kredi": "صالح للتمويل",
+   "ada": "138",
+   "parsel": "14",
+   "zon": "مرخّصة للبناء",
+   "zonf": "فيلات",
+   "zonsrc": "معلَن في الإعلان",
+   "ppm": 6296
   },
   {
    "src": "emlakjet",
@@ -4065,7 +4202,7 @@
    "p": 7300000,
    "d": "2026-07-14",
    "u": "https://www.emlakjet.com/ilan/19600014",
-   "img": "19600014/1BAE74299300374DF6F7BF5559EA792B19600014.jpg",
+   "img": "19600014/5B22E73D0A9F65FFE6A252BCDF6D79C819600014.jpg",
    "cat": "أرض · أرسا",
    "land": true,
    "imar": "Villa İmarlı",
@@ -5497,7 +5634,7 @@
    "ilce": "Yazıhan",
    "mah": "Sinanlı Mahallesi",
    "m2": 13500,
-   "p": 8775000,
+   "p": 9180000,
    "d": "2026-05-11",
    "u": "https://www.emlakjet.com/ilan/19355623",
    "img": "19355623/AB54DBD1B35497CD4603D1008CF066B119355623.jpg",
@@ -5510,7 +5647,7 @@
    "zon": "زراعية",
    "zonf": "كرم وبستان",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 650
+   "ppm": 680
   },
   {
    "src": "emlakjet",
@@ -6275,7 +6412,7 @@
    "ilce": "Battalgazi",
    "mah": "Hatunsuyu Mahallesi",
    "m2": 16890,
-   "p": 26500000,
+   "p": 26000000,
    "d": "2026-02-22",
    "u": "https://www.emlakjet.com/ilan/19049647",
    "img": "19049647/B2789C598D588888C33682D865612A7719049647.jpg",
@@ -6287,7 +6424,7 @@
    "zon": "زراعية",
    "zonf": "حقل — تَرلا",
    "zonsrc": "معلَن في الإعلان",
-   "ppm": 1569
+   "ppm": 1539
   },
   {
    "src": "emlakjet",
