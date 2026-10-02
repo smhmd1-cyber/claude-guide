@@ -1,0 +1,199 @@
+{
+ "_note": "ملفّ مقاسات أبو عمر ومصادر ملابس الرجال — يقرأه وكيل «ملابسي» (malatya-rijal.yml) في كل ريّة. أُنشئ 02/10/2026 ببحث حيّ، وكل مقاس ورابط أدناه قُرئ من موقع العلامة نفسها في ذلك اليوم. تعديل القائمة لا يتطلّب لمس سير العمل.",
+ "updated": "2026-10-02",
+
+ "wearer": {
+  "age": 60,
+  "style_rule": "رجل في الستّين — الأسلوب كلاسيكي ومحترم: قَصّات واسعة ومريحة (Regular Fit · Geniş Kesim · 6 Drop)، ألوان هادئة (كحلي · رمادي · أسود · بيج · نبيتي)، أقمشة محترمة. **ممنوع**: Slim Fit و Extra Slim و Skinny، والقَصّات الشبابية، والألوان الصارخة، والطبعات والشعارات الكبيرة.",
+  "sizes": {
+   "tops_letter": "XXL (2XL) — وقد يلزم 3XL في بعض العلامات التركية لأنّ مقاساتها تجري أصغر",
+   "pantolon": "54–56 (رقمي تركي/أوروبي)",
+   "ceket_takim": "54 (جاكيت وبدلة)",
+   "gomlek": "XXL / 2XL — وفي العلامات الكلاسيكية يُنظر إلى مقاس الياقة إن ذُكر"
+  },
+  "size_warning": "لا تُكتب بطاقة لصنف لا يتوفّر فيه مقاسه فعلاً. **المقاس المتوفّر شرطُ دخول لا تفصيل**: صنف بمقاس 52 أو XL لا يدخل الصفحة مهما كان سعره."
+ },
+
+ "categories": [
+  { "key": "pantolon",   "ar": "بنطلون",           "tr": "pantolon · kumaş pantolon · chino", "size": "54–56" },
+  { "key": "gomlek",     "ar": "قميص",             "tr": "gömlek · klasik gömlek",            "size": "XXL/2XL–3XL" },
+  { "key": "ceket",      "ar": "جاكيت رسمي",       "tr": "klasik ceket · blazer ceket",       "size": "54" },
+  { "key": "blazer",     "ar": "جاكيت بليزر",      "tr": "blazer ceket · spor ceket",         "size": "54" },
+  { "key": "takim",      "ar": "بدلة",             "tr": "takım elbise",                      "size": "54" },
+  { "key": "ic_camasiri","ar": "ملابس داخلية",     "tr": "iç çamaşırı · boxer · atlet · çorap","size": "XXL/2XL–4XL" },
+  { "key": "spor",       "ar": "ملابس رياضية",     "tr": "eşofman · spor giyim · sweatshirt", "size": "XXL/2XL–4XL" }
+ ],
+
+ "tier1_malatya_branch": {
+  "_note": "علامات كلاسيكية **لها فرع فعليّ في ملاطيا** وتصل مقاساتها إلى 54–56 — أولويّة مطلقة: يستطيع أبو عمر القياس والشراء اليوم.",
+  "brands": [
+   {
+    "name": "Hatemoğlu",
+    "site": "https://www.hatemoglu.com/",
+    "why": "أفضل تطابق في القائمة كلّها: بيت كلاسيكي عريق (منذ 1924)، له خطّ büyük beden حقيقي، **وفرع في Malatya Park AVM**.",
+    "malatya_branch": "Malatya Park AVM — محلّ 1K84/1K85 · هاتف +90 422 212 50 20",
+    "verified_sizes": { "ceket": "42–62 (54 و56 ضمنها)", "takim": "42–62", "pantolon": "40–56" },
+    "urls": {
+     "buyuk_beden": "https://www.hatemoglu.com/erkek-buyuk-beden-giyim",
+     "pantolon": "https://www.hatemoglu.com/erkek-buyuk-beden-pantolon",
+     "ceket": "https://www.hatemoglu.com/erkek-buyuk-beden-ceket",
+     "takim": "https://www.hatemoglu.com/buyuk-beden-takim-elbise",
+     "kampanya": "https://www.hatemoglu.com/kampanyalar",
+     "outlet": "https://www.hatemoglu.com/outlet-indirim-firsatlari"
+    },
+    "price_band_try": { "takim": "4.998–8.998 (بسعر التخفيض)", "pantolon": "1.698–2.998" },
+    "caution": "خطّ المقاسات الكبيرة محدود العدد — تحقّق من توفّر 54 فعلاً لا من وجود الصفحة."
+   },
+   {
+    "name": "D'S Damat",
+    "site": "https://www.dsdamat.com/",
+    "why": "كلاسيكي ومناسب للعمر، وله فرع في Malatya Park AVM. مقاساته تصل عالياً في الجاكيت والبنطلون.",
+    "malatya_branch": "Malatya Park AVM",
+    "verified_sizes": { "ceket": "40–64", "pantolon": "38–56", "takim": "حتى 66 في مرشّح البدل", "gomlek": "S–3XL" },
+    "urls": {
+     "kampanya": "https://www.dsdamat.com/takim-elbise-gunu/"
+    },
+    "price_band_try": { "takim": "3.999–5.999", "pantolon": "1.999–5.999" },
+    "caution": "**تجنّب خطّ Damat Tween** — قَصّاته شبابية وضيّقة ولا تناسب العمر ولا المقاس."
+   },
+   {
+    "name": "Kiğılı",
+    "site": "https://www.kigili.com/",
+    "why": "علامة كلاسيكية معروفة جداً لدى الجمهور التركي، ولها قسم büyük beden واسع المدى.",
+    "malatya_branch": "مذكور في أدلّة Malatya Park AVM — **غير مؤكَّد**: دليل متاجر Kiğılı نفسه ردّ 404. تحقّق قبل أن تَعِد القارئ بفرع.",
+    "verified_sizes": { "takim": "مرشّح البدل 40–70", "pantolon": "كلاسيكي صوف 44–70 · تشينو 46–58", "gomlek": "حروف حتى 7X/8X" },
+    "urls": {
+     "buyuk_beden": "https://www.kigili.com/buyuk-beden-urunler/",
+     "buyuk_beden_alt": "https://www.kigili.com/collections/buyuk-beden-erkek-urunleri",
+     "outlet": "https://www.kigili.com/outlet"
+    },
+    "price_band_try": { "takim": "4.499–18.999", "pantolon": "1.299–4.999" },
+    "caution": "اطلب **Regular Fit «6 Drop»** لا Slim. و`/kampanyalar` عندها 404 — استعمل `/outlet`."
+   },
+   {
+    "name": "Altınyıldız Classics",
+    "site": "https://www.altinyildizclassics.com/",
+    "why": "كلاسيكي ومناسب للعمر، وله فرع في Malatya Park AVM.",
+    "malatya_branch": "Malatya Park AVM (العنوان يختلف بين دليلين: İnönü Cd. No:178 Z49 أو Çevreyolu Cad. 44)",
+    "verified_sizes": { "takim_genis_kesim": "خطّ «Regular Fit Geniş Kesim» 50-6N حتى 62-6N" },
+    "urls": {
+     "kampanya": "https://www.altinyildizclassics.com/takim-elbise-festivali-c"
+    },
+    "price_band_try": { "takim": "3.999–8.999", "pantolon": "1.480–4.200" },
+    "caution": "**لا قسم büyük beden** عندها (`/buyuk-beden-c` يردّ 404) — المدخل الصحيح هو خطّ **«Geniş Kesim»** الواسع."
+   },
+   {
+    "name": "Süvari",
+    "site": "https://www.suvari.com.tr/",
+    "why": "له فرع في Malatya Park AVM (هاتف 0555 997 18 02) — مفيد للقمصان الكبيرة.",
+    "malatya_branch": "Malatya Park AVM",
+    "verified_sizes": { "gomlek_buyuk_beden": "3XL · 4XL · 5XL", "pantolon": "40–54 فقط", "takim": "42–58 (قَصّة ضيّقة)" },
+    "urls": {
+     "buyuk_beden_gomlek": "https://www.suvari.com.tr/buyuk-beden-erkek-gomlek-modelleri",
+     "kampanya": "https://www.suvari.com.tr/kampanyalar"
+    },
+    "price_band_try": { "gomlek": "1.999,90", "takim": "5.499,90–7.999,90" },
+    "caution": "البنطلون يقف عند 54 — لا 56. والبدل قَصّتها ضيّقة؛ القمصان الكبيرة هي الأفيد هنا."
+   }
+  ]
+ },
+
+ "tier2_online_big_size_specialists": {
+  "_note": "متاجر متخصّصة بالمقاسات الكبيرة — **أونلاين فقط، لا فرع في ملاطيا** (يجب كتابة ذلك في البطاقة). هنا تُوجد 54–56 بوفرة، خاصّة البنطلون والملابس الداخلية والرياضية.",
+  "stores": [
+   {
+    "name": "ModeXL / SüperBattal",
+    "site": "https://www.superbattal.com/",
+    "note": "الاسمان لشركة واحدة (عنوان الموقع ModeXL). قائمة منذ 2008، ولها متاجر في إسطنبول وأنقرة وأضنة وأنطاليا ومتجر على Hepsiburada.",
+    "verified_sizes": { "pantolon": "52–84 رقمي + 3XL–8XL (54 و56 مؤكّدان)", "tops": "2XL–10XL" },
+    "categories": ["pantolon", "gomlek", "blazer", "takim", "ic_camasiri", "spor"],
+    "urls": { "outlet": "https://www.superbattal.com/tr/buyuk-beden-erkek-outlet.html" },
+    "shipping": "شحن لكل تركيا",
+    "caution": "مرشّح البدل والبليزر عندهم يعرض محيط صدر 60–76 فقط — **الجاكيت 54 غالباً غير متوفّر عندهم**؛ استعملهم للبنطلون والقميص والداخلية والرياضية. وفي «شيكايتوار» ٣١ شكوى (2024–2025) أغلبها تأخّر تسليم أو طلب ناقص — اذكر ذلك إن اقترحتَ عليهم طلباً كبيراً."
+   },
+   {
+    "name": "BigStyle",
+    "site": "https://www.bigstyle.com.tr/",
+    "note": "سلسلة إسطنبولية صغيرة حقيقية (تقول منذ 1989) ولها متاجر فعلية.",
+    "verified_sizes": { "pantolon": "54–80 + XXL–6XL", "gomlek_klasik": "3XL–9XL" },
+    "categories": ["pantolon", "gomlek", "spor"],
+    "urls": {},
+    "shipping": "شحن لكل تركيا",
+    "caution": "المخزون رقيق ونصفه نافد، ولا بدل ولا جاكيت ولا ملابس داخلية. القميص يبدأ من 3XL (لا XXL)."
+   },
+   {
+    "name": "Tambattal",
+    "site": "https://www.tambattal.com/",
+    "note": "جهة حقيقية (عنوان في Pendik بإسطنبول، وشكاوى قليلة حُلّت).",
+    "verified_sizes": { "pantolon": "54–76 + 3XL–13XL", "gomlek": "6XL–9XL" },
+    "categories": ["pantolon", "gomlek", "spor"],
+    "urls": { "outlet": "https://tambattal.com/outlet" },
+    "shipping": "شحن مجاني فوق 800 ₺",
+    "caution": "الأسلوب كاجوال (كارغو · رباط خصر) ولا شيء رسمي — قد لا يناسب العمر. و`/indirim` و`/firsatlar` يردّان 404 رغم ظهورهما في القائمة."
+   },
+   {
+    "name": "StarBattal",
+    "site": "https://www.starbattal.com/",
+    "note": "**غير مُثبَت** — مسجَّل في ETBİS لكن بلا عنوان ولا تاريخ ولا تقييمات.",
+    "verified_sizes": { "pantolon": "54–70", "tops": "2XL–10XL" },
+    "categories": ["pantolon", "gomlek", "ic_camasiri", "takim", "spor"],
+    "urls": { "indirim": "https://www.starbattal.com/indirimliurunler" },
+    "shipping": "شحن مجاني فوق 1.000 ₺",
+    "caution": "لا تُرشّحه لطلب كبير قبل أن يثبت. اذكره فقط إن كان العرض استثنائياً، ومعه تنبيه «متجر غير مُثبَت السمعة»."
+   },
+   {
+    "name": "İmza",
+    "site": "https://www.imza.com.tr/",
+    "note": "سلسلة ملابس رجالية كلاسيكية لها متاجر — مفيدة للبدل الكبيرة.",
+    "verified_sizes": { "takim": "44–64 (54 ضمنها)" },
+    "categories": ["takim", "gomlek", "pantolon"],
+    "urls": { "buyuk_beden_takim": "https://www.imza.com.tr/buyuk-beden-takim-elbise" },
+    "shipping": "غير مفحوص",
+    "caution": "لم يُفحَص إلا صفحة البدل. لا فرع معروف في ملاطيا."
+   }
+  ]
+ },
+
+ "tier3_marketplaces": {
+  "_note": "أسواق إلكترونية كبرى لها أقسام büyük beden رجالية — مفيدة للمقارنة وللأصناف التي لا تجدها عند العلامات.",
+  "stores": [
+   { "name": "Boyner",      "url": "https://www.boyner.com.tr/erkek-buyuk-beden-x-g3730-c23896517", "note": "فيه takım elbise وceket وpantolon وmont — الأغنى للرسمي" },
+   { "name": "Trendyol",    "url": "https://www.trendyol.com/erkek-buyuk-beden-x-g2-c80",            "note": "الأوسع تشكيلة" },
+   { "name": "Hepsiburada", "url": "https://www.hepsiburada.com/erkek-buyuk-beden-x-s55215",         "note": "مرشّح المقاس يعرض XXL–4XL، ولم تظهر مقاسات رقمية 54/56" },
+   { "name": "DeFacto",     "url": "https://www.defacto.com.tr/erkek-buyuk-beden",                   "note": "XXL–6XL، بلا مقاسات رقمية 54/56 — وأسلوبه شبابي غالباً" }
+  ]
+ },
+
+ "excluded_brands": {
+  "_note": "فُحصت وأُسقطت بسبب — تُذكر هنا كي لا يُعاد فحصها كل ريّة بلا طائل.",
+  "items": [
+   { "name": "Ramsey",         "reason": "لا قسم مقاسات كبيرة مؤكَّد، والأسلوب شبابي/ضيّق" },
+   { "name": "Tudors",         "reason": "القميص الكبير 2XL–4XL فقط، والبنطلون خصر 30–38 (لا 54/56)، ولا بدل. كاجوال" },
+   { "name": "Lufian",         "reason": "لا مقاسات كبيرة، وأسلوب شبابي" },
+   { "name": "Avva",           "reason": "البنطلون خصر 30–38 والقمصان حتى 3XL — لا 54/56. كاجوال شبابي" },
+   { "name": "Network",        "reason": "البدل 44–60 لكن السعر 18.999–54.999 ₺ والأسلوب أصغر سنّاً" },
+   { "name": "Pierre Cardin",  "reason": "بنطلون واحد 46–56 (نافد)، وأغلب القَصّات Extra Slim — لا خطّ مقاسات كبيرة" },
+   { "name": "Beymen",         "reason": "متجر فاخر متعدّد العلامات لا بيت ملابس، ولا قسم مقاسات كبيرة" },
+   { "name": "Morhipo",        "reason": "**أُغلق في 17/10/2023** وانتقل إلى Boyner — لا تستعمله إطلاقاً" },
+   { "name": "Sarar",          "reason": "لا قسم مقاسات كبيرة، وبيانات مقاس البنطلون متناقضة بين صفحتين (44–58 مقابل 60–68) — لا يُبنى عليه رقم" }
+  ]
+ },
+
+ "malatya_local_finding": {
+  "verdict": "**لا يوجد في مدينة ملاطيا متجر متخصّص بالمقاسات الكبيرة للرجال** — بُحث عنه في 02/10/2026 بالتركية والعربية ولم يُعثر عليه.",
+  "checked_and_rejected": [
+   "«Beden Giyim» (İnönü Cad. 90) — مرتبط بـrmgbuyukbenden.com وهو **نسائي فقط** (44–58) وعناوينه في إسطنبول؛ لم يُؤكَّد له قسم رجالي",
+   "«Beden» (Emeksiz Cad. 3، بطالغازي) — متجر ملابس عام بلا ذكر للمقاسات الكبيرة"
+  ],
+  "conclusion": "فالمسار العملي: **القياس والشراء من فروع Malatya Park AVM** (Hatemoğlu أوّلاً)، و**الطلب أونلاين** من متخصّصي المقاسات الكبيرة لما لا يتوفّر محلياً."
+ },
+
+ "agent_rules": [
+  "**المقاس شرط دخول**: لا تُكتب بطاقة إلّا إذا تحقّقتَ أنّ مقاسه متوفّر فعلاً (54/56 للبنطلون · 54 للجاكيت والبدلة · XXL فأكبر للقميص والداخلية والرياضية). صنفٌ جميل بمقاس غير مقاسه = لا شيء.",
+  "**العمر شرط ثانٍ**: كلاسيكي وواسع ومحترم. أسقط Slim/Extra Slim والقَصّات الشبابية والطبعات الكبيرة.",
+  "**الفرع المحلّي يتقدّم دائماً**: بطاقة من علامة لها فرع في Malatya Park AVM تُقدَّم على بطاقة أونلاين بنفس القيمة — واذكر الفرع. وما لا فرع له يُكتب فيه صراحةً «أونلاين فقط — لا فرع في ملاطيا».",
+  "**قاعدة العملات الثلاث**: كل سعر بالليرة ومعه ما يقابله بالدولار والشيكل بسعر صرف يوم الرصد.",
+  "**لا تخترع**: لا سعراً ولا مقاساً ولا رابطاً ولا فرعاً. ما لم تتحقّق منه قُله «لم يتأكّد». والصفر المُفسَّر خيرٌ من بطاقة مخترَعة.",
+  "**السمعة تُذكر**: إن كان المتجر غير مُثبَت أو عليه شكاوى معروفة، اكتب ذلك في البطاقة — فالثقة جزء من القرار لا تفصيل."
+ ]
+}

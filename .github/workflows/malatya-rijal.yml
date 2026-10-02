@@ -1,0 +1,443 @@
+name: ملابسي — ملابس رجالية بمقاس أبو عمر
+
+# 04:40 UTC = 07:40 بتوقيت القدس (صيفاً) — بعد وكيل العروض بساعة، فلا يتزاحمان على main.
+# أسبوعيّ (الخميس): تشكيلة الملابس لا تتغيّر يومياً، والحملات الموسمية تُعلَن أسبوعياً.
+# workflow_call: ليتمكّن الحارس من إعادة تشغيله ذاتياً دون PAT.
+on:
+  schedule:
+    - cron: "40 4 * * 4"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "مسحة كاملة: تجاهُل نافذة التغطية وإعادة مسح كل الأصناف"
+        type: boolean
+        default: false
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: malatya-rijal
+  cancel-in-progress: false
+
+env:
+  # ⛔ مصدر الحقيقة الوحيد للمسارات. لا تكتب مساراً حرفياً في أي خطوة.
+  RIJAL_FILE: malatya/rijal.html
+  PROFILE_FILE: malatya/data/rijal-profile.json
+  HUB_FILE: malatya/index.html
+  HUB_MARK: منظومة ملاطيا
+  # بطاقة مضى على انتهائها هذا العدد من الأيام تُحذف — أرشيفٌ لا نفاية.
+  PRUNE_AFTER_DAYS: "60"
+
+jobs:
+  update:
+    name: رصد الملابس · تحرير الصفحة · نشر
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: 🧪 فحص قبلي — هل البنية كما نتوقّعها؟
+        run: |
+          set -euo pipefail
+          FAIL=0
+          for f in "$RIJAL_FILE" "$PROFILE_FILE"; do
+            test -s "$f" || { echo "❌ مفقود: $f"; FAIL=1; }
+          done
+          for m in RIJAL-CONTENT-START RIJAL-CONTENT-END; do
+            n=$(grep -c -- "$m" "$RIJAL_FILE" || true)
+            [ "$n" = "1" ] || { echo "❌ العلامة $m ظهرت $n مرّة (المطلوب ١)"; FAIL=1; }
+          done
+          python3 -c "import json,os;json.load(open(os.environ['PROFILE_FILE'],encoding='utf-8'))" \
+            || { echo "❌ ملفّ المقاسات ليس JSON صالحاً"; FAIL=1; }
+          exit $FAIL
+
+      - name: 📐 حساب نافذة التغطية
+        id: win
+        run: |
+          set -euo pipefail
+          TODAY=$(TZ=Asia/Jerusalem date +%Y-%m-%d)
+          LAST=$(grep -o 'run=[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}' "$RIJAL_FILE" | head -1 | cut -d= -f2 || true)
+          if [ -z "$LAST" ]; then
+            FROM=$(TZ=Asia/Jerusalem date -d "14 days ago" +%Y-%m-%d)
+            echo "أوّل ريّة — مسحة كاملة من $FROM"
+          else
+            FROM="$LAST"
+          fi
+          { echo "today=$TODAY"; echo "from=$FROM"; } >> "$GITHUB_OUTPUT"
+          echo "— النافذة: $FROM → $TODAY —"
+
+      - name: 💱 سعر صرف اليوم — ليرة · دولار · شيكل
+        id: fx
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, sys, urllib.request
+          SRC = [
+              ("open.er-api.com", "https://open.er-api.com/v6/latest/TRY",
+               lambda d: (d["rates"]["USD"], d["rates"]["ILS"], d.get("time_last_update_utc", ""))),
+              ("frankfurter.dev", "https://api.frankfurter.dev/v1/latest?from=TRY&to=USD,ILS",
+               lambda d: (d["rates"]["USD"], d["rates"]["ILS"], d.get("date", ""))),
+          ]
+          usd = ils = None; src = "none"; asof = ""
+          for name, url, pick in SRC:
+              try:
+                  with urllib.request.urlopen(url, timeout=20) as r:
+                      u, i, a = pick(json.load(r))
+                  if u and i:
+                      usd, ils, src, asof = float(u), float(i), name, str(a); break
+              except Exception as e:
+                  print("تعذّر %s: %s" % (name, e), file=sys.stderr)
+          if usd and ils:
+              print("ok=true"); print("usd=%.4f" % usd); print("ils=%.4f" % ils)
+              print("src=%s" % src); print("asof=%s" % asof)
+              print("line=1 ₺ = $%.4f = ₪%.4f | $1 = ₺%.2f | ₪1 = ₺%.2f | src=%s"
+                    % (usd, ils, 1 / usd, 1 / ils, src))
+          else:
+              print("ok=false"); print("usd=0"); print("ils=0"); print("src=none"); print("asof=")
+              print("line=تعذّر جلب سعر الصرف اليوم — الأسعار بالليرة وحدها")
+          PY
+          echo "— سعر الصرف —"; tail -6 "$GITHUB_OUTPUT"
+
+      - name: تشغيل Claude — رصد ملابس المقاس الكبير
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            أنت **«وكيل ملابس أبو عمر»**. مهمتك: تحديث `${{ env.RIJAL_FILE }}` وحده.
+
+            تعمل داخل GitHub Actions. لديك موافقة قائمة؛ **لا تطرح أسئلة**.
+            لا commit ولا push ولا FTP — سير العمل يتولّى ذلك بعدك.
+
+            ═══════════════════════════════
+            ⛔ **قاعدة المسار**
+            ═══════════════════════════════
+            **الملف الذي تحرّره: `${{ env.RIJAL_FILE }}`** — هو وحده.
+            **ممنوع تعديل** أي ملفّ آخر: لا `${{ env.HUB_FILE }}` ولا `daleel.html` ولا `aroud.html`
+            ولا `aqar*` ولا `land-*` ولا `arsa.html` ولا `invest*` ولا `assets/` ولا `data/`.
+            سير العمل يفحص هذا بعدك ويُفشل الريّة إن مُسَّ أي ملف آخر.
+            **استثناء القراءة:** يجوز لك **قراءة** `${{ env.PROFILE_FILE }}` — وهو مرجعك الأساسي.
+
+            ═══════════════════════════════
+            ⛔ **قاعدة الجولة الواحدة**
+            ═══════════════════════════════
+            ريّة دفعة واحدة غير تفاعلية. لا جولة تالية ولا إشعارات ولا استيقاظ لاحق.
+            حين تُنهي ردّك تموت العملية وكلّ ما لم تكتبه يضيع.
+            **ممنوع** `ScheduleWakeup` وأي جدولة. استدعاء الوكيل يُعيد نتيجته في النداء نفسه —
+            انتظرها في مكانك ثمّ اكتبها في الملف فوراً.
+
+            ═══════════════════════════════
+            📏 **الخطوة ١ — اقرأ ملفّ المقاسات أوّلاً (إلزامي)**
+            ═══════════════════════════════
+            افتح `${{ env.PROFILE_FILE }}` واقرأه كاملاً قبل أي بحث. فيه:
+            مقاسات أبو عمر · قاعدة الأسلوب حسب عمره · الأصناف السبعة · العلامات في ثلاث طبقات
+            (لها فرع في ملاطيا · متخصّصو المقاسات الكبيرة أونلاين · الأسواق الإلكترونية) ·
+            العلامات المُستبعَدة وأسبابها · وقواعد الوكيل.
+            **لا تبحث في علامة أُدرجت في `excluded_brands`** — فُحصت وأُسقطت بسبب مكتوب.
+
+            ═══════════════════════════════
+            🎯 **ما يدخل هذه الصفحة وما لا يدخل — أهمّ قاعدة**
+            ═══════════════════════════════
+            **شرطان معاً، وسقوط أيّهما يُسقط البطاقة:**
+
+            **(١) المقاس متوفّر فعلاً** — بنطلون 54 أو 56 · جاكيت/بليزر/بدلة 54 ·
+            قميص وداخلية ورياضية XXL (2XL) فأكبر.
+            تحقّق من **صفحة المنتج نفسها** أو من مرشّح المقاس في صفحة الفئة.
+            صنفٌ لا تتأكّد من توفّر مقاسه = **لا يدخل**. «غالباً متوفّر» ليست تحقّقاً.
+
+            **(٢) الأسلوب يناسب رجلاً في الستّين** — كلاسيكي، قَصّة واسعة مريحة
+            (`Regular Fit` · `Geniş Kesim` · `6 Drop`)، ألوان هادئة.
+            **أسقط** `Slim Fit` و`Extra Slim` و`Skinny`، والقَصّات الشبابية،
+            والطبعات والشعارات الكبيرة، والألوان الصارخة.
+
+            وما **لا** يدخل مطلقاً: ملابس نسائية أو أطفال · أحذية وحقائب (لها مكانها في صفحة العروض) ·
+            صنف بلا سعر معلَن · إعلان بلا رابط صفحة منتج أو فئة.
+
+            **ليس شرطاً أن يكون مخفَّضاً.** هذه ليست صفحة تخفيضات بل صفحة «ما يصلح لي ومتوفّر بمقاسي».
+            سعرٌ عاديّ معقول لصنف بمقاسه **يدخل** — واذكر أنّه سعر عاديّ لا حملة.
+
+            ═══════════════════════════════
+            💱 **قاعدة العملات الثلاث**
+            ═══════════════════════════════
+            سعر صرف اليوم: `${{ steps.fx.outputs.line }}`
+            كل مبلغ يُكتب `₺1.698 ($35 · ₪106)` — الليرة أوّلاً ومعها الدولار والشيكل.
+            **ممنوع** اختراع سعر صرف أو استرجاعه من الذاكرة. إن كان `ok=false` فاكتب الليرة وحدها.
+            **الأرقام لاتينية دائماً** — `0-9` لا `٠-٩`، و`%` لا `٪`، والفاصلة العشرية `.` لا `٫`.
+
+            ═══════════════════════════════
+            🔎 **الخطوة ٢ — سبعة وكلاء بحث بالتوازي**
+            ═══════════════════════════════
+            النافذة: من `${{ steps.win.outputs.from }}` إلى `${{ steps.win.outputs.today }}`.
+            ⚠️ مسحة كاملة مطلوبة: `force=${{ inputs.force }}`. إن كانت `true` فالنافذة **مُلغاة**:
+            امسح الأصناف السبعة كأنّ شيئاً لم يُغطَّ.
+
+            **إن توفّرت أداة الوكلاء** (Task أو Agent): شغّل **٧ وكلاء** بالتوازي في رسالة واحدة
+            (`subagent_type: general-purpose`). **وإن لم تتوفّر — لا تتوقّف**: نفّذ الأصناف السبعة
+            بنفسك عبر WebSearch وWebFetch.
+
+            وكيلٌ لكلّ صنف: ١. بنطلون · ٢. قميص · ٣. جاكيت رسمي · ٤. جاكيت بليزر ·
+            ٥. بدلة · ٦. ملابس داخلية · ٧. ملابس رياضية.
+
+            كل وكيل:
+            - يبدأ من **الطبقة الأولى** (`tier1_malatya_branch`) — فالقارئ يستطيع القياس والشراء اليوم.
+              ثمّ الطبقة الثانية (متخصّصو المقاسات الكبيرة أونلاين)، ثمّ الأسواق الإلكترونية.
+            - يبحث **بالتركية أوّلاً**: `büyük beden` · `erkek` + اسم الصنف
+              (`pantolon` · `gömlek` · `klasik ceket` · `blazer ceket` · `takım elbise` ·
+              `iç çamaşırı` · `eşofman`) + `54 beden` أو `56 beden` أو `2XL`,
+              ومعها `indirim` · `kampanya` · `outlet` للحملات.
+            - يفتح **صفحة المنتج أو صفحة الفئة بمرشّح المقاس** — لا نتيجة بحث عامّة.
+            - يعيد **٣–٨ أصناف** لصنفه، ولكلٍّ منها:
+              **الاسم · المقاس المتحقَّق · السعر بالليرة · السعر السابق أو نسبة الخصم إن وُجدت ·
+              العلامة · هل لها فرع في ملاطيا · تاريخ انتهاء الحملة إن أُعلن · الرابط.**
+            - **يصرّح صراحةً** إن لم يجد شيئاً بمقاسه في صنفه، ويذكر **بالاسم** العلامات التي
+              فتح صفحاتها فلم يجد فيها مقاسه. الصفر المُفسَّر مقبول؛ الصفر الصامت لا.
+
+            انتظر الوكلاء السبعة جميعاً **داخل هذه الجولة**.
+
+            ═══════════════════════════════
+            ✍️ **الخطوة ٣ — التحرير (اكتب أوّلاً بأوّل!)**
+            ═══════════════════════════════
+            فور انتهاء وكيل من صنفه **اكتب بطاقاته في الملف فوراً** عبر Edit، ثمّ انتقل للتالي.
+            سبع كتابات صغيرة، لا كتابة واحدة كبيرة.
+
+            - احذف المكرّر (الصنف نفسه من مصدرين = بطاقة واحدة بأقوى مصدر).
+            - **لا تحذف الأرشيف**: البطاقة المنتهية تبقى (الصفحة تُبهتها آلياً).
+            - **استثناء الحذف الوحيد:** بطاقة مضى على `data-until` فيها أكثر من
+              `${{ env.PRUNE_AFTER_DAYS }}` يوماً — احذفها.
+            - قسمٌ بلا جديد ⇐ أبقِ `<p class="empty">لا جديد بعد في هذا القسم</p>`.
+            - «أفضل ما وجدته اليوم»: **٣–٥ أصناف** — الأعلى قيمةً لا الأرخص؛
+              رجّح ما له فرع في ملاطيا وما مقاسه نادر التوفّر (54 في الجاكيت والبدلة خاصّة).
+
+            ═══════════════════════════════
+            🧱 **الخطوة ٤ — بناء HTML**
+            ═══════════════════════════════
+            استبدل ما بين `<!--RIJAL-CONTENT-START-->` و `<!--RIJAL-CONTENT-END-->` فقط.
+            **أبقِ العلامتين.**
+
+            الأقسام الثمانية **بهذا الترتيب وبهذه الأيقونات حرفياً**:
+            ```
+            <h2><span class="sec-ico">⭐</span> أفضل ما وجدته اليوم <span class="count">0</span></h2>
+            <div class="highlights"> … بطاقات … </div>
+            <h2><span class="sec-ico">👖</span> بنطلون <span class="count">0</span></h2>
+            <h2><span class="sec-ico">👕</span> قميص <span class="count">0</span></h2>
+            <h2><span class="sec-ico">🧥</span> جاكيت رسمي <span class="count">0</span></h2>
+            <h2><span class="sec-ico">🤵</span> جاكيت بليزر <span class="count">0</span></h2>
+            <h2><span class="sec-ico">🕴️</span> بدل <span class="count">0</span></h2>
+            <h2><span class="sec-ico">🩲</span> ملابس داخلية <span class="count">0</span></h2>
+            <h2><span class="sec-ico">🏃</span> ملابس رياضية <span class="count">0</span></h2>
+            ```
+            الصفحة تحسب العدّادات بنفسها — اترك `0` كما هي.
+
+            كل بطاقة:
+            ```
+            <div class="item" data-date="YYYY-MM-DD" data-until="YYYY-MM-DD" data-cat="pantolon" data-store="Hatemoğlu"><h3>العنوان</h3><p>الوصف</p><div class="meta"><span class="badge b-size">مقاس 54</span><span class="badge b-disc">-40%</span><span class="badge b-price">₺1.698 ($35 · ₪106)</span><span class="badge b-until">حتى 31/10</span><span class="badge b-store">Hatemoğlu</span><span class="badge b-branch">فرع ملاطيا</span><a class="src" href="URL" target="_blank" rel="noopener">المصدر ↗</a></div></div>
+            ```
+            ⚠️ `data-cat` **إلزامي** وقيمته واحدة من:
+            `pantolon` · `gomlek` · `ceket` · `blazer` · `takim` · `ic_camasiri` · `spor`
+            — منها يُبنى مرشّح الفئات، فخطأٌ فيها يُخفي البطاقة عن القارئ.
+            ⚠️ `data-date` **إلزامي** بصيغة `YYYY-MM-DD` (يوم الرصد).
+            ⚠️ `data-until` **فقط** إن أُعلن تاريخ انتهاء — لا تخترعه ولا تكتبه فارغاً.
+            ⚠️ `data-store` = اسم العلامة كما تُعرف — وحّد التسمية ولا تنوّعها.
+            ⚠️ **`b-size` إلزامية في كل بطاقة** — هذه الصفحة كلّها قائمة على المقاس.
+            ⚠️ `b-price` فيها `₺` و`$` و`₪` معاً.
+            ⚠️ `b-branch` **فقط** لعلامة لها فرع فعليّ في ملاطيا (نصّها «فرع ملاطيا»).
+               وما لا فرع له: `<span class="badge b-online">أونلاين فقط</span>`.
+               لا تجمع الشارتين في بطاقة واحدة.
+            ⚠️ رابط `a.src` هو **صفحة المنتج أو الفئة نفسها** لا الصفحة الرئيسية للعلامة.
+
+            ═══════════════════════════════
+            🖊️ **الخطوة ٥ — تقرير الرصد**
+            ═══════════════════════════════
+            أوّل ما يلي `<!--RIJAL-CONTENT-START-->` مباشرةً:
+            ```
+            <!--RIJAL-REPORT
+            run=${{ steps.win.outputs.today }} HH:MM | window=${{ steps.win.outputs.from }}..${{ steps.win.outputs.today }} | force=${{ inputs.force }}
+            fx=${{ steps.fx.outputs.line }}
+            👖 بنطلون found=N sized=N written=N (ملاحظة)
+            👕 قميص found=N sized=N written=N (ملاحظة)
+            🧥 جاكيت رسمي found=N sized=N written=N (ملاحظة)
+            🤵 بليزر found=N sized=N written=N (ملاحظة)
+            🕴️ بدل found=N sized=N written=N (ملاحظة)
+            🩲 داخلية found=N sized=N written=N (ملاحظة)
+            🏃 رياضية found=N sized=N written=N (ملاحظة)
+            brands_checked_no_size=<العلامات التي فُتحت صفحاتها ولم يوجد فيها مقاسه، بالاسم>
+            note=<سطر واحد: لماذا كانت الحصيلة صفراً إن كانت كذلك>
+            -->
+            ```
+            `found` = ما رأيته · `sized` = ما تأكّد توفّر مقاسه · `written` = ما كتبته.
+            صفر مقبول — صفر بلا تفسير ليس مقبولاً.
+
+            ═══════════════════════════════
+            ✅ **الخطوة ٦ — فحص ذاتي قبل الإنهاء**
+            ═══════════════════════════════
+            - `git status --porcelain` لا يُظهر إلا `${{ env.RIJAL_FILE }}`
+            - `RIJAL-CONTENT-START` و`RIJAL-CONTENT-END` مرّة واحدة لكلٍّ
+            - الأقسام الثمانية موجودة بترتيبها
+            - كل `<div class="item"` فيه `data-date` و`data-cat` صالحان وشارة `b-size`
+            - كل `b-price` فيها `₺` و`$` و`₪`
+            - توازن `<div>`
+
+            **تقرير ختامي بالعربية:** ما أُضيف لكل صنف · أبرز ٣ وما يميّزها ·
+            ما لم يُعثر له على مقاس ولماذا · المصادر بروابطها.
+          claude_args: |
+            --model sonnet
+            --allowedTools "Read,Write,Edit,Bash,WebFetch,WebSearch,Glob,Grep,Task,Agent"
+            --disallowedTools "ScheduleWakeup,CronCreate,CronList,CronDelete,Monitor,SendMessage,PushNotification"
+            --permission-mode acceptEdits
+            --max-turns 110
+
+      - name: 🚧 تطويق — لم يُمسّ إلا ملف الملابس
+        run: |
+          set -euo pipefail
+          CHANGED=$(git status --porcelain | awk '{print $2}' | sort -u)
+          echo "— ما تغيّر —"; echo "$CHANGED"
+          BAD=$(echo "$CHANGED" | grep -v "^${RIJAL_FILE}$" || true)
+          if [ -n "$BAD" ]; then
+            echo "❌ مُسَّت ملفّات خارج النطاق:"; echo "$BAD"
+            git checkout -- $BAD 2>/dev/null || true
+            echo "↩️ أُعيدت إلى حالتها"
+          fi
+          grep -q "$HUB_MARK" "$HUB_FILE" || { echo "❌ مركز التحكّم فقد عنوانه"; exit 1; }
+
+      - name: التحقّق — لا ننشر ملفاً معطوباً
+        run: |
+          set -euo pipefail
+          git show "HEAD:$RIJAL_FILE" > /tmp/prev-rijal.html 2>/dev/null || : > /tmp/prev-rijal.html
+          python3 - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import re, os, sys, datetime
+
+          path = os.environ['RIJAL_FILE']
+          new = open(path, encoding='utf-8').read()
+          old = open('/tmp/prev-rijal.html', encoding='utf-8').read()
+          errs, notes = [], []
+
+          for a in ['RIJAL-CONTENT-START', 'RIJAL-CONTENT-END']:
+              if new.count(a) != 1:
+                  errs.append("العلامة %s ظهرت %d مرّة (المطلوب ١)" % (a, new.count(a)))
+          if new.count('id="rijal-date"') != 1:
+              errs.append('id="rijal-date" ظهر %d مرّة (المطلوب ١)' % new.count('id="rijal-date"'))
+          if new.count('<div') != new.count('</div>'):
+              errs.append("اختلال <div>: %d مفتوح مقابل %d مغلق" % (new.count('<div'), new.count('</div>')))
+          ids = re.findall(r'\sid="([^"]+)"', new)
+          dups = sorted({i for i in ids if ids.count(i) > 1})
+          if dups:
+              errs.append("مُعرِّفات مكرّرة: %s" % dups[:5])
+
+          secs = re.findall(r'<h2[^>]*>\s*<span class="sec-ico">', new)
+          if len(secs) < 8:
+              errs.append("عدد الأقسام %d (المطلوب ٨)" % len(secs))
+          else:
+              notes.append("الأقسام %d" % len(secs))
+
+          CATS = {'pantolon','gomlek','ceket','blazer','takim','ic_camasiri','spor'}
+
+          def _cal_ok(v):
+              if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', v):
+                  return False
+              try:
+                  datetime.date.fromisoformat(v); return True
+              except ValueError:
+                  return False
+
+          cards = re.findall(r'<div class="item"([^>]*)>', new)
+          nodate = [c for c in cards if 'data-date=' not in c]
+          nocat = [c for c in cards if 'data-cat=' not in c]
+          if nodate:
+              errs.append("%d بطاقة بلا data-date" % len(nodate))
+          if nocat:
+              errs.append("%d بطاقة بلا data-cat" % len(nocat))
+          badcat = [c for c in re.findall(r'data-cat="([^"]*)"', new) if c not in CATS]
+          if badcat:
+              errs.append("data-cat خارج القائمة: %s" % sorted(set(badcat))[:5])
+          dates = re.findall(r'<div class="item"[^>]*data-date="([^"]*)"', new)
+          untils = re.findall(r'data-until="([^"]*)"', new)
+          bad = [d for d in dates + untils if not _cal_ok(d)]
+          if bad:
+              errs.append("تاريخ غير صالح: %s" % bad[:5])
+
+          # المقاس هو جوهر هذه الصفحة — بطاقة بلا شارة مقاس ليست لها معنى
+          blocks = re.findall(r'<div class="item".*?</div>\s*</div>', new, re.S)
+          nosize = [b for b in blocks if 'b-size' not in b]
+          if nosize:
+              errs.append("%d بطاقة بلا شارة مقاس b-size" % len(nosize))
+          noprice = [b for b in blocks if 'b-price' not in b]
+          if noprice:
+              errs.append("%d بطاقة بلا سعر" % len(noprice))
+          both = [b for b in blocks if 'b-branch' in b and 'b-online' in b]
+          if both:
+              errs.append("%d بطاقة تجمع «فرع ملاطيا» و«أونلاين فقط» معاً" % len(both))
+
+          prices = re.findall(r'<span class="badge b-price">(.*?)</span>', new)
+          onecur = [p for p in prices if not ('₺' in p and '$' in p and '₪' in p)]
+          if onecur:
+              errs.append("%d شارة سعر بلا العملات الثلاث: %s" % (len(onecur), onecur[:3]))
+
+          if cards and not nodate and not bad:
+              notes.append("البطاقات %d (%s→%s)" % (len(cards), min(dates), max(dates)))
+
+          if old:
+              old_cards = len(re.findall(r'<div class="item"', old))
+              if old_cards >= 10 and len(cards) < old_cards * 0.5:
+                  errs.append("انهيار: البطاقات %d بعد أن كانت %d" % (len(cards), old_cards))
+
+          print("## 🧪 التحقّق — صفحة الملابس")
+          for n in notes: print("- ✅ %s" % n)
+          for e in errs: print("- ❌ %s" % e)
+          if errs:
+              sys.exit(1)
+          print("- ✅ الصفحة سليمة")
+          PY
+
+      - name: Commit ودفع إلى main
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name "malatya-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$RIJAL_FILE"
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "لا تغيير — تخطّي النشر"
+            exit 0
+          fi
+          git commit -m "ملابسي — $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')"
+          # دفعٌ مقاوم للتسابق — عدّة سيور تدفع إلى main
+          for i in 1 2 3 4 5; do
+            if git push; then echo "✅ دُفع إلى main (محاولة $i)"; break; fi
+            if [ "$i" = "5" ]; then
+              echo "❌ تعذّر الدفع بعد خمس محاولات"; exit 1
+            fi
+            echo "↻ main تقدّم أثناء عملنا — أُعيد الأساس وأحاول ثانيةً (محاولة $i)"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort 2>/dev/null || true
+              RESCUE="rescue/rijal-$(TZ=Asia/Jerusalem date +%Y%m%d-%H%M%S)"
+              if git push origin "HEAD:refs/heads/$RESCUE" 2>/dev/null; then
+                echo "🛟 تعارض مع main — العمل محفوظ في الفرع $RESCUE"
+                {
+                  echo "## 🛟 تعارض دفع — العمل محفوظ"
+                  echo "عمل هذه الريّة محفوظ في الفرع: \`$RESCUE\`"
+                } >> "$GITHUB_STEP_SUMMARY"
+              else
+                echo "❌ تعارض مع main وتعذّر حتى حفظ فرع الإنقاذ"
+              fi
+              exit 1
+            fi
+            sleep $((i * 5))
+          done
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  # ⛔ الدفع بـGITHUB_TOKEN لا يُشعل سير عمل آخر — ننادي النشر صراحةً
+  publish:
+    name: نشر المجلّد كاملاً
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    uses: ./.github/workflows/malatya-publish.yml
+    secrets: inherit

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ملابسي — ملابس رجالية بمقاسي في ملاطيا</title>
+<meta name="description" content="ملابس رجالية كلاسيكية بمقاس 54–56 وXXL في ملاطيا — بنطلون وقميص وجاكيت وبدلة وملابس داخلية ورياضية، من علامات لها اسمها، بأسعار محقَّقة وبالعملات الثلاث.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E👔%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/malatya.css?v=3">
+<style>
+/* ==== صفحة «ملابسي» — البطاقات التي يكتبها وكيل الملابس ==== */
+.lede{background:linear-gradient(135deg,rgba(169,139,255,.12),rgba(91,157,255,.07)),linear-gradient(180deg,var(--card),var(--bg2));
+  border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:22px}
+.lede .rule{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.lede .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+h2{display:flex;align-items:center;gap:11px;font-size:19px;font-weight:800;margin:30px 0 12px;
+  padding-bottom:10px;border-bottom:1px solid var(--border-soft)}
+.sec-ico{width:32px;height:32px;border-radius:9px;background:var(--accent-soft);border:1px solid var(--accent-line);
+  display:grid;place-items:center;font-size:16px;flex:0 0 auto}
+h2 .count{margin-inline-start:auto;font-size:12px;color:var(--muted);font-weight:600;font-family:var(--font-num)}
+.item{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);
+  border-inline-start:4px solid var(--violet);border-radius:var(--r-sm);padding:14px 17px;margin:10px 0}
+.item h3{font-size:15px;font-weight:700;color:#fff;margin:0 0 5px;line-height:1.45}
+.item h3 a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(247,165,43,.45)}
+.item h3 a:hover,.item h3 a:focus{color:var(--accent);border-bottom-color:var(--accent)}
+.item h3 a::after{content:" ↗";font-size:11px;color:var(--accent);vertical-align:2px}
+.item p{color:var(--text2);font-size:14px;margin:4px 0}
+.meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;align-items:center}
+.badge.b-size{background:rgba(91,157,255,.16);color:#bcd7ff;border:1px solid rgba(91,157,255,.4);font-family:var(--font-num);font-weight:800}
+.badge.b-disc{background:var(--red-soft);color:var(--red);border:1px solid rgba(255,107,122,.35);font-family:var(--font-num)}
+.badge.b-price{background:var(--green-soft);color:var(--green);border:1px solid rgba(64,209,131,.3);font-family:var(--font-num);direction:ltr}
+.badge.b-until{background:var(--amber-soft);color:var(--amber);border:1px solid rgba(255,194,75,.3)}
+.badge.b-store{background:var(--violet-soft);color:#d9caff;border:1px solid rgba(169,139,255,.35);font-weight:800}
+.badge.b-branch{background:var(--green-soft);color:var(--green);border:1px solid rgba(64,209,131,.3);font-weight:800}
+.badge.b-online{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+.src{font-size:12px;color:var(--muted);margin-inline-start:auto;font-weight:600;text-decoration:none}
+.src:hover{color:var(--accent)}
+.highlights .item{border-inline-start-color:var(--amber);background:linear-gradient(180deg,rgba(255,194,75,.07),var(--bg2))}
+.highlights .item h3::before{content:"⭐ "}
+.empty{color:var(--muted);font-style:italic;padding:6px 4px;font-size:13.5px}
+.item.expired{opacity:.42;border-inline-start-color:var(--muted)}
+.item.expired h3::after{content:" — انتهى";color:var(--red);font-size:12px;font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+.filters button{font-family:var(--font);font-size:12.5px;font-weight:700;cursor:pointer;color:var(--text2);
+  background:var(--card);border:1px solid var(--border);border-radius:100px;padding:6px 14px}
+.filters button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.filters.cats.top{margin:16px 0 22px}
+.filters.cats.top button{font-size:14px;font-weight:800;padding:10px 18px;background:linear-gradient(180deg,var(--card),var(--bg2))}
+.filters.cats.top button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.sizecard{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);
+  border-radius:var(--r);padding:16px 18px;margin:18px 0}
+.sizecard h3{margin:0 0 10px;font-size:15.5px;color:#fff;font-weight:800}
+.sizegrid{display:flex;flex-wrap:wrap;gap:8px}
+.sizegrid span{font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:100px;
+  background:rgba(91,157,255,.12);color:#bcd7ff;border:1px solid rgba(91,157,255,.3);font-family:var(--font-num)}
+.foot-credit{margin:44px 0 10px;padding-top:18px;border-top:1px solid var(--border-soft);
+  color:var(--muted);font-size:12px;line-height:1.9;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="logo">👔</div>
+    <div>
+      <h1>ملابسي</h1>
+      <div class="sub">ملابس رجالية كلاسيكية بمقاسي — في ملاطيا وأونلاين</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="stamp">آخر رصد: <b><span id="rijal-date">—</span></b></div>
+  </div>
+
+  <div class="filters cats top" id="rijal-cats"></div>
+
+  <section class="lede">
+    <span class="eyebrow">👔 خانة الملابس</span>
+    <p class="lead">هنا الملابس الرجالية الكلاسيكية التي <b>تتوفّر بمقاسي فعلاً</b> — لا ما يُعجب العين ثمّ
+      يتبيّن أنّ أكبر مقاس فيه 52. كل بطاقة هنا مقاسها محقَّق، وأسلوبها يناسب رجلاً في الستّين:
+      قَصّات واسعة ومريحة وألوان هادئة، لا قَصّات ضيّقة ولا موضة شبابية. وكل سعر بالعملات الثلاث.</p>
+
+    <div class="sizecard">
+      <h3>📏 مقاساتي — شرط الدخول لا تفصيل</h3>
+      <div class="sizegrid">
+        <span>بنطلون 54–56</span>
+        <span>جاكيت 54</span>
+        <span>بدلة 54</span>
+        <span>قميص XXL</span>
+        <span>داخلية XXL+</span>
+        <span>رياضية XXL+</span>
+      </div>
+      <p class="mini" style="margin-top:10px">المقاسات التركية تجري أصغر قليلاً — في بعض العلامات يلزم 3XL
+        ليعادل XXL. الوكيل يفحص المقاس في صفحة المنتج نفسها قبل أن يكتب البطاقة.</p>
+    </div>
+
+    <div class="rule">
+      <span class="chip">🏬 الفرع المحلّي أوّلاً — ما يمكن قياسه وشراؤه اليوم</span>
+      <span class="chip">🧵 كلاسيكي وواسع · بلا Slim Fit</span>
+      <span class="chip">⏳ العرض المنتهي يبهت ولا يُحذف</span>
+    </div>
+    <div class="cta">
+      <a class="btn" href="index.html">🎛️ مركز التحكّم</a>
+      <a class="btn" href="aroud.html">🛒 العروض والحملات</a>
+      <a class="btn" href="daleel.html">📖 الدليل والنشرة اليومية</a>
+    </div>
+  </section>
+
+  <div class="chips" id="rijal-chips">
+    <span class="chip">👔 <b><span class="num" id="n-live">0</span></b> صنف سارٍ</span>
+    <span class="chip">🏬 <b><span class="num" id="n-branch">0</span></b> من فرع في ملاطيا</span>
+    <span class="chip">🗂️ <b><span class="num" id="n-all">0</span></b> بطاقة في الأرشيف</span>
+  </div>
+  <div class="filters" id="rijal-filters"></div>
+
+  <section id="rijal">
+<!--RIJAL-CONTENT-START-->
+<!--RIJAL-REPORT
+run=— | لم تُشغَّل أيّ ريّة بعد
+-->
+<h2><span class="sec-ico">⭐</span> أفضل ما وجدته اليوم <span class="count">0</span></h2>
+<div class="highlights">
+<p class="empty">لم تُشغَّل أيّ ريّة بعد — أوّل رصد يملأ هذه الصفحة.</p>
+</div>
+<h2><span class="sec-ico">👖</span> بنطلون <span class="count">0</span></h2>
+<p class="empty">لا جديد بعد في هذا القسم</p>
+<h2><span class="sec-ico">👕</span> قميص <span class="count">0</span></h2>
+<p class="empty">لا جديد بعد في هذا القسم</p>
+<h2><span class="sec-ico">🧥</span> جاكيت رسمي <span class="count">0</span></h2>
+<p class="empty">لا جديد بعد في هذا القسم</p>
+<h2><span class="sec-ico">🤵</span> جاكيت بليزر <span class="count">0</span></h2>
+<p class="empty">لا جديد بعد في هذا القسم</p>
+<h2><span class="sec-ico">🕴️</span> بدل <span class="count">0</span></h2>
+<p class="empty">لا جديد بعد في هذا القسم</p>
+<h2><span class="sec-ico">🩲</span> ملابس داخلية <span class="count">0</span></h2>
+<p class="empty">لا جديد بعد في هذا القسم</p>
+<h2><span class="sec-ico">🏃</span> ملابس رياضية <span class="count">0</span></h2>
+<p class="empty">لا جديد بعد في هذا القسم</p>
+<!--RIJAL-CONTENT-END-->
+  </section>
+
+  <div class="foot-credit">
+    © جميع الحقوق محفوظة لـ: محمد صالح اغبارية - 2026
+  </div>
+
+</div>
+<script src="assets/nav.js?v=12" defer></script>
+<script>
+(function () {
+  'use strict';
+  var sec = document.getElementById('rijal');
+  if (!sec) return;
+
+  var CATS = [
+    { k: 'all',         n: 'الكل',          i: '👔' },
+    { k: 'pantolon',    n: 'بنطلون',        i: '👖' },
+    { k: 'gomlek',      n: 'قميص',          i: '👕' },
+    { k: 'ceket',       n: 'جاكيت رسمي',    i: '🧥' },
+    { k: 'blazer',      n: 'بليزر',         i: '🤵' },
+    { k: 'takim',       n: 'بدل',           i: '🕴️' },
+    { k: 'ic_camasiri', n: 'داخلية',        i: '🩲' },
+    { k: 'spor',        n: 'رياضية',        i: '🏃' }
+  ];
+
+  var items = Array.prototype.slice.call(sec.querySelectorAll('.item'));
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+
+  function parseDate(v) {
+    if (!v || !/^\d{4}-\d{2}-\d{2}$/.test(v)) return null;
+    var p = v.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  // بطاقة انتهت مدّتها تبهت ولا تُحذف
+  var live = 0, branch = 0;
+  items.forEach(function (n) {
+    var u = parseDate(n.getAttribute('data-until'));
+    if (u && u < today) { n.classList.add('expired'); }
+    else { live++; }
+    if (n.querySelector('.b-branch')) branch++;
+    // عنوان البطاقة يفتح رابط المصدر نفسه
+    var h = n.querySelector('h3'), a = n.querySelector('a.src');
+    if (h && a && a.getAttribute('href') && !h.querySelector('a')) {
+      var link = document.createElement('a');
+      link.href = a.getAttribute('href');
+      link.target = '_blank';
+      link.rel = 'noopener';
+      while (h.firstChild) link.appendChild(h.firstChild);
+      h.appendChild(link);
+    }
+  });
+
+  function setNum(id, v) { var e = document.getElementById(id); if (e) e.textContent = v; }
+  setNum('n-live', live);
+  setNum('n-branch', branch);
+  setNum('n-all', items.length);
+
+  // ختم آخر رصد — من تقرير الوكيل إن وُجد
+  var stamp = document.getElementById('rijal-date');
+  if (stamp) {
+    var m = sec.innerHTML.match(/run=(\d{4}-\d{2}-\d{2}[^|\n]*)/);
+    stamp.textContent = m ? m[1].trim() : '—';
+  }
+
+  // عدّاد كل قسم
+  Array.prototype.slice.call(sec.querySelectorAll('h2')).forEach(function (h) {
+    var c = h.querySelector('.count'); if (!c) return;
+    var n = 0, x = h.nextElementSibling;
+    if (x && x.classList.contains('highlights')) {
+      n = x.querySelectorAll('.item').length;
+    } else {
+      while (x && x.tagName !== 'H2') {
+        if (x.classList && x.classList.contains('item')) n++;
+        x = x.nextElementSibling;
+      }
+    }
+    c.textContent = n;
+  });
+
+  // شريط الفئات
+  var catsBar = document.getElementById('rijal-cats');
+  var storeBar = document.getElementById('rijal-filters');
+  var curCat = 'all', curStore = 'all';
+
+  function visibleByCat(n) { return curCat === 'all' || n.getAttribute('data-cat') === curCat; }
+
+  function apply() {
+    items.forEach(function (n) {
+      var okCat = visibleByCat(n);
+      var okStore = curStore === 'all' || n.getAttribute('data-store') === curStore;
+      n.style.display = (okCat && okStore) ? '' : 'none';
+    });
+    // أخفِ عنوان قسم لا بطاقة ظاهرة تحته
+    Array.prototype.slice.call(sec.querySelectorAll('h2')).forEach(function (h) {
+      var any = false, x = h.nextElementSibling, kids = [];
+      if (x && x.classList.contains('highlights')) {
+        kids = Array.prototype.slice.call(x.querySelectorAll('.item'));
+        any = kids.some(function (n) { return n.style.display !== 'none'; });
+        x.style.display = any ? '' : 'none';
+      } else {
+        while (x && x.tagName !== 'H2') {
+          if (x.classList && x.classList.contains('item')) {
+            if (x.style.display !== 'none') any = true;
+          } else if (x.classList && x.classList.contains('empty')) {
+            x.style.display = (curCat === 'all' && curStore === 'all') ? '' : 'none';
+            if (curCat === 'all' && curStore === 'all') any = true;
+          }
+          x = x.nextElementSibling;
+        }
+      }
+      h.style.display = any ? '' : 'none';
+    });
+    buildStores();
+  }
+
+  function buildStores() {
+    if (!storeBar) return;
+    var seen = {};
+    items.forEach(function (n) {
+      if (!visibleByCat(n)) return;
+      var s = n.getAttribute('data-store');
+      if (s) seen[s] = (seen[s] || 0) + 1;
+    });
+    var names = Object.keys(seen).sort(function (a, b) { return seen[b] - seen[a]; });
+    if (!names.length) { storeBar.innerHTML = ''; return; }
+    storeBar.innerHTML = '';
+    var all = document.createElement('button');
+    all.textContent = 'كل المتاجر';
+    all.className = curStore === 'all' ? 'on' : '';
+    all.addEventListener('click', function () { curStore = 'all'; apply(); });
+    storeBar.appendChild(all);
+    names.forEach(function (s) {
+      var b = document.createElement('button');
+      b.textContent = s + ' (' + seen[s] + ')';
+      b.className = curStore === s ? 'on' : '';
+      b.addEventListener('click', function () { curStore = (curStore === s ? 'all' : s); apply(); });
+      storeBar.appendChild(b);
+    });
+  }
+
+  if (catsBar) {
+    CATS.forEach(function (c) {
+      var n = c.k === 'all' ? items.length
+            : items.filter(function (x) { return x.getAttribute('data-cat') === c.k; }).length;
+      var b = document.createElement('button');
+      b.textContent = c.i + ' ' + c.n + ' (' + n + ')';
+      b.className = c.k === 'all' ? 'on' : '';
+      b.addEventListener('click', function () {
+        curCat = c.k; curStore = 'all';
+        Array.prototype.slice.call(catsBar.querySelectorAll('button')).forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        apply();
+        if (c.k !== 'all' && typeof sec.scrollIntoView === 'function') {
+          sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+      catsBar.appendChild(b);
+    });
+  }
+
+  apply();
+})();
+</script>
+</body>
+</html>
