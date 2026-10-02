@@ -11,11 +11,11 @@
     // يحدّد الجذر تلقائياً سواء كانت الصفحة في /malatya/ أو /malatya/reports/
     var s = document.currentScript || (function () {
       var a = document.getElementsByTagName('script');
-      for (var i = a.length - 1; i >= 0; i--) if (/nav\.js/.test(a[i].src)) return a[i];
+      for (var i = a.length - 1; i >= 0; i--) if (/nav[^/]*\.js/.test(a[i].src)) return a[i];
       return null;
     })();
     if (!s) return '';
-    return s.src.replace(/assets\/nav\.js.*$/, '');
+    return s.src.replace(/assets\/nav[^/]*\.js.*$/, '');
   })();
 
   var SECTIONS = [
@@ -329,9 +329,9 @@
     var s = document.currentScript;
     if (!s) {
       var a = document.getElementsByTagName('script');
-      for (var i = a.length - 1; i >= 0; i--) if (/nav\.js/.test(a[i].src)) { s = a[i]; break; }
+      for (var i = a.length - 1; i >= 0; i--) if (/nav[^/]*\.js/.test(a[i].src)) { s = a[i]; break; }
     }
-    return s ? s.src.replace(/assets\/nav\.js.*$/, '') : '';
+    return s ? s.src.replace(/assets\/nav[^/]*\.js.*$/, '') : '';
   })();
 
   /* ── عامل الخدمة ── */
