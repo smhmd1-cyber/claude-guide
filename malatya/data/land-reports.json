@@ -1,44 +1,5 @@
 [
  {
-  "date": "2026-07-08",
-  "n": 60,
-  "hi": 0,
-  "avg": 50.2,
-  "top": [
-   {
-    "nb": "بحري (Bahri)",
-    "ppm": 284,
-    "sc": 69.4,
-    "url": "https://www.emlakjet.com/ilan/batur-gayrimenkul-den-gunes-enerji-paneline-uygun-satilik-tarla-18863848"
-   },
-   {
-    "nb": "قِرق بِنار (Kırkpınar)",
-    "ppm": 278,
-    "sc": 67.5,
-    "url": "https://www.emlakjet.com/ilan/batur-gayrimenkul-den-kirkpinarda-satilik-tarla-18907898"
-   },
-   {
-    "nb": "قره تبه (Karatepe)",
-    "ppm": 321,
-    "sc": 65.5,
-    "url": "https://www.emlakjet.com/ilan/turyap-metropolden-battalgazide-satilik-kayisi-bahcesi-19402154"
-   },
-   {
-    "nb": "غورغو (Görgü)",
-    "ppm": 132,
-    "sc": 64.0,
-    "url": "https://www.emlakjet.com/ilan/cafana-eski-koyun-ust-yamacinda-satilik-15-000m2-duz-arazi-19132543"
-   },
-   {
-    "nb": "خِرأوغلو (Hıroğlu)",
-    "ppm": 606,
-    "sc": 63.9,
-    "url": "https://www.emlakjet.com/ilan/kardelenden-satilik-firsat-yatirimi-19295402"
-   }
-  ],
-  "note": "لا إعلانات جديدة اليوم؛ السوق مستقر. أعلى القطع (بحري/قِرق بِنار) دون عتبة 70 بسبب أعلام «التربة/الطابو غير مذكور»."
- },
- {
   "date": "2026-07-10",
   "n": 105,
   "hi": 0,
@@ -1302,5 +1263,33 @@
    }
   ],
   "note": "89 قطعة مرصودة اليوم بعد إزالة التكرارات (آخر سجلّ فعلي 2026-09-30 — لا فجوة زمنية). 3 قطع جديدة (246→249): أرسا بولغورلو 1.300م² بـ5.500₺/م² (48.0) وأرسا باهتشلييفلر 390م² بـ2.564₺/م² (50.5) وأرسا تيجدة 763م² بـ8.257₺/م² (47.0) — الأولى والثالثة قريبتان من سعر الأرض المجهّزة فهامشهما ضعيف. لا تغيّر في أسعار القطع المعروفة. الصدارة: Boran@959₺(65.0) ثم Hıroğlu@606₺(63.9) ثم Duranlar@585₺(60.8). قيد: أرسا كل قضاء رُصد منها أول 30 بطاقة فقط (من ~67 في باتالغازي و~121 في يشيليورت) تبعاً لحدود أداة الجلب."
+ },
+ {
+  "date": "2026-10-02",
+  "n": 77,
+  "hi": 1,
+  "hi_thr": 65,
+  "avg": 47.1,
+  "top": [
+   {
+    "nb": "Boran",
+    "ppm": 959,
+    "sc": 65.0,
+    "url": "https://www.emlakjet.com/ilan/battalgazi-boranda-5-422-m-sulu-tarla-yatirimlik-firsat-19622472"
+   },
+   {
+    "nb": "Hıroğlu",
+    "ppm": 606,
+    "sc": 63.9,
+    "url": "https://www.emlakjet.com/ilan/kardelenden-satilik-firsat-yatirimi-19295402"
+   },
+   {
+    "nb": "Duranlar",
+    "ppm": 333,
+    "sc": 61.5,
+    "url": "https://www.emlakjet.com/ilan/yusuf-karadaglidan-yesilyurt-durankarda-satilik-tarla-19929808"
+   }
+  ],
+  "note": "77 قطعة مرصودة اليوم بعد إزالة التكرارات (آخر سجلّ فعلي 2026-10-01 — لا فجوة زمنية). 4 قطع جديدة (249→253): Duranlar تارلا 7.500م² بـ333₺/م² (61.5) وGörgü بستان «كوبون» 4.046م² بـ2.682₺/م² (48.0) وKuyulu أرسا 937م² بـ3.735₺/م² (47.0) وGedik أرسا 392م² بـ7.500₺/م² (44.0). 3 تغيّرات سعرية طفيفة نحو الانخفاض (Yarımcahan وHasırcılar وÖzal). الصدارة: Boran@959₺(65.0) ثم Hıroğlu@606₺(63.9) ثم Duranlar@333₺(61.5). قيد: كل صفحة رُصدت أول 10–30 بطاقة فقط تبعاً لحدود أداة الجلب."
  }
 ]
