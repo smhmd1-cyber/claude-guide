@@ -28,7 +28,7 @@ const CORE_ASSETS = [
   './manual.html',
   './offline.html',
   './assets/malatya.css?v=3',
-  './assets/nav.js?v=10',
+  './assets/nav-v13.js',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
   './manifest.webmanifest'

@@ -108,7 +108,7 @@ jobs:
                    data/invest-sources.json data/invest-structures.json data/invest-profile.json \
                    data/invest-incentive.json \
                    data/invest-risks.json data/invest-paths.json data/invest-watch.json \
-                   assets/malatya.css assets/nav.js data/reports-index.json; do
+                   assets/malatya.css assets/nav-v13.js data/reports-index.json; do
             test -s "_deploy/$f" || { echo "❌ ناقص في حزمة النشر: $f"; exit 1; }
           done
           test ! -e _deploy/docs || { echo "❌ docs/ يجب ألّا تدخل النشر الآلي"; exit 1; }
