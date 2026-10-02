@@ -126,10 +126,57 @@ jobs:
           security: loose
           local-dir: ./_deploy/
           server-dir: ./
-          state-name: .ftp-deploy-malatya-state.json
+          # ⚠️ 02/10/2026 — اسم جديد لملفّ الحالة، وهذا إصلاحٌ مقصود لا تجميل:
+          # ملفّ الحالة القديم كان يَعُدّ ملفّات `assets/` مرفوعةً وهي ليست كذلك،
+          # فبقي `nav.js` على ختم 25/09 و`malatya.css` على ختم 01/09 رغم تغيّرهما
+          # ونجاح النشرات. اسمٌ جديد = لا حالة سابقة = الأداة تعتبر كل الملفّات
+          # جديدة فترفعها كلّها مرّة واحدة، ثمّ تبني سجلّاً سليماً تعمل عليه بعدها.
+          # لا حذف ولا مخاطرة: dangerous-clean-slate ما يزال false.
+          state-name: .ftp-deploy-malatya-state-v2.json
           dangerous-clean-slate: false
           timeout: 60000
           log-level: standard
+
+      - name: 🧬 تطابق الأصول — ما على الخادم = ما في المستودع
+        if: steps.ftp.outputs.enabled == 'true'
+        run: |
+          set -euo pipefail
+          # ═══════════════════════════════════════════════════════════════
+          # لماذا هذه الخطوة — 02/10/2026
+          # ───────────────────────────────────────────────────────────────
+          # ملفّات assets/ بقيت أسبوعاً كاملاً قديمةً على الخادم بينما كل
+          # نشرة تخرج **خضراء**: `nav.js` على ختم 25/09 و`malatya.css` على
+          # ختم 01/09. فشلٌ صامت من أخطر الأنواع: المستودع سليم، والنشر
+          # «ناجح»، والقارئ يرى صفحةً قديمة ولا أحد ينتبه.
+          # من اليوم: كل ملفّ css/js نرفعه تُقارَن بصمته بما يُقدَّمه الخادم
+          # فعلاً، واختلافٌ واحد يُفشل النشر بصوت عالٍ.
+          # ═══════════════════════════════════════════════════════════════
+          FAIL=0
+          T=$(date +%s)
+          for f in _deploy/assets/*.css _deploy/assets/*.js; do
+            [ -e "$f" ] || continue
+            REL="assets/$(basename "$f")"
+            WANT=$(md5sum "$f" | cut -d' ' -f1)
+            GOT=""
+            for try in 1 2 3; do
+              # لا أنبوب من curl (انظر درس SIGPIPE أدناه) — ننزّل ثم نقارن
+              curl -s -o /tmp/live-asset --max-time 45 "${PORTAL_URL}${REL}?n=${T}${try}" || true
+              if [ -s /tmp/live-asset ]; then
+                GOT=$(md5sum /tmp/live-asset | cut -d' ' -f1)
+                [ "$WANT" = "$GOT" ] && break
+              fi
+              sleep 8
+            done
+            if [ "$WANT" = "$GOT" ]; then
+              echo "  ✅ $REL مطابق"
+            else
+              echo "  🚨 $REL **لم يصل الخادم**: المستودع $WANT ≠ الحيّ ${GOT:-«لا شيء»}"
+              echo "     الأرجح أنّ سجلّ حالة FTP يَعُدّه مرفوعاً وهو ليس كذلك."
+              echo "     العلاج: غيّر state-name في هذا الملفّ ليُعاد رفع كل شيء."
+              FAIL=1
+            fi
+          done
+          [ "$FAIL" = "0" ] || { echo "❌ أصولٌ قديمة على الخادم — النشر غير مكتمل"; exit 1; }
 
       - name: 🛡️ فحص السلامة — لم يُمسّ شيء آخر
         if: steps.ftp.outputs.enabled == 'true'
