@@ -35,6 +35,12 @@ jobs:
     name: رصد الملابس · تحرير الصفحة · نشر
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    # ⛔ إلزاميّان: `contents: write` للدفع إلى main، و`id-token: write` لأنّ
+    # claude-code-action يطلب رمز OIDC — وبدونه تفشل الريّة بـ«Could not fetch
+    # an OIDC token» قبل أن يبدأ الوكيل أصلاً. (أُمسك في أوّل ريّة، 02/10/2026.)
+    permissions:
+      contents: write
+      id-token: write
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
 
