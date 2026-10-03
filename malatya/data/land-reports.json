@@ -1,32 +1,5 @@
 [
  {
-  "date": "2026-07-10",
-  "n": 105,
-  "hi": 0,
-  "avg": 50.0,
-  "top": [
-   {
-    "nb": "بحري (Bahri)",
-    "ppm": 1064,
-    "sc": 58.0,
-    "url": "https://www.emlakjet.com/ilan/bahride-satilik-tarla"
-   },
-   {
-    "nb": "بوران (Boran)",
-    "ppm": 1210,
-    "sc": 56.0,
-    "url": "https://www.emlakjet.com/ilan/turyap-metropol-den-battalgazi-boran-da-satilik-tarla-19310571"
-   },
-   {
-    "nb": "غورغو/جافانا (Görgü)",
-    "ppm": 132,
-    "sc": 64.0,
-    "url": "https://www.emlakjet.com/ilan/cafana-eski-koyun-ust-yamacinda-satilik-15-000m2-duz-arazi-19132543"
-   }
-  ],
-  "note": "لا قطع جديدة اليوم (0)؛ كل المعروض (105 إعلان عبر 4 صفحات) مُسجّل مسبقاً. السوق مستقر منذ 2026-07-08. أرسات Hatunsuyu/Mullakasım مُخطّطة سلفاً (لا تحويل)."
- },
- {
   "date": "2026-07-11",
   "n": 94,
   "hi": 0,
@@ -1291,5 +1264,33 @@
    }
   ],
   "note": "77 قطعة مرصودة اليوم بعد إزالة التكرارات (آخر سجلّ فعلي 2026-10-01 — لا فجوة زمنية). 4 قطع جديدة (249→253): Duranlar تارلا 7.500م² بـ333₺/م² (61.5) وGörgü بستان «كوبون» 4.046م² بـ2.682₺/م² (48.0) وKuyulu أرسا 937م² بـ3.735₺/م² (47.0) وGedik أرسا 392م² بـ7.500₺/م² (44.0). 3 تغيّرات سعرية طفيفة نحو الانخفاض (Yarımcahan وHasırcılar وÖzal). الصدارة: Boran@959₺(65.0) ثم Hıroğlu@606₺(63.9) ثم Duranlar@333₺(61.5). قيد: كل صفحة رُصدت أول 10–30 بطاقة فقط تبعاً لحدود أداة الجلب."
+ },
+ {
+  "date": "2026-10-03",
+  "n": 94,
+  "hi": 1,
+  "hi_thr": 65,
+  "avg": 46.3,
+  "top": [
+   {
+    "nb": "Boran",
+    "ppm": 959,
+    "sc": 65.0,
+    "url": "https://www.emlakjet.com/ilan/battalgazi-boranda-5-422-m-sulu-tarla-yatirimlik-firsat-19622472"
+   },
+   {
+    "nb": "Hıroğlu",
+    "ppm": 606,
+    "sc": 63.9,
+    "url": "https://www.emlakjet.com/ilan/kardelenden-satilik-firsat-yatirimi-19295402"
+   },
+   {
+    "nb": "Duranlar",
+    "ppm": 333,
+    "sc": 61.5,
+    "url": "https://www.emlakjet.com/ilan/yusuf-karadaglidan-yesilyurt-durankarda-satilik-tarla-19929808"
+   }
+  ],
+  "note": "94 معرّفاً فريداً مرصوداً اليوم (آخر سجلّ فعلي 2026-10-02 — لا فجوة زمنية). 3 قطع جديدة (253→256): İkizce أراضي 14.144م² بـ1.300₺/م² (52.0) وGündüzbey أرسا 760م² بـ7.434₺/م² (47.0) وGündüzbey أرسا 95م² بـ6.737₺/م² (40.0). تغيّران سعريان نحو الانخفاض (Bahçelievler وBahçebaşı). الصدارة بلا تغيّر: Boran@959₺(65.0) ثم Hıroğlu@606₺(63.9) ثم Duranlar@333₺(61.5). قيد: أول 16–30 بطاقة لكل صفحة فقط (حدّ أداة الجلب)."
  }
 ]
